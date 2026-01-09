@@ -27,8 +27,8 @@ def _make_row(record):
     return my_html.table_row(
         [
             # str(record["bhla-i"]),
-            my_html.table_datum(record["cv"]),
             my_html.table_datum(bhla_and_mam, hbo_attrs),
+            my_html.table_datum(record["cv"]),
             my_html.table_datum(record["what-is-weird"]),
             # record["comment"],
         ]

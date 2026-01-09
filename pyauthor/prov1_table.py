@@ -256,7 +256,7 @@ TABLE = [
         "cv": "22:21",
         "bhla-q": "(?)",
         "bhla": "עִמּ֑וֹ וּשְׁלם",
-        "what-is-weird": "מ has אתנח not מונח ל lacks קמץ and אתנח",
+        "what-is-weird": "אתנח and ∅ not מונח and קמץ־אתנח",
         "mam": "עִמּ֣וֹ וּשְׁלָ֑ם",
         "comment": "Typical sloppy re-inking. Perhaps some super-faint remains of the אתנח under ל can be seen. Various dots not mentioned are, based on consensus expectations, either generously transcribed despite having only super-faint remains or generously ignored despite being fairly clear.",
     },
