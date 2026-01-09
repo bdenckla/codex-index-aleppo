@@ -7,6 +7,7 @@ TABLE = [
         "what-is-weird": "מ has no דגש",
         "mam": "שָׁ֔מָּה",
         "comment": "",
+        "highlight": 2,
     },
     {
         "bhla-i": 2,
@@ -16,6 +17,7 @@ TABLE = [
         "what-is-weird": "ה has no מפיק",
         "mam": "אֱל֣וֹהַּ",
         "comment": "",
+        "highlight": 4,
     },
     {
         "bhla-i": 3,
@@ -25,6 +27,7 @@ TABLE = [
         "what-is-weird": "ה has no מפיק",
         "mam": "מֵאֱל֣וֹהַּ",
         "comment": "",
+        "highlight": 5,
     },
     {
         "bhla-i": 4,
@@ -34,6 +37,7 @@ TABLE = [
         "what-is-weird": "רביע fights טרחא",
         "mam": "וְכִימֵ֖י",
         "comment": "",
+        "highlight": 4,
     },
     {
         "bhla-i": 5,
@@ -43,6 +47,7 @@ TABLE = [
         "what-is-weird": "סילוק precedes סגול",
         "mam": "יַעֲלֶֽה׃",
         "comment": "",
+        "highlight": 3,
     },
     {
         "bhla-i": 6,
@@ -52,6 +57,7 @@ TABLE = [
         "what-is-weird": "פתח on ח is חטף",
         "mam": "וְשִׁ֖חַרְתַּ֣נִי",
         "comment": "",
+        "highlight": 3,
     },
     {
         "bhla-i": 7,
@@ -61,6 +67,7 @@ TABLE = [
         "what-is-weird": "י (yod) has no דגש",
         "mam": "וַיֹּאמַֽר׃",
         "comment": "",
+        "highlight": 2,
     },
     {
         "bhla-i": 8,
@@ -70,6 +77,7 @@ TABLE = [
         "what-is-weird": "שורוק dot fights שווא",
         "mam": "וְ֝אַחֲרִֽיתְךָ֗",
         "comment": "The געיה difference is not important to us here.",
+        "highlight": 1,
     },
     {
         "bhla-i": 9,

@@ -1,5 +1,6 @@
 """ Exports main """
 
+import re
 from pycmn.my_utils import sl_map
 from py import my_html
 from pyauthor.util import author
@@ -16,13 +17,31 @@ def gen_html_file(tdm_ch):
     author.help_gen_html_file(tdm_ch, _FNAME, _TITLE, _CBODY)
 
 
+def _highlight(record, key, color):
+    if hl := record.get("highlight"):
+        zbhli = hl - 1  # convert to 0-based index
+        rk = record[key]
+        clusters = re.findall(r"[א-ת][^א-ת]*", rk)
+        jc = "".join(clusters)
+        assert jc == rk
+        out = [cl if i != zbhli else _color(cl, color) for i, cl in enumerate(clusters)]
+        return out
+    return record[key]
+
+
+def _color(text, color):
+    return my_html.span(text, {"style": f"color: {color}"})
+
+
 def _make_row(record):
+    hbhla = _highlight(record, "bhla", "red")
+    hmam = _highlight(record, "mam", "green")
     if blha_q := record["bhla-q"]:
         assert blha_q == "(?)"
-        bhla_and_q = [record["bhla"], " (?)"]
+        bhla_and_q = [hbhla, " (?)"]
     else:
-        bhla_and_q = [record["bhla"]]
-    bhla_and_mam = [*bhla_and_q, my_html.line_break(), record["mam"]]
+        bhla_and_q = [hbhla]
+    bhla_and_mam = [*bhla_and_q, my_html.line_break(), hmam]
     hbo_attrs = {"lang": "hbo", "dir": "rtl"}
     return my_html.table_row(
         [
