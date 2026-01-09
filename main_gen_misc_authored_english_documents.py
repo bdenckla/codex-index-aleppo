@@ -6,12 +6,8 @@ from pyauthor import prov1
 
 
 def write_index_dot_html(css_hrefs, out_path, prov1_anchor):
-    body_contents = (
-        prov1_anchor,
-    )
-    write_ctx = my_html.WriteCtx(
-        "Proverbs Documents", out_path, css_hrefs=css_hrefs
-    )
+    body_contents = (prov1_anchor,)
+    write_ctx = my_html.WriteCtx("Proverbs Documents", out_path, css_hrefs=css_hrefs)
     my_html.write_html_to_file(body_contents, write_ctx)
 
 
@@ -31,7 +27,6 @@ def main():
     prov1_anchor = prov1.anchor(provn_rel_docs)
     #
     write_index_dot_html((css_href,), "docs/index.html", prov1_anchor)
-
 
 
 if __name__ == "__main__":
