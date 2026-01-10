@@ -1,4 +1,4 @@
-TABLE = [
+RECORDS = [
     {
         "bhla-i": 1,
         "cv": "1:21",
@@ -280,7 +280,7 @@ TABLE = [
         "mam": "וְלֹֽא־",
         "comment": "",
         "highlight": 1,
-},
+    },
     {
         "bhla-i": 29,
         "cv": "22:21",
