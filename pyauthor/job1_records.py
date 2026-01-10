@@ -141,6 +141,8 @@ RECORDS = [
         "comment": "",
         "highlight-bhla": 5,
         "highlight-mam": 4,
+        "lcloc": {'page': '399B', 'column': 2, 'line': -6},
+        "img": "1001.png",
     },
     {
         "bhla-i": 13,
@@ -151,6 +153,8 @@ RECORDS = [
         "mam": "עׇנְיִֽי׃",
         "comment": "",
         "highlight": 3,
+        "lcloc": {'page': '400A', 'column': 1, 'line': 14},
+        "img": "1015.png",
     },
     {
         "bhla-i": 14,
@@ -161,6 +165,8 @@ RECORDS = [
         "mam": "יַחֲרִ֑ישׁוּ",
         "comment": "",
         "highlight": 6,
+        "lcloc": {'page': '400A', 'column': 1, 'line': -1},
+        "img": "1103.png",
     },
     {
         "bhla-i": 15,
@@ -171,6 +177,8 @@ RECORDS = [
         "mam": "אֱ֝ל֗וֹהַּ",
         "comment": "",
         "highlight": 4,
+        "lcloc": {'page': '400A', 'column': 2, 'line': 5},
+        "img": "1106.png",
     },
     {
         "bhla-i": 16,
@@ -181,6 +189,8 @@ RECORDS = [
         "mam": "אֱל֣וֹהַּ",
         "comment": "",
         "highlight": 4,
+        "lcloc": {'page': '400A', 'column': 2, 'line': 6},
+        "img": "1107.png",
     },
     {
         "bhla-i": 17,
@@ -191,6 +201,8 @@ RECORDS = [
         "mam": "וְאֶת־",
         "comment": "",
         "highlight": 3,
+        "lcloc": {'page': '400A', 'column': 2, 'line': -1},
+        "img": "1203.png",
     },
     {
         "bhla-i": 18,
@@ -201,6 +213,8 @@ RECORDS = [
         "mam": "מֵרֵ֣יחַ",
         "comment": "",
         "highlight": 3,
+        "lcloc": {'page': '401A', 'column': 1, 'line': -9},
+        "img": "1409.png",
     },
     {
         "bhla-i": 19,
@@ -211,6 +225,8 @@ RECORDS = [
         "mam": "אֱל֣וֹהַּ",
         "comment": "",
         "highlight": 4,
+        "lcloc": {'page': '401A', 'column': 2, 'line': -7},
+        "img": "1508.png",
     },
     {
         "bhla-i": 20,
@@ -221,6 +237,8 @@ RECORDS = [
         "mam": "שֹֽׁחַד׃",
         "comment": "",
         "highlight": 1,
+        "lcloc": {'page': '401B', 'column': 1, 'line': -3},
+        "img": "1534.png",
     },
     {
         "bhla-i": 21,
@@ -229,8 +247,10 @@ RECORDS = [
         "bhla": "ל֤וּ־",
         "what-is-weird": "מקף is present",
         "mam": "ל֤וּ_",
-        "comment": "",
+        "comment": "Though it is not relevant to the point at hand, which is the presence of a מקף, note that in the LC, the shape we take to be מחפך is touching the bottom of the ל (lamed).",
         "highlight": 2,
+        "lcloc": {'page': '401B', 'column': 2, 'line': 3},
+        "img": "1604.png",
     },
     {
         "bhla-i": 22,
@@ -242,6 +262,8 @@ RECORDS = [
         "comment": "",
         "highlight-bhla": 3,
         "highlight-mam": 4,
+        "lcloc": {'page': '401B', 'column': 2, 'line': -10},
+        "img": "1613.png",
     },
     {
         "bhla-i": 23,
@@ -252,16 +274,20 @@ RECORDS = [
         "mam": "אֱ֝ל֗וֹהַּ",
         "comment": "",
         "highlight": 4,
+        "lcloc": {'page': '401B', 'column': 2, 'line': -2},
+        "img": "1620.png",
     },
     {
         "bhla-i": 24,
         "cv": "18:4",
         "bhla-q": "",
         "bhla": "הֲ֭לְמַּעַנְךָ",
-        "what-is-weird": "פתח on ח is חטף",
+        "what-is-weird": "פתח on ה is חטף",
         "mam": "הַֽ֭לְמַעַנְךָ",
         "comment": "",
         "highlight": 1,
+        "lcloc": {'page': '402A', 'column': 1, 'line': -4},
+        "img": "1804.png",
     },
     {
         "bhla-i": 25,
@@ -272,6 +298,8 @@ RECORDS = [
         "mam": "א֭וֹר",
         "comment": "",
         "highlight": 1,
+        "lcloc": {'page': '402A', 'column': 1, 'line': -2},
+        "img": "1806.png",
     },
     {
         "bhla-i": 26,
@@ -282,6 +310,8 @@ RECORDS = [
         "mam": "חֶרְפָּתִֽי׃",
         "comment": "Color photos show דגש to be unlikely.",
         "highlight": 4,
+        "lcloc": {'page': '402A', 'column': 2, 'line': -5},
+        "img": "1905.png",
     },
     {
         "bhla-i": 27,
@@ -290,8 +320,10 @@ RECORDS = [
         "bhla": "קָּ֭רָאתִי",
         "what-is-weird": "ק may have דגש",
         "mam": "קָ֭רָאתִי",
-        "comment": "",
+        "comment": "The dot is suspiciously brown rather than black.",
         "highlight": 1,
+        "lcloc": {'page': '402B', 'column': 1, 'line': 8},
+        "img": "1916.png",
     },
     {
         "bhla-i": 28,
@@ -300,8 +332,10 @@ RECORDS = [
         "bhla": "וִלֹֽא־",
         "what-is-weird": "ו has חיריק not שווא",
         "mam": "וְלֹֽא־",
-        "comment": "",
+        "comment": "The dot is suspiciously brown rather than black, making me wonder whether the ו was pointed at all.",
         "highlight": 1,
+        "lcloc": {'page': '403A', 'column': 2, 'line': 13},
+        "img": "2125.png",
     },
     {
         "bhla-i": 29,
@@ -310,8 +344,10 @@ RECORDS = [
         "bhla": "עִמּ֑וֹ וּשְׁלם",
         "what-is-weird": "אתנח and ∅ not מונח and קמץ־אתנח",
         "mam": "עִמּ֣וֹ וּשְׁלָ֑ם",
-        "comment": "Typical sloppy re-inking. Perhaps some super-faint remains of the אתנח under ל can be seen. Various dots not mentioned are, based on consensus expectations, either generously transcribed despite having only super-faint remains or generously ignored despite being fairly clear.",
+        "comment": "Typical sloppy re-inking. Perhaps some super-faint remains of the אתנח under ל can be seen. The top dot of the שווא is super-faint. It is (charitably) transcribed based on consensus expectations. The dot under the מ of עמו is fairly clear. It is (charitably) not transcribed based on consensus expectations.",
         "highlight": [2, 6],
+        "lcloc": {'page': '403B', 'column': 1, 'line': -6},
+        "img": "2221.png",
     },
     {
         "bhla-i": 30,

@@ -13,7 +13,7 @@ def maybe_sep_lcloc(record, sep):
         return [
             sep,
             _lc_full_page_anc(page),
-            f" (line {abs_line}{m_sp_cfb}{m_sp_ibl}, col. {column})",
+            f" col. {column} line {abs_line}{m_sp_cfb}{m_sp_ibl}",
         ]
     return []
 
