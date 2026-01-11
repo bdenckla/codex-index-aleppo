@@ -112,7 +112,9 @@ _BHQ_COMMENT_2221 = [
     "BHQ transcribes these words as shown above.",
     " I.e. BHQ transcribes עמו as BHL does, and BHQ transcribes ושלם as I do.",
     " As is its habit, BHQ does all this silently,",
-    " i.e. without any acknowledgement of uncertainties in transcription or departures from consensus expectations.",
+    " i.e. without any acknowledgement of",
+    " uncertainties in transcription or",
+    " departures from consensus expectations.",
 ]
 
 _BHQ_COMMENT_2228 = [
@@ -140,10 +142,26 @@ _BHQ_COMMENT_3107 = [
     " One might argue that this רפה should have been shown,",
     " despite the general policy of BHQ to ignore manuscript רפה marks.",
     " Regardless of whether the רפה should have been shown,",
-    " its presence in the manuscript should have excluded the possibility of a סילוק under its letter (א)!",
+    " its presence in the manuscript should have excluded the possibility of",
+    " a סילוק under its letter (א)!",
 ]
 
-_V_THEN_A = "BHQ silently supplies the marks in the vowel-then-accent order that is the consensus expectation, in clear contradiction of the manuscript here. In my opinion BHQ shows itself to be out of date by continuing to aspire, as BHS did, to reflect all such ordering anomalies. I think the modern consensus is that these orderings are as meaningless as the variable length of ascenders on ל. Nonetheless, since BHQ still aspires to get these orderings right, it is fair for me to point out when it fails to do so."
+_V_THEN_A = [
+    "BHQ silently supplies the marks in the vowel-then-accent order that is",
+    " the consensus expectation, in clear contradiction of the manuscript here.",
+    " In my opinion BHQ shows itself to be out of date by continuing to aspire,",
+    " as BHS did,",
+    " to reflect all such ordering anomalies.",
+    " I think the modern consensus is that these orderings are as meaningless as",
+    " the variable length of ascenders on ל.",
+    " Nonetheless, since BHQ still aspires to get these orderings right,",
+    " it is fair for me to point out when it fails to do so."
+]
+_BHQ_COMMENT_1604 = [
+    "Though it is not relevant to the point at hand,",
+    " note that BHQ continues to fail to distinguish",
+    " between גלגל and אתנח הפוך."
+]
 RECORDS = [
     {
         "bhla-i": 1,
@@ -404,7 +422,7 @@ RECORDS = [
         "highlight": 2,
         "lcloc": {"page": "401B", "column": 2, "line": 3},
         "img": "1604.png",
-        "bhq-comment": "Though it is not relevant to the point at hand, note that BHQ continues to fail distinguish between גלגל and אתנח הפוך.",
+        "bhq-comment": "".join(_BHQ_COMMENT_1604),
     },
     {
         "bhla-i": 22,
@@ -597,7 +615,7 @@ RECORDS = [
         "highlight": 3,
         "lcloc": {"page": "405B", "column": 1, "line": -9, "including-blank-lines": 1},
         "img": "3105.png",
-        "bhq-comment": _V_THEN_A,
+        "bhq-comment": "".join(_V_THEN_A),
     },
     {
         "bhla-i": 37,
@@ -637,7 +655,7 @@ RECORDS = [
         "highlight": 4,
         "lcloc": {"page": "406A", "column": 1, "line": -6},
         "img": "3206.png",
-        "bhq-comment": _V_THEN_A,
+        "bhq-comment": "".join(_V_THEN_A),
     },
     {
         "bhla-i": 40,
