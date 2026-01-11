@@ -20,7 +20,7 @@ def make_example_row():
     return my_html.table_row(
         [
             my_html.table_datum(bhla_and_mam),
-            my_html.table_datum("chapter:verse of Job"),
+            my_html.table_datum("c:v"),
             my_html.table_datum("how BHL-A differs from consensus"),
         ]
     )

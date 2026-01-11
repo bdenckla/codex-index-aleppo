@@ -322,7 +322,7 @@ RECORDS = [
         "highlight": 4,
         "lcloc": {"page": "402A", "column": 2, "line": -5},
         "img": "1905.png",
-        "bhq-comment": "BHS silently lets the faint putative דגש “win” over the clear רפה.",
+        "bhq-comment": "BHQ silently lets the faint putative דגש “win” over the clear רפה.",
     },
     {
         "bhla-i": 27,
@@ -465,6 +465,7 @@ RECORDS = [
         "lcloc": {"page": "405B", "column": 1, "line": -6, "including-blank-lines": 1},
         "img": "3107.png",
         "bhq-comment": "BHQ reflects neither the manuscript nor the consensus expectation here. It reflects the manuscript except it places the סילוק under the א. This not only contradicts the manuscript, but also makes no sense given the רפה on the א. One might argue that this רפה should have been shown, despite the general policy of BHQ to ignore manuscript רפה marks. Regardless of whether the רפה should have been shown, its presence in the manuscript should have excluded the possibility of a סילוק under its letter (א)!",
+        "bhq": "מֻאֽוּם׃",
     },
     {
         "bhla-i": 38,
