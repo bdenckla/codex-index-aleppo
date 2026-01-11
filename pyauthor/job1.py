@@ -1,11 +1,12 @@
 """ Exports gen_html_file and anchor """
 
-from pyauthor.job1_common import here_is
+from pyauthor.job1_common import here_is, the_row
 from pycmn.my_utils import sl_map
 from py import my_html
 from pyauthor.util import author
 from pyauthor.job1_records import RECORDS
 from pyauthor.job1_make_per_case_data import make_per_case_data
+from pyauthor.job1_make_per_case_data import make_example_row
 
 
 def anchor(jobn_dir="."):
@@ -16,14 +17,12 @@ def anchor(jobn_dir="."):
 def gen_html_file(tdm_ch, jda):
     author.assert_stem_eq(__file__, _FNAME)
     jdae = [" ", jda, "."]
-    _CONT_PARA_01 = [
-        *here_is(),
-        " For more details, see the",
-        jdae,
-    ]
+    p01 = [*here_is("expanding"), " For more details, see the", jdae]
     _CBODY = [
         author.heading_level_1(_H1_CONTENTS),
-        author.para(_CONT_PARA_01),
+        author.para(p01),
+        author.para(the_row("Each")),
+        author.table_c(make_example_row()),
         author.table_c(_CONT_TABLE_1A_ROWS),
     ]
     author.help_gen_html_file(tdm_ch, _FNAME, _TITLE, _CBODY)

@@ -1,8 +1,8 @@
-""" Exports make_per_case_data """
+""" Exports make_per_case_data, make_example_row """
 
 from py import my_html
 from pyauthor.util import author
-from pyauthor.job1_highlight import highlight
+from pyauthor.job1_highlight import highlight, color
 from pyauthor.job1_lcloc import maybe_sep_lcloc
 
 
@@ -11,6 +11,19 @@ def make_per_case_data(record):
         "row": _make_row(record),
         "details": _make_details(record),
     }
+
+
+def make_example_row():
+    hbhla = color("BHL-A", "bhla")
+    hmam = color("consensus", "mam")
+    bhla_and_mam = [hbhla, my_html.line_break(), hmam]
+    return my_html.table_row(
+        [
+            my_html.table_datum(bhla_and_mam),
+            my_html.table_datum("chapter:verse of Job"),
+            my_html.table_datum("how BHL-A differs from consensus"),
+        ]
+    )
 
 
 def _make_row(record):
