@@ -1,3 +1,12 @@
+def _correctly_ignores(what):
+    out_parts = [
+        f"BHQ silently ignores the faint possible {what}.",
+        " Or it ignores the manuscript entirely and simply supplies the consensus pointing here,",
+        f" which has no {what}.",
+        " It is hard to distinguish whether BHQ has done the right thing here by accident or on purpose."
+    ]
+    return "".join(out_parts)
+
 _V_THEN_A = "BHQ silently supplies the marks in the vowel-then-accent order that is the consensus expectation, in clear contradiction of the manuscript here. In my opinion BHQ shows itself to be out of date by continuing to aspire, as BHS did, to reflect all such ordering anomalies. I think the modern consensus is that these orderings are as meaningless as the variable length of ascenders on ל. Nonetheless, since BHQ still aspires to get these orderings right, it is fair for me to point out when it fails to do so."
 RECORDS = [
     {
@@ -530,7 +539,7 @@ RECORDS = [
         "highlight": 1,
         "lcloc": {"page": "406B", "column": 2, "line": -2},
         "img": "3419.png",
-        "bhq-comment": "BHQ silently ignores the faint possible דגש. Or it ignores the manuscript entirely and simply supplies the consensus pointing here, which has no דגש. It is hard to distinguish whether BHQ has done the right thing here by accident or on purpose.",
+        "bhq-comment": _correctly_ignores("דגש" ),
     },
     {
         "bhla-i": 43,
@@ -543,7 +552,7 @@ RECORDS = [
         "highlight": 2,
         "lcloc": {"page": "407B", "column": 1, "line": -5},
         "img": "3629.png",
-        "bhq-comment": "BHQ silently ignores the faint possible געיה. Or it ignores the manuscript entirely and simply supplies the consensus pointing here, which has no געיה. It is hard to distinguish whether BHQ has done the right thing here by accident or on purpose.",
+        "bhq-comment": _correctly_ignores("געיה" ),
     },
     {
         "bhla-i": 44,
@@ -576,10 +585,11 @@ RECORDS = [
         "bhla": "וְ֝יָדַעְתָּ֜",
         "what-is-weird": "גרש not רביע",
         "mam": "וְ֝יָדַעְתָּ֗",
-        "comment": "",
+        "comment": "The mark in question is very heavy, having a stroke width more typical of a letter-stroke than of a niqqud-stroke. Its clarity suggests it is part of the re-inking. Indeed perhaps it is only part of the re-inking, i.e. perhaps it reflects no mark (or only a much smaller mark) in the original. The mark in question may be two marks, a רביע (expected) overlaid with a גרש (unexpected). Or, it may be only a single mark whose lower end is, for some reason, a blob.",
         "highlight": 5,
         "lcloc": {"page": "408A", "column": 2, "line": -3},
         "img": "3902.png",
+        "bhq-comment": "",
     },
     {
         "bhla-i": 47,
