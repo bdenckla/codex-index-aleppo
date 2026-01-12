@@ -95,7 +95,9 @@ _BHQ_COMMENT_1107 = _BHQ_COMMENT_LIKE_0409
 _BHQ_COMMENT_1508 = _BHQ_COMMENT_LIKE_0409
 _BHQ_COMMENT_1620 = _BHQ_COMMENT_LIKE_0409
 _BHQ_COMMENT_3312 = _BHQ_COMMENT_LIKE_0409
-
+_BHQ_COMMENT_0801 = [
+    "This is noted in the bottom-of-page critical apparatus of BHQ.",
+]
 _BHQ_COMMENT_0914_AND_0930 = [
     "BHQ silently supplies the סילוק that is the consensus expectation,",
     " despite little or no manuscript evidence for it.",
@@ -288,6 +290,7 @@ RECORDS = [
         "highlight": 2,
         "lcloc": {"page": "399A", "column": 2, "line": 5, "including-blank-lines": 1},
         "img": "0801.png",
+        "bhq-comment": "".join(_BHQ_COMMENT_0801),
     },
     {
         "bhla-i": 8,
