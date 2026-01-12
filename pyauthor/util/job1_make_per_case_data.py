@@ -50,10 +50,31 @@ def _img(img):
     return my_html.img({"src": f"img/{img}"})
 
 
-def _maybe_aleppo_img(mai):
-    if mai is None:
+_MI_ARGS = {
+    "mi-args-aleppo": [
+        "μA (Aleppo)",
+        "aleppo-img-intro",
+        "aleppo-img",
+    ],
+    "mi-args-cam1753": [
+        "μY (Cambridge 1753)",
+        "cam1753-img-intro",
+        "cam1753-img",
+    ],
+}
+
+
+def _maybe_img(record, mi_args):
+    ms_name, iikey, ipkey = _MI_ARGS[mi_args]
+    maybe_img_path = record.get(ipkey)
+    if maybe_img_path is None:
         return []
-    return [my_html.para("Aleppo:"), _img(mai)]
+    if maybe_img_intro := record.get(iikey):
+        intro = f" ({maybe_img_intro})"
+    else:
+        intro = ""
+    cpara = f"{ms_name}{intro}:"
+    return [my_html.para(cpara), _img(maybe_img_path)]
 
 
 def _maybe_bhq(bhq):
@@ -86,6 +107,7 @@ def _make_details(record):
         *_maybe_bhq(record.get("bhq")),
         my_html.para(dpe),
         _img(record["lc-img"]),
-        *_maybe_aleppo_img(record.get("aleppo-img")),
+        *_maybe_img(record, "mi-args-aleppo"),
+        *_maybe_img(record, "mi-args-cam1753"),
         my_html.horizontal_rule(),
     ]
