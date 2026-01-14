@@ -17,30 +17,31 @@ def num_range(start, stop):
 
 
 _CPARA10 = [
-    "Like many students of Tanakh,",
-    " I started out in the cult of $BHS.",
+    "Like many students of Tanakh, I started out in the cult of $BHS.",
     #
     [" I thought $BHS was", " ", my_html.bold("the")],
     " definitive edition.",
     #
-    " Unlike many students of Tanakh,",
-    " I eventually soured on $BHS, for the following reasons:"]
-    #
+    " Unlike many students of Tanakh, I eventually soured on $BHS,",
+    " for the following reasons:",
+]
+#
 _C_LIST_ITEMS_AFTER_PARA10 = [
-   "It often fails to accurately transcribe μL (the Leningrad Codex).",
-   #
-   "It often fails to note where μL disagrees with other manuscripts.",
-   #
-   "It cites other manuscripts using an outdated emphasis on quantity over quality."
- ]
+    "It often fails to accurately transcribe μL (the Leningrad Codex).",
+    #
+    "It often fails to note where μL disagrees with other manuscripts.",
+    #
+    "It emphasizes manuscript quantity over quality.",
+]
 _CPARA11 = [
     "My first candidate for a $BHS alternative was $BHQ (Biblia Hebraica Quinta).",
-    " (Though I had soured on $BHS, I still hadn’t fully escaped its cult.)"
+    #
+    " (Though I had soured on $BHS, I still hadn’t fully escaped its cult.)",
 ]
 _CPARA12 = [
     "But I soon soured on $BHQ as well."
     #
-    " One obvious problem is that $BHQ will not be complete for many years.",
+    " I was dismayed to find that $BHQ will not be complete for many years.",
     #
     " Perhaps more importantly, I found that $BHQ still suffers from some of the",
     " same problems as $BHS.",
@@ -49,7 +50,7 @@ _CPARA12 = [
     " the other two problems listed above remain, albeit to a lesser degree.",
 ]
 _CPARA13 = [
-    "As I continued my search for better editions, I found editions that do better than $BHQ.",
+    "I continued my search for better editions, and I was fortunate to find some.",
     #
     " This made me even more disappointed with $BHQ, in retrospect.",
     #
@@ -72,14 +73,15 @@ _CPARA14 = [
     #
     " Before he died, Dotan was even a consultant for $BHQ.",
     #
-    " What’s more, his $BHL is even used as a source in at least some volumes of $BHQ.",
+    " What’s more, his $BHL is sometimes used as a source in $BHQ.",
     #
     " So it is particularly puzzling that his $BHL, in particular its monumental Appendix A,"
     " was not used (or was not thoroughly used) in $BHQ.",
 ]
 _CPARA15 = [
-    "Although it may already be clear, at this point I should mention that",
+    "Although it may already be clear, I should explicitly state that",
     " my purposes are narrowly focused on the Masoretic text.",
+    #
     " Thus I am not concerned with",
     " the many parts of $BHQ that deal with the following:",
 ]
@@ -91,6 +93,7 @@ _C_LIST_ITEMS_AFTER_PARA15 = [
 ]
 _CPARA16 = [
     "For all I know, those parts of $BHQ are of high quality.",
+    #
     " But those parts are not my concern.",
 ]
 _CPARA17 = [
