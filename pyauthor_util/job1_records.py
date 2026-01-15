@@ -176,26 +176,6 @@
 # All good.
 # As expected, noted in Da-at Miqra.
 
-# 17:11 לְבָבִּֽי׃ ML (err) | לְבָבִֽי׃ MA MY (dagesh)
-# As expected, BHL main matches MA/MY above.
-# Unexpectedly, BHLA has no entry for this.
-# Unexpectedly, UXLC matches MA/MY above.
-# As expected, MAM matches MA above.
-# Unexpectedly, Da-at Miqra has no entry for this.
-# https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F402A.jpg
-# column 1 line 13
-# docs\jobn\img\1711.png
-
-# 18:9 בְּעָּקֵ֣ב ML (err) | בְּעָקֵ֣ב MA MY (dagesh in ע in ML (not present in Accordance))
-# As expected, BHL main matches MA/MY above.
-# Unexpectedly, BHLA has no entry for this.
-# Unexpectedly, UXLC matches MA/MY above.
-# As expected, MAM matches MA above.
-# Unexpectedly, Da-at Miqra has no entry for this.
-# https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F402A.jpg
-# column 2 line 2
-# docs\jobn\img\1809.png
-
 # 18:15 מִבְּלִיל֑וֹ ML MY | מִבְּלִי־ל֑וֹ MA (differ-orth)
 # BHL main has a simple word here, which is expected if we think ML has that, i.e. if we think ML is as above.
 # BHLA has no entry for this, which is expected if we think a simple word is either the consensus, or there is no consensus on this issue.
@@ -463,6 +443,8 @@ _BHQ_COMMENT_1604 = [
     " between גלגל and אתנח הפוך.",
 ]
 _BHQ_COMMENT_1706 = "BHQ catches this, whereas this was missed by BHLA and Da-at Miqra."
+_BHQ_COMMENT_1711 = _BHQ_COMMENT_1706
+_BHQ_COMMENT_1809 = _BHQ_COMMENT_1706
 _RECORD_1076 = {
     "cv": "17:6",
     "lc": "וְתֹ֖פֶתּ",
@@ -475,8 +457,35 @@ _RECORD_1076 = {
     "bhq-comment": "".join(_BHQ_COMMENT_1706),
     "uxlc-needs-fix": True,
 }
+_RECORD_1711 = {
+    "cv": "17:11",
+    "lc": "לְבָבִּֽי׃",
+    "what-is-weird": "second ב has דגש",
+    "mam": "לְבָבִֽי׃",
+    "comment": "",
+    "highlight": 4,
+    "lc-loc": {"page": "402A", "column": 1, "line": 13},
+    "lc-img": "1711.png",
+    "bhq-comment": "".join(_BHQ_COMMENT_1711),
+    "uxlc-needs-fix": True,
+}
+_RECORD_1809 = {
+    "cv": "18:9",
+    "lc": "בְּעָּקֵ֣ב",
+    "what-is-weird": "ע has דגש",
+    "mam": "בְּעָקֵ֣ב",
+    "comment": "",
+    "highlight": 4,
+    "lc-loc": {"page": "402A", "column": 2, "line": 2},
+    "lc-img": "1809.png",
+    "bhq-comment": "".join(_BHQ_COMMENT_1809),
+    "uxlc-needs-fix": True,
+}
+
 RECORDS = [
     _RECORD_1076,
+    _RECORD_1711,
+    _RECORD_1809,
     {
         "bhla-i": 1,
         "cv": "1:21",

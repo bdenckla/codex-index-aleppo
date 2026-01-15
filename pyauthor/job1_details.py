@@ -20,7 +20,7 @@ _PER_CASE_DATA = sl_map(make_per_case_data, RECORDS)
 _DETAILS = [pcd["details"] for pcd in _PER_CASE_DATA]
 _CBODY = [
     author.heading_level_1(D1D_H1_CONTENTS),
-    *intro("further expanding", "The header of each"),
+    *intro("details"),
     my_html.horizontal_rule(),
     *_DETAILS,
 ]

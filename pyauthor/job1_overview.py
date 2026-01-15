@@ -20,7 +20,7 @@ _PER_CASE_DATA = sl_map(make_per_case_data, RECORDS)
 _CONT_TABLE_1A_ROWS = [pcd["row"] for pcd in _PER_CASE_DATA]
 _CBODY = [
     author.heading_level_1(D1V_H1_CONTENTS),
-    intro("expanding", "Each", d1d_anchor()),
+    intro("overview", d1d_anchor()),
     my_html.horizontal_rule(),
     author.table_c(_CONT_TABLE_1A_ROWS),
 ]
