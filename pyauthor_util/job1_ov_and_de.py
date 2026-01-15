@@ -109,14 +109,14 @@ def _maybe_bhq(bhq):
 
 
 _DEFAULT_BHQ_COMMENT = (
-    "BHQ agrees with μL here, but BHQ makes no note of μL’s divergence from consensus."
+    "$BHQ agrees with μL here, but $BHQ makes no note of μL’s divergence from consensus."
 )
 _SEP = " \N{EM DASH} "
 
 
 def _maybe_sep_lc_is_from_bhla(record):
     if record.get("bhla-i"):
-        return [_SEP, "μL is from BHL-A"]
+        return [_SEP, "μL is from $BHL_A."]
     return []
 
 

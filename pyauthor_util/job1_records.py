@@ -227,10 +227,10 @@
 def _correctly_ignores(what, adjective=""):
     adj = f" {adjective}" if adjective else ""
     out_parts = [
-        f"BHQ silently ignores the faint possible{adj} {what}.",
+        f"$BHQ silently ignores the faint possible{adj} {what}.",
         " Or it ignores the μL entirely and simply supplies the consensus pointing here,",
         f" which has no {what}.",
-        " It is hard to distinguish whether BHQ has done the right thing here",
+        " It is hard to distinguish whether $BHQ has done the right thing here",
         " by accident or on purpose.",
     ]
     return "".join(out_parts)
@@ -303,7 +303,7 @@ _BHQ_COMMENT_CMN_0409_AND_SIMILAR = [
 ]
 _BHQ_COMMENT_0409 = [
     *_BHQ_COMMENT_CMN_0409_AND_SIMILAR,
-    " Six of these seven, including this one, are noted in the entry for 4:9 in the BHQ"
+    " Six of these seven, including this one, are noted in the entry for 4:9 in the $BHQ"
     " section “Commentary on the Critical Apparatus.”",
     " Only this one and 11:6",
     " are noted in the bottom-of-page critical apparatus as well.",
@@ -313,7 +313,7 @@ _BHQ_COMMENT_LIKE_0409 = [
     " 4:9 discusses the matter at greater length.",
 ]
 _BHQ_COMMENT_0417 = [
-    "This is one of seven similar cases in Job in μL. This is the only one of these seven not noted by BHQ.",
+    "This is one of seven similar cases in Job in μL. This is the only one of these seven not noted by $BHQ.",
     " 4:9 discusses the matter at greater length.",
 ]
 _BHQ_COMMENT_1106 = _BHQ_COMMENT_LIKE_0409
@@ -322,61 +322,61 @@ _BHQ_COMMENT_1508 = _BHQ_COMMENT_LIKE_0409
 _BHQ_COMMENT_1620 = _BHQ_COMMENT_LIKE_0409
 _BHQ_COMMENT_3312 = _BHQ_COMMENT_LIKE_0409
 _BHQ_COMMENT_0801 = [
-    "This is noted in the bottom-of-page critical apparatus of BHQ.",
+    "This is noted in the bottom-of-page critical apparatus of $BHQ.",
 ]
 _BHQ_COMMENT_0914_AND_0930 = [
-    "BHQ silently supplies the סילוק that is the consensus expectation,",
+    "$BHQ silently supplies the סילוק that is the consensus expectation,",
     " despite little or no evidence for it in μL.",
 ]
 
 _BHQ_COMMENT_4125 = [
-    "BHQ silently supplies the סילוק that is the consensus expectation,",
+    "$BHQ silently supplies the סילוק that is the consensus expectation,",
     " despite no evidence for it in μL.",
 ]
 
 _BHQ_COMMENT_1203 = [
-    "BHQ silently supplies the מקף that is the consensus expectation,",
+    "$BHQ silently supplies the מקף that is the consensus expectation,",
     " despite no evidence for it in μL.",
 ]
 
 _BHQ_COMMENT_2702 = [
-    "BHQ silently supplies the מקף that is the consensus expectation,",
+    "$BHQ silently supplies the מקף that is the consensus expectation,",
     " despite little or no evidence for it in μL.",
 ]
 
 _BHQ_COMMENT_1804 = [
-    "BHQ silently ignores the possible שווא part of the possible חטף פתח.",
+    "$BHQ silently ignores the possible שווא part of the possible חטף פתח.",
     " It also silently ignores the possible intepretation of that ink as a געיה.",
     " I.e. other than the prepositive דחי accent,",
-    " BHQ supplies only the (full) פתח that is the consensus expectation here.",
-    " BHQ does so silently, i.e. with no note about the pointing of ה.",
-    " BHQ does note that the דגש on the מ in μL disagrees with μA and μY.",
-    " BHQ misses the געיה in μA.",
-    " This געיה is irrelevant to BHQ’s point here, which is only about the דגש.",
+    " $BHQ supplies only the (full) פתח that is the consensus expectation here.",
+    " $BHQ does so silently, i.e. with no note about the pointing of ה.",
+    " $BHQ does note that the דגש on the מ in μL disagrees with μA and μY.",
+    " $BHQ misses the געיה in μA.",
+    " This געיה is irrelevant to $BHQ’s point here, which is only about the דגש.",
     " Still, it is sloppy to have missed it.",
 ]
 
 _BHQ_COMMENT_1806 = [
-    "BHQ positions the mark ambiguously.",
+    "$BHQ positions the mark ambiguously.",
     " The mark is a little to the right of center.",
     " So it is not centered, as one would expect a טרחא to be,",
-    " but neither is it as far to the right as דחי normally is in BHQ.",
+    " but neither is it as far to the right as דחי normally is in $BHQ.",
 ]
 
 _BHQ_COMMENT_2125 = [
-    "BHQ silently supplies the שווא that is the consensus expectation,",
+    "$BHQ silently supplies the שווא that is the consensus expectation,",
     " despite little or no evidence for it in μL.",
 ]
 
 _BHQ_COMMENT_2221 = [
-    "BHQ transcribes these words as shown above.",
-    " I.e. BHQ transcribes עמו as BHL does, and BHQ transcribes ושלם as I do.",
-    " BHQ notes that whereas the ל of ושלם is unpointed in μL,",
+    "$BHQ transcribes these words as shown above.",
+    " I.e. $BHQ transcribes עמו as BHL does, and $BHQ transcribes ושלם as I do.",
+    " $BHQ notes that whereas the ל of ושלם is unpointed in μL,",
     " that ל has קמץ and אתנח in μA and μY.",
-    " BHQ fails to note that, relatedly, the אתנח it transcribes on עמו",
+    " $BHQ fails to note that, relatedly, the אתנח it transcribes on עמו",
     " disagrees with μA and μY.",
     " In summary, BHL only notes a מונח vs אתנח issue on עמו and",
-    " BHQ only notes a lack of קמץ־אתנח on ושלם.",
+    " $BHQ only notes a lack of קמץ־אתנח on ושלם.",
     " Therefore both editions not only miss some issues",
     " but also miss the relationship between the אתנח issues.",
 ]
@@ -386,49 +386,49 @@ _CAM1753_IMG_INTRO_2221 = [
     " hence the pair of above-dots above ל in ושלם.",
 ]
 _BHQ_COMMENT_2228 = [
-    "BHQ places the mark a little left of center.",
+    "$BHQ places the mark a little left of center.",
     " Though this placement is odd,",
     " this makes it clear that a טרחא was intended rather than a דחי.",
 ]
 
 _BHQ_COMMENT_2421 = [
-    "BHQ silently supplies the סגול that is the consensus expectation.",
+    "$BHQ silently supplies the סגול that is the consensus expectation.",
     " I.e. despite little or no evidence for it in μL,",
-    " BHQ silently infers a third dot centered below the two clearer dots.",
+    " $BHQ silently infers a third dot centered below the two clearer dots.",
 ]
 
 _BHQ_COMMENT_2808_AND_2911 = [
-    "BHQ silently supplies the חיריק that is the consensus expectation,",
+    "$BHQ silently supplies the חיריק that is the consensus expectation,",
     " despite no evidence for it in μL.",
 ]
 
 _BHQ_COMMENT_3107 = [
-    "BHQ reflects neither μL nor the consensus expectation here.",
+    "$BHQ reflects neither μL nor the consensus expectation here.",
     " It reflects μL except it places the סילוק under the א.",
     " This not only contradicts μL,",
     " but also makes no sense given the רפה on the א.",
     " One might argue that this רפה should have been shown,",
-    " despite the general policy of BHQ to ignore רפה marks in μL.",
+    " despite the general policy of $BHQ to ignore רפה marks in μL.",
     " Regardless of whether the רפה should have been shown,",
     " its presence in μL should have excluded the possibility of",
     " a סילוק under its letter (א)!",
-    " BHQ notes that here μL disagrees with μA and μY, which have the consensus pointing.",
+    " $BHQ notes that here μL disagrees with μA and μY, which have the consensus pointing.",
 ]
 
 _BHQ_COMMENT_CMN_3105_3206 = [
-    "BHQ silently supplies the marks in the vowel-then-accent order that is",
+    "$BHQ silently supplies the marks in the vowel-then-accent order that is",
     " the consensus expectation, in clear contradiction of μL here.",
 ]
 
 _BHQ_COMMENT_3105 = [
     *_BHQ_COMMENT_CMN_3105_3206,
     " 32:6 is similar.",
-    " In my opinion BHQ shows itself to be out of date by continuing to aspire,",
+    " In my opinion $BHQ shows itself to be out of date by continuing to aspire,",
     " as BHS did,",
     " to reflect all such ordering quirks.",
     " I think the modern consensus is that these orderings are as meaningless as",
     " the variable length of ascenders on ל.",
-    " Nonetheless, since BHQ still aspires to get these orderings right,",
+    " Nonetheless, since $BHQ still aspires to get these orderings right,",
     " it is fair for me to point out when it fails to do so.",
 ]
 
@@ -439,10 +439,10 @@ _BHQ_COMMENT_3206 = [
 
 _BHQ_COMMENT_1604 = [
     "Though it is not relevant to the point at hand,",
-    " note that BHQ continues to fail to distinguish",
+    " note that $BHQ continues to fail to distinguish",
     " between גלגל and אתנח הפוך.",
 ]
-_BHQ_COMMENT_1706 = "BHQ catches this, whereas this was missed by $BHL_A and Da-at Miqra."
+_BHQ_COMMENT_1706 = "$BHQ catches this, whereas this was missed by $BHL_A and Da-at Miqra."
 _BHQ_COMMENT_1711 = _BHQ_COMMENT_1706
 _BHQ_COMMENT_1809 = _BHQ_COMMENT_1706
 RECORD_1076 = {
@@ -496,7 +496,7 @@ RECORDS = [
         "highlight": 2,
         "lc-loc": {"page": "397B", "column": 1, "line": 1},
         "lc-img": "0121.png",
-        "bhq-comment": "BHQ notes that here μL disagrees with μA and μY, which have the consensus pointing.",
+        "bhq-comment": "$BHQ notes that here μL disagrees with μA and μY, which have the consensus pointing.",
     },
     {
         "bhla-i": 2,
@@ -532,7 +532,7 @@ RECORDS = [
         "highlight": 4,
         "lc-loc": {"page": "399A", "column": 1, "line": 4},
         "lc-img": "0701.png",
-        "bhq-comment": "BHQ silently ignores the possible רביע.",
+        "bhq-comment": "$BHQ silently ignores the possible רביע.",
     },
     {
         "bhla-i": 5,
@@ -578,7 +578,7 @@ RECORDS = [
         "highlight": 1,
         "lc-loc": {"page": "399A", "column": 2, "line": 13, "including-blank-lines": 1},
         "lc-img": "0807.png",
-        "bhq-comment": "BHQ silently ignores the possible שורוק dot.",
+        "bhq-comment": "$BHQ silently ignores the possible שורוק dot.",
     },
     {
         "bhla-i": 9,
@@ -697,7 +697,7 @@ RECORDS = [
         "highlight": 3,
         "lc-loc": {"page": "401A", "column": 1, "line": -9},
         "lc-img": "1409.png",
-        "bhq-comment": "BHQ silently ignores the possible דגש.",
+        "bhq-comment": "$BHQ silently ignores the possible דגש.",
     },
     {
         "bhla-i": 19,
@@ -721,7 +721,7 @@ RECORDS = [
         "highlight": 1,
         "lc-loc": {"page": "401B", "column": 1, "line": -3},
         "lc-img": "1534.png",
-        "bhq-comment": "BHQ silently ignores the possible מרכא.",
+        "bhq-comment": "$BHQ silently ignores the possible מרכא.",
     },
     {
         "bhla-i": 21,
@@ -797,7 +797,7 @@ RECORDS = [
         "highlight": 4,
         "lc-loc": {"page": "402A", "column": 2, "line": -5},
         "lc-img": "1905.png",
-        "bhq-comment": "BHQ silently lets the faint possible דגש “win” over the clear רפה in μL.",
+        "bhq-comment": "$BHQ silently lets the faint possible דגש “win” over the clear רפה in μL.",
     },
     {
         "bhla-i": 27,
@@ -810,7 +810,7 @@ RECORDS = [
         "highlight": 1,
         "lc-loc": {"page": "402B", "column": 1, "line": 8},
         "lc-img": "1916.png",
-        "bhq-comment": "BHQ notes that the דגש on the ק in μL disagrees with μA and μY.",
+        "bhq-comment": "$BHQ notes that the דגש on the ק in μL disagrees with μA and μY.",
     },
     {
         "bhla-i": 28,
@@ -986,7 +986,7 @@ RECORDS = [
         "highlight-mam": 3,
         "lc-loc": {"page": "406B", "column": 1, "line": -1},
         "lc-img": "3330.png",
-        "bhq-comment": "BHQ notes that here μL disagrees with μA and μY, which have the consensus pointing.",
+        "bhq-comment": "$BHQ notes that here μL disagrees with μA and μY, which have the consensus pointing.",
     },
     {
         "bhla-i": 42,
@@ -1033,7 +1033,7 @@ RECORDS = [
         "highlight": 1,
         "lc-loc": {"page": "408A", "column": 1, "line": -12},
         "lc-img": "3812.png",
-        "bhq-comment": "BHQ notes that here μL disagrees with μA and μY, which have the consensus pointing.",
+        "bhq-comment": "$BHQ notes that here μL disagrees with μA and μY, which have the consensus pointing.",
     },
     {
         "bhla-i": 46,
@@ -1045,7 +1045,7 @@ RECORDS = [
         "highlight": 5,
         "lc-loc": {"page": "408A", "column": 2, "line": -3},
         "lc-img": "3902.png",
-        "bhq-comment": "BHQ silently supplies the רביע that is the consensus expectation.",
+        "bhq-comment": "$BHQ silently supplies the רביע that is the consensus expectation.",
     },
     {
         "bhla-i": 47,
@@ -1070,7 +1070,7 @@ RECORDS = [
         "highlight": 3,
         "lc-loc": {"page": "408B", "column": 1, "line": 11},
         "lc-img": "3913.png",
-        "bhq-comment": "BHQ seems to split the mark(s) in question into a רביע on ר and a masorah circle on ב.",
+        "bhq-comment": "$BHQ seems to split the mark(s) in question into a רביע on ר and a masorah circle on ב.",
     },
     {
         "bhla-i": 49,
