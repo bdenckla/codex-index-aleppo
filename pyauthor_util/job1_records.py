@@ -445,7 +445,7 @@ _BHQ_COMMENT_3105 = [
     " 32:6 is similar.",
     " In my opinion BHQ shows itself to be out of date by continuing to aspire,",
     " as BHS did,",
-    " to reflect all such ordering anomalies.",
+    " to reflect all such ordering quirks.",
     " I think the modern consensus is that these orderings are as meaningless as",
     " the variable length of ascenders on ל.",
     " Nonetheless, since BHQ still aspires to get these orderings right,",

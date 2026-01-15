@@ -13,8 +13,7 @@ def intro(expanding, each, jda=None):
 
 def _here_is(expanding, jda=None):
     out = [
-        f"Here is a table {expanding} upon the entries for the book of Job",
-        " in BHL Appendix A.",
+        f"Here is a table {expanding} of quirks in μL in the book of Job.",
     ]
     if jda is not None:
         jdae = [" For more details, see the ", jda]
