@@ -5,7 +5,10 @@ from pyauthor.common import D2_TITLE, d1v_anchor
 from pyauthor.common import D2_H1_CONTENTS
 from pyauthor.common import D2_FNAME
 from py import my_html
-
+from pyauthor_util.job1_records import RECORD_1076
+from pyauthor_util.job1_records import RECORD_1711
+from pyauthor_util.job1_records import RECORD_1809
+from pyauthor_util.job1_ov_and_de import make_overview_row
 
 def gen_html_file(tdm_ch):
     author.assert_stem_eq(__file__, D2_FNAME)
@@ -102,10 +105,22 @@ _CPARA17 = [
     #
     " As of now, it is the latest volume of $BHQ to be published.",
     #
-    " Right now the review consists merely of this",
-    " ",
-    d1v_anchor(),
+    " First, the good news: the Job volume of $BHQ catches",
+    " some quirks in μL that were missed by both $BHL Appendix A and דעת מקרא.",
+    " They are as follows:",
 ]
+_RECORDS_AFTER_PARA17 = [
+    RECORD_1076,
+    RECORD_1711,
+    RECORD_1809,
+]
+
+
+def make_mini_table(records):
+    rows = [make_overview_row(record) for record in records]
+    return author.table_c(rows)
+
+
 _CBODY = [
     author.heading_level_1(D2_H1_CONTENTS),
     author.para(_CPARA10),
@@ -119,4 +134,5 @@ _CBODY = [
     author.unordered_list(_C_LIST_ITEMS_AFTER_PARA15),
     author.para(_CPARA16),
     author.para(_CPARA17),
+    make_mini_table(_RECORDS_AFTER_PARA17),
 ]

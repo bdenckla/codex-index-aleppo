@@ -442,10 +442,10 @@ _BHQ_COMMENT_1604 = [
     " note that BHQ continues to fail to distinguish",
     " between גלגל and אתנח הפוך.",
 ]
-_BHQ_COMMENT_1706 = "BHQ catches this, whereas this was missed by BHLA and Da-at Miqra."
+_BHQ_COMMENT_1706 = "BHQ catches this, whereas this was missed by $BHL_A and Da-at Miqra."
 _BHQ_COMMENT_1711 = _BHQ_COMMENT_1706
 _BHQ_COMMENT_1809 = _BHQ_COMMENT_1706
-_RECORD_1076 = {
+RECORD_1076 = {
     "cv": "17:6",
     "lc": "וְתֹ֖פֶתּ",
     "what-is-weird": "final ת has דגש",
@@ -457,7 +457,7 @@ _RECORD_1076 = {
     "bhq-comment": "".join(_BHQ_COMMENT_1706),
     "uxlc-needs-fix": True,
 }
-_RECORD_1711 = {
+RECORD_1711 = {
     "cv": "17:11",
     "lc": "לְבָבִּֽי׃",
     "what-is-weird": "second ב has דגש",
@@ -469,7 +469,7 @@ _RECORD_1711 = {
     "bhq-comment": "".join(_BHQ_COMMENT_1711),
     "uxlc-needs-fix": True,
 }
-_RECORD_1809 = {
+RECORD_1809 = {
     "cv": "18:9",
     "lc": "בְּעָּקֵ֣ב",
     "what-is-weird": "ע has דגש",
@@ -483,9 +483,9 @@ _RECORD_1809 = {
 }
 
 RECORDS = [
-    _RECORD_1076,
-    _RECORD_1711,
-    _RECORD_1809,
+    RECORD_1076,
+    RECORD_1711,
+    RECORD_1809,
     {
         "bhla-i": 1,
         "cv": "1:21",

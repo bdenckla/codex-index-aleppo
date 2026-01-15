@@ -21,7 +21,7 @@ def _unique(seq):
 
 def _make_ov_and_de_for_one_record(record):
     return {
-        "od-overview": _make_overview_row(record),
+        "od-overview": make_overview_row(record),
         "od-details": _make_details_row(record),
     }
 
@@ -51,7 +51,7 @@ def _lc_and_mam(record):
     return lc_and_mam
 
 
-def _make_overview_row(record):
+def make_overview_row(record):
     hbo_attrs = {"lang": "hbo", "dir": "rtl"}
     row_id = _row_id(record)
     anc = my_html.anchor_h("#", f"{D1D_FNAME}#{row_id}")  # self-anchor
@@ -149,9 +149,9 @@ def _make_details_row(record):
         *_maybe_sep_lc_is_from_bhla(record),
     ]
     return [
-        author.table_c(_make_overview_row(record)),
+        author.table_c(make_overview_row(record)),
         *_maybe_bhq(record.get("bhq")),
-        my_html.para(dpe),
+        author.para(dpe),
         _img(record["lc-img"]),
         *_maybe_img(record, "mi-args-aleppo"),
         *_maybe_img(record, "mi-args-cam1753"),

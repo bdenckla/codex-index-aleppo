@@ -363,6 +363,7 @@ _ABBR_SC = {
     "$BHS": "BHS",
     "$BHQ": "BHQ",
     "$BHL": "BHL",
+    "$BHL_A": "BHL-A",
     "$DBG": "DBG",
     "$CTR": "CTR",
     "$CTR_A": "CTR-A",
