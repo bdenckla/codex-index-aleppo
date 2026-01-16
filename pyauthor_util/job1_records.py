@@ -450,7 +450,7 @@ RECORD_1809 = {
     "highlight": 2,
     "lc-loc": {"page": "402A", "column": 2, "line": 2},
     "lc-img": "1809.png",
-    "bhq-comment": "".join(_BHQ_COMMENT_MISSED_BY_DO_AND_BR),
+    "bhq-comment": "".join(_BHQ_COMMENT_MISSED_BY_DO_AND_BR_POSSIBLE),
     "uxlc-needs-fix": True,
 }
 RECORD_2230 = {
@@ -486,7 +486,7 @@ RECORD_3817 = {
     "mam": "צַלְמָ֣וֶת",
     "comment": "",
     "highlight": 3,
-    "lc-loc": {"page": "402A", "column": 2, "line": 2},
+    "lc-loc": {"page": "408A", "column": 1, "line": -5},
     "lc-img": "3817.png",
     "bhq-comment": "".join(_BHQ_COMMENT_MISSED_BY_DO_AND_BR),
     "uxlc-needs-fix": True,
@@ -498,7 +498,7 @@ RECORD_4213 = {
     "mam": "בָּנֽוֹת׃",
     "comment": "",
     "highlight": 1,
-    "lc-loc": {"page": "402A", "column": 2, "line": 2},
+    "lc-loc": {"page": "409B", "column": 1, "line": -9, "including-blank-lines": 1},
     "lc-img": "4213.png",
     "bhq-comment": "".join(_BHQ_COMMENT_MISSED_BY_DO_AND_BR),
     "uxlc-needs-fix": True,
