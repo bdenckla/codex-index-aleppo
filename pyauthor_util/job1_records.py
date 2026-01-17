@@ -634,11 +634,8 @@ _RECORD_1508 = {
     "lc-loc": {"page": "401A", "column": 2, "line": -7},
     "lc-img": "1508.png",
     "bhq-comment": _BHQ_COMMENT_LIKE_0409,
+    "noted-by": "?",
 }
-_COMMENT_1604 = [
-    "Though it is not relevant to the point at hand, which is the presence of a מקף,",
-    " note that in μL, the shape we take to be מחפך is touching the bottom of the ל (lamed).",
-]
 _RECORD_1534 = {
     "bhla-i": 20,
     "cv": "15:34",
@@ -650,7 +647,12 @@ _RECORD_1534 = {
     "lc-loc": {"page": "401B", "column": 1, "line": -3},
     "lc-img": "1534.png",
     "bhq-comment": "$BHQ silently ignores the possible מרכא.",
+    "noted-by": "?",
 }
+_COMMENT_1604 = [
+    "Though it is not relevant to the point at hand, which is the presence of a מקף,",
+    " note that in μL, the shape we take to be מחפך is touching the bottom of the ל (lamed).",
+]
 _BHQ_COMMENT_1604 = [
     "Though it is not relevant to the point at hand,",
     " note that $BHQ continues to fail to distinguish",
@@ -667,6 +669,7 @@ _RECORD_1604 = {
     "lc-loc": {"page": "401B", "column": 2, "line": 3},
     "lc-img": "1604.png",
     "bhq-comment": _BHQ_COMMENT_1604,
+    "noted-by": "?",
 }
 _RECORD_1613 = {
     "bhla-i": 22,
@@ -757,6 +760,7 @@ _RECORD_1806 = {
     "lc-loc": {"page": "402A", "column": 1, "line": -2},
     "lc-img": "1806.png",
     "bhq-comment": _BHQ_COMMENT_1806,
+    "noted-by": "?",
 }
 _RECORD_1905 = {
     "bhla-i": 26,
@@ -773,11 +777,8 @@ _RECORD_1905 = {
     "lc-loc": {"page": "402A", "column": 2, "line": -5},
     "lc-img": "1905.png",
     "bhq-comment": "$BHQ silently lets the faint possible דגש “win” over the clear רפה in μL.",
+    "noted-by": "?",
 }
-_COMMENT_2125 = [
-    "The dot is suspiciously brown rather than black,",
-    " making me wonder whether the ו was pointed at all.",
-]
 _RECORD_1916 = {
     "bhla-i": 27,
     "cv": "19:16",
@@ -790,20 +791,15 @@ _RECORD_1916 = {
     "lc-loc": {"page": "402B", "column": 1, "line": 8},
     "lc-img": "1916.png",
     "bhq-comment": "$BHQ notes that the דגש on the ק in μL disagrees with μA and μY.",
+    "noted-by": "?",
 }
+_COMMENT_2125 = [
+    "The dot is suspiciously brown rather than black,",
+    " making me wonder whether the ו was pointed at all.",
+]
 _BHQ_COMMENT_2125 = [
     "$BHQ silently supplies the שווא that is the consensus expectation,",
     " despite little or no evidence for it in μL.",
-]
-_COMMENT_2221 = [
-    "BHL Appendix A fails to note the anomalous non-pointing of the ל in the next word, ושלם.",
-    " Nonethless I have included ושלם above.",
-    " The letters of both words are re-inked, and as usual, the re-inking is sloppy.",
-    " Perhaps some super-faint remains of an אתנח under ל can be seen.",
-    " The top dot of the שווא (under the ש) is super-faint.",
-    " I (charitably) transcribed it based on consensus expectations.",
-    " A dot under the מ of עמו is fairly clear.",
-    " It is (charitably) not transcribed by BHL, presumably based on consensus expectations.",
 ]
 _RECORD_2125 = {
     "bhla-i": 28,
@@ -817,6 +813,16 @@ _RECORD_2125 = {
     "lc-img": "2125.png",
     "bhq-comment": _BHQ_COMMENT_2125,
 }
+_COMMENT_2221 = [
+    "BHL Appendix A fails to note the anomalous non-pointing of the ל in the next word, ושלם.",
+    " Nonethless I have included ושלם above.",
+    " The letters of both words are re-inked, and as usual, the re-inking is sloppy.",
+    " Perhaps some super-faint remains of an אתנח under ל can be seen.",
+    " The top dot of the שווא (under the ש) is super-faint.",
+    " I (charitably) transcribed it based on consensus expectations.",
+    " A dot under the מ of עמו is fairly clear.",
+    " It is (charitably) not transcribed by BHL, presumably based on consensus expectations.",
+]
 _BHQ_COMMENT_2221 = [
     "$BHQ transcribes these words as shown above.",
     " I.e. $BHQ transcribes עמו as BHL does, and $BHQ transcribes ושלם as I do.",
@@ -846,6 +852,7 @@ _RECORD_2221 = {
     "lc-loc": {"page": "403B", "column": 1, "line": -6},
     "lc-img": "2221.png",
     "bhq-comment": _BHQ_COMMENT_2221,
+    "noted-by": "?",
     "aleppo-page-url": "https://www.mgketer.org/mikra/29/22/1/mg/106",
     "aleppo-img": "Aleppo-2221.png",
     "cam1753-page-url": f"{_CAM1753_PAGE_URL_BASE}/n83/mode/1up",
@@ -856,12 +863,6 @@ _BHQ_COMMENT_2228 = [
     "$BHQ places the mark a little left of center.",
     " Though this placement is odd,",
     " this makes it clear that a טרחא was intended rather than a דחי.",
-]
-_COMMENT_2421 = [
-    "Perhaps there is some super-faint evidence of a third dot that would make a סגול,",
-    " but this could be just wishful thinking.",
-    " Note that there is a third dot above the two clearer dots,",
-    " but I take that to be part of the ע that did not flake off like its neighboring ink did.",
 ]
 _RECORD_2228 = {
     "bhla-i": 30,
@@ -874,15 +875,18 @@ _RECORD_2228 = {
     "lc-loc": {"page": "403B", "column": 2, "line": 2},
     "lc-img": "2228.png",
     "bhq-comment": _BHQ_COMMENT_2228,
+    "noted-by": "?",
 }
+_COMMENT_2421 = [
+    "Perhaps there is some super-faint evidence of a third dot that would make a סגול,",
+    " but this could be just wishful thinking.",
+    " Note that there is a third dot above the two clearer dots,",
+    " but I take that to be part of the ע that did not flake off like its neighboring ink did.",
+]
 _BHQ_COMMENT_2421 = [
     "$BHQ silently supplies the סגול that is the consensus expectation.",
     " I.e. despite little or no evidence for it in μL,",
     " $BHQ silently infers a third dot centered below the two clearer dots.",
-]
-_COMMENT_2702 = [
-    "Perhaps there is some super-faint evidence of a מקף that was ignored during re-inking.",
-    " By the way, the evidence for the דחי on the א of the next word is super-faint.",
 ]
 _RECORD_2421 = {
     "bhla-i": 31,
@@ -898,6 +902,10 @@ _RECORD_2421 = {
     "bhq-comment": _BHQ_COMMENT_2421,
     "noted-by": "xBHQ-BHL-DM",
 }
+_COMMENT_2702 = [
+    "Perhaps there is some super-faint evidence of a מקף that was ignored during re-inking.",
+    " By the way, the evidence for the דחי on the א of the next word is super-faint.",
+]
 _BHQ_COMMENT_2702 = [
     "$BHQ silently supplies the מקף that is the consensus expectation,",
     " despite little or no evidence for it in μL.",
@@ -913,6 +921,7 @@ _RECORD_2702 = {
     "lc-loc": {"page": "404A", "column": 2, "line": -2},
     "lc-img": "2702.png",
     "bhq-comment": _BHQ_COMMENT_2702,
+    "noted-by": "?",
 }
 _BHQ_COMMENT_2808_AND_2911 = [
     "$BHQ silently supplies the חיריק that is the consensus expectation,",
@@ -929,6 +938,7 @@ _RECORD_2808 = {
     "lc-loc": {"page": "404B", "column": 2, "line": 5},
     "lc-img": "2808.png",
     "bhq-comment": _BHQ_COMMENT_2808_AND_2911,
+    "noted-by": "?",
 }
 _RECORD_2911 = {
     "bhla-i": 34,
@@ -941,6 +951,7 @@ _RECORD_2911 = {
     "lc-loc": {"page": "405A", "column": 1, "line": -12},
     "lc-img": "2911.png",
     "bhq-comment": _BHQ_COMMENT_2808_AND_2911,
+    "noted-by": "?",
 }
 _COMMENT_2919 = [
     "Probably the ascender of the ל on the line below",
@@ -1040,6 +1051,7 @@ _RECORD_3206 = {
     "lc-loc": {"page": "406A", "column": 1, "line": -6},
     "lc-img": "3206.png",
     "bhq-comment": _BHQ_COMMENT_3206,
+    "noted-by": "?",
 }
 _RECORD_3312 = {
     "bhla-i": 40,
@@ -1052,6 +1064,7 @@ _RECORD_3312 = {
     "lc-loc": {"page": "406B", "column": 1, "line": 2},
     "lc-img": "3312.png",
     "bhq-comment": _BHQ_COMMENT_LIKE_0409,
+    "noted-by": "?",
 }
 _RECORD_3330 = {
     "bhla-i": 41,
@@ -1081,6 +1094,7 @@ _RECORD_3419 = {
     "lc-loc": {"page": "406B", "column": 2, "line": -2},
     "lc-img": "3419.png",
     "bhq-comment": _correctly_ignores("דגש"),
+    "noted-by": "?",
 }
 _COMMENT_3629 = [
     "The color image strongly suggests that the mark in question is not ink.",
@@ -1098,6 +1112,7 @@ _RECORD_3629 = {
     "lc-loc": {"page": "407B", "column": 1, "line": -5},
     "lc-img": "3629.png",
     "bhq-comment": _correctly_ignores("געיה", "large"),
+    "noted-by": "?",
 }
 _RECORD_3706 = {
     "bhla-i": 44,
@@ -1109,6 +1124,7 @@ _RECORD_3706 = {
     "highlight": 3,
     "lc-loc": {"page": "407B", "column": 2, "line": 7},
     "lc-img": "3706.png",
+    "noted-by": "?",
 }
 _RECORD_3812 = {
     "bhla-i": 45,
@@ -1147,6 +1163,7 @@ _RECORD_3902 = {
     "lc-loc": {"page": "408A", "column": 2, "line": -3},
     "lc-img": "3902.png",
     "bhq-comment": "$BHQ silently supplies the רביע that is the consensus expectation.",
+    "noted-by": "?",
 }
 _RECORD_3906 = {
     "bhla-i": 47,
@@ -1182,6 +1199,7 @@ _RECORD_3913 = {
         "$BHQ seems to split the mark(s) in question",
         " into a רביע on ר and a masorah circle on ב.",
     ],
+    "noted-by": "?",
 }
 _RECORD_3920 = {
     "bhla-i": 49,
@@ -1206,6 +1224,7 @@ _RECORD_4010 = {
     "highlight": 1,
     "lc-loc": {"page": "408B", "column": 2, "line": -11},
     "lc-img": "4010.png",
+    "noted-by": "?",
 }
 _RECORD_4026 = {
     "bhla-i": 51,
@@ -1235,6 +1254,7 @@ _RECORD_4125 = {
     "lc-loc": {"page": "409A", "column": 2, "line": 14},
     "lc-img": "4125.png",
     "bhq-comment": _BHQ_COMMENT_4125,
+    "noted-by": "?",
 }
 RECORDS = [
     _RECORD_MBB_1706,
