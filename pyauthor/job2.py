@@ -105,7 +105,11 @@ _CPARA16 = [
     " But those parts are not my concern.",
 ]
 _RECORDS_ONLY_NOTED_IN_BHQ = RECORDS_BY_PERF.get("BHQ-xBHL-xDM") or []
-_RECORDS_ONLY_NOTED_IN_BHQ_AND_DM = RECORDS_BY_PERF.get("BHQ-xBHL-DM") or []
+_RECORDS_NOTED_IN_BHQ_AND_ELSEWHERE = [
+    *(RECORDS_BY_PERF.get("BHQ-xBHL-DM") or []),
+    *(RECORDS_BY_PERF.get("BHQ-BHL-xDM") or []),
+    *(RECORDS_BY_PERF.get("BHQ-BHL-DM") or []),
+]
 _CPARA17 = [
     "Having criticized $BHQ in general terms,",
     " I will now review the specifics of the $BHQ Book of Job.",
@@ -118,14 +122,13 @@ _CPARA17 = [
     " They are as follows:",
 ]
 _CPARA18 = [
-    "The Job volume of $BHQ also notes",
-    " one quirk in μL that, while noted in דעת מקרא,",
-    " was not noted in $BHL Appendix A:",
+    "It is also good news that the Job volume of $BHQ notes",
+    [" ", str(len(_RECORDS_NOTED_IN_BHQ_AND_ELSEWHERE))],
+    " quirks in μL that are noted in $BHL Appendix A and/or דעת מקרא.",
 ]
-assert len(_RECORDS_ONLY_NOTED_IN_BHQ_AND_DM) == 1
 
 
-def make_mini_table(records):
+def _table_of_records(records):
     rows = [make_overview_row(record) for record in records]
     return author.table_c(rows)
 
@@ -140,8 +143,8 @@ _CBODY = [
     author.para_ul(_CPARA15, _C_LIST15),
     author.para(_CPARA16),
     author.para(_CPARA17),
-    make_mini_table(_RECORDS_ONLY_NOTED_IN_BHQ),
+    _table_of_records(_RECORDS_ONLY_NOTED_IN_BHQ),
     *intro("intro-job2"),
     author.para(_CPARA18),
-    make_mini_table(_RECORDS_ONLY_NOTED_IN_BHQ_AND_DM),
+    _table_of_records(_RECORDS_NOTED_IN_BHQ_AND_ELSEWHERE),
 ]
