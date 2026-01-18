@@ -6,7 +6,7 @@ from pyauthor_util import author
 from pyauthor.common import D2_TITLE
 from pyauthor.common import D2_H1_CONTENTS
 from pyauthor.common import D2_FNAME
-from pyauthor_util.job1_ov_and_de import row_id
+from pyauthor_util.job1_ov_and_de import row_id, sort_key
 from pyauthor_util.job1_common import intro
 
 
@@ -24,11 +24,13 @@ def _make_cbody(ov_and_de, quirkrecs):
         *(qr_by_perf.get("BHQ-BHL-xDM") or []),
         *(qr_by_perf.get("BHQ-BHL-DM") or []),
     ]
+    q_noted_in_bhq_and_elsewhere.sort(key=sort_key)
     q_not_transcribed_in_bhq = [
         *(qr_by_perf.get("xBHQ-xBHL-DM") or []),
         *(qr_by_perf.get("xBHQ-BHL-xDM") or []),
         *(qr_by_perf.get("xBHQ-BHL-DM") or []),
     ]
+    q_not_transcribed_in_bhq.sort(key=sort_key)
     cbody = [
         author.heading_level_1(D2_H1_CONTENTS),
         author.para_ol(_CPARA10, _C_LIST10),
