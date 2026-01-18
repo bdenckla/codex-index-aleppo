@@ -17,17 +17,17 @@ def gen_html_file(tdm_ch, ov_and_de, quirkrecs):
 
 
 def _make_cbody(ov_and_de, quirkrecs):
-    QUIRKRECS_BY_PERF = my_groupby(quirkrecs, _noted_by)
-    _QUIRKS_ONLY_NOTED_IN_BHQ = QUIRKRECS_BY_PERF.get("BHQ-xBHL-xDM") or []
-    _QUIRKS_NOTED_IN_BHQ_AND_ELSEWHERE = [
-        *(QUIRKRECS_BY_PERF.get("BHQ-xBHL-DM") or []),
-        *(QUIRKRECS_BY_PERF.get("BHQ-BHL-xDM") or []),
-        *(QUIRKRECS_BY_PERF.get("BHQ-BHL-DM") or []),
+    qr_by_perf = my_groupby(quirkrecs, _noted_by)
+    q_only_noted_in_bhq = qr_by_perf.get("BHQ-xBHL-xDM") or []
+    q_noted_in_bhq_and_elsewhere = [
+        *(qr_by_perf.get("BHQ-xBHL-DM") or []),
+        *(qr_by_perf.get("BHQ-BHL-xDM") or []),
+        *(qr_by_perf.get("BHQ-BHL-DM") or []),
     ]
-    _QUIRKS_NOT_TRANSCRIBED_IN_BHQ = [
-        *(QUIRKRECS_BY_PERF.get("xBHQ-xBHL-DM") or []),
-        *(QUIRKRECS_BY_PERF.get("xBHQ-BHL-xDM") or []),
-        *(QUIRKRECS_BY_PERF.get("xBHQ-BHL-DM") or []),
+    q_not_transcribed_in_bhq = [
+        *(qr_by_perf.get("xBHQ-xBHL-DM") or []),
+        *(qr_by_perf.get("xBHQ-BHL-xDM") or []),
+        *(qr_by_perf.get("xBHQ-BHL-DM") or []),
     ]
     cbody = [
         author.heading_level_1(D2_H1_CONTENTS),
@@ -38,13 +38,13 @@ def _make_cbody(ov_and_de, quirkrecs):
         author.para(_CPARA14),
         author.para_ul(_CPARA15, _C_LIST15),
         author.para(_CPARA16),
-        author.para(cpara17(len(_QUIRKS_ONLY_NOTED_IN_BHQ))),
-        _table_of_quirks(ov_and_de, _QUIRKS_ONLY_NOTED_IN_BHQ),
+        author.para(cpara17(len(q_only_noted_in_bhq))),
+        _table_of_quirks(ov_and_de, q_only_noted_in_bhq),
         *intro("intro-job2"),
-        author.para(cpara18(len(_QUIRKS_NOTED_IN_BHQ_AND_ELSEWHERE))),
-        _table_of_quirks(ov_and_de, _QUIRKS_NOTED_IN_BHQ_AND_ELSEWHERE),
-        author.para(cpara19(len(_QUIRKS_NOT_TRANSCRIBED_IN_BHQ))),
-        _table_of_quirks(ov_and_de, _QUIRKS_NOT_TRANSCRIBED_IN_BHQ),
+        author.para(cpara18(len(q_noted_in_bhq_and_elsewhere))),
+        _table_of_quirks(ov_and_de, q_noted_in_bhq_and_elsewhere),
+        author.para(cpara19(len(q_not_transcribed_in_bhq))),
+        _table_of_quirks(ov_and_de, q_not_transcribed_in_bhq),
     ]
     return cbody
 

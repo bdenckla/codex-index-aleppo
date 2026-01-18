@@ -1,4 +1,8 @@
-""" Exports make_ov_and_de_for_all_quirkrecs, make_example_row """
+""" Exports:
+        make_ov_and_de_for_all_quirkrecs
+        make_example_row
+        row_id
+"""
 
 from py import my_html
 from pyauthor.common import D1D_FNAME
@@ -28,6 +32,20 @@ def make_example_row():
         ]
     )
 
+
+def row_id(record):
+    cn_v_vn = record["cv"].replace(":", "v")  # E.g. 1:2 becomes 1v2
+    ftw = record.get("n_of_m_for_this_word")
+    ftw_str = f"-{ftw[0]}of{ftw[1]}ftw" if ftw else ""  # E.g. -1of2ftw
+    return f"row-{cn_v_vn}{ftw_str}"
+
+
+def sort_key(record):
+    cv_as_toi = tuple(int(part) for part in record["cv"].split(":"))
+    ftw = record.get("n_of_m_for_this_word")
+    ftw0 = ftw[0] if ftw else 1
+    return *cv_as_toi, ftw0
+    
 
 def _unique(seq):
     return len(set(seq)) == len(seq)
@@ -64,13 +82,6 @@ def _make_overview_row(record):
     ]
     tr_attrs = {"id": the_row_id}
     return my_html.table_row(tr_contents, tr_attrs)
-
-
-def row_id(record):
-    cn_v_vn = record["cv"].replace(":", "v")  # E.g. 1:2 becomes 1v2
-    ftw = record.get("n_of_m_for_this_word")
-    ftw_str = f"-{ftw[0]}of{ftw[1]}ftw" if ftw else ""  # E.g. -1of2ftw
-    return f"row-{cn_v_vn}{ftw_str}"
 
 
 def _img(img):
