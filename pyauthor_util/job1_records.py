@@ -1147,7 +1147,7 @@ _RECORD_3629 = {
     "lc-loc": {"page": "407B", "column": 1, "line": -5},
     "lc-img": "3629.png",
     "bhq-comment": _correctly_ignores("געיה", "36:29", "large"),
-    "noted-by": "?",
+    "noted-by": "tBHQ-BHL-xDM",
 }
 _RECORD_3706 = {
     "bhla-i": 44,
@@ -1159,7 +1159,7 @@ _RECORD_3706 = {
     "highlight": 3,
     "lc-loc": {"page": "407B", "column": 2, "line": 7},
     "lc-img": "3706.png",
-    "noted-by": "?",
+    "noted-by": "tBHQ-BHL-xDM",
 }
 _RECORD_3812 = {
     "bhla-i": 45,
@@ -1198,7 +1198,12 @@ _RECORD_3902 = {
     "lc-loc": {"page": "408A", "column": 2, "line": -3},
     "lc-img": "3902.png",
     "bhq-comment": "$BHQ silently supplies the רביע that is the consensus expectation.",
-    "noted-by": "?",
+    "noted-by": "xBHQ-BHL-xDM",
+    # Perhaps I should have been charitable to BHQ and said tBHQ instead of xBHQ,
+    # since BHQ’s transcription of רביע is somewhat reasonable if it were accompanied by a note.
+    # But it is not accompanied by a note, and without a note, BHQ needs to make weird things in μL
+    # look weird. So רביע is not the right transcription for a diplomatic edition having no note
+    # in this location.
 }
 _RECORD_3906 = {
     "bhla-i": 47,
@@ -1233,8 +1238,10 @@ _RECORD_3913 = {
     "bhq-comment": [
         "$BHQ seems to split the mark(s) in question",
         " into a רביע on ר and a masorah circle on ב.",
+        " This is a reasonable (though somewhat charitable) interpretation of μL,",
+        " but as is so often the case, $BHQ should have had a note about this quirk.",
     ],
-    "noted-by": "?",
+    "noted-by": "tBHQ-BHL-xDM",
 }
 _RECORD_3920 = {
     "bhla-i": 49,
@@ -1259,7 +1266,7 @@ _RECORD_4010 = {
     "highlight": 1,
     "lc-loc": {"page": "408B", "column": 2, "line": -11},
     "lc-img": "4010.png",
-    "noted-by": "?",
+    "noted-by": "tBHQ-BHL-xDM",
 }
 _RECORD_4026 = {
     "bhla-i": 51,
@@ -1289,7 +1296,7 @@ _RECORD_4125 = {
     "lc-loc": {"page": "409A", "column": 2, "line": 14},
     "lc-img": "4125.png",
     "bhq-comment": _BHQ_COMMENT_4125,
-    "noted-by": "?",
+    "noted-by": "xBHQ-BHL-xDM",
 }
 RECORDS = [
     _RECORD_MBB_1706,
