@@ -442,6 +442,7 @@ _BHQ_COMMENT_1804_A = [
 _RECORD_1804_A = {
     "bhla-i": 24,
     "cv": "18:4",
+    "n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
     "n_of_m_for_this_word": (1, 2),  # this is record 1 of 2 for this word
     "lc": "הֲ֭לְמַּעַנְךָ",
     "what-is-weird": "פתח on ה is חטף.",
@@ -467,6 +468,7 @@ _BHQ_COMMENT_1804_B = [
 ]
 _RECORD_1804_B = {
     **_RECORD_1804_A,
+    "n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
     "n_of_m_for_this_word": (2, 2),  # this is record 2 of 2 for this word
     "what-is-weird": "מ has דגש.",
     "mam": "הַֽ֭לְמַעַנְךָ",
@@ -602,27 +604,47 @@ _CAM1753_IMG_INTRO_2221 = [
     " as a “callout” for a Masorah parva note;",
     " hence the pair of above-dots above ל in ושלם.",
 ]
-_RECORD_2221 = {
+_RECORD_2221_A = {
     "bhla-i": 29,
     "cv": "22:21",
+    "n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
     "lc-q": "(?)",
-    "lc": "עִמּ֑וֹ וּשְׁלם",
-    "what-is-weird": "אתנח and ∅ not מונח and קמץ־אתנח?",
-    "mam": "עִמּ֣וֹ וּשְׁלָ֑ם",
+    "lc": "עִמּ֑וֹ",
+    "what-is-weird": "אתנח not מונח",
+    "mam": "עִמּ֣וֹ",
     "comment": _COMMENT_2221,
-    "highlight": [2, 6],
+    "highlight": 2,
     "lc-loc": {"page": "403B", "column": 1, "line": -6},
     "lc-img": "2221.png",
     "bhq-comment": _BHQ_COMMENT_2221,
-    "noted-by": "BHQ-BHL-xDM",
-    "wlc-422-note": "]1",
-    # Above I am being charitable to both BHQ and BHL even though both miss things.
+    "noted-by": "xBHQ-BHL-xDM",
     "aleppo-page-url": "https://www.mgketer.org/mikra/29/22/1/mg/106",
     "aleppo-img": "Aleppo-2221.png",
     "cam1753-page-url": f"{_CAM1753_PAGE_URL_BASE}/n83/mode/1up",
     "cam1753-img": "Cam1753-2221.png",
     "cam1753-img-intro": _CAM1753_IMG_INTRO_2221,
 }
+_RECORD_2221_B = {
+    **_RECORD_2221_A,
+    "n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
+    "lc": "וּשְׁלם",
+    "what-is-weird": "∅ not קמץ־אתנח",
+    "mam": "וּשְׁלָ֑ם",
+    "comment": _COMMENT_2221,
+    "highlight": 3,
+    "lc-loc": {"page": "403B", "column": 1, "line": -6},
+    "lc-img": "2221.png",
+    "bhq-comment": _BHQ_COMMENT_2221,
+    "noted-by": "BHQ-xBHL-xDM",
+    "wlc-422-note": "]1",
+    "aleppo-page-url": "https://www.mgketer.org/mikra/29/22/1/mg/106",
+    "aleppo-img": "Aleppo-2221.png",
+    "cam1753-page-url": f"{_CAM1753_PAGE_URL_BASE}/n83/mode/1up",
+    "cam1753-img": "Cam1753-2221.png",
+    "cam1753-img-intro": _CAM1753_IMG_INTRO_2221,
+}
+del _RECORD_2221_B["bhla-i"]
+del _RECORD_2221_B["lc-q"]
 _BHQ_COMMENT_2228 = [
     "$BHQ places the mark a little left of center.",
     # XXX add BHQ image
@@ -1165,7 +1187,8 @@ QUIRKRECS = [
     _RECORD_1905,
     _RECORD_1916,
     _RECORD_2125,
-    _RECORD_2221,
+    _RECORD_2221_A,
+    _RECORD_2221_B,
     _RECORD_2228,
     _RECORD_2230,
     _RECORD_2416,

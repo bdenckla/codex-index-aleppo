@@ -35,17 +35,16 @@ def make_example_row():
 
 def row_id(record):
     cn_v_vn = record["cv"].replace(":", "v")  # E.g. 1:2 becomes 1v2
-    ftw = record.get("n_of_m_for_this_word")
-    ftw_str = f"-{ftw[0]}of{ftw[1]}ftw" if ftw else ""  # E.g. -1of2ftw
-    return f"row-{cn_v_vn}{ftw_str}"
+    ftv = record.get("n_of_m_for_this_verse")
+    ftv_str = f"-{ftv[0]}of{ftv[1]}ftv" if ftv else ""  # E.g. -1of2ftv
+    return f"row-{cn_v_vn}{ftv_str}"
 
 
 def sort_key(record):
     cv_as_toi = tuple(int(part) for part in record["cv"].split(":"))
-    ftw = record.get("n_of_m_for_this_word")
-    ftw0 = ftw[0] if ftw else 1
-    return *cv_as_toi, ftw0
-
+    ftv = record.get("n_of_m_for_this_verse")
+    ftv0 = ftv[0] if ftv else 1
+    return *cv_as_toi, ftv0
 
 def _unique(seq):
     return len(set(seq)) == len(seq)
