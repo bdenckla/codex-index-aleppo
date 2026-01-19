@@ -533,14 +533,16 @@ _RECORD_1905 = {
     "lc-loc": {"page": "402A", "column": 2, "line": -5},
     "lc-img": "1905.png",
     "bhq-comment": [
-        "$BHQ silently lets the faint possible דגש “win” over the clear רפה in μL.",
+        "$BHQ drops the note that $BHS has on this quirk, which is extraordinary."
+        " As usual, we don’t know whether $BHQ dropped this note on purpose or by accident.",
+        " $BHQ silently lets the faint possible דגש “win” over the clear רפה in μL.",
         " In my opinion, $BHQ should have transcribed either both marks (דגש and רפה) or neither.",
         " Also, $BHQ should have had a note.",
     ],
     "noted-by": "xBHQ-BHL-xDM",
     # Above, I use xBHQ rather than tBHQ because BHQ only partially transcribes μL here,
     # having the דגש without the רפה that contradicts the דגש.
-    "wlc-422-note": "]1",  # Noted by WLC based on manuscript rather than BHS? If so, good job!
+    "wlc-422-note": "]1",
 }
 _RECORD_1916 = {
     "bhla-i": 27,
@@ -613,7 +615,8 @@ _RECORD_2221_A = {
     "lc-loc": {"page": "403B", "column": 1, "line": -6},
     "lc-img": "2221.png",
     "bhq-comment": _BHQ_COMMENT_2221_A,
-    "noted-by": "xBHQ-BHL-xDM",
+    "noted-by": "tBHQ-BHL-xDM",
+    "wlc-422-note": "]1",
     "aleppo-page-url": "https://www.mgketer.org/mikra/29/22/1/mg/106",
     "aleppo-img": "Aleppo-2221.png",
     "cam1753-page-url": f"{_CAM1753_PAGE_URL_BASE}/n83/mode/1up",
