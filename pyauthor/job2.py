@@ -98,7 +98,7 @@ def _num_range(start, stop):
 _CPARA10 = [
     "Like many students of Tanakh, I started out in the cult of $BHS.",
     #
-    [" I thought $BHS was", " ", my_html.bold("the")],
+    [" I thought $BHS was ", my_html.bold("the")],
     " definitive edition.",
     #
     " Unlike many students of Tanakh, I eventually soured on $BHS,",
@@ -190,11 +190,12 @@ def _cpara17(the_len):
         " As of now, it is the latest volume of $BHQ to be published.",
         #
         f" First, the good news: the Job volume of $BHQ notes {str(the_len)}",
-        " quirks in μL that were not noted in either $BHL-A ($BHL Appendix A) or דעת מקרא.",
+        " quirks in μL that were not noted in either $BHL_A ($BHL Appendix A) or דעת מקרא.",
         " I.e. these are places where $BHQ contributes something not available",
         " in either of those two other editions.",
-        " Unsurprisingly, none of these contributions",
-        " were already present in $BHS.",
+        " Unsurprisingly, all but one of these contributions",
+        " are new to $BHQ, i.e. not present in $BHS.",
+        " (The one not new to $BHQ is the one regarding 22:21 ושלם.)"
         " Those contributions are as follows:",
     ]
 
@@ -210,7 +211,8 @@ def _cpara18(the_len):
         " Indeed my main criticism of $BHQ Job is that it",
         " should have reiterated most or all of what can be found in those editions.",
         " Unsurprisingly, all but one of the $BHQ reiterations",
-        " were already present in $BHS." " (The one new to $BHQ is the one in 18:4.)",
+        " were already present in $BHS.",
+        " (The one new to $BHQ is the one regarding 18:4 הלמענך.)",
         " The reiterations made by $BHQ are as follows:",
     ]
 

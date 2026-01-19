@@ -577,27 +577,23 @@ _RECORD_2125 = {
     "bhq-comment": _BHQ_COMMENT_2125,
     "noted-by": "xBHQ-BHL-xDM",
 }
-_COMMENT_2221 = [
-    "BHL Appendix A fails to note the anomalous non-pointing of the ל in the next word, ושלם.",
-    " Nonethless I have included ושלם above.",
-    " The letters of both words are re-inked, and as usual, the re-inking is sloppy.",
-    " Perhaps some super-faint remains of an אתנח under ל can be seen.",
-    " The top dot of the שווא (under the ש) is super-faint.",
-    " I (charitably) transcribed it based on consensus expectations.",
-    " A dot under the מ of עמו is fairly clear.",
-    " It is (charitably) not transcribed by BHL, presumably based on consensus expectations.",
+_COMMENT_2221_A = [
+    "A dot under the מ of עמו is fairly clear.",
+    " It is (charitably) not transcribed by $BHL_A, presumably based on consensus expectations.",
 ]
-_BHQ_COMMENT_2221 = [
-    "$BHQ transcribes these words as shown above.",
-    " I.e. $BHQ transcribes עמו as BHL does, and $BHQ transcribes ושלם as I do.",
-    " $BHQ notes that whereas the ל of ושלם is unpointed in μL,",
-    " that ל has קמץ and אתנח in μA and μY.",
-    " $BHQ fails to note that, relatedly, the אתנח it transcribes on עמו",
+_COMMENT_2221_B = [
+    "Perhaps some super-faint remains of an אתנח under ל can be seen.",
+    " The top dot of the שווא (under the ש) is super-faint.",
+    " $BHQ (charitably) transcribed it based on consensus expectations.",
+]
+_BHQ_COMMENT_2221_A = [
+    "$BHQ fails to note that the אתנח it transcribes on עמו",
     " disagrees with μA and μY.",
-    " In summary, BHL only notes a מונח vs אתנח issue on עמו and",
-    " $BHQ only notes a lack of קמץ־אתנח on ושלם.",
-    " Therefore both editions not only miss some issues",
-    " but also miss the relationship between the אתנח issues.",
+]
+_BHQ_COMMENT_2221_B = [
+    "$BHQ notes that whereas the ל of ושלם is unpointed in μL,",
+    " that ל has קמץ and אתנח in μA and μY.",
+    " See my entry for 22:21 עמי for μA and μY images."
 ]
 _CAM1753_IMG_INTRO_2221 = [
     "note that instead of a masorah circle, μY uses a pair of above-dots",
@@ -612,11 +608,11 @@ _RECORD_2221_A = {
     "lc": "עִמּ֑וֹ",
     "what-is-weird": "אתנח not מונח",
     "mam": "עִמּ֣וֹ",
-    "comment": _COMMENT_2221,
+    "comment": _COMMENT_2221_A,
     "highlight": 2,
     "lc-loc": {"page": "403B", "column": 1, "line": -6},
     "lc-img": "2221.png",
-    "bhq-comment": _BHQ_COMMENT_2221,
+    "bhq-comment": _BHQ_COMMENT_2221_A,
     "noted-by": "xBHQ-BHL-xDM",
     "aleppo-page-url": "https://www.mgketer.org/mikra/29/22/1/mg/106",
     "aleppo-img": "Aleppo-2221.png",
@@ -628,23 +624,20 @@ _RECORD_2221_B = {
     **_RECORD_2221_A,
     "n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
     "lc": "וּשְׁלם",
-    "what-is-weird": "∅ not קמץ־אתנח",
+    "what-is-weird": "ל lacks קמץ־אתנח",
     "mam": "וּשְׁלָ֑ם",
-    "comment": _COMMENT_2221,
+    "comment": _COMMENT_2221_B,
     "highlight": 3,
     "lc-loc": {"page": "403B", "column": 1, "line": -6},
     "lc-img": "2221.png",
-    "bhq-comment": _BHQ_COMMENT_2221,
+    "bhq-comment": _BHQ_COMMENT_2221_B,
     "noted-by": "BHQ-xBHL-xDM",
     "wlc-422-note": "]1",
-    "aleppo-page-url": "https://www.mgketer.org/mikra/29/22/1/mg/106",
-    "aleppo-img": "Aleppo-2221.png",
-    "cam1753-page-url": f"{_CAM1753_PAGE_URL_BASE}/n83/mode/1up",
-    "cam1753-img": "Cam1753-2221.png",
-    "cam1753-img-intro": _CAM1753_IMG_INTRO_2221,
 }
 del _RECORD_2221_B["bhla-i"]
 del _RECORD_2221_B["lc-q"]
+del _RECORD_2221_B["aleppo-img"]
+del _RECORD_2221_B["cam1753-img"]
 _BHQ_COMMENT_2228 = [
     "$BHQ places the mark a little left of center.",
     # XXX add BHQ image
@@ -798,7 +791,7 @@ _BHQ_COMMENT_3105 = [
     *_BHQ_COMMENT_CMN_3105_3206,
     " 32:6 is similar.",
     " In my opinion $BHQ shows itself to be out of date by continuing to aspire,",
-    " as BHS did,",
+    " as $BHS did,",
     " to reflect all such ordering quirks.",
     " I think the modern consensus is that these orderings are as meaningless as",
     " the variable length of ascenders on ל.",
@@ -960,7 +953,7 @@ _RECORD_3612 = {
 }
 _COMMENT_3629 = [
     "The color image strongly suggests that the mark in question is not ink.",
-    " A געיה right next to סילוק like that would be extraordinary, BTW,",
+    " A געיה right next to סילוק like that would be extraordinary, by the way,",
     " though I feel no appeal to expectations is needed to dismiss this possible געיה.",
 ]
 _RECORD_3629 = {
