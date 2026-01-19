@@ -402,7 +402,7 @@ _RECORD_1620 = {
     "bhq-comment": _BHQ_COMMENT_LIKE_0409,
     "noted-by": "tBHQ-BHL-DM",
 }
-_RECORD_MBB_1706 = {
+_RECORD_1706 = {
     "cv": "17:6",
     "lc": "וְתֹ֖פֶתּ",
     "what-is-weird": "final ת has דגש",
@@ -418,7 +418,7 @@ _RECORD_MBB_1706 = {
     "noted-by": "BHQ-xBHL-xDM",
     "uxlc-needs-fix": True,
 }
-_RECORD_MBB_1711 = {
+_RECORD_1711 = {
     "cv": "17:11",
     "lc": "לְבָבִּֽי׃",
     "what-is-weird": "second ב has דגש",
@@ -497,7 +497,7 @@ _RECORD_1806 = {
     "bhq-comment": _BHQ_COMMENT_1806,
     "noted-by": "tBHQ-BHL-xDM",
 }
-_RECORD_MBB_1809 = {
+_RECORD_1809 = {
     "cv": "18:9",
     "lc": "בְּעָּקֵ֣ב",
     "lc-q": "(?)",
@@ -642,7 +642,7 @@ _RECORD_2228 = {
     "bhq-comment": _BHQ_COMMENT_2228,
     "noted-by": "tBHQ-BHL-xDM",
 }
-_RECORD_MBB_2230 = {
+_RECORD_2230 = {
     "cv": "22:30",
     "lc": "וְ֝נִּמְלַ֗ט",
     "lc-q": "(?)",
@@ -656,7 +656,7 @@ _RECORD_MBB_2230 = {
     "noted-by": "BHQ-xBHL-xDM",
     "uxlc-needs-fix": True,
 }
-_RECORD_MBB_2416 = {
+_RECORD_2416 = {
     "cv": "24:16",
     "lc": "יָ֥דְּֿעוּ",
     "lc-q": "(?)",
@@ -912,7 +912,7 @@ _BHQ_COMMENT_3612 = [
     " on this word in μY.",
     " Nor do I see any קרי note in the margin.",
 ]
-_RECORD_MBDO_3612 = {
+_RECORD_3612 = {
     "cv": "36:12",
     "lc": "כִּבְלִי־",
     "what-is-weird": "כ not ב",
@@ -980,7 +980,7 @@ _RECORD_3812 = {
     "noted-by": "BHQ-BHL-DM",
     "wlc-422-note": "]1",
 }
-_RECORD_MBB_3817 = {
+_RECORD_3817 = {
     "cv": "38:17",
     "lc": "צַלְמָּ֣וֶת",
     "what-is-weird": "מ has דגש",
@@ -1114,7 +1114,7 @@ _RECORD_4125 = {
     "bhq-comment": _BHQ_COMMENT_4125,
     "noted-by": "xBHQ-BHL-xDM",
 }
-_RECORD_MBB_4213 = {
+_RECORD_4213 = {
     "cv": "42:13",
     "lc": "בָנֽוֹת׃",
     "what-is-weird": "ב lacks דגש",
@@ -1128,14 +1128,6 @@ _RECORD_MBB_4213 = {
     "uxlc-needs-fix": True,
 }
 QUIRKRECS = [
-    _RECORD_MBB_1706,
-    _RECORD_MBB_1711,
-    _RECORD_MBB_1809,
-    _RECORD_MBB_2230,
-    _RECORD_MBB_2416,
-    _RECORD_MBB_3817,
-    _RECORD_MBB_4213,
-    _RECORD_MBDO_3612,
     _RECORD_0121,
     _RECORD_0409,
     _RECORD_0417,
@@ -1159,14 +1151,19 @@ QUIRKRECS = [
     _RECORD_1604,
     _RECORD_1613,
     _RECORD_1620,
+    _RECORD_1706,
+    _RECORD_1711,
     _RECORD_1804_A,
     _RECORD_1804_B,
     _RECORD_1806,
+    _RECORD_1809,
     _RECORD_1905,
     _RECORD_1916,
     _RECORD_2125,
     _RECORD_2221,
     _RECORD_2228,
+    _RECORD_2230,
+    _RECORD_2416,
     _RECORD_2421,
     _RECORD_2702,
     _RECORD_2808,
@@ -1179,9 +1176,11 @@ QUIRKRECS = [
     _RECORD_3312,
     _RECORD_3330,
     _RECORD_3419,
+    _RECORD_3612,
     _RECORD_3629,
     _RECORD_3706,
     _RECORD_3812,
+    _RECORD_3817,
     _RECORD_3902,
     _RECORD_3906,
     _RECORD_3913,
@@ -1189,4 +1188,5 @@ QUIRKRECS = [
     _RECORD_4010,
     _RECORD_4026,
     _RECORD_4125,
+    _RECORD_4213,
 ]
