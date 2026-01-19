@@ -34,7 +34,7 @@ def _make_cbody(ov_and_de, quirkrecs):
         _para_and_table(cpara19, ov_and_de, groups[2]),
         _para_and_table(cpara20, ov_and_de, groups[3]),
         author.para_ul(_CPARA21, clist21(sl_map(len, groups))),
-        author.para(_CPARA22),
+        author.para(cpara22(len(groups[1]))),
     ]
     return cbody
 
@@ -182,15 +182,23 @@ _CPARA16 = [
 _CPARA21 = [
     "In conclusion, compared to the μL quirks noted in $BHL and דעת מקרא:",
 ]
-_CPARA22 = [
-    "To be fair, regarding the last two groups above,",
-    " not all quirks are worth transcribing,",
-    " and perhaps some are worth transcribing but not worth noting.",
-    " Nonetheless, the quantity and quality",
-    " of the quirks in the last two groups above",
-    " strongly suggest that $BHQ’s editors",
-    " were either unaware of or uninterested in $BHL and דעת מקרא.",
-]
+
+
+def cpara22(the_len_of_the_2nd_group):
+    foo = the_len_of_the_2nd_group - 1
+    bar = the_len_of_the_2nd_group
+    return [
+        "To be fair, regarding the last two groups above,",
+        " not all quirks are worth transcribing,",
+        " and perhaps some are worth transcribing but not worth noting.",
+        " Nonetheless, the quantity and quality",
+        " of the quirks in the last two groups above",
+        " strongly suggest that $BHQ’s editors",
+        " were either unaware of or uninterested in $BHL and דעת מקרא.",
+        f" This conclusion is strengthened by the fact that {foo} of the {bar}",
+        " reiterations in the second group above were already present in $BHS.",
+        f" I.e., these {foo} are reiterations of $BHS, not of $BHL or דעת מקרא.",
+    ]
 
 
 def cpara17(the_len):
