@@ -56,151 +56,6 @@ _BHQ_COMMENT_XBHL_XDM_DUBIOUS = [
     " or it could be that they caught it",
     " but considered to be too slight a possibility to note it.",
 ]
-_RECORD_MBB_1706 = {
-    "cv": "17:6",
-    "lc": "וְתֹ֖פֶתּ",
-    "what-is-weird": "final ת has דגש",
-    "mam": "וְתֹ֖פֶת",
-    "comment": [
-        "A דגש in a final ת doesn’t make sense without a קמץ or a שווא נח below.",
-        " But the dot is convincing.",
-    ],
-    "highlight": 4,
-    "lc-loc": {"page": "402A", "column": 1, "line": 7},
-    "lc-img": "1706.png",
-    "bhq-comment": _BHQ_COMMENT_XBHL_XDM,
-    "noted-by": "BHQ-xBHL-xDM",
-    "uxlc-needs-fix": True,
-}
-_RECORD_MBB_1711 = {
-    "cv": "17:11",
-    "lc": "לְבָבִּֽי׃",
-    "what-is-weird": "second ב has דגש",
-    "mam": "לְבָבִֽי׃",
-    "comment": "",
-    "highlight": 3,
-    "lc-loc": {"page": "402A", "column": 1, "line": 13},
-    "lc-img": "1711.png",
-    "bhq-comment": _BHQ_COMMENT_XBHL_XDM,
-    "noted-by": "BHQ-xBHL-xDM",
-    "uxlc-needs-fix": True,
-}
-_RECORD_MBB_1809 = {
-    "cv": "18:9",
-    "lc": "בְּעָּקֵ֣ב",
-    "lc-q": "(?)",
-    "what-is-weird": "ע may have דגש",
-    "mam": "בְּעָקֵ֣ב",
-    "comment": [
-        "A דגש in a ע doesn’t make sense.",
-        " But the dot is convincing,",
-        " despite being a little close to the right arm of the ע.",
-    ],
-    "highlight": 2,
-    "lc-loc": {"page": "402A", "column": 2, "line": 2},
-    "lc-img": "1809.png",
-    "bhq-comment": _BHQ_COMMENT_XBHL_XDM_DUBIOUS,
-    "noted-by": "BHQ-xBHL-xDM",
-    "uxlc-needs-fix": True,
-}
-_RECORD_MBB_2230 = {
-    "cv": "22:30",
-    "lc": "וְ֝נִּמְלַ֗ט",
-    "lc-q": "(?)",
-    "what-is-weird": "נ may have דגש",
-    "mam": "וְ֝נִמְלַ֗ט",
-    "comment": "The dot in question is suspiciously smaller than nearby ones.",
-    "highlight": 2,
-    "lc-loc": {"page": "403B", "column": 2, "line": 4},
-    "lc-img": "2230.png",
-    "bhq-comment": _BHQ_COMMENT_XBHL_XDM_DUBIOUS,
-    "noted-by": "BHQ-xBHL-xDM",
-    "uxlc-needs-fix": True,
-}
-_RECORD_MBB_2416 = {
-    "cv": "24:16",
-    "lc": "יָ֥דְּֿעוּ",
-    "lc-q": "(?)",
-    "what-is-weird": "דגש may fight with רפה",
-    "mam": "יָ֥דְעוּ",
-    "comment": [
-        "A דגש on a letter with רפה doesn’t make sense.",
-        " The dot in question is suspiciously larger than nearby ones,",
-        " and looks different from them in other ways.",
-    ],
-    "highlight": 2,
-    "lc-loc": {"page": "404A", "column": 1, "line": -12},
-    "lc-img": "2416.png",
-    "bhq-comment": _BHQ_COMMENT_XBHL_XDM_DUBIOUS,
-    "noted-by": "BHQ-xBHL-xDM",
-    "uxlc-needs-fix": True,
-}
-_BHQ_COMMENT_3612 = [
-    "$BHQ notes this, whereas this is not noted in $BHL_A.",
-    " It could be that Dotan did not catch this,",
-    " or it could be that he caught it",
-    " but considered to be too slight a possibility to note it.",
-    " It is noted in Da-at Miqra.",
-    " Here $BHQ has a typo:",
-    [" it has ", author.hbo("בִּבְלִ־"), " rather than ", author.hbo("בִּבְלִי־")],
-    " in the word it reports for μA and μY.",
-    " I.e. it is missing a final $yod (י) before the מקף."
-    " The same typo appears in the $BHQ section “Commentary on the Critical Apparatus.”",
-    " In addition to the typo, for some reason $BHQ reports this word as being the קרי",
-    [" of μY, i.e. M", my_html.sup("Y(qere)")],
-    [" rather than just M", my_html.sup("Y"), "."],
-    " I see no “Masora dot pair”",
-    " (μY’s equivalent of a masorah circle)",
-    " on this word in μY.",
-    " Nor do I see any קרי note in the margin.",
-]
-_RECORD_MBDO_3612 = {
-    "cv": "36:12",
-    "lc": "כִּבְלִי־",
-    "what-is-weird": "כ not ב",
-    "mam": "בִּבְלִי־",
-    "comment": [
-        "Although my focus is pointing rather than spelling,",
-        " I am interested in a spelling difference like this,",
-        " since it is not just a חסר vs מלא difference.",
-    ],
-    "highlight": 1,
-    "lc-loc": {"page": "407B", "column": 1, "line": 4},
-    "lc-img": "3612.png",
-    "bhq-comment": _BHQ_COMMENT_3612,
-    "noted-by": "BHQ-xBHL-DM",
-    "aleppo-page-url": "https://www.mgketer.org/mikra/29/36/1/mg/106",
-    "aleppo-img": "Aleppo-3612.png",
-    "cam1753-page-url": f"{_CAM1753_PAGE_URL_BASE}/n87/mode/1up",
-    "cam1753-img": "Cam1753-3612.png",
-    "uxlc-needs-fix": "UXLC has kaf (as it should) but should note the divergence from consensus",
-}
-_RECORD_MBB_3817 = {
-    "cv": "38:17",
-    "lc": "צַלְמָּ֣וֶת",
-    "what-is-weird": "מ has דגש",
-    "mam": "צַלְמָ֣וֶת",
-    "comment": "",
-    "highlight": 3,
-    "lc-loc": {"page": "408A", "column": 1, "line": -5},
-    "lc-img": "3817.png",
-    "bhq-comment": _BHQ_COMMENT_XBHL_XDM,
-    "noted-by": "BHQ-xBHL-xDM",
-    "uxlc-needs-fix": True,
-}
-_RECORD_MBB_4213 = {
-    "cv": "42:13",
-    "lc": "בָנֽוֹת׃",
-    "what-is-weird": "ב lacks דגש",
-    "mam": "בָּנֽוֹת׃",
-    "comment": "",
-    "highlight": 1,
-    "lc-loc": {"page": "409B", "column": 1, "line": -9, "including-blank-lines": 1},
-    "lc-img": "4213.png",
-    "bhq-comment": _BHQ_COMMENT_XBHL_XDM,
-    "noted-by": "BHQ-xBHL-xDM",
-    "uxlc-needs-fix": True,
-}
 _RECORD_0121 = {
     "bhla-i": 1,
     "cv": "1:21",
@@ -547,6 +402,35 @@ _RECORD_1620 = {
     "bhq-comment": _BHQ_COMMENT_LIKE_0409,
     "noted-by": "tBHQ-BHL-DM",
 }
+_RECORD_MBB_1706 = {
+    "cv": "17:6",
+    "lc": "וְתֹ֖פֶתּ",
+    "what-is-weird": "final ת has דגש",
+    "mam": "וְתֹ֖פֶת",
+    "comment": [
+        "A דגש in a final ת doesn’t make sense without a קמץ or a שווא נח below.",
+        " But the dot is convincing.",
+    ],
+    "highlight": 4,
+    "lc-loc": {"page": "402A", "column": 1, "line": 7},
+    "lc-img": "1706.png",
+    "bhq-comment": _BHQ_COMMENT_XBHL_XDM,
+    "noted-by": "BHQ-xBHL-xDM",
+    "uxlc-needs-fix": True,
+}
+_RECORD_MBB_1711 = {
+    "cv": "17:11",
+    "lc": "לְבָבִּֽי׃",
+    "what-is-weird": "second ב has דגש",
+    "mam": "לְבָבִֽי׃",
+    "comment": "",
+    "highlight": 3,
+    "lc-loc": {"page": "402A", "column": 1, "line": 13},
+    "lc-img": "1711.png",
+    "bhq-comment": _BHQ_COMMENT_XBHL_XDM,
+    "noted-by": "BHQ-xBHL-xDM",
+    "uxlc-needs-fix": True,
+}
 _BHQ_COMMENT_1804_A = [
     "$BHQ silently ignores the possible שווא part of the possible חטף פתח.",
     " It also silently ignores the possible intepretation of that ink as a געיה.",
@@ -612,6 +496,24 @@ _RECORD_1806 = {
     "lc-img": "1806.png",
     "bhq-comment": _BHQ_COMMENT_1806,
     "noted-by": "tBHQ-BHL-xDM",
+}
+_RECORD_MBB_1809 = {
+    "cv": "18:9",
+    "lc": "בְּעָּקֵ֣ב",
+    "lc-q": "(?)",
+    "what-is-weird": "ע may have דגש",
+    "mam": "בְּעָקֵ֣ב",
+    "comment": [
+        "A דגש in a ע doesn’t make sense.",
+        " But the dot is convincing,",
+        " despite being a little close to the right arm of the ע.",
+    ],
+    "highlight": 2,
+    "lc-loc": {"page": "402A", "column": 2, "line": 2},
+    "lc-img": "1809.png",
+    "bhq-comment": _BHQ_COMMENT_XBHL_XDM_DUBIOUS,
+    "noted-by": "BHQ-xBHL-xDM",
+    "uxlc-needs-fix": True,
 }
 _RECORD_1905 = {
     "bhla-i": 26,
@@ -739,6 +641,38 @@ _RECORD_2228 = {
     "lc-img": "2228.png",
     "bhq-comment": _BHQ_COMMENT_2228,
     "noted-by": "tBHQ-BHL-xDM",
+}
+_RECORD_MBB_2230 = {
+    "cv": "22:30",
+    "lc": "וְ֝נִּמְלַ֗ט",
+    "lc-q": "(?)",
+    "what-is-weird": "נ may have דגש",
+    "mam": "וְ֝נִמְלַ֗ט",
+    "comment": "The dot in question is suspiciously smaller than nearby ones.",
+    "highlight": 2,
+    "lc-loc": {"page": "403B", "column": 2, "line": 4},
+    "lc-img": "2230.png",
+    "bhq-comment": _BHQ_COMMENT_XBHL_XDM_DUBIOUS,
+    "noted-by": "BHQ-xBHL-xDM",
+    "uxlc-needs-fix": True,
+}
+_RECORD_MBB_2416 = {
+    "cv": "24:16",
+    "lc": "יָ֥דְּֿעוּ",
+    "lc-q": "(?)",
+    "what-is-weird": "דגש may fight with רפה",
+    "mam": "יָ֥דְעוּ",
+    "comment": [
+        "A דגש on a letter with רפה doesn’t make sense.",
+        " The dot in question is suspiciously larger than nearby ones,",
+        " and looks different from them in other ways.",
+    ],
+    "highlight": 2,
+    "lc-loc": {"page": "404A", "column": 1, "line": -12},
+    "lc-img": "2416.png",
+    "bhq-comment": _BHQ_COMMENT_XBHL_XDM_DUBIOUS,
+    "noted-by": "BHQ-xBHL-xDM",
+    "uxlc-needs-fix": True,
 }
 _COMMENT_2421 = [
     "Perhaps there is some super-faint evidence of a third dot that would make a סגול,",
@@ -959,6 +893,46 @@ _RECORD_3419 = {
     "bhq-comment": _correctly_ignores("דגש", "34:19", "full"),
     "noted-by": "xBHQ-BHL-DM",
 }
+_BHQ_COMMENT_3612 = [
+    "$BHQ notes this, whereas this is not noted in $BHL_A.",
+    " It could be that Dotan did not catch this,",
+    " or it could be that he caught it",
+    " but considered to be too slight a possibility to note it.",
+    " It is noted in Da-at Miqra.",
+    " Here $BHQ has a typo:",
+    [" it has ", author.hbo("בִּבְלִ־"), " rather than ", author.hbo("בִּבְלִי־")],
+    " in the word it reports for μA and μY.",
+    " I.e. it is missing a final $yod (י) before the מקף."
+    " The same typo appears in the $BHQ section “Commentary on the Critical Apparatus.”",
+    " In addition to the typo, for some reason $BHQ reports this word as being the קרי",
+    [" of μY, i.e. M", my_html.sup("Y(qere)")],
+    [" rather than just M", my_html.sup("Y"), "."],
+    " I see no “Masora dot pair”",
+    " (μY’s equivalent of a masorah circle)",
+    " on this word in μY.",
+    " Nor do I see any קרי note in the margin.",
+]
+_RECORD_MBDO_3612 = {
+    "cv": "36:12",
+    "lc": "כִּבְלִי־",
+    "what-is-weird": "כ not ב",
+    "mam": "בִּבְלִי־",
+    "comment": [
+        "Although my focus is pointing rather than spelling,",
+        " I am interested in a spelling difference like this,",
+        " since it is not just a חסר vs מלא difference.",
+    ],
+    "highlight": 1,
+    "lc-loc": {"page": "407B", "column": 1, "line": 4},
+    "lc-img": "3612.png",
+    "bhq-comment": _BHQ_COMMENT_3612,
+    "noted-by": "BHQ-xBHL-DM",
+    "aleppo-page-url": "https://www.mgketer.org/mikra/29/36/1/mg/106",
+    "aleppo-img": "Aleppo-3612.png",
+    "cam1753-page-url": f"{_CAM1753_PAGE_URL_BASE}/n87/mode/1up",
+    "cam1753-img": "Cam1753-3612.png",
+    "uxlc-needs-fix": "UXLC has kaf (as it should) but should note the divergence from consensus",
+}
 _COMMENT_3629 = [
     "The color image strongly suggests that the mark in question is not ink.",
     " A געיה right next to סילוק like that would be extraordinary, BTW,",
@@ -1005,6 +979,19 @@ _RECORD_3812 = {
     ],
     "noted-by": "BHQ-BHL-DM",
     "wlc-422-note": "]1",
+}
+_RECORD_MBB_3817 = {
+    "cv": "38:17",
+    "lc": "צַלְמָּ֣וֶת",
+    "what-is-weird": "מ has דגש",
+    "mam": "צַלְמָ֣וֶת",
+    "comment": "",
+    "highlight": 3,
+    "lc-loc": {"page": "408A", "column": 1, "line": -5},
+    "lc-img": "3817.png",
+    "bhq-comment": _BHQ_COMMENT_XBHL_XDM,
+    "noted-by": "BHQ-xBHL-xDM",
+    "uxlc-needs-fix": True,
 }
 _COMMENT_3902 = [
     "The mark in question is very heavy,",
@@ -1126,6 +1113,19 @@ _RECORD_4125 = {
     "lc-img": "4125.png",
     "bhq-comment": _BHQ_COMMENT_4125,
     "noted-by": "xBHQ-BHL-xDM",
+}
+_RECORD_MBB_4213 = {
+    "cv": "42:13",
+    "lc": "בָנֽוֹת׃",
+    "what-is-weird": "ב lacks דגש",
+    "mam": "בָּנֽוֹת׃",
+    "comment": "",
+    "highlight": 1,
+    "lc-loc": {"page": "409B", "column": 1, "line": -9, "including-blank-lines": 1},
+    "lc-img": "4213.png",
+    "bhq-comment": _BHQ_COMMENT_XBHL_XDM,
+    "noted-by": "BHQ-xBHL-xDM",
+    "uxlc-needs-fix": True,
 }
 QUIRKRECS = [
     _RECORD_MBB_1706,
