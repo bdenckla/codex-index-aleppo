@@ -466,6 +466,9 @@ _RECORD_1704 = {
         "(1) Remove the דגש from מ and note the uncertainty in transcription.",
         "(2) Leave the דגש and note the divergence from consensus as well as the uncertainty in transcription.",
     ],
+    # This is a bracket-p note in WLC.
+    # We take it to note a quirk because MAM reveals that WLC is diverging from consensus here.
+    # (Normally we only take WLC to note a quirk in the case of bracket-1 notes.)
 }
 _RECORD_1706 = {
     "cv": "17:6",
