@@ -32,7 +32,8 @@ def _make_cbody(ov_and_de, quirkrecs):
         author.para(_CPARA17B),
         _para_and_table(_cpara18, ov_and_de, groups[1]),
         _para_and_table(_cpara19, ov_and_de, groups[2]),
-        _para_and_table(_cpara20, ov_and_de, groups[3]),
+        _para_and_table(_cpara20a, ov_and_de, groups[3]),
+        _para_and_table(_cpara20b, ov_and_de, groups[4]),
         author.para_ul(_CPARA21, _clist21(sl_map(len, groups))),
         author.para(_cpara22()),
         author.para(_cpara23(len(groups[1]))),
@@ -55,7 +56,7 @@ def _bhq_and_others(quirkrec):
     assert bhq in ("BHQ", "xBHQ", "tBHQ")
     assert bhl in ("BHL", "xBHL")
     assert dm in ("DM", "xDM")
-    assert wlc in ("WLC", "xWLC")
+    assert wlc in ("WLC", "xWLC", "zWLC")
     others = bhl, dm, wlc
     return bhq, others
 
@@ -82,6 +83,11 @@ def _tbhq_and_ne(quirkrec):
     return _foobhq_and_ne("tBHQ", quirkrec)
 
 
+def _tbhq_and_zw(quirkrec):
+    bhq, others = _bhq_and_others(quirkrec)
+    return bhq == "tBHQ" and others == ("xBHL", "xDM", "zWLC")
+
+
 def _get_groups(quirkrecs):
     # nbhq, xbhq: noted in BHQ, not noted in BHQ
     # ne, xe: noted elsewhere, not noted elsewhere
@@ -93,12 +99,13 @@ def _get_groups(quirkrecs):
     q_nbhq_and_ne = list(filter(_nbhq_and_ne, quirkrecs))
     q_xbhq_and_ne = list(filter(_xbhq_and_ne, quirkrecs))
     q_tbhq_and_ne = list(filter(_tbhq_and_ne, quirkrecs))
-    q_tbhq_and_zw = list(filter(_tbhq_and_ne, quirkrecs))
+    q_tbhq_and_zw = list(filter(_tbhq_and_zw, quirkrecs))
     groups = [
         q_nbhq_and_xe,
         q_nbhq_and_ne,
         q_xbhq_and_ne,
         q_tbhq_and_ne,
+        q_tbhq_and_zw,
     ]
     return groups
 
@@ -295,13 +302,20 @@ def _cpara19(the_len):
     ]
 
 
-def _cpara20(the_len):
+def _cpara20a(the_len):
     return [
         f"Now for some mixed news:",
         f" the Job volume of $BHQ transcribes but does not note {str(the_len)}",
         f" quirks in μL that are noted in one or more of the other three editions.",
         #
         f" Those transcriptions without notes are as follows:",
+    ]
+
+
+def _cpara20b(the_len):
+    return [
+        f"Finally, there are {str(the_len)}",
+        f" words of zW type in $BHQ Job:",
     ]
 
 
