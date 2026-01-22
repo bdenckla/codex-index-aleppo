@@ -126,16 +126,16 @@ _RECORD_0417 = {
 _RECORD_0629 = {
     "cv": "6:29",
     "lc": "וְשֽׁוּבוּ",
-    "what-is-weird": "word has no טעם",
+    "what-is-weird": "word has no טעם, only געיה",
     "mam": "וְשׁ֥וּבוּ",
     "comment": [
-        "The word has only געיה.",
-        " Or I suppose it that mark could, absurdly, be interpreted as סילוק."
+        "In contradiction of the transcription shown above,",
+        " the most likely scribal intent was מרכא."
     ],
-    "highlight": 5,
-    "lc-loc": {"page": "398A", "column": 2, "line": 10},
+    "highlight": 2,
+    "lc-loc": {"page": "399A", "column": 1, "line": 2},
     "lc-img": "0629.png",
-    "bhq-comment": "",
+    "bhq-comment": "$BHQ is the source of this (flawed) transcription.",
     "noted-by": "tBHQ-xBHL-xDM-zWLC",
 }
 _RECORD_0701 = {
@@ -872,14 +872,15 @@ _RECORD_2826 = {
     "what-is-weird": "ש lacks חולם dot",
     "mam": "בַּעֲשֹׂת֣וֹ",
     "comment": [
-        "The proposed transcription is mistaken.",
-        " Here μL clearly has both a $sin dot and a חולם dot.",
+        "In contradiction of the transcription shown above,",
+        " the image of μL clearly shows μL to have both a $sin dot and a חולם dot.",
     ],
     "highlight": 3,
     "lc-loc": {"page": "404B", "column": 2, "line": -1},
     "lc-img": "2826.png",
     "bhq-comment": [
-        "I don’t think $BHQ is really proposing that μL lacks this חולם dot.",
+        "$BHQ is the source of this (flawed) transcription.",
+        " I don’t think $BHQ is really proposing that μL lacks this חולם dot.",
         " This is more likely a typo (inherited from $BHS) than a deliberate choice.",
     ],
     "noted-by": "tBHQ-xBHL-xDM-zWLC",
