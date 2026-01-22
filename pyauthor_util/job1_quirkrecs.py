@@ -521,23 +521,26 @@ _BHQ_COMMENT_1804_A = [
     " $BHQ supplies only the (full) פתח that is the consensus expectation here.",
     " $BHQ does so silently, i.e. with no note about the pointing of ה.",
 ]
-_RECORD_1804_A = {
+_RECORD_1804_CMN = {
     "bhla-i": 24,
     "cv": "18:4",
+    "lc": "הֲ֭לְמַּעַנְךָ",
+    "mam": "הַֽ֭לְמַעַנְךָ",
+    "bhq": "הַ֭לְמַּעַנְךָ",
+    "lc-loc": {"page": "402A", "column": 1, "line": -4},
+    "lc-img": "1804.png",
+}
+_RECORD_1804_A = {
+    **_RECORD_1804_CMN,
     "n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
     "n_of_m_for_this_word": (1, 2),  # this is record 1 of 2 for this word
-    "lc": "הֲ֭לְמַּעַנְךָ",
     "what-is-weird": "פתח on ה is חטף.",
-    "mam": "הַֽ֭לְמַעַנְךָ",
     "comment": [
         "The quirk that מ has דגש is discussed in a separate entry of mine.",
         " The געיה difference is not important to us here.",
     ],
     "highlight": 1,
-    "lc-loc": {"page": "402A", "column": 1, "line": -4},
-    "lc-img": "1804.png",
     "bhq-comment": _BHQ_COMMENT_1804_A,
-    "bhq": "הַ֭לְמַּעַנְךָ",
     "noted-by": "xBHQ-nBHL-nDM",
 }
 _BHQ_COMMENT_1804_B = [
@@ -551,7 +554,6 @@ _RECORD_1804_B = {
     "n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
     "n_of_m_for_this_word": (2, 2),  # this is record 2 of 2 for this word
     "what-is-weird": "מ has דגש.",
-    "mam": "הַֽ֭לְמַעַנְךָ",
     "comment": [
         "The quirk that the פתח on ה is חטף is discussed in a separate entry of mine.",
         " The געיה difference is not important to us here.",
@@ -684,9 +686,14 @@ _CAM1753_IMG_INTRO_2221 = [
     " as a “callout” for a Masorah parva note;",
     " hence the pair of above-dots above ל in ושלם.",
 ]
-_RECORD_2221_A = {
-    "bhla-i": 29,
+_RECORD_2221_CMN = {
     "cv": "22:21",
+    "lc-loc": {"page": "403B", "column": 1, "line": -6},
+    "lc-img": "2221.png",
+}
+_RECORD_2221_A = {
+    **_RECORD_2221_CMN,
+    "bhla-i": 29,
     "n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
     "lc-q": "(?)",
     "lc": "עִמּ֑וֹ",
@@ -694,8 +701,6 @@ _RECORD_2221_A = {
     "mam": "עִמּ֣וֹ",
     "comment": _COMMENT_2221_A,
     "highlight": 2,
-    "lc-loc": {"page": "403B", "column": 1, "line": -6},
-    "lc-img": "2221.png",
     "bhq-comment": _BHQ_COMMENT_2221_A,
     "noted-by": "tBHQ-nBHL-xDM-nWLC",
     "aleppo-page-url": "https://www.mgketer.org/mikra/29/22/1/mg/106",
@@ -705,7 +710,7 @@ _RECORD_2221_A = {
     "cam1753-img-intro": _CAM1753_IMG_INTRO_2221,
 }
 _RECORD_2221_B = {
-    **_RECORD_2221_A,
+    **_RECORD_2221_CMN,
     "n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
     "lc": "וּשְׁלם",
     "what-is-weird": "ל lacks קמץ־אתנח",
@@ -717,10 +722,6 @@ _RECORD_2221_B = {
     "bhq-comment": _BHQ_COMMENT_2221_B,
     "noted-by": "nBHQ-xBHL-xDM-nWLC",
 }
-del _RECORD_2221_B["bhla-i"]
-del _RECORD_2221_B["lc-q"]
-del _RECORD_2221_B["aleppo-img"]
-del _RECORD_2221_B["cam1753-img"]
 _BHQ_COMMENT_2228 = [
     "$BHQ places the mark a little left of center.",
     # XXX add BHQ image
@@ -1111,8 +1112,23 @@ _RECORD_3706 = {
     "lc-img": "3706.png",
     "noted-by": "tBHQ-nBHL-xDM-nWLC",
 }
-_RECORD_3812 = {
+_RECORD_3812_A = {
     "bhla-i": 45,
+    "cv": "38:12",
+    "lc": "הְֽ֭מִיָּמֶיךָ",
+    "what-is-weird": "simple שווא not חטף פתח",
+    "mam": "הֲֽ֭מִיָּמֶיךָ",
+    "comment": "39:20 is similar",
+    "highlight": 1,
+    "lc-loc": {"page": "408A", "column": 1, "line": -12},
+    "lc-img": "3812.png",
+    "bhq-comment": [
+        "$BHQ notes that here μL disagrees with μA and μY,",
+        " which have the consensus pointing.",
+    ],
+    "noted-by": "nBHQ-nBHL-nDM-nWLC",
+}
+_RECORD_3812_B = {
     "cv": "38:12",
     "lc": "הְֽ֭מִיָּמֶיךָ",
     "what-is-weird": "simple שווא not חטף פתח",
@@ -1334,7 +1350,7 @@ QUIRKRECS = [
     _RECORD_3612,
     _RECORD_3629,
     _RECORD_3706,
-    _RECORD_3812,
+    _RECORD_3812_A,
     _RECORD_3817,
     _RECORD_3902,
     _RECORD_3906,
