@@ -55,7 +55,7 @@ def _unique(seq):
 def _make_ov_and_de_for_one_record(record):
     return {
         "od-overview": _make_overview_row(record),
-        "od-details": _make_details_row(record),
+        "od-details": _make_details_html(record),
     }
 
 
@@ -132,6 +132,12 @@ def _maybe_comment(record):
     return []
 
 
+def _maybe_para_comment(record):
+    if comment := record.get("comment"):
+        return [author.para(comment)]
+    return []
+
+
 def _ancs(record):
     cv = record["cv"]
     uxlc_href = f"https://tanach.us/Tanach.xml?Job{cv}"
@@ -143,23 +149,45 @@ def _ancs(record):
 
 
 def _dpe(record):
-    uxlc_anc, mwd_anc = _ancs(record)
+    fn = _dpe_stretched if record.get("bhq-comment-is-long") else _dpe_inline
+    return fn(record)
+
+
+def _dpe_inline(record):
     dpe1 = [
         *_maybe_comment(record),
         record["bhq-comment"],
+        *_ancs_and_loc(record),
+    ]
+    return _parasperse(dpe1)
+
+
+def _dpe_stretched(record):
+    return [
+        *_maybe_para_comment(record),
+        author.para(record["bhq-comment"]),
+        _parasperse(_ancs_and_loc(record)),
+    ]
+
+
+def _parasperse(items):
+    return author.para(my_utils.intersperse(_SEP, items))
+
+
+def _ancs_and_loc(record):
+    uxlc_anc, mwd_anc = _ancs(record)
+    return [
         uxlc_anc,
         mwd_anc,
         lcloc(record.get("lc-loc")),
     ]
-    dpe2 = my_utils.intersperse(_SEP, dpe1)
-    return [author.para(dpe2)]
 
 
-def _make_details_row(record):
+def _make_details_html(record):
     return [
         author.table_c(_make_overview_row(record)),
         *_maybe_bhq(record.get("bhq")),
-        *_dpe(record),
+        _dpe(record),
         _img(record["lc-img"]),
         *_maybe_img(record, "mi-args-aleppo"),
         *_maybe_img(record, "mi-args-cam1753"),
