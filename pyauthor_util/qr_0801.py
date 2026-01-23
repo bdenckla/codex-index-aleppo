@@ -1,0 +1,13 @@
+RECORD_0801 = {
+    "bhla-i": 7,
+    "cv": "8:1",
+    "lc": "וַיֹאמַֽר׃",
+    "what-is-weird": "$yod (י) lacks דגש",
+    "mam": "וַיֹּאמַֽר׃",
+    "comment": "",
+    "highlight": 2,
+    "lc-loc": {"page": "399A", "column": 2, "line": 5, "including-blank-lines": 1},
+    "lc-img": "0801.png",
+    "bhq-comment": "This quirk is noted in $BHQ.",
+    "noted-by": "nBHQ-nBHL-xDM-nWLC",
+}

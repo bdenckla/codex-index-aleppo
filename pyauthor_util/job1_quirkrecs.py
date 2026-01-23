@@ -5,6 +5,20 @@
 
 from pyauthor_util import author
 from py import my_html
+from pyauthor_util.qr_0121 import RECORD_0121
+from pyauthor_util.qr_0629 import RECORD_0629
+from pyauthor_util.qr_0701 import RECORD_0701
+from pyauthor_util.qr_0801 import RECORD_0801
+from pyauthor_util.qr_0807 import RECORD_0807
+from pyauthor_util.qr_1216 import RECORD_1216
+from pyauthor_util.qr_1409 import RECORD_1409
+from pyauthor_util.qr_1534 import RECORD_1534
+from pyauthor_util.qr_1905 import RECORD_1905
+from pyauthor_util.qr_1916 import RECORD_1916
+from pyauthor_util.qr_2230_A import RECORD_2230_A
+from pyauthor_util.qr_2826 import RECORD_2826
+from pyauthor_util.qr_3330 import RECORD_3330
+from pyauthor_util.qr_3812_A import RECORD_3812_A
 
 _CAM1753_PAGE_URL_BASE = (
     "https://archive.org/details/ketuvim-cambridge-ms-add-1753-images/page"
@@ -66,24 +80,6 @@ _BHQ_COMMENT_XELSEWHERE_DUBIOUS = [
     " or it could be that they caught it",
     " but considered to be too slight a possibility to note it.",
 ]
-_RECORD_0121 = {
-    "bhla-i": 1,
-    "cv": "1:21",
-    "lc": "שָׁ֔מָה",
-    "what-is-weird": "מ lacks דגש",
-    "mam": "שָׁ֔מָּה",
-    "comment": "",
-    "highlight": 2,
-    "lc-loc": {"page": "397B", "column": 1, "line": 1},
-    "lc-img": "0121.png",
-    "bhq-comment": [
-        "$BHQ notes this quirk.",
-        " As usual, it does so by noting that μA and μY agree, and μL disagrees with them.",
-        " I.e. μA=μY=x, μL=w, and w≠x.",
-        " So what we boldly call the consensus, $BHQ merely calls the matching contents of μA and μY.",
-    ],
-    "noted-by": "nBHQ-nBHL-nDM-nWLC",
-}
 _BHQ_COMMENT_CMN_0409_AND_SIMILAR = [
     "This is one of seven similar cases in Job in μL.",
     " All are correctly transcribed in $BHQ, i.e. transcribed without a מפיק.",
@@ -132,34 +128,6 @@ _RECORD_0417 = {
     "bhq-comment": _BHQ_COMMENT_0417,
     "noted-by": "tBHQ-nBHL-nDM",
 }
-_RECORD_0629 = {
-    "cv": "6:29",
-    "lc": "וְשֽׁוּבוּ",
-    "what-is-weird": "געיה not מרכא",
-    "mam": "וְשׁ֥וּבוּ",
-    "comment": [
-        "Contrary to the transcription shown above,",
-        " the most likely scribal intent was מרכא.",
-    ],
-    "highlight": 2,
-    "lc-loc": {"page": "399A", "column": 1, "line": 2},
-    "lc-img": "0629.png",
-    "bhq-comment": "$BHQ is the source of this (flawed) transcription.",
-    "noted-by": "tBHQ-xBHL-xDM-zWLC",
-}
-_RECORD_0701 = {
-    "bhla-i": 4,
-    "cv": "7:1",
-    "lc": "וְכִימֵ֖֗י",
-    "what-is-weird": "רביע fights טרחא",
-    "mam": "וְכִימֵ֖י",
-    "comment": "",
-    "highlight": 4,
-    "lc-loc": {"page": "399A", "column": 1, "line": 4},
-    "lc-img": "0701.png",
-    "bhq-comment": "$BHQ silently ignores the possible רביע.",
-    "noted-by": "xBHQ-nBHL-xDM",
-}
 _RECORD_0709 = {
     "bhla-i": 5,
     "cv": "7:9",
@@ -189,32 +157,6 @@ _RECORD_0721 = {
     "lc-img": "0721.png",
     "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-nDM",
-}
-_RECORD_0801 = {
-    "bhla-i": 7,
-    "cv": "8:1",
-    "lc": "וַיֹאמַֽר׃",
-    "what-is-weird": "$yod (י) lacks דגש",
-    "mam": "וַיֹּאמַֽר׃",
-    "comment": "",
-    "highlight": 2,
-    "lc-loc": {"page": "399A", "column": 2, "line": 5, "including-blank-lines": 1},
-    "lc-img": "0801.png",
-    "bhq-comment": "This quirk is noted in $BHQ.",
-    "noted-by": "nBHQ-nBHL-xDM-nWLC",
-}
-_RECORD_0807 = {
-    "bhla-i": 8,
-    "cv": "8:7",
-    "lc": "וְּ֝אַחֲרִיתְךָ֗",
-    "what-is-weird": "שורוק dot fights שווא",
-    "mam": "וְ֝אַחֲרִֽיתְךָ֗",
-    "comment": "The געיה difference is not important to us here.",
-    "highlight": 1,
-    "lc-loc": {"page": "399A", "column": 2, "line": 13, "including-blank-lines": 1},
-    "lc-img": "0807.png",
-    "bhq-comment": "$BHQ silently ignores the possible שורוק dot.",
-    "noted-by": "xBHQ-nBHL-xDM",
 }
 _RECORD_0906 = {
     "cv": "9:6",
@@ -356,28 +298,6 @@ _RECORD_1113 = {
     "noted-by-mam": True,
     "noted-by-uxlc": True,
 }
-_RECORD_1216 = {
-    "cv": "12:16",
-    "lc": "וְתֽוּשִׁיָּ֑ה",
-    "lc-q": "(?)",
-    "what-is-weird": "ת may have געיה",
-    "mam": "וְתוּשִׁיָּ֑ה",
-    "comment": [
-        "There is a blob of ink below the ת.",
-        " Most likely, this mark is a malformed masorah circle",
-        " on the word מוליך on the line below.",
-    ],
-    "bhq-comment": [
-        "$BHQ seems to transcribe the blob of ink as both",
-        " a געיה on ת and a masorah circle on מוליך.",
-        " $BHS did not have this געיה;",
-        " I wish $BHQ had left well enough alone.",
-    ],
-    "highlight": 2,
-    "lc-loc": {"page": "400B", "column": 1, "line": 11},
-    "lc-img": "1216.png",
-    "noted-by": "tBHQ-xBHL-xDM-nWLC",
-}
 _BHQ_COMMENT_1203 = [
     "$BHQ silently supplies the מקף that is the consensus expectation,",
     " despite no evidence for it in μL.",
@@ -395,19 +315,6 @@ _RECORD_1203 = {
     "bhq-comment": _BHQ_COMMENT_1203,
     "noted-by": "xBHQ-nBHL-nDM",
 }
-_RECORD_1409 = {
-    "bhla-i": 18,
-    "cv": "14:9",
-    "lc": "מֵרֵ֣יַּח",
-    "what-is-weird": "$yod (י) has דגש",
-    "mam": "מֵרֵ֣יחַ",
-    "comment": "",
-    "highlight": 3,
-    "lc-loc": {"page": "401A", "column": 1, "line": -9},
-    "lc-img": "1409.png",
-    "bhq-comment": "$BHQ silently ignores the possible דגש.",
-    "noted-by": "xBHQ-nBHL-xDM",
-}
 _RECORD_1508 = {
     "bhla-i": 19,
     "cv": "15:8",
@@ -420,19 +327,6 @@ _RECORD_1508 = {
     "lc-img": "1508.png",
     "bhq-comment": _BHQ_COMMENT_LIKE_0409,
     "noted-by": "tBHQ-nBHL-nDM",
-}
-_RECORD_1534 = {
-    "bhla-i": 20,
-    "cv": "15:34",
-    "lc": "שֹֽׁ֥חַד׃",
-    "what-is-weird": "מרכא fights סילוק",
-    "mam": "שֹֽׁחַד׃",
-    "comment": "",
-    "highlight": 1,
-    "lc-loc": {"page": "401B", "column": 1, "line": -3},
-    "lc-img": "1534.png",
-    "bhq-comment": "$BHQ silently ignores the possible מרכא.",
-    "noted-by": "xBHQ-nBHL-xDM",
 }
 _COMMENT_1604 = [
     "Though it is not relevant to the point at hand, which is the presence of a מקף,",
@@ -624,44 +518,6 @@ _RECORD_1809 = {
     "noted-by": "nBHQ-xBHL-xDM",
     "uxlc-needs-fix": True,
 }
-_RECORD_1905 = {
-    "bhla-i": 26,
-    "cv": "19:5",
-    "lc-q": "(?)",
-    "lc": "חֶרְפָּתִּֽֿי",
-    "what-is-weird": "דגש may fight with רפה",
-    "mam": "חֶרְפָּתִֽי׃",
-    "comment": [
-        "A דגש on a letter with רפה doesn’t make sense.",
-        " The color image of μL reveals this דגש to be unlikely.",
-    ],
-    "highlight": 4,
-    "lc-loc": {"page": "402A", "column": 2, "line": -5},
-    "lc-img": "1905.png",
-    "bhq-comment": [
-        "$BHQ drops the note that $BHS has on this quirk, which is extraordinary.",
-        " As usual, we don’t know whether $BHQ dropped this note on purpose or by accident.",
-        " $BHQ silently lets the faint possible דגש “win” over the clear רפה in μL.",
-        " In my opinion, $BHQ should have transcribed either both marks (דגש and רפה) or neither.",
-        " Thus I consider $BHQ to have not accurately transcribed μL here.",
-        " Also, $BHQ should have had a note.",
-    ],
-    "noted-by": "xBHQ-nBHL-xDM-nWLC",
-}
-_RECORD_1916 = {
-    "bhla-i": 27,
-    "cv": "19:16",
-    "lc-q": "(?)",
-    "lc": "קָּ֭רָאתִי",
-    "what-is-weird": "ק may have דגש",
-    "mam": "קָ֭רָאתִי",
-    "comment": "The dot is suspiciously brown rather than black.",
-    "highlight": 1,
-    "lc-loc": {"page": "402B", "column": 1, "line": 8},
-    "lc-img": "1916.png",
-    "bhq-comment": "$BHQ notes that the דגש on the ק in μL disagrees with μA and μY.",
-    "noted-by": "tBHQ-nBHL-xDM",
-}
 _COMMENT_2125 = [
     "The dot is suspiciously brown rather than black,",
     " making me wonder whether the ו was pointed at all.",
@@ -764,34 +620,6 @@ _RECORD_2228 = {
     "lc-img": "2228.png",
     "bhq-comment": _BHQ_COMMENT_2228,
     "noted-by": "tBHQ-nBHL-xDM",
-}
-_RECORD_2230_A = {
-    "cv": "22:30",
-    "n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
-    "lc": "יֽ͏ְמַלֵּ֥ט",
-    "lc-q": "(?)",
-    "what-is-weird": "$yod (י) may have געיה",
-    "mam": "יְמַלֵּ֥ט",
-    "comment": [
-        "The possible געיה is before שווא.",
-        " There is another mark below those marks.",
-        " It is likely unintentional,",
-        " and is treated accordingly, i.e. ignored,",
-        " by all editions I know.",
-    ],
-    "highlight": 1,
-    "lc-loc": {"page": "403B", "column": 2, "line": 4},
-    "lc-img": "2230_A.png",
-    "bhq-comment": [
-        "$BHQ has the געיה but makes no note as to whether the געיה diverges from consensus.",
-        " There is no consensus in many cases of געיה, since most cases of געיה are optional.",
-        " געיה with שווא (whether before or after שווא) occurs often,",
-        " but further research would be needed to say whether this is a case in which",
-        " געיה with שווא would be expected (or at least an expected option).",
-    ],
-    # XXX add Aleppo image and update comments accordingly
-    "noted-by": "tBHQ-xBHL-xDM-nWLC",
-    "uxlc-needs-fix": "add t-note (transcription uncertain)",
 }
 _RECORD_2230_B = {
     "cv": "22:30",
@@ -917,25 +745,6 @@ _RECORD_2808 = {
     "lc-img": "2808.png",
     "bhq-comment": _BHQ_COMMENT_2808_AND_2911,
     "noted-by": "xBHQ-nBHL-xDM",
-}
-_RECORD_2826 = {
-    "cv": "28:26",
-    "lc": "בַּעֲשׂת֣וֹ",
-    "what-is-weird": "ש lacks חולם dot",
-    "mam": "בַּעֲשֹׂת֣וֹ",
-    "comment": [
-        "Contrary to the transcription shown above,",
-        " the image of μL clearly shows μL to have both a $sin dot and a חולם dot.",
-    ],
-    "highlight": 3,
-    "lc-loc": {"page": "404B", "column": 2, "line": -1},
-    "lc-img": "2826.png",
-    "bhq-comment": [
-        "$BHQ is the source of this (flawed) transcription.",
-        " I don’t think $BHQ is really proposing that μL lacks this חולם dot.",
-        " This is more likely a typo (inherited from $BHS) than a deliberate choice.",
-    ],
-    "noted-by": "tBHQ-xBHL-xDM-zWLC",
 }
 _RECORD_2911 = {
     "bhla-i": 34,
@@ -1070,23 +879,6 @@ _RECORD_3312 = {
     "bhq-comment": _BHQ_COMMENT_LIKE_0409,
     "noted-by": "tBHQ-nBHL-nDM",
 }
-_RECORD_3330 = {
-    "bhla-i": 41,
-    "cv": "33:30",
-    "lc": "הַֽחַיִּים׃",
-    "what-is-weird": "סילוק is on syl. 1 not 3",
-    "mam": "הַחַיִּֽים׃",
-    "comment": "",
-    "highlight-lc": 1,
-    "highlight-mam": 3,
-    "lc-loc": {"page": "406B", "column": 1, "line": -1},
-    "lc-img": "3330.png",
-    "bhq-comment": [
-        "$BHQ notes that here μL disagrees with μA and μY,",
-        " which have the consensus pointing.",
-    ],
-    "noted-by": "nBHQ-nBHL-nDM",
-}
 _RECORD_3419 = {
     "bhla-i": 42,
     "cv": "34:19",
@@ -1165,23 +957,6 @@ _RECORD_3706 = {
     "lc-img": "3706.png",
     "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-xDM-nWLC",
-}
-_RECORD_3812_A = {
-    "bhla-i": 45,
-    "cv": "38:12",
-    "n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
-    "lc": "הְֽ֭מִיָּמֶיךָ",
-    "what-is-weird": "simple שווא not חטף פתח",
-    "mam": "הֲֽ֭מִיָּמֶיךָ",
-    "comment": "39:20 is similar",
-    "highlight": 1,
-    "lc-loc": {"page": "408A", "column": 1, "line": -12},
-    "lc-img": "3812_A.png",
-    "bhq-comment": [
-        "$BHQ notes that here μL disagrees with μA and μY,",
-        " which have the consensus pointing.",
-    ],
-    "noted-by": "nBHQ-nBHL-nDM-nWLC",
 }
 _RECORD_3812_B = {
     "cv": "38:12",
@@ -1368,15 +1143,15 @@ _RECORD_4213 = {
     "uxlc-needs-fix": True,
 }
 QUIRKRECS = [
-    _RECORD_0121,
+    RECORD_0121,
     _RECORD_0409,
     _RECORD_0417,
-    _RECORD_0629,
-    _RECORD_0701,
+    RECORD_0629,
+    RECORD_0701,
     _RECORD_0709,
     _RECORD_0721,
-    _RECORD_0801,
-    _RECORD_0807,
+    RECORD_0801,
+    RECORD_0807,
     _RECORD_0906,
     _RECORD_0914,
     _RECORD_0930,
@@ -1388,10 +1163,10 @@ QUIRKRECS = [
     _RECORD_1107,
     _RECORD_1113,
     _RECORD_1203,
-    _RECORD_1216,
-    _RECORD_1409,
+    RECORD_1216,
+    RECORD_1409,
     _RECORD_1508,
-    _RECORD_1534,
+    RECORD_1534,
     _RECORD_1604,
     _RECORD_1613,
     _RECORD_1620,
@@ -1402,20 +1177,20 @@ QUIRKRECS = [
     _RECORD_1804_B,
     _RECORD_1806,
     _RECORD_1809,
-    _RECORD_1905,
-    _RECORD_1916,
+    RECORD_1905,
+    RECORD_1916,
     _RECORD_2125,
     _RECORD_2221_A,
     _RECORD_2221_B,
     _RECORD_2228,
-    _RECORD_2230_A,
+    RECORD_2230_A,
     _RECORD_2230_B,
     _RECORD_2416,
     _RECORD_2421,
     _RECORD_2614,
     _RECORD_2702,
     _RECORD_2808,
-    _RECORD_2826,
+    RECORD_2826,
     _RECORD_2911,
     _RECORD_2919,
     _RECORD_3105,
@@ -1423,12 +1198,12 @@ QUIRKRECS = [
     _RECORD_3133,
     _RECORD_3206,
     _RECORD_3312,
-    _RECORD_3330,
+    RECORD_3330,
     _RECORD_3419,
     _RECORD_3612,
     _RECORD_3629,
     _RECORD_3706,
-    _RECORD_3812_A,
+    RECORD_3812_A,
     _RECORD_3812_B,
     _RECORD_3817,
     _RECORD_3902,
