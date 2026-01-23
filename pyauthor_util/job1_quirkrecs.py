@@ -5,15 +5,41 @@
 
 from pyauthor_util import author
 from py import my_html
+from pyauthor_util._RECORD_0709 import RECORD_0709
+from pyauthor_util._RECORD_0721 import RECORD_0721
+from pyauthor_util._RECORD_0906 import RECORD_0906
+from pyauthor_util._RECORD_0935 import RECORD_0935
+from pyauthor_util._RECORD_1001 import RECORD_1001
+from pyauthor_util._RECORD_1015 import RECORD_1015
+from pyauthor_util._RECORD_1103 import RECORD_1103
+from pyauthor_util._RECORD_1106 import RECORD_1106
+from pyauthor_util._RECORD_1107 import RECORD_1107
+from pyauthor_util._RECORD_1113 import RECORD_1113
+from pyauthor_util._RECORD_1508 import RECORD_1508
+from pyauthor_util._RECORD_1613 import RECORD_1613
+from pyauthor_util._RECORD_1620 import RECORD_1620
+from pyauthor_util._RECORD_1704 import RECORD_1704
+from pyauthor_util._RECORD_1706 import RECORD_1706
+from pyauthor_util._RECORD_1711 import RECORD_1711
+from pyauthor_util._RECORD_1809 import RECORD_1809
+from pyauthor_util._RECORD_2230_B import RECORD_2230_B
+from pyauthor_util._RECORD_2416 import RECORD_2416
+from pyauthor_util._RECORD_2614 import RECORD_2614
+from pyauthor_util._RECORD_3133 import RECORD_3133
+from pyauthor_util._RECORD_3312 import RECORD_3312
+from pyauthor_util._RECORD_3419 import RECORD_3419
+from pyauthor_util._RECORD_3706 import RECORD_3706
+from pyauthor_util._RECORD_3812_B import RECORD_3812_B
+from pyauthor_util._RECORD_3817 import RECORD_3817
+from pyauthor_util._RECORD_3906 import RECORD_3906
+from pyauthor_util._RECORD_4010 import RECORD_4010
+from pyauthor_util._RECORD_4026 import RECORD_4026
+from pyauthor_util._RECORD_4213 import RECORD_4213
 from pyauthor_util.job1_common import (
     CAM1753_PAGE_URL_BASE,
-    suffix,
     correctly_ignores,
     BHQ_COMMENT_TBHQ_NELSWHERE,
-    BHQ_COMMENT_XELSEWHERE,
-    BHQ_COMMENT_XELSEWHERE_DUBIOUS,
     BHQ_COMMENT_CMN_0409_AND_SIMILAR,
-    BHQ_COMMENT_LIKE_0409,
 )
 from pyauthor_util.qr_0121 import RECORD_0121
 from pyauthor_util.qr_0629 import RECORD_0629
@@ -69,48 +95,6 @@ _RECORD_0417 = {
     "bhq-comment": _BHQ_COMMENT_0417,
     "noted-by": "tBHQ-nBHL-nDM",
 }
-_RECORD_0709 = {
-    "bhla-i": 5,
-    "cv": "7:9",
-    "lc": "יַעֲלֽ͏ֶה׃",
-    "what-is-weird": "סילוק precedes סגול",
-    "mam": "יַעֲלֶֽה׃",
-    "comment": "",
-    "highlight": 3,
-    "lc-loc": {"page": "399A", "column": 1, "line": 14},
-    "lc-img": "0709.png",
-    "bhq-comment": BHQ_COMMENT_TBHQ_NELSWHERE,
-    "noted-by": "tBHQ-nBHL-xDM",
-}
-_RECORD_0721 = {
-    "bhla-i": 6,
-    "cv": "7:21",
-    "lc": "וְשִׁ֖חֲרְתַּ֣נִי",
-    "what-is-weird": "פתח on ח is חטף",
-    "mam": "וְשִׁ֖חַרְתַּ֣נִי",
-    "comment": [
-        "It doesn’t make sense to have a חטף vowel (aka a חטף שווא)",
-        " followed by a simple שווא.",
-        " Yet, the manuscript image clearly shows this."
-    ],
-    "highlight": 3,
-    "lc-loc": {"page": "399A", "column": 2, "line": 3},
-    "lc-img": "0721.png",
-    "bhq-comment": BHQ_COMMENT_TBHQ_NELSWHERE,
-    "noted-by": "tBHQ-nBHL-nDM",
-}
-_RECORD_0906 = {
-    "cv": "9:6",
-    "lc": "יִתְפַלָּצֽוּן׃",
-    "what-is-weird": "פ lacks דגש",
-    "mam": "יִתְפַּלָּצֽוּן׃",
-    "comment": "There is a bump on the פ that might be a misplaced דגש.",
-    "highlight": 3,
-    "lc-loc": {"page": "399B", "column": 1, "line": 12, "including-blank-lines": 1},
-    "lc-img": "0906.png",
-    "bhq-comment": BHQ_COMMENT_TBHQ_NELSWHERE,
-    "noted-by": "tBHQ-xBHL-xDM-nWLC",
-}
 _BHQ_COMMENT_0914_AND_0930 = [
     "$BHQ silently supplies the סילוק that is the consensus expectation,",
     " despite little or no evidence for it in μL.",
@@ -143,102 +127,6 @@ _RECORD_0930 = {
     "bhq-comment": _BHQ_COMMENT_0914_AND_0930,
     "noted-by": "xBHQ-nBHL-xDM",
 }
-_RECORD_0935 = {
-    "bhla-i": 11,
-    "cv": "9:35",
-    "lc": "אַֽ֭דַבְּרָה",
-    "what-is-weird": "פתח on א is not חטף",
-    "mam": "אֲֽ֭דַבְּרָה",
-    "comment": "",
-    "highlight": 1,
-    "lc-loc": {"page": "399B", "column": 2, "line": -8},
-    "lc-img": "0935.png",
-    "bhq-comment": BHQ_COMMENT_TBHQ_NELSWHERE,
-    "noted-by": "tBHQ-nBHL-nDM",
-}
-_RECORD_1001 = {
-    "bhla-i": 12,
-    "cv": "10:1",
-    "lc": "אֲ֝דַבְּרָה֗",
-    "what-is-weird": "רביע is on ה not ר",
-    "mam": "אֲ֝דַבְּרָ֗ה",
-    "comment": "",
-    "highlight-lc": 5,
-    "highlight-mam": 4,
-    "lc-loc": {"page": "399B", "column": 2, "line": -6},
-    "lc-img": "1001.png",
-    "bhq-comment": BHQ_COMMENT_TBHQ_NELSWHERE,
-    "noted-by": "tBHQ-nBHL-xDM",
-}
-_RECORD_1015 = {
-    "bhla-i": 13,
-    "cv": "10:15",
-    "lc": "עָנְיֽ͏ִי׃",
-    "what-is-weird": "סילוק precedes חיריק",
-    "mam": "עׇנְיִֽי׃",
-    "comment": "",
-    "highlight": 3,
-    "lc-loc": {"page": "400A", "column": 1, "line": 14},
-    "lc-img": "1015.png",
-    "bhq-comment": BHQ_COMMENT_TBHQ_NELSWHERE,
-    "noted-by": "tBHQ-nBHL-xDM",
-}
-_RECORD_1103 = {
-    "bhla-i": 14,
-    "cv": "11:3",
-    "lc": "יַחֲרִ֑ישׁו",
-    "what-is-weird": "שורוק dot is missing",
-    "mam": "יַחֲרִ֑ישׁוּ",
-    "comment": "",
-    "highlight": 6,
-    "lc-loc": {"page": "400A", "column": 1, "line": -1},
-    "lc-img": "1103.png",
-    "bhq-comment": BHQ_COMMENT_TBHQ_NELSWHERE,
-    "noted-by": "tBHQ-nBHL-xDM-nWLC",
-}
-_RECORD_1106 = {
-    "bhla-i": 15,
-    "cv": "11:6",
-    "lc": "אֱ֝ל֗וֹהַ",
-    "what-is-weird": "ה has no מפיק",
-    "mam": "אֱ֝ל֗וֹהַּ",
-    "comment": "",
-    "highlight": 4,
-    "lc-loc": {"page": "400A", "column": 2, "line": 5},
-    "lc-img": "1106.png",
-    "bhq-comment": BHQ_COMMENT_LIKE_0409,
-    "noted-by": "nBHQ-nBHL-nDM",
-    # Above, note BHQ-... not tBHQ-...
-    # I.e. note that BHQ not only transcribed this right,
-    # but also noted it in the (bottom-of-page) critical apparatus.
-}
-_RECORD_1107 = {
-    "bhla-i": 16,
-    "cv": "11:7",
-    "lc": "אֱל֣וֹהַ",
-    "what-is-weird": "ה has no מפיק",
-    "mam": "אֱל֣וֹהַּ",
-    "comment": "",
-    "highlight": 4,
-    "lc-loc": {"page": "400A", "column": 2, "line": 6},
-    "lc-img": "1107.png",
-    "bhq-comment": BHQ_COMMENT_LIKE_0409,
-    "noted-by": "tBHQ-nBHL-nDM",
-}
-_RECORD_1113 = {
-    "cv": "11:13",
-    "lc": "אַ֭תָּ֗ה",
-    "what-is-weird": "רביע on ת fights דחי",
-    "mam": "אַ֭תָּה",
-    "comment": "",
-    "highlight": 2,
-    "lc-loc": {"page": "400A", "column": 2, "line": 13},
-    "lc-img": "1113.png",
-    "bhq-comment": BHQ_COMMENT_TBHQ_NELSWHERE,
-    "noted-by": "tBHQ-xBHL-xDM-nWLC",
-    "noted-by-mam": True,
-    "noted-by-uxlc": True,
-}
 _BHQ_COMMENT_1203 = [
     "$BHQ silently supplies the מקף that is the consensus expectation,",
     " despite no evidence for it in μL.",
@@ -255,19 +143,6 @@ _RECORD_1203 = {
     "lc-img": "1203.png",
     "bhq-comment": _BHQ_COMMENT_1203,
     "noted-by": "xBHQ-nBHL-nDM",
-}
-_RECORD_1508 = {
-    "bhla-i": 19,
-    "cv": "15:8",
-    "lc": "אֱל֣וֹהַ",
-    "what-is-weird": "ה has no מפיק",
-    "mam": "אֱל֣וֹהַּ",
-    "comment": "",
-    "highlight": 4,
-    "lc-loc": {"page": "401A", "column": 2, "line": -7},
-    "lc-img": "1508.png",
-    "bhq-comment": BHQ_COMMENT_LIKE_0409,
-    "noted-by": "tBHQ-nBHL-nDM",
 }
 _COMMENT_1604 = [
     "Though it is not relevant to the point at hand, which is the presence of a מקף,",
@@ -290,86 +165,6 @@ _RECORD_1604 = {
     "lc-img": "1604.png",
     "bhq-comment": _BHQ_COMMENT_1604,
     "noted-by": "tBHQ-nBHL-xDM",
-}
-_RECORD_1613 = {
-    "bhla-i": 22,
-    "cv": "16:13",
-    "lc": "מְרֵרָֽתִי׃",
-    "what-is-weird": "סילוק is on 2nd ר not ת",
-    "mam": "מְרֵרָתִֽי׃",
-    "comment": "",
-    "highlight-lc": 3,
-    "highlight-mam": 4,
-    "lc-loc": {"page": "401B", "column": 2, "line": -10},
-    "lc-img": "1613.png",
-    "bhq-comment": BHQ_COMMENT_TBHQ_NELSWHERE,
-    "noted-by": "tBHQ-nBHL-nDM",
-}
-_RECORD_1620 = {
-    "bhla-i": 23,
-    "cv": "16:20",
-    "lc": "אֱ֝ל֗וֹהַ",
-    "what-is-weird": "ה has no מפיק",
-    "mam": "אֱ֝ל֗וֹהַּ",
-    "comment": "",
-    "highlight": 4,
-    "lc-loc": {"page": "401B", "column": 2, "line": -2},
-    "lc-img": "1620.png",
-    "bhq-comment": BHQ_COMMENT_LIKE_0409,
-    "noted-by": "tBHQ-nBHL-nDM",
-}
-_RECORD_1704 = {
-    "cv": "17:4",
-    "lc": "מִּשָּׂ֑כֶל",
-    "lc-q": "(?)",
-    "what-is-weird": "מ may have דגש",
-    "mam": "מִשָּׂ֑כֶל",
-    "comment": [
-        "The color image of μL reveals this דגש to be unlikely.",
-        " Surprisingly, $BHL includes this דגש in its body text rather than noting it in $BHL_A.",
-    ],
-    "highlight": 1,
-    "lc-loc": {"page": "402A", "column": 1, "line": 5},
-    "lc-img": "1704.png",
-    "bhq-comment": correctly_ignores("דגש", "17:4"),
-    "noted-by": "xBHQ-xBHL-xDM-nWLC",
-    "uxlc-needs-fix": [
-        "UXLC should do one of the following.",
-        "(1) Remove the דגש from מ and note the uncertainty in transcription.",
-        "(2) Leave the דגש and note the divergence from consensus as well as the uncertainty in transcription.",
-    ],
-    # This is a bracket-p note in WLC.
-    # We take it to note a quirk because MAM reveals that WLC is diverging from consensus here.
-    # (Normally we only take WLC to note a quirk in the case of bracket-1 notes.)
-}
-_RECORD_1706 = {
-    "cv": "17:6",
-    "lc": "וְתֹ֖פֶתּ",
-    "what-is-weird": "final ת has דגש",
-    "mam": "וְתֹ֖פֶת",
-    "comment": [
-        "A דגש in a final ת doesn’t make sense without a קמץ or a שווא נח below.",
-        " But the dot is convincing.",
-    ],
-    "highlight": 4,
-    "lc-loc": {"page": "402A", "column": 1, "line": 7},
-    "lc-img": "1706.png",
-    "bhq-comment": BHQ_COMMENT_XELSEWHERE,
-    "noted-by": "nBHQ-xBHL-xDM",
-    "uxlc-needs-fix": True,
-}
-_RECORD_1711 = {
-    "cv": "17:11",
-    "lc": "לְבָבִּֽי׃",
-    "what-is-weird": "second ב has דגש",
-    "mam": "לְבָבִֽי׃",
-    "comment": "",
-    "highlight": 3,
-    "lc-loc": {"page": "402A", "column": 1, "line": 13},
-    "lc-img": "1711.png",
-    "bhq-comment": BHQ_COMMENT_XELSEWHERE,
-    "noted-by": "nBHQ-xBHL-xDM",
-    "uxlc-needs-fix": True,
 }
 _BHQ_COMMENT_1804_A = [
     "$BHQ silently ignores the possible שווא part of the possible חטף פתח.",
@@ -440,24 +235,6 @@ _RECORD_1806 = {
     "lc-img": "1806.png",
     "bhq-comment": _BHQ_COMMENT_1806,
     "noted-by": "tBHQ-nBHL-xDM",
-}
-_RECORD_1809 = {
-    "cv": "18:9",
-    "lc": "בְּעָּקֵ֣ב",
-    "lc-q": "(?)",
-    "what-is-weird": "ע may have דגש",
-    "mam": "בְּעָקֵ֣ב",
-    "comment": [
-        "A דגש in a ע doesn’t make sense.",
-        " But the dot is convincing,",
-        " despite being a little close to the right arm of the ע.",
-    ],
-    "highlight": 2,
-    "lc-loc": {"page": "402A", "column": 2, "line": 2},
-    "lc-img": "1809.png",
-    "bhq-comment": BHQ_COMMENT_XELSEWHERE_DUBIOUS,
-    "noted-by": "nBHQ-xBHL-xDM",
-    "uxlc-needs-fix": True,
 }
 _COMMENT_2125 = [
     "The dot is suspiciously brown rather than black,",
@@ -562,39 +339,6 @@ _RECORD_2228 = {
     "bhq-comment": _BHQ_COMMENT_2228,
     "noted-by": "tBHQ-nBHL-xDM",
 }
-_RECORD_2230_B = {
-    "cv": "22:30",
-    "n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
-    "lc": "וְ֝נִּמְלַ֗ט",
-    "lc-q": "(?)",
-    "what-is-weird": "נ may have דגש",
-    "mam": "וְ֝נִמְלַ֗ט",
-    "comment": "The dot in question is suspiciously smaller than nearby ones.",
-    "highlight": 2,
-    "lc-loc": {"page": "403B", "column": 2, "line": 4},
-    "lc-img": "2230_B.png",
-    "bhq-comment": BHQ_COMMENT_XELSEWHERE_DUBIOUS,
-    "noted-by": "nBHQ-xBHL-xDM",
-    "uxlc-needs-fix": True,
-}
-_RECORD_2416 = {
-    "cv": "24:16",
-    "lc": "יָ֥דְּֿעוּ",
-    "lc-q": "(?)",
-    "what-is-weird": "דגש may fight with רפה",
-    "mam": "יָ֥דְעוּ",
-    "comment": [
-        "A דגש on a letter with רפה doesn’t make sense.",
-        " The dot in question is suspiciously larger than nearby ones,",
-        " and looks different from them in other ways.",
-    ],
-    "highlight": 2,
-    "lc-loc": {"page": "404A", "column": 1, "line": -12},
-    "lc-img": "2416.png",
-    "bhq-comment": BHQ_COMMENT_XELSEWHERE_DUBIOUS,
-    "noted-by": "nBHQ-xBHL-xDM",
-    "uxlc-needs-fix": True,
-}
 _COMMENT_2421 = [
     "Perhaps there is some super-faint evidence of a third dot that would make a סגול,",
     " but this could be just wishful thinking.",
@@ -619,35 +363,6 @@ _RECORD_2421 = {
     "lc-img": "2421.png",
     "bhq-comment": _BHQ_COMMENT_2421,
     "noted-by": "xBHQ-nBHL-nDM",
-}
-_RECORD_2614 = {
-    "cv": "26:14",
-    "lc": "גְּ֝בוּרוֹתָ֗יו",
-    "what-is-weird": "חולם becomes מלא in קרי",
-    "mam": "גְּ֝בוּרֹתָ֗יו",
-    "comment": [
-        "The consensus is that חולם stays חסר in the קרי, i.e. ",
-        [suffix("רתו"), " in the כתיב merely expands to "],
-        [suffix("רתיו"), " in the קרי."],
-        " In contrast to the consensus, in μL, ",
-        [suffix("רתו"), " in the כתיב expands all the way to "],
-        [suffix("רותיב"), " in the קרי."],
-        " The marginal קרי note in μL is a little hard to parse until you realize",
-        " that it is “invaded” from above by the descender of a big dotted ק.",
-    ],
-    "highlight-lc": 5,
-    "lc-loc": {"page": "404A", "column": 2, "line": -5},
-    "lc-img": "2614.png",
-    "aleppo-img": "Aleppo-2614.png",
-    "aleppo-page-url": "https://www.mgketer.org/mikra/29/26/14/mg/106",
-    "bhq-comment": [
-        "$BHS does not catch this quirk in μL: it reflects the consensus rather than μL.",
-        " $BHQ half-fixes the error in $BHS:",
-        " it updates its marginal קרי note to reflect μL rather than the consensus,",
-        " but it does not correspondingly update its bottom-of-page critical apparatus note.",
-        " This is similar to what happened with the μL קרי of ידעתה השחר in 38:12.",
-    ],
-    "noted-by": "xBHQ-xBHL-xDM-nWLC",
 }
 _COMMENT_2702 = [
     "Perhaps there is some super-faint evidence of a מקף that was ignored during re-inking.",
@@ -776,20 +491,6 @@ _RECORD_3107 = {
     #    Though it attempts to transcribe the quirk, it does so inaccurately.
     #    Though it notes the quirk, it does so inaccurately.
 }
-_RECORD_3133 = {
-    "bhla-i": 38,
-    "cv": "31:33",
-    "lc": "עֲוֺֽנִי׃",
-    "what-is-weird": "סילוק is on ו not נ",
-    "mam": "עֲוֺנִֽי׃",
-    "comment": "",
-    "highlight-lc": 2,
-    "highlight-mam": 3,
-    "lc-loc": {"page": "405B", "column": 2, "line": -3},
-    "lc-img": "3133.png",
-    "bhq-comment": BHQ_COMMENT_TBHQ_NELSWHERE,
-    "noted-by": "tBHQ-nBHL-nDM",
-}
 _BHQ_COMMENT_3206 = [
     *_BHQ_COMMENT_CMN_3105_3206,
     "31:5 is similar and discusses the matter at greater length.",
@@ -806,32 +507,6 @@ _RECORD_3206 = {
     "lc-img": "3206.png",
     "bhq-comment": _BHQ_COMMENT_3206,
     "noted-by": "xBHQ-nBHL-xDM",
-}
-_RECORD_3312 = {
-    "bhla-i": 40,
-    "cv": "33:12",
-    "lc": "אֱ֝ל֗וֹהַ",
-    "what-is-weird": "ה has no מפיק",
-    "mam": "אֱ֝ל֗וֹהַּ",
-    "comment": "",
-    "highlight": 4,
-    "lc-loc": {"page": "406B", "column": 1, "line": 2},
-    "lc-img": "3312.png",
-    "bhq-comment": BHQ_COMMENT_LIKE_0409,
-    "noted-by": "tBHQ-nBHL-nDM",
-}
-_RECORD_3419 = {
-    "bhla-i": 42,
-    "cv": "34:19",
-    "lc": "נִּכַּר־",
-    "what-is-weird": "נ has דגש",
-    "mam": "נִכַּר־",
-    "comment": "The possible דגש is faint, especially compared with the adjacent דגש on כ.",
-    "highlight": 1,
-    "lc-loc": {"page": "406B", "column": 2, "line": -2},
-    "lc-img": "3419.png",
-    "bhq-comment": correctly_ignores("דגש", "34:19"),
-    "noted-by": "xBHQ-nBHL-nDM",
 }
 _BHQ_COMMENT_3612 = [
     "Here $BHQ has a typo:",
@@ -886,65 +561,6 @@ _RECORD_3629 = {
     "bhq-comment": correctly_ignores("געיה", "36:29", "large"),
     "noted-by": "tBHQ-nBHL-xDM",
 }
-_RECORD_3706 = {
-    "bhla-i": 44,
-    "cv": "37:6",
-    "lc": "לַשֶּׁ֨לַג׀",
-    "what-is-weird": "2nd ל has פתח not סגול",
-    "mam": "לַשֶּׁ֨לֶג׀",
-    "comment": "",
-    "highlight": 3,
-    "lc-loc": {"page": "407B", "column": 2, "line": 7},
-    "lc-img": "3706.png",
-    "bhq-comment": BHQ_COMMENT_TBHQ_NELSWHERE,
-    "noted-by": "tBHQ-nBHL-xDM-nWLC",
-}
-_RECORD_3812_B = {
-    "cv": "38:12",
-    "n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
-    "lc": "יִדַּ֖עְתָּה הַשַּׁ֣חַר",
-    "what-is-weird": "ה copied not moved in קרי",
-    "mam": "יִדַּ֖עְתָּ הַשַּׁ֣חַר",
-    "comment": [
-        "The consensus is that this is one of those כתיב/קרי cases",
-        " where the word boundary shifts from being after a ה to before that ה.",
-        " I.e. ידעתה שחר becomes ידעת השחר.",
-        " I.e. the ה that is at the end of the first word in the כתיב",
-        " moves to the start of the second word in the קרי.",
-        " Similar cases include",
-        " 2 Samuel 5:2 (the כתיב is הייתה מוציא) and",
-        " Ezekiel 42:9 (the כתיב is ומתחתה לשכות).",
-        " In contrast to the consensus, in going from כתיב to קרי,",
-        [" μL can be though of as having ", my_html.bold("copied")],
-        " the ה to the second word rather than moving it.",
-    ],
-    "highlight-lc": 5,
-    "lc-loc": {"page": "408A", "column": 1, "line": -11},
-    "lc-img": "3812_B.png",
-    "aleppo-img": "Aleppo-3812_B.png",
-    "aleppo-page-url": "https://www.mgketer.org/mikra/29/38/1/mg/106",
-    "bhq-comment": [
-        "$BHS does not catch this quirk in μL: it reflects the consensus rather than μL.",
-        " $BHQ half-fixes the error in $BHS:",
-        " it updates its marginal קרי note to reflect μL rather than the consensus,",
-        " but it does not correspondingly update its bottom-of-page critical apparatus note.",
-        " This is similar to what happened with 26:14.",
-    ],
-    "noted-by": "xBHQ-xBHL-xDM-nWLC",
-}
-_RECORD_3817 = {
-    "cv": "38:17",
-    "lc": "צַלְמָּ֣וֶת",
-    "what-is-weird": "מ has דגש",
-    "mam": "צַלְמָ֣וֶת",
-    "comment": "",
-    "highlight": 3,
-    "lc-loc": {"page": "408A", "column": 1, "line": -5},
-    "lc-img": "3817.png",
-    "bhq-comment": BHQ_COMMENT_XELSEWHERE,
-    "noted-by": "nBHQ-xBHL-xDM",
-    "uxlc-needs-fix": True,
-}
 _COMMENT_3902 = [
     "The mark in question is very heavy,",
     " having a stroke width more typical of a letter-stroke than of a niqqud-stroke.",
@@ -972,20 +588,6 @@ _RECORD_3902 = {
     # But it is not accompanied by a note, and without a note, BHQ needs to make weird things in μL
     # look weird. So רביע is not the right transcription for a diplomatic edition having no note
     # in this location.
-}
-_RECORD_3906 = {
-    "bhla-i": 47,
-    "cv": "39:6",
-    "lc": "מְלֵֽחָה׃",
-    "what-is-weird": "סילוק is on ל not ח",
-    "mam": "מְלֵחָֽה׃",
-    "comment": "",
-    "highlight-lc": 2,
-    "highlight-mam": 3,
-    "lc-loc": {"page": "408B", "column": 1, "line": 3},
-    "lc-img": "3906.png",
-    "bhq-comment": BHQ_COMMENT_TBHQ_NELSWHERE,
-    "noted-by": "tBHQ-nBHL-nDM",
 }
 _COMMENT_3913 = [
     "A more charitable interpretation of the image is that the רביע is present",
@@ -1025,34 +627,6 @@ _RECORD_3920 = {
     "bhq-comment": BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-nDM",
 }
-_RECORD_4010 = {
-    "bhla-i": 50,
-    "cv": "40:10",
-    "lc-q": "(?)",
-    "lc": "גָֽא֣וֹן",
-    "what-is-weird": "געיה may be present (on ג)",
-    "mam": "גָא֣וֹן",
-    "comment": "The mark in question could easily be accidental.",
-    "highlight": 1,
-    "lc-loc": {"page": "408B", "column": 2, "line": -11},
-    "lc-img": "4010.png",
-    "bhq-comment": BHQ_COMMENT_TBHQ_NELSWHERE,
-    "noted-by": "tBHQ-nBHL-xDM-nWLC",
-}
-_RECORD_4026 = {
-    "bhla-i": 51,
-    "cv": "40:26",
-    "lc": "לֶֽחֱיוֹ׃",
-    "what-is-weird": "סילוק on ל not $yod (י)",
-    "mam": "לֶחֱיֽוֹ׃",
-    "comment": "",
-    "highlight-lc": 1,
-    "highlight-mam": 3,
-    "lc-loc": {"page": "409A", "column": 1, "line": 8},
-    "lc-img": "4026.png",
-    "bhq-comment": BHQ_COMMENT_TBHQ_NELSWHERE,
-    "noted-by": "tBHQ-nBHL-nDM",
-}
 _BHQ_COMMENT_4125 = [
     "$BHQ silently supplies the סילוק that is the consensus expectation,",
     " despite no evidence for it in μL.",
@@ -1070,54 +644,41 @@ _RECORD_4125 = {
     "bhq-comment": _BHQ_COMMENT_4125,
     "noted-by": "xBHQ-nBHL-xDM",
 }
-_RECORD_4213 = {
-    "cv": "42:13",
-    "lc": "בָנֽוֹת׃",
-    "what-is-weird": "ב lacks דגש",
-    "mam": "בָּנֽוֹת׃",
-    "comment": "",
-    "highlight": 1,
-    "lc-loc": {"page": "409B", "column": 1, "line": -9, "including-blank-lines": 1},
-    "lc-img": "4213.png",
-    "bhq-comment": BHQ_COMMENT_XELSEWHERE,
-    "noted-by": "nBHQ-xBHL-xDM",
-    "uxlc-needs-fix": True,
-}
 QUIRKRECS = [
     RECORD_0121,
     _RECORD_0409,
     _RECORD_0417,
     RECORD_0629,
     RECORD_0701,
-    _RECORD_0709,
-    _RECORD_0721,
+    RECORD_0709,
+    RECORD_0721,
     RECORD_0801,
     RECORD_0807,
-    _RECORD_0906,
+    RECORD_0906,
     _RECORD_0914,
     _RECORD_0930,
-    _RECORD_0935,
-    _RECORD_1001,
-    _RECORD_1015,
-    _RECORD_1103,
-    _RECORD_1106,
-    _RECORD_1107,
-    _RECORD_1113,
+    RECORD_0935,
+    RECORD_1001,
+    RECORD_1015,
+    RECORD_1103,
+    RECORD_1106,
+    RECORD_1107,
+    RECORD_1113,
     _RECORD_1203,
     RECORD_1216,
     RECORD_1409,
-    _RECORD_1508,
+    RECORD_1508,
     RECORD_1534,
     _RECORD_1604,
-    _RECORD_1613,
-    _RECORD_1620,
-    _RECORD_1704,
-    _RECORD_1706,
-    _RECORD_1711,
+    RECORD_1613,
+    RECORD_1620,
+    RECORD_1704,
+    RECORD_1706,
+    RECORD_1711,
     _RECORD_1804_A,
     _RECORD_1804_B,
     _RECORD_1806,
-    _RECORD_1809,
+    RECORD_1809,
     RECORD_1905,
     RECORD_1916,
     _RECORD_2125,
@@ -1125,10 +686,10 @@ QUIRKRECS = [
     _RECORD_2221_B,
     _RECORD_2228,
     RECORD_2230_A,
-    _RECORD_2230_B,
-    _RECORD_2416,
+    RECORD_2230_B,
+    RECORD_2416,
     _RECORD_2421,
-    _RECORD_2614,
+    RECORD_2614,
     _RECORD_2702,
     _RECORD_2808,
     RECORD_2826,
@@ -1136,23 +697,23 @@ QUIRKRECS = [
     _RECORD_2919,
     _RECORD_3105,
     _RECORD_3107,
-    _RECORD_3133,
+    RECORD_3133,
     _RECORD_3206,
-    _RECORD_3312,
+    RECORD_3312,
     RECORD_3330,
-    _RECORD_3419,
+    RECORD_3419,
     _RECORD_3612,
     _RECORD_3629,
-    _RECORD_3706,
+    RECORD_3706,
     RECORD_3812_A,
-    _RECORD_3812_B,
-    _RECORD_3817,
+    RECORD_3812_B,
+    RECORD_3817,
     _RECORD_3902,
-    _RECORD_3906,
+    RECORD_3906,
     _RECORD_3913,
     _RECORD_3920,
-    _RECORD_4010,
-    _RECORD_4026,
+    RECORD_4010,
+    RECORD_4026,
     _RECORD_4125,
-    _RECORD_4213,
+    RECORD_4213,
 ]
