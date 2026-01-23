@@ -128,3 +128,16 @@ RECORD_1804_CMN_AB = {
     "lc-loc": {"page": "402A", "column": 1, "line": -4},
     "lc-img": "1804.png",
 }
+RECORD_2221_CMN_AB = {
+    "cv": "22:21",
+    "lc-loc": {"page": "403B", "column": 1, "line": -6},
+    "lc-img": "2221.png",
+}
+BHQ_COMMENT_2808_AND_2911 = [
+    "$BHQ silently supplies the חיריק that is the consensus expectation,",
+    " despite no evidence for it in μL.",
+]
+BHQ_COMMENT_CMN_3105_3206 = [
+    "$BHQ silently supplies the marks in the vowel-then-accent order that is",
+    " the consensus expectation, in clear contradiction of μL here.",
+]

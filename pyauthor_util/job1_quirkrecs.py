@@ -3,8 +3,23 @@
 # XXX review quirks-Daat-Miqra.txt
 # XXX review quirks-BHQ.txt
 
-from pyauthor_util import author
-from py import my_html
+from pyauthor_util.qr_2228 import RECORD_2228
+from pyauthor_util.qr_3105 import RECORD_3105
+from pyauthor_util.qr_3107 import RECORD_3107
+from pyauthor_util.qr_3206 import RECORD_3206
+from pyauthor_util.qr_3612 import RECORD_3612
+from pyauthor_util.qr_4125 import RECORD_4125
+from pyauthor_util.qr_2221_A import RECORD_2221_A
+from pyauthor_util.qr_2221_B import RECORD_2221_B
+from pyauthor_util.qr_2421 import RECORD_2421
+from pyauthor_util.qr_2702 import RECORD_2702
+from pyauthor_util.qr_2919 import RECORD_2919
+from pyauthor_util.qr_3629 import RECORD_3629
+from pyauthor_util.qr_3902 import RECORD_3902
+from pyauthor_util.qr_3913 import RECORD_3913
+from pyauthor_util.qr_2808 import RECORD_2808
+from pyauthor_util.qr_2911 import RECORD_2911
+from pyauthor_util.qr_3920 import RECORD_3920
 from pyauthor_util.qr_1203 import RECORD_1203
 from pyauthor_util.qr_1804_A import RECORD_1804_A
 from pyauthor_util.qr_1804_B import RECORD_1804_B
@@ -14,11 +29,6 @@ from pyauthor_util.qr_2125 import RECORD_2125
 from pyauthor_util.qr_0417 import RECORD_0417
 from pyauthor_util.qr_0914 import RECORD_0914
 from pyauthor_util.qr_0930 import RECORD_0930
-from pyauthor_util.job1_common import (
-    CAM1753_PAGE_URL_BASE,
-    correctly_ignores,
-    BHQ_COMMENT_TBHQ_NELSEWHERE,
-)
 from pyauthor_util.qr_0709 import RECORD_0709
 from pyauthor_util.qr_0721 import RECORD_0721
 from pyauthor_util.qr_0906 import RECORD_0906
@@ -64,393 +74,6 @@ from pyauthor_util.qr_2826 import RECORD_2826
 from pyauthor_util.qr_3330 import RECORD_3330
 from pyauthor_util.qr_3812_A import RECORD_3812_A
 from pyauthor_util.qr_0409 import RECORD_0409
-_COMMENT_2221_A = [
-    "A dot under the מ of עמו is fairly clear.",
-    " It is (charitably) not transcribed by $BHL_A,",
-    " presumably based on the consensus expectation that it is absent.",
-]
-_COMMENT_2221_B = [
-    "Perhaps some super-faint remains of an אתנח under ל can be seen.",
-    " The top dot of the שווא (under the ש) is super-faint.",
-    " See my entry for 22:21 עמי for μA and μY images.",
-]
-_BHQ_COMMENT_2221_A = [
-    "$BHQ fails to note that the אתנח it transcribes on עמו",
-    " disagrees with μA and μY.",
-]
-_BHQ_COMMENT_2221_B = [
-    "$BHQ (charitably) transcribes the top dot of the שווא",
-    " using, as one often has to, faint evidence bolstered by consensus expectations.",
-    " $BHQ notes (as does $BHS) that whereas the ל of ושלם is unpointed in μL,",
-    " that ל has קמץ and אתנח in μA and μY.",
-]
-_CAM1753_IMG_INTRO_2221 = [
-    "note that instead of a masorah circle, μY uses a pair of above-dots",
-    " as a “callout” for a Masorah parva note;",
-    " hence the pair of above-dots above ל in ושלם.",
-]
-_RECORD_2221_CMN_AB = {
-    "cv": "22:21",
-    "lc-loc": {"page": "403B", "column": 1, "line": -6},
-    "lc-img": "2221.png",
-}
-_RECORD_2221_A = {
-    **_RECORD_2221_CMN_AB,
-    "bhla-i": 29,
-    "n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
-    "lc-q": "(?)",
-    "lc": "עִמּ֑וֹ",
-    "what-is-weird": "אתנח not מונח",
-    "mam": "עִמּ֣וֹ",
-    "comment": _COMMENT_2221_A,
-    "highlight": 2,
-    "bhq-comment": _BHQ_COMMENT_2221_A,
-    "noted-by": "tBHQ-nBHL-xDM-nWLC",
-    "aleppo-page-url": "https://www.mgketer.org/mikra/29/22/1/mg/106",
-    "aleppo-img": "Aleppo-2221.png",
-    "cam1753-page-url": f"{CAM1753_PAGE_URL_BASE}/n83/mode/1up",
-    "cam1753-img": "Cam1753-2221.png",
-    "cam1753-img-intro": _CAM1753_IMG_INTRO_2221,
-}
-_RECORD_2221_B = {
-    **_RECORD_2221_CMN_AB,
-    "n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
-    "lc": "וּשְׁלם",
-    "what-is-weird": "ל lacks קמץ־אתנח",
-    "mam": "וּשְׁלָ֑ם",
-    "comment": _COMMENT_2221_B,
-    "highlight": 3,
-    "lc-loc": {"page": "403B", "column": 1, "line": -6},
-    "lc-img": "2221.png",
-    "bhq-comment": _BHQ_COMMENT_2221_B,
-    "noted-by": "nBHQ-xBHL-xDM-nWLC",
-}
-_BHQ_COMMENT_2228 = [
-    "$BHQ places the mark a little left of center.",
-    # XXX add BHQ image
-    " Though this placement is odd,",
-    " this makes it clear that a טרחא was intended by $BHQ rather than a דחי.",
-    " Thus $BHQ somewhat-accurately transcribes the quirk in μL,",
-    " but should have noted the quirk.",
-]
-_RECORD_2228 = {
-    "bhla-i": 30,
-    "cv": "22:28",
-    "lc": "א֖וֹמֶר",
-    "what-is-weird": "דחי is placed like a טרחא",
-    "mam": "אֹ֭מֶר",
-    "comment": "The מלא/חסר spelling difference is not important to us here.",
-    "highlight": 1,
-    "lc-loc": {"page": "403B", "column": 2, "line": 2},
-    "lc-img": "2228.png",
-    "bhq-comment": _BHQ_COMMENT_2228,
-    "noted-by": "tBHQ-nBHL-xDM",
-}
-_COMMENT_2421 = [
-    "Perhaps there is some super-faint evidence of a third dot that would make a סגול,",
-    " but this could be just wishful thinking.",
-    " Note that there is a third dot above the two clearer dots,",
-    " but I take that to be part of the ע that did not flake off like its neighboring ink did.",
-]
-_BHQ_COMMENT_2421 = [
-    "$BHQ silently supplies the סגול that is the consensus expectation.",
-    " I.e. despite little or no evidence for it in μL,",
-    " $BHQ silently infers a third dot centered below the two clearer dots.",
-]
-_RECORD_2421 = {
-    "bhla-i": 31,
-    "cv": "24:21",
-    "lc-q": "(?)",
-    "lc": "רֹעֵ֣ה",
-    "what-is-weird": "maybe צירה not סגול",
-    "mam": "רֹעֶ֣ה",
-    "comment": _COMMENT_2421,
-    "highlight": 2,
-    "lc-loc": {"page": "404A", "column": 2, "line": -2},
-    "lc-img": "2421.png",
-    "bhq-comment": _BHQ_COMMENT_2421,
-    "noted-by": "xBHQ-nBHL-nDM",
-}
-_COMMENT_2702 = [
-    "Perhaps there is some super-faint evidence of a מקף that was ignored during re-inking.",
-    " By the way, the evidence for the דחי on the א of the next word is super-faint.",
-]
-_BHQ_COMMENT_2702 = [
-    "$BHQ silently supplies the מקף that is the consensus expectation,",
-    " despite little or no evidence for it in μL.",
-]
-_RECORD_2702 = {
-    "bhla-i": 32,
-    "cv": "27:2",
-    "lc": "חַי",
-    "what-is-weird": "מקף is missing",
-    "mam": "חַי־",
-    "comment": _COMMENT_2702,
-    "highlight-mam": 3,
-    "lc-loc": {"page": "404A", "column": 2, "line": -2},
-    "lc-img": "2702.png",
-    "bhq-comment": _BHQ_COMMENT_2702,
-    "noted-by": "xBHQ-nBHL-nDM",
-}
-_BHQ_COMMENT_2808_AND_2911 = [
-    "$BHQ silently supplies the חיריק that is the consensus expectation,",
-    " despite no evidence for it in μL.",
-]
-_RECORD_2808 = {
-    "bhla-i": 33,
-    "cv": "28:8",
-    "lc": "הִדְריכֻ֥הוּ",
-    "what-is-weird": "ר lacks חיריק",
-    "mam": "הִדְרִיכ֥וּהוּ",
-    "comment": "The מלא/חסר spelling difference is not important to us here.",
-    "highlight": 3,
-    "lc-loc": {"page": "404B", "column": 2, "line": 5},
-    "lc-img": "2808.png",
-    "bhq-comment": _BHQ_COMMENT_2808_AND_2911,
-    "noted-by": "xBHQ-nBHL-xDM",
-}
-_RECORD_2911 = {
-    "bhla-i": 34,
-    "cv": "29:11",
-    "lc": "וְעַ֥ין",
-    "what-is-weird": "$yod (י) lacks חיריק",
-    "mam": "וְעַ֥יִן",
-    "comment": "",
-    "highlight": 3,
-    "lc-loc": {"page": "405A", "column": 1, "line": -12},
-    "lc-img": "2911.png",
-    "bhq-comment": _BHQ_COMMENT_2808_AND_2911,
-    "noted-by": "xBHQ-nBHL-xDM",
-}
-_COMMENT_2919 = [
-    "Probably the ascender of the ל on the line below",
-    f" “forced” the סילוק to be early.",
-]
-_RECORD_2919 = {
-    "bhla-i": 35,
-    "cv": "29:19",
-    "lc": "בִּקְצִירֽ͏ִי׃",
-    "what-is-weird": "סילוק precedes חיריק",
-    "mam": "בִּקְצִירִֽי׃",
-    "comment": _COMMENT_2919,
-    "highlight": 5,
-    "lc-loc": {"page": "405A", "column": 1, "line": -4},
-    "lc-img": "2919.png",
-    "bhq-comment": BHQ_COMMENT_TBHQ_NELSEWHERE,
-    "noted-by": "tBHQ-nBHL-xDM",
-}
-_BHQ_COMMENT_CMN_3105_3206 = [
-    "$BHQ silently supplies the marks in the vowel-then-accent order that is",
-    " the consensus expectation, in clear contradiction of μL here.",
-]
-_BHQ_COMMENT_3105 = [
-    *_BHQ_COMMENT_CMN_3105_3206,
-    " 32:6 is similar.",
-    " In my opinion $BHQ shows itself to be out of date by continuing to aspire,",
-    " as $BHS did,",
-    " to reflect all such ordering quirks.",
-    " I think the modern consensus is that these orderings are as meaningless as",
-    " the variable length of ascenders on ל.",
-    " Nonetheless, since $BHQ still aspires to get these orderings right,",
-    " it is fair for me to point out when it fails to do so.",
-]
-_RECORD_3105 = {
-    "bhla-i": 36,
-    "cv": "31:5",
-    "lc": "רַגְלֽ͏ִי׃",
-    "what-is-weird": "סילוק precedes חיריק",
-    "mam": "רַגְלִֽי׃",
-    "comment": "",
-    "highlight": 3,
-    "lc-loc": {"page": "405B", "column": 1, "line": -9, "including-blank-lines": 1},
-    "lc-img": "3105.png",
-    "bhq-comment": _BHQ_COMMENT_3105,
-    "noted-by": "xBHQ-nBHL-xDM",
-}
-_BHQ_COMMENT_3107 = [
-    "$BHQ reflects neither μL nor the consensus expectation here.",
-    " It reflects μL except it places the סילוק under the א.",
-    " This not only contradicts μL,",
-    " but also makes no sense given the רפה on the א.",
-    " One might argue that this רפה should have been shown,",
-    " despite the general policy of $BHQ to ignore רפה marks in μL.",
-    " Regardless of whether the רפה should have been shown,",
-    " its presence in μL should have excluded the possibility of",
-    " a סילוק under its letter (א)!",
-    " $BHQ notes that here μL disagrees with μA and μY.",
-    " But $BHQ gives the מ in μA and μY a מרכא rather than a סילוק,",
-    " which seems more likely a typo than a deliberate choice.",
-]
-_RECORD_3107 = {
-    "bhla-i": 37,
-    "cv": "31:7",
-    "lc": "מֻאֿוּֽם׃",
-    "what-is-weird": "קבוץ and סילוק not סילוק and ∅",
-    "mam": "מֽאֿוּם׃",
-    "comment": "",
-    "highlight": [1, 3],
-    "lc-loc": {"page": "405B", "column": 1, "line": -6, "including-blank-lines": 1},
-    "lc-img": "3107.png",
-    "bhq-comment": _BHQ_COMMENT_3107,
-    "bhq": "מֻאֽוּם׃",
-    "noted-by": "xBHQ-nBHL-nDM-nWLC",
-    # Above we consider this xBHQ because:
-    #    Though it attempts to transcribe the quirk, it does so inaccurately.
-    #    Though it notes the quirk, it does so inaccurately.
-}
-_BHQ_COMMENT_3206 = [
-    *_BHQ_COMMENT_CMN_3105_3206,
-    "31:5 is similar and discusses the matter at greater length.",
-]
-_RECORD_3206 = {
-    "bhla-i": 39,
-    "cv": "32:6",
-    "lc": "יְשִׁישׁ֑‍ִים",
-    "what-is-weird": "אתנח precedes חיריק",
-    "mam": "יְשִׁישִׁ֑ים",
-    "comment": "",
-    "highlight": 4,
-    "lc-loc": {"page": "406A", "column": 1, "line": -6},
-    "lc-img": "3206.png",
-    "bhq-comment": _BHQ_COMMENT_3206,
-    "noted-by": "xBHQ-nBHL-xDM",
-}
-_BHQ_COMMENT_3612 = [
-    "Here $BHQ has a typo:",
-    [" it has ", author.hbo("בִּבְלִ־"), " rather than ", author.hbo("בִּבְלִי־")],
-    " in the word it reports for μA and μY.",
-    " I.e. it is missing a final $yod (י) before the מקף.",
-    " The same typo appears in the $BHQ section “Commentary on the Critical Apparatus.”",
-    " In addition to the typo, for some reason $BHQ reports this word as being the קרי",
-    [" of μY, i.e. M", my_html.sup("Y(qere)")],
-    [" rather than just M", my_html.sup("Y"), "."],
-    " I see no “Masora dot pair”",
-    " (μY’s equivalent of a masorah circle)",
-    " on this word in μY.",
-    " Nor do I see any קרי note in the margin.",
-]
-_RECORD_3612 = {
-    "cv": "36:12",
-    "lc": "כִּבְלִי־",
-    "what-is-weird": "כ not ב",
-    "mam": "בִּבְלִי־",
-    "comment": [
-        "Although my focus is pointing rather than spelling,",
-        " I am interested in a spelling difference like this,",
-        " since it is not just a חסר vs מלא difference.",
-    ],
-    "highlight": 1,
-    "lc-loc": {"page": "407B", "column": 1, "line": 4},
-    "lc-img": "3612.png",
-    "bhq-comment": _BHQ_COMMENT_3612,
-    "noted-by": "nBHQ-xBHL-nDM-nWLC",
-    "aleppo-page-url": "https://www.mgketer.org/mikra/29/36/1/mg/106",
-    "aleppo-img": "Aleppo-3612.png",
-    "cam1753-page-url": f"{CAM1753_PAGE_URL_BASE}/n87/mode/1up",
-    "cam1753-img": "Cam1753-3612.png",
-    "uxlc-needs-fix": "UXLC has kaf (as it should) but should note the divergence from consensus",
-}
-_COMMENT_3629 = [
-    "The color image strongly suggests that the mark in question is not ink.",
-    " A געיה right next to סילוק like that would be extraordinary, by the way,",
-    " though no appeal to expectations is needed to dismiss this possible געיה.",
-]
-_RECORD_3629 = {
-    "bhla-i": 43,
-    "cv": "36:29",
-    "lc": "סֻכָּֽתֽוֹ׃",
-    "what-is-weird": "כ has געיה",
-    "mam": "סֻכָּתֽוֹ׃",
-    "comment": _COMMENT_3629,
-    "highlight": 2,
-    "lc-loc": {"page": "407B", "column": 1, "line": -5},
-    "lc-img": "3629.png",
-    "bhq-comment": correctly_ignores("געיה", "36:29", "large"),
-    "noted-by": "tBHQ-nBHL-xDM",
-}
-_COMMENT_3902 = [
-    "The mark in question is very heavy,",
-    " having a stroke width more typical of a letter-stroke than of a niqqud-stroke.",
-    " Its clarity suggests it is part of the re-inking.",
-    " Indeed perhaps it is only part of the re-inking,",
-    " i.e. perhaps it reflects no mark (or only a much smaller mark) in the original.",
-    " The mark in question may be two marks,",
-    " a רביע (expected) overlaid with a גרש (unexpected).",
-    " Or, it may be only a single mark whose lower end is, for some reason, a blob.",
-]
-_RECORD_3902 = {
-    "bhla-i": 46,
-    "cv": "39:2",
-    "lc": "וְ֝יָדַעְתָּ֜",
-    "what-is-weird": "גרש not רביע",
-    "mam": "וְ֝יָדַעְתָּ֗",
-    "comment": _COMMENT_3902,
-    "highlight": 5,
-    "lc-loc": {"page": "408A", "column": 2, "line": -3},
-    "lc-img": "3902.png",
-    "bhq-comment": "$BHQ silently supplies the רביע that is the consensus expectation.",
-    "noted-by": "xBHQ-nBHL-xDM",
-    # Perhaps I should have been charitable to BHQ and said tBHQ instead of xBHQ,
-    # since BHQ’s transcription of רביע is somewhat reasonable if it were accompanied by a note.
-    # But it is not accompanied by a note, and without a note, BHQ needs to make weird things in μL
-    # look weird. So רביע is not the right transcription for a diplomatic edition having no note
-    # in this location.
-}
-_COMMENT_3913 = [
-    "A more charitable interpretation of the image is that the רביע is present",
-    " but is merged with the masorah circle.",
-    " (It is fairly clear that a masorah circle is present.)",
-    " Note that the vertical line above the ר is a סילוק from the line above.",
-]
-_RECORD_3913 = {
-    "bhla-i": 48,
-    "cv": "39:13",
-    "lc-q": "(?)",
-    "lc": "אֶ֝בְרָה",
-    "what-is-weird": "רביע מגרש may lack רביע",
-    "mam": "אֶ֝בְרָ֗ה",
-    "comment": _COMMENT_3913,
-    "highlight": 3,
-    "lc-loc": {"page": "408B", "column": 1, "line": 11},
-    "lc-img": "3913.png",
-    "bhq-comment": [
-        "$BHQ seems to split the mark(s) in question",
-        " into a רביע on ר and a masorah circle on ב.",
-        " This is a reasonable (though somewhat charitable) interpretation of μL,",
-        " but as is so often the case, $BHQ should have noted this quirk.",
-    ],
-    "noted-by": "tBHQ-nBHL-xDM",
-}
-_RECORD_3920 = {
-    "bhla-i": 49,
-    "cv": "39:20",
-    "lc": "הְֽ֭תַרְעִישֶׁנּוּ",
-    "what-is-weird": "simple שווא not חטף פתח",
-    "mam": "הֲֽ֭תַרְעִישֶׁנּוּ",
-    "comment": "The situation with המימיך in 38:12 is similar.",
-    "highlight": 1,
-    "lc-loc": {"page": "408B", "column": 1, "line": -10},
-    "lc-img": "3920.png",
-    "bhq-comment": BHQ_COMMENT_TBHQ_NELSEWHERE,
-    "noted-by": "tBHQ-nBHL-nDM",
-}
-_BHQ_COMMENT_4125 = [
-    "$BHQ silently supplies the סילוק that is the consensus expectation,",
-    " despite no evidence for it in μL.",
-]
-_RECORD_4125 = {
-    "bhla-i": 52,
-    "cv": "41:25",
-    "lc": "לִבְלִי־חָת׃",
-    "what-is-weird": "סילוק missing",
-    "mam": "לִבְלִי־חָֽת׃",
-    "comment": "",
-    "highlight": 5,
-    "lc-loc": {"page": "409A", "column": 2, "line": 14},
-    "lc-img": "4125.png",
-    "bhq-comment": _BHQ_COMMENT_4125,
-    "noted-by": "xBHQ-nBHL-xDM",
-}
 QUIRKRECS = [
     RECORD_0121,
     RECORD_0409,
@@ -489,38 +112,38 @@ QUIRKRECS = [
     RECORD_1905,
     RECORD_1916,
     RECORD_2125,
-    _RECORD_2221_A,
-    _RECORD_2221_B,
-    _RECORD_2228,
+    RECORD_2221_A,
+    RECORD_2221_B,
+    RECORD_2228,
     RECORD_2230_A,
     RECORD_2230_B,
     RECORD_2416,
-    _RECORD_2421,
+    RECORD_2421,
     RECORD_2614,
-    _RECORD_2702,
-    _RECORD_2808,
+    RECORD_2702,
+    RECORD_2808,
     RECORD_2826,
-    _RECORD_2911,
-    _RECORD_2919,
-    _RECORD_3105,
-    _RECORD_3107,
+    RECORD_2911,
+    RECORD_2919,
+    RECORD_3105,
+    RECORD_3107,
     RECORD_3133,
-    _RECORD_3206,
+    RECORD_3206,
     RECORD_3312,
     RECORD_3330,
     RECORD_3419,
-    _RECORD_3612,
-    _RECORD_3629,
+    RECORD_3612,
+    RECORD_3629,
     RECORD_3706,
     RECORD_3812_A,
     RECORD_3812_B,
     RECORD_3817,
-    _RECORD_3902,
+    RECORD_3902,
     RECORD_3906,
-    _RECORD_3913,
-    _RECORD_3920,
+    RECORD_3913,
+    RECORD_3920,
     RECORD_4010,
     RECORD_4026,
-    _RECORD_4125,
+    RECORD_4125,
     RECORD_4213,
 ]
