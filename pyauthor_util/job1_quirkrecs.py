@@ -52,10 +52,14 @@ def _correctly_ignores(what, cv, adjective=""):
     return "".join(out_parts)
 
 
+_BHQ_COMMENT_TBHQ_NELSWHERE = [
+    "$BHQ agrees with μL here,",
+    " but $BHQ makes no note of μL’s divergence from consensus."
+]
 _BHQ_COMMENT_XELSEWHERE = [
     "$BHQ notes this, whereas this is not noted in the other editions under consideration."
 ]
-_BHQ_COMMENT_XELSEWHERE = [
+_BHQ_COMMENT_XELSEWHERE_DUBIOUS = [
     "$BHQ notes this possibility,",
     " whereas this is not noted in the other editions under consideration.",
     " It could be the editors of those other editions did not catch this,",
@@ -166,6 +170,7 @@ _RECORD_0709 = {
     "highlight": 3,
     "lc-loc": {"page": "399A", "column": 1, "line": 14},
     "lc-img": "0709.png",
+    "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-xDM",
 }
 _RECORD_0721 = {
@@ -178,6 +183,7 @@ _RECORD_0721 = {
     "highlight": 3,
     "lc-loc": {"page": "399A", "column": 2, "line": 3},
     "lc-img": "0721.png",
+    "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-nDM",
 }
 _RECORD_0801 = {
@@ -215,6 +221,7 @@ _RECORD_0906 = {
     "highlight": 3,
     "lc-loc": {"page": "399B", "column": 1, "line": 12, "including-blank-lines": 1},
     "lc-img": "0906.png",
+    "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-xBHL-xDM-nWLC",
 }
 _BHQ_COMMENT_0914_AND_0930 = [
@@ -259,6 +266,7 @@ _RECORD_0935 = {
     "highlight": 1,
     "lc-loc": {"page": "399B", "column": 2, "line": -8},
     "lc-img": "0935.png",
+    "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-nDM",
 }
 _RECORD_1001 = {
@@ -272,6 +280,7 @@ _RECORD_1001 = {
     "highlight-mam": 4,
     "lc-loc": {"page": "399B", "column": 2, "line": -6},
     "lc-img": "1001.png",
+    "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-xDM",
 }
 _RECORD_1015 = {
@@ -284,6 +293,7 @@ _RECORD_1015 = {
     "highlight": 3,
     "lc-loc": {"page": "400A", "column": 1, "line": 14},
     "lc-img": "1015.png",
+    "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-xDM",
 }
 _RECORD_1103 = {
@@ -296,6 +306,7 @@ _RECORD_1103 = {
     "highlight": 6,
     "lc-loc": {"page": "400A", "column": 1, "line": -1},
     "lc-img": "1103.png",
+    "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-xDM-nWLC",
 }
 _RECORD_1106 = {
@@ -336,6 +347,7 @@ _RECORD_1113 = {
     "highlight": 2,
     "lc-loc": {"page": "400A", "column": 2, "line": 13},
     "lc-img": "1113.png",
+    "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-xBHL-xDM-nWLC",
     "noted-by-mam": True,
     "noted-by-uxlc": True,
@@ -451,6 +463,7 @@ _RECORD_1613 = {
     "highlight-mam": 4,
     "lc-loc": {"page": "401B", "column": 2, "line": -10},
     "lc-img": "1613.png",
+    "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-nDM",
 }
 _RECORD_1620 = {
@@ -603,7 +616,7 @@ _RECORD_1809 = {
     "highlight": 2,
     "lc-loc": {"page": "402A", "column": 2, "line": 2},
     "lc-img": "1809.png",
-    "bhq-comment": _BHQ_COMMENT_XELSEWHERE,
+    "bhq-comment": _BHQ_COMMENT_XELSEWHERE_DUBIOUS,
     "noted-by": "nBHQ-xBHL-xDM",
     "uxlc-needs-fix": True,
 }
@@ -787,7 +800,7 @@ _RECORD_2230_B = {
     "highlight": 2,
     "lc-loc": {"page": "403B", "column": 2, "line": 4},
     "lc-img": "2230_B.png",
-    "bhq-comment": _BHQ_COMMENT_XELSEWHERE,
+    "bhq-comment": _BHQ_COMMENT_XELSEWHERE_DUBIOUS,
     "noted-by": "nBHQ-xBHL-xDM",
     "uxlc-needs-fix": True,
 }
@@ -805,7 +818,7 @@ _RECORD_2416 = {
     "highlight": 2,
     "lc-loc": {"page": "404A", "column": 1, "line": -12},
     "lc-img": "2416.png",
-    "bhq-comment": _BHQ_COMMENT_XELSEWHERE,
+    "bhq-comment": _BHQ_COMMENT_XELSEWHERE_DUBIOUS,
     "noted-by": "nBHQ-xBHL-xDM",
     "uxlc-needs-fix": True,
 }
@@ -947,6 +960,7 @@ _RECORD_2919 = {
     "highlight": 5,
     "lc-loc": {"page": "405A", "column": 1, "line": -4},
     "lc-img": "2919.png",
+    "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-xDM",
 }
 _BHQ_COMMENT_CMN_3105_3206 = [
@@ -1019,6 +1033,7 @@ _RECORD_3133 = {
     "highlight-mam": 3,
     "lc-loc": {"page": "405B", "column": 2, "line": -3},
     "lc-img": "3133.png",
+    "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-nDM",
 }
 _BHQ_COMMENT_3206 = [
@@ -1144,6 +1159,7 @@ _RECORD_3706 = {
     "highlight": 3,
     "lc-loc": {"page": "407B", "column": 2, "line": 7},
     "lc-img": "3706.png",
+    "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-xDM-nWLC",
 }
 _RECORD_3812_A = {
@@ -1248,6 +1264,7 @@ _RECORD_3906 = {
     "highlight-mam": 3,
     "lc-loc": {"page": "408B", "column": 1, "line": 3},
     "lc-img": "3906.png",
+    "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-nDM",
 }
 _COMMENT_3913 = [
@@ -1285,6 +1302,7 @@ _RECORD_3920 = {
     "highlight": 1,
     "lc-loc": {"page": "408B", "column": 1, "line": -10},
     "lc-img": "3920.png",
+    "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-nDM",
 }
 _RECORD_4010 = {
@@ -1298,6 +1316,7 @@ _RECORD_4010 = {
     "highlight": 1,
     "lc-loc": {"page": "408B", "column": 2, "line": -11},
     "lc-img": "4010.png",
+    "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-xDM-nWLC",
 }
 _RECORD_4026 = {
@@ -1311,6 +1330,7 @@ _RECORD_4026 = {
     "highlight-mam": 3,
     "lc-loc": {"page": "409A", "column": 1, "line": 8},
     "lc-img": "4026.png",
+    "bhq-comment": _BHQ_COMMENT_TBHQ_NELSWHERE,
     "noted-by": "tBHQ-nBHL-nDM",
 }
 _BHQ_COMMENT_4125 = [

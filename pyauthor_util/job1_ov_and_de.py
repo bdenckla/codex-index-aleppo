@@ -123,7 +123,6 @@ def _maybe_bhq(bhq):
     return [author.para_cc(cont_p)]
 
 
-_DEFAULT_BHQ_COMMENT = "$BHQ agrees with μL here, but $BHQ makes no note of μL’s divergence from consensus."
 _SEP = " \N{EM DASH} "
 
 
@@ -131,11 +130,6 @@ def _maybe_comment(record):
     if comment := record.get("comment"):
         return [comment]
     return []
-
-
-def _bhq_comment(record):
-    bhq_comment = record.get("bhq-comment") or _DEFAULT_BHQ_COMMENT
-    return [bhq_comment]
 
 
 def _make_details_row(record):
@@ -147,7 +141,7 @@ def _make_details_row(record):
     mwd_anc = my_html.anchor_h("M", mwd_href)
     dpe1 = [
         *_maybe_comment(record),
-        *_bhq_comment(record),
+        record["bhq-comment"],
         uxlc_anc,
         mwd_anc,
         lcloc(record.get("lc-loc")),
