@@ -6,21 +6,22 @@ CAM1753_PAGE_URL_BASE = (
     "https://archive.org/details/ketuvim-cambridge-ms-add-1753-images/page"
 )
 _SEE_3419 = [" See my entry on 34:19 for further discusion."]
+_CORR_IG_VARIANT_3419 = [
+    " Since $BHQ does not note any uncertainty in its transcription here,",
+    " it is hard to distinguish whether $BHQ has ignored the mark in question",
+    " on purpose or by accident.",
+    " More broadly, $BHQ Job never notes",
+    " any uncertainty in its transcription of μL.",
+    " This may mislead many readers.",
+    " Despite the fact that high-resolution, color images of μL are now widely available,",
+    " many readers will not engage with those images enough to understand how often",
+    " there is great uncertainty in transcribing μL.",
+    " And, even if the reader understands that such uncertainty exists in general,",
+    " $BHQ should, in my opinion, indicate to the reader the specific places",
+    " where its transcription is particularly uncertain.",
+]
 _CORR_IG_VARIANT = {
-    "34:19": [
-        " Since $BHQ does not note any uncertainty in its transcription here,",
-        " it is hard to distinguish whether $BHQ has ignored the mark in question",
-        " on purpose or by accident.",
-        " More broadly, $BHQ Job never notes",
-        " any uncertainty in its transcription of μL.",
-        " This may mislead many readers.",
-        " Despite the fact that high-resolution, color images of μL are now widely available,",
-        " many readers will not engage with those images enough to understand how often",
-        " there is great uncertainty in transcribing μL.",
-        " And, even if the reader understands that such uncertainty exists in general,",
-        " $BHQ should, in my opinion, indicate to the reader the specific places",
-        " where its transcription is particularly uncertain.",
-    ],
+    "34:19": _CORR_IG_VARIANT_3419,
     "36:29": _SEE_3419,
     "17:4": _SEE_3419,
 }

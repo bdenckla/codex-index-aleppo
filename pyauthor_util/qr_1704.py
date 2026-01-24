@@ -19,7 +19,8 @@ RECORD_1704 = {
     "uxlc-needs-fix": [
         "UXLC should do one of the following.",
         "(1) Remove the דגש from מ and note the uncertainty in transcription.",
-        "(2) Leave the דגש and note the divergence from consensus as well as the uncertainty in transcription.",
+        "(2) Leave the דגש and note the divergence from consensus as well as",
+        " the uncertainty in transcription.",
     ],
     # This is a bracket-p note in WLC.
     # We take it to note a quirk because MAM reveals that WLC is diverging from consensus here.

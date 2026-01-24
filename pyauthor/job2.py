@@ -192,19 +192,25 @@ _CPARA14 = [
     #
     " That means that all three of the above editions were available to the $BHQ editors.",
 ]
+_CLIST14_ITEM1 = ["All volumes of דעת מקרא predate $BHQ Megilloth."]
+_CLIST14_ITEM2 = [
+    "Dotan’s $BHL predates $BHQ Megilloth.",
+    #
+    " Before he died, Dotan was even a consultant to the $BHQ project.",
+    #
+    " What’s more, his $BHL is sometimes cited as a source in $BHQ.",
+    #
+    " So it is particularly puzzling that his $BHL,",
+    " in particular its monumental Appendix A,"
+    " was not used (or was not thoroughly used) in $BHQ.",
+]
+_CLIST14_ITEM3 = [
+    "WLC has had various releases over its decades, many predating $BHQ Megilloth."
+]
 _CLIST14 = [
-    ["All volumes of דעת מקרא predate $BHQ Megilloth."],
-    [
-        "Dotan’s $BHL predates $BHQ Megilloth.",
-        #
-        " Before he died, Dotan was even a consultant to the $BHQ project.",
-        #
-        " What’s more, his $BHL is sometimes cited as a source in $BHQ.",
-        #
-        " So it is particularly puzzling that his $BHL, in particular its monumental Appendix A,"
-        " was not used (or was not thoroughly used) in $BHQ.",
-    ],
-    ["WLC has had various releases over its decades, many predating $BHQ Megilloth."],
+    _CLIST14_ITEM1,
+    _CLIST14_ITEM2,
+    _CLIST14_ITEM3,
 ]
 _CPARA15 = [
     "Although it may already be clear, I should explicitly state that",
@@ -256,27 +262,30 @@ _CPARA17B = [
 ]
 
 
-def _cpara18(the_len):
+def _cpara18_part1(the_len):
     return [
         ["It is also good news that the Job volume of $BHQ notes ", str(the_len)],
         [" quirks in μL that ", my_html.bold("are"), " noted"],
         [" in one or more of the other three editions."],
-        #
-        " I.e. these are places where $BHQ reiterates something available",
-        " in one or more of the other three editions.",
-        #
-        " While a reiteration is not as valuable as a new contribution,",
-        " it is still valuable.",
-        #
-        " Indeed my main criticism of $BHQ Job is that it",
-        " should have reiterated most of what can be found in those other three editions.",
-        #
-        " Unsurprisingly, all but one of the $BHQ reiterations",
-        " are not new, i.e. they were already present in $BHS.",
-        #
-        " (The one that is new is the one regarding the דגש in the מ of הלמענך in 18:4.)",
-        " The reiterations made by $BHQ are as follows:",
     ]
+_CPARA18_PART2 = [
+    " I.e. these are places where $BHQ reiterates something available",
+    " in one or more of the other three editions.",
+    #
+    " While a reiteration is not as valuable as a new contribution,",
+    " it is still valuable.",
+    #
+    " Indeed my main criticism of $BHQ Job is that it",
+    " should have reiterated most of what can be found in those other three editions.",
+    #
+    " Unsurprisingly, all but one of the $BHQ reiterations",
+    " are not new, i.e. they were already present in $BHS.",
+    #
+    " (The one that is new is the one regarding the דגש in the מ of הלמענך in 18:4.)",
+    " The reiterations made by $BHQ are as follows:",
+]
+def _cpara18(the_len):
+    return _cpara18_part1(the_len) + _CPARA18_PART2
 
 
 def _cpara19(the_len):
