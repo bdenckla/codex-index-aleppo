@@ -36,9 +36,8 @@ def make_example_row():
     lc_and_mam = [hlc, my_html.line_break(), hmam]
     return my_html.table_row(
         [
-            my_html.table_datum("#"),
             my_html.table_datum(lc_and_mam),
-            my_html.table_datum("c:v"),
+            my_html.table_datum("# c:v"),
             my_html.table_datum("how μL-proposed differs from consensus"),
         ]
     )
@@ -123,9 +122,8 @@ def _make_overview_row(record):
     the_row_id = row_id(record)
     anc = my_html.anchor_h("#", f"{D1D_FNAME}#{the_row_id}")  # self-anchor
     tr_contents = [
-        my_html.table_datum(anc),
         my_html.table_datum(_lc_and_mam(record), hbo_attrs),
-        my_html.table_datum(record["cv"]),
+        my_html.table_datum([anc, " ", record["cv"]]),
         author.table_datum(record["what-is-weird"]),
     ]
     tr_attrs = {"id": the_row_id}

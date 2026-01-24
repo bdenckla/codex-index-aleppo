@@ -105,9 +105,9 @@ def _each(each):
 
 
 _WHERE_LIST = [
-    "# (hash sign) (number sign) is a link to more details on this quirk",
     "μL-proposed is a proposed transcription of the Leningrad Codex",
     "consensus is the Masoretic consensus reading (or a good guess of it)",
+    "# (hash sign) (number sign) is a link to more details on this quirk",
     "c:v is the chapter and verse of the book of Job",
 ]
 
