@@ -10,7 +10,7 @@ RECORD_0417 = {
     "bhla-i": 3,
     "cv": "4:17",
     "lc": "מֵאֱל֣וֹהַ",
-    "what-is-weird": "ה has no מפיק",
+    "what-is-weird": "ה lacks מפיק",
     "mam": "מֵאֱל֣וֹהַּ",
     "comment": "",
     "highlight": 5,

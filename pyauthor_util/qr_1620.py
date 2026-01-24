@@ -5,7 +5,7 @@ RECORD_1620 = {
     "bhla-i": 23,
     "cv": "16:20",
     "lc": "אֱ֝ל֗וֹהַ",
-    "what-is-weird": "ה has no מפיק",
+    "what-is-weird": "ה lacks מפיק",
     "mam": "אֱ֝ל֗וֹהַּ",
     "comment": "",
     "highlight": 4,
