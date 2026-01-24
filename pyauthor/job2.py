@@ -28,9 +28,10 @@ def _make_cbody(ov_and_de, quirkrecs):
         author.para_ul(_CPARA14, _CLIST14),
         author.para_ul(_CPARA15, _CLIST15),
         author.para(_CPARA16),
-        _para_and_table(_cpara17a, ov_and_de, groups[0]),
+        author.para(_CPARA17A),
+        _para_and_table(_cpara17b, ov_and_de, groups[0]),
         *intro("intro-job2"),
-        author.para(_CPARA17B),
+        author.para(_CPARA17C),
         _para_and_table(_cpara18, ov_and_de, groups[1]),
         _para_and_table(_cpara19, ov_and_de, groups[2]),
         _para_and_table(_cpara20a, ov_and_de, groups[3]),
@@ -232,14 +233,17 @@ _CPARA16 = [
 ]
 
 
-def _cpara17a(the_len):
+_CPARA17A = [
+    "Having criticized $BHQ in general terms,",
+    " I will now review the specifics of the $BHQ Book of Job (2024).",
+    #
+    " As of now (January 2026), it is the latest volume of $BHQ to be published.",
+]
+
+
+def _cpara17b(the_len):
     return [
-        "Having criticized $BHQ in general terms,",
-        " I will now review the specifics of the $BHQ Book of Job (2024).",
-        #
-        " As of now (January 2026), it is the latest volume of $BHQ to be published.",
-        #
-        f" First, the good news: the Job volume of $BHQ notes {str(the_len)}",
+        f"First, the good news: the Job volume of $BHQ notes {str(the_len)}",
         " quirks in μL that are not noted in any of the three editions listed above.",
         #
         " I.e. these are places where $BHQ contributes something not available",
@@ -249,8 +253,7 @@ def _cpara17a(the_len):
     ]
 
 
-_CPARA17B = [
-    #
+_CPARA17C = [
     "Unsurprisingly, all of these contributions",
     " are new, i.e. not present in $BHS.",
     #
