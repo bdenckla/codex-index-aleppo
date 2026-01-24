@@ -34,11 +34,11 @@ def _make_cbody(ov_and_de, quirkrecs):
         author.para(_CPARA17C),
         _para_and_table(_cpara18, ov_and_de, groups[1]),
         _para_and_table(_cpara19, ov_and_de, groups[2]),
-        _para_and_table(_cpara20a, ov_and_de, groups[3]),
-        _para_and_table(_cpara20b, ov_and_de, groups[4]),
-        author.para_ul(_CPARA21, _clist21(sl_map(len, groups))),
+        _para_and_table(_cpara20, ov_and_de, groups[3]),
         author.para(_cpara22()),
         author.para(_cpara23(len(groups[1]))),
+        _para_and_table(_cpara24, ov_and_de, groups[4]),
+        author.para_ul(_CPARA25, _clist25(sl_map(len, groups))),
     ]
     return cbody
 
@@ -313,7 +313,7 @@ def _cpara19(the_len):
     ]
 
 
-def _cpara20a(the_len):
+def _cpara20(the_len):
     return [
         f"Now for some mixed news:",
         f" the Job volume of $BHQ transcribes but does not note {str(the_len)}",
@@ -323,7 +323,7 @@ def _cpara20a(the_len):
     ]
 
 
-def _cpara20b(the_len):
+def _cpara24(the_len):
     return [
         f"Finally, $WLC helps us identify that",
         f" the Job volume of $BHQ transcribes but does not note at least {str(the_len)}",
@@ -336,12 +336,12 @@ def _cpara20b(the_len):
     ]
 
 
-_CPARA21 = [
+_CPARA25 = [
     "In conclusion, compared to the μL quirks noted in the other three editions:",
 ]
 
 
-def _clist21(the_lens):
+def _clist25(the_lens):
     return [
         f"$BHQ contributes notes on {str(the_lens[0])} quirks not found in those editions.",
         f"$BHQ reiterates notes on {str(the_lens[1])} quirks found in those editions.",
