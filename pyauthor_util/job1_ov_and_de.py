@@ -11,15 +11,22 @@ from pyauthor_util.job1_highlight import highlight, color
 from pyauthor_util.job1_lcloc import lcloc
 from pycmn import my_utils
 from pycmn.my_utils import sl_map
+from py_uxlc_loc import my_uxlc_location
+from py_uxlc_loc import my_tanakh_book_names as py_uxlc_loc_tbn
 
 
 _CSNBPR = "comment-should-not-be-para-wrapped"
 
 
-def make_ov_and_de_for_all_quirkrecs(quirkrecs):
+def make_ov_and_de(quirkrecs):
     ids = sl_map(row_id, quirkrecs)
     assert _unique(ids)
-    ovdes = sl_map(_make_ov_and_de_for_one_record, quirkrecs)
+    paths_dict = {
+        "path_to_uxlc": "py_uxlc_loc/UXLC",
+        "path_to_lci_recs": "py_uxlc_loc/UXLC-misc/lci_recs.json"
+    }
+    uxlc, pbi = my_uxlc_location.prep(paths_dict)
+    ovdes = sl_map((_make_one_ov_and_de, uxlc, pbi), quirkrecs)
     return dict(zip(ids, ovdes))
 
 
@@ -55,11 +62,22 @@ def _unique(seq):
     return len(set(seq)) == len(seq)
 
 
-def _make_ov_and_de_for_one_record(record):
+def _make_one_ov_and_de(uxlc, pbi, record):
+    std_bcvp_quad = _std_bcvp_quad(record["cv"])
+    pg_dict = my_uxlc_location.page_and_guesses(uxlc, pbi, std_bcvp_quad)
     return {
         "od-overview": _make_overview_row(record),
         "od-details": _make_details_html(record),
     }
+
+
+def _std_bcvp_quad(cn_colon_vn):
+    bkid = py_uxlc_loc_tbn.BK_JOB
+    chnu_str, vrnu_str = cn_colon_vn.split(":")
+    chnu = int(chnu_str)
+    vrnu = int(vrnu_str)
+    atnu = 1  # always atom 1 for our purposes
+    return bkid, chnu, vrnu, atnu
 
 
 def _lc_and_mam(record):

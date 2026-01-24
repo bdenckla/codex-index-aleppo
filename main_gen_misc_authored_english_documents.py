@@ -7,12 +7,7 @@ from pyauthor import job1_details
 from pyauthor import job2
 from pyauthor.common import d2_anchor
 from pyauthor_util.job1_quirkrecs import QUIRKRECS
-from pyauthor_util.job1_ov_and_de import make_ov_and_de_for_all_quirkrecs, sort_key
-
-
-def write_index_dot_html(css_hrefs, out_path):
-    write_ctx = my_html.WriteCtx("Job Documents", out_path, css_hrefs=css_hrefs)
-    my_html.write_html_to_file(_CBODY, write_ctx)
+from pyauthor_util.job1_ov_and_de import make_ov_and_de, sort_key
 
 
 def main():
@@ -25,14 +20,23 @@ def main():
     #
     tdm_ch = jobn_rel_top, css_href
     #
-    qrs = sorted(QUIRKRECS, key=sort_key)
-    assert qrs == QUIRKRECS  # assert that the sort was not needed
-    ov_and_de = make_ov_and_de_for_all_quirkrecs(qrs)
+    qrs, ov_and_de = _prep()
     job1_overview.gen_html_file(tdm_ch, ov_and_de)
     job1_details.gen_html_file(tdm_ch, ov_and_de)
     job2.gen_html_file(tdm_ch, ov_and_de, qrs)
     #
-    write_index_dot_html((css_href,), "docs/index.html")
+    _write_index_dot_html((css_href,), "docs/index.html")
+
+
+def _prep():
+    qrs = sorted(QUIRKRECS, key=sort_key)
+    assert qrs == QUIRKRECS  # assert that the sort was not needed
+    ov_and_de = make_ov_and_de(qrs)
+    return qrs, ov_and_de
+
+def _write_index_dot_html(css_hrefs, out_path):
+    write_ctx = my_html.WriteCtx("Job Documents", out_path, css_hrefs=css_hrefs)
+    my_html.write_html_to_file(_CBODY, write_ctx)
 
 
 _CBODY = [
