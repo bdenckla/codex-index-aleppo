@@ -369,7 +369,7 @@ def _cpara24c_misc(len_misc):
         f" {str(len_misc)} cases noted in $WLC where $BHQ is probably in error",
         f" but that error does not concern {_A_TAR_IN_BHQ}.",
         f" (One of those {str(len_misc)},",
-        f" the one in 22:12, goes in the opposite direction: {_BHQ_HAS_DEX}.)",
+        f" the one in 22:12 goes in the opposite direction: {_BHQ_HAS_DEX}.)",
         f" Here are those {str(len_misc)} cases:",
     ]
 
