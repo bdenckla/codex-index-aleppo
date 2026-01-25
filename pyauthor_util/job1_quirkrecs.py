@@ -4,14 +4,12 @@
 # XXX auto-generate image basenames (and switch A/B suffixes to -NofMftv)
 
 from pyauthor_util.qr_z_wlc_dexi import RECORDS_Z_WLC_DEXI
-from pyauthor_util.qr_0316_and_friends import (
-    RECORD_0316,
-    RECORD_0816,
-    RECORD_1413,
-    RECORD_1535,
-    RECORD_2212,
-    RECORD_3410,
-)
+from pyauthor_util.qr_0316 import RECORD_0316
+from pyauthor_util.qr_0816 import RECORD_0816
+from pyauthor_util.qr_1535 import RECORD_1535
+from pyauthor_util.qr_2212 import RECORD_2212
+from pyauthor_util.qr_1413 import RECORD_1413
+from pyauthor_util.qr_3410 import RECORD_3410
 from pyauthor_util.qr_2228 import RECORD_2228
 from pyauthor_util.qr_3105 import RECORD_3105
 from pyauthor_util.qr_3107 import RECORD_3107
