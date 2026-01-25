@@ -1,6 +1,7 @@
 from pycmn import hebrew_accents as ha
 from pycmn.my_utils import sl_map
 from pyauthor_util.job1_ov_and_de import short_id
+from py import my_html
 
 _BASICS = [
     ("3:3", "י֭וֹם", ("397B", 2, 12)),
@@ -19,28 +20,47 @@ _BASICS = [
     ("30:22", "ר֭וּחַ", None),
     ("30:30", "ע֭וֹרִי", None),
     ("31:4", "ה֭וּא", None),
-    ("31:19", "א֭וֹבֵד", None),
-    ("31:28", "ה֭וּא", None),
-    ("31:39", "כֹּ֭חָהּ", None),
-    ("34:19", "שׁ֭וֹעַ", None),
-    ("34:22", "חֹ֭שֶׁךְ", None),
-    ("35:14", "תֹ֭אמַר", None),
-    ("36:19", "שׁ֭וּעֲךָ", None),
-    ("37:19", "ה֭וֹדִיעֵנוּ", None),
-    ("37:20", "ל֭וֹ", None),
-    ("38:27", "שֹׁ֭אָה", None),
-    ("39:11", "בּ֭וֹ", ("408B", 1, 9)),
-    ("39:12", "בּ֭וֹ", ("408B", 1, 10)),
+    ("31:19", "א֭וֹבֵד", ("405B", 2, 9)),
+    ("31:28", "ה֭וּא", ("405B", 2, 18)),
+    ("31:39", "כֹּ֭חָהּ", ("406A", 1, 5)),
+    ("34:19", "שׁ֭וֹעַ", ("406B", 2, 26)),
+    ("34:22", "חֹ֭שֶׁךְ", ("407A", 1, 3)),
+    ("35:14", "תֹ֭אמַר", ("407A", 2, 12)),
+    ("36:19", "שׁ֭וּעֲךָ", ("407B", 1, 11)),
+    ("37:19", "ה֭וֹדִיעֵנוּ", ("407B", 2, 23)),
+    ("37:20", "ל֭וֹ", ("407B", 2, 24)),
+    ("38:27", "שֹׁ֭אָה", ("408A", 2, 6)),
+    ("39:11", "בּ֭וֹ", ("408B", 1, 8)),
+    ("39:12", "בּ֭וֹ", ("408B", 1, 9)),
     ("40:19", "ה֭וּא", ("408B", 2, 27)),
     ("40:29", "בּ֭וֹ", ("409A", 1, 11)),
 ]
 
+_COMMENT_3619 = [
+    "All but the southeast end of the דחי seems to have flaked off,",
+    " but luckily left some faint trace behind."
+    " To charitably transcribe this word, we must not only transcribe this faint trace"
+    " but also ", my_html.bold("decline") , " to transcribe the similarly faint blob"
+    " (an erasure?) right next to it under the ש.",
+]
+_COMMENT_3719 = [
+    "The pointing of this word must, by necessity, be transcribed with much charity.",
+    " Nonetheless, the mark in question here is fairly clearly positioned",
+    " as a דחי not a טרחא, though it is, unfortunately, attached to the right leg of the ה.",
+    " (At least, it is attached to the right leg of the re-inked ה.)"
+]
 _EXTRAS = {
     "8:16": {
         "n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
     },
     "34:19": {
         "n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
+    },
+    "36:19": {
+        "comment": _COMMENT_3619,
+    },
+    "37:19": {
+        "comment": _COMMENT_3719,
     },
 }
 
