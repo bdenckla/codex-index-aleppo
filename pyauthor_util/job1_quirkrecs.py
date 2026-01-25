@@ -1,9 +1,7 @@
-# XXX study WLC notes in Job
 # XXX study UXLC changes in Job
 # XXX review quirks-Daat-Miqra.txt
 # XXX review quirks-BHQ.txt
-#
-# XXX use location estimator to sanity check lc-loc entries
+# XXX auto-generate image basenames (and switch A/B suffixes to -NofMftv)
 
 from pyauthor_util.qr_z_wlc_dexi import RECORDS_Z_WLC_DEXI
 from pyauthor_util.qr_0316_and_friends import (
