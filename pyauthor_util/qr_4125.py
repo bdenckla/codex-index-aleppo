@@ -9,7 +9,7 @@ RECORD_4125 = {
     "what-is-weird": "סילוק missing",
     "mam": "לִבְלִי־חָֽת׃",
     "comment": "",
-    "highlight": 5,
+    "highlight": 6,
     "lc-loc": {"page": "409A", "column": 2, "line": 14},
     "lc-img": "4125.png",
     "bhq-comment": _BHQ_COMMENT_4125,

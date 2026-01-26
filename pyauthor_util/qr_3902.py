@@ -8,6 +8,17 @@ _COMMENT_3902 = [
     " a רביע (expected) overlaid with a גרש (unexpected).",
     " Or, it may be only a single mark whose lower end is, for some reason, a blob.",
 ]
+_BHQ_COMMENT_3902 = [
+    "$BHQ silently supplies the רביע that is the consensus expectation.",
+    " It may be interesting to note that $BHS had the רביע on ד.",
+    " Like all changes in $BHQ, this change had to be discovered, since",
+    " changes from 1997 $BHS to $BHQ are undocumented.",
+    " It is a painful “exercise left to the reader” to discover such changes."
+    " The lack of documentation is a $DBG tradition carried over from $BHS,"
+    " which lacks documentation for both",
+    " its 1977 to 1984 changes and",
+    " its 1984 to 1997 changes.",
+]
 RECORD_3902 = {
     "bhla-i": 46,
     "cv": "39:2",
@@ -18,7 +29,8 @@ RECORD_3902 = {
     "highlight": 5,
     "lc-loc": {"page": "408A", "column": 2, "line": -3},
     "lc-img": "3902.png",
-    "bhq-comment": "$BHQ silently supplies the רביע that is the consensus expectation.",
+    "use-stretched-format": True,
+    "bhq-comment": _BHQ_COMMENT_3902,
     "noted-by": "xBHQ-nBHL-xDM",
     # Perhaps I should have been charitable to BHQ and said tBHQ instead of xBHQ,
     # since BHQ’s transcription of רביע is somewhat reasonable if it were accompanied by a note.
