@@ -12,7 +12,7 @@ RECORD_1535 = {
     "highlight-lc": 3,
     "highlight-mam": 2,
     "lc-loc": {"page": "401B", "column": 1, "line": -3},
-        "bhq-comment": [
+    "bhq-comment": [
         "$BHQ is the source of this (flawed) transcription.",
     ],
     "noted-by": "tBHQ-xBHL-xDM-zWLCmisc",

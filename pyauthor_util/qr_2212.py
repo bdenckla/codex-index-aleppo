@@ -8,7 +8,7 @@ RECORD_2212 = {
     ],
     "highlight": 1,
     "lc-loc": {"page": "403B", "column": 1, "line": 12},
-        "bhq-comment": [
+    "bhq-comment": [
         "$BHQ is the source of this (flawed) transcription.",
     ],
     "noted-by": "tBHQ-xBHL-xDM-zWLCmisc",

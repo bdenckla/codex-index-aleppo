@@ -9,7 +9,7 @@ RECORD_4213 = {
     "comment": "",
     "highlight": 1,
     "lc-loc": {"page": "409B", "column": 1, "line": -9, "including-blank-lines": 1},
-        "bhq-comment": BHQ_COMMENT_XELSEWHERE,
+    "bhq-comment": BHQ_COMMENT_XELSEWHERE,
     "noted-by": "nBHQ-xBHL-xDM",
     "uxlc-needs-fix": True,
 }

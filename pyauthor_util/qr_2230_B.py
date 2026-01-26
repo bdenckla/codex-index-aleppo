@@ -11,7 +11,6 @@ RECORD_2230_B = {
     "comment": "The dot in question is suspiciously smaller than nearby ones.",
     "highlight": 2,
     "lc-loc": {"page": "403B", "column": 2, "line": 4},
-    "lc-img": "2230_B.png",
     "bhq-comment": BHQ_COMMENT_XELSEWHERE_DUBIOUS,
     "noted-by": "nBHQ-xBHL-xDM",
     "uxlc-needs-fix": True,

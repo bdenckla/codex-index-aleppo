@@ -15,7 +15,7 @@ RECORD_3419 = {
     ],
     "highlight": 1,
     "lc-loc": {"page": "406B", "column": 2, "line": -2},
-        "bhq-comment": correctly_ignores("דגש", "34:19"),
+    "bhq-comment": correctly_ignores("דגש", "34:19"),
     "use-stretched-format": True,
     "noted-by": "xBHQ-nBHL-nDM",
 }

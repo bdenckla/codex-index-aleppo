@@ -134,7 +134,6 @@ RECORD_1804_CMN_AB = {
 RECORD_2221_CMN_AB = {
     "cv": "22:21",
     "lc-loc": {"page": "403B", "column": 1, "line": -6},
-    "lc-img": "2221.png",
 }
 BHQ_COMMENT_2808_AND_2911 = [
     "$BHQ silently supplies the חיריק that is the consensus expectation,",

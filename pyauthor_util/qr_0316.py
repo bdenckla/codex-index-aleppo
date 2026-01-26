@@ -14,7 +14,7 @@ RECORD_0316 = {
     ],
     "highlight": 1,
     "lc-loc": {"page": "398A", "column": 1, "line": 3},
-        "bhq-comment": [
+    "bhq-comment": [
         "$BHQ is the source of this (flawed) transcription.",
         " I don’t think $BHQ is really proposing that μL has יתיב here.",
         " This is more likely a typo (inherited from $BHS) than a deliberate choice.",

@@ -9,7 +9,7 @@ RECORD_3330 = {
     "highlight-mam": 3,
     "lc-loc": {"page": "406B", "column": 1, "line": -1},
     "uxlc-position-within-verse": 7,
-        "bhq-comment": [
+    "bhq-comment": [
         "$BHQ notes that here μL disagrees with μA and μY,",
         " which have the consensus pointing.",
     ],

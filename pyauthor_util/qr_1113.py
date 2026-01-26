@@ -9,7 +9,7 @@ RECORD_1113 = {
     "comment": "",
     "highlight": 2,
     "lc-loc": {"page": "400A", "column": 2, "line": 13},
-        "bhq-comment": BHQ_COMMENT_TBHQ_NELSEWHERE,
+    "bhq-comment": BHQ_COMMENT_TBHQ_NELSEWHERE,
     "noted-by": "tBHQ-xBHL-xDM-nWLC",
     "noted-by-mam": True,
     "noted-by-uxlc": True,

@@ -15,6 +15,6 @@ RECORD_2125 = {
     "comment": _COMMENT_2125,
     "highlight": 1,
     "lc-loc": {"page": "403A", "column": 2, "line": 13},
-        "bhq-comment": _BHQ_COMMENT_2125,
+    "bhq-comment": _BHQ_COMMENT_2125,
     "noted-by": "xBHQ-nBHL-xDM",
 }

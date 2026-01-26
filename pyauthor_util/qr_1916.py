@@ -8,6 +8,6 @@ RECORD_1916 = {
     "comment": "The dot is suspiciously brown rather than black.",
     "highlight": 1,
     "lc-loc": {"page": "402B", "column": 1, "line": 8},
-        "bhq-comment": "$BHQ notes that the דגש on the ק in μL disagrees with μA and μY.",
+    "bhq-comment": "$BHQ notes that the דגש on the ק in μL disagrees with μA and μY.",
     "noted-by": "tBHQ-nBHL-xDM",
 }

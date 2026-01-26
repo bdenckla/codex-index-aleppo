@@ -9,7 +9,7 @@ RECORD_3817 = {
     "comment": "",
     "highlight": 3,
     "lc-loc": {"page": "408A", "column": 1, "line": -5},
-        "bhq-comment": BHQ_COMMENT_XELSEWHERE,
+    "bhq-comment": BHQ_COMMENT_XELSEWHERE,
     "noted-by": "nBHQ-xBHL-xDM",
     "uxlc-needs-fix": True,
 }

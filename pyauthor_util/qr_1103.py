@@ -10,6 +10,6 @@ RECORD_1103 = {
     "comment": "",
     "highlight": 6,
     "lc-loc": {"page": "400A", "column": 1, "line": -1},
-        "bhq-comment": BHQ_COMMENT_TBHQ_NELSEWHERE,
+    "bhq-comment": BHQ_COMMENT_TBHQ_NELSEWHERE,
     "noted-by": "tBHQ-nBHL-xDM-nWLC",
 }

@@ -31,7 +31,6 @@ RECORD_3812_B = {
     ],
     "highlight-lc": 5,
     "lc-loc": {"page": "408A", "column": 1, "line": -11},
-    "lc-img": "3812_B.png",
     "aleppo-img": "Aleppo-3812_B.png",
     "aleppo-page-url": "https://www.mgketer.org/mikra/29/38/1/mg/106",
     "use-stretched-format": True,

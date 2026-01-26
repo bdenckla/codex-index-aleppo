@@ -28,7 +28,7 @@ RECORD_2614 = {
     "comment": _COMMENT_2614,
     "highlight-lc": 5,
     "lc-loc": {"page": "404A", "column": 2, "line": -5},
-        "aleppo-img": "Aleppo-2614.png",
+    "aleppo-img": "Aleppo-2614.png",
     "aleppo-page-url": "https://www.mgketer.org/mikra/29/26/14/mg/106",
     "use-stretched-format": True,
     "bhq-comment": _BHQ_COMMENT_2614,

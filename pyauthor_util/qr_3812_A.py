@@ -8,7 +8,6 @@ RECORD_3812_A = {
     "comment": "39:20 is similar",
     "highlight": 1,
     "lc-loc": {"page": "408A", "column": 1, "line": -12},
-    "lc-img": "3812_A.png",
     "bhq-comment": [
         "$BHQ notes that here μL disagrees with μA and μY,",
         " which have the consensus pointing.",

@@ -21,7 +21,7 @@ RECORD_3107 = {
     "comment": "",
     "highlight": [1, 3],
     "lc-loc": {"page": "405B", "column": 1, "line": -6, "including-blank-lines": 1},
-        "use-stretched-format": True,
+    "use-stretched-format": True,
     "bhq-comment": _BHQ_COMMENT_3107,
     "bhq": "מֻאֽוּם׃",
     "noted-by": "xBHQ-nBHL-nDM-nWLC",

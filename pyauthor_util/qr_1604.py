@@ -16,6 +16,6 @@ RECORD_1604 = {
     "comment": _COMMENT_1604,
     "highlight-lc": 3,
     "lc-loc": {"page": "401B", "column": 2, "line": 3},
-        "bhq-comment": _BHQ_COMMENT_1604,
+    "bhq-comment": _BHQ_COMMENT_1604,
     "noted-by": "tBHQ-nBHL-xDM",
 }

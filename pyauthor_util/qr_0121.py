@@ -16,6 +16,6 @@ RECORD_0121 = {
     "highlight": 2,
     "lc-loc": {"page": "397B", "column": 1, "line": 1},
     "uxlc-position-within-verse": 8,
-        "bhq-comment": _BHQ_COMMENT_0121,
+    "bhq-comment": _BHQ_COMMENT_0121,
     "noted-by": "nBHQ-nBHL-nDM-nWLC",
 }

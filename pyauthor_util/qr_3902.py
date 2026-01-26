@@ -28,7 +28,7 @@ RECORD_3902 = {
     "comment": _COMMENT_3902,
     "highlight": 5,
     "lc-loc": {"page": "408A", "column": 2, "line": -3},
-        "use-stretched-format": True,
+    "use-stretched-format": True,
     "bhq-comment": _BHQ_COMMENT_3902,
     "noted-by": "xBHQ-nBHL-xDM",
     # Perhaps I should have been charitable to BHQ and said tBHQ instead of xBHQ,

@@ -14,7 +14,7 @@ RECORD_3913 = {
     "comment": _COMMENT_3913,
     "highlight": 3,
     "lc-loc": {"page": "408B", "column": 1, "line": 11},
-        "bhq-comment": [
+    "bhq-comment": [
         "$BHQ seems to split the mark(s) in question",
         " into a רביע on ר and a masorah circle on ב.",
         " This is a reasonable (though somewhat charitable)",

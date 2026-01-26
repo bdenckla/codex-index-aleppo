@@ -11,6 +11,6 @@ RECORD_1613 = {
     "highlight-lc": 3,
     "highlight-mam": 4,
     "lc-loc": {"page": "401B", "column": 2, "line": -10},
-        "bhq-comment": BHQ_COMMENT_TBHQ_NELSEWHERE,
+    "bhq-comment": BHQ_COMMENT_TBHQ_NELSEWHERE,
     "noted-by": "tBHQ-nBHL-nDM",
 }

@@ -10,6 +10,6 @@ RECORD_2911 = {
     "comment": "",
     "highlight": 3,
     "lc-loc": {"page": "405A", "column": 1, "line": -12},
-        "bhq-comment": BHQ_COMMENT_2808_AND_2911,
+    "bhq-comment": BHQ_COMMENT_2808_AND_2911,
     "noted-by": "xBHQ-nBHL-xDM",
 }

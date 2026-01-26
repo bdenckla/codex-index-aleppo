@@ -59,7 +59,7 @@ RECORD_1413 = {
     "comment": _COMMENT_1413,
     "highlight": 2,
     "lc-loc": {"page": "401A", "column": 1, "line": -3},
-        "use-stretched-format": True,
+    "use-stretched-format": True,
     "bhq-comment": [
         "$BHQ benefits from ignoring $WLC here,",
         " though $BHQ likely ignored $WLC as a whole",

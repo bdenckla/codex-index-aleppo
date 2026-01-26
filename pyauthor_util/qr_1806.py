@@ -14,6 +14,6 @@ RECORD_1806 = {
     "comment": "The scribe of uL probably intended a דחי but placed it like a טרחא.",
     "highlight": 1,
     "lc-loc": {"page": "402A", "column": 1, "line": -2},
-        "bhq-comment": _BHQ_COMMENT_1806,
+    "bhq-comment": _BHQ_COMMENT_1806,
     "noted-by": "tBHQ-nBHL-xDM",
 }

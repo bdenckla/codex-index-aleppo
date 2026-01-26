@@ -15,6 +15,6 @@ RECORD_0417 = {
     "comment": "",
     "highlight": 5,
     "lc-loc": {"page": "398A", "column": 2, "line": 10},
-        "bhq-comment": _BHQ_COMMENT_0417,
+    "bhq-comment": _BHQ_COMMENT_0417,
     "noted-by": "tBHQ-nBHL-nDM",
 }

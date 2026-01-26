@@ -7,6 +7,6 @@ RECORD_1534 = {
     "comment": "",
     "highlight": 1,
     "lc-loc": {"page": "401B", "column": 1, "line": -3},
-        "bhq-comment": "$BHQ silently ignores the possible מרכא.",
+    "bhq-comment": "$BHQ silently ignores the possible מרכא.",
     "noted-by": "xBHQ-nBHL-xDM",
 }

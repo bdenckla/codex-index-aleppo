@@ -9,6 +9,6 @@ RECORD_0629 = {
     ],
     "highlight": 2,
     "lc-loc": {"page": "399A", "column": 1, "line": 2},
-        "bhq-comment": "$BHQ is the source of this (flawed) transcription.",
+    "bhq-comment": "$BHQ is the source of this (flawed) transcription.",
     "noted-by": "tBHQ-xBHL-xDM-zWLCmisc",
 }

@@ -10,6 +10,6 @@ RECORD_2808 = {
     "comment": "The מלא/חסר spelling difference is not important to us here.",
     "highlight": 3,
     "lc-loc": {"page": "404B", "column": 2, "line": 5},
-        "bhq-comment": BHQ_COMMENT_2808_AND_2911,
+    "bhq-comment": BHQ_COMMENT_2808_AND_2911,
     "noted-by": "xBHQ-nBHL-xDM",
 }

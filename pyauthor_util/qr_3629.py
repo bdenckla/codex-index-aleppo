@@ -15,6 +15,6 @@ RECORD_3629 = {
     "comment": _COMMENT_3629,
     "highlight": 2,
     "lc-loc": {"page": "407B", "column": 1, "line": -5},
-        "bhq-comment": correctly_ignores("געיה", "36:29", "large"),
+    "bhq-comment": correctly_ignores("געיה", "36:29", "large"),
     "noted-by": "tBHQ-nBHL-xDM",
 }

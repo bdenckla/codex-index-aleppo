@@ -22,7 +22,6 @@ RECORD_2230_A = {
     ],
     "highlight": 1,
     "lc-loc": {"page": "403B", "column": 2, "line": 4},
-    "lc-img": "2230_A.png",
     "bhq-comment": _BHQ_COMMENT_2230_A,
     # XXX add Aleppo image and update comments accordingly
     "noted-by": "tBHQ-xBHL-xDM-nWLC",

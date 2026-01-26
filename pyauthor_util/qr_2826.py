@@ -17,6 +17,6 @@ RECORD_2826 = {
     "comment": _COMMENT_2826,
     "highlight": 3,
     "lc-loc": {"page": "404B", "column": 2, "line": -1},
-        "bhq-comment": _BHQ_COMMENT_2826,
+    "bhq-comment": _BHQ_COMMENT_2826,
     "noted-by": "tBHQ-xBHL-xDM-zWLCmisc",
 }

@@ -21,7 +21,7 @@ RECORD_1704 = {
     ],
     "highlight": 1,
     "lc-loc": {"page": "402A", "column": 1, "line": 5},
-        "bhq-comment": correctly_ignores("דגש", "17:4"),
+    "bhq-comment": correctly_ignores("דגש", "17:4"),
     "noted-by": "xBHQ-xBHL-xDM-nWLC",
     "uxlc-needs-fix": _UXLC_NEEDS_FIX,
     # This is a bracket-p note in WLC.

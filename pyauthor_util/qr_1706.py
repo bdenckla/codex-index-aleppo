@@ -13,7 +13,7 @@ RECORD_1706 = {
     ],
     "highlight": 4,
     "lc-loc": {"page": "402A", "column": 1, "line": 7},
-        "bhq-comment": BHQ_COMMENT_XELSEWHERE,
+    "bhq-comment": BHQ_COMMENT_XELSEWHERE,
     "noted-by": "nBHQ-xBHL-xDM",
     "uxlc-needs-fix": True,
 }
