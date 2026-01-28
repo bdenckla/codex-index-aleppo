@@ -82,6 +82,21 @@ from pyauthor_qr.qr_2826 import RECORD_2826
 from pyauthor_qr.qr_3330 import RECORD_3330
 from pyauthor_qr.qr_3812_A import RECORD_3812_A
 from pyauthor_qr.qr_0409 import RECORD_0409
+from pyauthor_qr.qr_0505_uxlc import RECORD_0505_UXLC
+from pyauthor_qr.qr_0814_uxlc import RECORD_0814_UXLC
+from pyauthor_qr.qr_0910_uxlc import RECORD_0910_UXLC
+from pyauthor_qr.qr_1006_uxlc import RECORD_1006_UXLC
+from pyauthor_qr.qr_1219_uxlc import RECORD_1219_UXLC
+from pyauthor_qr.qr_1902_uxlc import RECORD_1902_UXLC
+from pyauthor_qr.qr_2134_uxlc import RECORD_2134_UXLC
+from pyauthor_qr.qr_2401_uxlc import RECORD_2401_UXLC
+from pyauthor_qr.qr_2405_uxlc import RECORD_2405_UXLC
+from pyauthor_qr.qr_2713_uxlc import RECORD_2713_UXLC
+from pyauthor_qr.qr_3210_uxlc import RECORD_3210_UXLC
+from pyauthor_qr.qr_3611_uxlc import RECORD_3611_UXLC
+from pyauthor_qr.qr_3719_uxlc import RECORD_3719_UXLC
+from pyauthor_qr.qr_3820_uxlc import RECORD_3820_UXLC
+from pyauthor_qr.qr_4210_uxlc import RECORD_4210_UXLC
 
 QUIRKRECS = [
     *RECORDS_Z_WLC_DEXI,
@@ -89,18 +104,22 @@ QUIRKRECS = [
     RECORD_0316,
     RECORD_0409,
     RECORD_0417,
+    RECORD_0505_UXLC,
     RECORD_0629,
     RECORD_0701,
     RECORD_0709,
     RECORD_0721,
     RECORD_0801,
     RECORD_0807,
+    RECORD_0814_UXLC,
     RECORD_0816,
     RECORD_0906,
+    RECORD_0910_UXLC,
     RECORD_0914,
     RECORD_0930,
     RECORD_0935,
     RECORD_1001,
+    RECORD_1006_UXLC,
     RECORD_1015,
     RECORD_1103,
     RECORD_1106,
@@ -108,6 +127,7 @@ QUIRKRECS = [
     RECORD_1113,
     RECORD_1203,
     RECORD_1216,
+    RECORD_1219_UXLC,
     RECORD_1409,
     RECORD_1413,
     RECORD_1508,
@@ -123,19 +143,24 @@ QUIRKRECS = [
     RECORD_1804_B,
     RECORD_1806,
     RECORD_1809,
+    RECORD_1902_UXLC,
     RECORD_1905,
     RECORD_1916,
     RECORD_2125,
+    RECORD_2134_UXLC,
     RECORD_2212,
     RECORD_2221_A,
     RECORD_2221_B,
     RECORD_2228,
     RECORD_2230_A,
     RECORD_2230_B,
+    RECORD_2401_UXLC,
+    RECORD_2405_UXLC,
     RECORD_2416,
     RECORD_2421,
     RECORD_2614,
     RECORD_2702,
+    RECORD_2713_UXLC,
     RECORD_2808,
     RECORD_2826,
     RECORD_2911,
@@ -144,16 +169,20 @@ QUIRKRECS = [
     RECORD_3107,
     RECORD_3133,
     RECORD_3206,
+    RECORD_3210_UXLC,
     RECORD_3312,
     RECORD_3330,
     RECORD_3410,
     RECORD_3419,
+    RECORD_3611_UXLC,
     RECORD_3612,
     RECORD_3629,
     RECORD_3706,
+    RECORD_3719_UXLC,
     RECORD_3812_A,
     RECORD_3812_B,
     RECORD_3817,
+    RECORD_3820_UXLC,
     RECORD_3902,
     RECORD_3906,
     RECORD_3913,
@@ -161,5 +190,6 @@ QUIRKRECS = [
     RECORD_4010,
     RECORD_4026,
     RECORD_4125,
+    RECORD_4210_UXLC,
     RECORD_4213,
 ]
