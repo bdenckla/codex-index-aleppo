@@ -1,7 +1,8 @@
 """ Exports gen_html_file and anchor """
 
 from py import my_html
-from pyauthor_util import author, para_and_table
+from pyauthor_util import author
+from pyauthor_util.para_and_table import para_and_table
 from pyauthor_util.common_titles_etc import D3_TITLE, D3_H1_CONTENTS, D3_FNAME
 
 
