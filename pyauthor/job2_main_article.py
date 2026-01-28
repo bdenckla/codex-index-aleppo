@@ -6,7 +6,7 @@ from pyauthor_util import author
 from pyauthor_util.common_titles_etc import D2_TITLE, D2_H1_CONTENTS, D2_FNAME
 from pyauthor_util.num_range import num_range
 from pyauthor_util.intro import intro
-from pycmn.my_utils import sl_map
+from pycmn.my_utils import dv_map
 
 
 def gen_html_file(tdm_ch, ov_and_de, qr_groups):
@@ -26,18 +26,18 @@ def _make_cbody(ov_and_de, qr_groups):
         author.para_ul(_CPARA15, _CLIST15),
         author.para(_CPARA16),
         author.para(_CPARA17A),
-        para_and_table(_cpara17b, ov_and_de, qr_groups[0]),
+        para_and_table(_cpara17b, ov_and_de, qr_groups["nbhq_and_xe"]),
         *intro("intro-job2"),
         author.para(_CPARA17C),
-        para_and_table(_cpara18, ov_and_de, qr_groups[1]),
-        para_and_table(_cpara19, ov_and_de, qr_groups[2]),
-        para_and_table(_cpara20, ov_and_de, qr_groups[3]),
+        para_and_table(_cpara18, ov_and_de, qr_groups["nbhq_and_ne"]),
+        para_and_table(_cpara19, ov_and_de, qr_groups["xbhq_and_ne"]),
+        para_and_table(_cpara20, ov_and_de, qr_groups["tbhq_and_ne"]),
         author.para(_cpara22()),
-        author.para(_cpara23(len(qr_groups[1]))),
-        author.para(_cpara24a(len(qr_groups[4]), len(qr_groups[5]))),
-        para_and_table(_cpara24b_dexi, ov_and_de, qr_groups[4]),
-        para_and_table(_cpara24c_misc, ov_and_de, qr_groups[5]),
-        author.para_ul(_CPARA25, _clist25(sl_map(len, qr_groups))),
+        author.para(_cpara23(len(qr_groups["nbhq_and_ne"]))),
+        author.para(_cpara24a(len(qr_groups["tbhq_and_zwd"]), len(qr_groups["tbhq_and_zwm"]))),
+        para_and_table(_cpara24b_dexi, ov_and_de, qr_groups["tbhq_and_zwd"]),
+        para_and_table(_cpara24c_misc, ov_and_de, qr_groups["tbhq_and_zwm"]),
+        author.para_ul(_CPARA25, _clist25(dv_map(len, qr_groups))),
     ]
     return cbody
 
@@ -284,14 +284,14 @@ _CPARA25 = [
 
 
 def _clist25(the_lens):
-    len_dexi = the_lens[4]
-    len_misc = the_lens[5]
+    len_dexi = the_lens["tbhq_and_zwd"]
+    len_misc = the_lens["tbhq_and_zwm"]
     len_total = len_dexi + len_misc
     return [
-        f"$BHQ contributes notes on {str(the_lens[0])} quirks not found in those editions.",
-        f"$BHQ reiterates notes on {str(the_lens[1])} quirks found in those editions.",
-        f"$BHQ does not transcribe {str(the_lens[2])} quirks found in those editions.",
-        f"$BHQ transcribes but does not note {str(the_lens[3])} quirks found in those editions.",
+        f"$BHQ contributes notes on {str(the_lens['nbhq_and_xe'])} quirks not found in those editions.",
+        f"$BHQ reiterates notes on {str(the_lens['nbhq_and_ne'])} quirks found in those editions.",
+        f"$BHQ does not transcribe {str(the_lens['xbhq_and_ne'])} quirks found in those editions.",
+        f"$BHQ transcribes but does not note {str(the_lens['tbhq_and_ne'])} quirks found in those editions.",
         f"$BHQ transcribes but does not note at least {str(len_total)} likely-false quirks.",
     ]
 

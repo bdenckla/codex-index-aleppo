@@ -12,7 +12,7 @@ from pyauthor import (
     job2_main_article,
 )
 from pyauthor_util.common_titles_etc import d2_anchor
-from pyauthor_util.get_groups import get_groups
+from pyauthor_util.get_qr_groups import get_qr_groups
 from pyauthor_util.short_id_etc import lc_img
 from pyauthor_util.job_quirkrecs import QUIRKRECS
 from pyauthor_util.job_ov_and_de import make_ov_and_de, sort_key
@@ -31,7 +31,7 @@ def main():
     tdm_ch = jobn_rel_top, css_href
     #
     qrs, ov_and_de = _prep(jobn_rel_top)
-    qr_groups = get_groups(qrs)
+    qr_groups = get_qr_groups(qrs)
     job1_full_list_overview.gen_html_file(tdm_ch, ov_and_de)
     job1_full_list_details.gen_html_file(tdm_ch, ov_and_de)
     job2_main_article.gen_html_file(tdm_ch, ov_and_de, qr_groups)
