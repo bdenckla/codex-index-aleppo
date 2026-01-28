@@ -1,7 +1,7 @@
 """ Exports gen_html_file and anchor """
 
 from py import my_html
-from pyauthor.get_groups import get_groups
+from pyauthor_util.get_groups import get_groups
 from pyauthor_util import author
 from pyauthor.common import D2_TITLE
 from pyauthor.common import D2_H1_CONTENTS
@@ -44,58 +44,6 @@ def _make_cbody(ov_and_de, quirkrecs):
         author.para_ul(_CPARA25, _clist25(sl_map(len, groups))),
     ]
     return cbody
-
-
-def _startswith_n(part):
-    return part.startswith("n")
-
-
-def _startswith_x(part):
-    return part.startswith("x")
-
-
-def _bhq_and_others(quirkrec):
-    parts = quirkrec["noted-by"].split("-")
-    bhq, bhl, dm = parts[0], parts[1], parts[2]
-    wlc = "xWLC" if len(parts) == 3 else parts[3]
-    assert bhq in ("nBHQ", "xBHQ", "tBHQ")
-    assert bhl in ("nBHL", "xBHL")
-    assert dm in ("nDM", "xDM")
-    assert wlc in ("nWLC", "xWLC", "zWLCmisc", "zWLCdexi")
-    others = bhl, dm, wlc
-    return bhq, others
-
-
-def _nbhq_and_xe(quirkrec):
-    bhq, others = _bhq_and_others(quirkrec)
-    return bhq == "nBHQ" and all(_startswith_x(part) for part in others)
-
-
-def _foobhq_and_ne(foobhq, quirkrec):
-    bhq, others = _bhq_and_others(quirkrec)
-    return bhq == foobhq and any(_startswith_n(part) for part in others)
-
-
-def _nbhq_and_ne(quirkrec):
-    return _foobhq_and_ne("nBHQ", quirkrec)
-
-
-def _xbhq_and_ne(quirkrec):
-    return _foobhq_and_ne("xBHQ", quirkrec)
-
-
-def _tbhq_and_ne(quirkrec):
-    return _foobhq_and_ne("tBHQ", quirkrec)
-
-
-def _tbhq_and_zwd(quirkrec):
-    bhq, others = _bhq_and_others(quirkrec)
-    return bhq == "tBHQ" and others == ("xBHL", "xDM", "zWLCdexi")
-
-
-def _tbhq_and_zwm(quirkrec):
-    bhq, others = _bhq_and_others(quirkrec)
-    return bhq == "tBHQ" and others == ("xBHL", "xDM", "zWLCmisc")
 
 
 def _para_and_table(para_func, ov_and_de, group_of_quirkrecs):
