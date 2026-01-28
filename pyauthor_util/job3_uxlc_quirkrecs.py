@@ -1,214 +1,36 @@
 # Auto-generated quirkrecs
 
-RECORD_0505 = {
-    'cv': '5:5',
-    'lc': 'מִצִּנִּ֥ים',
-    'what-is-weird': 'Remove the dagesh from the tsadi.',
-    'mam': 'מִצִנִּ֥ים',
-    'comment': ['No evidence for a dagesh in the tsadi is available.', 'BHL has no dagesh in the tsadi. BHLA has no entry for this verse.'],
-    'highlight': 1,
-    'lc-loc': {'page': 'Folio_398A', 'column': 2, 'line': 22},
-    'bhq-comment': ['$BHQ is the source of this (flawed) transcription.'],
-    'noted-by': 'tBHQ-xBHL-xDM-xWLC-zUXLC',
-    'uxlc-change-url': 'https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-1',
-}
-
-RECORD_0814 = {
-    'cv': '8:14',
-    'lc': 'עַ֝כָּבִ֗ישׁ',
-    'what-is-weird': "Consider adding a transcription note 't' because revia over bet is obscured by a rafe.",
-    'mam': 'עַ֝כָּבִ֗ישׁ',
-    'comment': ['The revia is visible in the left edge of the (untranscribed) rafe.', 'BHL has a revia over the bet. BHLA has no entry for this verse.'],
-    'highlight': 1,
-    'lc-loc': {'page': 'Folio_399A', 'column': 2, 'line': 20},
-    'bhq-comment': ['$BHQ is the source of this (flawed) transcription.'],
-    'noted-by': 'tBHQ-xBHL-xDM-xWLC-zUXLC',
-    'uxlc-change-url': 'https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-5',
-}
-
-RECORD_0910 = {
-    'cv': '9:10',
-    'lc': 'וְנִפְלָא֗וֹת',
-    'what-is-weird': "Add geresh muqdam to initial vav. Add note 't'.",
-    'mam': 'וְ֝נִפְלָא֗וֹת',
-    'comment': ['The geresh muqdam is very faint at the top left of the initial vav. It appears to be doubled, possibly the outer edges of a single stroke.'],
-    'highlight': 1,
-    'lc-loc': {'page': 'Folio_399B', 'column': 1, 'line': 16},
-    'bhq-comment': ['$BHQ is the source of this (flawed) transcription.'],
-    'noted-by': 'tBHQ-xBHL-xDM-xWLC-zUXLC',
-    'uxlc-change-url': 'https://tanach.us/Changes/2022.10.19%20-%20Changes/2022.10.19%20-%20Changes.xml?2022.07.05-3',
-}
-
-RECORD_1006 = {
-    'cv': '10:6',
-    'lc': 'וּ֭לְחַטָּאתִ֥י',
-    'what-is-weird': "Change dehi under vav to meteg; change merkha under tav to meteg with an 'm' note.",
-    'mam': 'וּֽלְחַטָּאתִֽי',
-    'comment': ["The mark under the vav, currently transcribed as a dehi, is not sufficiently inclined to be taken as either a tipeha or dehi. The dehi in the previous text will be transcribed as a meteg. The merkha under the tav is not sufficiently inclined to be transcribed as a merkha. The merkha in the previous text will be transcribed as a meteg with an 'm' note.", 'BHL has a meteg under the vav and a merkha under the tav. BHLA has no entry for this verse.'],
-    'highlight': 1,
-    'lc-loc': {'page': 'Folio_400A', 'column': 1, 'line': 2},
-    'bhq-comment': ['$BHQ is the source of this (flawed) transcription.'],
-    'noted-by': 'tBHQ-xBHL-xDM-xWLC-zUXLC',
-    'uxlc-change-url': 'https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-9',
-}
-
-RECORD_1219 = {
-    'cv': '12:19',
-    'lc': 'וְאֵֽתָנִ֣ים',
-    'what-is-weird': 'Change meteg under alef to tipeha.',
-    'mam': 'וְאֵ֖תָנִ֣ים',
-    'comment': ['The mark under the alef is clearly inclined northwest-to-southeast.', 'BHL has a tipeha under the alef. BHLA has no entry for this verse.'],
-    'highlight': 1,
-    'lc-loc': {'page': 'Folio_400B', 'column': 1, 'line': 20},
-    'bhq-comment': ['$BHQ is the source of this (flawed) transcription.'],
-    'noted-by': 'tBHQ-xBHL-xDM-xWLC-zUXLC',
-    'uxlc-change-url': 'https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-12',
-}
-
-RECORD_1902 = {
-    'cv': '19:2',
-    'lc': 'וּֽתְדַכְּאוּנַ֥נִי',
-    'what-is-weird': 'Remove sheva under the kaf.',
-    'mam': 'וּֽתְדַכּאוּנַ֥נִי',
-    'comment': ['An erasure under the kaf is apparent.', 'BHL has no sheva under the kaf. BHLA has no entry for this verse.'],
-    'highlight': 1,
-    'lc-loc': {'page': 'Folio_402A', 'column': 2, 'line': 19},
-    'bhq-comment': ['$BHQ is the source of this (flawed) transcription.'],
-    'noted-by': 'tBHQ-xBHL-xDM-xWLC-zUXLC',
-    'uxlc-change-url': 'https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-19',
-}
-
-RECORD_2134 = {
-    'cv': '21:34',
-    'lc': 'וּ֝תְשֽׁוּבֹתֵיכֶ֗ם',
-    'what-is-weird': 'Change meteg under shin to merkha.',
-    'mam': 'וּ֝תְשׁ֥וּבֹתֵיכֶ֗ם',
-    'comment': ['The mark below the shin has the distinct northeast-to-southwest inclination of a merkha.', 'BHL has a merkha under the shin. BHLA has no entry for this verse.'],
-    'highlight': 1,
-    'lc-loc': {'page': 'Folio_403A', 'column': 2, 'line': 24},
-    'bhq-comment': ['$BHQ is the source of this (flawed) transcription.'],
-    'noted-by': 'tBHQ-xBHL-xDM-xWLC-zUXLC',
-    'uxlc-change-url': 'https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-24',
-}
-
-RECORD_2401 = {
-    'cv': '24:1',
-    'lc': 'מִ֭שַּׁדַּי',
-    'what-is-weird': "Remove dagesh from shin, add note 't'.",
-    'mam': 'מִ֭שַׁדַּי',
-    'comment': ['The LC has no obvious dagesh in the shin this word, מִשַׁדַּי. The Miqra according to the Masorah (MAM) has a dagesh in the shin.', 'The text is in poor condition here.'],
-    'highlight': 1,
-    'lc-loc': {'page': '403B', 'column': 2, 'line': 25},
-    'bhq-comment': ['$BHQ is the source of this (flawed) transcription.'],
-    'noted-by': 'tBHQ-xBHL-xDM-xWLC-zUXLC',
-    'uxlc-change-url': 'https://tanach.us/Changes/2022.04.01%20-%20Changes/2022.04.01%20-%20Changes.xml?2022.02.17-2',
-}
-
-RECORD_2405 = {
-    'cv': '24:5',
-    'lc': 'בַּֽמִּדְבָּ֗ר',
-    'what-is-weird': 'Change meteg under first bet to merkha.',
-    'mam': 'בַּ֥מִּדְבָּ֗ר',
-    'comment': ['The mark under the first bet has a distinct northeast-to-southwest inclination.', 'BHL has a merkha under the first bet. BHLA has no entry for this verse.'],
-    'highlight': 1,
-    'lc-loc': {'page': 'Folio_404A', 'column': 1, 'line': 1},
-    'bhq-comment': ['$BHQ is the source of this (flawed) transcription.'],
-    'noted-by': 'tBHQ-xBHL-xDM-xWLC-zUXLC',
-    'uxlc-change-url': 'https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-31',
-}
-
-RECORD_2713 = {
-    'cv': '27:13',
-    'lc': 'מִשַּׁדַּ֥י',
-    'what-is-weird': 'Remove dagesh from shin.',
-    'mam': 'מִשַׁדַּ֥י',
-    'comment': ['The LC has no dagesh in the shin this word, מִשַׁדַּי. The Miqra according to the Masorah (MAM) has a dagesh in the shin.'],
-    'highlight': 1,
-    'lc-loc': {'page': '404B', 'column': 1, 'line': 12},
-    'bhq-comment': ['$BHQ is the source of this (flawed) transcription.'],
-    'noted-by': 'tBHQ-xBHL-xDM-xWLC-zUXLC',
-    'uxlc-change-url': 'https://tanach.us/Changes/2022.04.01%20-%20Changes/2022.04.01%20-%20Changes.xml?2022.02.17-3',
-}
-
-RECORD_3210 = {
-    'cv': '32:10',
-    'lc': 'דֵּעִ֣י',
-    'what-is-weird': 'Remove dagesh from dalet.',
-    'mam': 'דֵעִ֣י',
-    'comment': ['No sign of a dagesh is visible in the dalet.', 'BHL has no dagesh in the dalet. BHLA has no entry for this verse.'],
-    'highlight': 1,
-    'lc-loc': {'page': 'Folio_406A', 'column': 2, 'line': 1},
-    'bhq-comment': ['$BHQ is the source of this (flawed) transcription.'],
-    'noted-by': 'tBHQ-xBHL-xDM-xWLC-zUXLC',
-    'uxlc-change-url': 'https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-40',
-}
-
-RECORD_3611 = {
-    'cv': '36:11',
-    'lc': 'וְֽיַ֫עֲבֹ֥דוּ',
-    'what-is-weird': 'Move ole from over yod to over ayin.',
-    'mam': 'וְֽיַעֲ֫בֹ֥דוּ',
-    'comment': ['The ole is clearly over the ayin.', 'BHL has an ole over the ayin. BHLA has no entry for this verse.'],
-    'highlight': 1,
-    'lc-loc': {'page': 'Folio_407B', 'column': 1, 'line': 1},
-    'bhq-comment': ['$BHQ is the source of this (flawed) transcription.'],
-    'noted-by': 'tBHQ-xBHL-xDM-xWLC-zUXLC',
-    'uxlc-change-url': 'https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-42',
-}
-
-RECORD_3719 = {
-    'cv': '37:19',
-    'lc': 'לֹ֥א־',
-    'what-is-weird': "Change merkha under lamed to meteg. Add note 'm'. Remove maqaf at end of word.",
-    'mam': 'לֹֽא־',
-    'comment': ['A maqaf may have been erased at the end of this word. The erasure has "dented" the top of the nun.', 'BHL has a merkha under the lamed and no maqaf at the end of the word. BHLA has no entry for this verse.'],
-    'highlight': 1,
-    'lc-loc': {'page': 'Folio_407B', 'column': 2, 'line': 24},
-    'bhq-comment': ['$BHQ is the source of this (flawed) transcription.'],
-    'noted-by': 'tBHQ-xBHL-xDM-xWLC-zUXLC',
-    'uxlc-change-url': 'https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-43',
-}
-
-RECORD_3820 = {
-    'cv': '38:20',
-    'lc': 'תָ֝בִ֗ין',
-    'what-is-weird': 'Remove the revia above the bet.',
-    'mam': 'תָ֝בִין',
-    'comment': ['The only mark above the bet is a rafe which is not ordinarily transcribed here.', 'BHL has no revia above the bet. BHLA has no entry for this verse.'],
-    'highlight': 1,
-    'lc-loc': {'page': 'Folio_408A', 'column': 1, 'line': 24},
-    'bhq-comment': ['$BHQ is the source of this (flawed) transcription.'],
-    'noted-by': 'tBHQ-xBHL-xDM-xWLC-zUXLC',
-    'uxlc-change-url': 'https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-45',
-}
-
-RECORD_4210 = {
-    'cv': '42:10',
-    'lc': 'וַ֧יֹּסֶף',
-    'what-is-weird': 'Move darga under vav to under the yod.',
-    'mam': 'וַיֹּ֧סֶף',
-    'comment': ['The text is in poor condition here. A faint patah can be seen under the vav. A faint darga can be seen directly under the yod.', 'BHL has a darga under the yod. BHLA has no entry for this verse.'],
-    'highlight': 1,
-    'lc-loc': {'page': 'Folio_409B', 'column': 1, 'line': 10},
-    'bhq-comment': ['$BHQ is the source of this (flawed) transcription.'],
-    'noted-by': 'tBHQ-xBHL-xDM-xWLC-zUXLC',
-    'uxlc-change-url': 'https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-48',
-}
+from pyauthor_qr.qr_0505_uxlc import RECORD_0505_UXLC
+from pyauthor_qr.qr_0814_uxlc import RECORD_0814_UXLC
+from pyauthor_qr.qr_0910_uxlc import RECORD_0910_UXLC
+from pyauthor_qr.qr_1006_uxlc import RECORD_1006_UXLC
+from pyauthor_qr.qr_1219_uxlc import RECORD_1219_UXLC
+from pyauthor_qr.qr_1902_uxlc import RECORD_1902_UXLC
+from pyauthor_qr.qr_2134_uxlc import RECORD_2134_UXLC
+from pyauthor_qr.qr_2401_uxlc import RECORD_2401_UXLC
+from pyauthor_qr.qr_2405_uxlc import RECORD_2405_UXLC
+from pyauthor_qr.qr_2713_uxlc import RECORD_2713_UXLC
+from pyauthor_qr.qr_3210_uxlc import RECORD_3210_UXLC
+from pyauthor_qr.qr_3611_uxlc import RECORD_3611_UXLC
+from pyauthor_qr.qr_3719_uxlc import RECORD_3719_UXLC
+from pyauthor_qr.qr_3820_uxlc import RECORD_3820_UXLC
+from pyauthor_qr.qr_4210_uxlc import RECORD_4210_UXLC
 
 QUIRKRECS = [
-    RECORD_0505,
-    RECORD_0814,
-    RECORD_0910,
-    RECORD_1006,
-    RECORD_1219,
-    RECORD_1902,
-    RECORD_2134,
-    RECORD_2401,
-    RECORD_2405,
-    RECORD_2713,
-    RECORD_3210,
-    RECORD_3611,
-    RECORD_3719,
-    RECORD_3820,
-    RECORD_4210,
+    RECORD_0505_UXLC,
+    RECORD_0814_UXLC,
+    RECORD_0910_UXLC,
+    RECORD_1006_UXLC,
+    RECORD_1219_UXLC,
+    RECORD_1902_UXLC,
+    RECORD_2134_UXLC,
+    RECORD_2401_UXLC,
+    RECORD_2405_UXLC,
+    RECORD_2713_UXLC,
+    RECORD_3210_UXLC,
+    RECORD_3611_UXLC,
+    RECORD_3719_UXLC,
+    RECORD_3820_UXLC,
+    RECORD_4210_UXLC,
 ]
+
