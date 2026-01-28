@@ -5,8 +5,6 @@ from pyauthor_util import author
 from pyauthor.common import D3_TITLE
 from pyauthor.common import D3_H1_CONTENTS
 from pyauthor.common import D3_FNAME
-from pyauthor.uxlc_changes_of_interest import COI_LIST
-from pycmn.my_utils import sl_map
 
 
 def gen_html_file(tdm_ch, ov_and_de, quirkrecs):

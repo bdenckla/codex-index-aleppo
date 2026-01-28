@@ -1,6 +1,7 @@
 """ Exports gen_html_file and anchor """
 
 from py import my_html
+from pyauthor.get_groups import get_groups
 from pyauthor_util import author
 from pyauthor.common import D2_TITLE
 from pyauthor.common import D2_H1_CONTENTS
@@ -18,7 +19,7 @@ def gen_html_file(tdm_ch, ov_and_de, quirkrecs):
 
 
 def _make_cbody(ov_and_de, quirkrecs):
-    groups = _get_groups(quirkrecs)
+    groups = get_groups(quirkrecs)
     cbody = [
         author.heading_level_1(D2_H1_CONTENTS),
         author.para_ol(_CPARA10, _CLIST10),
@@ -95,30 +96,6 @@ def _tbhq_and_zwd(quirkrec):
 def _tbhq_and_zwm(quirkrec):
     bhq, others = _bhq_and_others(quirkrec)
     return bhq == "tBHQ" and others == ("xBHL", "xDM", "zWLCmisc")
-
-
-def _get_groups(quirkrecs):
-    # nbhq, xbhq: noted (as a quirk) in BHQ, not noted (as a quirk) in BHQ
-    # ne, xe: noted (as a quirk) elsewhere, not noted (as a quirk) elsewhere
-    # zw (zWLCmisc): noted (as consensus) by WLC (combined with MAM):
-    #     flagged as a change in WLC relative to BHS, e.g. a bracket-c or bracket-v note.
-    #     comparison with MAM revealed that it is a change back towards consensus,
-    #     i.e. this is BHS/BHQ proposing a quirk that is not in μL
-    q_nbhq_and_xe = list(filter(_nbhq_and_xe, quirkrecs))
-    q_nbhq_and_ne = list(filter(_nbhq_and_ne, quirkrecs))
-    q_xbhq_and_ne = list(filter(_xbhq_and_ne, quirkrecs))
-    q_tbhq_and_ne = list(filter(_tbhq_and_ne, quirkrecs))
-    q_tbhq_and_zwm = list(filter(_tbhq_and_zwm, quirkrecs))
-    q_tbhq_and_zwd = list(filter(_tbhq_and_zwd, quirkrecs))
-    groups = [
-        q_nbhq_and_xe,
-        q_nbhq_and_ne,
-        q_xbhq_and_ne,
-        q_tbhq_and_ne,
-        q_tbhq_and_zwd,
-        q_tbhq_and_zwm,
-    ]
-    return groups
 
 
 def _para_and_table(para_func, ov_and_de, group_of_quirkrecs):

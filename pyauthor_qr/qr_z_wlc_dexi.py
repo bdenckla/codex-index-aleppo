@@ -59,6 +59,7 @@ _EXTRAS = {
         "comment": _COMMENT_3619,
     },
     "37:19": {
+        "n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
         "comment": _COMMENT_3719,
     },
 }

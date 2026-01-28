@@ -8,4 +8,6 @@ def short_id(record):
 
 
 def lc_img(record):
-    return record.get("lc-img") or f"{short_id(record)}.png"
+    zuxlc = "-zUXLC" in record["noted-by"]
+    ext = ".jpg" if zuxlc else ".png"
+    return record.get("lc-img") or f"{short_id(record)}{ext}"
