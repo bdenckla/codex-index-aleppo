@@ -8,7 +8,7 @@ RECORD_3820_UXLC = {
         "BHL has no revia above the bet. BHLA has no entry for this verse.",
     ],
     "highlight": 1,
-    "lc-loc": {"page": "Folio_408A", "column": 1, "line": 24},
+    "lc-loc": {"page": "408A", "column": 1, "line": 24},
     "bhq-comment": ["$BHQ is the source of this (flawed) transcription."],
     "noted-by": "tBHQ-xBHL-xDM-xWLC-zUXLC",
     "uxlc-change-url": "https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-45",

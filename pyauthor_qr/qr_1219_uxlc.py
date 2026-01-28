@@ -8,7 +8,7 @@ RECORD_1219_UXLC = {
         "BHL has a tipeha under the alef. BHLA has no entry for this verse.",
     ],
     "highlight": 1,
-    "lc-loc": {"page": "Folio_400B", "column": 1, "line": 20},
+    "lc-loc": {"page": "400B", "column": 1, "line": 20},
     "bhq-comment": ["$BHQ is the source of this (flawed) transcription."],
     "noted-by": "tBHQ-xBHL-xDM-xWLC-zUXLC",
     "uxlc-change-url": "https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-12",

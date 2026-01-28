@@ -8,7 +8,7 @@ RECORD_2134_UXLC = {
         "BHL has a merkha under the shin. BHLA has no entry for this verse.",
     ],
     "highlight": 1,
-    "lc-loc": {"page": "Folio_403A", "column": 2, "line": 24},
+    "lc-loc": {"page": "403A", "column": 2, "line": 24},
     "bhq-comment": ["$BHQ is the source of this (flawed) transcription."],
     "noted-by": "tBHQ-xBHL-xDM-xWLC-zUXLC",
     "uxlc-change-url": "https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-24",

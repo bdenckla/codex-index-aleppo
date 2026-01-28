@@ -8,7 +8,7 @@ RECORD_0505_UXLC = {
         "BHL has no dagesh in the tsadi. BHLA has no entry for this verse.",
     ],
     "highlight": 1,
-    "lc-loc": {"page": "Folio_398A", "column": 2, "line": 22},
+    "lc-loc": {"page": "398A", "column": 2, "line": 22},
     "bhq-comment": ["$BHQ is the source of this (flawed) transcription."],
     "noted-by": "tBHQ-xBHL-xDM-xWLC-zUXLC",
     "uxlc-change-url": "https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-1",
