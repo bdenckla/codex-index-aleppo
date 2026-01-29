@@ -1,6 +1,6 @@
 RECORD_3410 = {
     "cv": "34:10",
-    "lc": "אַֽנֲשֵׁ֥י",
+    "qr-lc-proposed": "אַֽנֲשֵׁ֥י",
     "what-is-weird": "געיה not מרכא (on א)",
     "qr-consensus": "אַ֥נֲשֵׁ֥י",
     "comment": [

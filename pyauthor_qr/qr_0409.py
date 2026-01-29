@@ -12,7 +12,7 @@ BHQ_COMMENT_0409 = [
 RECORD_0409 = {
     "bhla-i": 2,
     "cv": "4:9",
-    "lc": "אֱל֣וֹהַ",
+    "qr-lc-proposed": "אֱל֣וֹהַ",
     "what-is-weird": "ה lacks מפיק",
     "qr-consensus": "אֱל֣וֹהַּ",
     "highlight": 4,

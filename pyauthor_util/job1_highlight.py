@@ -20,11 +20,11 @@ def color(text, key):
 
 
 _RK_COLOR = {
-    "lc": "red",
+    "qr-lc-proposed": "red",
     "qr-consensus": "green",
 }
 _RK_HL_SPECIFIC = {
-    "lc": "highlight-lc",
+    "qr-lc-proposed": "highlight-lc",
     "qr-consensus": "highlight-mam",
 }
 

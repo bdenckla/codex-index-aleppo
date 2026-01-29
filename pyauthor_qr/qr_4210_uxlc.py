@@ -1,6 +1,6 @@
 RECORD_4210_UXLC = {
     "cv": "42:10",
-    "lc": "וַ֧יֹּסֶף",
+    "qr-lc-proposed": "וַ֧יֹּסֶף",
     "what-is-weird": "Move darga under vav to under the yod.",
     "qr-consensus": "וַיֹּ֧סֶף",
     "comment": [

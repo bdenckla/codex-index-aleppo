@@ -13,7 +13,7 @@ RECORD_2421 = {
     "bhla-i": 31,
     "cv": "24:21",
     "lc-q": "(?)",
-    "lc": "רֹעֵ֣ה",
+    "qr-lc-proposed": "רֹעֵ֣ה",
     "what-is-weird": "maybe צירה not סגול",
     "qr-consensus": "רֹעֶ֣ה",
     "comment": _COMMENT_2421,

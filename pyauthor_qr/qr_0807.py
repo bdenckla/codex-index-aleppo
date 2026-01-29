@@ -1,7 +1,7 @@
 RECORD_0807 = {
     "bhla-i": 8,
     "cv": "8:7",
-    "lc": "וְּ֝אַחֲרִיתְךָ֗",
+    "qr-lc-proposed": "וְּ֝אַחֲרִיתְךָ֗",
     "what-is-weird": "שורוק dot fights שווא",
     "qr-consensus": "וְ֝אַחֲרִֽיתְךָ֗",
     "comment": "The געיה difference is not important to us here.",

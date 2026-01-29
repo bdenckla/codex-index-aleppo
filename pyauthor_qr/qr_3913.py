@@ -8,7 +8,7 @@ RECORD_3913 = {
     "bhla-i": 48,
     "cv": "39:13",
     "lc-q": "(?)",
-    "lc": "אֶ֝בְרָה",
+    "qr-lc-proposed": "אֶ֝בְרָה",
     "what-is-weird": "רביע מגרש may lack רביע",
     "qr-consensus": "אֶ֝בְרָ֗ה",
     "comment": _COMMENT_3913,

@@ -1,6 +1,6 @@
 RECORD_1535 = {
     "cv": "15:35",
-    "lc": "וְיָלֹ֣ד",
+    "qr-lc-proposed": "וְיָלֹ֣ד",
     "lc-q": "(?)",
     "what-is-weird": "מונח may be on ל not $yod (י)",
     "qr-consensus": "וְיָ֣לֹד",

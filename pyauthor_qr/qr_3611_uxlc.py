@@ -1,6 +1,6 @@
 RECORD_3611_UXLC = {
     "cv": "36:11",
-    "lc": "וְֽיַ֫עֲבֹ֥דוּ",
+    "qr-lc-proposed": "וְֽיַ֫עֲבֹ֥דוּ",
     "what-is-weird": "Move ole from over yod to over ayin.",
     "qr-consensus": "וְֽיַעֲ֫בֹ֥דוּ",
     "comment": [

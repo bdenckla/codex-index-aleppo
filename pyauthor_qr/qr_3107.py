@@ -15,7 +15,7 @@ _BHQ_COMMENT_3107 = [
 RECORD_3107 = {
     "bhla-i": 37,
     "cv": "31:7",
-    "lc": "מֻאֿוּֽם׃",
+    "qr-lc-proposed": "מֻאֿוּֽם׃",
     "what-is-weird": "קבוץ and סילוק not סילוק and ∅",
     "qr-consensus": "מֽאֿוּם׃",
     "highlight": [1, 3],

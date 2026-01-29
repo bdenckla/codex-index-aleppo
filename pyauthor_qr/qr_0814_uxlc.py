@@ -1,6 +1,6 @@
 RECORD_0814_UXLC = {
     "cv": "8:14",
-    "lc": "עַ֝כָּבִ֗ישׁ",
+    "qr-lc-proposed": "עַ֝כָּבִ֗ישׁ",
     "what-is-weird": "Consider adding a transcription note 't' because revia over bet is obscured by a rafe.",
     "qr-consensus": "עַ֝כָּבִ֗ישׁ",
     "comment": [

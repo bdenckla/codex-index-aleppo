@@ -3,7 +3,7 @@ from pyauthor_util.job_common import BHQ_COMMENT_TBHQ_NELSEWHERE
 
 RECORD_0906 = {
     "cv": "9:6",
-    "lc": "יִתְפַלָּצֽוּן׃",
+    "qr-lc-proposed": "יִתְפַלָּצֽוּן׃",
     "what-is-weird": "פ lacks דגש",
     "qr-consensus": "יִתְפַּלָּצֽוּן׃",
     "comment": "There is a bump on the פ that might be a misplaced דגש.",

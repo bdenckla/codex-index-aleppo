@@ -5,7 +5,7 @@ RECORD_4010 = {
     "bhla-i": 50,
     "cv": "40:10",
     "lc-q": "(?)",
-    "lc": "גָֽא֣וֹן",
+    "qr-lc-proposed": "גָֽא֣וֹן",
     "what-is-weird": "געיה may be present (on ג)",
     "qr-consensus": "גָא֣וֹן",
     "comment": "The mark in question could easily be accidental.",

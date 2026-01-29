@@ -15,7 +15,7 @@ _BHQ_COMMENT_2228 = [
 RECORD_2228 = {
     "bhla-i": 30,
     "cv": "22:28",
-    "lc": "א֖וֹמֶר",
+    "qr-lc-proposed": "א֖וֹמֶר",
     "what-is-weird": "טרחא not דחי",
     "qr-consensus": "אֹ֭מֶר",
     "comment": [

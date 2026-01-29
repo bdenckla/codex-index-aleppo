@@ -19,7 +19,7 @@ _BHQ_COMMENT_3612 = [
 ]
 RECORD_3612 = {
     "cv": "36:12",
-    "lc": "כִּבְלִי־",
+    "qr-lc-proposed": "כִּבְלִי־",
     "what-is-weird": "כ not ב",
     "qr-consensus": "בִּבְלִי־",
     "comment": [

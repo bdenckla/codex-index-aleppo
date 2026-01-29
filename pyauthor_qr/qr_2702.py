@@ -12,7 +12,7 @@ _BHQ_COMMENT_2702 = [
 RECORD_2702 = {
     "bhla-i": 32,
     "cv": "27:2",
-    "lc": "חַי",
+    "qr-lc-proposed": "חַי",
     "what-is-weird": "מקף is missing",
     "qr-consensus": "חַי־",
     "comment": _COMMENT_2702,

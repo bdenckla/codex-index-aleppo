@@ -1,7 +1,7 @@
 RECORD_1534 = {
     "bhla-i": 20,
     "cv": "15:34",
-    "lc": "שֹֽׁ֥חַד׃",
+    "qr-lc-proposed": "שֹֽׁ֥חַד׃",
     "what-is-weird": "מרכא fights סילוק",
     "qr-consensus": "שֹֽׁחַד׃",
     "highlight": 1,

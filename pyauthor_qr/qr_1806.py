@@ -8,7 +8,7 @@ _BHQ_COMMENT_1806 = [
 RECORD_1806 = {
     "bhla-i": 25,
     "cv": "18:6",
-    "lc": "א֖וֹר",
+    "qr-lc-proposed": "א֖וֹר",
     "what-is-weird": "טרחא not דחי",
     "qr-consensus": "א֭וֹר",
     "comment": "The scribe of uL probably intended a דחי but placed it like a טרחא.",

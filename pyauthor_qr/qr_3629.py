@@ -9,7 +9,7 @@ _COMMENT_3629 = [
 RECORD_3629 = {
     "bhla-i": 43,
     "cv": "36:29",
-    "lc": "סֻכָּֽתֽוֹ׃",
+    "qr-lc-proposed": "סֻכָּֽתֽוֹ׃",
     "what-is-weird": "כ has געיה",
     "qr-consensus": "סֻכָּתֽוֹ׃",
     "comment": _COMMENT_3629,

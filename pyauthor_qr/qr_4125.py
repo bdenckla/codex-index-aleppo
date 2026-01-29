@@ -5,7 +5,7 @@ _BHQ_COMMENT_4125 = [
 RECORD_4125 = {
     "bhla-i": 52,
     "cv": "41:25",
-    "lc": "לִבְלִי־חָת׃",
+    "qr-lc-proposed": "לִבְלִי־חָת׃",
     "what-is-weird": "סילוק missing",
     "qr-consensus": "לִבְלִי־חָֽת׃",
     "highlight": 6,

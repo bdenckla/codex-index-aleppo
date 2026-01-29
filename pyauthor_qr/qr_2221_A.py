@@ -20,7 +20,7 @@ RECORD_2221_A = {
     "bhla-i": 29,
     "n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
     "lc-q": "(?)",
-    "lc": "עִמּ֑וֹ",
+    "qr-lc-proposed": "עִמּ֑וֹ",
     "what-is-weird": "אתנח not מונח",
     "qr-consensus": "עִמּ֣וֹ",
     "comment": _COMMENT_2221_A,

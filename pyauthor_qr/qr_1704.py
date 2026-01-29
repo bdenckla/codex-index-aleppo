@@ -10,7 +10,7 @@ _UXLC_NEEDS_FIX = [
 
 RECORD_1704 = {
     "cv": "17:4",
-    "lc": "מִּשָּׂ֑כֶל",
+    "qr-lc-proposed": "מִּשָּׂ֑כֶל",
     "lc-q": "(?)",
     "what-is-weird": "מ may have דגש",
     "qr-consensus": "מִשָּׂ֑כֶל",

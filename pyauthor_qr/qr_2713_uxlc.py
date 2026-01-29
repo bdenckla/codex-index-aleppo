@@ -1,6 +1,6 @@
 RECORD_2713_UXLC = {
     "cv": "27:13",
-    "lc": "מִשַּׁדַּ֥י",
+    "qr-lc-proposed": "מִשַּׁדַּ֥י",
     "what-is-weird": "Remove dagesh from shin.",
     "qr-consensus": "מִשַׁדַּ֥י",
     "comment": [

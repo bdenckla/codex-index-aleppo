@@ -3,7 +3,7 @@ from pyauthor_util.job_common import BHQ_COMMENT_XELSEWHERE
 
 RECORD_1711 = {
     "cv": "17:11",
-    "lc": "לְבָבִּֽי׃",
+    "qr-lc-proposed": "לְבָבִּֽי׃",
     "what-is-weird": "second ב has דגש",
     "qr-consensus": "לְבָבִֽי׃",
     "highlight": 3,

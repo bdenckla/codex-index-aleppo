@@ -1,7 +1,7 @@
 RECORD_1409 = {
     "bhla-i": 18,
     "cv": "14:9",
-    "lc": "מֵרֵ֣יַּח",
+    "qr-lc-proposed": "מֵרֵ֣יַּח",
     "what-is-weird": "$yod (י) has דגש",
     "qr-consensus": "מֵרֵ֣יחַ",
     "highlight": 3,

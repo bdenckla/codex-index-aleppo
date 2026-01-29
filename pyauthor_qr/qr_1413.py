@@ -51,7 +51,7 @@ _COMMENT_1413 = [
 ]
 RECORD_1413 = {
     "cv": "14:13",
-    "lc": "תָּ֤שִׁ֥ית",
+    "qr-lc-proposed": "תָּ֤שִׁ֥ית",
     "lc-q": "(?)",
     "what-is-weird": "maybe מרכא not געיה",
     "qr-consensus": "תָּ֤שִֽׁית",

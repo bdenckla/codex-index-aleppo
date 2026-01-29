@@ -1,6 +1,6 @@
 RECORD_1006_UXLC = {
     "cv": "10:6",
-    "lc": "וּ֭לְחַטָּאתִ֥י",
+    "qr-lc-proposed": "וּ֭לְחַטָּאתִ֥י",
     "what-is-weird": "Change dehi under vav to meteg; change merkha under tav to meteg with an 'm' note.",
     "qr-consensus": "וּֽלְחַטָּאתִֽי",
     "comment": [

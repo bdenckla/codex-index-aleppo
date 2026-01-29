@@ -34,7 +34,7 @@ def make_ov_and_de(quirkrecs):
 
 
 def make_example_row():
-    hlc = color("μL-proposed", "lc")
+    hlc = color("μL-proposed", "qr-lc-proposed")
     hmam = color("consensus", "qr-consensus")
     lc_and_mam = [hlc, my_html.line_break(), hmam]
     return my_html.table_row(
@@ -110,7 +110,7 @@ def _std_bcvp_quad(record):
 
 
 def _lc_and_mam(record):
-    hlc = highlight(record, "lc")
+    hlc = highlight(record, "qr-lc-proposed")
     hmam = highlight(record, "qr-consensus")
     if lc_q := record.get("lc-q"):
         assert lc_q == "(?)"

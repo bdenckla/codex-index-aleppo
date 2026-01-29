@@ -5,7 +5,7 @@ _BHQ_COMMENT_1203 = [
 RECORD_1203 = {
     "bhla-i": 17,
     "cv": "12:3",
-    "lc": "וְאֶת",
+    "qr-lc-proposed": "וְאֶת",
     "what-is-weird": "מקף is missing",
     "qr-consensus": "וְאֶת־",
     "highlight-mam": 4,

@@ -1,6 +1,6 @@
 RECORD_2405_UXLC = {
     "cv": "24:5",
-    "lc": "בַּֽמִּדְבָּ֗ר",
+    "qr-lc-proposed": "בַּֽמִּדְבָּ֗ר",
     "what-is-weird": "Change meteg under first bet to merkha.",
     "qr-consensus": "בַּ֥מִּדְבָּ֗ר",
     "comment": [

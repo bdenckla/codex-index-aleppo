@@ -5,7 +5,7 @@ RECORD_3419 = {
     "bhla-i": 42,
     "cv": "34:19",
     "n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
-    "lc": "נִּכַּר־",
+    "qr-lc-proposed": "נִּכַּר־",
     "what-is-weird": "נ has דגש",
     "qr-consensus": "נִכַּר־",
     "comment": [

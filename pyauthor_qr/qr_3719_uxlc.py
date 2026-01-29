@@ -1,7 +1,7 @@
 RECORD_3719_UXLC = {
     "cv": "37:19",
     "n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
-    "lc": "לֹ֥א־",
+    "qr-lc-proposed": "לֹ֥א־",
     "what-is-weird": "Change merkha under lamed to meteg. Add note 'm'. Remove maqaf at end of word.",
     "qr-consensus": "לֹֽא־",
     "comment": [

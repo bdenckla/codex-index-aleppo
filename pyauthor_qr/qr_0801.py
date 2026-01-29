@@ -1,7 +1,7 @@
 RECORD_0801 = {
     "bhla-i": 7,
     "cv": "8:1",
-    "lc": "וַיֹאמַֽר׃",
+    "qr-lc-proposed": "וַיֹאמַֽר׃",
     "what-is-weird": "$yod (י) lacks דגש",
     "qr-consensus": "וַיֹּאמַֽר׃",
     "highlight": 2,

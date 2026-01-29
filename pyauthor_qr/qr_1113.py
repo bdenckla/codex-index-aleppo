@@ -3,7 +3,7 @@ from pyauthor_util.job_common import BHQ_COMMENT_TBHQ_NELSEWHERE
 
 RECORD_1113 = {
     "cv": "11:13",
-    "lc": "אַ֭תָּ֗ה",
+    "qr-lc-proposed": "אַ֭תָּ֗ה",
     "what-is-weird": "רביע on ת fights דחי",
     "qr-consensus": "אַ֭תָּה",
     "highlight": 2,

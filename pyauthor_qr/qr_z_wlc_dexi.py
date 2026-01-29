@@ -70,7 +70,7 @@ def _one_basic_to_record(cv_and_wlc):
     page, column, line = lcloc or ("40XY", 0, 0)
     cvlc_rec = {
         "cv": cv_str,
-        "lc": wlc.replace(ha.DEX, ha.TIP),
+        "qr-lc-proposed": wlc.replace(ha.DEX, ha.TIP),
         "what-is-weird": "טרחא not דחי",
         "qr-consensus": wlc,
         "highlight": 1,

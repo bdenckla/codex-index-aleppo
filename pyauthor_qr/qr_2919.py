@@ -8,7 +8,7 @@ _COMMENT_2919 = [
 RECORD_2919 = {
     "bhla-i": 35,
     "cv": "29:19",
-    "lc": "בִּקְצִירֽ͏ִי׃",
+    "qr-lc-proposed": "בִּקְצִירֽ͏ִי׃",
     "what-is-weird": "סילוק precedes חיריק",
     "qr-consensus": "בִּקְצִירִֽי׃",
     "comment": _COMMENT_2919,

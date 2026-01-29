@@ -1,7 +1,7 @@
 RECORD_0816 = {
     "cv": "8:16",
     "n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
-    "lc": "יֹ֭נַקְתּ֥וֹ",
+    "qr-lc-proposed": "יֹ֭נַקְתּ֥וֹ",
     "what-is-weird": "דחי not געיה",
     "qr-consensus": "יֹֽנַקְתּ֥וֹ",
     "comment": [

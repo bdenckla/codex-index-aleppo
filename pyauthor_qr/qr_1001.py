@@ -4,7 +4,7 @@ from pyauthor_util.job_common import BHQ_COMMENT_TBHQ_NELSEWHERE
 RECORD_1001 = {
     "bhla-i": 12,
     "cv": "10:1",
-    "lc": "אֲ֝דַבְּרָה֗",
+    "qr-lc-proposed": "אֲ֝דַבְּרָה֗",
     "what-is-weird": "רביע is on ה not ר",
     "qr-consensus": "אֲ֝דַבְּרָ֗ה",
     "highlight-lc": 5,

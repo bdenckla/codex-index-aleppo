@@ -79,7 +79,7 @@ BHQ_COMMENT_0914_AND_0930 = [
 RECORD_1804_CMN_AB = {
     "bhla-i": 24,
     "cv": "18:4",
-    "lc": "הֲ֭לְמַּעַנְךָ",
+    "qr-lc-proposed": "הֲ֭לְמַּעַנְךָ",
     "qr-consensus": "הַֽ֭לְמַעַנְךָ",
     "bhq": "הַ֭לְמַּעַנְךָ",
     "lc-loc": {"page": "402A", "column": 1, "line": -4},

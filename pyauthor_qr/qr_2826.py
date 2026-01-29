@@ -11,7 +11,7 @@ _COMMENT_2826 = [
 
 RECORD_2826 = {
     "cv": "28:26",
-    "lc": "בַּעֲשׂת֣וֹ",
+    "qr-lc-proposed": "בַּעֲשׂת֣וֹ",
     "what-is-weird": "ש lacks חולם dot",
     "qr-consensus": "בַּעֲשֹׂת֣וֹ",
     "comment": _COMMENT_2826,

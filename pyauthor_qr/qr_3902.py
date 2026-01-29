@@ -22,7 +22,7 @@ _BHQ_COMMENT_3902 = [
 RECORD_3902 = {
     "bhla-i": 46,
     "cv": "39:2",
-    "lc": "וְ֝יָדַעְתָּ֜",
+    "qr-lc-proposed": "וְ֝יָדַעְתָּ֜",
     "what-is-weird": "גרש not רביע",
     "qr-consensus": "וְ֝יָדַעְתָּ֗",
     "comment": _COMMENT_3902,

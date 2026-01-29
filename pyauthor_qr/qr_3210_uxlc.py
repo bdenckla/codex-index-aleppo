@@ -1,6 +1,6 @@
 RECORD_3210_UXLC = {
     "cv": "32:10",
-    "lc": "דֵּעִ֣י",
+    "qr-lc-proposed": "דֵּעִ֣י",
     "what-is-weird": "Remove dagesh from dalet.",
     "qr-consensus": "דֵעִ֣י",
     "comment": [

@@ -11,7 +11,7 @@ RECORD_1905 = {
     "bhla-i": 26,
     "cv": "19:5",
     "lc-q": "(?)",
-    "lc": "חֶרְפָּתִּֽֿי",
+    "qr-lc-proposed": "חֶרְפָּתִּֽֿי",
     "what-is-weird": "דגש may fight with רפה",
     "qr-consensus": "חֶרְפָּתִֽי׃",
     "comment": [

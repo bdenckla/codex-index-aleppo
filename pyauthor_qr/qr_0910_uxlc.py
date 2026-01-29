@@ -1,6 +1,6 @@
 RECORD_0910_UXLC = {
     "cv": "9:10",
-    "lc": "וְנִפְלָא֗וֹת",
+    "qr-lc-proposed": "וְנִפְלָא֗וֹת",
     "what-is-weird": "Add geresh muqdam to initial vav. Add note 't'.",
     "qr-consensus": "וְ֝נִפְלָא֗וֹת",
     "comment": [

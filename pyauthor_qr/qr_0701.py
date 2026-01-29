@@ -1,7 +1,7 @@
 RECORD_0701 = {
     "bhla-i": 4,
     "cv": "7:1",
-    "lc": "וְכִימֵ֖֗י",
+    "qr-lc-proposed": "וְכִימֵ֖֗י",
     "what-is-weird": "רביע fights טרחא",
     "qr-consensus": "וְכִימֵ֖י",
     "highlight": 4,

@@ -15,7 +15,7 @@ _BHQ_COMMENT_3105 = [
 RECORD_3105 = {
     "bhla-i": 36,
     "cv": "31:5",
-    "lc": "רַגְלֽ͏ִי׃",
+    "qr-lc-proposed": "רַגְלֽ͏ִי׃",
     "what-is-weird": "סילוק precedes חיריק",
     "qr-consensus": "רַגְלִֽי׃",
     "highlight": 3,

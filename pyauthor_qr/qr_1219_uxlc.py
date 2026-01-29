@@ -1,6 +1,6 @@
 RECORD_1219_UXLC = {
     "cv": "12:19",
-    "lc": "וְאֵֽתָנִ֣ים",
+    "qr-lc-proposed": "וְאֵֽתָנִ֣ים",
     "what-is-weird": "Change meteg under alef to tipeha.",
     "qr-consensus": "וְאֵ֖תָנִ֣ים",
     "comment": [

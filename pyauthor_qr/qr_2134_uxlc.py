@@ -1,6 +1,6 @@
 RECORD_2134_UXLC = {
     "cv": "21:34",
-    "lc": "וּ֝תְשֽׁוּבֹתֵיכֶ֗ם",
+    "qr-lc-proposed": "וּ֝תְשֽׁוּבֹתֵיכֶ֗ם",
     "what-is-weird": "Change meteg under shin to merkha.",
     "qr-consensus": "וּ֝תְשׁ֥וּבֹתֵיכֶ֗ם",
     "comment": [

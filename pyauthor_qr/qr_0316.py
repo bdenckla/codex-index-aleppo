@@ -4,7 +4,7 @@ from pyauthor_util.num_range import num_range
 
 RECORD_0316 = {
     "cv": "3:16",
-    "lc": "א֚וֹ",
+    "qr-lc-proposed": "א֚וֹ",
     "what-is-weird": "יתיב not מהפך",
     "qr-consensus": "א֤וֹ",
     "comment": [

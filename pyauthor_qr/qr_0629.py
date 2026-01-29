@@ -1,6 +1,6 @@
 RECORD_0629 = {
     "cv": "6:29",
-    "lc": "וְשֽׁוּבוּ",
+    "qr-lc-proposed": "וְשֽׁוּבוּ",
     "what-is-weird": "געיה not מרכא",
     "qr-consensus": "וְשׁ֥וּבוּ",
     "comment": [

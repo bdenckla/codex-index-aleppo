@@ -1,6 +1,6 @@
 RECORD_1216 = {
     "cv": "12:16",
-    "lc": "וְתֽוּשִׁיָּ֑ה",
+    "qr-lc-proposed": "וְתֽוּשִׁיָּ֑ה",
     "lc-q": "(?)",
     "what-is-weird": "ת may have געיה",
     "qr-consensus": "וְתוּשִׁיָּ֑ה",

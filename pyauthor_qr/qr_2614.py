@@ -22,7 +22,7 @@ _COMMENT_2614 = [
 
 RECORD_2614 = {
     "cv": "26:14",
-    "lc": "גְּ֝בוּרוֹתָ֗יו",
+    "qr-lc-proposed": "גְּ֝בוּרוֹתָ֗יו",
     "what-is-weird": "חולם becomes מלא in קרי",
     "qr-consensus": "גְּ֝בוּרֹתָ֗יו",
     "comment": _COMMENT_2614,

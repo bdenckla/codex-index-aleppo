@@ -5,7 +5,7 @@ RECORD_0930 = {
     "bhla-i": 10,
     "cv": "9:30",
     "lc-q": "(?)",
-    "lc": "כַּפָּי׃",
+    "qr-lc-proposed": "כַּפָּי׃",
     "what-is-weird": "סילוק may be missing",
     "qr-consensus": "כַּפָּֽי׃",
     "highlight": 2,

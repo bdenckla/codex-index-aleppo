@@ -4,7 +4,7 @@ from pyauthor_util.job_common import BHQ_COMMENT_XELSEWHERE_DUBIOUS
 RECORD_2230_B = {
     "cv": "22:30",
     "n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
-    "lc": "וְ֝נִּמְלַ֗ט",
+    "qr-lc-proposed": "וְ֝נִּמְלַ֗ט",
     "lc-q": "(?)",
     "what-is-weird": "נ may have דגש",
     "qr-consensus": "וְ֝נִמְלַ֗ט",

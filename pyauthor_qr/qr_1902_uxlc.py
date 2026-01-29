@@ -1,6 +1,6 @@
 RECORD_1902_UXLC = {
     "cv": "19:2",
-    "lc": "וּֽתְדַכְּאוּנַ֥נִי",
+    "qr-lc-proposed": "וּֽתְדַכְּאוּנַ֥נִי",
     "what-is-weird": "Remove sheva under the kaf.",
     "qr-consensus": "וּֽתְדַכּאוּנַ֥נִי",
     "comment": [

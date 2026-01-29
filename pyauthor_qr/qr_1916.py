@@ -2,7 +2,7 @@ RECORD_1916 = {
     "bhla-i": 27,
     "cv": "19:16",
     "lc-q": "(?)",
-    "lc": "קָּ֭רָאתִי",
+    "qr-lc-proposed": "קָּ֭רָאתִי",
     "what-is-weird": "ק may have דגש",
     "qr-consensus": "קָ֭רָאתִי",
     "comment": "The dot is suspiciously brown rather than black.",

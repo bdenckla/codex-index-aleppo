@@ -1,6 +1,6 @@
 RECORD_3820_UXLC = {
     "cv": "38:20",
-    "lc": "תָ֝בִ֗ין",
+    "qr-lc-proposed": "תָ֝בִ֗ין",
     "what-is-weird": "Remove the revia above the bet.",
     "qr-consensus": "תָ֝בִין",
     "comment": [

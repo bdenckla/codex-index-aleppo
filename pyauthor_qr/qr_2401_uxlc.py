@@ -1,6 +1,6 @@
 RECORD_2401_UXLC = {
     "cv": "24:1",
-    "lc": "מִ֭שַׁדַּי",
+    "qr-lc-proposed": "מִ֭שַׁדַּי",
     "what-is-weird": "ש lacks דגש.",
     "qr-consensus": "מִ֭שַּׁדַּי",
     "highlight": 2,
