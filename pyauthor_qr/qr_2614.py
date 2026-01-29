@@ -26,7 +26,7 @@ RECORD_2614 = {
     "qr-what-is-weird": "חולם becomes מלא in קרי",
     "qr-consensus": "גְּ֝בוּרֹתָ֗יו",
     "qr-comment": _COMMENT_2614,
-    "qr-highlight-lc": 5,
+    "qr-highlight-lc-proposed": 5,
     "qr-lc-loc": {"page": "404A", "column": 2, "line": -5},
     "qr-aleppo-img": "Aleppo-2614.png",
     "qr-aleppo-page-url": "https://www.mgketer.org/mikra/29/26/14/mg/106",

@@ -76,7 +76,7 @@ def _one_basic_to_record(cv_and_wlc):
         "qr-highlight": 1,
         "qr-lc-loc": {"page": page, "column": column, "line": line},
         "qr-bhq-comment": [
-            "$BHQ is the source of this (flawed) transcription.",
+            "$BHQ is the source of the proposed transcription of μL above.",
         ],
         "qr-noted-by": "tBHQ-xBHL-xDM-zWLCdexi",
     }

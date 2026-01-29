@@ -1,7 +1,7 @@
 from pyauthor_util import author
 
 _COMMENT_1413_PARA1 = [
-    "$WLC is the source of this (flawed) transcription.",
+    "$WLC is the source of the proposed transcription of μL above.",
     #
     " Note that the word in question has a rare and hard-to-understand",
     " phenomenon called “secondary מהפך” by Breuer."

@@ -16,7 +16,7 @@ RECORD_2702 = {
     "qr-what-is-weird": "מקף is missing",
     "qr-consensus": "חַי־",
     "qr-comment": _COMMENT_2702,
-    "qr-highlight-mam": 3,
+    "qr-highlight-consensus": 3,
     "qr-lc-loc": {"page": "404A", "column": 2, "line": -2},
     "qr-bhq-comment": _BHQ_COMMENT_2702,
     "qr-noted-by": "xBHQ-nBHL-nDM",

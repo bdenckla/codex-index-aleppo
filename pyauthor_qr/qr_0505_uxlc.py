@@ -1,15 +1,18 @@
 RECORD_0505_UXLC = {
     "qr-cv": "5:5",
     "qr-lc-proposed": "מִצִּנִּ֥ים",
-    "qr-what-is-weird": "Remove the dagesh from the tsadi",
+    "qr-what-is-weird": "צ has דגש",
     "qr-consensus": "מִצִנִּ֥ים",
-    "qr-comment": [
-        "No evidence for a dagesh in the tsadi is available.",
-        "BHL has no dagesh in the tsadi. BHLA has no entry for this verse.",
-    ],
     "qr-highlight": 1,
+    "qr-comment": [
+        "There is little or no evidence of a דגש in the צ,",
+        " and the consensus has no such דגש,",
+        " so the proposed transcription",
+        " must either be a simple typo or",
+        " must spring from some source other than μL or the consensus.",
+    ],
     "qr-lc-loc": {"page": "398A", "column": 2, "line": 22},
-    "qr-bhq-comment": ["$BHQ is the source of this (flawed) transcription."],
+    "qr-bhq-comment": ["$BHQ is the source of the proposed transcription of μL above."],
     "qr-noted-by": "tBHQ-xBHL-xDM-xWLC-zUXLC",
     "qr-uxlc-change-url": "https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-1",
 }

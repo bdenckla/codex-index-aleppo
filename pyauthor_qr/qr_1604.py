@@ -14,7 +14,7 @@ RECORD_1604 = {
     "qr-what-is-weird": "מקף is present",
     "qr-consensus": "ל֤וּ",
     "qr-comment": _COMMENT_1604,
-    "qr-highlight-lc": 3,
+    "qr-highlight-lc-proposed": 3,
     "qr-lc-loc": {"page": "401B", "column": 2, "line": 3},
     "qr-bhq-comment": _BHQ_COMMENT_1604,
     "qr-noted-by": "tBHQ-nBHL-xDM",

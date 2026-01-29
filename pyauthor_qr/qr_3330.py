@@ -4,8 +4,8 @@ RECORD_3330 = {
     "qr-lc-proposed": "הַֽחַיִּים׃",
     "qr-what-is-weird": "סילוק is on syl. 1 not 3",
     "qr-consensus": "הַחַיִּֽים׃",
-    "qr-highlight-lc": 1,
-    "qr-highlight-mam": 3,
+    "qr-highlight-lc-proposed": 1,
+    "qr-highlight-consensus": 3,
     "qr-lc-loc": {"page": "406B", "column": 1, "line": -1},
     "qr-uxlc-position-within-verse": 7,
     "qr-bhq-comment": [

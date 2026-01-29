@@ -9,11 +9,11 @@ RECORD_1535 = {
         " There is a mark that looks like a פתח between the $yod (י) and the ל,",
         " but that is grammatically implausible.",
     ],
-    "qr-highlight-lc": 3,
-    "qr-highlight-mam": 2,
+    "qr-highlight-lc-proposed": 3,
+    "qr-highlight-consensus": 2,
     "qr-lc-loc": {"page": "401B", "column": 1, "line": -3},
     "qr-bhq-comment": [
-        "$BHQ is the source of this (flawed) transcription.",
+        "$BHQ is the source of the proposed transcription of μL above.",
     ],
     "qr-noted-by": "tBHQ-xBHL-xDM-zWLCmisc",
 }

@@ -3,6 +3,17 @@ RECORD_2401_UXLC = {
     "qr-lc-proposed": "מִ֭שַׁדַּי",
     "qr-what-is-weird": "ש lacks דגש",
     "qr-consensus": "מִ֭שַּׁדַּי",
+    "qr-comment": [
+        "The writing is not well preserved here:",
+        " the letters have been re-inked,",
+        " and some (but not all) of the pointing has been re-inked",
+        " (notably, the דגש in the ד).",
+        " So, a דגש in the ש could easily have been lost.",
+        " But, because other similar words lack דגש in μL (e.g., 27:13),",
+        " it seems likely that there was never a דגש in the ש to begin with.",
+        " Aside: note that the final פתה",
+        " is charitably transcribed as belonging to the ד rather than the $yod (י)."
+    ],
     "qr-highlight": 2,
     "qr-lc-loc": {"page": "403B", "column": 2, "line": 25},
     "qr-noted-by": "tBHQ-xBHL-xDM-xWLC-nUXLC",

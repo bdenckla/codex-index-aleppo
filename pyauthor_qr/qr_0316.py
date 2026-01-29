@@ -15,7 +15,7 @@ RECORD_0316 = {
     "qr-highlight": 1,
     "qr-lc-loc": {"page": "398A", "column": 1, "line": 3},
     "qr-bhq-comment": [
-        "$BHQ is the source of this (flawed) transcription.",
+        "$BHQ is the source of the proposed transcription of μL above.",
         " I don’t think $BHQ is really proposing that μL has יתיב here.",
         " This is more likely a typo (inherited from $BHS) than a deliberate choice.",
     ],

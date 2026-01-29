@@ -29,7 +29,7 @@ RECORD_3812_B = {
         [" μL can be though of as having ", my_html.bold("copied")],
         " the ה to the second word rather than moving it.",
     ],
-    "qr-highlight-lc": 5,
+    "qr-highlight-lc-proposed": 5,
     "qr-lc-loc": {"page": "408A", "column": 1, "line": -11},
     "qr-aleppo-img": "Aleppo-3812_B.png",
     "qr-aleppo-page-url": "https://www.mgketer.org/mikra/29/38/1/mg/106",

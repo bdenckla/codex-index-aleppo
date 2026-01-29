@@ -9,7 +9,7 @@ RECORD_2134_UXLC = {
     ],
     "qr-highlight": 1,
     "qr-lc-loc": {"page": "403A", "column": 2, "line": 24},
-    "qr-bhq-comment": ["$BHQ is the source of this (flawed) transcription."],
+    "qr-bhq-comment": ["$BHQ is the source of the proposed transcription of μL above."],
     "qr-noted-by": "tBHQ-xBHL-xDM-xWLC-zUXLC",
     "qr-uxlc-change-url": "https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-24",
 }

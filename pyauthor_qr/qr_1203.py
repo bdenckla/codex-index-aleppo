@@ -8,7 +8,7 @@ RECORD_1203 = {
     "qr-lc-proposed": "וְאֶת",
     "qr-what-is-weird": "מקף is missing",
     "qr-consensus": "וְאֶת־",
-    "qr-highlight-mam": 4,
+    "qr-highlight-consensus": 4,
     "qr-lc-loc": {"page": "400A", "column": 2, "line": -1},
     "qr-bhq-comment": _BHQ_COMMENT_1203,
     "qr-noted-by": "xBHQ-nBHL-nDM",

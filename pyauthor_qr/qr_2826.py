@@ -1,5 +1,5 @@
 _BHQ_COMMENT_2826 = [
-    "$BHQ is the source of this (flawed) transcription.",
+    "$BHQ is the source of the proposed transcription of μL above.",
     " I don’t think $BHQ is really proposing that μL lacks this חולם dot.",
     " This is more likely a typo (inherited from $BHS) than a deliberate choice.",
 ]
