@@ -7,7 +7,7 @@ RECORD_0814_UXLC = {
     "qr-comment": [
         "Perhaps a רביע is is merged into the left end of the (untranscribed) רפה.",
     ],
-    "qr-highlight": 1,
+    "qr-highlight": 3,
     "qr-lc-loc": {"page": "399A", "column": 2, "line": 20},
     "qr-bhq-comment": ["$BHQ is the source of the proposed transcription of μL above."],
     "qr-noted-by": "tBHQ-xBHL-xDM-xWLC-nUXLC",

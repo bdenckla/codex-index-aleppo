@@ -1,12 +1,8 @@
 RECORD_2405_UXLC = {
     "qr-cv": "24:5",
     "qr-lc-proposed": "בַּֽמִּדְבָּ֗ר",
-    "qr-what-is-weird": "Change meteg under first bet to merkha",
+    "qr-what-is-weird": "געיה not מרכא",
     "qr-consensus": "בַּ֥מִּדְבָּ֗ר",
-    "qr-comment": [
-        "The mark under the first bet has a distinct northeast-to-southwest inclination.",
-        "BHL has a merkha under the first bet. BHLA has no entry for this verse.",
-    ],
     "qr-highlight": 1,
     "qr-lc-loc": {"page": "404A", "column": 1, "line": 1},
     "qr-bhq-comment": ["$BHQ is the source of the proposed transcription of μL above."],

@@ -2,7 +2,7 @@ RECORD_0801 = {
     "qr-bhla-i": 7,
     "qr-cv": "8:1",
     "qr-lc-proposed": "וַיֹאמַֽר׃",
-    "qr-what-is-weird": "$yod (י) lacks דגש",
+    "qr-what-is-weird": "$yod lacks דגש",
     "qr-consensus": "וַיֹּאמַֽר׃",
     "qr-highlight": 2,
     "qr-lc-loc": {"page": "399A", "column": 2, "line": 5, "including-blank-lines": 1},

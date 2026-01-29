@@ -11,7 +11,7 @@ RECORD_2230_A = {
     "qr-n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
     "qr-lc-proposed": "יֽ͏ְמַלֵּ֥ט",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "$yod (י) may have געיה",
+    "qr-what-is-weird": "$yod may have געיה",
     "qr-consensus": "יְמַלֵּ֥ט",
     "qr-comment": [
         "The possible געיה is before שווא.",

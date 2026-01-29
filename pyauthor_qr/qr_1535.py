@@ -2,11 +2,11 @@ RECORD_1535 = {
     "qr-cv": "15:35",
     "qr-lc-proposed": "וְיָלֹ֣ד",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "מונח may be on ל not $yod (י)",
+    "qr-what-is-weird": "מונח may be on ל not $yod",
     "qr-consensus": "וְיָ֣לֹד",
     "qr-comment": [
         "There is little evidence of a מונח in any location on this word.",
-        " There is a mark that looks like a פתח between the $yod (י) and the ל,",
+        " There is a mark that looks like a פתח between the $yod and the ל,",
         " but that is grammatically implausible.",
     ],
     "qr-highlight-lc-proposed": 3,

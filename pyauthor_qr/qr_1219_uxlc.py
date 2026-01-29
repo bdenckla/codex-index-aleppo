@@ -1,13 +1,9 @@
 RECORD_1219_UXLC = {
     "qr-cv": "12:19",
     "qr-lc-proposed": "וְאֵֽתָנִ֣ים",
-    "qr-what-is-weird": "Change meteg under alef to tipeha",
+    "qr-what-is-weird": "געיה not טרחא",
     "qr-consensus": "וְאֵ֖תָנִ֣ים",
-    "qr-comment": [
-        "The mark under the alef is clearly inclined northwest-to-southeast.",
-        "BHL has a tipeha under the alef. BHLA has no entry for this verse.",
-    ],
-    "qr-highlight": 1,
+    "qr-highlight": 2,
     "qr-lc-loc": {"page": "400B", "column": 1, "line": 20},
     "qr-bhq-comment": ["$BHQ is the source of the proposed transcription of μL above."],
     "qr-noted-by": "tBHQ-xBHL-xDM-xWLC-zUXLC",

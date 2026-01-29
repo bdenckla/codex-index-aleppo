@@ -1,4 +1,4 @@
-from  pyauthor_util import author
+from pyauthor_util import author
 
 _URL = "https://bdenckla.github.io/MAM-with-doc/misc/tsinnorit_and_oleh_on_ivs.html"
 doc = author.anc_h("document", _URL)
@@ -15,7 +15,7 @@ RECORD_3611_UXLC = {
         " regardless of whether the שווא is notated as a simple שווא or a חטף vowel.",
         " Yet, here is just such an עולה, on the letter ע with a חטף פתח.",
         " (Rarely, עולה appears on a letter with a vocal שווא at the beginning of a word.",
-        [" See my ",doc,", “Tsinnorit & Oleh on Initial Vocal Shewa” for details.)"],
+        [" See my ", doc, ", “Tsinnorit & Oleh on Initial Vocal Shewa” for details.)"],
     ],
     "qr-highlight-lc-proposed": 3,
     "qr-highlight-consensus": 2,

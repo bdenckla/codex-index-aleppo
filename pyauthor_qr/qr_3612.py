@@ -7,7 +7,7 @@ _BHQ_COMMENT_3612 = [
     "Here $BHQ has a typo:",
     [" it has ", author.hbo("בִּבְלִ־"), " rather than ", author.hbo("בִּבְלִי־")],
     " in the word it reports for μA and μY.",
-    " I.e. it is missing a final $yod (י) before the מקף.",
+    " I.e. it is missing a final $yod before the מקף.",
     " The same typo appears in the $BHQ section “Commentary on the Critical Apparatus.”",
     " In addition to the typo, for some reason $BHQ reports this word as being the קרי",
     [" of μY, i.e. M", my_html.sup("Y(qere)")],

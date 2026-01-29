@@ -12,7 +12,7 @@ RECORD_2401_UXLC = {
         " But, because other similar words lack דגש in μL (e.g., 27:13),",
         " it seems likely that there was never a דגש in the ש to begin with.",
         " Aside: note that the final פתה",
-        " is charitably transcribed as belonging to the ד rather than the $yod (י)."
+        " is charitably transcribed as belonging to the ד rather than the $yod.",
     ],
     "qr-highlight": 2,
     "qr-lc-loc": {"page": "403B", "column": 2, "line": 25},
