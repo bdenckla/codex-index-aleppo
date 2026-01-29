@@ -4,9 +4,7 @@ RECORD_3719_UXLC = {
     "qr-lc-proposed": "לֹ֥א־",
     "qr-what-is-weird": "מרכא not געיה",
     "qr-consensus": "לֹֽא־",
-    "qr-comment": [
-        "Aside: the מקף is very faint."
-    ],
+    "qr-comment": ["Aside: the מקף is very faint."],
     "qr-highlight": 1,
     "qr-lc-loc": {"page": "407B", "column": 2, "line": 24},
     "qr-bhq-comment": ["$BHQ is the source of the proposed transcription of μL above."],
