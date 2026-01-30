@@ -178,32 +178,18 @@ def _maybe_bhq(bhq):
 _SEP = " \N{EM DASH} "
 
 
-def _maybe_inline_comment(record):
-    if comment := record.get("qr-comment"):
-        return [comment]
-    return []
+def _maybe_inline(comment):
+    return [] if comment is None else [comment]
 
 
-def _maybe_inline_bhqcom(record):
-    if bhqcom := record.get("qr-bhq-comment"):
-        return [bhqcom]
-    return []
+def _maybe_para(comment):
+    return [] if comment is None else [_ensure_lop(comment)]
 
 
-def _maybe_para_comment(record):
-    if comment := record.get("qr-comment"):
-        if _has_paras(comment):
-            return [comment]
-        return [author.para(comment)]
-    return []
+def _ensure_lop(comment):
+    """lop: list of paras"""
+    return comment if _is_lop(comment) else [author.para(comment)]
 
-
-def _maybe_para_bhqcom(record):
-    if bhqcom := record.get("qr-bhq-comment"):
-        if _has_paras(bhqcom):
-            return [bhqcom]
-        return [author.para(bhqcom)]
-    return []
 
 
 def _ancs(record):
@@ -222,13 +208,14 @@ def _dpe(record):
 
 
 def _use_stretched_format(record):
-    return _has_paras(record.get("qr-comment")) or _has_paras(record.get("qr-bhq-comment"))
+    comment = record.get("qr-comment")
+    bhqcom = record.get("qr-bhq-comment")
+    return _is_lop(comment) or _is_lop(bhqcom)
 
 
-def _has_paras(comment):
-    if comment is None:
-        return False
-    if isinstance(comment, str):
+def _is_lop(comment):
+    """lop: list of paras"""
+    if comment is None or isinstance(comment, str):
         return False
     assert isinstance(comment, list)
     el0 = comment[0]
@@ -237,8 +224,8 @@ def _has_paras(comment):
 
 def _dpe_inline(record):
     dpe1 = [
-        *_maybe_inline_comment(record),
-        *_maybe_inline_bhqcom(record),
+        *_maybe_inline(record.get("qr-comment")),
+        *_maybe_inline(record.get("qr-bhq-comment")),
         *_ancs_and_loc(record),
     ]
     return _parasperse(dpe1)
@@ -246,8 +233,8 @@ def _dpe_inline(record):
 
 def _dpe_stretched(record):
     return [
-        *_maybe_para_comment(record),
-        *_maybe_para_bhqcom(record),
+        *_maybe_para(record.get("qr-comment")),
+        *_maybe_para(record.get("qr-bhq-comment")),
         _parasperse(_ancs_and_loc(record)),
     ]
 
