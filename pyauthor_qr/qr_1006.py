@@ -5,7 +5,7 @@ _COMPAR1 = [
     "Whereas usually we just baldly and boldly state",
     " what (we think) the consensus is,",
     " here we will try to explain why the transcription’s divergence from consensus",
-    " seems so unlikely to reflect the scribal intent."
+    " seems so unlikely to reflect the scribal intent.",
 ]
 _PS118 = ["Ps 118:5 ", author.hbo("הַ֭מֵּצַ֥ר")]
 _COMPAR2 = [

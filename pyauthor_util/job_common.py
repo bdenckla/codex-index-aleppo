@@ -1,13 +1,20 @@
 from py import my_html
 
+
+def core_ignores(option=" (or anywhere)"):
+    return [
+        f"Since $BHQ does not note any uncertainty in its transcription here{option},",
+        f" it is hard to distinguish whether $BHQ has ignored the mark in question",
+        f" on purpose or by accident.",
+    ]
+
+
 CAM1753_PAGE_URL_BASE = (
     "https://archive.org/details/ketuvim-cambridge-ms-add-1753-images/page"
 )
 _SEE_3419 = [" See my entry on נכר in 34:19 for further discusion."]
-_CORR_IG_VARIANT_3419 = [
-    " Since $BHQ does not note any uncertainty in its transcription here,",
-    " it is hard to distinguish whether $BHQ has ignored the mark in question",
-    " on purpose or by accident.",
+_CORRECTLY_IGNORES_3419 = [
+    [" ", *core_ignores("")],
     " More broadly, $BHQ Job never notes",
     " any uncertainty in its transcription of μL.",
     " This may mislead many readers.",
@@ -18,8 +25,8 @@ _CORR_IG_VARIANT_3419 = [
     " $BHQ should, in my opinion, indicate to the reader the specific cases",
     " where its transcription is particularly uncertain.",
 ]
-_CORR_IG_VARIANT = {
-    "34:19": _CORR_IG_VARIANT_3419,
+_CORRECTLY_IGNORES = {
+    "34:19": _CORRECTLY_IGNORES_3419,
     "36:29": _SEE_3419,
     "17:4": _SEE_3419,
 }
@@ -32,8 +39,7 @@ def suffix(contents):
 
 def correctly_ignores(what, cv, adjective=""):
     adj = f" {adjective}" if adjective else ""
-    variant = _CORR_IG_VARIANT[cv]
-    out_parts = [
+    return [
         f"$BHQ has no {what} here.",
         f" I happen to think that this is the best transcription of μL here,",
         f" but I don’t know whether $BHQ arrived at this transcription",
@@ -42,9 +48,8 @@ def correctly_ignores(what, cv, adjective=""):
         f" the faint possible{adj} {what}?",
         f" Or did they simply ignore μL entirely, supplying the consensus pointing,",
         f" which has no {what}?",
-        *variant,
+        *_CORRECTLY_IGNORES[cv],
     ]
-    return "".join(out_parts)
 
 
 BHQ_COMMENT_TBHQ_NELSEWHERE = [
