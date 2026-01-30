@@ -1,3 +1,6 @@
+from pyauthor_util.golinets import golinets_citation
+
+
 _BHQ_COMMENT_1905 = [
     "$BHQ drops the note that $BHS has on this quirk, which is extraordinary.",
     " As usual, we don’t know whether $BHQ dropped this note on purpose or by accident.",
@@ -17,6 +20,7 @@ RECORD_1905 = {
     "qr-comment": [
         "A דגש on a letter with רפה doesn’t make sense.",
         " The color image of μL reveals this דגש to be unlikely.",
+        [" Judged to be just a speck, not a דגש, in ", golinets_citation("251")],
     ],
     "qr-highlight": 4,
     "qr-lc-loc": {"page": "402A", "column": 2, "line": -5},

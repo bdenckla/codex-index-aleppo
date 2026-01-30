@@ -19,7 +19,7 @@ RECORD_3719 = {
         " we may have to rely more than usual on the evidence of printed editions.",
         " We may also have to rely more than usual on context like the grammar of cantillation,",
         " to determine which of these marks is most likey in a given situation.",
-        " Aside: the מקף is very faint."
+        " Aside: the מקף is very faint.",
     ],
     "qr-highlight": 1,
     "qr-lc-loc": {"page": "407B", "column": 2, "line": 24},

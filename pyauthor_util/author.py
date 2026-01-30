@@ -81,6 +81,11 @@ def heading_level_1(contents, attr=None):
     return my_html.heading_level_1(dollar_sub(contents), attr)
 
 
+def heading_level_2(contents, attr=None):
+    """Create a level 2 heading with dollar_sub applied to the contents"""
+    return my_html.heading_level_2(dollar_sub(contents), attr)
+
+
 def hbo(contents, attr=None):
     return my_html.bdi(contents, _awl(attr, "hbo"))
 
@@ -339,6 +344,7 @@ _ABBR_SC = {
     "$BHS": "BHS",
     "$WLC": "WLC",
     "$UXLC": "UXLC",
+    "$KUSATU": "KUSATU",
     "$BHQ": "BHQ",
     "$BHL": "BHL",
     "$BHL_A": "BHL-A",

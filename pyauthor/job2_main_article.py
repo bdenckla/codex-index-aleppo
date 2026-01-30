@@ -3,7 +3,12 @@
 from py import my_html
 from pyauthor_util.para_and_table import para_and_table
 from pyauthor_util import author
-from pyauthor_util.common_titles_etc import D2_TITLE, D2_H1_CONTENTS, D2_FNAME
+from pyauthor_util.common_titles_etc import (
+    D2_TITLE,
+    D2_H1_CONTENTS,
+    D2_FNAME,
+    d3_anchor,
+)
 from pyauthor_util.num_range import num_range
 from pyauthor_util.intro import intro
 from pycmn.my_utils import dv_map
@@ -41,6 +46,8 @@ def _make_cbody(ov_and_de, qr_groups):
         para_and_table(_cpara24b_dexi, ov_and_de, qr_groups["tbhq_and_zwd"]),
         para_and_table(_cpara24c_misc, ov_and_de, qr_groups["tbhq_and_zwm"]),
         author.para_ul(_CPARA25, _clist25(the_lens)),
+        author.heading_level_2("Postscript: $UXLC"),
+        author.para(_CPARA_UXLC),
     ]
     return cbody
 
@@ -338,3 +345,17 @@ def _cpara23(the_len_of_the_2nd_group):
         f" I.e., the source of these {foo} reiterations is almost certainly $BHS,",
         " not one of the other three editions.",
     ]
+
+
+_CPARA_UXLC = [
+    "If $BHQ Job were being compiled today,",
+    " $UXLC (a fork of $WLC) is another edition that could help.",
+    " But $UXLC’s Job changes (and their accompanying notes)",
+    " were made in 2022 and 2023,",
+    " probably too late to be used by $BHQ.",
+    " Nonetheless, $UXLC is an edition I would like to bring attention to.",
+    " So, I would like to show the ways that $UXLC",
+    " might contribute to $BHQ Job if it were being compiled today.",
+    " I do so in the ",
+    d3_anchor(),
+]
