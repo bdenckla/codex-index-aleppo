@@ -1,13 +1,17 @@
 from pyauthor_util.golinets import golinets_citation
 from pyauthor_util import author
 
+_UXLC_CHANGE_2022_02_17_1 = "https://tanach.us/Changes/2022.04.01%20-%20Changes/2022.04.01%20-%20Changes.xml?2022.02.17-1"
+_ISAIAH_1306 = author.anc_h("Isaiah 13:6", _UXLC_CHANGE_2022_02_17_1)
+
 
 _COMMENT_PARA_1 = [
     "The writing is not well preserved here:",
     " the letters have been re-inked,",
     " but among the points, only the דגש in the ד has been re-inked.",
     " So, a דגש in the ש could easily have been lost.",
-    " But, because other similar words lack דגש in μL (e.g., 27:13),",
+    " But, because other similar words lack דגש in μL",
+    [" (e.g., 27:13, ", _ISAIAH_1306, ", Joel 1:15),"],
     " it seems likely that there was never a דגש in the ש to begin with.",
 ]
 _COMMENT_PARA_2 = [
