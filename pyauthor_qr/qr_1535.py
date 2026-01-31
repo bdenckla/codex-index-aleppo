@@ -2,10 +2,15 @@ RECORD_1535 = {
     "qr-cv": "15:35",
     "qr-lc-proposed": "וְיָלֹ֣ד",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "מונח may be on ל not $yod",
-    "qr-consensus": "וְיָ֣לֹד",
+    "qr-what-is-weird": "∅ and מונח not מונח and געיה",
+    "qr-consensus": "וְיָ֣לֹֽד",
     "qr-generic-comment": [
-        "There is little evidence of a מונח in any location on this word.",
+        "The proposed transcription of μL above shows nothing (∅) on $yod and מונח on ל.",
+        " (By “nothing on $yod” I mean nothing other than קמץ.)",
+        " In contrast, the consensus transcription shows מונח on $yod and געיה on ל.",
+        " (The געיה on ל is somewhat extraordinary since it follows the accent (מונח).)",
+        " The proposed transcription seems far-fetched because"
+        " there is little evidence of a מונח in any location on this word.",
         " There is a mark that looks like a פתח between the $yod and the ל,",
         " but that is grammatically implausible.",
     ],

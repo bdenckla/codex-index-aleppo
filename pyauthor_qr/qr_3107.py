@@ -20,6 +20,7 @@ RECORD_3107 = {
     "qr-cv": "31:7",
     "qr-lc-proposed": "מֻאֿוּֽם׃",
     "qr-what-is-weird": "קבוץ and סילוק not סילוק and ∅",
+    # ∅ is U+2205: EMPTY SET
     "qr-consensus": "מֽאֿוּם׃",
     "qr-highlight": [1, 3],
     "qr-lc-loc": {"page": "405B", "column": 1, "line": -6, "including-blank-lines": 1},
