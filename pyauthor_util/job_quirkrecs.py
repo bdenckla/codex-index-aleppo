@@ -57,7 +57,7 @@ from pyauthor_qr.qr_1806 import RECORD_1806
 from pyauthor_qr.qr_1809 import RECORD_1809
 from pyauthor_qr.qr_1902 import RECORD_1902
 from pyauthor_qr.qr_1905 import RECORD_1905
-from pyauthor_qr.qr_1916 import RECORD_1916
+from pyauthor_qr.qr_1916_A import RECORD_1916_A
 from pyauthor_qr.qr_1916_B import RECORD_1916_B
 from pyauthor_qr.qr_2001 import RECORD_2001
 from pyauthor_qr.qr_2107 import RECORD_2107
@@ -195,7 +195,7 @@ QUIRKRECS = [
     RECORD_1809,
     RECORD_1902,
     RECORD_1905,
-    RECORD_1916,
+    RECORD_1916_A,
     RECORD_1916_B,
     RECORD_2001,
     RECORD_2107,
