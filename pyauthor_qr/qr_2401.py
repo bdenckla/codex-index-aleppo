@@ -26,9 +26,9 @@ _COMMENT_PARA_3 = [
 
 RECORD_2401 = {
     "qr-cv": "24:1",
-    "qr-lc-proposed": "מִ֭שַׁדַּי",
+    "qr-lc-proposed": "מִ֭שַׁדַּי",
     "qr-what-is-weird": "ש lacks דגש",
-    "qr-consensus": "מִ֭שַּׁדַּי",
+    "qr-consensus": "מִ֭שַּׁדַּי",
     "qr-generic-comment": [
         author.para(_COMMENT_PARA_1),
         author.para(_COMMENT_PARA_2),

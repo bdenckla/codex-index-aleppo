@@ -3,9 +3,9 @@ from pyauthor_util.uxlc_change import uxlc_change
 
 RECORD_2405 = {
     "qr-cv": "24:5",
-    "qr-lc-proposed": "בַּֽמִּדְבָּ֗ר",
+    "qr-lc-proposed": "בַּֽמִּדְבָּ֗ר",
     "qr-what-is-weird": "געיה not מרכא",
-    "qr-consensus": "בַּ֥מִּדְבָּ֗ר",
+    "qr-consensus": "בַּ֥מִּדְבָּ֗ר",
     "qr-highlight": 1,
     "qr-lc-loc": {"page": "404A", "column": 1, "line": 1},
     "qr-bhq-comment": ["$BHQ has the proposed transcription of μL above."],

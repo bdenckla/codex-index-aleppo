@@ -3,9 +3,9 @@ from pyauthor_util.uxlc_change import uxlc_change
 
 RECORD_2713 = {
     "qr-cv": "27:13",
-    "qr-lc-proposed": "מִשַׁדַּ֥י",
+    "qr-lc-proposed": "מִשַׁדַּ֥י",
     "qr-what-is-weird": "ש lacks דגש",
-    "qr-consensus": "מִשַּׁדַּ֥י",
+    "qr-consensus": "מִשַּׁדַּ֥י",
     "qr-generic-comment": [
         "24:1 is analogous.",
     ],

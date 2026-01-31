@@ -24,9 +24,9 @@ _COMPAR4 = [
 
 RECORD_0505 = {
     "qr-cv": "5:5",
-    "qr-lc-proposed": "מִצִּנִּ֥ים",
+    "qr-lc-proposed": "מִצִּנִּ֥ים",
     "qr-what-is-weird": "צ has דגש",
-    "qr-consensus": "מִצִנִּ֥ים",
+    "qr-consensus": "מִצִנִּ֥ים",
     "qr-highlight": 2,
     "qr-generic-comment": [
         author.para(_COMPAR1),

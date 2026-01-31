@@ -3,7 +3,7 @@ from pyauthor_util.uxlc_change import uxlc_change
 
 RECORD_3210 = {
     "qr-cv": "32:10",
-    "qr-lc-proposed": "דֵּעִ֣י",
+    "qr-lc-proposed": "דֵּעִ֣י",
     "qr-what-is-weird": "ד has דגש",
     "qr-consensus": "דֵעִ֣י",
     "qr-generic-comment": [

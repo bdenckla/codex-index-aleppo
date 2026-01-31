@@ -3,7 +3,7 @@ from pyauthor_util.uxlc_change import uxlc_change
 
 RECORD_2134 = {
     "qr-cv": "21:34",
-    "qr-lc-proposed": "וּ֝תְשֽׁוּבֹתֵיכֶ֗ם",
+    "qr-lc-proposed": "וּ֝תְשֽׁוּבֹתֵיכֶ֗ם",
     "qr-what-is-weird": "געיה not מרכא",
     "qr-consensus": "וּ֝תְשׁ֥וּבֹתֵיכֶ֗ם",
     "qr-highlight": 3,

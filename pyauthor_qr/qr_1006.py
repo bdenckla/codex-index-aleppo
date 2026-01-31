@@ -7,7 +7,7 @@ _COMPAR1 = [
     " here we will try to explain why the transcription’s divergence from consensus",
     " seems so unlikely to reflect the scribal intent.",
 ]
-_PS118 = ["Ps 118:5 ", author.hbo("הַ֭מֵּצַ֥ר")]
+_PS118 = ["Ps 118:5 ", author.hbo("הַ֭מֵּצַ֥ר")]
 _COMPAR2 = [
     ["In $BHS, a דחי followed by מרכא is probably found only here"],
     [" and in the following three cases:"],
@@ -24,8 +24,8 @@ _COMPAR3 = [
     [" because it follows an אתנח,"],
     [" a sequence unprecedented in the consensus"],
     [" and rare even in $BHS, where it is probably found in only two other cases:"],
-    [" Ps 115:3 ", author.hbo("כֹּ֭ל אֲשֶׁר־חָפֵ֣ץ עָשָֽׂה׃"), " and"],
-    [" Ps 119:16 ", author.hbo("לֹ֭א אֶשְׁכַּ֣ח דְּבָרֶֽךָ׃"), "."],
+    [" Ps 115:3 ", author.hbo("כֹּ֭ל אֲשֶׁר־חָפֵ֣ץ עָשָֽׂה׃"), " and"],
+    [" Ps 119:16 ", author.hbo("לֹ֭א אֶשְׁכַּ֣ח דְּבָרֶֽךָ׃"), "."],
     [" In both of those two cases, טרחא is a better transcription of μL."],
 ]
 _COMPAR4 = [
@@ -52,14 +52,14 @@ _COMPAR5 = [
 ]
 # Found 3 verses where ETNAHTA (֑ U+0591) is followed by DEHI (֭ U+05AD):
 
-# Ps 115:3 — וֵֽאלֹהֵ֥ינוּ בַשָּׁמָ֑יִם כֹּ֭ל אֲשֶׁר־חָפֵ֣ץ עָשָֽׂה׃
-# Ps 119:16 — בְּחֻקֹּתֶ֥יךָ אֶֽשְׁתַּעֲשָׁ֑ע לֹ֭א אֶשְׁכַּ֣ח דְּבָרֶֽךָ׃
-# Job 10:6 — כִּֽי־תְבַקֵּ֥שׁ לַעֲוֺנִ֑י וּ֭לְחַטָּאתִ֥י תִדְרֽוֹשׁ׃
+# Ps 115:3 — וֵֽאלֹהֵ֥ינוּ בַשָּׁמָ֑יִם כֹּ֭ל אֲשֶׁר־חָפֵ֣ץ עָשָֽׂה׃
+# Ps 119:16 — בְּחֻקֹּתֶ֥יךָ אֶֽשְׁתַּעֲשָׁ֑ע לֹ֭א אֶשְׁכַּ֣ח דְּבָרֶֽךָ׃
+# Job 10:6 — כִּֽי־תְבַקֵּ֥שׁ לַעֲוֺנִ֑י וּ֭לְחַטָּאתִ֥י תִדְרֽוֹשׁ׃
 RECORD_1006 = {
     "qr-cv": "10:6",
-    "qr-lc-proposed": "וּ֭לְחַטָּאתִ֥י",
+    "qr-lc-proposed": "וּ֭לְחַטָּאתִ֥י",
     "qr-what-is-weird": "דחי not געיה",
-    "qr-consensus": "וּֽלְחַטָּאתִ֥י",
+    "qr-consensus": "וּֽלְחַטָּאתִ֥י",
     "qr-highlight": 1,
     "qr-lc-loc": {"page": "400A", "column": 1, "line": 2},
     "qr-generic-comment": [
