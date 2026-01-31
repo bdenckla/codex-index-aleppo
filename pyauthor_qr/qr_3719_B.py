@@ -1,7 +1,7 @@
 from pyauthor_util.uxlc_change import uxlc_change
 
 
-RECORD_3719 = {
+RECORD_3719_B = {
     "qr-cv": "37:19",
     "qr-n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
     "qr-lc-proposed": "לֹ֥א־",
