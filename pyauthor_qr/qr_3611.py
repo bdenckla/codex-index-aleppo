@@ -1,5 +1,4 @@
 from pyauthor_util import author
-from pyauthor_util.uxlc_change import uxlc_change
 
 _URL = "https://bdenckla.github.io/MAM-with-doc/misc/tsinnorit_and_oleh_on_ivs.html"
 doc = author.anc_h("document", _URL)

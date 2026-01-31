@@ -8,7 +8,7 @@ RECORD_0316 = {
     "qr-what-is-weird": "יתיב not מהפך",
     "qr-consensus": "א֤וֹ",
     "qr-generic-comment": [
-        "יתיב doesn’t make sense here because"
+        "The יתיב accent doesn’t make sense here because"
         " this is in the poetic rather than prose section of Job",
         [" ", author.paren(num_range("3:2", "42:6")), "."],
     ],
