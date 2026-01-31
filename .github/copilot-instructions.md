@@ -25,8 +25,11 @@ This project uses typographically correct Unicode characters. **Never convert th
 
 When working with Hebrew text, maintain proper Unicode normalization order:
 - Shin/sin dots (U+05C1, U+05C2) should come immediately after the shin letter
-- Dagesh (U+05BC) should come before vowel points
+- Dagesh (U+05BC) should come after shin/sin dot but before rafeh
+- Rafeh (U+05BF) should come after dagesh but before vowel points
 - **Accents (cantillation marks) almost always come AFTER vowels**, not before them, when both appear on the same letter
+
+Full order: **base letter → shin/sin dot → dagesh → rafeh → vowels → meteg → accents**
 
 ## Verification After Refactoring
 
