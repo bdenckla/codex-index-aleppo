@@ -17,12 +17,12 @@ def _do_solo_asserts(bhq, bhl, dm, wlc, uxlc):
     assert bhq in ("nBHQ", "xBHQ", "tBHQ")
     assert bhl in ("nBHL", "xBHL")
     assert dm in ("nDM", "xDM")
-    assert wlc in ("nWLC", "xWLC", "zWLCmisc", "zWLCdexi")
+    assert wlc in ("nWLC", "xWLC", "zmiscWLC", "zdexiWLC")
     assert uxlc in ("nUXLC", "xUXLC", "zUXLC")
 
 
 def _do_combo_asserts(bhq, bhl, dm, wlc, uxlc):
-    if wlc in ("zWLCmisc", "zWLCdexi"):
+    if wlc in ("zmiscWLC", "zdexiWLC"):
         assert (bhq, bhl, dm, uxlc) == ("tBHQ", "xBHL", "xDM", "xUXLC")
     if uxlc == "zUXLC":
         assert (bhq, bhl, dm, wlc) == ("tBHQ", "xBHL", "xDM", "xWLC")
@@ -72,12 +72,12 @@ def _tbhq_and_n3(quirkrec):
 
 def _tbhq_and_zwd(quirkrec):
     _bhq, t3o = _bhq_and_t3o(quirkrec)
-    return t3o[2] == "zWLCdexi"
+    return t3o[2] == "zdexiWLC"
 
 
 def _tbhq_and_zwm(quirkrec):
     _bhq, t3o = _bhq_and_t3o(quirkrec)
-    return t3o[2] == "zWLCmisc"
+    return t3o[2] == "zmiscWLC"
 
 
 def _xbhq_and_nuxlc(quirkrec):
@@ -108,7 +108,7 @@ _FILTER_FNS = {
 # xbhq: not noted (as a quirk) in BHQ
 # n3, noted (as a quirk) in one of "the three"
 # x3: not noted (as a quirk) in one of "the three"
-# zw (zWLCmisc): noted (as consensus) by WLC (combined with MAM):
+# zw (zmiscWLC): noted (as consensus) by WLC (combined with MAM):
 #     flagged as a change in WLC relative to BHS, e.g. a bracket-c or bracket-v note.
 #     comparison with MAM revealed that it is a change back towards consensus,
 #     i.e. this is BHS/BHQ proposing a quirk that is not in μL (according to WLC at least)

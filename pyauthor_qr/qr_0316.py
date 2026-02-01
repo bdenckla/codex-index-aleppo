@@ -19,5 +19,5 @@ RECORD_0316 = {
         " I don’t think $BHQ is really proposing that μL has יתיב here.",
         " This is more likely a typo (inherited from $BHS) than a deliberate choice.",
     ],
-    "qr-noted-by": "tBHQ-xBHL-xDM-zWLCmisc",
+    "qr-noted-by": "tBHQ-xBHL-xDM-zmiscWLC",
 }

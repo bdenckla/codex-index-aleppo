@@ -10,7 +10,7 @@ RECORD_3619 = {
     "qr-bhq-comment": [
         "$BHQ has the proposed transcription of μL above.",
     ],
-    "qr-noted-by": "tBHQ-xBHL-xDM-zWLCdexi",
+    "qr-noted-by": "tBHQ-xBHL-xDM-zdexiWLC",
     "qr-generic-comment": [
         "All but the southeast end of the דחי seems to have flaked off,",
         " but luckily left some faint trace behind."

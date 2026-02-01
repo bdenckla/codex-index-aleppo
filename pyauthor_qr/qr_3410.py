@@ -45,5 +45,5 @@ RECORD_3410 = {
     "qr-bhq-comment": [
         "$BHQ has the proposed transcription of μL above.",
     ],
-    "qr-noted-by": "tBHQ-xBHL-xDM-zWLCmisc",
+    "qr-noted-by": "tBHQ-xBHL-xDM-zmiscWLC",
 }
