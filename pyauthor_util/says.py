@@ -22,7 +22,14 @@ def says(quirkrec):
 
 
 def _dollar_editions(e_colon_edition):
-    return e_colon_edition.replace("e:", "$")
+    return _DOLLAR[e_colon_edition]
+
+
+_DOLLAR = {
+    "e:BHL": "$BHL",
+    "e:DM": "$DM",
+    "e:WLC": "$WLC",
+}
 
 
 def _english_says_who(quirkrec):
