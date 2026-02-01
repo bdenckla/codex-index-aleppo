@@ -5,14 +5,14 @@
 """
 
 from py import my_html
-from pyauthor_util.common_titles_etc import D1D_FNAME
-from pyauthor_util import author
-from pyauthor_util.short_id_etc import lc_img
-from pyauthor_util.short_id_etc import short_id
-from pyauthor_util.job1_highlight import highlight, color
-from pyauthor_util.job1_lcloc import lcloc
 from pycmn import my_utils
 from pycmn.my_utils import intersperse, sl_map
+from pyauthor_util.common_titles_etc import D1D_FNAME
+from pyauthor_util import author
+from pyauthor_util.get_qr_groups import nbhq_and_x3
+from pyauthor_util.short_id_etc import (lc_img, short_id)
+from pyauthor_util.job1_highlight import highlight, color
+from pyauthor_util.job1_lcloc import lcloc
 from py_uxlc_loc import my_uxlc_location
 from py_uxlc_loc import my_tanakh_book_names as py_uxlc_loc_tbn
 
@@ -139,11 +139,8 @@ def _what_is_weird(quirkrec):
 
 
 def _says(quirkrec):
-    # nbd = nb_dict(quirkrec)
-    # if _nbq_and_x3(nbd):
-    #     return ["in μL, as transcribed and noted by $BHQ"]
-    # if nbd["e:BHQ"] == "tBHQ":
-    #     return ["in μL, as transcribed but not noted by $BHQ"]
+    if nbhq_and_x3(quirkrec):
+        return ["in μL, as contributed by $BHQ"]
     return []
 
 
