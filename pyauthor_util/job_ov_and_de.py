@@ -6,6 +6,7 @@
 
 from py import my_html
 from pycmn import my_utils
+from pycmn import str_defs as sd
 from pycmn.my_utils import intersperse, sl_map
 from pyauthor_util.common_titles_etc import D1D_FNAME
 from pyauthor_util import author
@@ -111,7 +112,7 @@ def _lcp_and_con(quirkrec):
     hcon = highlight(quirkrec, "qr-consensus")
     if lc_q := quirkrec.get("qr-lc-q"):
         assert lc_q == "(?)"
-        lc_and_q = [hlcp, " (?)"]
+        lc_and_q = [hlcp, sd.NBSP, "(?)"]
     else:
         lc_and_q = [hlcp]
     lcp_and_con = [*lc_and_q, my_html.line_break(), hcon]
