@@ -10,8 +10,8 @@ from pycmn import str_defs as sd
 from pycmn.my_utils import intersperse, sl_map
 from pyauthor_util.common_titles_etc import D1D_FNAME
 from pyauthor_util import author
-from pyauthor_util.get_qr_groups import nbhq_and_n3, nbhq_and_x3, tbhq_and_n3
-from pyauthor_util.short_id_etc import (lc_img, short_id)
+from pyauthor_util.says import says
+from pyauthor_util.short_id_etc import lc_img, short_id
 from pyauthor_util.job1_highlight import highlight, color
 from pyauthor_util.job1_lcloc import lcloc
 from py_uxlc_loc import my_uxlc_location
@@ -134,19 +134,9 @@ def _make_overview_row(quirkrec):
 
 def _what_is_weird(quirkrec):
     wiw = quirkrec["qr-what-is-weird"]
-    parts = [wiw, *_says(quirkrec)]
+    parts = [wiw, *says(quirkrec)]
     wiw_and_says = intersperse(my_html.line_break(), parts)
     return wiw_and_says
-
-
-def _says(quirkrec):
-    if nbhq_and_x3(quirkrec):
-        return ["in μL, as contributed by $BHQ"]
-    if nbhq_and_n3(quirkrec):
-        return ["in μL, as reiterated by $BHQ"]
-    if tbhq_and_n3(quirkrec):
-        return ["in μL, as implied by $BHQ"]
-    return []
 
 
 def _els(quirkrec):

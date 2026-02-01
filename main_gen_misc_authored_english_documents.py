@@ -41,6 +41,7 @@ def main():
     #
     _write_index_dot_html((css_href,), "docs/index.html")
 
+
 def _prep(jobn_rel_top):
     qrs = sorted(QUIRKRECS, key=sort_key)
     _assert_all_img_paths_exist(jobn_rel_top, qrs)

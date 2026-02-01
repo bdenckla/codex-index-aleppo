@@ -346,6 +346,7 @@ _ABBR_SC = {
     "$UXLC": "UXLC",
     "$KUSATU": "KUSATU",
     "$BHQ": "BHQ",
+    "$DM": "DM",
     "$BHL": "BHL",
     "$BHL_A": "BHL-A",
     "$DBG": "DBG",
