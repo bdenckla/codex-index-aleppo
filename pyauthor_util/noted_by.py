@@ -2,13 +2,6 @@ import re
 from pycmn.my_utils import sl_map
 
 
-_DEFAULT = {
-    "e:BHQ": "xBHQ",
-    "e:BHL": "xBHL",
-    "e:DM": "xDM",
-    "e:WLC": "xWLC",
-    "e:UXLC": "xUXLC",
-}
 _STARTSWITH_N = {
     "e:BHQ": "nBHQ",
     "e:BHL": "nBHL",
@@ -23,7 +16,8 @@ _STARTSWITH_X = {
     "e:WLC": "xWLC",
     "e:UXLC": "xUXLC",
 }
-EDITIONS = tuple(k for k in _DEFAULT.keys())
+_DEFAULT = _STARTSWITH_X
+_EDITIONS = tuple(k for k in _DEFAULT.keys())
 
 
 def nb_dict(quirkrec):
@@ -49,7 +43,7 @@ def x_uclc(quirkrec):
 
 
 def _do_asserts(nbd):
-    bhq, bhl, dm, wlc, uxlc = (nbd[e] for e in EDITIONS)
+    bhq, bhl, dm, wlc, uxlc = (nbd[e] for e in _EDITIONS)
     _do_solo_asserts(bhq, bhl, dm, wlc, uxlc)
     _do_combo_asserts(bhq, bhl, dm, wlc, uxlc)
 
@@ -72,7 +66,7 @@ def _do_combo_asserts(bhq, bhl, dm, wlc, uxlc):
 
 
 def _fill_in(nb_dict):
-    full = {e: nb_dict.get(e) or _DEFAULT[e] for e in EDITIONS}
+    full = {e: nb_dict.get(e) or _DEFAULT[e] for e in _EDITIONS}
     return full
 
 
