@@ -1,16 +1,16 @@
 from pyauthor_util.noted_by import x_uclc
 
 
-def short_id(record):
-    cv_str = record["qr-cv"]
+def short_id(quirkrec):
+    cv_str = quirkrec["qr-cv"]
     chnu, vrnu = tuple(int(part) for part in cv_str.split(":"))
     cn02vn02 = f"{chnu:02d}{vrnu:02d}"
-    ftv = record.get("qr-n_of_m_for_this_verse")
+    ftv = quirkrec.get("qr-n_of_m_for_this_verse")
     ftv_str = f"-{ftv[0]}of{ftv[1]}ftv" if ftv else ""  # E.g. -1of2ftv
     return cn02vn02 + ftv_str
 
 
-def lc_img(record):
-    use_png = x_uclc(record)
+def lc_img(quirkrec):
+    use_png = x_uclc(quirkrec)
     ext = ".png" if use_png else ".jpg"
-    return record.get("qr-lc-img") or f"{short_id(record)}{ext}"
+    return quirkrec.get("qr-lc-img") or f"{short_id(quirkrec)}{ext}"

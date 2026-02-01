@@ -43,12 +43,12 @@ def make_example_row():
     )
 
 
-def row_id(record):
-    return f"row-{short_id(record)}"
+def row_id(quirkrec):
+    return f"row-{short_id(quirkrec)}"
 
 
-def sort_key(record):
-    return short_id(record)
+def sort_key(quirkrec):
+    return short_id(quirkrec)
 
 
 def _duplicates(seq):
@@ -62,18 +62,18 @@ def _duplicates(seq):
     return dups
 
 
-def _make_one_ov_and_de(uxlc, pbi, record):
-    std_bcvp_quad = _std_bcvp_quad(record)
+def _make_one_ov_and_de(uxlc, pbi, quirkrec):
+    std_bcvp_quad = _std_bcvp_quad(quirkrec)
     pg_dict = my_uxlc_location.page_and_guesses(uxlc, pbi, std_bcvp_quad)
-    pg_diff = _pg_diff(pg_dict, record["qr-lc-loc"])
+    pg_diff = _pg_diff(pg_dict, quirkrec["qr-lc-loc"])
     if pg_diff is not None:
-        ri = row_id(record)
+        ri = row_id(quirkrec)
         print(ri, pg_diff)
         print(ri, pg_dict)
-        print(ri, record["qr-lc-loc"])
+        print(ri, quirkrec["qr-lc-loc"])
     return {
-        "od-overview": _make_overview_row(record),
-        "od-details": _make_details_html(record),
+        "od-overview": _make_overview_row(quirkrec),
+        "od-details": _make_details_html(quirkrec),
     }
 
 
@@ -94,9 +94,9 @@ def _pg_diff(pg_dict, lc_loc):
     return None
 
 
-def _std_bcvp_quad(record):
-    cn_colon_vn = record["qr-cv"]
-    upwv = record.get("qr-uxlc-position-within-verse")
+def _std_bcvp_quad(quirkrec):
+    cn_colon_vn = quirkrec["qr-cv"]
+    upwv = quirkrec.get("qr-uxlc-position-within-verse")
     pwv = upwv or 1  # use the position within verse if available, else 1
     bkid = py_uxlc_loc_tbn.BK_JOB
     chnu_str, vrnu_str = cn_colon_vn.split(":")
@@ -106,10 +106,10 @@ def _std_bcvp_quad(record):
     return bkid, chnu, vrnu, atnu
 
 
-def _lcp_and_con(record):
-    hlcp = highlight(record, "qr-lc-proposed")
-    hcon = highlight(record, "qr-consensus")
-    if lc_q := record.get("qr-lc-q"):
+def _lcp_and_con(quirkrec):
+    hlcp = highlight(quirkrec, "qr-lc-proposed")
+    hcon = highlight(quirkrec, "qr-consensus")
+    if lc_q := quirkrec.get("qr-lc-q"):
         assert lc_q == "(?)"
         lc_and_q = [hlcp, " (?)"]
     else:
@@ -118,21 +118,25 @@ def _lcp_and_con(record):
     return lcp_and_con
 
 
-def _make_overview_row(record):
-    hbo_attrs = {"lang": "hbo", "dir": "rtl", **_els(record)}
-    the_row_id = row_id(record)
+def _make_overview_row(quirkrec):
+    hbo_attrs = {"lang": "hbo", "dir": "rtl", **_els(quirkrec)}
+    the_row_id = row_id(quirkrec)
     anc = my_html.anchor_h("#", f"{D1D_FNAME}#{the_row_id}")  # self-anchor
     tr_contents = [
-        my_html.table_datum(_lcp_and_con(record), hbo_attrs),
-        my_html.table_datum([anc, " ", record["qr-cv"]]),
-        author.table_datum(record["qr-what-is-weird"]),
+        my_html.table_datum(_lcp_and_con(quirkrec), hbo_attrs),
+        my_html.table_datum([anc, " ", quirkrec["qr-cv"]]),
+        author.table_datum(_what_is_weird(quirkrec)),
     ]
     tr_attrs = {"id": the_row_id}
     return my_html.table_row(tr_contents, tr_attrs)
 
 
-def _els(record):
-    if record.get("qr-extra-letter-spacing"):
+def _what_is_weird(quirkrec):
+    return quirkrec["qr-what-is-weird"]
+
+
+def _els(quirkrec):
+    if quirkrec.get("qr-extra-letter-spacing"):
         return {"class": "extra-letter-spacing"}
     return {}
 
@@ -155,12 +159,12 @@ _MI_ARGS = {
 }
 
 
-def _maybe_img(record, mi_args):
+def _maybe_img(quirkrec, mi_args):
     ms_name, iikey, ipkey = _MI_ARGS[mi_args]
-    maybe_img_path = record.get(ipkey)
+    maybe_img_path = quirkrec.get(ipkey)
     if maybe_img_path is None:
         return []
-    if maybe_img_intro := record.get(iikey):
+    if maybe_img_intro := quirkrec.get(iikey):
         intro = [" (", maybe_img_intro, ")"]
     else:
         intro = []
@@ -191,8 +195,8 @@ def _ensure_lop(yyycom):
     return yyycom if _is_lop(yyycom) else [author.para(yyycom)]
 
 
-def _ancs(record):
-    cv = record["qr-cv"]
+def _ancs(quirkrec):
+    cv = quirkrec["qr-cv"]
     uxlc_href = f"https://tanach.us/Tanach.xml?Job{cv}"
     uxlc_anc = my_html.anchor_h("U", uxlc_href)
     cn_v_vn = "c" + cv.replace(":", "v")
@@ -201,14 +205,14 @@ def _ancs(record):
     return uxlc_anc, mwd_anc
 
 
-def _dpe(record):
-    fn = _dpe_stretched if _use_stretched_format(record) else _dpe_inline
-    return fn(record)
+def _dpe(quirkrec):
+    fn = _dpe_stretched if _use_stretched_format(quirkrec) else _dpe_inline
+    return fn(quirkrec)
 
 
-def _use_stretched_format(record):
-    gencom = record.get("qr-generic-comment")
-    bhqcom = record.get("qr-bhq-comment")
+def _use_stretched_format(quirkrec):
+    gencom = quirkrec.get("qr-generic-comment")
+    bhqcom = quirkrec.get("qr-bhq-comment")
     return _is_lop(gencom) or _is_lop(bhqcom)
 
 
@@ -221,20 +225,20 @@ def _is_lop(yyycom):
     return my_html.is_htel(el0) and my_html.htel_get_tag(el0) == "p"
 
 
-def _dpe_inline(record):
+def _dpe_inline(quirkrec):
     dpe1 = [
-        *_maybe_inline(record.get("qr-generic-comment")),
-        *_maybe_inline(record.get("qr-bhq-comment")),
-        *_ancs_and_loc(record),
+        *_maybe_inline(quirkrec.get("qr-generic-comment")),
+        *_maybe_inline(quirkrec.get("qr-bhq-comment")),
+        *_ancs_and_loc(quirkrec),
     ]
     return _parasperse(dpe1)
 
 
-def _dpe_stretched(record):
+def _dpe_stretched(quirkrec):
     return [
-        *_maybe_para(record.get("qr-generic-comment")),
-        *_maybe_para(record.get("qr-bhq-comment")),
-        _parasperse(_ancs_and_loc(record)),
+        *_maybe_para(quirkrec.get("qr-generic-comment")),
+        *_maybe_para(quirkrec.get("qr-bhq-comment")),
+        _parasperse(_ancs_and_loc(quirkrec)),
     ]
 
 
@@ -242,22 +246,22 @@ def _parasperse(items):
     return author.para(my_utils.intersperse(_SEP, items))
 
 
-def _ancs_and_loc(record):
-    uxlc_anc, mwd_anc = _ancs(record)
+def _ancs_and_loc(quirkrec):
+    uxlc_anc, mwd_anc = _ancs(quirkrec)
     return [
         uxlc_anc,
         mwd_anc,
-        lcloc(record.get("qr-lc-loc")),
+        lcloc(quirkrec.get("qr-lc-loc")),
     ]
 
 
-def _make_details_html(record):
+def _make_details_html(quirkrec):
     return [
-        author.table_c(_make_overview_row(record)),
-        *_maybe_bhq(record.get("qr-bhq")),
-        _dpe(record),
-        _img(lc_img(record)),
-        *_maybe_img(record, "mi-args-aleppo"),
-        *_maybe_img(record, "mi-args-cam1753"),
+        author.table_c(_make_overview_row(quirkrec)),
+        *_maybe_bhq(quirkrec.get("qr-bhq")),
+        _dpe(quirkrec),
+        _img(lc_img(quirkrec)),
+        *_maybe_img(quirkrec, "mi-args-aleppo"),
+        *_maybe_img(quirkrec, "mi-args-cam1753"),
         my_html.horizontal_rule(),
     ]
