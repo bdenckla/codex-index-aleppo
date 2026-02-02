@@ -24,6 +24,6 @@ RECORD_2230_A = {
     "qr-lc-loc": {"page": "403B", "column": 2, "line": 4},
     "qr-bhq-comment": _BHQ_COMMENT_2230_A,
     # XXX add Aleppo image and update comments accordingly
-    "qr-noted-by": "tBHQ-xBHL-xDM-nWLC",
+    "qr-noted-by": "tBHQ-nWLC",
     "qr-uxlc-needs-fix": "add t-note (transcription uncertain)",
 }

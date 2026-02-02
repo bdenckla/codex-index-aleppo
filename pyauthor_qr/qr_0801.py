@@ -7,5 +7,5 @@ RECORD_0801 = {
     "qr-highlight": 2,
     "qr-lc-loc": {"page": "399A", "column": 2, "line": 5, "including-blank-lines": 1},
     "qr-bhq-comment": "This quirk is noted in $BHQ.",
-    "qr-noted-by": "nBHQ-nBHL-xDM-nWLC",
+    "qr-noted-by": "nBHQ-nBHL-nWLC",
 }

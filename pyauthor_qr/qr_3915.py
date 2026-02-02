@@ -1,5 +1,5 @@
 RECORD_3915 = {
-    "qr-noted-by": "xBHQ-xBHL-nDM",
+    "qr-noted-by": "nDM",
     "qr-cv": "39:15",
     "qr-consensus": "תְדוּשֶֽׁהָ׃",
     "qr-lc-proposed": "תְּדוּשֶֽׁהָ׃",

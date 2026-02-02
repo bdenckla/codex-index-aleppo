@@ -1,5 +1,5 @@
 RECORD_0802 = {
-    "qr-noted-by": "xBHQ-xBHL-nDM",
+    "qr-noted-by": "nDM",
     "qr-cv": "8:2",
     "qr-consensus": "כַּ֝בִּ֗יר",
     "qr-lc-proposed": "כַּ֝בִּיר",

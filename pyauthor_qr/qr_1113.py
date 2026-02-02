@@ -5,7 +5,7 @@ RECORD_1113 = {
     "qr-consensus": "אַ֭תָּה",
     "qr-highlight": 2,
     "qr-lc-loc": {"page": "400A", "column": 2, "line": 13},
-    "qr-noted-by": "tBHQ-xBHL-xDM-nWLC",
+    "qr-noted-by": "tBHQ-nWLC",
     "qr-noted-by-mam": True,
     "qr-noted-by-uxlc": True,
 }

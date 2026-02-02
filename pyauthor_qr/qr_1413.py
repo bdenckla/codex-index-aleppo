@@ -63,5 +63,5 @@ RECORD_1413 = {
         " rather than considering and rejecting",
         " this particular change in $WLC relative to $BHS.",
     ],
-    "qr-noted-by": "xBHQ-xBHL-xDM-nWLC",
+    "qr-noted-by": "nWLC",
 }

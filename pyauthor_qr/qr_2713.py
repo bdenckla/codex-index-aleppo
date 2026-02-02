@@ -11,6 +11,6 @@ RECORD_2713 = {
     ],
     "qr-highlight": 2,
     "qr-lc-loc": {"page": "404B", "column": 1, "line": 12},
-    "qr-noted-by": "xBHQ-xBHL-xDM-xWLC-nUXLC",
+    "qr-noted-by": "nUXLC",
     "qr-uxlc-change-url": uxlc_change("2022.04.01", "2022.02.17-3"),
 }

@@ -9,7 +9,7 @@ RECORD_3719_A = {
     "qr-bhq-comment": [
         "$BHQ has the proposed transcription of μL above.",
     ],
-    "qr-noted-by": "tBHQ-xBHL-xDM-zdexiWLC",
+    "qr-noted-by": "tBHQ-zdexiWLC",
     "qr-generic-comment": [
         "The pointing of this word must, by necessity, be transcribed with much charity.",
         " Nonetheless, the mark in question here is fairly clearly positioned",

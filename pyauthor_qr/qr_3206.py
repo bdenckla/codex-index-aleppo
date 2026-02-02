@@ -15,5 +15,5 @@ RECORD_3206 = {
     "qr-lc-loc": {"page": "406A", "column": 1, "line": -6},
     "qr-uxlc-position-within-verse": 11,
     "qr-bhq-comment": _BHQ_COMMENT_3206,
-    "qr-noted-by": "xBHQ-nBHL-xDM",
+    "qr-noted-by": "nBHL",
 }

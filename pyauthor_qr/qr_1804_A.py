@@ -19,5 +19,5 @@ RECORD_1804_A = {
     ],
     "qr-highlight": 1,
     "qr-bhq-comment": _BHQ_COMMENT_1804_A,
-    "qr-noted-by": "xBHQ-nBHL-nDM",
+    "qr-noted-by": "nBHL-nDM",
 }

@@ -1,5 +1,5 @@
 RECORD_2418 = {
-    "qr-noted-by": "xBHQ-xBHL-nDM",
+    "qr-noted-by": "nDM",
     "qr-cv": "24:18",
     "qr-consensus": "לֹא־יִ֝פְנֶ֗ה",
     "qr-lc-proposed": "לֹא־יִ֝פְנֶה",

@@ -25,7 +25,7 @@ RECORD_4210 = {
     "qr-extra-letter-spacing": True,
     "qr-lc-loc": {"page": "409B", "column": 1, "line": 10},
     "qr-bhq-comment": ["$BHQ has the proposed transcription of μL above."],
-    "qr-noted-by": "tBHQ-xBHL-xDM-xWLC-zUXLC",
+    "qr-noted-by": "tBHQ-zUXLC",
     "qr-uxlc-change-url": uxlc_change("2023.10.19", "2023.06.10-48"),
     "qr-aleppo-img": "Aleppo-4210.png",
     "qr-aleppo-page-url": "https://www.mgketer.org/mikra/29/42/1/mg/106",

@@ -18,5 +18,5 @@ RECORD_2826 = {
     "qr-highlight": 3,
     "qr-lc-loc": {"page": "404B", "column": 2, "line": -1},
     "qr-bhq-comment": _BHQ_COMMENT_2826,
-    "qr-noted-by": "tBHQ-xBHL-xDM-zmiscWLC",
+    "qr-noted-by": "tBHQ-zmiscWLC",
 }

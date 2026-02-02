@@ -19,6 +19,6 @@ RECORD_0910 = {
         " Having left it out though,"
         " $BHQ should have noted its absence, i.e. noted the divergence from consensus.",
     ],
-    "qr-noted-by": "tBHQ-xBHL-xDM-xWLC-zUXLC",
+    "qr-noted-by": "tBHQ-zUXLC",
     "qr-uxlc-change-url": uxlc_change("2022.10.19", "2022.07.05-3"),
 }

@@ -35,5 +35,5 @@ RECORD_3812_B = {
     "qr-aleppo-img": "Aleppo-3812_B.png",
     "qr-aleppo-page-url": "https://www.mgketer.org/mikra/29/38/1/mg/106",
     "qr-bhq-comment": [author.para(_BHQ_COMMENT_3812_B)],
-    "qr-noted-by": "xBHQ-xBHL-xDM-nWLC",
+    "qr-noted-by": "nWLC",
 }

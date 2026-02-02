@@ -10,5 +10,5 @@ RECORD_1916_A = {
     "qr-highlight": 1,
     "qr-lc-loc": {"page": "402B", "column": 1, "line": 8},
     "qr-bhq-comment": "$BHQ notes that the דגש on the ק in μL disagrees with μA and μY.",
-    "qr-noted-by": "nBHQ-nBHL-xDM",
+    "qr-noted-by": "nBHQ-nBHL",
 }

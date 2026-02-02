@@ -19,5 +19,5 @@ RECORD_2702 = {
     "qr-highlight-consensus": 3,
     "qr-lc-loc": {"page": "404A", "column": 2, "line": -2},
     "qr-bhq-comment": _BHQ_COMMENT_2702,
-    "qr-noted-by": "xBHQ-nBHL-nDM",
+    "qr-noted-by": "nBHL-nDM",
 }

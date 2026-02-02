@@ -1,5 +1,5 @@
 RECORD_0304 = {
-    "qr-noted-by": "tBHQ-xBHL-nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "3:4",
     "qr-consensus": "מִמַּ֑עַל",
     "qr-lc-proposed": "מִמָּ֑עַל",

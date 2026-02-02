@@ -17,5 +17,5 @@ RECORD_3419_A = {
     "qr-highlight": 1,
     "qr-lc-loc": {"page": "406B", "column": 2, "line": -2},
     "qr-bhq-comment": [author.para(correctly_ignores("דגש", "34:19"))],
-    "qr-noted-by": "xBHQ-nBHL-nDM",
+    "qr-noted-by": "nBHL-nDM",
 }

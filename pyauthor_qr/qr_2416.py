@@ -15,6 +15,6 @@ RECORD_2416 = {
     "qr-highlight": 2,
     "qr-lc-loc": {"page": "404A", "column": 1, "line": -12},
     "qr-bhq-comment": BHQ_COMMENT_XELSEWHERE_DUBIOUS,
-    "qr-noted-by": "nBHQ-xBHL-xDM",
+    "qr-noted-by": "nBHQ",
     "qr-uxlc-needs-fix": True,
 }

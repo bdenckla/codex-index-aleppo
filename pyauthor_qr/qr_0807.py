@@ -8,5 +8,5 @@ RECORD_0807 = {
     "qr-highlight": 1,
     "qr-lc-loc": {"page": "399A", "column": 2, "line": 13, "including-blank-lines": 1},
     "qr-bhq-comment": "$BHQ silently ignores the possible שורוק dot.",
-    "qr-noted-by": "xBHQ-nBHL-xDM",
+    "qr-noted-by": "nBHL",
 }

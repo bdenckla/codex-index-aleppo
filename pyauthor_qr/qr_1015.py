@@ -7,5 +7,5 @@ RECORD_1015 = {
     "qr-consensus": "עׇנְיִֽי׃",
     "qr-highlight": 3,
     "qr-lc-loc": {"page": "400A", "column": 1, "line": 14},
-    "qr-noted-by": "tBHQ-nBHL-xDM",
+    "qr-noted-by": "tBHQ-nBHL",
 }

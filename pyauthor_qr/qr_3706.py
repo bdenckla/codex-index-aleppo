@@ -6,5 +6,5 @@ RECORD_3706 = {
     "qr-consensus": "לַשֶּׁ֨לֶג׀",
     "qr-highlight": 3,
     "qr-lc-loc": {"page": "407B", "column": 2, "line": 7},
-    "qr-noted-by": "tBHQ-nBHL-xDM-nWLC",
+    "qr-noted-by": "tBHQ-nBHL-nWLC",
 }

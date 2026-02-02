@@ -27,5 +27,5 @@ RECORD_1535 = {
     "qr-bhq-comment": [
         "$BHQ has the proposed transcription of μL above.",
     ],
-    "qr-noted-by": "tBHQ-xBHL-nDM",
+    "qr-noted-by": "tBHQ-nDM",
 }

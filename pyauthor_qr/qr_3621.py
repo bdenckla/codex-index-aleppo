@@ -1,5 +1,5 @@
 RECORD_3621 = {
-    "qr-noted-by": "xBHQ-xBHL-nDM",
+    "qr-noted-by": "nDM",
     "qr-cv": "36:21",
     "qr-consensus": "כִּֽי־עַל־זֶ֝֗ה",
     "qr-what-is-weird": "mark may be מרכא not געיה",

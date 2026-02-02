@@ -26,5 +26,5 @@ RECORD_3611 = {
     "qr-highlight-lc-proposed": 3,
     "qr-highlight-consensus": 2,
     "qr-lc-loc": {"page": "407B", "column": 1, "line": 1},
-    "qr-noted-by": "xBHQ-xBHL-nDM",
+    "qr-noted-by": "nDM",
 }

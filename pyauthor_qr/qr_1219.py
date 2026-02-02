@@ -9,6 +9,6 @@ RECORD_1219 = {
     "qr-highlight": 2,
     "qr-lc-loc": {"page": "400B", "column": 1, "line": 20},
     "qr-bhq-comment": ["$BHQ has the proposed transcription of μL above."],
-    "qr-noted-by": "tBHQ-xBHL-xDM-xWLC-zUXLC",
+    "qr-noted-by": "tBHQ-zUXLC",
     "qr-uxlc-change-url": uxlc_change("2023.10.19", "2023.06.10-12"),
 }

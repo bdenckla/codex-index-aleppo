@@ -25,5 +25,5 @@ RECORD_1905 = {
     "qr-highlight": 4,
     "qr-lc-loc": {"page": "402A", "column": 2, "line": -5},
     "qr-bhq-comment": _BHQ_COMMENT_1905,
-    "qr-noted-by": "xBHQ-nBHL-xDM-nWLC",
+    "qr-noted-by": "nBHL-nWLC",
 }

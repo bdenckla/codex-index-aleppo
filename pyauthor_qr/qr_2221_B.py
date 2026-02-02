@@ -22,5 +22,5 @@ RECORD_2221_B = {
     "qr-highlight": 3,
     "qr-lc-loc": {"page": "403B", "column": 1, "line": -6},
     "qr-bhq-comment": _BHQ_COMMENT_2221_B,
-    "qr-noted-by": "nBHQ-xBHL-xDM-nWLC",
+    "qr-noted-by": "nBHQ-nWLC",
 }

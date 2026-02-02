@@ -1,5 +1,5 @@
 RECORD_1703 = {
-    "qr-noted-by": "xBHQ-xBHL-nDM",
+    "qr-noted-by": "nDM",
     "qr-cv": "17:3",
     "qr-consensus": "עׇרְבֵ֣נִי",
     "qr-lc-proposed": "עַרְבֵ֣נִי",

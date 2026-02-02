@@ -7,5 +7,5 @@ RECORD_0701 = {
     "qr-highlight": 4,
     "qr-lc-loc": {"page": "399A", "column": 1, "line": 4},
     "qr-bhq-comment": "$BHQ silently ignores the possible רביע.",
-    "qr-noted-by": "xBHQ-nBHL-xDM",
+    "qr-noted-by": "nBHL",
 }

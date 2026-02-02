@@ -11,5 +11,5 @@ RECORD_2919 = {
     "qr-generic-comment": _COMMENT_2919,
     "qr-highlight": 5,
     "qr-lc-loc": {"page": "405A", "column": 1, "line": -4},
-    "qr-noted-by": "tBHQ-nBHL-xDM",
+    "qr-noted-by": "tBHQ-nBHL",
 }

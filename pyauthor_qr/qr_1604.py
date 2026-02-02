@@ -17,5 +17,5 @@ RECORD_1604 = {
     "qr-highlight-lc-proposed": 3,
     "qr-lc-loc": {"page": "401B", "column": 2, "line": 3},
     "qr-bhq-comment": _BHQ_COMMENT_1604,
-    "qr-noted-by": "tBHQ-nBHL-xDM",
+    "qr-noted-by": "tBHQ-nBHL",
 }

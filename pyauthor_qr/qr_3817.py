@@ -5,6 +5,6 @@ RECORD_3817 = {
     "qr-consensus": "צַלְמָ֣וֶת",
     "qr-highlight": 3,
     "qr-lc-loc": {"page": "408A", "column": 1, "line": -5},
-    "qr-noted-by": "nBHQ-xBHL-xDM",
+    "qr-noted-by": "nBHQ",
     "qr-uxlc-needs-fix": True,
 }

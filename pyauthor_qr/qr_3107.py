@@ -26,7 +26,7 @@ RECORD_3107 = {
     "qr-lc-loc": {"page": "405B", "column": 1, "line": -6, "including-blank-lines": 1},
     "qr-bhq-comment": [author.para(_BHQ_COMMENT_3107)],
     "qr-bhq": "מֻאֽוּם׃",
-    "qr-noted-by": "xBHQ-nBHL-nDM-nWLC",
+    "qr-noted-by": "nBHL-nDM-nWLC",
     # Above we consider this xBHQ because:
     #    Though it attempts to transcribe the quirk, it does so inaccurately.
     #    Though it notes the quirk, it does so inaccurately.

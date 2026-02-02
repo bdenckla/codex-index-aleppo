@@ -8,5 +8,5 @@ RECORD_4010 = {
     "qr-generic-comment": "The mark in question could easily be accidental.",
     "qr-highlight": 1,
     "qr-lc-loc": {"page": "408B", "column": 2, "line": -11},
-    "qr-noted-by": "tBHQ-nBHL-xDM-nWLC",
+    "qr-noted-by": "tBHQ-nBHL-nWLC",
 }

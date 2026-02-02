@@ -5,6 +5,6 @@ RECORD_1711 = {
     "qr-consensus": "לְבָבִֽי׃",
     "qr-highlight": 3,
     "qr-lc-loc": {"page": "402A", "column": 1, "line": 13},
-    "qr-noted-by": "nBHQ-xBHL-xDM",
+    "qr-noted-by": "nBHQ",
     "qr-uxlc-needs-fix": True,
 }

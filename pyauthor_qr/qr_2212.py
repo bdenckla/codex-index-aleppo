@@ -12,7 +12,7 @@ RECORD_2212 = {
         " whereas most such reports involving these two accents",
         " involve a טרחא vs דחי difference, with BHQ having טרחא.",
     ],
-    "qr-noted-by": "tBHQ-xBHL-xDM-zmiscWLC",
+    "qr-noted-by": "tBHQ-zmiscWLC",
 }
 # jb22:12	רֹ֖אשׁ (has טרחא in WLC)
 # It is now definitely a דחי in BHQ.

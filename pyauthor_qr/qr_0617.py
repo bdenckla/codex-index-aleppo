@@ -1,5 +1,5 @@
 RECORD_0617 = {
-    "qr-noted-by": "xBHQ-xBHL-nDM",
+    "qr-noted-by": "nDM",
     "qr-cv": "6:17",
     "qr-consensus": "בְּעֵ֣ת",
     "qr-lc-proposed": "בְּ֭עֵת",

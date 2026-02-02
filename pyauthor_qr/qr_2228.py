@@ -28,5 +28,5 @@ RECORD_2228 = {
     "qr-highlight": 1,
     "qr-lc-loc": {"page": "403B", "column": 2, "line": 2},
     "qr-bhq-comment": [author.para(_BHQ_COMMENT_2228)],
-    "qr-noted-by": "tBHQ-nBHL-xDM",
+    "qr-noted-by": "tBHQ-nBHL",
 }

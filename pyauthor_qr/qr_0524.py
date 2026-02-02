@@ -1,5 +1,5 @@
 RECORD_0524 = {
-    "qr-noted-by": "tBHQ-xBHL-nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "5:24",
     "qr-consensus": "נָ֝וְךָ֗",
     "qr-lc-proposed": "נָ֝וְךָ",

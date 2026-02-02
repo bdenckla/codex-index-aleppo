@@ -1,5 +1,5 @@
 RECORD_2107 = {
-    "qr-noted-by": "xBHQ-xBHL-nDM",
+    "qr-noted-by": "nDM",
     "qr-cv": "21:7",
     "qr-consensus": "מַ֭דּוּעַ",
     "qr-lc-proposed": "מַ֣דּוּעַ",

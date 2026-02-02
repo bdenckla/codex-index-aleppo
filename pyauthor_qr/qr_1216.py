@@ -17,5 +17,5 @@ RECORD_1216 = {
     ],
     "qr-highlight": 2,
     "qr-lc-loc": {"page": "400B", "column": 1, "line": -11},
-    "qr-noted-by": "tBHQ-xBHL-xDM-nWLC",
+    "qr-noted-by": "tBHQ-nWLC",
 }

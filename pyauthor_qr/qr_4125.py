@@ -11,5 +11,5 @@ RECORD_4125 = {
     "qr-highlight": 6,
     "qr-lc-loc": {"page": "409A", "column": 2, "line": 14},
     "qr-bhq-comment": _BHQ_COMMENT_4125,
-    "qr-noted-by": "xBHQ-nBHL-xDM",
+    "qr-noted-by": "nBHL",
 }

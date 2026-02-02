@@ -7,5 +7,5 @@ RECORD_1001 = {
     "qr-highlight-lc-proposed": 5,
     "qr-highlight-consensus": 4,
     "qr-lc-loc": {"page": "399B", "column": 2, "line": -6},
-    "qr-noted-by": "tBHQ-nBHL-xDM",
+    "qr-noted-by": "tBHQ-nBHL",
 }

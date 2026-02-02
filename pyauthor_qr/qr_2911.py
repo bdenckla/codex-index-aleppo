@@ -10,5 +10,5 @@ RECORD_2911 = {
     "qr-highlight": 3,
     "qr-lc-loc": {"page": "405A", "column": 1, "line": -12},
     "qr-bhq-comment": BHQ_COMMENT_2808_AND_2911,
-    "qr-noted-by": "xBHQ-nBHL-xDM",
+    "qr-noted-by": "nBHL",
 }

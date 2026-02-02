@@ -32,7 +32,7 @@ RECORD_3902 = {
     "qr-highlight": 5,
     "qr-lc-loc": {"page": "408A", "column": 2, "line": -3},
     "qr-bhq-comment": [author.para(_BHQ_COMMENT_3902)],
-    "qr-noted-by": "xBHQ-nBHL-xDM",
+    "qr-noted-by": "nBHL",
     # Perhaps I should have been charitable to BHQ and said tBHQ instead of xBHQ,
     # since BHQ’s transcription of רביע is somewhat reasonable if it were accompanied by a note.
     # But it is not accompanied by a note, and without a note, BHQ needs to make weird things in μL

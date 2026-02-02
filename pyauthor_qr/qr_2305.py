@@ -1,5 +1,5 @@
 RECORD_2305 = {
-    "qr-noted-by": "xBHQ-xBHL-nDM",
+    "qr-noted-by": "nDM",
     "qr-cv": "23:5",
     "qr-consensus": "מַה־יֹּֽאמַר־לִֽי",
     "qr-what-is-weird": "Aleppo has מקף after יאמר.",

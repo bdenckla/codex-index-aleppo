@@ -1,5 +1,5 @@
 RECORD_0621 = {
-    "qr-noted-by": "nBHQ-xBHL-nDM",
+    "qr-noted-by": "nBHQ-nDM",
     "qr-cv": "6:21",
     "qr-consensus": "לֹ֑א",
     "qr-lc-proposed": "ל֑וֹ",

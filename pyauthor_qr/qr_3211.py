@@ -1,5 +1,5 @@
 RECORD_3211 = {
-    "qr-noted-by": "xBHQ-xBHL-nDM",
+    "qr-noted-by": "nDM",
     "qr-cv": "32:11",
     "qr-consensus": "הוֹחַ֨לְתִּי׀",
     "qr-lc-proposed": "הוֹחַ֨לְתִּי",

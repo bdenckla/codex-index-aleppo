@@ -7,5 +7,5 @@ RECORD_1534 = {
     "qr-highlight": 1,
     "qr-lc-loc": {"page": "401B", "column": 1, "line": -3},
     "qr-bhq-comment": "$BHQ silently ignores the possible מרכא.",
-    "qr-noted-by": "xBHQ-nBHL-xDM",
+    "qr-noted-by": "nBHL",
 }

@@ -10,6 +10,6 @@ RECORD_1706 = {
     ],
     "qr-highlight": 4,
     "qr-lc-loc": {"page": "402A", "column": 1, "line": 7},
-    "qr-noted-by": "nBHQ-xBHL-xDM",
+    "qr-noted-by": "nBHQ",
     "qr-uxlc-needs-fix": True,
 }

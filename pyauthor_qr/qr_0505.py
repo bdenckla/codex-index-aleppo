@@ -50,5 +50,5 @@ RECORD_0505 = {
         " particularly when they are presented with high contrast,",
         " i.e. showing little or no “middle ground” of gray tones.",
     ],
-    "qr-noted-by": "tBHQ-xBHL-nDM",
+    "qr-noted-by": "tBHQ-nDM",
 }
