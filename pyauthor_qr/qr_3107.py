@@ -16,7 +16,6 @@ _BHQ_COMMENT_3107 = [
     " which seems more likely a typo than a deliberate choice.",
 ]
 RECORD_3107 = {
-    "qr-bhla-i": 37,
     "qr-cv": "31:7",
     "qr-lc-proposed": "מֻאֿוּֽם׃",
     "qr-what-is-weird": "קבוץ and סילוק not סילוק and ∅",

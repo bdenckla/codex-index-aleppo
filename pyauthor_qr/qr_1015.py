@@ -1,5 +1,4 @@
 RECORD_1015 = {
-    "qr-bhla-i": 13,
     "qr-cv": "10:15",
     "qr-lc-proposed": "עׇנְיֽ͏ִי׃",
     "qr-what-is-weird": "סילוק precedes חיריק",

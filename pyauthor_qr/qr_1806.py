@@ -6,7 +6,6 @@ _BHQ_COMMENT_1806 = [
     # XXX add BHQ image
 ]
 RECORD_1806 = {
-    "qr-bhla-i": 25,
     "qr-cv": "18:6",
     "qr-lc-proposed": "א֖וֹר",
     "qr-what-is-weird": "טרחא not דחי",

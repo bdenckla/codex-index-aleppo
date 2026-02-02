@@ -3,7 +3,6 @@ _COMMENT_2919 = [
     f" “forced” the סילוק to be early.",
 ]
 RECORD_2919 = {
-    "qr-bhla-i": 35,
     "qr-cv": "29:19",
     "qr-lc-proposed": "בִּקְצִירֽ͏ִי׃",
     "qr-what-is-weird": "סילוק precedes חיריק",

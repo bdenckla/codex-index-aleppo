@@ -17,7 +17,6 @@ _CAM1753_IMG_INTRO_2221 = [
 ]
 RECORD_2221_A = {
     **RECORD_2221_CMN_AB,
-    "qr-bhla-i": 29,
     "qr-n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
     "qr-lc-q": "(?)",
     "qr-lc-proposed": "עִמּ֑וֹ",

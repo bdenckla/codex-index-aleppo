@@ -7,7 +7,6 @@ _COMMENT_3629 = [
     " though no appeal to expectations is needed to dismiss this possible געיה.",
 ]
 RECORD_3629 = {
-    "qr-bhla-i": 43,
     "qr-cv": "36:29",
     "qr-lc-proposed": "סֻכָּֽתֽוֹ׃",
     "qr-what-is-weird": "כ has געיה",

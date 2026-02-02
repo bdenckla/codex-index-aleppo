@@ -1,5 +1,4 @@
 RECORD_1103 = {
-    "qr-bhla-i": 14,
     "qr-cv": "11:3",
     "qr-lc-proposed": "יַחֲרִ֑ישׁו",
     "qr-what-is-weird": "שורוק dot is absent",

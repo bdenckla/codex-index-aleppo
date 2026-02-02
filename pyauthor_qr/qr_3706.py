@@ -1,5 +1,4 @@
 RECORD_3706 = {
-    "qr-bhla-i": 44,
     "qr-cv": "37:6",
     "qr-lc-proposed": "לַשֶּׁ֨לַג׀",
     "qr-what-is-weird": "2nd ל has פתח not סגול",

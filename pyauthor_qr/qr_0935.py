@@ -1,5 +1,4 @@
 RECORD_0935 = {
-    "qr-bhla-i": 11,
     "qr-cv": "9:35",
     "qr-lc-proposed": "אַֽ֭דַבְּרָה",
     "qr-what-is-weird": "פתח on א is not חטף",

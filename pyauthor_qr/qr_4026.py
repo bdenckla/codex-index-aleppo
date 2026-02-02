@@ -1,5 +1,4 @@
 RECORD_4026 = {
-    "qr-bhla-i": 51,
     "qr-cv": "40:26",
     "qr-lc-proposed": "לֶֽחֱיוֹ׃",
     "qr-what-is-weird": "סילוק on ל not $yod",

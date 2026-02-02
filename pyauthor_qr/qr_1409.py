@@ -2,7 +2,6 @@ from pyauthor_util.job_common import core_ignores
 
 
 RECORD_1409 = {
-    "qr-bhla-i": 18,
     "qr-cv": "14:9",
     "qr-lc-proposed": "מֵרֵ֣יַּח",
     "qr-what-is-weird": "$yod has דגש",

@@ -3,7 +3,6 @@ _BHQ_COMMENT_4125 = [
     " despite no evidence for it in μL.",
 ]
 RECORD_4125 = {
-    "qr-bhla-i": 52,
     "qr-cv": "41:25",
     "qr-lc-proposed": "לִבְלִי־חָת׃",
     "qr-what-is-weird": "סילוק is absent",

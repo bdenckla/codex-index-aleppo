@@ -1,5 +1,4 @@
 RECORD_1001 = {
-    "qr-bhla-i": 12,
     "qr-cv": "10:1",
     "qr-lc-proposed": "אֲ֝דַבְּרָה֗",
     "qr-what-is-weird": "רביע on ה not ר",

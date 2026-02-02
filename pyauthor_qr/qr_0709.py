@@ -1,5 +1,4 @@
 RECORD_0709 = {
-    "qr-bhla-i": 5,
     "qr-cv": "7:9",
     "qr-lc-proposed": "יַעֲלֽ͏ֶה׃",
     "qr-what-is-weird": "סילוק precedes סגול",

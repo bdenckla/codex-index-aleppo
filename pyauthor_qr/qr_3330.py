@@ -1,5 +1,4 @@
 RECORD_3330 = {
-    "qr-bhla-i": 41,
     "qr-cv": "33:30",
     "qr-lc-proposed": "הַֽחַיִּים׃",
     "qr-what-is-weird": "סילוק on syl. 1 not 3",

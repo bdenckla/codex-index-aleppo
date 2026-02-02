@@ -23,7 +23,6 @@ _BHQ_COMMENT_3902 = [
     " its 1984 to 1997 changes.",
 ]
 RECORD_3902 = {
-    "qr-bhla-i": 46,
     "qr-cv": "39:2",
     "qr-lc-proposed": "וְ֝יָדַעְתָּ֜",
     "qr-what-is-weird": "גרש not רביע",

@@ -11,7 +11,6 @@ _BHQ_COMMENT_1905 = [
 ]
 
 RECORD_1905 = {
-    "qr-bhla-i": 26,
     "qr-cv": "19:5",
     "qr-lc-q": "(?)",
     "qr-lc-proposed": "חֶרְפָּתִּֽֿי",

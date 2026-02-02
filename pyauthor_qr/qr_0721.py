@@ -1,5 +1,4 @@
 RECORD_0721 = {
-    "qr-bhla-i": 6,
     "qr-cv": "7:21",
     "qr-lc-proposed": "וְשִׁ֖חֲרְתַּ֣נִי",
     "qr-what-is-weird": "פתח on ח is חטף",

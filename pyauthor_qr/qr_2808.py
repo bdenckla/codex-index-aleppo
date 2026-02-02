@@ -2,7 +2,6 @@ from pyauthor_util.job_common import BHQ_COMMENT_2808_AND_2911
 
 
 RECORD_2808 = {
-    "qr-bhla-i": 33,
     "qr-cv": "28:8",
     "qr-lc-proposed": "הִדְריכֻ֥הוּ",
     "qr-what-is-weird": "ר lacks חיריק",

@@ -1,5 +1,4 @@
 RECORD_3920 = {
-    "qr-bhla-i": 49,
     "qr-cv": "39:20",
     "qr-lc-proposed": "הְֽ֭תַרְעִישֶׁנּוּ",
     "qr-what-is-weird": "simple שווא not חטף פתח",

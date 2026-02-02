@@ -1,5 +1,4 @@
 RECORD_1916_A = {
-    "qr-bhla-i": 27,
     "qr-cv": "19:16",
     "qr-n_of_m_for_this_verse": (1, 2),
     "qr-lc-q": "(?)",

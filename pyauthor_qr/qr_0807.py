@@ -1,5 +1,4 @@
 RECORD_0807 = {
-    "qr-bhla-i": 8,
     "qr-cv": "8:7",
     "qr-lc-proposed": "וְּ֝אַחֲרִיתְךָ֗",
     "qr-what-is-weird": "שורוק dot fights שווא",

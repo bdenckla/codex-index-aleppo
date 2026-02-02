@@ -1,5 +1,4 @@
 RECORD_0801 = {
-    "qr-bhla-i": 7,
     "qr-cv": "8:1",
     "qr-lc-proposed": "וַיֹאמַֽר׃",
     "qr-what-is-weird": "$yod lacks דגש",

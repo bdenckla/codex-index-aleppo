@@ -1,5 +1,4 @@
 RECORD_3812_A = {
-    "qr-bhla-i": 45,
     "qr-cv": "38:12",
     "qr-n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
     "qr-lc-proposed": "הְֽ֭מִיָּמֶיךָ",

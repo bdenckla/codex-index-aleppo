@@ -76,7 +76,6 @@ BHQ_COMMENT_0914_AND_0930 = [
 ]
 # XXX better to assert that these match than to factor them commonly like this.
 RECORD_1804_CMN_AB = {
-    "qr-bhla-i": 24,
     "qr-cv": "18:4",
     "qr-lc-proposed": "הֲ֭לְמַּעַנְךָ",
     "qr-consensus": "הַֽ֭לְמַעַנְךָ",

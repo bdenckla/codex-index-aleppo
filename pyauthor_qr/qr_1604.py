@@ -8,7 +8,6 @@ _BHQ_COMMENT_1604 = [
     " between גלגל and אתנח הפוך.",
 ]
 RECORD_1604 = {
-    "qr-bhla-i": 21,
     "qr-cv": "16:4",
     "qr-lc-proposed": "ל֤וּ־",
     "qr-what-is-weird": "מקף is present",

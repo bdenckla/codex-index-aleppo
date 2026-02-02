@@ -1,5 +1,4 @@
 RECORD_4010 = {
-    "qr-bhla-i": 50,
     "qr-cv": "40:10",
     "qr-lc-q": "(?)",
     "qr-lc-proposed": "גָֽא֣וֹן",

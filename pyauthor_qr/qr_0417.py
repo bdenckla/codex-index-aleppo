@@ -7,7 +7,6 @@ _BHQ_COMMENT_0417 = [
     " For more details, see my entry on 4:9.",
 ]
 RECORD_0417 = {
-    "qr-bhla-i": 3,
     "qr-cv": "4:17",
     "qr-lc-proposed": "מֵאֱל֣וֹהַ",
     "qr-what-is-weird": "ה lacks מפיק",

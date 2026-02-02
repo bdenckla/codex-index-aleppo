@@ -1,5 +1,4 @@
 RECORD_1613 = {
-    "qr-bhla-i": 22,
     "qr-cv": "16:13",
     "qr-lc-proposed": "מְרֵרָֽתִי׃",
     "qr-what-is-weird": "סילוק on 2nd ר not ת",

@@ -1,5 +1,4 @@
 RECORD_3906 = {
-    "qr-bhla-i": 47,
     "qr-cv": "39:6",
     "qr-lc-proposed": "מְלֵֽחָה׃",
     "qr-what-is-weird": "סילוק on ל not ח",

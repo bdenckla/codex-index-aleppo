@@ -10,7 +10,6 @@ _BHQ_COMMENT_2421 = [
     " $BHQ silently infers a third dot centered below the two clearer dots.",
 ]
 RECORD_2421 = {
-    "qr-bhla-i": 31,
     "qr-cv": "24:21",
     "qr-lc-q": "(?)",
     "qr-lc-proposed": "רֹעֵ֣ה",

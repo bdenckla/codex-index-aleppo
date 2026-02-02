@@ -7,7 +7,6 @@ _BHQ_COMMENT_0121 = [
 ]
 
 RECORD_0121 = {
-    "qr-bhla-i": 1,
     "qr-cv": "1:21",
     "qr-lc-proposed": "שָׁ֔מָה",
     "qr-what-is-weird": "מ lacks דגש",

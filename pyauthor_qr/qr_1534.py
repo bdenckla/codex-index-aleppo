@@ -1,5 +1,4 @@
 RECORD_1534 = {
-    "qr-bhla-i": 20,
     "qr-cv": "15:34",
     "qr-lc-proposed": "שֹֽׁ֥חַד׃",
     "qr-what-is-weird": "מרכא fights סילוק",

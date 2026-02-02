@@ -5,7 +5,6 @@ _COMMENT_3913 = [
     " Note that the vertical line above the ר is a סילוק from the line above.",
 ]
 RECORD_3913 = {
-    "qr-bhla-i": 48,
     "qr-cv": "39:13",
     "qr-lc-q": "(?)",
     "qr-lc-proposed": "אֶ֝בְרָה",

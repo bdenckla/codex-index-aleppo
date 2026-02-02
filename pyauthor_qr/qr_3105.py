@@ -13,7 +13,6 @@ _BHQ_COMMENT_3105 = [
     " it is fair for me to point out when it fails to do so.",
 ]
 RECORD_3105 = {
-    "qr-bhla-i": 36,
     "qr-cv": "31:5",
     "qr-lc-proposed": "רַגְלֽ͏ִי׃",
     "qr-what-is-weird": "סילוק precedes חיריק",

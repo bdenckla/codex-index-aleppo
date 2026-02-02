@@ -16,7 +16,6 @@ _BHQ_COMMENT_2228 = [
     " as far as I know it never notes its charity.",
 ]
 RECORD_2228 = {
-    "qr-bhla-i": 30,
     "qr-cv": "22:28",
     "qr-lc-proposed": "א֖וֹמֶר",
     "qr-what-is-weird": "טרחא not דחי",

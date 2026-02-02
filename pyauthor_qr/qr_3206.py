@@ -6,7 +6,6 @@ _BHQ_COMMENT_3206 = [
     "31:5 is similar and discusses the matter at greater length.",
 ]
 RECORD_3206 = {
-    "qr-bhla-i": 39,
     "qr-cv": "32:6",
     "qr-lc-proposed": "יְשִׁישׁ֑͏ִים",
     "qr-what-is-weird": "אתנח precedes חיריק",

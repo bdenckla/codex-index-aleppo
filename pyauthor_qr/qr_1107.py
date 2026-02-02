@@ -2,7 +2,6 @@ from pyauthor_util.job_common import BHQ_COMMENT_LIKE_0409
 
 
 RECORD_1107 = {
-    "qr-bhla-i": 16,
     "qr-cv": "11:7",
     "qr-lc-proposed": "אֱל֣וֹהַ",
     "qr-what-is-weird": "ה lacks מפיק",
