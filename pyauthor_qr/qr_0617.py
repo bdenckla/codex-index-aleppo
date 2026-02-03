@@ -4,6 +4,8 @@ RECORD_0617 = {
     "qr-consensus": "בְּעֵ֣ת",
     "qr-lc-proposed": "בְּ֭עֵת",
     "qr-what-is-weird": "דחי not מונח",
+    "qr-highlight-consensus": 2,
+    "qr-highlight-lc-proposed": 1,
     "qr-lc-loc": {"page": "398B", "column": 2, "line": 15},
     "qr-under-construction": True,
 }

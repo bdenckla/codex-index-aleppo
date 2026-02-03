@@ -1,6 +1,5 @@
 from pyauthor_util import author
 
-
 _COMMENT_PARA1 = [
     "Note that consensus has a rare and hard-to-understand",
     " phenomenon called “secondary מרכא” by Breuer.",
@@ -36,8 +35,7 @@ _COMMENT_PARA3 = [
 _COMMENT_PARA4 = [
     "The mark under the ו of ותהי was changed",
     " from מרכא to געיה in going from $BHS to $BHQ.",
-    " This was a regression, in my opinion,"
-    " since it leaves ותהי with no accent, only געיה.",
+    " This was a regression, in my opinion, since it leaves ותהי with no accent, only געיה.",
     " This is an uncharitable transcription.",
 ]
 RECORD_0610 = {
@@ -46,6 +44,8 @@ RECORD_0610 = {
     "qr-consensus": "וּ֥תְהִי־ע֨וֹד׀",
     "qr-lc-proposed": "וּֽתְהִי ע֨וֹד׀",
     "qr-what-is-weird": "געיה not מרכא-מקף",
+    "qr-highlight-lc-proposed": 1,
+    "qr-highlight-consensus": [1, 5],
     "qr-lc-loc": {"page": "398B", "column": 2, "line": 7},
     "qr-under-construction": True,
     "qr-bhq-comment": [

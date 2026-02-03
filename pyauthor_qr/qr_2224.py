@@ -4,9 +4,10 @@ RECORD_2224 = {
     "qr-consensus": "וּכְצ֖וּר",
     "qr-lc-proposed": "וּבְצ֖וּר",
     "qr-what-is-weird": "ב not כ",
+    "qr-highlight": 2,
     "qr-bhq-comment": [
         "$BHQ hints at the $khaf consensus via a noted on V (the Vulgate).",
-        " Nonetheless, perhaps uncharitably, we consider $BHQ to not note this quirk."
+        " Nonetheless, perhaps uncharitably, we consider $BHQ to not note this quirk.",
     ],
     "qr-lc-loc": {"page": "403B", "column": 1, "line": 25},
     "qr-under-construction": True,

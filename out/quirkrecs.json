@@ -5,6 +5,7 @@
     "qr-consensus": "וַיִּפֹּ֥ל",
     "qr-lc-proposed": "וַיִפֹּ֥ל",
     "qr-what-is-weird": "$yod lacks דגש",
+    "qr-highlight": 2,
     "qr-generic-comment": "A דגש may be hiding high up on the $yod and touching it.",
     "qr-lc-loc": {
       "page": "397A",
@@ -73,6 +74,7 @@
     "qr-consensus": "מִמַּ֑עַל",
     "qr-lc-proposed": "מִמָּ֑עַל",
     "qr-what-is-weird": "מ has קמץ not פתח (DM footnote 4)",
+    "qr-highlight": 2,
     "qr-lc-loc": {
       "page": "397B",
       "column": 2,
@@ -248,6 +250,7 @@
     "qr-consensus": "בְּֽ֭רָעָב",
     "qr-lc-proposed": "בְּ֭רָעָב",
     "qr-what-is-weird": "ב lacks געיה",
+    "qr-highlight": 1,
     "qr-lc-loc": {
       "page": "398B",
       "column": 1,
@@ -269,6 +272,7 @@
     "qr-lc-proposed": "הׇשְׁלְמָה־לָֽךְ׃",
     "qr-lc-q": "(?)",
     "qr-what-is-weird": "ל may lack דגש",
+    "qr-highlight": 7,
     "qr-generic-comment": [
       "There is some kind of a dot way over next to the final $khaf ( ך ) but it could easily be either not ink, or not intentional ink. Aside: the קמץ under ה is קטן."
     ],
@@ -292,6 +296,7 @@
     "qr-consensus": "נָ֝וְךָ֗",
     "qr-lc-proposed": "נָ֝וְךָ",
     "qr-what-is-weird": "רביע of רביע מוגרש is absent (DM footnote 9)",
+    "qr-highlight": 3,
     "qr-generic-comment": [
       "The dot above the final $khaf ( ך ) might at first glance appear to be a candidate for the possibly-expected רביע, but it is almost certainly the קמץ dot belonging to the word-part השלמה־ above, which, coincidentally, is part of our entry for 5:23."
     ],
@@ -315,6 +320,11 @@
     "qr-consensus": "וּ֥תְהִי־ע֨וֹד׀",
     "qr-lc-proposed": "וּֽתְהִי ע֨וֹד׀",
     "qr-what-is-weird": "געיה not מרכא-מקף",
+    "qr-highlight-lc-proposed": 1,
+    "qr-highlight-consensus": [
+      1,
+      5
+    ],
     "qr-lc-loc": {
       "page": "398B",
       "column": 2,
@@ -411,6 +421,8 @@
     "qr-consensus": "בְּעֵ֣ת",
     "qr-lc-proposed": "בְּ֭עֵת",
     "qr-what-is-weird": "דחי not מונח",
+    "qr-highlight-consensus": 2,
+    "qr-highlight-lc-proposed": 1,
     "qr-lc-loc": {
       "page": "398B",
       "column": 2,
@@ -431,6 +443,10 @@
     "qr-consensus": "לֹ֑א",
     "qr-lc-proposed": "ל֑וֹ",
     "qr-what-is-weird": "קרי of לו not לא (DM footnotes 10 & 11)",
+    "qr-highlight": [
+      1,
+      2
+    ],
     "qr-generic-comment": [
       {
         "_htel_tag": "p",
@@ -475,6 +491,8 @@
     "qr-consensus": "עַֽל־רֵיעֲכֶֽם׃",
     "qr-lc-proposed": "עַל־רֵֽיעֲכֶֽם׃",
     "qr-what-is-weird": "געיה on רי not על",
+    "qr-highlight-lc-proposed": 4,
+    "qr-highlight-consensus": 1,
     "qr-lc-loc": {
       "page": "398B",
       "column": 2,
@@ -561,6 +579,8 @@
     "qr-consensus": "הָ֫אָדָ֥ם",
     "qr-lc-proposed": "הָאָ֫דָ֥ם",
     "qr-what-is-weird": "עולה on א not ה",
+    "qr-highlight-lc-proposed": 2,
+    "qr-highlight-consensus": 1,
     "qr-lc-loc": {
       "page": "399A",
       "column": 1,
@@ -626,6 +646,7 @@
     "qr-consensus": "כַּ֝בִּ֗יר",
     "qr-lc-proposed": "כַּ֝בִּיר",
     "qr-what-is-weird": "רביע of רביע מוגרש is absent",
+    "qr-highlight": 2,
     "qr-lc-loc": {
       "page": "399A",
       "column": 2,
@@ -1201,6 +1222,7 @@
     "qr-consensus": "יַד־יְ֝הֹוָ֗ה",
     "qr-lc-proposed": "יַד־יְ֝הֹוָה",
     "qr-what-is-weird": "רביע of רביע מוגרש is absent",
+    "qr-highlight": 6,
     "qr-lc-loc": {
       "page": "400B",
       "column": 1,
@@ -1542,6 +1564,7 @@
     "qr-consensus": "מַה־מִּנִּ֥י",
     "qr-lc-proposed": "מַה־מִנִּ֥י",
     "qr-what-is-weird": "מ after מח lacks דגש (DM footnote 25)",
+    "qr-highlight": 4,
     "qr-lc-loc": {
       "page": "401B",
       "column": 2,
@@ -1606,6 +1629,7 @@
     "qr-consensus": "עׇרְבֵ֣נִי",
     "qr-lc-proposed": "עַרְבֵ֣נִי",
     "qr-what-is-weird": "פתח not קמץ (קטן)",
+    "qr-highlight": 1,
     "qr-generic-comment": [
       "This case is the opposite of 3:4, except there the קמץ is not קטן."
     ],
@@ -1935,6 +1959,8 @@
     "qr-consensus": "הַֽנַּעֲמָתִ֗י",
     "qr-lc-proposed": "הַנַּֽעֲמָתִ֗י",
     "qr-what-is-weird": "געיה on נ not ה",
+    "qr-highlight-lc-proposed": 2,
+    "qr-highlight-consensus": 1,
     "qr-lc-loc": {
       "page": "402B",
       "column": 1,
@@ -1978,6 +2004,7 @@
     "qr-consensus": "מַ֭דּוּעַ",
     "qr-lc-proposed": "מַ֣דּוּעַ",
     "qr-what-is-weird": "מונח not דחי",
+    "qr-highlight": 1,
     "qr-lc-loc": {
       "page": "403A",
       "column": 1,
@@ -1998,6 +2025,10 @@
     "qr-consensus": "מַה־שַּׁדַּ֥י",
     "qr-lc-proposed": "מַה־שַׁדַּ֥י",
     "qr-what-is-weird": "ש lacks דגש (DM footnote 25)",
+    "qr-generic-comment": [
+      "24:1 and 27:13 are analogous."
+    ],
+    "qr-highlight": 4,
     "qr-lc-loc": {
       "page": "403A",
       "column": 1,
@@ -2068,6 +2099,7 @@
     "qr-consensus": "וִ֝יבַהֶלְךָ֗",
     "qr-lc-proposed": "וִֽ֝יבַהֶלְךָ",
     "qr-what-is-weird": "רביע of רביע מוגרש is absent",
+    "qr-highlight": 6,
     "qr-generic-comment": [
       "There is also a געיה difference between proposed and consensus, but we don’t care about that here."
     ],
@@ -2207,6 +2239,7 @@
     "qr-consensus": "וּכְצ֖וּר",
     "qr-lc-proposed": "וּבְצ֖וּר",
     "qr-what-is-weird": "ב not כ",
+    "qr-highlight": 2,
     "qr-bhq-comment": [
       "$BHQ hints at the $khaf consensus via a noted on V (the Vulgate). Nonetheless, perhaps uncharitably, we consider $BHQ to not note this quirk."
     ],
@@ -2424,7 +2457,7 @@
               "KUSATU"
             ]
           },
-          " 15/2013, p. 242 (2013)."
+          " 15/2013, p. 242 (2013). 21:15 is analogous, but not mentioned in Golinets."
         ]
       },
       {
@@ -2541,6 +2574,7 @@
     "qr-consensus": "לֹא־יִ֝פְנֶ֗ה",
     "qr-lc-proposed": "לֹא־יִ֝פְנֶה",
     "qr-what-is-weird": "רביע of רביע מוגרש is absent",
+    "qr-highlight": 6,
     "qr-lc-loc": {
       "page": "404A",
       "column": 1,
@@ -2687,6 +2721,7 @@
     "qr-consensus": "הֲֽ֭צַעֲקָתוֹ",
     "qr-lc-proposed": "הַֽ֭צַעֲקָתוֹ",
     "qr-what-is-weird": "פתח is full not חטף (DM footnotes 19 & 20)",
+    "qr-highlight": 1,
     "qr-lc-loc": {
       "page": "404B",
       "column": 1,
@@ -2707,7 +2742,7 @@
     "qr-what-is-weird": "ש lacks דגש",
     "qr-consensus": "מִשַּׁדַּ֥י",
     "qr-generic-comment": [
-      "24:1 is analogous."
+      "21:15 and 24:1 are analogous."
     ],
     "qr-highlight": 2,
     "qr-lc-loc": {
@@ -2804,6 +2839,7 @@
     "qr-consensus": "לְ֝אוֹר֗וֹ",
     "qr-lc-proposed": "לְ֝אוֹרוֹ",
     "qr-what-is-weird": "רביע of רביע מוגרש is absent",
+    "qr-highlight": 4,
     "qr-lc-loc": {
       "page": "405A",
       "column": 1,
@@ -2940,6 +2976,7 @@
     "qr-consensus": "וּמֶ֤ה",
     "qr-lc-proposed": "וּמֶ֤ה׀",
     "qr-what-is-weird": "לגרמיה is present",
+    "qr-highlight": 4,
     "qr-lc-loc": {
       "page": "405B",
       "column": 1,
@@ -3103,6 +3140,7 @@
     "qr-consensus": "כְּ֝בָשַׂ֗י",
     "qr-lc-proposed": "כְּ֝בָשַׂי",
     "qr-what-is-weird": "רביע of רביע מוגרש is absent",
+    "qr-highlight": 3,
     "qr-lc-loc": {
       "page": "405B",
       "column": 2,
@@ -3241,6 +3279,7 @@
     "qr-consensus": "הוֹחַ֨לְתִּי׀",
     "qr-lc-proposed": "הוֹחַ֨לְתִּי",
     "qr-what-is-weird": "לגרמיה is absent (DM footnotes 19 & 32)",
+    "qr-highlight": 7,
     "qr-lc-loc": {
       "page": "406A",
       "column": 2,
@@ -3284,6 +3323,7 @@
     "qr-consensus": "וְ֝חַיָּת֗וֹ",
     "qr-lc-proposed": "וְ֝חַיָּתוֹ",
     "qr-what-is-weird": "רביע of רביע מוגרש is absent (qere shown)",
+    "qr-highlight": 4,
     "qr-lc-loc": {
       "page": "406B",
       "column": 1,
@@ -3329,6 +3369,8 @@
     "qr-consensus": "כִּֽי־אָמַ֣ר",
     "qr-lc-proposed": "כִּֽי־אָ֭מַר",
     "qr-what-is-weird": "דחי not מונח",
+    "qr-highlight-consensus": 5,
+    "qr-highlight-lc-proposed": 4,
     "qr-lc-loc": {
       "page": "406B",
       "column": 2,
@@ -3580,6 +3622,7 @@
     "qr-consensus": "הֲֽמֵעִמְּךָ֬",
     "qr-lc-proposed": "הַֽמֵעִמְּךָ֬",
     "qr-what-is-weird": "פתח is full not חטף (DM footnotes 19 & 20)",
+    "qr-highlight": 1,
     "qr-lc-loc": {
       "page": "407A",
       "column": 1,
@@ -3604,6 +3647,7 @@
     "qr-consensus": "יְשַׁלְּמֶ֨נָּה׀",
     "qr-lc-proposed": "יְשַׁלְמֶ֨נָּה׀",
     "qr-what-is-weird": "ל lacks דגש",
+    "qr-highlight": 3,
     "qr-lc-loc": {
       "page": "407A",
       "column": 1,
@@ -3628,6 +3672,7 @@
     "qr-consensus": "יְשַׁלְּמֶ֨נָּה׀",
     "qr-lc-proposed": "יְשַׁלְּמֶ֨נָּה",
     "qr-what-is-weird": "לגרמיה is absent (DM footnote 32)",
+    "qr-highlight": 7,
     "qr-lc-loc": {
       "page": "407A",
       "column": 1,
@@ -3652,6 +3697,7 @@
     "qr-consensus": "וּֽמַה־יָּדַ֥עְתָּ",
     "qr-lc-proposed": "וּֽמַה־יָדַ֥עְתָּ",
     "qr-what-is-weird": "$yod lacks דגש (DM footnote 25)",
+    "qr-highlight": 5,
     "qr-lc-loc": {
       "page": "407A",
       "column": 1,
@@ -3672,6 +3718,7 @@
     "qr-consensus": "יִשְׂפּ֑וֹק",
     "qr-lc-proposed": "יִסְפּ֑וֹק",
     "qr-what-is-weird": "ס not ש",
+    "qr-highlight": 2,
     "qr-lc-loc": {
       "page": "407A",
       "column": 1,
@@ -3692,6 +3739,7 @@
     "qr-consensus": "מַה־מִּיָּדְךָ֥",
     "qr-lc-proposed": "מַה־מִיָּדְךָ֥",
     "qr-what-is-weird": "מ after מח lacks דגש (DM footnote 25)",
+    "qr-highlight": 4,
     "qr-lc-loc": {
       "page": "407A",
       "column": 2,
@@ -4216,6 +4264,7 @@
     "qr-consensus": "שָׁ֝מַ֗יִם",
     "qr-lc-proposed": "שָׁ֝מַיִם",
     "qr-what-is-weird": "רביע of רביע מוגרש is absent",
+    "qr-highlight": 2,
     "qr-bhq-comment": [
       "Aside: $BHQ not only has a רביע (against μL) but also has a typographic problem: the גרש מוקדם overlaps the $shin dot almost completely."
     ],
@@ -4438,6 +4487,7 @@
     "qr-consensus": "תְדוּשֶֽׁהָ׃",
     "qr-lc-proposed": "תְּדוּשֶֽׁהָ׃",
     "qr-what-is-weird": "ת has דגש",
+    "qr-highlight": 1,
     "qr-lc-loc": {
       "page": "408B",
       "column": 1,
@@ -4479,6 +4529,7 @@
     "qr-consensus": "שָׂ֝רִ֗ים",
     "qr-lc-proposed": "שָׂ֝רִים",
     "qr-what-is-weird": "רביע of רביע מוגרש is absent",
+    "qr-highlight": 2,
     "qr-bhq-comment": [
       "Aside: $BHQ’s גרש מוקדם is centered over the ש, as if it were “normal” (prose-system) גרש."
     ],
@@ -4555,6 +4606,7 @@
     "qr-consensus": "הָ֝עֹשׂ֗וֹ",
     "qr-lc-proposed": "הָ֝עֹשׂוֹ",
     "qr-what-is-weird": "רביע of רביע מוגרש is absent",
+    "qr-highlight": 3,
     "qr-lc-loc": {
       "page": "408B",
       "column": 2,

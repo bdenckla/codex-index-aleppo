@@ -5,6 +5,7 @@ RECORD_3433_A = {
     "qr-consensus": "הֲֽמֵעִמְּךָ֬",
     "qr-lc-proposed": "הַֽמֵעִמְּךָ֬",
     "qr-what-is-weird": "פתח is full not חטף (DM footnotes 19 & 20)",
+    "qr-highlight": 1,
     "qr-lc-loc": {"page": "407A", "column": 1, "line": 18},
     "qr-under-construction": True,
 }

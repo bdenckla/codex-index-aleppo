@@ -5,6 +5,7 @@ RECORD_3433_C = {
     "qr-consensus": "יְשַׁלְּמֶ֨נָּה׀",
     "qr-lc-proposed": "יְשַׁלְּמֶ֨נָּה",
     "qr-what-is-weird": "לגרמיה is absent (DM footnote 32)",
+    "qr-highlight": 7,
     "qr-lc-loc": {"page": "407A", "column": 1, "line": 18},
     "qr-under-construction": True,
 }

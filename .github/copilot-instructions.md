@@ -35,6 +35,30 @@ Full order: **base letter → shin/sin dot → dagesh → rafeh → vowels → m
 
 Place any temporary generated files (scripts, HTML reports, debugging output, etc.) into the `.novc/` folder. This folder is excluded from version control.
 
+## Reading and Writing Python Files
+
+When reading or modifying Python source files in this project:
+
+**Reading Python data:** Import modules directly rather than parsing as text:
+```python
+from pyauthor_qr.qr_0119 import RECORD_0119
+from pyauthor_util.job_quirkrecs import QUIRKRECS
+```
+
+**Writing/modifying Python:** Use the AST approach to guarantee syntactically valid output:
+
+1. Parse with `ast.parse(source)`
+2. Modify the AST (e.g., insert keys into `ast.Dict` nodes)
+3. Generate code with `ast.unparse(tree)` (Python 3.9+)
+4. Reformat with Black: `python -m black <file>`
+
+This approach may produce semantically incorrect code if values are wrong, but it **cannot** produce syntactically invalid Python. Avoid fragile regex-based or string-based text replacements.
+
+**Output JSON:** `out/quirkrecs.json` contains all quirkrecs as JSON. Regenerate with:
+```
+python main_gen_misc_authored_english_documents.py
+```
+
 ## Verification After Refactoring
 
 After making changes to Python source files, verify the HTML output is unchanged:

@@ -1,5 +1,5 @@
 {
-  "description": "Count of fields used in quirkrecs",
+  "description": "Count of fields used in quirkrecs (ordered by count descending)",
   "total_quirkrecs": 156,
   "fields": [
     {
@@ -32,7 +32,7 @@
     },
     {
       "field": "qr-highlight",
-      "count": 105
+      "count": 136
     },
     {
       "field": "qr-bhq-comment",
@@ -40,7 +40,7 @@
     },
     {
       "field": "qr-generic-comment",
-      "count": 64
+      "count": 65
     },
     {
       "field": "qr-under-construction",
@@ -56,15 +56,15 @@
     },
     {
       "field": "qr-highlight-lc-proposed",
-      "count": 11
+      "count": 17
+    },
+    {
+      "field": "qr-highlight-consensus",
+      "count": 16
     },
     {
       "field": "qr-uxlc-change-url",
       "count": 11
-    },
-    {
-      "field": "qr-highlight-consensus",
-      "count": 10
     },
     {
       "field": "qr-uxlc-needs-fix",

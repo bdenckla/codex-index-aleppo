@@ -4,6 +4,7 @@ RECORD_3915 = {
     "qr-consensus": "תְדוּשֶֽׁהָ׃",
     "qr-lc-proposed": "תְּדוּשֶֽׁהָ׃",
     "qr-what-is-weird": "ת has דגש",
+    "qr-highlight": 1,
     "qr-lc-loc": {"page": "408B", "column": 1, "line": 15},
     "qr-under-construction": True,
 }

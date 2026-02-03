@@ -7,7 +7,7 @@ RECORD_2713 = {
     "qr-what-is-weird": "ש lacks דגש",
     "qr-consensus": "מִשַּׁדַּ֥י",
     "qr-generic-comment": [
-        "24:1 is analogous.",
+        "21:15 and 24:1 are analogous.",
     ],
     "qr-highlight": 2,
     "qr-lc-loc": {"page": "404B", "column": 1, "line": 12},

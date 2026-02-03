@@ -5,9 +5,10 @@ RECORD_0523 = {
     "qr-lc-proposed": "הׇשְׁלְמָה־לָֽךְ׃",
     "qr-lc-q": "(?)",
     "qr-what-is-weird": "ל may lack דגש",
+    "qr-highlight": 7,
     "qr-generic-comment": [
         "There is some kind of a dot way over next to the",
-        " final $khaf (\N{THIN SPACE}ך\N{THIN SPACE})",
+        " final $khaf (\u2009ך\u2009)",
         " but it could easily be either not ink, or not intentional ink.",
         " Aside: the קמץ under ה is קטן.",
     ],
