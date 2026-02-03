@@ -1,5 +1,5 @@
 RECORD_3120 = {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "31:20",
     "qr-consensus": "כְּ֝בָשַׂ֗י",
     "qr-lc-proposed": "כְּ֝בָשַׂי",

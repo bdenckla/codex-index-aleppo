@@ -1541,7 +1541,7 @@
     "qr-cv": "16:6",
     "qr-consensus": "מַה־מִּנִּ֥י",
     "qr-lc-proposed": "מַה־מִנִּ֥י",
-    "qr-what-is-weird": "מ in מני lacks דגש (DM footnote 25)",
+    "qr-what-is-weird": "מ after מח lacks דגש (DM footnote 25)",
     "qr-lc-loc": {
       "page": "401B",
       "column": 2,
@@ -2485,7 +2485,7 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "24:13",
     "qr-consensus": "בְּֽמֹרְדֵ֫י א֥וֹר",
     "qr-lc-proposed": "בְּֽמֹרְדֵ֫י־א֥וֹר",
@@ -2500,7 +2500,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",
@@ -2536,7 +2536,7 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "24:18",
     "qr-consensus": "לֹא־יִ֝פְנֶ֗ה",
     "qr-lc-proposed": "לֹא־יִ֝פְנֶה",
@@ -2548,7 +2548,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",
@@ -2682,7 +2682,7 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "27:9",
     "qr-consensus": "הֲֽ֭צַעֲקָתוֹ",
     "qr-lc-proposed": "הַֽ֭צַעֲקָתוֹ",
@@ -2694,7 +2694,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",
@@ -2799,7 +2799,7 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "29:3",
     "qr-consensus": "לְ֝אוֹר֗וֹ",
     "qr-lc-proposed": "לְ֝אוֹרוֹ",
@@ -2811,7 +2811,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",
@@ -2934,7 +2934,7 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-noted-by-mam": true,
     "qr-cv": "31:2",
     "qr-consensus": "וּמֶ֤ה",
@@ -2947,7 +2947,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",
@@ -3098,7 +3098,7 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "31:20",
     "qr-consensus": "כְּ֝בָשַׂ֗י",
     "qr-lc-proposed": "כְּ֝בָשַׂי",
@@ -3110,7 +3110,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",
@@ -3236,7 +3236,7 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "32:11",
     "qr-consensus": "הוֹחַ֨לְתִּי׀",
     "qr-lc-proposed": "הוֹחַ֨לְתִּי",
@@ -3248,7 +3248,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",
@@ -3279,7 +3279,7 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "33:28",
     "qr-consensus": "וְ֝חַיָּת֗וֹ",
     "qr-lc-proposed": "וְ֝חַיָּתוֹ",
@@ -3291,7 +3291,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",
@@ -3324,7 +3324,7 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "34:5",
     "qr-consensus": "כִּֽי־אָמַ֣ר",
     "qr-lc-proposed": "כִּֽי־אָ֭מַר",
@@ -3336,7 +3336,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",
@@ -3571,7 +3571,7 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "34:33",
     "qr-n_of_m_for_this_verse": [
       1,
@@ -3587,7 +3587,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",
@@ -3595,7 +3595,7 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "34:33",
     "qr-n_of_m_for_this_verse": [
       2,
@@ -3611,7 +3611,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",
@@ -3619,7 +3619,7 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "34:33",
     "qr-n_of_m_for_this_verse": [
       3,
@@ -3635,7 +3635,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",
@@ -3643,7 +3643,7 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "34:33",
     "qr-n_of_m_for_this_verse": [
       4,
@@ -3659,7 +3659,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",
@@ -3667,7 +3667,7 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "34:37",
     "qr-consensus": "יִשְׂפּ֑וֹק",
     "qr-lc-proposed": "יִסְפּ֑וֹק",
@@ -3679,7 +3679,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",
@@ -3687,11 +3687,11 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "35:7",
     "qr-consensus": "מַה־מִּיָּדְךָ֥",
     "qr-lc-proposed": "מַה־מִיָּדְךָ֥",
-    "qr-what-is-weird": "מ lacks דגש (DM footnote 25)",
+    "qr-what-is-weird": "מ after מח lacks דגש (DM footnote 25)",
     "qr-lc-loc": {
       "page": "407A",
       "column": 2,
@@ -3699,7 +3699,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",
@@ -4216,6 +4216,9 @@
     "qr-consensus": "שָׁ֝מַ֗יִם",
     "qr-lc-proposed": "שָׁ֝מַיִם",
     "qr-what-is-weird": "רביע of רביע מוגרש is absent",
+    "qr-bhq-comment": [
+      "Aside: $BHQ not only has a רביע (against μL) but also has a typographic problem: the גרש מוקדם overlaps the $shin dot almost completely."
+    ],
     "qr-lc-loc": {
       "page": "408A",
       "column": 2,
@@ -4430,7 +4433,7 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "39:15",
     "qr-consensus": "תְדוּשֶֽׁהָ׃",
     "qr-lc-proposed": "תְּדוּשֶֽׁהָ׃",
@@ -4442,7 +4445,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",
@@ -4471,11 +4474,14 @@
     }
   },
   {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "39:25",
     "qr-consensus": "שָׂ֝רִ֗ים",
     "qr-lc-proposed": "שָׂ֝רִים",
     "qr-what-is-weird": "רביע of רביע מוגרש is absent",
+    "qr-bhq-comment": [
+      "Aside: $BHQ’s גרש מוקדם is centered over the ש, as if it were “normal” (prose-system) גרש."
+    ],
     "qr-lc-loc": {
       "page": "408B",
       "column": 1,
@@ -4483,7 +4489,7 @@
     },
     "qr-under-construction": true,
     "nbd": {
-      "e:BHQ": "xBHQ",
+      "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
       "e:DM": "nDM",
       "e:WLC": "xWLC",

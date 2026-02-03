@@ -1,5 +1,5 @@
 RECORD_3437 = {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "34:37",
     "qr-consensus": "יִשְׂפּ֑וֹק",
     "qr-lc-proposed": "יִסְפּ֑וֹק",

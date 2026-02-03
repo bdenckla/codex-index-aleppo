@@ -1,5 +1,5 @@
 RECORD_3433_A = {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "34:33",
     "qr-n_of_m_for_this_verse": (1, 4),
     "qr-consensus": "הֲֽמֵעִמְּךָ֬",

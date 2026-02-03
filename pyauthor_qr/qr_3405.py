@@ -1,5 +1,5 @@
 RECORD_3405 = {
-    "qr-noted-by": "nDM",
+    "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "34:5",
     "qr-consensus": "כִּֽי־אָמַ֣ר",
     "qr-lc-proposed": "כִּֽי־אָ֭מַר",
