@@ -93,16 +93,7 @@
     "qr-what-is-weird": "יתיב not מהפך",
     "qr-consensus": "א֤וֹ",
     "qr-generic-comment": [
-      "The יתיב accent doesn’t make sense here because this is in the poetic rather than prose section of Job",
-      [
-        " ",
-        [
-          "(",
-          "3:2 – 42:6",
-          ")"
-        ],
-        "."
-      ]
+      "The יתיב accent doesn’t make sense here because this is in the poetic rather than prose section of Job (3:2 – 42:6)."
     ],
     "qr-highlight": 1,
     "qr-lc-loc": {
@@ -1267,13 +1258,7 @@
       "The possible דגש looks slightly different than nearby dots in the two ציריה vowels. This raises the possibility that it is not ink, e.g. a speck on the vellum."
     ],
     "qr-bhq-comment": [
-      "$BHQ silently ignores the possible דגש.",
-      [
-        " ",
-        "Since $BHQ does not note any uncertainty in its transcription here (or anywhere),",
-        " it is hard to distinguish whether $BHQ has ignored the mark in question",
-        " on purpose or by accident."
-      ]
+      "$BHQ silently ignores the possible דגש. Since $BHQ does not note any uncertainty in its transcription here (or anywhere), it is hard to distinguish whether $BHQ has ignored the mark in question on purpose or by accident."
     ],
     "qr-noted-by": "nBHL",
     "nbd": {
@@ -1850,16 +1835,7 @@
     "qr-what-is-weird": "דגש may fight רפה",
     "qr-consensus": "חֶרְפָּתִֽי׃",
     "qr-generic-comment": [
-      "A דגש on a letter with רפה doesn’t make sense.",
-      " The color image of μL reveals this דגש to be unlikely.",
-      [
-        " Judged to be just a speck, not a דגש, in ",
-        [
-          "Viktor Golinets,",
-          " “Dageš, Mappiq, Specks on Vellum, and Editing of the Codex Leningradensis”,",
-          " $KUSATU 15/2013, p. 251 (2013)."
-        ]
-      ]
+      "A דגש on a letter with רפה doesn’t make sense. The color image of μL reveals this דגש to be unlikely. Judged to be just a speck, not a דגש, in Viktor Golinets, “Dageš, Mappiq, Specks on Vellum, and Editing of the Codex Leningradensis”, $KUSATU 15/2013, p. 251 (2013)."
     ],
     "qr-highlight": 4,
     "qr-lc-loc": {
@@ -3726,25 +3702,17 @@
     "qr-what-is-weird": "עולה is over ע",
     "qr-consensus": "וְֽיַ֫עֲבֹ֥דוּ",
     "qr-generic-comment": [
-      "In the middle of a word,",
-      " the “half-accent” עולה (half of עולה ויורד)",
-      " should never appear on a letter with a vocal שווא,",
-      " regardless of whether the שווא is notated as a simple שווא or a חטף vowel.",
-      " Yet, here is just such an עולה, on the letter ע with a חטף פתח.",
-      " (Rarely, עולה appears on a letter with a vocal שווא at the beginning of a word.",
-      [
-        " See my ",
-        {
-          "_htel_tag": "a",
-          "attr": {
-            "href": "https://bdenckla.github.io/MAM-with-doc/misc/tsinnorit_and_oleh_on_ivs.html"
-          },
-          "contents": [
-            "document"
-          ]
+      "In the middle of a word, the “half-accent” עולה (half of עולה ויורד) should never appear on a letter with a vocal שווא, regardless of whether the שווא is notated as a simple שווא or a חטף vowel. Yet, here is just such an עולה, on the letter ע with a חטף פתח. (Rarely, עולה appears on a letter with a vocal שווא at the beginning of a word. See my ",
+      {
+        "_htel_tag": "a",
+        "attr": {
+          "href": "https://bdenckla.github.io/MAM-with-doc/misc/tsinnorit_and_oleh_on_ivs.html"
         },
-        ", “Tsinnorit & Oleh on Initial Vocal Shewa” for details.)"
-      ]
+        "contents": [
+          "document"
+        ]
+      },
+      ", “Tsinnorit & Oleh on Initial Vocal Shewa” for details.)"
     ],
     "qr-lc-img": "3611-custom.jpg",
     "qr-highlight-lc-proposed": 3,
@@ -3889,20 +3857,14 @@
     ],
     "qr-noted-by": "tBHQ-zdexiWLC",
     "qr-generic-comment": [
-      "All but the southeast end of the דחי seems to have flaked off,",
-      " but luckily left some faint trace behind. To charitably transcribe this word, we must not only transcribe this faint trace",
-      [
-        " but also ",
-        {
-          "_htel_tag": "b",
-          "contents": [
-            "decline"
-          ]
-        },
-        " to transcribe"
-      ],
-      " the similarly faint blob",
-      " (an erasure?) right next to it under the ש."
+      "All but the southeast end of the דחי seems to have flaked off, but luckily left some faint trace behind. To charitably transcribe this word, we must not only transcribe this faint trace but also ",
+      {
+        "_htel_tag": "b",
+        "contents": [
+          "decline"
+        ]
+      },
+      " to transcribe the similarly faint blob (an erasure?) right next to it under the ש."
     ],
     "nbd": {
       "e:BHQ": "tBHQ",

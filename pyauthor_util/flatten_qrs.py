@@ -21,7 +21,5 @@ def _flatten_yyycom(yyycom):
     if isinstance(yyycom, str):
         return yyycom
     assert isinstance(yyycom, list)
-    if all(isinstance(item, str) for item in yyycom):
-        flat = my_html.flatten(yyycom)
-        return shrink(flat)
-    return yyycom
+    flat = my_html.flatten(yyycom)
+    return shrink(flat)

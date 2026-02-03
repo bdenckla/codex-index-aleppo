@@ -1,3 +1,4 @@
+import os
 from pyauthor_util.short_id_etc import lc_img, short_id
 from pyauthor_util.noted_by import nb_dict
 from pyauthor_util.flatten_qrs import flatten_qrs
