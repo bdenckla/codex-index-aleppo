@@ -19,7 +19,7 @@ _COMPAR3 = [
 ]
 _COMPAR4 = [
     "Though interesting, this report of a pale yellow dot still falls well under the “little”",
-    " of my assessment that their is little or no evidence of a דגש here.",
+    " of my assessment that there is little or no evidence of a דגש here.",
 ]
 
 RECORD_0505 = {

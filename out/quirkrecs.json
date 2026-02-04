@@ -222,7 +222,7 @@
       {
         "_htel_tag": "p",
         "contents": [
-          "Though interesting, this report of a pale yellow dot still falls well under the “little” of my assessment that their is little or no evidence of a דגש here."
+          "Though interesting, this report of a pale yellow dot still falls well under the “little” of my assessment that there is little or no evidence of a דגש here."
         ]
       }
     ],
@@ -691,7 +691,7 @@
     "qr-what-is-weird": "ב may lack רביע",
     "qr-consensus": "עַ֝כָּבִ֗ישׁ",
     "qr-generic-comment": [
-      "Perhaps a רביע is is merged into the left end of the (untranscribed) רפה."
+      "Perhaps a רביע is merged into the left end of the (untranscribed) רפה."
     ],
     "qr-lc-img": "0814-custom.jpg",
     "qr-highlight": 3,
@@ -2130,7 +2130,7 @@
       "line": 12
     },
     "qr-bhq-comment": [
-      "$BHQ has the proposed transcription of μL above.The transcription differs from the consensus in way opposite to most such reports here: here we see a דחי vs טרחא difference, with BHQ having דחי, whereas most such reports involving these two accents involve a טרחא vs דחי difference, with BHQ having טרחא."
+      "$BHQ has the proposed transcription of μL above. The transcription differs from the consensus in way opposite to most such reports here: here we see a דחי vs טרחא difference, with BHQ having דחי, whereas most such reports involving these two accents involve a טרחא vs דחי difference, with BHQ having טרחא."
     ],
     "qr-noted-by": "tBHQ-zmiscWLC",
     "nbd": {
@@ -2264,7 +2264,7 @@
     "qr-what-is-weird": "טרחא not דחי",
     "qr-consensus": "אֹ֭מֶר",
     "qr-generic-comment": [
-      "The scribe of μL probably intended a דחי but placed it like a טרחא.The מלא/חסר spelling difference is not important to us here."
+      "The scribe of μL probably intended a דחי but placed it like a טרחא. The מלא/חסר spelling difference is not important to us here."
     ],
     "qr-highlight": 1,
     "qr-lc-loc": {
@@ -3236,7 +3236,7 @@
     },
     "qr-uxlc-position-within-verse": 11,
     "qr-bhq-comment": [
-      "$BHQ silently supplies the marks in the vowel-then-accent order that is the consensus expectation, in clear contradiction of μL here.31:5 is similar and discusses the matter at greater length."
+      "$BHQ silently supplies the marks in the vowel-then-accent order that is the consensus expectation, in clear contradiction of μL here. 31:5 is similar and discusses the matter at greater length."
     ],
     "qr-noted-by": "nBHL",
     "nbd": {

@@ -5,7 +5,7 @@ RECORD_0814 = {
     "qr-what-is-weird": "ב may lack רביע",
     "qr-consensus": "עַ֝כָּבִ֗ישׁ",
     "qr-generic-comment": [
-        "Perhaps a רביע is is merged into the left end of the (untranscribed) רפה.",
+        "Perhaps a רביע is merged into the left end of the (untranscribed) רפה.",
     ],
     "qr-lc-img": "0814-custom.jpg",
     # Above, we use the UXLC change record screen snip (a .jpg) rather than one we took

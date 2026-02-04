@@ -22,7 +22,7 @@ RECORD_2228 = {
     "qr-consensus": "אֹ֭מֶר",
     "qr-generic-comment": [
         "The scribe of μL probably intended a דחי but placed it like a טרחא.",
-        "The מלא/חסר spelling difference is not important to us here.",
+        " The מלא/חסר spelling difference is not important to us here.",
     ],
     "qr-highlight": 1,
     "qr-lc-loc": {"page": "403B", "column": 2, "line": 2},
