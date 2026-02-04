@@ -111,7 +111,6 @@ from pyauthor_qr.qr_3139 import RECORD_3139
 from pyauthor_qr.qr_3206 import RECORD_3206
 from pyauthor_qr.qr_3210 import RECORD_3210
 from pyauthor_qr.qr_3211 import RECORD_3211
-from pyauthor_qr.qr_3212 import RECORD_3212
 from pyauthor_qr.qr_3312 import RECORD_3312
 from pyauthor_qr.qr_3328 import RECORD_3328
 from pyauthor_qr.qr_3330 import RECORD_3330
@@ -272,7 +271,6 @@ QUIRKRECS = [
     RECORD_3206,
     RECORD_3210,
     RECORD_3211,
-    RECORD_3212,
     RECORD_3312,
     RECORD_3328,
     RECORD_3330,
