@@ -10,6 +10,6 @@ RECORD_3829 = {
         " but also has a typographic problem:",
         " the גרש מוקדם overlaps the $shin dot almost completely.",
     ],
-    "qr-lc-loc": {"page": "408A", "column": 2, "line": 10},
+    "qr-lc-loc": {"page": "408A", "column": 2, "line": 9},
     "qr-under-construction": True,
 }

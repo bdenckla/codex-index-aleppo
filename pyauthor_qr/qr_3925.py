@@ -9,6 +9,6 @@ RECORD_3925 = {
         "Aside: $BHQ’s גרש מוקדם is centered over the ש,",
         " as if it were “normal” (prose-system) גרש.",
     ],
-    "qr-lc-loc": {"page": "408B", "column": 1, "line": 27},
+    "qr-lc-loc": {"page": "408B", "column": 1, "line": 26},
     "qr-under-construction": True,
 }
