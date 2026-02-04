@@ -1,0 +1,34 @@
+﻿# Custom dictionary for spell checking quirkrecs
+# One word per line. Lines starting with # are comments.
+#
+# Only includes words actually used in prose fields.
+# $-prefixed sigla like $BHQ are auto-skipped by the spell checker.
+
+# Project-specific sigla
+μL
+μA
+μY
+
+# Hebrew terms used in prose
+Dageš
+Mappiq
+cantillation
+kaf
+lamed
+masorah
+oleh
+qere
+shewa
+tsinnorit
+unpointed
+
+# Proper names / references
+Viktor
+Golinets
+Leningradensis
+
+# Technical terms
+ascenders
+untranscribed
+syl
+vs

@@ -12,7 +12,7 @@ def core_ignores(option=" (or anywhere)"):
 CAM1753_PAGE_URL_BASE = (
     "https://archive.org/details/ketuvim-cambridge-ms-add-1753-images/page"
 )
-_SEE_3419 = [" See my entry on נכר in 34:19 for further discusion."]
+_SEE_3419 = [" See my entry on נכר in 34:19 for further discussion."]
 _CORRECTLY_IGNORES_3419 = [
     [" ", *core_ignores("")],
     " More broadly, $BHQ Job never notes",

@@ -1663,7 +1663,7 @@
       "line": 5
     },
     "qr-bhq-comment": [
-      "$BHQ has no דגש here. I happen to think that this is the best transcription of μL here, but I don’t know whether $BHQ arrived at this transcription on purpose or by accident. Did the editors of $BHQ consider, but ultimately decide against, the faint possible דגש? Or did they simply ignore μL entirely, supplying the consensus pointing, which has no דגש? See my entry on נכר in 34:19 for further discusion."
+      "$BHQ has no דגש here. I happen to think that this is the best transcription of μL here, but I don’t know whether $BHQ arrived at this transcription on purpose or by accident. Did the editors of $BHQ consider, but ultimately decide against, the faint possible דגש? Or did they simply ignore μL entirely, supplying the consensus pointing, which has no דגש? See my entry on נכר in 34:19 for further discussion."
     ],
     "qr-noted-by": "nWLC",
     "qr-uxlc-needs-fix": [
@@ -1802,7 +1802,7 @@
     "qr-lc-proposed": "א֖וֹר",
     "qr-what-is-weird": "טרחא not דחי",
     "qr-consensus": "א֭וֹר",
-    "qr-generic-comment": "The scribe of uL probably intended a דחי but placed it like a טרחא.",
+    "qr-generic-comment": "The scribe of μL probably intended a דחי but placed it like a טרחא.",
     "qr-highlight": 1,
     "qr-lc-loc": {
       "page": "402A",
@@ -2264,7 +2264,7 @@
     "qr-what-is-weird": "טרחא not דחי",
     "qr-consensus": "אֹ֭מֶר",
     "qr-generic-comment": [
-      "The scribe of uL probably intended a דחי but placed it like a טרחא.The מלא/חסר spelling difference is not important to us here."
+      "The scribe of μL probably intended a דחי but placed it like a טרחא.The מלא/חסר spelling difference is not important to us here."
     ],
     "qr-highlight": 1,
     "qr-lc-loc": {
@@ -3974,7 +3974,7 @@
       "line": -5
     },
     "qr-bhq-comment": [
-      "$BHQ has no געיה here. I happen to think that this is the best transcription of μL here, but I don’t know whether $BHQ arrived at this transcription on purpose or by accident. Did the editors of $BHQ consider, but ultimately decide against, the faint possible large געיה? Or did they simply ignore μL entirely, supplying the consensus pointing, which has no געיה? See my entry on נכר in 34:19 for further discusion."
+      "$BHQ has no געיה here. I happen to think that this is the best transcription of μL here, but I don’t know whether $BHQ arrived at this transcription on purpose or by accident. Did the editors of $BHQ consider, but ultimately decide against, the faint possible large געיה? Or did they simply ignore μL entirely, supplying the consensus pointing, which has no געיה? See my entry on נכר in 34:19 for further discussion."
     ],
     "qr-noted-by": "nBHL",
     "nbd": {
@@ -4045,7 +4045,7 @@
     "qr-what-is-weird": "מרכא not געיה",
     "qr-consensus": "לֹֽא־",
     "qr-generic-comment": [
-      "The distinction between the מרכא accent, the געיה mark, and the טרחא accent is a vexing problem. Perhaps in some manuscripts, the angle of these marks can help make this distinction, but μL is not such a manuscript. We can, as usual, lean on consensus for help, although consensus based on manuscript evidence is hard to determine in these cases due to this same problem of angle-reliability mentioned above. Notably, I suspect that μA is more reliable than μL in this regard, but I am not sure. So, in these cases, in determining consensus, we may have to rely more than usual on the evidence of printed editions. We may also have to rely more than usual on context like the grammar of cantillation, to determine which of these marks is most likey in a given situation. Aside: the מקף is very faint."
+      "The distinction between the מרכא accent, the געיה mark, and the טרחא accent is a vexing problem. Perhaps in some manuscripts, the angle of these marks can help make this distinction, but μL is not such a manuscript. We can, as usual, lean on consensus for help, although consensus based on manuscript evidence is hard to determine in these cases due to this same problem of angle-reliability mentioned above. Notably, I suspect that μA is more reliable than μL in this regard, but I am not sure. So, in these cases, in determining consensus, we may have to rely more than usual on the evidence of printed editions. We may also have to rely more than usual on context like the grammar of cantillation, to determine which of these marks is most likely in a given situation. Aside: the מקף is very faint."
     ],
     "qr-highlight": 1,
     "qr-lc-loc": {

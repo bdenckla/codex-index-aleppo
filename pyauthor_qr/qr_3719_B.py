@@ -21,7 +21,7 @@ RECORD_3719_B = {
         " So, in these cases, in determining consensus,",
         " we may have to rely more than usual on the evidence of printed editions.",
         " We may also have to rely more than usual on context like the grammar of cantillation,",
-        " to determine which of these marks is most likey in a given situation.",
+        " to determine which of these marks is most likely in a given situation.",
         " Aside: the מקף is very faint.",
     ],
     "qr-highlight": 1,

@@ -21,7 +21,7 @@ RECORD_2228 = {
     "qr-what-is-weird": "טרחא not דחי",
     "qr-consensus": "אֹ֭מֶר",
     "qr-generic-comment": [
-        "The scribe of uL probably intended a דחי but placed it like a טרחא.",
+        "The scribe of μL probably intended a דחי but placed it like a טרחא.",
         "The מלא/חסר spelling difference is not important to us here.",
     ],
     "qr-highlight": 1,
