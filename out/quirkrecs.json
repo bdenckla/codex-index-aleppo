@@ -1226,7 +1226,7 @@
     "qr-lc-loc": {
       "page": "400B",
       "column": 1,
-      "line": 8
+      "line": 9
     },
     "qr-under-construction": true,
     "nbd": {
@@ -2008,7 +2008,8 @@
     "qr-lc-loc": {
       "page": "403A",
       "column": 1,
-      "line": 15
+      "line": 16,
+      "including-blank-lines": 1
     },
     "qr-under-construction": true,
     "nbd": {

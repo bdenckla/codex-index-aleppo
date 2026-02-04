@@ -8,6 +8,9 @@ def write_qr_field_stats_json(quirkrecs, out_path_by_count, out_path_by_name):
     """
     Write JSON files containing counts of all fields used in quirkrecs.
 
+    Nested fields (dict values like qr-lc-loc) are reported as "parent.child"
+    (e.g., "qr-lc-loc.page", "qr-lc-loc.column").
+
     Args:
         quirkrecs: List of quirkrec dicts (after processing, including nbd)
         out_path_by_count: Path to write the JSON file ordered by count
@@ -15,8 +18,12 @@ def write_qr_field_stats_json(quirkrecs, out_path_by_count, out_path_by_name):
     """
     field_counter = Counter()
     for qr in quirkrecs:
-        for key in qr:
+        for key, value in qr.items():
             field_counter[key] += 1
+            # Handle nested dict fields (e.g., qr-lc-loc)
+            if isinstance(value, dict):
+                for nested_key in value:
+                    field_counter[f"{key}.{nested_key}"] += 1
 
     # Sort by count descending, then by field name
     sorted_by_count = sorted(field_counter.items(), key=lambda x: (-x[1], x[0]))

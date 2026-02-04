@@ -7,6 +7,26 @@
       "count": 156
     },
     {
+      "field": "nbd.e:BHL",
+      "count": 156
+    },
+    {
+      "field": "nbd.e:BHQ",
+      "count": 156
+    },
+    {
+      "field": "nbd.e:DM",
+      "count": 156
+    },
+    {
+      "field": "nbd.e:UXLC",
+      "count": 156
+    },
+    {
+      "field": "nbd.e:WLC",
+      "count": 156
+    },
+    {
       "field": "qr-aleppo-img",
       "count": 6
     },
@@ -68,6 +88,22 @@
     },
     {
       "field": "qr-lc-loc",
+      "count": 156
+    },
+    {
+      "field": "qr-lc-loc.column",
+      "count": 156
+    },
+    {
+      "field": "qr-lc-loc.including-blank-lines",
+      "count": 8
+    },
+    {
+      "field": "qr-lc-loc.line",
+      "count": 156
+    },
+    {
+      "field": "qr-lc-loc.page",
       "count": 156
     },
     {

@@ -5,6 +5,6 @@ RECORD_2107 = {
     "qr-lc-proposed": "מַ֣דּוּעַ",
     "qr-what-is-weird": "מונח not דחי",
     "qr-highlight": 1,
-    "qr-lc-loc": {"page": "403A", "column": 1, "line": 15},
+    "qr-lc-loc": {"page": "403A", "column": 1, "line": 16, "including-blank-lines": 1},
     "qr-under-construction": True,
 }

@@ -5,6 +5,6 @@ RECORD_1209 = {
     "qr-lc-proposed": "יַד־יְ֝הֹוָה",
     "qr-what-is-weird": "רביע of רביע מוגרש is absent",
     "qr-highlight": 6,
-    "qr-lc-loc": {"page": "400B", "column": 1, "line": 8},
+    "qr-lc-loc": {"page": "400B", "column": 1, "line": 9},
     "qr-under-construction": True,
 }
