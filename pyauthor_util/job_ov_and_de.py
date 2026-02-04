@@ -10,7 +10,7 @@ from pycmn.my_utils import intersperse, sl_map
 from pyauthor_util.common_titles_etc import D1D_FNAME
 from pyauthor_util import author
 from pyauthor_util.says import says
-from pyauthor_util.short_id_etc import lc_img, short_id
+from pyauthor_util.short_id_etc import short_id
 from pyauthor_util.job1_highlight import highlight, color
 from pyauthor_util.job1_lcloc import lcloc
 from py_uxlc_loc import my_uxlc_location
@@ -264,7 +264,7 @@ def _make_details_html(quirkrec):
         author.table_c(_make_overview_row(quirkrec)),
         *_maybe_bhq(quirkrec.get("qr-bhq")),
         _dpe(quirkrec),
-        _img(lc_img(quirkrec)),
+        _img(quirkrec["qr-lc-img"]),
         *_maybe_img(quirkrec, "mi-args-aleppo"),
         *_maybe_img(quirkrec, "mi-args-cam1753"),
         my_html.horizontal_rule(),

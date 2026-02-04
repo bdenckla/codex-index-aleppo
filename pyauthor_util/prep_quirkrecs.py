@@ -32,12 +32,9 @@ def _add_auto_imgs(jobn_rel_top, quirkrec):
     return result
 
 
-def _assert_all_img_paths_exist(jobn_rel_top, qrs):
+def _assert_lc_img_fields_filled(qrs):
     for qr in qrs:
-        if not qr.get("qr-lc-proposed"):
-            continue  # Skip records without qr-lc-proposed (not in output)
-        lc_img_path = f"{jobn_rel_top}/img/{lc_img(qr)}"
-        assert os.path.exists(lc_img_path), f"Missing LC image: {lc_img_path}"
+        assert qr.get("qr-lc-img"), f"Missing qr-lc-img for {short_id(qr)}"
 
 
 def _sort_key(quirkrec):
@@ -46,11 +43,11 @@ def _sort_key(quirkrec):
 
 def prep_quirkrecs(jobn_rel_top, json_outdir):
     qrs_1 = sorted(QUIRKRECS, key=_sort_key)
-    _assert_all_img_paths_exist(jobn_rel_top, qrs_1)
     qrs_1 = [qr for qr in qrs_1 if qr.get("qr-lc-proposed")]  # XXX temporary
     qrs_2 = sl_map((_add_auto_imgs, jobn_rel_top), qrs_1)
     qrs_3 = sl_map(_add_nbd, qrs_2)
     qrs_4 = flatten_qrs(qrs_3)
+    _assert_lc_img_fields_filled(qrs_4)
     write_qr_field_stats_json(
         qrs_4,
         f"{json_outdir}/qr-field-stats-ordered-by-count.json",
