@@ -75,7 +75,6 @@ BHQ_COMMENT_0914_AND_0930 = [
     "$BHQ silently supplies the סילוק that is the consensus expectation,",
     " despite little or no evidence for it in μL.",
 ]
-# XXX better to assert that these match than to factor them commonly like this.
 RECORD_1804_CMN_AB = {
     "qr-cv": "18:4",
     "qr-lc-proposed": "הֲ֭לְמַּעַנְךָ",
