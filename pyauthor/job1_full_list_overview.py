@@ -22,7 +22,7 @@ def _make_cbody(ov_and_de):
     cbody = [
         author.heading_level_1(D1V_H1_CONTENTS),
         author.para(here_is("Below is a table summarizing", d1d_anchor())),
-        *intro("intro-overview"),
+        *intro("intro-header-only"),
         my_html.horizontal_rule(),
         author.table_c(overview),
     ]

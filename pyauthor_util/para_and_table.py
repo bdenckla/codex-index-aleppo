@@ -34,5 +34,5 @@ def _table_of_quirks(tdm_ch, group_key, ov_and_de, group_of_quirkrecs):
     author.help_gen_html_file(tdm_ch, fname, title, cbody)
     # Return link to the file
     record_count = len(group_of_quirkrecs)
-    link_text = f"View {record_count} records"
+    link_text = f"View {record_count} entries"
     return author.anc_h(link_text, fname)
