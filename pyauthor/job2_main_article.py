@@ -37,7 +37,7 @@ def _make_cbody(aq: AllQuirks):
         author.para(_CPARA24),
         author.para(_CPARA25),
         para_and_table(aq, _cpara26, "nbhq_and_x3"),
-        *intro("intro-job2"),
+        *intro("intro-details"),
         author.para(_CPARA27),
         para_and_table(aq, _cpara28, "nbhq_and_n3"),
         para_and_table(aq, _cpara29, "tbhq_and_n3"),
