@@ -2001,7 +2001,12 @@
     ],
     "qr-ac-proposed": "בְּ֝מוֹ־פִ֗י",
     "qr-consensus": "בְּמוֹ־פִ֝֗י",
-    "qr-what-is-weird": "רביע מוגרש spans מקף!",
+    "qr-highlight-ac-proposed": [
+      1,
+      5
+    ],
+    "qr-highlight-consensus": 5,
+    "qr-what-is-weird": "רביע מוגרש spans מקף",
     "qr-lc-loc": {
       "page": "402B",
       "column": 1,
@@ -2507,9 +2512,10 @@
     "qr-noted-by-mam": true,
     "qr-noted-by": "aDM",
     "qr-cv": "23:5",
-    "qr-ac-proposed": "מַה־יֹּֽאמַר־לִֽי",
-    "qr-consensus": "מַה־יֹּ֥אמַר לִֽי",
-    "qr-what-is-weird": "μA has מקף after יאמר.",
+    "qr-ac-proposed": "מַה־יֹּֽאמַר־לִֽי׃",
+    "qr-consensus": "מַה־יֹּ֥אמַר לִֽי׃",
+    "qr-what-is-weird": "מקף after יאמר",
+    "qr-highlight-ac-proposed": 8,
     "qr-generic-comment": [
       "In addition to the מקף question, there is also some question of מרכא vs געיה."
     ],

@@ -79,8 +79,12 @@
       "count": 136
     },
     {
+      "field": "qr-highlight-ac-proposed",
+      "count": 2
+    },
+    {
       "field": "qr-highlight-consensus",
-      "count": 16
+      "count": 17
     },
     {
       "field": "qr-highlight-lc-proposed",

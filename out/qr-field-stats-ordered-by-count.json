@@ -91,12 +91,12 @@
       "count": 18
     },
     {
-      "field": "qr-highlight-lc-proposed",
+      "field": "qr-highlight-consensus",
       "count": 17
     },
     {
-      "field": "qr-highlight-consensus",
-      "count": 16
+      "field": "qr-highlight-lc-proposed",
+      "count": 17
     },
     {
       "field": "qr-uxlc-change-url",
@@ -144,6 +144,10 @@
     },
     {
       "field": "qr-extra-letter-spacing",
+      "count": 2
+    },
+    {
+      "field": "qr-highlight-ac-proposed",
       "count": 2
     },
     {

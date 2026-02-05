@@ -377,7 +377,9 @@ _CPARA_UXLC = [
 _CPARA_QUIRKS_IN_MU_A = [
     "Usually, μA agrees with the consensus.",
     #
-    " Indeed, where extant, it more or less ",my_html.bold("defines")," the consensus.",
+    " Indeed, where extant, it more or less ",
+    my_html.bold("defines"),
+    " the consensus.",
     #
     " Nonetheless, there are cases where",
     " it is μA rather than μL that diverges from the consensus.",

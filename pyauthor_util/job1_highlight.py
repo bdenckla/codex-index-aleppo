@@ -26,7 +26,7 @@ _RK_COLOR = {
 }
 _RK_HL_SPECIFIC = {
     "qr-lc-proposed": "qr-highlight-lc-proposed",
-    "qr-ac-proposed": "qr-highlight-lc-proposed",
+    "qr-ac-proposed": "qr-highlight-ac-proposed",
     "qr-consensus": "qr-highlight-consensus",
 }
 

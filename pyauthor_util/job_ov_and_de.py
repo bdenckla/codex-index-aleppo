@@ -105,27 +105,36 @@ def _std_bcvp_quad(quirkrec):
     return bkid, chnu, vrnu, atnu
 
 
+_KEY_FOR_PROPOSED = {
+    ("qr-lc-proposed", False): "qr-lc-proposed",
+    (False, "qr-ac-proposed"): "qr-ac-proposed",
+}
+_KEY_FOR_QUESTION_MARK = {
+    "qr-lc-proposed": "qr-lc-q",
+    "qr-ac-proposed": "qr-ac-q",
+}
+
+
 def _key_for_proposed(quirkrec):
-    lcp = quirkrec.get("qr-lc-proposed")
-    acp = quirkrec.get("qr-ac-proposed")
-    assert not (lcp and acp), "Both qr-lc-proposed and qr-ac-proposed are set!"
-    if lcp:
-        return "qr-lc-proposed"
-    if acp:
-        return "qr-ac-proposed"
-    assert False, f"Neither qr-lc-proposed nor qr-ac-proposed is set! {quirkrec}"
+    lcp = "qr-lc-proposed" in quirkrec and "qr-lc-proposed"
+    acp = "qr-ac-proposed" in quirkrec and "qr-ac-proposed"
+    return _KEY_FOR_PROPOSED[(lcp, acp)]
+
+
+def _key_for_question_mark(quirkrec):
+    return _KEY_FOR_QUESTION_MARK[_key_for_proposed(quirkrec)]
 
 
 def _lcp_and_con(quirkrec):
-    hlcp = highlight(quirkrec, _key_for_proposed(quirkrec))
-    hcon = highlight(quirkrec, "qr-consensus")
-    if lc_q := quirkrec.get("qr-lc-q"):
-        assert lc_q == "(?)"
-        lc_and_q = [hlcp, " (?)"]
+    hl_pro = highlight(quirkrec, _key_for_proposed(quirkrec))
+    hl_con = highlight(quirkrec, "qr-consensus")
+    if qm := quirkrec.get(_key_for_question_mark(quirkrec)):
+        assert qm == "(?)"
+        hl_pro_and_qm = [hl_pro, " (?)"]
     else:
-        lc_and_q = [hlcp]
-    lcp_and_con = [*lc_and_q, my_html.line_break(), hcon]
-    return lcp_and_con
+        hl_pro_and_qm = [hl_pro]
+    pro_lb_con = [*hl_pro_and_qm, my_html.line_break(), hl_con]
+    return pro_lb_con
 
 
 def _make_overview_row(quirkrec):
@@ -141,6 +150,7 @@ def _make_overview_row(quirkrec):
     ]
     tr_attrs = {"id": the_row_id}
     return my_html.table_row(tr_contents, tr_attrs)
+
 
 _IN_MY_YYY = {
     "qr-lc-proposed": "in μL",

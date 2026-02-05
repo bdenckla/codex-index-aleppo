@@ -20,6 +20,4 @@ def _make_cbody(ov_and_de, qr_groups):
 
 
 def _cpara_adm(the_len):
-    return [
-        "XXX foo."
-    ]
+    return ["The following quirks in μA are reported by $DM but not by $BHQ."]
