@@ -17,11 +17,11 @@ from pycmn.my_utils import dv_map
 
 def gen_html_file(tdm_ch, ov_and_de, qr_groups):
     author.assert_stem_eq(__file__, D2_FNAME)
-    cbody = _make_cbody(ov_and_de, qr_groups)
+    cbody = _make_cbody(tdm_ch, ov_and_de, qr_groups)
     author.help_gen_html_file(tdm_ch, D2_FNAME, D2_TITLE, cbody)
 
 
-def _make_cbody(ov_and_de, qr_groups):
+def _make_cbody(tdm_ch, ov_and_de, qr_groups):
     the_lens = dv_map(len, qr_groups)
     len_dexi = the_lens["tbhq_and_zdw"]
     len_misc = the_lens["tbhq_and_zmw"]
@@ -35,17 +35,17 @@ def _make_cbody(ov_and_de, qr_groups):
         author.para_ul(_CPARA15, _CLIST15),
         author.para(_CPARA24),
         author.para(_CPARA25),
-        para_and_table(_cpara26, ov_and_de, qr_groups["nbhq_and_x3"]),
+        para_and_table(_cpara26, tdm_ch, "nbhq_and_x3", ov_and_de, qr_groups["nbhq_and_x3"]),
         *intro("intro-job2"),
         author.para(_CPARA27),
-        para_and_table(_cpara28, ov_and_de, qr_groups["nbhq_and_n3"]),
-        para_and_table(_cpara29, ov_and_de, qr_groups["tbhq_and_n3"]),
-        para_and_table(_cpara30, ov_and_de, qr_groups["xbhq_and_n3"]),
+        para_and_table(_cpara28, tdm_ch, "nbhq_and_n3", ov_and_de, qr_groups["nbhq_and_n3"]),
+        para_and_table(_cpara29, tdm_ch, "tbhq_and_n3", ov_and_de, qr_groups["tbhq_and_n3"]),
+        para_and_table(_cpara30, tdm_ch, "xbhq_and_n3", ov_and_de, qr_groups["xbhq_and_n3"]),
         author.para(_cpara31()),
         author.para(_cpara32(len(qr_groups["nbhq_and_n3"]))),
         author.para(_cpara33(len_dexi, len_misc)),
-        para_and_table(_cpara34_dexi, ov_and_de, qr_groups["tbhq_and_zdw"]),
-        para_and_table(_cpara35_misc, ov_and_de, qr_groups["tbhq_and_zmw"]),
+        para_and_table(_cpara34_dexi, tdm_ch, "tbhq_and_zdw", ov_and_de, qr_groups["tbhq_and_zdw"]),
+        para_and_table(_cpara35_misc, tdm_ch, "tbhq_and_zmw", ov_and_de, qr_groups["tbhq_and_zmw"]),
         author.para_ul(_CPARA36, _clist36(the_lens)),
         author.heading_level_2("Postscript 1: $UXLC"),
         author.para(_CPARA_UXLC),

@@ -7,15 +7,15 @@ from pyauthor_util.common_titles_etc import D3_TITLE, D3_H1_CONTENTS, D3_FNAME
 
 def gen_html_file(tdm_ch, ov_and_de, qr_groups):
     author.assert_stem_eq(__file__, D3_FNAME)
-    cbody = _make_cbody(ov_and_de, qr_groups)
+    cbody = _make_cbody(tdm_ch, ov_and_de, qr_groups)
     author.help_gen_html_file(tdm_ch, D3_FNAME, D3_TITLE, cbody)
 
 
-def _make_cbody(ov_and_de, qr_groups):
+def _make_cbody(tdm_ch, ov_and_de, qr_groups):
     cbody = [
         author.heading_level_1(D3_H1_CONTENTS),
-        para_and_table(_cpara_xn, ov_and_de, qr_groups["xbhq_and_nuxlc"]),
-        para_and_table(_cpara_tz, ov_and_de, qr_groups["tbhq_and_zuxlc"]),
+        para_and_table(_cpara_xn, tdm_ch, "xbhq_and_nuxlc", ov_and_de, qr_groups["xbhq_and_nuxlc"]),
+        para_and_table(_cpara_tz, tdm_ch, "tbhq_and_zuxlc", ov_and_de, qr_groups["tbhq_and_zuxlc"]),
     ]
     return cbody
 

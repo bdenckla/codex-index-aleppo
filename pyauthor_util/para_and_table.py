@@ -4,10 +4,12 @@ from pyauthor_util import author
 from pyauthor_util.job_ov_and_de import row_id
 
 
-def para_and_table(para_func, ov_and_de, group_of_quirkrecs):
+def para_and_table(para_func, tdm_ch, category_key, ov_and_de, group_of_quirkrecs):
+    record_count = len(group_of_quirkrecs)
+    link = _table_of_quirks(tdm_ch, category_key, ov_and_de, group_of_quirkrecs)
     return [
-        author.para(para_func(len(group_of_quirkrecs))),
-        _table_of_quirks(ov_and_de, group_of_quirkrecs),
+        author.para(para_func(record_count)),
+        author.para(link),
     ]
 
 
@@ -16,6 +18,19 @@ def _overview(ov_and_de, quirkrec):
     return ov_and_de[the_row_id]["od-overview"]
 
 
-def _table_of_quirks(ov_and_de, group_of_quirkrecs):
+def _table_of_quirks(tdm_ch, category_key, ov_and_de, group_of_quirkrecs):
     rows = [_overview(ov_and_de, rec) for rec in group_of_quirkrecs]
-    return author.table_c(rows)
+    table = author.table_c(rows)
+    # Generate filename and title from category_key
+    fname = f"cat_{category_key}.html"
+    title = f"Category: {category_key}"
+    # Generate the HTML file
+    cbody = [
+        author.heading_level_1(title),
+        table,
+    ]
+    author.help_gen_html_file(tdm_ch, fname, title, cbody)
+    # Return link to the file
+    record_count = len(group_of_quirkrecs)
+    link_text = f"View {record_count} records"
+    return author.anc_h(link_text, fname)
