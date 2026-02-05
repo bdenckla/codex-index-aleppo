@@ -299,7 +299,7 @@ _A_TAR_IN_BHQ = "a טרחא in $BHQ"
 def _cpara33(len_dexi, len_misc):
     len_total = len_dexi + len_misc
     return [
-        f"Finally, some $WLC notes help us identify that",
+        f"Finally, we present some more bad news: some $WLC notes help us identify that",
         f" the Job fascicle of $BHQ transcribes but does not note at least {str(len_total)}",
         f" quirks in μL that,",
         [" ", my_html.bold("for good reason"), ","],
