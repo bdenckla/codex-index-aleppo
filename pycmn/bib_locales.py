@@ -85,7 +85,7 @@ def short_bcv(bcv):
     Note that, to minimize string length, there is no space between the
     (short) book name and the chapter.
     """
-    return short(bcv[0]) + str(bcv[1]) + ":" + str(bcv[2])
+    return f"{short(bcv[0])}{bcv[1]}:{bcv[2]}"
 
 
 def parse_short_bcv(short_bcv):

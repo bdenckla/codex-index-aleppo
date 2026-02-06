@@ -17,7 +17,7 @@ _STARTSWITH_X = {
     "e:UXLC": "xUXLC",
 }
 _DEFAULT = _STARTSWITH_X
-_EDITIONS = tuple(k for k in _DEFAULT.keys())
+_EDITIONS = tuple(_DEFAULT)
 
 
 def nb_dict(quirkrec):

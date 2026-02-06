@@ -212,7 +212,7 @@ def _maybe_one_img(quirkrec, mi_args_key):
 
 def _maybe_imgs(quirkrec):
     result = []
-    for mi_args_key in _MI_ARGS.keys():
+    for mi_args_key in _MI_ARGS:
         result.extend(_maybe_one_img(quirkrec, mi_args_key))
     return result
 
