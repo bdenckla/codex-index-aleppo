@@ -104,9 +104,9 @@ _CPARA13 = [
 ]
 _CLIST13 = [
     [
-        f"The דעת מקרא (Da-at Miqra) series,",
-        f" particularly the volumes with sections called",
-        f" “הנוסח ומקורותיו”",
+        "The דעת מקרא (Da-at Miqra) series,",
+        " particularly the volumes with sections called",
+        " “הנוסח ומקורותיו”",
         f" (Breuer et al., {num_range(1970, 2003)})",
     ],
     [
@@ -256,10 +256,10 @@ _CPARA18_PART2 = [
 
 
 _CPARA18_PART3 = [
-    f"Unsurprisingly, all but",
+    "Unsurprisingly, all but",
     f" {_WORDS_FOR_NUMBERS[_COUNT_OF_RNTQ]}",
-    f" of the $BHQ reiterations",
-    f" are not new, i.e. they were already present in $BHS.",
+    " of the $BHQ reiterations",
+    " are not new, i.e. they were already present in $BHS.",
     #
     " Indeed the other editions’ source may be $BHS in these cases.",
     #
@@ -267,7 +267,7 @@ _CPARA18_PART3 = [
     #
     [" (The ", _DESCRIPTION_OF_RNTQ, ".)"],
     #
-    f" The reiterations made by $BHQ are as follows:",
+    " The reiterations made by $BHQ are as follows:",
 ]
 
 
@@ -277,27 +277,27 @@ def _cpara28(the_len):
 
 def _cpara30(the_len):
     return [
-        f"Now for some bad news:",
+        "Now for some bad news:",
         f" the Job fascicle of $BHQ does not transcribe {str(the_len)}",
-        f" quirks in μL that are noted in one or more of the other three editions.",
+        " quirks in μL that are noted in one or more of the other three editions.",
         #
-        f" Not all such missing transcriptions are a bad thing,",
-        f" as the other editions may occasionally propose transcriptions that are",
-        f" far-fetched, i.e. unlikely to have been the scribe’s intention.",
+        " Not all such missing transcriptions are a bad thing,",
+        " as the other editions may occasionally propose transcriptions that are",
+        " far-fetched, i.e. unlikely to have been the scribe’s intention.",
         #
-        f" But overall these missing transcriptions reflect poorly on $BHQ Job.",
+        " But overall these missing transcriptions reflect poorly on $BHQ Job.",
         #
-        f" In all but one case, a note is also lacking.",
-        f" (The one with a note is the one regarding מאום in 31:7,",
-        f" although the note, too, is inaccurate.)",
+        " In all but one case, a note is also lacking.",
+        " (The one with a note is the one regarding מאום in 31:7,",
+        " although the note, too, is inaccurate.)",
     ]
 
 
 def _cpara29(the_len):
     return [
-        f"Now for some mixed news:",
+        "Now for some mixed news:",
         f" the Job fascicle of $BHQ transcribes but does not note {str(the_len)}",
-        f" quirks in μL that are noted in one or more of the other three editions.",
+        " quirks in μL that are noted in one or more of the other three editions.",
         #
         " We might say that in these cases $BHQ merely implies the quirk,",
         " because it is not explicit about it."
@@ -316,14 +316,14 @@ _A_TAR_IN_BHQ = "a טרחא in $BHQ"
 def _cpara33(len_dexi, len_misc):
     len_total = len_dexi + len_misc
     return [
-        f"Finally, we present some more bad news: some $WLC notes help us identify that",
+        "Finally, we present some more bad news: some $WLC notes help us identify that",
         f" the Job fascicle of $BHQ transcribes but does not note at least {str(len_total)}",
-        f" quirks in μL that,",
+        " quirks in μL that,",
         [" ", my_html.bold("for good reason"), ","],
         " are not noted in any of the other three editions.",
         #
-        f" The good reason is that all of these are unlikely to be the scribe’s intention,",
-        f" i.e. are more likely quirks in $BHQ than quirks in μL.",
+        " The good reason is that all of these are unlikely to be the scribe’s intention,",
+        " i.e. are more likely quirks in $BHQ than quirks in μL.",
         #
         f" These {str(len_total)} likely-false quirks can be divided into two groups:",
         f" a group of {str(len_dexi)} cases where {_BHQ_HAS_TAR} and",
@@ -333,15 +333,15 @@ def _cpara33(len_dexi, len_misc):
 
 def _cpara34_dexi(len_dexi):
     return [
-        f"Here are the",
+        "Here are the",
         f" {str(len_dexi)} cases noted in $WLC where {_BHQ_HAS_TAR}",
-        f" (note that 18:6 and 22:28 could also be considered to be in this group):",
+        " (note that 18:6 and 22:28 could also be considered to be in this group):",
     ]
 
 
 def _cpara35_misc(len_misc):
     return [
-        f"Then there are the",
+        "Then there are the",
         f" {str(len_misc)} cases noted in $WLC where $BHQ is probably in error",
         f" but that error does not concern {_A_TAR_IN_BHQ}.",
         f" (One of those {str(len_misc)},",

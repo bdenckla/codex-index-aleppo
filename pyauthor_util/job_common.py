@@ -5,8 +5,8 @@ from pyauthor_util import author
 def core_ignores(option):
     return [
         f"Since $BHQ does not note any uncertainty in its transcription here{option},",
-        f" it is hard to distinguish whether $BHQ has ignored the mark in question",
-        f" on purpose or by accident.",
+        " it is hard to distinguish whether $BHQ has ignored the mark in question",
+        " on purpose or by accident.",
     ]
 
 
@@ -46,12 +46,12 @@ def correctly_ignores(what, cv, adjective=""):
     adj = f" {adjective}" if adjective else ""
     return [
         f"$BHQ has no {what} here.",
-        f" I happen to think that this is the best transcription of μL here,",
-        f" but I don’t know whether $BHQ arrived at this transcription",
-        f" on purpose or by accident.",
-        f" Did the editors of $BHQ consider, but ultimately decide against,",
+        " I happen to think that this is the best transcription of μL here,",
+        " but I don’t know whether $BHQ arrived at this transcription",
+        " on purpose or by accident.",
+        " Did the editors of $BHQ consider, but ultimately decide against,",
         f" the faint possible{adj} {what}?",
-        f" Or did they simply ignore μL entirely, supplying the consensus pointing,",
+        " Or did they simply ignore μL entirely, supplying the consensus pointing,",
         f" which has no {what}?",
         *_CORRECTLY_IGNORES[cv],
     ]
