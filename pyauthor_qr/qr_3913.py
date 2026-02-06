@@ -20,5 +20,6 @@ RECORD_3913 = {
         " interpretation of μL,",
         " but as is so often the case, $BHQ should have noted this quirk.",
     ],
+    # XXX add image of BHQ
     "qr-noted-by": "nBHL",
 }
