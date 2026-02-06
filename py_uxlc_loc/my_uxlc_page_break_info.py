@@ -1,16 +1,17 @@
-"""
-Exports:
-    read_in
-    read_lci_recs_dot_json
-    get_lci_augrecs
-    get_lci_augrecs_real
-    get_page_lengths
-    get_book_order
-"""
+"""Page break information handling."""
 
 import json
 import py_uxlc_loc.my_uxlc_lci_rec as lci_rec
 import py_uxlc_loc.my_uxlc_lci_augrec as lci_augrec
+
+__all__ = [
+    "read_in",
+    "read_lci_recs_dot_json",
+    "get_lci_augrecs",
+    "get_lci_augrecs_real",
+    "get_page_lengths",
+    "get_book_order",
+]
 
 
 def read_in(uxlc, path_to_lci_recs):

@@ -1,8 +1,4 @@
-""" Exports:
-        make_ov_and_de
-        make_example_row
-        row_id
-"""
+"""Overview and details generation for quirkrecs."""
 
 from py import my_html
 from pycmn import my_utils
@@ -15,6 +11,8 @@ from pyauthor_util.job1_highlight import highlight, color
 from pyauthor_util.job1_lcloc import lcloc
 from py_uxlc_loc import my_uxlc_location
 from py_uxlc_loc import my_tanakh_book_names as py_uxlc_loc_tbn
+
+__all__ = ["make_ov_and_de", "make_example_row", "row_id"]
 
 
 def make_ov_and_de(quirkrecs):

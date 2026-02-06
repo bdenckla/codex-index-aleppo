@@ -1,13 +1,11 @@
-"""
-Exports:
-    get_fragile_comps
-    is_fragile
-"""
+"""Unicode normalization for fragile characters."""
 
 import unicodedata
 
 from pycmn import hebrew_points as hpo
 from pycmn import hebrew_punctuation as hpu
+
+__all__ = ["get_fragile_comps", "is_fragile"]
 
 
 _DROP_TABLE = str.maketrans(

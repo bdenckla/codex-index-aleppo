@@ -1,15 +1,16 @@
-"""
-Exports:
-    calc
-    make_none
-    make_zero
-    get_word_count
-    add
-    subtract
-    rekey
-"""
+"""Biblical distance (word count) calculations."""
 
 import py_uxlc_loc.my_uxlc_cvp as cvp
+
+__all__ = [
+    "calc",
+    "make_none",
+    "make_zero",
+    "get_word_count",
+    "add",
+    "subtract",
+    "rekey",
+]
 
 
 def calc(uxlc, std_bkid, cvp_range):
