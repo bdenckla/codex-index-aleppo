@@ -32,7 +32,7 @@ _GENCOM_2 = [
     " A vowel mark floating like this before a כתיב word has manuscript precedent.",
     # XXX Give some examples of this precedent.
     " I.e. although the Jerusalem Crown edition is diverging from the manuscript here,",
-    " it is not divering from manuscript tradition in general by using this notation."
+    " it is not divering from manuscript tradition in general by using this notation.",
 ]
 _BHQ_COMMENT_3812_B = [
     "$BHS does not catch this quirk in μL: it reflects the consensus rather than μL.",

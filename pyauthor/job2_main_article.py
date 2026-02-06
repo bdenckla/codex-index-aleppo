@@ -137,9 +137,21 @@ _CLIST14_ITEM2 = [
     #
     " What’s more, his $BHL is cited as a source in many fascicles of $BHQ.",
     #
-    " So it is particularly puzzling that the $BHQ editors",
+    " So it is particularly puzzling that most of the $BHQ editors",
     " seem to have been unaware of or uninterested in",
     " Dotan’s relevant work in $BHL’s Appendix A.",
+    #
+    " Exceptions include Prof. Abraham Tal, editor of $BHQ Genesis."
+    #
+    " Prof. Tal declines to reiterate all of Dotan’s relevant work,",
+    " a reasonable albeit disappointing editorial decision.",
+    #
+    " Importantly, though, Prof. Tal is neither unaware of nor uninterested in it,",
+    " citing it in the Introduction:",
+    " “A full list of the uncommon forms in [μL] is given in [$BHL Appendix A].”",
+    #
+    " Similarly, Prof. Jan de Waard, in the Introduction to $BHQ Proverbs, says,",
+    " “An exhaustive list of these variations can be found in [$BHL Appendix A].”"
 ]
 _CLIST14_ITEM3 = [
     "$WLC has had various releases over its decades, many predating $BHQ Megilloth.",
