@@ -3673,47 +3673,59 @@
               "BHQ"
             ]
           },
-          " consider, but ultimately decide against, the faint possible דגש? Or did they simply ignore μL entirely, supplying the consensus pointing, which has no דגש? Since ",
+          " consider, but ultimately decide against, the faint possible דגש? Or did they simply ignore μL entirely, supplying the consensus pointing, which has no דגש?",
           {
-            "_htel_tag": "abbr",
-            "attr": {
-              "class": "small-caps"
-            },
+            "_htel_tag": "p",
             "contents": [
-              "BHQ"
+              "Since ",
+              {
+                "_htel_tag": "abbr",
+                "attr": {
+                  "class": "small-caps"
+                },
+                "contents": [
+                  "BHQ"
+                ]
+              },
+              " does not note any uncertainty in its transcription here, it is hard to distinguish whether ",
+              {
+                "_htel_tag": "abbr",
+                "attr": {
+                  "class": "small-caps"
+                },
+                "contents": [
+                  "BHQ"
+                ]
+              },
+              " has ignored the mark in question on purpose or by accident."
             ]
           },
-          " does not note any uncertainty in its transcription here, it is hard to distinguish whether ",
           {
-            "_htel_tag": "abbr",
-            "attr": {
-              "class": "small-caps"
-            },
+            "_htel_tag": "p",
             "contents": [
-              "BHQ"
+              "More broadly, ",
+              {
+                "_htel_tag": "abbr",
+                "attr": {
+                  "class": "small-caps"
+                },
+                "contents": [
+                  "BHQ"
+                ]
+              },
+              " Job never notes any uncertainty in its transcription of μL. This may mislead many readers. Despite the fact that high-resolution, color images of μL are now widely available, many readers will not engage with those images enough to understand how often there is great uncertainty in transcribing μL. And, even if the reader understands that such uncertainty exists in general, ",
+              {
+                "_htel_tag": "abbr",
+                "attr": {
+                  "class": "small-caps"
+                },
+                "contents": [
+                  "BHQ"
+                ]
+              },
+              " should, in my opinion, indicate to the reader the specific cases where its transcription is particularly uncertain."
             ]
-          },
-          " has ignored the mark in question on purpose or by accident. More broadly, ",
-          {
-            "_htel_tag": "abbr",
-            "attr": {
-              "class": "small-caps"
-            },
-            "contents": [
-              "BHQ"
-            ]
-          },
-          " Job never notes any uncertainty in its transcription of μL. This may mislead many readers. Despite the fact that high-resolution, color images of μL are now widely available, many readers will not engage with those images enough to understand how often there is great uncertainty in transcribing μL. And, even if the reader understands that such uncertainty exists in general, ",
-          {
-            "_htel_tag": "abbr",
-            "attr": {
-              "class": "small-caps"
-            },
-            "contents": [
-              "BHQ"
-            ]
-          },
-          " should, in my opinion, indicate to the reader the specific cases where its transcription is particularly uncertain."
+          }
         ]
       }
     ],

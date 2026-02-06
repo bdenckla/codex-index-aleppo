@@ -14,7 +14,7 @@ RECORD_1409 = {
     ],
     "qr-bhq-comment": [
         "$BHQ silently ignores the possible דגש.",
-        [" ", *core_ignores()],
+        [" ", *core_ignores(" (or anywhere)")],
     ],
     "qr-noted-by": "nBHL",
 }

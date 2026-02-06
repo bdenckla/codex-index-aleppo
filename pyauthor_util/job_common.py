@@ -1,7 +1,8 @@
 from py import my_html
+from pyauthor_util import author
 
 
-def core_ignores(option=" (or anywhere)"):
+def core_ignores(option):
     return [
         f"Since $BHQ does not note any uncertainty in its transcription here{option},",
         f" it is hard to distinguish whether $BHQ has ignored the mark in question",
@@ -14,16 +15,21 @@ CAM1753_PAGE_URL_BASE = (
 )
 _SEE_3419 = [" See my entry on נכר in 34:19 for further discussion."]
 _CORRECTLY_IGNORES_3419 = [
-    [" ", *core_ignores("")],
-    " More broadly, $BHQ Job never notes",
-    " any uncertainty in its transcription of μL.",
-    " This may mislead many readers.",
-    " Despite the fact that high-resolution, color images of μL are now widely available,",
-    " many readers will not engage with those images enough to understand how often",
-    " there is great uncertainty in transcribing μL.",
-    " And, even if the reader understands that such uncertainty exists in general,",
-    " $BHQ should, in my opinion, indicate to the reader the specific cases",
-    " where its transcription is particularly uncertain.",
+    author.para(core_ignores("")),
+    author.para(
+        [
+            "More broadly, $BHQ Job never notes",
+            " any uncertainty in its transcription of μL.",
+            " This may mislead many readers.",
+            " Despite the fact that",
+            " high-resolution, color images of μL are now widely available,",
+            " many readers will not engage with those images enough to understand how often",
+            " there is great uncertainty in transcribing μL.",
+            " And, even if the reader understands that such uncertainty exists in general,",
+            " $BHQ should, in my opinion, indicate to the reader the specific cases",
+            " where its transcription is particularly uncertain.",
+        ]
+    ),
 ]
 _CORRECTLY_IGNORES = {
     "34:19": _CORRECTLY_IGNORES_3419,

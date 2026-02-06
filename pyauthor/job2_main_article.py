@@ -151,7 +151,7 @@ _CLIST14_ITEM2 = [
     " “A full list of the uncommon forms in [μL] is given in [$BHL Appendix A].”",
     #
     " Similarly, Prof. Jan de Waard, in the Introduction to $BHQ Proverbs, says,",
-    " “An exhaustive list of these variations can be found in [$BHL Appendix A].”"
+    " “An exhaustive list of these variations can be found in [$BHL Appendix A].”",
 ]
 _CLIST14_ITEM3 = [
     "$WLC has had various releases over its decades, many predating $BHQ Megilloth.",
