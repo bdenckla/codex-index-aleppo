@@ -157,9 +157,9 @@ _AWARE_OF_BHL = [
     #
     " For better or for worse, $BHS aspired to transcribe (and often note) quirks in μL",
     " with almost no quirk deemed irrelevant,",
-    " except those that could not be captured typographically.",
+    " as long as it could be captured in print.",
     #
-    " A good example of this is $BHS’s transcription of געיה before vowel marks.",
+    " A good example is $BHS’s transcription of געיה before vowel marks.",
 ]
 _WE_ARE_NOW_LEFT = [
     #
