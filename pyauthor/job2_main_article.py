@@ -27,6 +27,7 @@ def _make_cbody(aq: AllQuirks):
     len_misc = the_lens["tbhq_and_zmw"]
     cbody = [
         author.heading_level_1(D2_H1_CONTENTS),
+        author.para(_NOT_A_SCHOLARLY),
         author.para_ol(_CULT_OF_BHS, _BHS_FAILS),
         author.para(_BHQ_AS_BHS_ALTERNATIVE),
         author.para(_SOURED),
@@ -36,6 +37,7 @@ def _make_cbody(aq: AllQuirks):
         author.para(_BHL_PREDATES),
         author.para(_AWARE_OF_BHL),
         author.para(_WE_ARE_NOW_LEFT),
+        author.para(_JUDGES),
         author.para(_WLC_PREDATES),
         author.para_ul(_MY_PURPOSES, _CLIST_NOT_MY_CONCERN),
         author.para(_CPARA_NOT_MY_CONCERN),
@@ -58,7 +60,22 @@ def _make_cbody(aq: AllQuirks):
     ]
     return cbody
 
-
+_NOT_A_SCHOLARLY = [
+    "It may come as a surprise to some that $BHQ Job",
+    " does not include, at its core,",
+    " a modern scholarly edition of the Masoretic Text.",
+    #
+    " $BHQ Job includes, at its core,",
+    " a lightly updated version of what was, in 1977,",
+    " a modern scholarly edition of the Masoretic Text: $BHS.",
+    #
+    " The claims I have just made about $BHQ Job",
+    " are probably true of all fascicles of $BHQ released to date,",
+    " judging from anecdotal evidence as well as introductory statements",
+    " of editorial policy."
+    #
+    " But this review will only present detailed evidence of these claims regarding $BHQ Job.",
+]
 _CULT_OF_BHS = [
     "Like many students of Tanakh, I started out in the cult of $BHS.",
     #
@@ -72,7 +89,7 @@ _CULT_OF_BHS = [
 _BHS_FAILS = [
     "It often fails to accurately transcribe μL (the Leningrad Codex).",
     #
-    "It often fails to note where μL disagrees with other manuscripts.",
+    "It often fails to note where μL disagrees with other Tiberian manuscripts.",
     #
     "It emphasizes manuscript quantity over quality.",
 ]
@@ -86,7 +103,7 @@ _SOURED = [
     #
     " I was dismayed to find that $BHQ will not be complete for many years.",
     #
-    " Perhaps more importantly, I found that $BHQ still suffers from some of the",
+    " More importantly, I found that $BHQ still suffers from some of the",
     " same problems as $BHS.",
     #
     " Although $BHQ now emphasizes manuscript quality over quantity,",
@@ -180,6 +197,22 @@ _WE_ARE_NOW_LEFT = [
     " Perhaps all fascicles are uneven by design, i.e. uneven by editorial policy,",
     " and these are just the few that happen to document it."
 ]
+_JUDGES = [
+    "The Introduction to $BHQ Judges makes a rather clear (and to me striking) statement",
+    " of its editorial threshold",
+    " for noting quirks in μL relative to its chosen reference manuscripts:",
+    #
+    " “Only those divergencies that are meaningful for translation or exegesis",
+    " have been noted in the apparatus.”",
+    #
+    " This is disappointing, but good to know, so that one can", 
+    " avoid wasting any time with $BHQ Judges if,",
+    " for example, one’s interests include cantillation.",
+    #
+    " (Although cantillation quirks are common in μL,",
+    " I imagine that it is rare to find one",
+    " that causes (or resolves) some problem of translation or exegesis.)",
+]
 _WLC_PREDATES = [
     "$WLC has had various releases over its decades, many predating $BHQ Megilloth.",
     #
@@ -200,7 +233,7 @@ _WLC_PREDATES = [
 ]
 _MY_PURPOSES = [
     "Although it may already be clear, I should explicitly state that",
-    " my purposes are narrowly focused on the Masoretic text.",
+    " my purposes are narrowly focused on the Tiberian Masoretic text.",
     #
     " Thus I am not concerned with",
     " the many parts of $BHQ that deal with the following:",
@@ -212,7 +245,8 @@ _CLIST_NOT_MY_CONCERN = [
     "the meaning of the text",
 ]
 _CPARA_NOT_MY_CONCERN = [
-    "For all I know, those parts of $BHQ are of high quality.",
+    "For all I know, those parts of $BHQ are of high quality,",
+    " representing the best modern scholarship on those topics.",
     #
     " But those parts are not my concern.",
 ]
@@ -222,7 +256,7 @@ _SPECIFICS_OF_BHQ_JOB = [
     "Having criticized $BHQ in general terms,",
     " I will now review the specifics of the $BHQ Book of Job (2024).",
     #
-    " As of now (January 2026), it is the latest fascicle of $BHQ to be published",
+    " As of now (February 2026), it is the latest fascicle of $BHQ to be published",
     " and thus seems most relevant to review, if only one fascicle is to be reviewed.",
     #
     " I assume that $BHQ Job is at least broadly representative of the $BHQ series so far,",
