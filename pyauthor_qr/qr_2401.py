@@ -18,7 +18,7 @@ _COMMENT_PARA_1 = [
 ]
 _COMMENT_PARA_2 = [
     ["This case and that of 27:13 are raised in ", golinets_citation("242")],
-    [" 21:15 is analogous, but not mentioned in Golinets."],
+    [" 21:15 seems possibly analogous, but not mentioned in Golinets."],
 ]
 _COMMENT_PARA_3 = [
     "Aside: note that the final פתה",

@@ -1,4 +1,4 @@
-from pyauthor_util.all_verses_but_this import no_dag_after_mah_shaddai
+from pyauthor_util.all_verses_but_this import no_dag_after_mah
 
 
 RECORD_2115 = {
@@ -7,7 +7,7 @@ RECORD_2115 = {
     "qr-consensus": "מַה־שַּׁדַּ֥י",
     "qr-lc-proposed": "מַה־שַׁדַּ֥י",
     "qr-what-is-weird": "ש lacks דגש",
-    "qr-generic-comment": no_dag_after_mah_shaddai("21:15"),
+    "qr-generic-comment": no_dag_after_mah("21:15"),
     "qr-highlight": 4,
     "qr-lc-loc": {"page": "403A", "column": 1, "line": 26},
 }

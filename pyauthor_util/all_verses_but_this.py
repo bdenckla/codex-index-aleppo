@@ -1,14 +1,9 @@
 from pyauthor_util.english_list import english_list
 
-_SHADDAI_VERSES = [
-    "21:15",
-    "24:1",
-    "27:13",
-]
 # Job verses where L omits dagesh after מה
 _NO_DAG_AFTER_MAH_VERSES = [
     "16:6",
-    *_SHADDAI_VERSES,
+    "21:15",
     "34:33",
     "35:7",
 ]
@@ -40,22 +35,10 @@ def _all_ndam_but_this(cv: str) -> str:
     return _all_verses_but_this(_NO_DAG_AFTER_MAH_VERSES, cv)
 
 
-def _all_shaddai_but_this(cv: str) -> str:
-    return _all_verses_but_this(_SHADDAI_VERSES, cv)
-
-
 def no_dag_after_mah(cv: str) -> list[str]:
     return [
         "As $DM footnote 25 mentions, the omission of דגש after מה־",
         *[" is common in μL. See ", _all_ndam_but_this(cv), "."],
-    ]
-
-
-def no_dag_after_mah_shaddai(cv: str) -> list[str]:
-    return [
-        *no_dag_after_mah(cv),
-        " Of those, the following are שדי cases like this one:",
-        *[" ", _all_shaddai_but_this(cv), "."],
     ]
 
 
