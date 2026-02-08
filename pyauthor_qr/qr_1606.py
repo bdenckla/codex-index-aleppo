@@ -1,4 +1,4 @@
-from pyauthor_util.mod_no_dag_after_mah import no_dag_after_mah
+from pyauthor_util.all_verses_but_this import no_dag_after_mah
 
 
 RECORD_1606 = {

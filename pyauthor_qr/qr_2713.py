@@ -1,4 +1,4 @@
-from pyauthor_util.mod_no_dag_after_mah import no_dag_after_mah_shaddai
+from pyauthor_util.all_verses_but_this import no_dag_after_mah_shaddai
 from pyauthor_util.uxlc_change import uxlc_change
 
 

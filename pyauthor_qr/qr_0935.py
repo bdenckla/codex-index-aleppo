@@ -1,4 +1,4 @@
-from pyauthor_util.mod_no_dag_after_mah import ptx_is_not_xtf
+from pyauthor_util.all_verses_but_this import ptx_is_not_xtf
 
 
 RECORD_0935 = {

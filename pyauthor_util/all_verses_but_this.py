@@ -1,10 +1,3 @@
-"""Data about omission of dagesh after the word 'מה' in the Leningrad Codex.
-
-Per Da'at Miqra footnote 25:
-השמטת דגש אחר תיבת 'מה' מצויה ב־ל. כך: טז ו (גם ב־ד); כא טו; לד לג; לה ז.
-"The omission of dagesh after the word 'מה' is common in L. Thus: 16:6 (also in D); 21:15; 34:33; 35:7."
-"""
-
 from pyauthor_util.english_list import english_list
 
 _SHADDAI_VERSES = [
