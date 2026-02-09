@@ -75,12 +75,12 @@
       "count": 137
     },
     {
-      "field": "qr-bhq-comment",
-      "count": 97
-    },
-    {
       "field": "qr-generic-comment",
       "count": 83
+    },
+    {
+      "field": "qr-bhq-comment",
+      "count": 68
     },
     {
       "field": "qr-n_of_m_for_this_verse",
