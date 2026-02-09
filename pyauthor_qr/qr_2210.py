@@ -6,9 +6,8 @@ RECORD_2210 = {
     "qr-what-is-weird": "רביע of רביע מוגרש is absent",
     "qr-highlight": 6,
     "qr-generic-comment": [
-        "There is also a געיה difference between proposed and consensus,",
-        " but we don’t care about that here.",
-        " Aside, in μL, the געיה (under ו) has either",
+        "The געיה difference is not important to us here.",
+        " Aside: in μL, the געיה (under ו) has either",
         " survived much better than the other pointing of this word,"
         " been carefully re-inked (unlikely: the re-inking is rarely careful),"
         " or been added during re-inking (most likely).",

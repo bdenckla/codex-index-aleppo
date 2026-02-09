@@ -1,9 +1,9 @@
 from pyauthor_util.noted_by import startswith_n, startswith_x
-from pycmn.my_utils import dv_map
+from pycmn.my_utils import my_groupby
 
 
 def get_qr_groups(quirkrecs):
-    groups = dv_map((_filter, quirkrecs), _FILTER_FNS)
+    groups = my_groupby(quirkrecs, lambda qr: get_pgroup(qr))
     return groups
 
 

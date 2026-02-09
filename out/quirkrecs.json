@@ -2281,7 +2281,7 @@
     "qr-what-is-weird": "רביע of רביע מוגרש is absent",
     "qr-highlight": 6,
     "qr-generic-comment": [
-      "There is also a געיה difference between proposed and consensus, but we don’t care about that here. Aside, in μL, the געיה (under ו) has either survived much better than the other pointing of this word, been carefully re-inked (unlikely: the re-inking is rarely careful), or been added during re-inking (most likely)."
+      "The געיה difference is not important to us here. Aside: in μL, the געיה (under ו) has either survived much better than the other pointing of this word, been carefully re-inked (unlikely: the re-inking is rarely careful), or been added during re-inking (most likely)."
     ],
     "qr-lc-loc": {
       "page": "403B",
@@ -3121,6 +3121,7 @@
       "column": 1,
       "line": 12
     },
+    "qr-generic-comment": "The געיה difference is not important to us here.",
     "qr-lc-img": "2908.png",
     "qr-aleppo-img": "Aleppo-2908.png",
     "nbd": {
