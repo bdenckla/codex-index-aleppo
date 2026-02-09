@@ -7,6 +7,12 @@ def get_qr_groups(quirkrecs):
     return groups
 
 
+def get_pgroup(quirkrec):
+    groups = [k for k, v in _FILTER_FNS.items() if v(quirkrec)]
+    assert len(groups) <= 1, f"Multiple groups for {quirkrec['qr-cv']}: {groups}"
+    return groups[0] if groups else None
+
+
 def says_who(quirkrec):
     nbd = quirkrec["nbd"]
     return list(e for e in _T30 if startswith_n(nbd, e))

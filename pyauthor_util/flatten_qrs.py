@@ -3,11 +3,7 @@ from pycmn.my_utils import sl_map
 from py import my_html
 
 
-def flatten_qrs(qrs):
-    return sl_map(_flatten_one_qr, qrs)
-
-
-def _flatten_one_qr(quirkrec):
+def flatten_strings_in_one_qr(quirkrec):
     gencom = quirkrec.get("qr-generic-comment")
     bhqcom = quirkrec.get("qr-bhq-comment")
     flat_gencom = gencom and _flatten_yyycom(gencom)

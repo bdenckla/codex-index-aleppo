@@ -1,7 +1,9 @@
 import os
-from pyauthor_util.short_id_etc import lc_img, short_id
+from pyauthor_util.img_util import _INFO_ABOUT_OPTIONAL_IMAGES, get_auto_imgs
+from pyauthor_util.short_id_etc import short_id
 from pyauthor_util.noted_by import nb_dict
-from pyauthor_util.flatten_qrs import flatten_qrs
+from pyauthor_util.flatten_qrs import flatten_strings_in_one_qr
+from pyauthor_util.get_qr_groups import get_pgroup
 from pyauthor_util.job_quirkrecs import QUIRKRECS
 from pyauthor_util.qr_make_json_outputs import (
     write_qr_field_stats_json,
@@ -10,50 +12,43 @@ from pyauthor_util.qr_make_json_outputs import (
 from pycmn.my_utils import sl_map
 
 
-_INFO_ABOUT_OPTIONAL_IMAGES = [
-    ("qr-aleppo-img", "Aleppo-CCVV.png"),
-    ("qr-cam1753-img", "Cam1753-CCVV.png"),
-    ("qr-jc-img", "Jerusalem-Crown-CCVV.png"),
-]
-
-
 def prep_quirkrecs(jobn_rel_top, json_outdir):
-    qrs_1 = sorted(QUIRKRECS, key=_sort_key)
-    qrs_2 = sl_map((_add_auto_imgs, jobn_rel_top), qrs_1)
-    qrs_3 = sl_map(_add_nbd, qrs_2)
-    qrs_4 = flatten_qrs(qrs_3)
-    _assert_lc_img_fields_filled(qrs_4)
+    qrs_5 = sorted(QUIRKRECS, key=_sort_key)
+    qrs_6 = sl_map((_add_auto_imgs, jobn_rel_top), qrs_5)
+    qrs_7 = sl_map(_add_nbd, qrs_6)
+    qrs_8 = sl_map(_add_pgroup, qrs_7)
+    qrs_9 = sl_map(flatten_strings_in_one_qr, qrs_8)
+    _assert_lc_img_fields_filled(qrs_9)
     write_qr_field_stats_json(
-        qrs_4,
+        qrs_9,
         f"{json_outdir}/qr-field-stats-ordered-by-count.json",
         f"{json_outdir}/qr-field-stats-ordered-by-field-name.json",
     )
-    write_quirkrecs_json(qrs_4, f"{json_outdir}/quirkrecs.json")
-    return qrs_4
+    write_quirkrecs_json(qrs_9, f"{json_outdir}/quirkrecs.json")
+    return qrs_9
 
 
 def _add_nbd(quirkrec):
     return {**quirkrec, "nbd": nb_dict(quirkrec)}
 
 
+def _add_pgroup(quirkrec):
+    return {**quirkrec, "pgroup": get_pgroup(quirkrec)}
+
+
 def _add_auto_imgs(jobn_rel_top, quirkrec):
-    """Auto-detect LC, Aleppo, and Cam1753 images if files exist on disk."""
-    result = quirkrec.copy()
-    sid = short_id(quirkrec)
-    # Auto-detect LC image (using lc_img function which handles extension)
-    if not result.get("qr-lc-img"):
-        result["qr-lc-img"] = lc_img(quirkrec)
-    lc_img_path = f"{jobn_rel_top}/img/{result['qr-lc-img']}"
+    out = {**quirkrec, **get_auto_imgs(jobn_rel_top, quirkrec)}
+    #
+    lc_img_name = out["qr-lc-img"]
+    lc_img_path = f"{jobn_rel_top}/img/{lc_img_name}"
     assert os.path.exists(lc_img_path), f"Missing LC image: {lc_img_path}"
-    # Auto-detect Aleppo, Cam1753, and other optional images
-    for field, example_filename in _INFO_ABOUT_OPTIONAL_IMAGES:
-        if result.get(field):
-            continue  # Already explicitly set
-        auto_img = example_filename.replace("-CCVV.png", f"-{sid}.png")
-        auto_path = f"{jobn_rel_top}/img/{auto_img}"
-        if os.path.exists(auto_path):
-            result[field] = auto_img
-    return result
+    #
+    for field, _ in _INFO_ABOUT_OPTIONAL_IMAGES:
+        if opt_img_name := out.get(field):
+            opt_path = f"{jobn_rel_top}/img/{opt_img_name}"
+            assert os.path.exists(opt_path), f"Missing optional image: {opt_path}"
+    #
+    return out
 
 
 def _assert_lc_img_fields_filled(qrs):

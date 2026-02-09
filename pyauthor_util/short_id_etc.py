@@ -1,4 +1,3 @@
-from pyauthor_util.noted_by import x_uclc
 
 
 def short_id(quirkrec):
@@ -10,7 +9,3 @@ def short_id(quirkrec):
     return cn02vn02 + ftv_str
 
 
-def lc_img(quirkrec):
-    use_png = x_uclc(quirkrec)
-    ext = ".png" if use_png else ".jpg"
-    return quirkrec.get("qr-lc-img") or f"{short_id(quirkrec)}{ext}"

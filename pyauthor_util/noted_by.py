@@ -21,7 +21,8 @@ _EDITIONS = tuple(_DEFAULT)
 
 
 def nb_dict(quirkrec):
-    parts = quirkrec["qr-noted-by"].split("-")
+    nb_str = quirkrec["qr-noted-by"]
+    parts = nb_str.split("-") if nb_str else []
     pairs = sl_map(_nb_pair, parts)
     sparse_dict = dict(pairs)
     full_dict = _fill_in(sparse_dict)
