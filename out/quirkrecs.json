@@ -410,7 +410,7 @@
               "here"
             ]
           },
-          ", though there are about 30 analogous cases if one includes those where the analogy is allowed to be less strict. What makes this case “rare among rare” is that, contrary to most cases, the מקף that is normally implicit is explict (in the consensus). Interestingly, μL has some sort of disturbance where one would expect the מקף, suggesting that there might have been a מקף here that was erased."
+          ", though there are about 30 analogous cases if one includes those where the analogy is allowed to be less strict. What makes this case “rare among rare” is that, contrary to most cases, the מקף that is normally implicit is explicit (in the consensus). Interestingly, μL has some sort of disturbance where one would expect the מקף, suggesting that there might have been a מקף here that was erased."
         ]
       },
       {
@@ -2256,7 +2256,7 @@
     "qr-what-is-weird": "דגש may fight רפה",
     "qr-consensus": "חֶרְפָּתִֽי׃",
     "qr-generic-comment": [
-      "A דגש on a letter with רפה doesn’t make sense. The color image of μL reveals this דגש to be unlikely. It is judged to be just a speck, not a דגש, in Viktor Golinets, “Dageš, Mappiq, Specks on Vellum, and Editing of the Codex Leningradensis”, $KUSATU 15/2013, p. 251 (2013)."
+      "A דגש on a letter with רפה doesn’t make sense. The color image of μL reveals this דגש to be unlikely. It is judged to be just a speck, not a דגש, in Viktor Golinets, “Dageš, Mappiq, Specks on Vellum, and Editing of the Codex Leningradensis”, $KUSATU 15/2013, p. 251 (2013). See 24:16."
     ],
     "qr-highlight": 4,
     "qr-lc-loc": {
@@ -2340,7 +2340,7 @@
       {
         "_htel_tag": "p",
         "contents": [
-          "μL omits the רביע of רביע מוגרש, which is expected, since μL’s habit is to omit the רביע in cases like this, where the רביע and the גרש מוקדם would be cramped together on the same letter. So, while μL doesn’t literally match the consensus we have presented, we can say that it implies that consenus, that consensus being merely the explicit notation of what μL implies."
+          "μL omits the רביע of רביע מוגרש, which is expected, since μL’s habit is to omit the רביע in cases like this, where the רביע and the גרש מוקדם would be cramped together on the same letter. So, while μL doesn’t literally match the consensus we have presented, we can say that it implies that consensus, that consensus being merely the explicit notation of what μL implies."
         ]
       },
       {
@@ -3111,9 +3111,46 @@
     "qr-lc-proposed": "יָ֥דְּֿעוּ",
     "qr-lc-q": "(?)",
     "qr-what-is-weird": "דגש may fight רפה",
-    "qr-consensus": "יָ֥דְעוּ",
+    "qr-consensus": "יָ֥דְֿעוּ",
     "qr-generic-comment": [
-      "A דגש on a letter with רפה doesn’t make sense. The dot in question is suspiciously larger than nearby ones, and looks different from them in other ways."
+      {
+        "_htel_tag": "p",
+        "contents": [
+          "I have shown the consensus with רפה to make my point clearer, but a consensus edition would not typically show it. (It would, as usual, merely imply it rather than show it.)"
+        ]
+      },
+      {
+        "_htel_tag": "p",
+        "contents": [
+          "In contrast, I show the רפה on the proposed reading, because I feel it should be shown in any edition that, like ",
+          {
+            "_htel_tag": "abbr",
+            "attr": {
+              "class": "small-caps"
+            },
+            "contents": [
+              "BHQ"
+            ]
+          },
+          ", has דגש. This רפה is important, to highlight the weirdness of the situation. In other words, by showing the רפה on the proposed reading, I sort of charitably transcribing ",
+          {
+            "_htel_tag": "abbr",
+            "attr": {
+              "class": "small-caps"
+            },
+            "contents": [
+              "BHQ"
+            ]
+          },
+          "."
+        ]
+      },
+      {
+        "_htel_tag": "p",
+        "contents": [
+          "A דגש on a letter with רפה doesn’t make sense. The dot in question is suspiciously larger than nearby ones, and looks different from them in other ways. See 19:5."
+        ]
+      }
     ],
     "qr-highlight": 2,
     "qr-lc-loc": {
@@ -3136,8 +3173,8 @@
     },
     "pgroup": "g:nbhq_and_x3",
     "qr-auto-diff": [
-      "((None, (('dagesh/mapiq/shuruq-dot', 'dalet', (1, 1)), ('rafeh', 'dalet', (1, 1)))),)",
-      null
+      "add dagesh/mapiq/shuruq-dot to dalet",
+      "add non-varika"
     ]
   },
   {
@@ -3663,7 +3700,7 @@
       "line": 15
     },
     "qr-generic-comment": [
-      "An argument could be made that it is μL not μA that represents the consensus here. For example, the Jerusalem Crown edition, despite normally staying quite close to μA, has לגרמיה in its body text and only notes in an appendix that μA has no לגרמיה.See the $MAM documentation for this word for a list of where various manuscripts fall on this issue."
+      "An argument could be made that it is μL not μA that represents the consensus here. For example, the Jerusalem Crown edition, despite normally staying quite close to μA, has לגרמיה in its body text and only notes in an appendix that μA has no לגרמיה. See the $MAM documentation for this word for a list of where various manuscripts fall on this issue."
     ],
     "qr-lc-img": "3102.png",
     "nbd": {
@@ -4782,7 +4819,7 @@
               "Y"
             ]
           },
-          ". I see no “Masora dot pair” (μY’s equivalent of a masorah circle) on this word in μY. Nor do I see any קרי note in the margin."
+          ". I see no “Masorah dot pair” (μY’s equivalent of a masorah circle) on this word in μY. Nor do I see any קרי note in the margin."
         ]
       }
     ],
@@ -5091,7 +5128,7 @@
       {
         "_htel_tag": "p",
         "contents": [
-          "Aside: the Jerusalem Crown edition, despite normally staying quite close to μA, found μA’s pointing of the כתיב to be too confusing for its body text, relegating it to an appendix. The question is where on the כתיב letters should we put the פתח that implicitly belongs to the ה of השחר. Both μA and μL put this פתח on the ה of ידעתה. In its body text, the Jerusalem Crown edition puts the פתח on no letter: instead, it floats before the ש of שחר. A vowel mark floating like this before a כתיב word has manuscript precedent. I.e. although the Jerusalem Crown edition is diverging from the manuscript here, it is not divering from manuscript tradition in general by using this notation."
+          "Aside: the Jerusalem Crown edition, despite normally staying quite close to μA, found μA’s pointing of the כתיב to be too confusing for its body text, relegating it to an appendix. The question is where on the כתיב letters should we put the פתח that implicitly belongs to the ה of השחר. Both μA and μL put this פתח on the ה of ידעתה. In its body text, the Jerusalem Crown edition puts the פתח on no letter: instead, it floats before the ש of שחר. A vowel mark floating like this before a כתיב word has manuscript precedent. I.e. although the Jerusalem Crown edition is diverging from the manuscript here, it is not diverging from manuscript tradition in general by using this notation."
         ]
       }
     ],

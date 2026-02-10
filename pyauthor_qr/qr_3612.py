@@ -12,7 +12,7 @@ _BHQ_COMMENT_3612 = [
     " In addition to the typo, for some reason $BHQ reports this word as being the קרי",
     [" of μY, i.e. M", my_html.sup("Y(qere)")],
     [" rather than just M", my_html.sup("Y"), "."],
-    " I see no “Masora dot pair”",
+    " I see no “Masorah dot pair”",
     " (μY’s equivalent of a masorah circle)",
     " on this word in μY.",
     " Nor do I see any קרי note in the margin.",

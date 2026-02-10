@@ -12,20 +12,18 @@ from spellchecker import SpellChecker
 
 
 def load_custom_dictionary(dict_path: Path) -> tuple[set[str], list[str]]:
-    """Load custom words and phrases from dictionary file.
+    """Load custom words and phrases from JSON dictionary file.
 
     Returns (words, phrases) where phrases are multi-word entries.
     """
     words = set()
     phrases = []
     if dict_path.exists():
-        for line in dict_path.read_text(encoding="utf-8").splitlines():
-            line = line.strip()
-            if line and not line.startswith("#"):
-                if " " in line:
-                    phrases.append(line)
-                else:
-                    words.add(line.lower())
+        data = json.loads(dict_path.read_text(encoding="utf-8"))
+        for word in data.get("words", []):
+            # Normalize curly apostrophes to straight for lookup
+            words.add(word.replace("\u2019", "'").lower())
+        phrases = data.get("phrases", [])
     return words, phrases
 
 
@@ -36,9 +34,9 @@ def extract_english_words(text: str) -> list[str]:
     # Remove $-prefixed sigla ($BHQ, $yod, $BHL_A, etc.)
     text = re.sub(r"\$[A-Za-z_]+", " ", text)
     # Extract words (letters including scholarly transliteration chars like š, ṣ, ḥ)
-    # Include typographic apostrophe (') as part of contractions
+    # Include curly apostrophe (\u2019) as part of contractions (e.g. doesn\u2019t)
     # Include μ for sigla like μL, μA
-    words = re.findall(r"[a-zA-ZšṣḥŠṢḤμ]+(?:'[a-zA-Z]+)?", text)
+    words = re.findall(r"[a-zA-ZšṣḥŠṢḤμ]+(?:\u2019[a-zA-Z]+)*", text)
     return words
 
 
@@ -48,6 +46,65 @@ PROSE_FIELDS = {
     "qr-generic-comment",
     "qr-what-is-weird",
 }
+
+
+def _collect_strings(value):
+    """Yield all plain strings from a nested structure (str, list, or dict with contents)."""
+    if isinstance(value, str):
+        yield value
+    elif isinstance(value, list):
+        for item in value:
+            yield from _collect_strings(item)
+    elif isinstance(value, dict) and "contents" in value:
+        yield from _collect_strings(value["contents"])
+
+
+def check_straight_apostrophes(quirkrecs_path: Path):
+    """Check for straight apostrophes (U+0027) in prose fields; curly (\u2019) should be used."""
+    with open(quirkrecs_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    issues = []
+    for rec in data:
+        rec_id = rec.get("qr-id", "unknown")
+        for key, value in rec.items():
+            if key not in PROSE_FIELDS:
+                continue
+            for text in _collect_strings(value):
+                for match in re.finditer(r"'", text):
+                    context = text[max(0, match.start() - 10):match.end() + 10]
+                    issues.append(
+                        {
+                            "record": rec_id,
+                            "field": key,
+                            "context": context,
+                        }
+                    )
+    return issues
+
+
+def check_period_uppercase(quirkrecs_path: Path):
+    """Check for period immediately followed by an uppercase letter (missing space)."""
+    with open(quirkrecs_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    issues = []
+    for rec in data:
+        rec_id = rec.get("qr-id", "unknown")
+        for key, value in rec.items():
+            if key not in PROSE_FIELDS:
+                continue
+            for text in _collect_strings(value):
+                for match in re.finditer(r"\.[A-Z]", text):
+                    context = text[max(0, match.start() - 10):match.end() + 10]
+                    issues.append(
+                        {
+                            "record": rec_id,
+                            "field": key,
+                            "context": context,
+                        }
+                    )
+    return issues
 
 
 def check_spelling(quirkrecs_path: Path, custom_dict_path: Path):
@@ -67,15 +124,17 @@ def check_spelling(quirkrecs_path: Path, custom_dict_path: Path):
         for key, value in rec.items():
             if key not in PROSE_FIELDS:
                 continue
-            if isinstance(value, str):
-                text = value
+            for text in _collect_strings(value):
                 # Remove accepted phrases before word extraction
+                cleaned = text
                 for phrase in custom_phrases:
-                    text = re.sub(re.escape(phrase), " ", text, flags=re.IGNORECASE)
-                words = extract_english_words(text)
+                    cleaned = re.sub(re.escape(phrase), " ", cleaned, flags=re.IGNORECASE)
+                words = extract_english_words(cleaned)
                 for word in words:
                     word_lower = word.lower()
-                    if word_lower not in custom_words and word_lower not in spell:
+                    # Normalize curly apostrophe to straight for pyspellchecker lookup
+                    lookup = word_lower.replace("\u2019", "'")
+                    if lookup not in custom_words and lookup not in spell:
                         issues.append(
                             {
                                 "record": rec_id,
@@ -93,7 +152,9 @@ def check_spelling(quirkrecs_path: Path, custom_dict_path: Path):
 def main():
     project_root = Path(__file__).parent
     quirkrecs_path = project_root / "out" / "quirkrecs.json"
-    custom_dict_path = Path(__file__).parent / "check_spelling_in_quirkrecs.custom-dict.txt"
+    custom_dict_path = (
+        Path(__file__).parent / "check_spelling_in_quirkrecs.custom-dict.json"
+    )
 
     if not quirkrecs_path.exists():
         print(f"Error: {quirkrecs_path} not found")
@@ -102,6 +163,19 @@ def main():
 
     print(f"Checking spelling in {quirkrecs_path}...")
     print(f"Using custom dictionary: {custom_dict_path}")
+
+    apos_issues = check_straight_apostrophes(quirkrecs_path)
+    if apos_issues:
+        print(f"\nFound {len(apos_issues)} straight-apostrophe issues (use \u2019 not '):\n")
+        for issue in apos_issues:
+            print(f"  [{issue['record']}] {issue['field']}: ...{issue['context']}...")
+
+    period_issues = check_period_uppercase(quirkrecs_path)
+    if period_issues:
+        print(f"\nFound {len(period_issues)} period-uppercase issues (missing space?):\n")
+        for issue in period_issues:
+            print(f"  [{issue['record']}] {issue['field']}: ...{issue['context']}...")
+
     issues = check_spelling(quirkrecs_path, custom_dict_path)
 
     if issues:
@@ -122,6 +196,9 @@ def main():
             print(f"  {word}: {count} occurrence(s)")
     else:
         print("\nNo spelling issues found!")
+
+    if apos_issues or period_issues or issues:
+        exit(1)
 
 
 if __name__ == "__main__":

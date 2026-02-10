@@ -13,7 +13,7 @@ RECORD_3102 = {
         " has לגרמיה in its body text",
         " and only notes in an appendix that μA has no לגרמיה.",
         #
-        "See the $MAM documentation for this word",
+        " See the $MAM documentation for this word",
         " for a list of where various manuscripts fall on this issue.",
     ],
 }

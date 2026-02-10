@@ -7,7 +7,7 @@ _GENCOM_PARA_1 = [
     " since μL’s habit is to omit the רביע in cases like this,",
     " where the רביע and the גרש מוקדם would be cramped together on the same letter.",
     " So, while μL doesn’t literally match the consensus we have presented,",
-    " we can say that it implies that consenus,",
+    " we can say that it implies that consensus,",
     " that consensus being merely the explicit notation of what μL implies.",
 ]
 _GENCOM_PARA_2 = [

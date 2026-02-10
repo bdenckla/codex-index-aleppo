@@ -25,6 +25,8 @@ def core_ignores(option):
 CAM1753_PAGE_URL_BASE = (
     "https://archive.org/details/ketuvim-cambridge-ms-add-1753-images/page"
 )
+
+
 def _corr_ig_cmn(what, adjective):
     adj = f" {adjective}" if adjective else ""
     contents = [
@@ -38,6 +40,7 @@ def _corr_ig_cmn(what, adjective):
         f" which has no {what}?",
     ]
     return author.para(contents)
+
 
 _SEE_3419 = [" See my entry on נכר in 34:19 for further discussion."]
 _MORE_BROADLY = [

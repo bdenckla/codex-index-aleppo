@@ -119,9 +119,7 @@ def main(argv=None):
     # Optional W3C conformance check
     if args.w3c:
         print("Running W3C Nu HTML Checker ...")
-        all_issues.extend(
-            _check_w3c(html_files, docs_dir, strict=args.w3c_strict)
-        )
+        all_issues.extend(_check_w3c(html_files, docs_dir, strict=args.w3c_strict))
 
     # Report
     if all_issues:

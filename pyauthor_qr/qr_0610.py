@@ -13,7 +13,7 @@ _COMMENT_PARA2 = [
     [" though there are about 30 analogous cases if one includes those"],
     [" where the analogy is allowed to be less strict."],
     [" What makes this case “rare among rare” is that, contrary to most cases,"],
-    [" the מקף that is normally implicit is explict (in the consensus)."],
+    [" the מקף that is normally implicit is explicit (in the consensus)."],
     [" Interestingly, μL has some sort of disturbance where one would expect the מקף,"],
     [" suggesting that there might have been a מקף here that was erased."],
 ]

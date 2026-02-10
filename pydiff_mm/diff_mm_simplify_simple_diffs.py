@@ -148,7 +148,10 @@ def _ssd2_dt_add_dt_remove(diff0, diff1):
     if add0_cp != rem0_cp:
         return None
     if rem0_lett == add0_lett:
-        return "move " + add0_cp + " back within the same letter (" + add0_lett + ")", "move"
+        return (
+            "move " + add0_cp + " back within the same letter (" + add0_lett + ")",
+            "move",
+        )
     ltl = "from " + rem0_lett + " to " + add0_lett
     return "move " + add0_cp + " back " + ltl, "move"
 
@@ -165,7 +168,10 @@ def _ssd2_dt_remove_dt_add(diff0, diff1):
     if add0_cp != rem0_cp:
         return None
     if rem0_lett == add0_lett:
-        return "move " + add0_cp + " forward within the same letter (" + add0_lett + ")", "move"
+        return (
+            "move " + add0_cp + " forward within the same letter (" + add0_lett + ")",
+            "move",
+        )
     ltl = "from " + rem0_lett + " to " + add0_lett
     return "move " + add0_cp + " forward " + ltl, "move"
 
