@@ -22,17 +22,6 @@ def bad_news_2(len_dexi, len_misc):
     ]
 
 
-def _wlc_dexi_core(len_dexi):
-    return f"Here are the {str(len_dexi)} cases noted in $WLC where {_BHQ_HAS_TAR}"
-
-
-def _wlc_misc_core(len_misc):
-    return (
-        f"{str(len_misc)} cases noted in $WLC where $BHQ is probably in error"
-        + " but that error does not concern a טרחא in $BHQ"
-    )
-
-
 def wlc_dexi_group_intro(len_dexi):
     return [author.para(_wlc_dexi_core(len_dexi) + ".")]
 
@@ -61,16 +50,6 @@ def wlc_misc(len_misc):
     ]
 
 
-def _wlc_dexi_group_toh(wlc, bhq):
-    """toh: title or heading"""
-    return f"Group: {wlc} corrects {bhq} טרחא"
-
-
-def _wlc_misc_group_toh(wlc, bhq):
-    """toh: title or heading"""
-    return f"Group: {wlc} corrects {bhq} misc. (non-טרחא)"
-
-
 def wlc_dexi_group_info(len_dexi):
     return {
         "gi:group_key": "g:tbhq_and_zdw",
@@ -87,3 +66,24 @@ def wlc_misc_group_info(len_misc):
         "gi:group_heading": _wlc_misc_group_toh("$WLC", "$BHQ"),
         "gi:group_title": _wlc_misc_group_toh("WLC", "BHQ"),
     }
+
+
+def _wlc_dexi_group_toh(wlc, bhq):
+    """toh: title or heading"""
+    return f"Group: {wlc} corrects {bhq} טרחא"
+
+
+def _wlc_misc_group_toh(wlc, bhq):
+    """toh: title or heading"""
+    return f"Group: {wlc} corrects {bhq} misc. (non-טרחא)"
+
+
+def _wlc_dexi_core(len_dexi):
+    return f"Here are the {str(len_dexi)} cases noted in $WLC where {_BHQ_HAS_TAR}"
+
+
+def _wlc_misc_core(len_misc):
+    return (
+        f"{str(len_misc)} cases noted in $WLC where $BHQ is probably in error"
+        + " but that error does not concern a טרחא in $BHQ"
+    )

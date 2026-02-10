@@ -38,6 +38,102 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 
+def main(argv=None):
+    parser = argparse.ArgumentParser(
+        description="Lint the generated HTML files in docs/.",
+    )
+    parser.add_argument(
+        "docs_dir",
+        nargs="?",
+        default="docs",
+        help="path to the docs directory (default: docs)",
+    )
+    parser.add_argument(
+        "--w3c",
+        action="store_true",
+        help="also validate each file via the W3C Nu HTML Checker API",
+    )
+    parser.add_argument(
+        "--w3c-strict",
+        action="store_true",
+        help="with --w3c, show all messages (don't suppress known issues)",
+    )
+    args = parser.parse_args(argv)
+    docs_dir = Path(args.docs_dir)
+
+    if not docs_dir.is_dir():
+        print(f"Error: {docs_dir} is not a directory", file=sys.stderr)
+        return 1
+
+    # Discover HTML and CSS files
+    html_files = sorted(docs_dir.rglob("*.html"))
+    css_files = sorted(docs_dir.rglob("*.css"))
+
+    if not html_files:
+        print(f"No HTML files found in {docs_dir}")
+        return 0
+
+    # Parse all HTML files
+    parsed: dict[Path, _HTMLInfo] = {}
+    for hf in html_files:
+        parsed[hf] = _parse_html(hf)
+
+    # Build ID map (resolved path → list of IDs)
+    all_ids: dict[Path, list[str]] = {}
+    for hf, info in parsed.items():
+        all_ids[hf.resolve()] = info.ids
+
+    # Build internal-hrefs map for orphan-HTML check
+    all_internal_hrefs: dict[Path, list[tuple[str | None, str | None]]] = {}
+    for hf, info in parsed.items():
+        all_internal_hrefs[hf] = info.internal_hrefs
+
+    # Collect CSS classes from all CSS files
+    css_classes: set[str] = set()
+    for cf in css_files:
+        css_classes |= _extract_css_classes(cf)
+
+    # Run checks
+    all_issues: list[str] = []
+    referenced_images: set[Path] = set()
+
+    for hf in html_files:
+        info = parsed[hf]
+        rel = str(hf.relative_to(docs_dir))
+        html_dir = hf.parent
+
+        all_issues.extend(_check_structure(rel, info))
+        all_issues.extend(_check_duplicate_ids(rel, info))
+        all_issues.extend(_check_internal_links(rel, info, html_dir, all_ids))
+        all_issues.extend(_check_images(rel, info, html_dir, referenced_images))
+        all_issues.extend(_check_css_classes(rel, info, css_classes))
+        all_issues.extend(_check_css_links(rel, info, html_dir))
+
+    # Cross-file checks
+    for cf in css_files:
+        all_issues.extend(_check_font_files(cf, docs_dir))
+    all_issues.extend(_check_orphan_images(docs_dir, referenced_images))
+    all_issues.extend(_check_stale_files(docs_dir))
+    all_issues.extend(_check_orphan_html(docs_dir, html_files, all_internal_hrefs))
+
+    # Optional W3C conformance check
+    if args.w3c:
+        print("Running W3C Nu HTML Checker ...")
+        all_issues.extend(
+            _check_w3c(html_files, docs_dir, strict=args.w3c_strict)
+        )
+
+    # Report
+    if all_issues:
+        for issue in all_issues:
+            print(issue)
+        print(f"\nFound {len(all_issues)} issue(s).")
+        return 1
+    else:
+        print("No HTML output issues found.")
+        return 0
+
+
 # ── HTML Parser ──────────────────────────────────────────────────────
 
 
@@ -377,105 +473,6 @@ def _check_w3c(
             " use --w3c-strict to show all)"
         )
     return issues
-
-
-# ── Main ─────────────────────────────────────────────────────────────
-
-
-def main(argv=None):
-    parser = argparse.ArgumentParser(
-        description="Lint the generated HTML files in docs/.",
-    )
-    parser.add_argument(
-        "docs_dir",
-        nargs="?",
-        default="docs",
-        help="path to the docs directory (default: docs)",
-    )
-    parser.add_argument(
-        "--w3c",
-        action="store_true",
-        help="also validate each file via the W3C Nu HTML Checker API",
-    )
-    parser.add_argument(
-        "--w3c-strict",
-        action="store_true",
-        help="with --w3c, show all messages (don't suppress known issues)",
-    )
-    args = parser.parse_args(argv)
-    docs_dir = Path(args.docs_dir)
-
-    if not docs_dir.is_dir():
-        print(f"Error: {docs_dir} is not a directory", file=sys.stderr)
-        return 1
-
-    # Discover HTML and CSS files
-    html_files = sorted(docs_dir.rglob("*.html"))
-    css_files = sorted(docs_dir.rglob("*.css"))
-
-    if not html_files:
-        print(f"No HTML files found in {docs_dir}")
-        return 0
-
-    # Parse all HTML files
-    parsed: dict[Path, _HTMLInfo] = {}
-    for hf in html_files:
-        parsed[hf] = _parse_html(hf)
-
-    # Build ID map (resolved path → list of IDs)
-    all_ids: dict[Path, list[str]] = {}
-    for hf, info in parsed.items():
-        all_ids[hf.resolve()] = info.ids
-
-    # Build internal-hrefs map for orphan-HTML check
-    all_internal_hrefs: dict[Path, list[tuple[str | None, str | None]]] = {}
-    for hf, info in parsed.items():
-        all_internal_hrefs[hf] = info.internal_hrefs
-
-    # Collect CSS classes from all CSS files
-    css_classes: set[str] = set()
-    for cf in css_files:
-        css_classes |= _extract_css_classes(cf)
-
-    # Run checks
-    all_issues: list[str] = []
-    referenced_images: set[Path] = set()
-
-    for hf in html_files:
-        info = parsed[hf]
-        rel = str(hf.relative_to(docs_dir))
-        html_dir = hf.parent
-
-        all_issues.extend(_check_structure(rel, info))
-        all_issues.extend(_check_duplicate_ids(rel, info))
-        all_issues.extend(_check_internal_links(rel, info, html_dir, all_ids))
-        all_issues.extend(_check_images(rel, info, html_dir, referenced_images))
-        all_issues.extend(_check_css_classes(rel, info, css_classes))
-        all_issues.extend(_check_css_links(rel, info, html_dir))
-
-    # Cross-file checks
-    for cf in css_files:
-        all_issues.extend(_check_font_files(cf, docs_dir))
-    all_issues.extend(_check_orphan_images(docs_dir, referenced_images))
-    all_issues.extend(_check_stale_files(docs_dir))
-    all_issues.extend(_check_orphan_html(docs_dir, html_files, all_internal_hrefs))
-
-    # Optional W3C conformance check
-    if args.w3c:
-        print("Running W3C Nu HTML Checker ...")
-        all_issues.extend(
-            _check_w3c(html_files, docs_dir, strict=args.w3c_strict)
-        )
-
-    # Report
-    if all_issues:
-        for issue in all_issues:
-            print(issue)
-        print(f"\nFound {len(all_issues)} issue(s).")
-        return 1
-    else:
-        print("No HTML output issues found.")
-        return 0
 
 
 if __name__ == "__main__":

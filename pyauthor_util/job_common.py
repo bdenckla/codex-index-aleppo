@@ -2,6 +2,18 @@ from py import my_html
 from pyauthor_util import author
 
 
+def suffix(contents):
+    new_cont = "\N{EN DASH}\N{HAIR SPACE}" + contents
+    return my_html.span(new_cont, {"dir": "rtl"})
+
+
+def correctly_ignores(what, cv, adjective=""):
+    return [
+        _corr_ig_cmn(what, adjective),
+        *_CORRECTLY_IGNORES[cv],
+    ]
+
+
 def core_ignores(option):
     return [
         f"Since $BHQ does not note any uncertainty in its transcription here{option},",
@@ -49,18 +61,6 @@ _CORRECTLY_IGNORES = {
     "36:29": _SEE_3419,
     "17:4": _SEE_3419,
 }
-
-
-def suffix(contents):
-    new_cont = "\N{EN DASH}\N{HAIR SPACE}" + contents
-    return my_html.span(new_cont, {"dir": "rtl"})
-
-
-def correctly_ignores(what, cv, adjective=""):
-    return [
-        _corr_ig_cmn(what, adjective),
-        *_CORRECTLY_IGNORES[cv],
-    ]
 
 
 BHQ_COMMENT_XELSEWHERE_DUBIOUS = [
