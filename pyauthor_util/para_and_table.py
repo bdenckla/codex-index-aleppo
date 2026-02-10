@@ -13,7 +13,7 @@ def para_and_table(aq: AllQuirks, para_func, group_info):
     group_key = _group_key(group_info)
     group_of_quirkrecs = aq.qr_groups[group_key]
     record_count = len(group_of_quirkrecs)
-    link = _table_of_quirks(aq.tdm_ch, group_key, aq.ov_and_de, group_of_quirkrecs)
+    link = _table_of_quirks(aq.tdm_ch, group_info, aq.ov_and_de, group_of_quirkrecs)
     pf_out = para_func(record_count)
     lop = pf_out if is_lop(pf_out) else [author.para(pf_out)]
     return [*lop, author.para(link)]
@@ -54,18 +54,31 @@ def _overview(ov_and_de, quirkrec):
     return ov_and_de[the_row_id]["od-overview"]
 
 
-def _table_of_quirks(tdm_ch, group_key, ov_and_de, group_of_quirkrecs):
+_FILE_BASENAMES = {
+    "g:nbhq_and_x3": "grp_nbhq_and_x3",
+    "g:nbhq_and_n3": "grp_nbhq_and_n3",
+    "g:tbhq_and_n3": "grp_tbhq_and_n3",
+    "g:xbhq_and_n3": "grp_xbhq_and_n3",
+    "g:tbhq_and_zdw": "grp_tbhq_and_zdw",
+    "g:tbhq_and_zmw": "grp_tbhq_and_zmw",
+    "g:xbhq_and_nuxlc": "grp_xbhq_and_nuxlc",
+    "g:tbhq_and_zuxlc": "grp_tbhq_and_zuxlc",
+    "g:adm": "grp_adm",
+}
+
+
+def _table_of_quirks(tdm_ch, group_info, ov_and_de, group_of_quirkrecs):
     rows = [_overview(ov_and_de, rec) for rec in group_of_quirkrecs]
     table = author.table_c(rows)
-    group_key_sanitized = group_key.replace("g:", "grp_")
+    group_key_sanitized = _FILE_BASENAMES[_group_key(group_info)]
     fname = f"{group_key_sanitized}.html"
     cbody = [
-        author.heading_level_1(_group_heading(group_key)),
-        *_group_intro(group_key),
+        author.heading_level_1(_group_heading(group_info)),
+        *_group_intro(group_info),
         *qr_table_intro("intro-header-only"),
         table,
     ]
-    title = _group_title(group_key)
+    title = _group_title(group_info)
     author.help_gen_html_file(tdm_ch, fname, title, cbody)
     record_count = len(group_of_quirkrecs)
     link_text = f"View {record_count} entries"

@@ -51,7 +51,7 @@ def _make_cbody(aq: AllQuirks):
         author.para(_after_bad_news_1_part_2(len(aq.qr_groups["g:nbhq_and_n3"]))),
         author.para(_AFTER_BAD_NEWS_1_PART_3),
         author.para(_bad_news_2(len_dexi, len_misc)),
-        para_and_table(aq, _wlc_dexi, "g:tbhq_and_zdw"),
+        para_and_table(aq, _wlc_dexi, _wlc_dexi_group_info(len_dexi)),
         para_and_table(aq, _wlc_misc, "g:tbhq_and_zmw"),
         author.para_ul(_CONCLUSION, _clist36(the_lens)),
         author.heading_level_2("Postscript 1: $UXLC"),
@@ -438,12 +438,33 @@ def _bad_news_2(len_dexi, len_misc):
     ]
 
 
+def _wlc_dexi_core(len_dexi):
+    return f"Here are the {str(len_dexi)} cases noted in $WLC where {_BHQ_HAS_TAR}"
+
+
 def _wlc_dexi(len_dexi):
     return [
-        "Here are the",
-        f" {str(len_dexi)} cases noted in $WLC where {_BHQ_HAS_TAR}",
+        _wlc_dexi_core(len_dexi),
         " (note that 18:6 and 22:28 could also be considered to be in this group):",
     ]
+
+
+def _wlc_dexi_group_intro(len_dexi):
+    return [author.para(_wlc_dexi_core(len_dexi) + ".")]
+
+
+def _wlc_dexi_group_info(len_dexi):
+    return {
+        "gi:group_key": "g:tbhq_and_zdw",
+        "gi:group_intro": _wlc_dexi_group_intro(len_dexi),
+        "gi:group_heading": _wlc_group_toh("$WLC", "$BHQ"),
+        "gi:group_title": _wlc_group_toh("WLC", "BHQ"),
+    }
+
+
+def _wlc_group_toh(wlc, bhq):
+    """toh: title or heading"""
+    return f"Group: {wlc} corrects {bhq} טרחא"
 
 
 def _wlc_misc(len_misc):
