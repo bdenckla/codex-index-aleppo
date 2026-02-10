@@ -2,9 +2,7 @@
 Spell check English strings in quirkrecs.json
 
 Usage:
-    python pyspellcheck/spellcheck_quirkrecs.py
-
-Requires: pip install pyspellchecker
+    python ./spellcheck_quirkrecs.py
 """
 
 import json
@@ -93,9 +91,9 @@ def check_spelling(quirkrecs_path: Path, custom_dict_path: Path):
 
 
 def main():
-    project_root = Path(__file__).parent.parent
+    project_root = Path(__file__).parent
     quirkrecs_path = project_root / "out" / "quirkrecs.json"
-    custom_dict_path = Path(__file__).parent / "custom_dictionary.txt"
+    custom_dict_path = Path(__file__).parent / "check_spelling_in_quirkrecs.custom-dict.txt"
 
     if not quirkrecs_path.exists():
         print(f"Error: {quirkrecs_path} not found")
