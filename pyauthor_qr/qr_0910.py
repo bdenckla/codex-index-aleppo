@@ -17,6 +17,11 @@ RECORD_0910 = {
         " so $BHQ’s choice to leave it out is reasonable.",
         " Having left it out though,"
         " $BHQ should have noted its absence, i.e. noted the divergence from consensus.",
+        #
+        " Note that a missing גרש מוקדם is a more serious issue than a missing רביע,",
+        " because the רביע is, effectively, just a stress helper.",
+        #
+        " In contrast, the גרש מוקדם defines the accent to be, overall, רביע מוגרש.",
     ],
     "qr-noted-by": "tBHQ-zUXLC",
     "qr-uxlc-change-url": uxlc_change("2022.10.19", "2022.07.05-3"),

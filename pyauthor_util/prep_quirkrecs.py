@@ -39,9 +39,12 @@ def _add_pgroup(quirkrec):
     return {**quirkrec, "pgroup": get_pgroup(quirkrec)}
 
 
+_CGJ = "\u034F"  # combining grapheme joiner
+
+
 def _add_auto_diff(quirkrec):
-    pro = proposed(quirkrec)
-    consensus = quirkrec["qr-consensus"]
+    pro = proposed(quirkrec).replace(_CGJ, "")
+    consensus = quirkrec["qr-consensus"].replace(_CGJ, "")
     auto_diff = get_diff_description(consensus, pro)
     return {**quirkrec, "qr-auto-diff": auto_diff}
 

@@ -665,8 +665,8 @@
     },
     "pgroup": "g:tbhq_and_n3",
     "qr-auto-diff": [
-      "((None, (('meteg/silluq', 'lamed', (1, 1)), ('combining-grapheme-joiner', 'lamed', (1, 1)))), ((('meteg/silluq', 'lamed', (1, 1)),), None))",
-      null
+      "move meteg/silluq back within the same letter (lamed)",
+      "move"
     ]
   },
   {
@@ -936,7 +936,7 @@
   {
     "qr-cv": "9:10",
     "qr-lc-proposed": "וְנִפְלָא֗וֹת",
-    "qr-what-is-weird": "ו may have גרש מוקדם",
+    "qr-what-is-weird": "ו lacks גרש מוקדם",
     "qr-consensus": "וְ֝נִפְלָא֗וֹת",
     "qr-generic-comment": [
       "As $UXLC notes, the possible גרש מוקדם appears to be doubled, possibly as the result of a single stroke whose only remains are its edges."
@@ -948,7 +948,7 @@
       "line": 16
     },
     "qr-bhq-comment": [
-      "The evidence for this גרש מוקדם is slim, so $BHQ’s choice to leave it out is reasonable. Having left it out though, $BHQ should have noted its absence, i.e. noted the divergence from consensus."
+      "The evidence for this גרש מוקדם is slim, so $BHQ’s choice to leave it out is reasonable. Having left it out though, $BHQ should have noted its absence, i.e. noted the divergence from consensus. Note that a missing גרש מוקדם is a more serious issue than a missing רביע, because the רביע is, effectively, just a stress helper. In contrast, the גרש מוקדם defines the accent to be, overall, רביע מוגרש."
     ],
     "qr-noted-by": "tBHQ-zUXLC",
     "qr-uxlc-change-url": "https://tanach.us/Changes/2022.10.19%20-%20Changes/2022.10.19%20-%20Changes.xml?2022.07.05-3",
@@ -1287,8 +1287,8 @@
     },
     "pgroup": "g:tbhq_and_n3",
     "qr-auto-diff": [
-      "((None, (('meteg/silluq', 'yod', (1, 2)), ('combining-grapheme-joiner', 'yod', (1, 2)))), ((('meteg/silluq', 'yod', (1, 2)),), None))",
-      null
+      "move meteg/silluq back within the same letter (the first yod)",
+      "move"
     ]
   },
   {
@@ -2877,8 +2877,8 @@
     },
     "pgroup": "g:tbhq_and_n3",
     "qr-auto-diff": [
-      "((None, (('meteg/silluq', 'yod', (1, 1)), ('combining-grapheme-joiner', 'yod', (1, 1)))),)",
-      null
+      "add meteg/silluq to yod",
+      "add non-varika"
     ]
   },
   {
@@ -3567,8 +3567,8 @@
     },
     "pgroup": "g:tbhq_and_n3",
     "qr-auto-diff": [
-      "((None, (('meteg/silluq', 'resh', (1, 1)), ('combining-grapheme-joiner', 'resh', (1, 1)))), ((('meteg/silluq', 'resh', (1, 1)),), None))",
-      null
+      "move meteg/silluq back within the same letter (resh)",
+      "move"
     ]
   },
   {
@@ -3732,8 +3732,8 @@
     },
     "pgroup": "g:xbhq_and_n3",
     "qr-auto-diff": [
-      "((None, (('meteg/silluq', 'lamed', (1, 1)), ('combining-grapheme-joiner', 'lamed', (1, 1)))), ((('meteg/silluq', 'lamed', (1, 1)),), None))",
-      null
+      "move meteg/silluq back within the same letter (lamed)",
+      "move"
     ]
   },
   {
@@ -4004,8 +4004,8 @@
     },
     "pgroup": "g:xbhq_and_n3",
     "qr-auto-diff": [
-      "((None, (('atnax', 'shin', (2, 2)), ('combining-grapheme-joiner', 'shin', (2, 2)))), ((('atnax', 'shin', (2, 2)),), None))",
-      null
+      "move atnax back within the same letter (the second shin)",
+      "move"
     ]
   },
   {
