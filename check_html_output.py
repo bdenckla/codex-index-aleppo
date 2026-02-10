@@ -1,0 +1,401 @@
+#!/usr/bin/env python3
+"""
+Lint the generated HTML files in docs/.
+
+Checks performed:
+  1. HTML5 structure: doctype, <html lang="en">, <meta charset="utf-8">
+  2. Broken internal links: href targets resolve to actual files
+  3. Broken fragment links: #id targets exist in the referenced file
+  4. Broken image references: <img src="..."> files exist on disk
+  5. Orphan images: files in img/ not referenced from any HTML
+  6. CSS class validation: class values are defined in style.css
+  7. Font file existence: woff2 font files referenced from CSS exist
+  8. Stale files: unexpected files (e.g., extensionless, 0-byte)
+  9. Duplicate IDs: no duplicate id attributes within a single file
+ 10. Orphan HTML: HTML files not linked from any other HTML file
+
+Exit codes:
+  0 - No issues found
+  1 - Issues found
+
+Usage:
+  python check_html_output.py [docs_dir]
+
+If no docs_dir given, defaults to "docs".
+"""
+
+import re
+import sys
+from html.parser import HTMLParser
+from pathlib import Path
+
+
+# ── HTML Parser ──────────────────────────────────────────────────────
+
+
+class _HTMLInfo(HTMLParser):
+    """Collect structural info from an HTML file."""
+
+    def __init__(self):
+        super().__init__()
+        self.has_doctype = False
+        self.html_lang = None
+        self.has_meta_charset_utf8 = False
+        self.css_hrefs = []         # stylesheet <link> hrefs
+        self.internal_hrefs = []    # (href, fragment_or_None)
+        self.external_hrefs = []    # full URLs
+        self.img_srcs = []          # <img src="...">
+        self.ids = []               # all id attribute values
+        self.classes = []           # all class attribute values (split)
+        self._in_head = False
+
+    def handle_decl(self, decl):
+        if decl.lower() == "doctype html":
+            self.has_doctype = True
+
+    def handle_starttag(self, tag, attrs):
+        attr_dict = dict(attrs)
+        if tag == "html":
+            self.html_lang = attr_dict.get("lang")
+        if tag == "head":
+            self._in_head = True
+        if tag == "meta":
+            if attr_dict.get("charset", "").lower() == "utf-8":
+                self.has_meta_charset_utf8 = True
+        if tag == "link":
+            if attr_dict.get("rel") == "stylesheet":
+                href = attr_dict.get("href")
+                if href:
+                    self.css_hrefs.append(href)
+        if tag == "a":
+            href = attr_dict.get("href")
+            if href:
+                self._categorize_href(href)
+        if tag == "img":
+            src = attr_dict.get("src")
+            if src:
+                self.img_srcs.append(src)
+        # Collect IDs
+        id_val = attr_dict.get("id")
+        if id_val:
+            self.ids.append(id_val)
+        # Collect classes
+        class_val = attr_dict.get("class")
+        if class_val:
+            for cls in class_val.split():
+                self.classes.append(cls)
+
+    def handle_endtag(self, tag):
+        if tag == "head":
+            self._in_head = False
+
+    def _categorize_href(self, href):
+        if href.startswith(("http://", "https://", "mailto:")):
+            self.external_hrefs.append(href)
+        else:
+            if "#" in href:
+                path_part, frag = href.split("#", 1)
+                self.internal_hrefs.append((path_part or None, frag))
+            else:
+                self.internal_hrefs.append((href, None))
+
+
+def _parse_html(path: Path) -> _HTMLInfo:
+    info = _HTMLInfo()
+    text = path.read_text(encoding="utf-8")
+    info.feed(text)
+    return info
+
+
+# ── CSS Parser (minimal) ─────────────────────────────────────────────
+
+
+def _extract_css_classes(css_path: Path) -> set[str]:
+    """Extract class names from CSS selectors (e.g., .foo, tag.foo)."""
+    text = css_path.read_text(encoding="utf-8")
+    # Match .classname in selectors (before the { block)
+    classes = set()
+    for m in re.finditer(r"\.([a-zA-Z_][\w-]*)", text):
+        classes.add(m.group(1))
+    return classes
+
+
+def _extract_css_font_urls(css_path: Path) -> list[str]:
+    """Extract url("...") references from CSS."""
+    text = css_path.read_text(encoding="utf-8")
+    urls = []
+    for m in re.finditer(r'url\(["\']?([^"\'()]+)["\']?\)', text):
+        urls.append(m.group(1))
+    return urls
+
+
+# ── Check Functions ──────────────────────────────────────────────────
+
+
+def _check_structure(rel: str, info: _HTMLInfo) -> list[str]:
+    """Check HTML5 structural requirements."""
+    issues = []
+    if not info.has_doctype:
+        issues.append(f"{rel}: missing <!doctype html>")
+    if info.html_lang != "en":
+        issues.append(
+            f"{rel}: <html> lang is {info.html_lang!r}, expected 'en'"
+        )
+    if not info.has_meta_charset_utf8:
+        issues.append(f"{rel}: missing <meta charset=\"utf-8\">")
+    return issues
+
+
+def _check_duplicate_ids(rel: str, info: _HTMLInfo) -> list[str]:
+    """Check for duplicate id attributes in a single file."""
+    issues = []
+    seen = {}
+    for id_val in info.ids:
+        if id_val in seen:
+            seen[id_val] += 1
+        else:
+            seen[id_val] = 1
+    for id_val, count in seen.items():
+        if count > 1:
+            issues.append(f"{rel}: duplicate id \"{id_val}\" ({count} times)")
+    return issues
+
+
+def _check_internal_links(
+    rel: str,
+    info: _HTMLInfo,
+    html_dir: Path,
+    all_ids: dict[Path, list[str]],
+) -> list[str]:
+    """Check internal hrefs resolve to files, and fragments to IDs."""
+    issues = []
+    for path_part, fragment in info.internal_hrefs:
+        if path_part is not None:
+            target_path = (html_dir / path_part).resolve()
+            if not target_path.is_file():
+                issues.append(
+                    f"{rel}: broken link to \"{path_part}\""
+                )
+                continue
+            # Check fragment in target file
+            if fragment is not None:
+                target_ids = all_ids.get(target_path, [])
+                if fragment not in target_ids:
+                    issues.append(
+                        f"{rel}: broken fragment #{fragment}"
+                        f" in \"{path_part}\""
+                    )
+        else:
+            # Fragment-only link (#foo) — check in same file
+            if fragment is not None:
+                same_path = (html_dir / rel).resolve()
+                target_ids = all_ids.get(same_path, [])
+                if fragment not in target_ids:
+                    issues.append(
+                        f"{rel}: broken fragment #{fragment}"
+                        " (same-file)"
+                    )
+    return issues
+
+
+def _check_images(
+    rel: str,
+    info: _HTMLInfo,
+    html_dir: Path,
+    referenced_images: set[Path],
+) -> list[str]:
+    """Check <img src="..."> targets exist."""
+    issues = []
+    for src in info.img_srcs:
+        img_path = (html_dir / src).resolve()
+        referenced_images.add(img_path)
+        if not img_path.is_file():
+            issues.append(f"{rel}: broken image \"{src}\"")
+    return issues
+
+
+def _check_orphan_images(
+    docs_dir: Path,
+    referenced_images: set[Path],
+) -> list[str]:
+    """Find image files not referenced from any HTML."""
+    issues = []
+    for img_dir in _find_img_dirs(docs_dir):
+        for img_file in sorted(img_dir.iterdir()):
+            if img_file.is_file() and img_file.resolve() not in referenced_images:
+                rel = img_file.relative_to(docs_dir)
+                issues.append(f"orphan image: {rel}")
+    return issues
+
+
+def _find_img_dirs(docs_dir: Path) -> list[Path]:
+    """Find all img/ subdirectories under docs_dir."""
+    return sorted(p for p in docs_dir.rglob("img") if p.is_dir())
+
+
+def _check_css_classes(
+    rel: str,
+    info: _HTMLInfo,
+    css_classes: set[str],
+) -> list[str]:
+    """Check that all class attributes reference classes defined in CSS."""
+    issues = []
+    for cls in info.classes:
+        if cls not in css_classes:
+            issues.append(f"{rel}: unknown CSS class \"{cls}\"")
+    return issues
+
+
+def _check_css_links(
+    rel: str,
+    info: _HTMLInfo,
+    html_dir: Path,
+) -> list[str]:
+    """Check that stylesheet hrefs resolve to existing files."""
+    issues = []
+    for href in info.css_hrefs:
+        css_path = (html_dir / href).resolve()
+        if not css_path.is_file():
+            issues.append(f"{rel}: broken CSS link \"{href}\"")
+    return issues
+
+
+def _check_font_files(css_path: Path, docs_dir: Path) -> list[str]:
+    """Check that font URLs referenced in CSS exist."""
+    issues = []
+    css_dir = css_path.parent
+    rel = css_path.relative_to(docs_dir)
+    for url in _extract_css_font_urls(css_path):
+        font_path = (css_dir / url).resolve()
+        if not font_path.is_file():
+            issues.append(f"{rel}: broken font URL \"{url}\"")
+    return issues
+
+
+def _check_stale_files(docs_dir: Path) -> list[str]:
+    """Flag unexpected files: 0-byte, extensionless, etc."""
+    issues = []
+    expected_exts = {".html", ".css", ".png", ".jpg", ".jpeg", ".woff2"}
+    for path in sorted(docs_dir.rglob("*")):
+        if not path.is_file():
+            continue
+        rel = path.relative_to(docs_dir)
+        if path.suffix == "" and path.name != ".gitkeep":
+            issues.append(f"stale file (no extension): {rel}")
+        elif path.stat().st_size == 0 and path.suffix != "":
+            issues.append(f"stale file (0 bytes): {rel}")
+        elif path.suffix.lower() not in expected_exts:
+            issues.append(f"unexpected file type: {rel}")
+    return issues
+
+
+def _check_orphan_html(
+    docs_dir: Path,
+    html_files: list[Path],
+    all_internal_hrefs: dict[Path, list[tuple[str | None, str | None]]],
+) -> list[str]:
+    """Find HTML files not linked from any other HTML file."""
+    # Collect the set of HTML files that are linked to
+    linked_targets: set[Path] = set()
+    for source_path, hrefs in all_internal_hrefs.items():
+        source_dir = source_path.parent
+        for path_part, _frag in hrefs:
+            if path_part is not None:
+                target = (source_dir / path_part).resolve()
+                linked_targets.add(target)
+    # Entry point is index.html — it doesn't need to be linked to
+    index_path = (docs_dir / "index.html").resolve()
+    issues = []
+    for html_file in sorted(html_files):
+        resolved = html_file.resolve()
+        if resolved == index_path:
+            continue
+        if resolved not in linked_targets:
+            rel = html_file.relative_to(docs_dir)
+            issues.append(f"orphan HTML (not linked from any page): {rel}")
+    return issues
+
+
+# ── Main ─────────────────────────────────────────────────────────────
+
+
+def main():
+    if len(sys.argv) > 1:
+        docs_dir = Path(sys.argv[1])
+    else:
+        docs_dir = Path("docs")
+
+    if not docs_dir.is_dir():
+        print(f"Error: {docs_dir} is not a directory", file=sys.stderr)
+        return 1
+
+    # Discover HTML and CSS files
+    html_files = sorted(docs_dir.rglob("*.html"))
+    css_files = sorted(docs_dir.rglob("*.css"))
+
+    if not html_files:
+        print(f"No HTML files found in {docs_dir}")
+        return 0
+
+    # Parse all HTML files
+    parsed: dict[Path, _HTMLInfo] = {}
+    for hf in html_files:
+        parsed[hf] = _parse_html(hf)
+
+    # Build ID map (resolved path → list of IDs)
+    all_ids: dict[Path, list[str]] = {}
+    for hf, info in parsed.items():
+        all_ids[hf.resolve()] = info.ids
+
+    # Build internal-hrefs map for orphan-HTML check
+    all_internal_hrefs: dict[Path, list[tuple[str | None, str | None]]] = {}
+    for hf, info in parsed.items():
+        all_internal_hrefs[hf] = info.internal_hrefs
+
+    # Collect CSS classes from all CSS files
+    css_classes: set[str] = set()
+    for cf in css_files:
+        css_classes |= _extract_css_classes(cf)
+
+    # Run checks
+    all_issues: list[str] = []
+    referenced_images: set[Path] = set()
+
+    for hf in html_files:
+        info = parsed[hf]
+        rel = str(hf.relative_to(docs_dir))
+        html_dir = hf.parent
+
+        all_issues.extend(_check_structure(rel, info))
+        all_issues.extend(_check_duplicate_ids(rel, info))
+        all_issues.extend(
+            _check_internal_links(rel, info, html_dir, all_ids)
+        )
+        all_issues.extend(
+            _check_images(rel, info, html_dir, referenced_images)
+        )
+        all_issues.extend(_check_css_classes(rel, info, css_classes))
+        all_issues.extend(_check_css_links(rel, info, html_dir))
+
+    # Cross-file checks
+    for cf in css_files:
+        all_issues.extend(_check_font_files(cf, docs_dir))
+    all_issues.extend(_check_orphan_images(docs_dir, referenced_images))
+    all_issues.extend(_check_stale_files(docs_dir))
+    all_issues.extend(
+        _check_orphan_html(docs_dir, html_files, all_internal_hrefs)
+    )
+
+    # Report
+    if all_issues:
+        for issue in all_issues:
+            print(issue)
+        print(f"\nFound {len(all_issues)} issue(s).")
+        return 1
+    else:
+        print("No HTML output issues found.")
+        return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
