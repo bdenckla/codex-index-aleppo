@@ -41,12 +41,12 @@ class _HTMLInfo(HTMLParser):
         self.has_doctype = False
         self.html_lang = None
         self.has_meta_charset_utf8 = False
-        self.css_hrefs = []         # stylesheet <link> hrefs
-        self.internal_hrefs = []    # (href, fragment_or_None)
-        self.external_hrefs = []    # full URLs
-        self.img_srcs = []          # <img src="...">
-        self.ids = []               # all id attribute values
-        self.classes = []           # all class attribute values (split)
+        self.css_hrefs = []  # stylesheet <link> hrefs
+        self.internal_hrefs = []  # (href, fragment_or_None)
+        self.external_hrefs = []  # full URLs
+        self.img_srcs = []  # <img src="...">
+        self.ids = []  # all id attribute values
+        self.classes = []  # all class attribute values (split)
         self._in_head = False
 
     def handle_decl(self, decl):
@@ -138,11 +138,9 @@ def _check_structure(rel: str, info: _HTMLInfo) -> list[str]:
     if not info.has_doctype:
         issues.append(f"{rel}: missing <!doctype html>")
     if info.html_lang != "en":
-        issues.append(
-            f"{rel}: <html> lang is {info.html_lang!r}, expected 'en'"
-        )
+        issues.append(f"{rel}: <html> lang is {info.html_lang!r}, expected 'en'")
     if not info.has_meta_charset_utf8:
-        issues.append(f"{rel}: missing <meta charset=\"utf-8\">")
+        issues.append(f'{rel}: missing <meta charset="utf-8">')
     return issues
 
 
@@ -157,7 +155,7 @@ def _check_duplicate_ids(rel: str, info: _HTMLInfo) -> list[str]:
             seen[id_val] = 1
     for id_val, count in seen.items():
         if count > 1:
-            issues.append(f"{rel}: duplicate id \"{id_val}\" ({count} times)")
+            issues.append(f'{rel}: duplicate id "{id_val}" ({count} times)')
     return issues
 
 
@@ -173,17 +171,14 @@ def _check_internal_links(
         if path_part is not None:
             target_path = (html_dir / path_part).resolve()
             if not target_path.is_file():
-                issues.append(
-                    f"{rel}: broken link to \"{path_part}\""
-                )
+                issues.append(f'{rel}: broken link to "{path_part}"')
                 continue
             # Check fragment in target file
             if fragment is not None:
                 target_ids = all_ids.get(target_path, [])
                 if fragment not in target_ids:
                     issues.append(
-                        f"{rel}: broken fragment #{fragment}"
-                        f" in \"{path_part}\""
+                        f"{rel}: broken fragment #{fragment}" f' in "{path_part}"'
                     )
         else:
             # Fragment-only link (#foo) — check in same file
@@ -191,10 +186,7 @@ def _check_internal_links(
                 same_path = (html_dir / rel).resolve()
                 target_ids = all_ids.get(same_path, [])
                 if fragment not in target_ids:
-                    issues.append(
-                        f"{rel}: broken fragment #{fragment}"
-                        " (same-file)"
-                    )
+                    issues.append(f"{rel}: broken fragment #{fragment}" " (same-file)")
     return issues
 
 
@@ -210,7 +202,7 @@ def _check_images(
         img_path = (html_dir / src).resolve()
         referenced_images.add(img_path)
         if not img_path.is_file():
-            issues.append(f"{rel}: broken image \"{src}\"")
+            issues.append(f'{rel}: broken image "{src}"')
     return issues
 
 
@@ -242,7 +234,7 @@ def _check_css_classes(
     issues = []
     for cls in info.classes:
         if cls not in css_classes:
-            issues.append(f"{rel}: unknown CSS class \"{cls}\"")
+            issues.append(f'{rel}: unknown CSS class "{cls}"')
     return issues
 
 
@@ -256,7 +248,7 @@ def _check_css_links(
     for href in info.css_hrefs:
         css_path = (html_dir / href).resolve()
         if not css_path.is_file():
-            issues.append(f"{rel}: broken CSS link \"{href}\"")
+            issues.append(f'{rel}: broken CSS link "{href}"')
     return issues
 
 
@@ -268,7 +260,7 @@ def _check_font_files(css_path: Path, docs_dir: Path) -> list[str]:
     for url in _extract_css_font_urls(css_path):
         font_path = (css_dir / url).resolve()
         if not font_path.is_file():
-            issues.append(f"{rel}: broken font URL \"{url}\"")
+            issues.append(f'{rel}: broken font URL "{url}"')
     return issues
 
 
@@ -368,12 +360,8 @@ def main():
 
         all_issues.extend(_check_structure(rel, info))
         all_issues.extend(_check_duplicate_ids(rel, info))
-        all_issues.extend(
-            _check_internal_links(rel, info, html_dir, all_ids)
-        )
-        all_issues.extend(
-            _check_images(rel, info, html_dir, referenced_images)
-        )
+        all_issues.extend(_check_internal_links(rel, info, html_dir, all_ids))
+        all_issues.extend(_check_images(rel, info, html_dir, referenced_images))
         all_issues.extend(_check_css_classes(rel, info, css_classes))
         all_issues.extend(_check_css_links(rel, info, html_dir))
 
@@ -382,9 +370,7 @@ def main():
         all_issues.extend(_check_font_files(cf, docs_dir))
     all_issues.extend(_check_orphan_images(docs_dir, referenced_images))
     all_issues.extend(_check_stale_files(docs_dir))
-    all_issues.extend(
-        _check_orphan_html(docs_dir, html_files, all_internal_hrefs)
-    )
+    all_issues.extend(_check_orphan_html(docs_dir, html_files, all_internal_hrefs))
 
     # Report
     if all_issues:

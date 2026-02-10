@@ -24,14 +24,14 @@ def _group_key(group_info):
         return group_info
     else:
         return group_info["gi:group_key"]
-    
+
 
 def _group_intro(group_info):
     if isinstance(group_info, str):
         return []
     else:
         return group_info.get("gi:group_intro", [])
-    
+
 
 def _group_heading(group_info):
     default = f"Group: {_group_key(group_info)}"
@@ -39,7 +39,7 @@ def _group_heading(group_info):
         return default
     else:
         return group_info.get("gi:group_heading", default)
-    
+
 
 def _group_title(group_info):
     default = _group_heading(group_info)

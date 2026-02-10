@@ -10,6 +10,6 @@ RECORD_2908 = {
         "As far as I know, this is the only such case that $DM fails to note.",
         " (It is the policy of $BHL and $WLC",
         " to merely transcribe such cases, not note them.)",
-        " The געיה difference is not important to us here."
+        " The געיה difference is not important to us here.",
     ],
 }

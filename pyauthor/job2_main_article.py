@@ -1,6 +1,7 @@
 """ Exports gen_html_file and anchor """
 
 from py import my_html
+from pyauthor.job2_bad_news_2 import bad_news_2, wlc_dexi, wlc_dexi_group_info, wlc_misc
 from pyauthor_util.para_and_table import para_and_table
 from pyauthor_util import author
 from pyauthor_util.all_quirks import AllQuirks
@@ -23,8 +24,8 @@ def gen_html_file(aq: AllQuirks):
 
 def _make_cbody(aq: AllQuirks):
     the_lens = dv_map(len, aq.qr_groups)
-    len_dexi = the_lens["g:tbhq_and_zdw"]
-    len_misc = the_lens["g:tbhq_and_zmw"]
+    len_wlc_dexi = the_lens["g:tbhq_and_zdw"]
+    len_wlc_misc = the_lens["g:tbhq_and_zmw"]
     cbody = [
         author.heading_level_1(D2_H1_CONTENTS),
         author.para(_NOT_A_SCHOLARLY),
@@ -50,10 +51,10 @@ def _make_cbody(aq: AllQuirks):
         author.para(_AFTER_BAD_NEWS_1_PART_1),
         author.para(_after_bad_news_1_part_2(len(aq.qr_groups["g:nbhq_and_n3"]))),
         author.para(_AFTER_BAD_NEWS_1_PART_3),
-        author.para(_bad_news_2(len_dexi, len_misc)),
-        para_and_table(aq, _wlc_dexi, _wlc_dexi_group_info(len_dexi)),
-        para_and_table(aq, _wlc_misc, "g:tbhq_and_zmw"),
-        author.para_ul(_CONCLUSION, _clist36(the_lens)),
+        author.para(bad_news_2(len_wlc_dexi, len_wlc_misc)),
+        para_and_table(aq, wlc_dexi, wlc_dexi_group_info(len_wlc_dexi)),
+        para_and_table(aq, wlc_misc, "g:tbhq_and_zmw"),
+        author.para_ul(_CONCLUSION, _conclusion_list(the_lens)),
         author.heading_level_2("Postscript 1: $UXLC"),
         author.para(_POSTSCRIPT_UXLC),
         author.heading_level_2("Postscript 2: quirks in μA"),
@@ -415,83 +416,20 @@ def _mixed(the_len):
     ]
 
 
-_BHQ_HAS_TAR = "$BHQ has טרחא but should probably have דחי"
-_BHQ_HAS_DEX = "$BHQ has דחי but should probably have טרחא"
-_A_TAR_IN_BHQ = "a טרחא in $BHQ"
-
-
-def _bad_news_2(len_dexi, len_misc):
-    len_total = len_dexi + len_misc
-    return [
-        "Finally, we present some more bad news: some $WLC notes help us identify that",
-        f" the Job fascicle of $BHQ transcribes but does not note at least {str(len_total)}",
-        " quirks in μL that,",
-        [" ", my_html.bold("for good reason"), ","],
-        " are not noted in any of the other three editions.",
-        #
-        " The good reason is that all of these are unlikely to be the scribe’s intention,",
-        " i.e. are more likely quirks in $BHQ than quirks in μL.",
-        #
-        f" These {str(len_total)} likely-false quirks can be divided into two groups:",
-        f" a group of {str(len_dexi)} cases where {_BHQ_HAS_TAR} and",
-        f" a group of {str(len_misc)} cases not concerning {_A_TAR_IN_BHQ}.",
-    ]
-
-
-def _wlc_dexi_core(len_dexi):
-    return f"Here are the {str(len_dexi)} cases noted in $WLC where {_BHQ_HAS_TAR}"
-
-
-def _wlc_dexi(len_dexi):
-    return [
-        _wlc_dexi_core(len_dexi),
-        " (note that 18:6 and 22:28 could also be considered to be in this group):",
-    ]
-
-
-def _wlc_dexi_group_intro(len_dexi):
-    return [author.para(_wlc_dexi_core(len_dexi) + ".")]
-
-
-def _wlc_dexi_group_info(len_dexi):
-    return {
-        "gi:group_key": "g:tbhq_and_zdw",
-        "gi:group_intro": _wlc_dexi_group_intro(len_dexi),
-        "gi:group_heading": _wlc_group_toh("$WLC", "$BHQ"),
-        "gi:group_title": _wlc_group_toh("WLC", "BHQ"),
-    }
-
-
-def _wlc_group_toh(wlc, bhq):
-    """toh: title or heading"""
-    return f"Group: {wlc} corrects {bhq} טרחא"
-
-
-def _wlc_misc(len_misc):
-    return [
-        "Then there are the",
-        f" {str(len_misc)} cases noted in $WLC where $BHQ is probably in error",
-        f" but that error does not concern {_A_TAR_IN_BHQ}.",
-        f" (One of those {str(len_misc)},",
-        f" the one in 22:12 goes in the opposite direction: {_BHQ_HAS_DEX}.)",
-        f" Here are those {str(len_misc)} cases:",
-    ]
-
-
 _CONCLUSION = [
     "In conclusion, by using the other three editions, we find the following about $BHQ:",
 ]
 
 
-def _clist36(the_lens):
-    len_dexi = the_lens["g:tbhq_and_zdw"]
-    len_misc = the_lens["g:tbhq_and_zmw"]
-    len_total = len_dexi + len_misc
+def _conclusion_list(the_lens):
+    len_wlc_dexi = the_lens["g:tbhq_and_zdw"]
+    len_wlc_misc = the_lens["g:tbhq_and_zmw"]
+    len_wlc_total = len_wlc_dexi + len_wlc_misc
     b = str(the_lens["g:nbhq_and_x3"])
     c = str(the_lens["g:nbhq_and_n3"])
     d = str(the_lens["g:tbhq_and_n3"])
     e = str(the_lens["g:xbhq_and_n3"])
-    f = str(len_total)
+    f = str(len_wlc_total)
     return [
         f"$BHQ contributes notes on {b} quirks not found in those editions.",
         f"$BHQ reiterates notes on {c} quirks found in those editions.",

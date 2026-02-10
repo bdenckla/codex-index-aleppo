@@ -10,11 +10,11 @@ RECORD_3115 = {
     "qr-lc-img": "3115.png",
     "qr-generic-comment": [
         "A גרש מוקדם accent doesn’t make sense here,",
-        " and the color image suggests that the mark is not ink."
+        " and the color image suggests that the mark is not ink.",
     ],
     "qr-bhq-comment": [
         "$BHQ has wisely removed the גרש מוקדם that $BHS had here.",
         " Unfortunately, as always, $BHQ has not documented this change,",
-        " leaving it as a painful “exercise left to the reader” to discover such changes."
-    ]
+        " leaving it as a painful “exercise left to the reader” to discover such changes.",
+    ],
 }
