@@ -1,3 +1,4 @@
+from pyauthor_util.author import yyy_dash_nothing
 from pyauthor_util import author
 
 
@@ -18,7 +19,7 @@ _BHQ_COMMENT_3107 = [
 RECORD_3107 = {
     "qr-cv": "31:7",
     "qr-lc-proposed": "מֻאֿוּֽם׃",
-    "qr-what-is-weird": "קבוץ and סילוק not סילוק and ∅",
+    "qr-what-is-weird": ["קבוץ-סילוק not ", yyy_dash_nothing("סילוק")],
     # ∅ is U+2205: EMPTY SET
     "qr-consensus": "מֽאֿוּם׃",
     "qr-highlight": [1, 3],

@@ -3960,7 +3960,18 @@
   {
     "qr-cv": "31:7",
     "qr-lc-proposed": "מֻאֿוּֽם׃",
-    "qr-what-is-weird": "קבוץ and סילוק not סילוק and ∅",
+    "qr-what-is-weird": [
+      "קבוץ-סילוק not ",
+      {
+        "_htel_tag": "span",
+        "attr": {
+          "dir": "rtl"
+        },
+        "contents": [
+          "סילוק-∅"
+        ]
+      }
+    ],
     "qr-consensus": "מֽאֿוּם׃",
     "qr-highlight": [
       1,

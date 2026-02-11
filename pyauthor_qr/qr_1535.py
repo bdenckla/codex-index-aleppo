@@ -1,11 +1,12 @@
-from pyauthor_util.author import span_rtl
+from pyauthor_util.author import nothing_dash_yyy
 
 
 RECORD_1535 = {
     "qr-cv": "15:35",
     "qr-lc-proposed": "וְיָלֹ֣ד",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": [span_rtl("∅-מונח"), " not מונח-געיה"],
+    "qr-what-is-weird": [nothing_dash_yyy("מונח"), " not מונח-געיה"],
+    # ∅ is U+2205: EMPTY SET
     "qr-consensus": "וְיָ֣לֹֽד",
     "qr-extra-letter-spacing": True,
     "qr-generic-comment": [
