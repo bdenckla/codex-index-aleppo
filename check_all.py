@@ -5,7 +5,7 @@ Run all check scripts for this project.
 Checks run:
   1. pyspellcheck/spellcheck_quirkrecs.py  (spell check quirk records)
   2. check_function_ordering.py            (public-before-private ordering)
-  3. check_html_output.py                  (HTML output lint)
+  3. check_html_syntax_and_sanity.py       (HTML output lint)
 
 Exit codes:
   0 - All checks passed
@@ -14,14 +14,14 @@ Exit codes:
 Usage:
   python check_all.py [--w3c] [--w3c-strict]
 
-The --w3c and --w3c-strict flags are forwarded to check_html_output.py.
+The --w3c and --w3c-strict flags are forwarded to check_html_syntax_and_sanity.py.
 """
 
 import argparse
 import sys
 
 import check_function_ordering
-import check_html_output
+import check_html_syntax_and_sanity
 import check_spelling_in_html
 
 _SEPARATOR = "\u2500" * 60
@@ -34,12 +34,12 @@ def main():
     parser.add_argument(
         "--w3c",
         action="store_true",
-        help="forward --w3c to check_html_output",
+        help="forward --w3c to check_html_syntax_and_sanity",
     )
     parser.add_argument(
         "--w3c-strict",
         action="store_true",
-        help="forward --w3c-strict to check_html_output",
+        help="forward --w3c-strict to check_html_syntax_and_sanity",
     )
     args = parser.parse_args()
 
@@ -85,7 +85,7 @@ def _run_html_lint(args):
         argv.append("--w3c")
     if args.w3c_strict:
         argv.append("--w3c-strict")
-    return check_html_output.main(argv)
+    return check_html_syntax_and_sanity.main(argv)
 
 
 if __name__ == "__main__":

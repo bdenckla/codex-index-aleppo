@@ -20,7 +20,7 @@ Exit codes:
   1 - Issues found
 
 Usage:
-  python check_html_output.py [docs_dir] [--w3c]
+  python check_html_syntax_and_sanity.py [docs_dir] [--w3c]
 
 If no docs_dir given, defaults to "docs".
 The --w3c flag sends each HTML file to the W3C Nu HTML Checker API
@@ -444,7 +444,7 @@ def _check_w3c(
                 data=html_bytes,
                 headers={
                     "Content-Type": "text/html; charset=utf-8",
-                    "User-Agent": "check_html_output.py/1.0",
+                    "User-Agent": "check_html_syntax_and_sanity.py/1.0",
                 },
             )
             with urllib.request.urlopen(req, timeout=30) as resp:
