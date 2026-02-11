@@ -44,7 +44,7 @@ def main():
     args = parser.parse_args()
 
     checks = [
-        ("Spell check (quirkrecs)", _run_spellcheck),
+        ("Spell check (HTML output)", _run_spellcheck),
         ("Function ordering", _run_function_ordering),
         ("HTML output lint", lambda: _run_html_lint(args)),
     ]

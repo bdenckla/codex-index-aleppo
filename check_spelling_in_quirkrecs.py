@@ -1,12 +1,13 @@
 """
-Spell check English strings in quirkrecs.json
+Spell check English text in HTML output files under docs/
 
 Usage:
-    python ./spellcheck_quirkrecs.py
+    python ./check_spelling_in_quirkrecs.py
 """
 
 import json
 import re
+from html.parser import HTMLParser
 from pathlib import Path
 from spellchecker import SpellChecker
 
@@ -40,154 +41,144 @@ def extract_english_words(text: str) -> list[str]:
     return words
 
 
-# Fields that contain English prose to spell-check
-PROSE_FIELDS = {
-    "qr-bhq-comment",
-    "qr-generic-comment",
-    "qr-what-is-weird",
-}
+class _TextExtractor(HTMLParser):
+    """Extract visible text from HTML, skipping <style>, <script>, and Hebrew-only elements."""
+
+    _SKIP_TAGS = {"style", "script"}
+
+    def __init__(self):
+        super().__init__()
+        self._pieces: list[str] = []
+        self._skip_depth = 0
+
+    def handle_starttag(self, tag, attrs):
+        if tag in self._SKIP_TAGS:
+            self._skip_depth += 1
+
+    def handle_endtag(self, tag):
+        if tag in self._SKIP_TAGS and self._skip_depth > 0:
+            self._skip_depth -= 1
+
+    def handle_data(self, data):
+        if self._skip_depth == 0:
+            self._pieces.append(data)
+
+    def get_text(self) -> str:
+        return " ".join(self._pieces)
 
 
-def _collect_strings(value):
-    """Yield all plain strings from a nested structure (str, list, or dict with contents)."""
-    if isinstance(value, str):
-        yield value
-    elif isinstance(value, list):
-        for item in value:
-            yield from _collect_strings(item)
-    elif isinstance(value, dict) and "contents" in value:
-        yield from _collect_strings(value["contents"])
+def _extract_text_from_html(html_path: Path) -> str:
+    """Parse an HTML file and return its visible text content."""
+    html = html_path.read_text(encoding="utf-8")
+    extractor = _TextExtractor()
+    extractor.feed(html)
+    return extractor.get_text()
 
 
-def check_straight_apostrophes(quirkrecs_path: Path):
-    """Check for straight apostrophes (U+0027) in prose fields; curly (\u2019) should be used."""
-    with open(quirkrecs_path, "r", encoding="utf-8") as f:
-        data = json.load(f)
+def _collect_html_files(docs_dir: Path) -> list[Path]:
+    """Collect all .html files under docs/, recursively."""
+    return sorted(docs_dir.rglob("*.html"))
 
+
+def check_straight_apostrophes(html_files: list[Path]):
+    """Check for straight apostrophes (U+0027) in HTML text; curly (\u2019) should be used."""
     issues = []
-    for rec in data:
-        rec_id = rec.get("qr-id", "unknown")
-        for key, value in rec.items():
-            if key not in PROSE_FIELDS:
-                continue
-            for text in _collect_strings(value):
-                for match in re.finditer(r"'", text):
-                    context = text[max(0, match.start() - 10) : match.end() + 10]
-                    issues.append(
-                        {
-                            "record": rec_id,
-                            "field": key,
-                            "context": context,
-                        }
-                    )
+    for html_path in html_files:
+        text = _extract_text_from_html(html_path)
+        rel = html_path.as_posix()
+        for match in re.finditer(r"'", text):
+            context = text[max(0, match.start() - 10) : match.end() + 10]
+            issues.append({"file": rel, "context": context})
     return issues
 
 
-def check_period_uppercase(quirkrecs_path: Path):
+def check_period_uppercase(html_files: list[Path]):
     """Check for period immediately followed by an uppercase letter (missing space)."""
-    with open(quirkrecs_path, "r", encoding="utf-8") as f:
-        data = json.load(f)
-
     issues = []
-    for rec in data:
-        rec_id = rec.get("qr-id", "unknown")
-        for key, value in rec.items():
-            if key not in PROSE_FIELDS:
-                continue
-            for text in _collect_strings(value):
-                for match in re.finditer(r"\.[A-Z]", text):
-                    context = text[max(0, match.start() - 10) : match.end() + 10]
-                    issues.append(
-                        {
-                            "record": rec_id,
-                            "field": key,
-                            "context": context,
-                        }
-                    )
+    for html_path in html_files:
+        text = _extract_text_from_html(html_path)
+        rel = html_path.as_posix()
+        for match in re.finditer(r"\.[A-Z]", text):
+            context = text[max(0, match.start() - 10) : match.end() + 10]
+            issues.append({"file": rel, "context": context})
     return issues
 
 
-def check_spelling(quirkrecs_path: Path, custom_dict_path: Path):
-    """Check spelling of English words in quirkrecs.json."""
+def check_spelling(html_files: list[Path], custom_dict_path: Path):
+    """Check spelling of English words in HTML files."""
     spell = SpellChecker()
     custom_words, custom_phrases = load_custom_dictionary(custom_dict_path)
 
-    with open(quirkrecs_path, "r", encoding="utf-8") as f:
-        data = json.load(f)
-
     issues = []
 
-    for rec in data:
-        rec_id = rec.get("qr-id", "unknown")
+    for html_path in html_files:
+        text = _extract_text_from_html(html_path)
+        rel = html_path.as_posix()
 
-        # Check prose fields only
-        for key, value in rec.items():
-            if key not in PROSE_FIELDS:
-                continue
-            for text in _collect_strings(value):
-                # Remove accepted phrases before word extraction
-                cleaned = text
-                for phrase in custom_phrases:
-                    cleaned = re.sub(
-                        re.escape(phrase), " ", cleaned, flags=re.IGNORECASE
-                    )
-                words = extract_english_words(cleaned)
-                for word in words:
-                    word_lower = word.lower()
-                    # Normalize curly apostrophe to straight for pyspellchecker lookup
-                    lookup = word_lower.replace("\u2019", "'")
-                    if lookup not in custom_words and lookup not in spell:
-                        issues.append(
-                            {
-                                "record": rec_id,
-                                "field": key,
-                                "word": word,
-                                "suggestions": list(spell.candidates(word_lower) or [])[
-                                    :5
-                                ],
-                            }
-                        )
+        # Remove accepted phrases before word extraction
+        cleaned = text
+        for phrase in custom_phrases:
+            cleaned = re.sub(re.escape(phrase), " ", cleaned, flags=re.IGNORECASE)
+
+        words = extract_english_words(cleaned)
+        for word in words:
+            word_lower = word.lower()
+            # Normalize curly apostrophe to straight for pyspellchecker lookup
+            lookup = word_lower.replace("\u2019", "'")
+            if lookup not in custom_words and lookup not in spell:
+                issues.append(
+                    {
+                        "file": rel,
+                        "word": word,
+                        "suggestions": list(spell.candidates(word_lower) or [])[:5],
+                    }
+                )
 
     return issues
 
 
 def main():
     project_root = Path(__file__).parent
-    quirkrecs_path = project_root / "out" / "quirkrecs.json"
+    docs_dir = project_root / "docs"
     custom_dict_path = (
         Path(__file__).parent / "check_spelling_in_quirkrecs.custom-dict.json"
     )
 
-    if not quirkrecs_path.exists():
-        print(f"Error: {quirkrecs_path} not found")
+    if not docs_dir.exists():
+        print(f"Error: {docs_dir} not found")
         print("Run: python main_gen_misc_authored_english_documents.py")
         return
 
-    print(f"Checking spelling in {quirkrecs_path}...")
+    html_files = _collect_html_files(docs_dir)
+    if not html_files:
+        print(f"Error: no HTML files found under {docs_dir}")
+        return
+
+    print(f"Checking spelling in {len(html_files)} HTML file(s) under {docs_dir}...")
     print(f"Using custom dictionary: {custom_dict_path}")
 
-    apos_issues = check_straight_apostrophes(quirkrecs_path)
+    apos_issues = check_straight_apostrophes(html_files)
     if apos_issues:
         print(
             f"\nFound {len(apos_issues)} straight-apostrophe issues (use \u2019 not '):\n"
         )
         for issue in apos_issues:
-            print(f"  [{issue['record']}] {issue['field']}: ...{issue['context']}...")
+            print(f"  [{issue['file']}]: ...{issue['context']}...")
 
-    period_issues = check_period_uppercase(quirkrecs_path)
+    period_issues = check_period_uppercase(html_files)
     if period_issues:
         print(
             f"\nFound {len(period_issues)} period-uppercase issues (missing space?):\n"
         )
         for issue in period_issues:
-            print(f"  [{issue['record']}] {issue['field']}: ...{issue['context']}...")
+            print(f"  [{issue['file']}]: ...{issue['context']}...")
 
-    issues = check_spelling(quirkrecs_path, custom_dict_path)
+    issues = check_spelling(html_files, custom_dict_path)
 
     if issues:
         print(f"\nFound {len(issues)} potential spelling issues:\n")
         for issue in issues:
-            print(f"  [{issue['record']}] {issue['field']}: '{issue['word']}'")
+            print(f"  [{issue['file']}]: '{issue['word']}'")
             if issue["suggestions"]:
                 print(f"    Suggestions: {', '.join(issue['suggestions'])}")
 
