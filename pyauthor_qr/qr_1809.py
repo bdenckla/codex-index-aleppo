@@ -5,7 +5,7 @@ RECORD_1809 = {
     "qr-cv": "18:9",
     "qr-lc-proposed": "בְּעָּקֵ֣ב",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "ע may have דגש",
+    "qr-what-is-weird": "ע has דגש",
     "qr-consensus": "בְּעָקֵ֣ב",
     "qr-generic-comment": [
         "A דגש in a ע doesn’t make sense.",

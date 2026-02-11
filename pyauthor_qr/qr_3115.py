@@ -4,7 +4,7 @@ RECORD_3115 = {
     "qr-consensus": "הֲ‍ֽלֹא־בַ֭בֶּטֶן",
     "qr-lc-proposed": "הֲ‍ֽ֝לֹא־בַ֭בֶּטֶן",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "גרש מוקדם may precede דחי",
+    "qr-what-is-weird": "גרש מוקדם fights דחי",
     "qr-highlight": 1,
     "qr-lc-loc": {"page": "405B", "column": 2, "line": 4},
     "qr-lc-img": "3115.png",

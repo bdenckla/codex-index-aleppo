@@ -3,7 +3,7 @@ RECORD_1916_1of2ftv = {
     "qr-n_of_m_for_this_verse": (1, 2),
     "qr-lc-q": "(?)",
     "qr-lc-proposed": "קָּ֭רָאתִי",
-    "qr-what-is-weird": "ק may have דגש",
+    "qr-what-is-weird": "ק has דגש",
     "qr-consensus": "קָ֭רָאתִי",
     "qr-generic-comment": "The dot is suspiciously brown rather than black.",
     "qr-highlight": 1,

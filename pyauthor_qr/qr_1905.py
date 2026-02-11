@@ -1,10 +1,14 @@
+from pyauthor_util import author
 from pyauthor_util.golinets import golinets_citation
 
 
-_BHQ_COMMENT_1905 = [
-    "$BHQ drops the note that $BHS has on this quirk, which is extraordinary.",
+_BHQ_COMMENT_PART_1 = [
+    "$BHQ drops the note that $BHS has on this quirk.",
+    " Usually $BHQ preserves notes that $BHS has on quirks.",
     " As usual, we don’t know whether $BHQ dropped this note on purpose or by accident.",
-    " $BHQ silently lets the faint possible דגש “win” over the clear רפה in μL.",
+]
+_BHQ_COMMENT_PART_2 = [
+    "$BHQ silently lets the faint possible דגש “win” over the clear רפה in μL.",
     " In my opinion, $BHQ should have transcribed either both marks (דגש and רפה) or neither.",
     " Thus I consider $BHQ to have not accurately transcribed μL here.",
     " Also, $BHQ should have had a note.",
@@ -13,8 +17,8 @@ _BHQ_COMMENT_1905 = [
 RECORD_1905 = {
     "qr-cv": "19:5",
     "qr-lc-q": "(?)",
-    "qr-lc-proposed": "חֶרְפָּתִּֽֿי",
-    "qr-what-is-weird": "דגש may fight רפה",
+    "qr-lc-proposed": "חֶרְפָּתִּֽֿי׃",
+    "qr-what-is-weird": "דגש fights רפה",
     "qr-consensus": "חֶרְפָּתִֽי׃",
     "qr-generic-comment": [
         "A דגש on a letter with רפה doesn’t make sense.",
@@ -24,6 +28,9 @@ RECORD_1905 = {
     ],
     "qr-highlight": 4,
     "qr-lc-loc": {"page": "402A", "column": 2, "line": -5},
-    "qr-bhq-comment": _BHQ_COMMENT_1905,
+    "qr-bhq-comment": [
+        author.para(_BHQ_COMMENT_PART_1),
+        author.para(_BHQ_COMMENT_PART_2),
+    ],
     "qr-noted-by": "nBHL-nWLC",
 }

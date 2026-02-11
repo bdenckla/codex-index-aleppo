@@ -152,9 +152,20 @@ def _in_mu_yyy(quirkrec):
     return _IN_MY_YYY[key_for_proposed(quirkrec)]
 
 
+def _maybe_maybe(quirkrec):
+    qm_key = _key_for_question_mark(quirkrec)
+    if qm_key in quirkrec:
+        return [" maybe,"]
+    return []
+
+
 def _what_is_weird(quirkrec):
     in_my_yyy = _in_mu_yyy(quirkrec)
-    wiw_in_mu_ell = [quirkrec["qr-what-is-weird"], " ", in_my_yyy, ","]
+    wiw_in_mu_ell = [
+        quirkrec["qr-what-is-weird"],
+        *[" ", in_my_yyy, ","],
+        _maybe_maybe(quirkrec),
+    ]
     parts = [wiw_in_mu_ell, *says(quirkrec)]
     wiw_and_says = intersperse(my_html.line_break(), parts)
     return wiw_and_says

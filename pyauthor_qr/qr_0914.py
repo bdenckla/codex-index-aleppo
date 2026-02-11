@@ -5,7 +5,7 @@ RECORD_0914 = {
     "qr-cv": "9:14",
     "qr-lc-q": "(?)",
     "qr-lc-proposed": "עִמּוֹ׃",
-    "qr-what-is-weird": "סילוק may be missing",
+    "qr-what-is-weird": "סילוק is missing",
     "qr-consensus": "עִמּֽוֹ׃",
     "qr-highlight": 2,
     "qr-lc-loc": {"page": "399B", "column": 1, "line": 22, "including-blank-lines": 1},

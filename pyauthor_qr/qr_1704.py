@@ -12,7 +12,7 @@ RECORD_1704 = {
     "qr-cv": "17:4",
     "qr-lc-proposed": "מִּשָּׂ֑כֶל",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "מ may have דגש",
+    "qr-what-is-weird": "מ has דגש",
     "qr-consensus": "מִשָּׂ֑כֶל",
     "qr-generic-comment": [
         "The color image of μL reveals this דגש to be unlikely.",

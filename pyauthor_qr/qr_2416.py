@@ -26,7 +26,7 @@ RECORD_2416 = {
     "qr-cv": "24:16",
     "qr-lc-proposed": "יָ֥דְּֿעוּ",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "דגש may fight רפה",
+    "qr-what-is-weird": "דגש fights רפה",
     "qr-consensus": "יָ֥דְֿעוּ",
     "qr-generic-comment": [
         author.para(_COM1),

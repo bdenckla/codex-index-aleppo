@@ -2,7 +2,7 @@ RECORD_1216 = {
     "qr-cv": "12:16",
     "qr-lc-proposed": "וְתֽוּשִׁיָּ֑ה",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "ת may have געיה",
+    "qr-what-is-weird": "ת has געיה",
     "qr-consensus": "וְתוּשִׁיָּ֑ה",
     "qr-generic-comment": [
         "There is a blob of ink below the ת.",

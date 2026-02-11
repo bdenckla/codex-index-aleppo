@@ -321,7 +321,7 @@
     "qr-consensus": "הׇשְׁלְמָה־לָּֽךְ׃",
     "qr-lc-proposed": "הׇשְׁלְמָה־לָֽךְ׃",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "ל may lack דגש",
+    "qr-what-is-weird": "ל lacks דגש",
     "qr-highlight": 7,
     "qr-generic-comment": [
       "There is some kind of a dot way over next to the final $khaf ( ך ) but it could easily be either not ink, or not intentional ink. Aside: the קמץ under ה is קטן."
@@ -817,7 +817,7 @@
     "qr-cv": "8:14",
     "qr-lc-proposed": "עַ֝כָּבִישׁ",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "רביע of רביע מוגרש may be absent",
+    "qr-what-is-weird": "רביע of רביע מוגרש is absent",
     "qr-consensus": "עַ֝כָּבִ֗ישׁ",
     "qr-generic-comment": [
       "Perhaps a רביע is merged into the left end of the (untranscribed) רפה."
@@ -971,7 +971,7 @@
     "qr-cv": "9:14",
     "qr-lc-q": "(?)",
     "qr-lc-proposed": "עִמּוֹ׃",
-    "qr-what-is-weird": "סילוק may be missing",
+    "qr-what-is-weird": "סילוק is missing",
     "qr-consensus": "עִמּֽוֹ׃",
     "qr-highlight": 2,
     "qr-lc-loc": {
@@ -1002,7 +1002,7 @@
     "qr-cv": "9:30",
     "qr-lc-q": "(?)",
     "qr-lc-proposed": "כַּפָּי׃",
-    "qr-what-is-weird": "סילוק may be missing",
+    "qr-what-is-weird": "סילוק is missing",
     "qr-consensus": "כַּפָּֽי׃",
     "qr-highlight": 2,
     "qr-lc-loc": {
@@ -1468,7 +1468,7 @@
     "qr-cv": "12:16",
     "qr-lc-proposed": "וְתֽוּשִׁיָּ֑ה",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "ת may have געיה",
+    "qr-what-is-weird": "ת has געיה",
     "qr-consensus": "וְתוּשִׁיָּ֑ה",
     "qr-generic-comment": [
       "There is a blob of ink below the ת. Most likely, this mark is a malformed masorah circle on the word מוליך on the line below."
@@ -1654,7 +1654,7 @@
               "WLC"
             ]
           },
-          "’s transcription far-fetched. Note that the consensus has a rare and hard-to-understand phenomenon called “secondary מהפך” by Breuer. It may seem rather extraordinary that in the consensus, געיה immediately follows the מהפך, but this is actually expected (or at least “allowed”) if the מהפך is secondary, as it is here, according to Breuer."
+          "’s transcription far-fetched. Note that the consensus has a rare and hard-to-understand phenomenon called “secondary מהפך” by Breuer. It may seem weird that in the consensus, געיה immediately follows the מהפך, but this is actually expected (or at least “allowed”) if the מהפך is secondary, as it is here, according to Breuer."
         ]
       },
       {
@@ -2023,7 +2023,7 @@
     "qr-cv": "17:4",
     "qr-lc-proposed": "מִּשָּׂ֑כֶל",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "מ may have דגש",
+    "qr-what-is-weird": "מ has דגש",
     "qr-consensus": "מִשָּׂ֑כֶל",
     "qr-generic-comment": [
       "The color image of μL reveals this דגש to be unlikely. Surprisingly, $BHL includes this דגש in its body text rather than noting it in $BHL_A."
@@ -2272,7 +2272,7 @@
     "qr-cv": "18:9",
     "qr-lc-proposed": "בְּעָּקֵ֣ב",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "ע may have דגש",
+    "qr-what-is-weird": "ע has דגש",
     "qr-consensus": "בְּעָקֵ֣ב",
     "qr-generic-comment": [
       "A דגש in a ע doesn’t make sense. But the dot is convincing, despite being a little close to the right arm of the ע."
@@ -2335,8 +2335,8 @@
   {
     "qr-cv": "19:5",
     "qr-lc-q": "(?)",
-    "qr-lc-proposed": "חֶרְפָּתִּֽֿי",
-    "qr-what-is-weird": "דגש may fight רפה",
+    "qr-lc-proposed": "חֶרְפָּתִּֽֿי׃",
+    "qr-what-is-weird": "דגש fights רפה",
     "qr-consensus": "חֶרְפָּתִֽי׃",
     "qr-generic-comment": [
       "A דגש on a letter with רפה doesn’t make sense. The color image of μL reveals this דגש to be unlikely. It is judged to be just a speck, not a דגש, in Viktor Golinets, “Dageš, Mappiq, Specks on Vellum, and Editing of the Codex Leningradensis”, $KUSATU 15/2013, p. 251 (2013). See 24:16."
@@ -2348,7 +2348,106 @@
       "line": -5
     },
     "qr-bhq-comment": [
-      "$BHQ drops the note that $BHS has on this quirk, which is extraordinary. As usual, we don’t know whether $BHQ dropped this note on purpose or by accident. $BHQ silently lets the faint possible דגש “win” over the clear רפה in μL. In my opinion, $BHQ should have transcribed either both marks (דגש and רפה) or neither. Thus I consider $BHQ to have not accurately transcribed μL here. Also, $BHQ should have had a note."
+      {
+        "_htel_tag": "p",
+        "contents": [
+          {
+            "_htel_tag": "abbr",
+            "attr": {
+              "class": "small-caps"
+            },
+            "contents": [
+              "BHQ"
+            ]
+          },
+          " drops the note that ",
+          {
+            "_htel_tag": "abbr",
+            "attr": {
+              "class": "small-caps"
+            },
+            "contents": [
+              "BHS"
+            ]
+          },
+          " has on this quirk. Usually ",
+          {
+            "_htel_tag": "abbr",
+            "attr": {
+              "class": "small-caps"
+            },
+            "contents": [
+              "BHQ"
+            ]
+          },
+          " preserves notes that ",
+          {
+            "_htel_tag": "abbr",
+            "attr": {
+              "class": "small-caps"
+            },
+            "contents": [
+              "BHS"
+            ]
+          },
+          " has on quirks. As usual, we don’t know whether ",
+          {
+            "_htel_tag": "abbr",
+            "attr": {
+              "class": "small-caps"
+            },
+            "contents": [
+              "BHQ"
+            ]
+          },
+          " dropped this note on purpose or by accident."
+        ]
+      },
+      {
+        "_htel_tag": "p",
+        "contents": [
+          {
+            "_htel_tag": "abbr",
+            "attr": {
+              "class": "small-caps"
+            },
+            "contents": [
+              "BHQ"
+            ]
+          },
+          " silently lets the faint possible דגש “win” over the clear רפה in μL. In my opinion, ",
+          {
+            "_htel_tag": "abbr",
+            "attr": {
+              "class": "small-caps"
+            },
+            "contents": [
+              "BHQ"
+            ]
+          },
+          " should have transcribed either both marks (דגש and רפה) or neither. Thus I consider ",
+          {
+            "_htel_tag": "abbr",
+            "attr": {
+              "class": "small-caps"
+            },
+            "contents": [
+              "BHQ"
+            ]
+          },
+          " to have not accurately transcribed μL here. Also, ",
+          {
+            "_htel_tag": "abbr",
+            "attr": {
+              "class": "small-caps"
+            },
+            "contents": [
+              "BHQ"
+            ]
+          },
+          " should have had a note."
+        ]
+      }
     ],
     "qr-noted-by": "nBHL-nWLC",
     "qr-lc-img": "1905.png",
@@ -2361,7 +2460,7 @@
     },
     "pgroup": "g:xbhq_and_n3",
     "qr-auto-diff": [
-      "((None, (('dagesh/mapiq/shuruq-dot', 'tav', (1, 1)), ('rafeh', 'tav', (1, 1)))), ((('sof-pasuq', 'yod', (1, 1)),), None))",
+      "((None, (('dagesh/mapiq/shuruq-dot', 'tav', (1, 1)), ('rafeh', 'tav', (1, 1)))),)",
       null
     ]
   },
@@ -2373,7 +2472,7 @@
     ],
     "qr-lc-q": "(?)",
     "qr-lc-proposed": "קָּ֭רָאתִי",
-    "qr-what-is-weird": "ק may have דגש",
+    "qr-what-is-weird": "ק has דגש",
     "qr-consensus": "קָ֭רָאתִי",
     "qr-generic-comment": "The dot is suspiciously brown rather than black.",
     "qr-highlight": 1,
@@ -2935,7 +3034,7 @@
     ],
     "qr-lc-proposed": "יֽ͏ְמַלֵּ֥ט",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "$yod may have געיה",
+    "qr-what-is-weird": "$yod has געיה",
     "qr-consensus": "יְמַלֵּ֥ט",
     "qr-generic-comment": [
       "The possible געיה is before שווא. There is another mark below those marks. It is likely unintentional, and is treated accordingly, i.e. ignored, by all editions I know."
@@ -2973,7 +3072,7 @@
     ],
     "qr-lc-proposed": "וְ֝נִּמְלַ֗ט",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "נ may have דגש",
+    "qr-what-is-weird": "נ has דגש",
     "qr-consensus": "וְ֝נִמְלַ֗ט",
     "qr-generic-comment": "The dot in question is suspiciously smaller than nearby ones.",
     "qr-highlight": 2,
@@ -3194,7 +3293,7 @@
     "qr-cv": "24:16",
     "qr-lc-proposed": "יָ֥דְּֿעוּ",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "דגש may fight רפה",
+    "qr-what-is-weird": "דגש fights רפה",
     "qr-consensus": "יָ֥דְֿעוּ",
     "qr-generic-comment": [
       {
@@ -3942,7 +4041,7 @@
     "qr-consensus": "הֲ‍ֽלֹא־בַ֭בֶּטֶן",
     "qr-lc-proposed": "הֲ‍ֽ֝לֹא־בַ֭בֶּטֶן",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "גרש מוקדם may precede דחי",
+    "qr-what-is-weird": "גרש מוקדם fights דחי",
     "qr-highlight": 1,
     "qr-lc-loc": {
       "page": "405B",
@@ -5584,7 +5683,7 @@
     "qr-cv": "39:13",
     "qr-lc-q": "(?)",
     "qr-lc-proposed": "אֶ֝בְרָה",
-    "qr-what-is-weird": "רביע of רביע מוגרש may be absent",
+    "qr-what-is-weird": "רביע of רביע מוגרש is absent",
     "qr-consensus": "אֶ֝בְרָ֗ה",
     "qr-generic-comment": [
       "A more charitable interpretation of the image is that the רביע is present but is merged with the masorah circle. (It is fairly clear that a masorah circle is present.) Note that the vertical line above the ר is a סילוק from the line above."
@@ -5699,7 +5798,7 @@
     "qr-cv": "40:10",
     "qr-lc-q": "(?)",
     "qr-lc-proposed": "גָֽא֣וֹן",
-    "qr-what-is-weird": "געיה may be present (on ג)",
+    "qr-what-is-weird": "געיה is present (on ג)",
     "qr-consensus": "גָא֣וֹן",
     "qr-generic-comment": "The mark in question could easily be accidental.",
     "qr-highlight": 1,

@@ -2,7 +2,7 @@ RECORD_0814 = {
     "qr-cv": "8:14",
     "qr-lc-proposed": "עַ֝כָּבִישׁ",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "רביע of רביע מוגרש may be absent",
+    "qr-what-is-weird": "רביע of רביע מוגרש is absent",
     "qr-consensus": "עַ֝כָּבִ֗ישׁ",
     "qr-generic-comment": [
         "Perhaps a רביע is merged into the left end of the (untranscribed) רפה.",

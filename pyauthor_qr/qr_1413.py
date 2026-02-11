@@ -6,7 +6,7 @@ _COMMENT_1413_PARA1 = [
     " Note that the consensus has a rare and hard-to-understand",
     " phenomenon called “secondary מהפך” by Breuer."
     #
-    " It may seem rather extraordinary that in the consensus, געיה",
+    " It may seem weird that in the consensus, געיה",
     " immediately follows the מהפך,",
     " but this is actually expected (or at least “allowed”)",
     " if the מהפך is secondary, as it is here, according to Breuer.",

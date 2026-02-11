@@ -6,7 +6,7 @@ RECORD_0523 = {
     "qr-consensus": "הׇשְׁלְמָה־לָּֽךְ׃",
     "qr-lc-proposed": "הׇשְׁלְמָה־לָֽךְ׃",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "ל may lack דגש",
+    "qr-what-is-weird": "ל lacks דגש",
     "qr-highlight": 7,
     "qr-generic-comment": [
         "There is some kind of a dot way over next to the",
