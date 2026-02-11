@@ -14,7 +14,7 @@ RECORD_4019_2of2ftv = {
         " the next dot is a “קמץ dot” belonging to the מ of גרמיו on the line above.",
         " The next dot is a חולם חסר dot belonging to the ע.",
         " (Or, if you prefer an alternative interpretation of חולם חסר dots in general,",
-        " the חולם חסר dot belongs to an implicit ו between the ע and ש.)",
+        " the חולם חסר dot belongs to an implicit $vav between the ע and ש.)",
         " The issue at hand is there is no fourth dot",
         " that could be interpreted as a רביע above the ש.",
     ],

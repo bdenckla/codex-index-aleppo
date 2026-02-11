@@ -4,13 +4,13 @@ from pyauthor_util.uxlc_change import uxlc_change
 RECORD_4210 = {
     "qr-cv": "42:10",
     "qr-lc-proposed": "וַ֧יֹּסֶף",
-    "qr-what-is-weird": "דרגא belongs to ו not $yod",
+    "qr-what-is-weird": "דרגא belongs to $vav not $yod",
     "qr-consensus": "וַיֹּ֧סֶף",
     "qr-generic-comment": [
         "In situations like this,",
         " it is hard to determine which letter an under-accent belongs to."
         " By “situations like this” I mean two narrow letters",
-        " (in this case ו and $yod)",
+        " (in this case $vav and $yod)",
         " where the first letter has an under-vowel and the second letter does not."
         " In the face of this uncertainty,",
         " our default should be to transcribe charitably,",

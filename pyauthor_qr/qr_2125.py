@@ -1,6 +1,6 @@
 _COMMENT_2125 = [
     "The dot is suspiciously brown rather than black,",
-    " making me wonder whether the ו was pointed at all.",
+    " making me wonder whether the $vav was pointed at all.",
 ]
 _BHQ_COMMENT_2125 = [
     "$BHQ silently supplies the שווא that is the consensus expectation,",

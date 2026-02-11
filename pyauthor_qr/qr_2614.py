@@ -10,7 +10,7 @@ _BHQ_COMMENT_2614 = [
     " This is similar to what happened with the μL קרי of ידעתה השחר in 38:12.",
 ]
 
-_COMMENT_2614 = [
+_GENCOM_PART1 = [
     "The consensus is that חולם stays חסר in the קרי, i.e. ",
     [suffix("רתו"), " in the כתיב merely expands to "],
     [suffix("רתיו"), " in the קרי."],
@@ -20,13 +20,21 @@ _COMMENT_2614 = [
     " The marginal קרי note in μL is a little hard to parse until you realize",
     " that it is “invaded” from above by the descender of a big dotted ק.",
 ]
+_GENCOM_PART2 = [
+    "In general I do not cover מלא/חסר differences here,",
+    " but this one seemed worth noting because it involves a כתיב/קרי difference,",
+    " and it was called out by a $WLC note."
+]
 
 RECORD_2614 = {
     "qr-cv": "26:14",
     "qr-lc-proposed": "גְּ֝בוּרוֹתָ֗יו",
     "qr-what-is-weird": "חולם becomes מלא in קרי",
     "qr-consensus": "גְּ֝בוּרֹתָ֗יו",
-    "qr-generic-comment": [author.para(_COMMENT_2614)],
+    "qr-generic-comment": [
+        author.para(_GENCOM_PART1),
+        author.para(_GENCOM_PART2),
+    ],
     "qr-highlight-lc-proposed": 5,
     "qr-lc-loc": {"page": "404A", "column": 2, "line": -5},
     "qr-aleppo-page-url": "https://www.mgketer.org/mikra/29/26/14/mg/106",
