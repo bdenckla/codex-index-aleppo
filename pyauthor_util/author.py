@@ -188,11 +188,11 @@ def span_rtl(contents):
 
 
 def yyy_dash_nothing(contents):
-    return span_rtl([contents, "-∅"])
+    return [contents, "-אפס"]
 
 
 def nothing_dash_yyy(contents):
-    return span_rtl(["∅-", contents])
+    return ["אפס-", contents]
 
 
 # def pasoleg_pas(string: str):

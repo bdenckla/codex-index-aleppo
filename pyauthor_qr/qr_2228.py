@@ -1,6 +1,5 @@
 from pyauthor_util import author
 
-
 _BHQ_COMMENT_2228 = [
     "$BHQ places the mark a little left of center.",
     #

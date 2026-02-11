@@ -1,6 +1,5 @@
 from pyauthor_util.job_common import BHQ_COMMENT_CMN_3105_3206
 
-
 _BHQ_COMMENT_3105 = [
     *BHQ_COMMENT_CMN_3105_3206,
     " 32:6 is similar.",

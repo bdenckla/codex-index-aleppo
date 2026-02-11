@@ -1,6 +1,5 @@
 from pyauthor_util import author
 
-
 _COMMENT_3902 = [
     "The mark in question is very heavy,",
     " having a stroke width more typical of a letter-stroke than of a niqqud-stroke.",

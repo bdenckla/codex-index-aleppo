@@ -1,6 +1,5 @@
 from pyauthor_util.all_verses_but_this import ptx_is_not_xtf
 
-
 RECORD_2709 = {
     "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "27:9",

@@ -1,7 +1,6 @@
 from pyauthor_util import author
 from pyauthor_util.num_range import num_range
 
-
 RECORD_0316 = {
     "qr-cv": "3:16",
     "qr-lc-proposed": "א֚וֹ",

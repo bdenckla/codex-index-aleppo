@@ -1,6 +1,5 @@
 from pyauthor_util.uxlc_change import uxlc_change
 
-
 RECORD_3210 = {
     "qr-cv": "32:10",
     "qr-lc-proposed": "דֵּעִ֣י",

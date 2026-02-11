@@ -1,4 +1,4 @@
-""" Exports gen_html_file and anchor """
+"""Exports gen_html_file and anchor"""
 
 from py import my_html
 from pyauthor_util.job2_bad_news_2 import (

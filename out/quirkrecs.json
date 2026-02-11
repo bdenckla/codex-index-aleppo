@@ -1843,21 +1843,16 @@
     "qr-lc-proposed": "וְיָלֹ֣ד",
     "qr-lc-q": "(?)",
     "qr-what-is-weird": [
-      {
-        "_htel_tag": "span",
-        "attr": {
-          "dir": "rtl"
-        },
-        "contents": [
-          "∅-מונח"
-        ]
-      },
+      [
+        "אפס-",
+        "מונח"
+      ],
       " not מונח-געיה"
     ],
     "qr-consensus": "וְיָ֣לֹֽד",
     "qr-extra-letter-spacing": true,
     "qr-generic-comment": [
-      "The proposed transcription of μL above shows nothing (∅) on $yod and מונח on ל. (By “nothing” on $yod I mean nothing other than קמץ.) In contrast, the consensus transcription shows מונח on $yod and געיה on ל. (The געיה on ל is extraordinary since it follows the accent (מונח).) The proposed transcription seems far-fetched because there is little evidence of a מונח in any location on this word. There is a mark that looks like a פתח between the $yod and the ל, but that is grammatically implausible."
+      "The proposed transcription of μL above shows nothing (אפס (zero)) on $yod and מונח on ל. (By “nothing” on $yod I mean nothing other than קמץ.) In contrast, the consensus transcription shows מונח on $yod and געיה on ל. (The געיה on ל is extraordinary since it follows the accent (מונח).) The proposed transcription seems far-fetched because there is little evidence of a מונח in any location on this word. There is a mark that looks like a פתח between the $yod and the ל, but that is grammatically implausible."
     ],
     "qr-highlight": [
       2,
@@ -4024,15 +4019,10 @@
     "qr-lc-proposed": "מֻאֿוּֽם׃",
     "qr-what-is-weird": [
       "קבוץ-סילוק not ",
-      {
-        "_htel_tag": "span",
-        "attr": {
-          "dir": "rtl"
-        },
-        "contents": [
-          "סילוק-∅"
-        ]
-      }
+      [
+        "סילוק",
+        "-אפס"
+      ]
     ],
     "qr-consensus": "מֽאֿוּם׃",
     "qr-highlight": [
@@ -4045,6 +4035,9 @@
       "line": -6,
       "including-blank-lines": 1
     },
+    "qr-generic-comment": [
+      "The consensus has סילוק under מ and nothing (אפס (zero)) under $vav."
+    ],
     "qr-bhq-comment": [
       {
         "_htel_tag": "p",
@@ -4058,7 +4051,33 @@
               "BHQ"
             ]
           },
-          " reflects neither μL nor the consensus expectation here. It reflects μL except it places the סילוק under the א. This not only contradicts μL, but also makes no sense given the רפה on the א. One might argue that this רפה should have been shown, despite the general policy of ",
+          " reflects neither μL nor the consensus expectation here. It reflects μL except it places the סילוק under the א instead of the ",
+          {
+            "_htel_tag": "span",
+            "attr": {
+              "class": "romanized"
+            },
+            "contents": [
+              "vav"
+            ]
+          },
+          ". This not only contradicts μL, but also makes no sense given the רפה on the א. (Admittedly, the actual location in μL, under the ",
+          {
+            "_htel_tag": "span",
+            "attr": {
+              "class": "romanized"
+            },
+            "contents": [
+              "vav"
+            ]
+          },
+          ", doesn't make any sense either.)"
+        ]
+      },
+      {
+        "_htel_tag": "p",
+        "contents": [
+          "I would also argue that this particular רפה should have been shown, despite the general policy of ",
           {
             "_htel_tag": "abbr",
             "attr": {
@@ -4068,7 +4087,12 @@
               "BHQ"
             ]
           },
-          " to ignore רפה marks in μL. Regardless of whether the רפה should have been shown, its presence in μL should have excluded the possibility of a סילוק under its letter (א)! ",
+          " to ignore רפה marks in μL. In such a confusing word, the reader needs all the detail and context possible, such as this רפה mark."
+        ]
+      },
+      {
+        "_htel_tag": "p",
+        "contents": [
           {
             "_htel_tag": "abbr",
             "attr": {

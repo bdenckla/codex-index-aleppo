@@ -1,6 +1,5 @@
 from pyauthor_util.job_common import correctly_ignores
 
-
 _UXLC_NEEDS_FIX = [
     "$UXLC should do one of the following.",
     "(1) Remove the דגש from מ and note the uncertainty in transcription.",

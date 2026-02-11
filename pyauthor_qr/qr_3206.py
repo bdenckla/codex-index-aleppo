@@ -1,6 +1,5 @@
 from pyauthor_util.job_common import BHQ_COMMENT_CMN_3105_3206
 
-
 _BHQ_COMMENT_3206 = [
     *BHQ_COMMENT_CMN_3105_3206,
     " 31:5 is similar and discusses the matter at greater length.",

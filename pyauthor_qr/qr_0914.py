@@ -1,6 +1,5 @@
 from pyauthor_util.job_common import BHQ_COMMENT_0914_AND_0930
 
-
 RECORD_0914 = {
     "qr-cv": "9:14",
     "qr-lc-q": "(?)",

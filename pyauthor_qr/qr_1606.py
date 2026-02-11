@@ -1,6 +1,5 @@
 from pyauthor_util.all_verses_but_this import no_dag_after_mah
 
-
 RECORD_1606 = {
     "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "16:6",

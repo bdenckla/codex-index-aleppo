@@ -1,7 +1,6 @@
 from py import my_html
 from pyauthor_util import author
 
-
 _GENCOM_1 = [
     "The consensus is that this is one of those כתיב/קרי cases",
     " where the word boundary shifts",

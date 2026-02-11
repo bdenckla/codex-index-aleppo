@@ -31,8 +31,8 @@ _SHINSINDOT_RE = re.compile(r"[\u05C1\u05C2]")
 def _neutralize_letters(string):
     """Replace Hebrew letters and shin/sin dots with a common placeholder.
     Shin/sin dots are part of the letter's identity, so they are stripped too."""
-    string = string.replace("\u05C1", "").replace("\u05C2", "")
-    return _LETTER_RE.sub("\u05D0", string)
+    string = string.replace("\u05c1", "").replace("\u05c2", "")
+    return _LETTER_RE.sub("\u05d0", string)
 
 
 def _extract_letter_units(string):

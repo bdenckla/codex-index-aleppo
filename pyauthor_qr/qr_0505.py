@@ -1,7 +1,6 @@
 from pyauthor_util.golinets import golinets_citation
 import pyauthor_util.author as author
 
-
 _COMPAR1 = [
     "There is little or no evidence of a דגש in the צ,",
     " and the consensus has no such דגש.",

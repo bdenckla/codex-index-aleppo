@@ -2,7 +2,6 @@ from pyauthor_util.uxlc_change import uxlc_change
 from pyauthor_util.golinets import golinets_citation
 from pyauthor_util import author
 
-
 _UXLC_CHANGE_2022_02_17_1 = uxlc_change("2022.04.01", "2022.02.17-1")
 _ISAIAH_1306 = author.anc_h("Isaiah 13:6", _UXLC_CHANGE_2022_02_17_1)
 

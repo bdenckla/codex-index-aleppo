@@ -1,12 +1,11 @@
 from pyauthor_util import author
 from pyauthor_util.job_common import core_ignores
 
-
 _COM1 = [
     "The possible דגש looks slightly different",
     " than the four nearby dots in the two ציריה vowels."
     #
-    " This raises the possibility that it is not ink, e.g. a speck on the vellum."
+    " This raises the possibility that it is not ink, e.g. a speck on the vellum.",
 ]
 _COM2 = [
     "Note that almost by necessity, if we transcribe the $yod as having a דגש,",
@@ -19,7 +18,7 @@ _COM2 = [
     #
     " If we give the $yod a דגש but do not pull back the פתח to the $yod,",
     " we are proposing a pointing that goes beyond surprising to nonsensical."
-    " To do so would be unreasonably uncharitable."
+    " To do so would be unreasonably uncharitable.",
 ]
 _COM3 = [
     "Although the position of the פתח (between $yod and ח)"
@@ -32,7 +31,7 @@ _COM3 = [
     " is actually more consistent with the פתח belonging to the ח."
     #
     " (Or, if you prefer to think of furtive פתח in a different way,",
-    " it belongs to the ר (being the second of two vowels belonging to the ר.)"
+    " it belongs to the ר (being the second of two vowels belonging to the ר.)",
 ]
 RECORD_1409 = {
     "qr-cv": "14:9",

@@ -1,4 +1,4 @@
-""" Common utilities for job documents """
+"""Common utilities for job documents"""
 
 from py import my_html
 from pyauthor_util import author

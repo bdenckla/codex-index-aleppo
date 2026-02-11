@@ -1,6 +1,5 @@
 from pyauthor_util import author
 
-
 _GENCOM_PARA_1 = [
     "μL omits the רביע of רביע מוגרש,",
     " which is expected,",

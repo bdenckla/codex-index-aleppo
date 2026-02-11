@@ -1,7 +1,6 @@
 from pyauthor_util import author
 from pyauthor_util.golinets import golinets_citation
 
-
 _BHQ_COMMENT_PART_1 = [
     "$BHQ drops the note that $BHS has on this quirk.",
     " Usually $BHQ preserves notes that $BHS has on quirks.",

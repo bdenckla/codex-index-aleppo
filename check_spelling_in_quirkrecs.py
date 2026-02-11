@@ -72,7 +72,7 @@ def check_straight_apostrophes(quirkrecs_path: Path):
                 continue
             for text in _collect_strings(value):
                 for match in re.finditer(r"'", text):
-                    context = text[max(0, match.start() - 10):match.end() + 10]
+                    context = text[max(0, match.start() - 10) : match.end() + 10]
                     issues.append(
                         {
                             "record": rec_id,
@@ -96,7 +96,7 @@ def check_period_uppercase(quirkrecs_path: Path):
                 continue
             for text in _collect_strings(value):
                 for match in re.finditer(r"\.[A-Z]", text):
-                    context = text[max(0, match.start() - 10):match.end() + 10]
+                    context = text[max(0, match.start() - 10) : match.end() + 10]
                     issues.append(
                         {
                             "record": rec_id,
@@ -128,7 +128,9 @@ def check_spelling(quirkrecs_path: Path, custom_dict_path: Path):
                 # Remove accepted phrases before word extraction
                 cleaned = text
                 for phrase in custom_phrases:
-                    cleaned = re.sub(re.escape(phrase), " ", cleaned, flags=re.IGNORECASE)
+                    cleaned = re.sub(
+                        re.escape(phrase), " ", cleaned, flags=re.IGNORECASE
+                    )
                 words = extract_english_words(cleaned)
                 for word in words:
                     word_lower = word.lower()
@@ -166,13 +168,17 @@ def main():
 
     apos_issues = check_straight_apostrophes(quirkrecs_path)
     if apos_issues:
-        print(f"\nFound {len(apos_issues)} straight-apostrophe issues (use \u2019 not '):\n")
+        print(
+            f"\nFound {len(apos_issues)} straight-apostrophe issues (use \u2019 not '):\n"
+        )
         for issue in apos_issues:
             print(f"  [{issue['record']}] {issue['field']}: ...{issue['context']}...")
 
     period_issues = check_period_uppercase(quirkrecs_path)
     if period_issues:
-        print(f"\nFound {len(period_issues)} period-uppercase issues (missing space?):\n")
+        print(
+            f"\nFound {len(period_issues)} period-uppercase issues (missing space?):\n"
+        )
         for issue in period_issues:
             print(f"  [{issue['record']}] {issue['field']}: ...{issue['context']}...")
 

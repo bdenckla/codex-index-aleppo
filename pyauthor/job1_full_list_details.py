@@ -1,4 +1,4 @@
-""" Exports gen_html_file and anchor """
+"""Exports gen_html_file and anchor"""
 
 from pyauthor_util.common_titles_etc import D1D_TITLE, D1D_H1_CONTENTS, D1D_FNAME
 from pyauthor_util.introduce_quirkrec_table import qr_table_intro, here_is

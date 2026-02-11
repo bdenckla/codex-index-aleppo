@@ -1,16 +1,14 @@
 from pyauthor_util.author import nothing_dash_yyy
 
-
 RECORD_1535 = {
     "qr-cv": "15:35",
     "qr-lc-proposed": "וְיָלֹ֣ד",
     "qr-lc-q": "(?)",
     "qr-what-is-weird": [nothing_dash_yyy("מונח"), " not מונח-געיה"],
-    # ∅ is U+2205: EMPTY SET
     "qr-consensus": "וְיָ֣לֹֽד",
     "qr-extra-letter-spacing": True,
     "qr-generic-comment": [
-        "The proposed transcription of μL above shows nothing (∅) on $yod and מונח on ל.",
+        "The proposed transcription of μL above shows nothing (אפס (zero)) on $yod and מונח on ל.",
         " (By “nothing” on $yod I mean nothing other than קמץ.)",
         " In contrast, the consensus transcription shows מונח on $yod and געיה on ל.",
         " (The געיה on ל is extraordinary since it follows the accent (מונח).)",

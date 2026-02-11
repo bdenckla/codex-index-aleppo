@@ -1,6 +1,5 @@
 from pyauthor_util.job_common import BHQ_COMMENT_LIKE_0409
 
-
 RECORD_1508 = {
     "qr-cv": "15:8",
     "qr-lc-proposed": "אֱל֣וֹהַ",

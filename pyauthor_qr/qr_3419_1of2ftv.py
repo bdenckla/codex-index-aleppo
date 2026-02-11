@@ -1,7 +1,6 @@
 from pyauthor_util import author
 from pyauthor_util.job_common import correctly_ignores
 
-
 RECORD_3419_1of2ftv = {
     "qr-cv": "34:19",
     "qr-n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse

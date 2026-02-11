@@ -1,6 +1,5 @@
 from pyauthor_util import author
 
-
 _COM_PART_1 = [
     "As is often the case, there is some question as to",
     " whether μA has מרכא or געיה, because either are valid in this context.",

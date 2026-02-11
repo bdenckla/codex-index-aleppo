@@ -2,7 +2,6 @@ from py import my_html
 from pyauthor_util import author
 from pyauthor_util.job_common import CAM1753_PAGE_URL_BASE
 
-
 _BHQ_COMMENT_3612 = [
     "Here $BHQ has a typo:",
     [" it has ", author.hbo("בִּבְלִ־"), " rather than ", author.hbo("בִּבְלִי־")],

@@ -1,4 +1,4 @@
-""" Exports get1 & get2 """
+"""Exports get1 & get2"""
 
 from pydiff_mm import diff_mm_uni_name
 from pydiff_mm import diff_mm_simplify_simple_diffs as ssd

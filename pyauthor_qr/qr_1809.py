@@ -1,6 +1,5 @@
 from pyauthor_util.job_common import BHQ_COMMENT_XELSEWHERE_DUBIOUS
 
-
 RECORD_1809 = {
     "qr-cv": "18:9",
     "qr-lc-proposed": "בְּעָּקֵ֣ב",

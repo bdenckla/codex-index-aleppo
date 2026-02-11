@@ -1,6 +1,5 @@
 from pyauthor_util import author
 
-
 _COMMENT_PARA1 = [
     "Note that consensus has a rare and hard-to-understand",
     " phenomenon called “secondary מרכא” by Breuer."

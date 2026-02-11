@@ -1,6 +1,5 @@
 from pyauthor_util.job_common import RECORD_1804_CMN_AB
 
-
 _BHQ_COMMENT_1804_B = [
     "$BHQ notes that the דגש on the מ in μL disagrees with μA and μY.",
     " $BHQ misses the געיה in μA.",

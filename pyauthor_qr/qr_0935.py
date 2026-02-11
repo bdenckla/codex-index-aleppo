@@ -1,6 +1,5 @@
 from pyauthor_util.all_verses_but_this import ptx_is_not_xtf
 
-
 RECORD_0935 = {
     "qr-cv": "9:35",
     "qr-lc-proposed": "אַֽ֭דַבְּרָה",

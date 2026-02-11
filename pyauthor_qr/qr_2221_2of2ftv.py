@@ -1,6 +1,5 @@
 from pyauthor_util.job_common import RECORD_2221_CMN_AB
 
-
 _COMMENT_2221_B = [
     "Perhaps some very faint remains of an אתנח under ל can be seen.",
     " The top dot of the שווא (under the ש) is very faint.",

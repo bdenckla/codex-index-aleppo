@@ -38,7 +38,7 @@ def _strip_g3yh_meteg(pro, consensus):
     return pro.replace(_G3YA, ""), consensus.replace(_G3YA, "")
 
 
-_CGJ = "\u034F"  # combining grapheme joiner
+_CGJ = "\u034f"  # combining grapheme joiner
 _SPECIFIC = {
     "qr-intermediate": "qr-ignore-g3yh-diff-in-intermediate",
     "qr-consensus": "qr-ignore-g3yh-diff-in-consensus",

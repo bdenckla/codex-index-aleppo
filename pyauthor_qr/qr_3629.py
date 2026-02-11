@@ -1,6 +1,5 @@
 from pyauthor_util.job_common import correctly_ignores
 
-
 _COMMENT_3629 = [
     "The color image strongly suggests that the mark in question is not ink.",
     " A געיה right next to סילוק like that would be extraordinary, by the way,",

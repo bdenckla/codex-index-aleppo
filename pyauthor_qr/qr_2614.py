@@ -1,7 +1,6 @@
 from pyauthor_util import author
 from pyauthor_util.job_common import suffix
 
-
 _BHQ_COMMENT_2614 = [
     "$BHS does not catch this quirk in μL: it reflects the consensus rather than μL.",
     " $BHQ half-fixes the error in $BHS:",
@@ -23,7 +22,7 @@ _GENCOM_PART1 = [
 _GENCOM_PART2 = [
     "In general I do not cover מלא/חסר differences here,",
     " but this one seemed worth noting because it involves a כתיב/קרי difference,",
-    " and it was called out by a $WLC note."
+    " and it was called out by a $WLC note.",
 ]
 
 RECORD_2614 = {

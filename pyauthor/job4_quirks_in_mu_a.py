@@ -1,4 +1,4 @@
-""" Exports gen_html_file and anchor """
+"""Exports gen_html_file and anchor"""
 
 from pyauthor_util import author
 from pyauthor_util.all_quirks import AllQuirks
