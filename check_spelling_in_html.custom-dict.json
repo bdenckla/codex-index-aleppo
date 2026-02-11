@@ -17,7 +17,6 @@
         "unpointed",
         "ascenders",
         "untranscribed",
-        "vs",
         "Golinets",
         "BHL",
         "UXLC",
@@ -28,9 +27,6 @@
         "nUXLC",
         "misc",
         "Megilloth",
-        "Dageš",
-        "Mappiq",
-        "Leningradensis",
         "Leningradensia",
         "khaf",
         "parva",
@@ -44,19 +40,15 @@
         "callout",
         "Ofer",
         "Quinta",
-        "Miqra",
         "MP",
         "readme",
-        "da",
-        "Tsinnorit",
-        "Oleh",
-        "Shewa",
         "doesn’t"
     ],
     "phrases": [
         "Tsinnorit & Oleh on Initial Vocal Shewa",
         "Y(qere)",
         "Viktor Golinets",
-        "Dageš, Mappiq, Specks on Vellum, and Editing of the Codex Leningradensis"
+        "Dageš, Mappiq, Specks on Vellum, and Editing of the Codex Leningradensis",
+        "Da-at Miqra"
     ]
 }

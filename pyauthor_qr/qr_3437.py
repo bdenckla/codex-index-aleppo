@@ -11,6 +11,6 @@ RECORD_3437 = {
     "qr-generic-comment": [
         "Although my focus is pointing rather than spelling,",
         " I am interested in a spelling difference like this,",
-        " since it is not just a חסר vs מלא difference.",
+        " since it is not just a מלא/חסר difference.",
     ],
 }

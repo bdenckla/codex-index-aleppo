@@ -24,7 +24,7 @@ RECORD_3612 = {
     "qr-generic-comment": [
         "Although my focus is pointing rather than spelling,",
         " I am interested in a spelling difference like this,",
-        " since it is not just a חסר vs מלא difference.",
+        " since it is not just a מלא/חסר difference.",
     ],
     "qr-highlight": 1,
     "qr-lc-loc": {"page": "407B", "column": 1, "line": 4},

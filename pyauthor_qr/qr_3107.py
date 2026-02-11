@@ -8,7 +8,7 @@ _BHQCOM_PART_1 = [
     " This not only contradicts μL,",
     " but also makes no sense given the רפה on the א.",
     #
-    " (Admittedly, the actual location in μL, under the $vav, doesn't make any sense either.)",
+    " (Admittedly, the actual location in μL, under the $vav, doesn’t make any sense either.)",
     #
 ]
 _BHQCOM_PART_2 = [

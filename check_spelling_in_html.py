@@ -115,8 +115,11 @@ def check_spelling(html_files: list[Path], custom_dict_path: Path):
         text = _extract_text_from_html(html_path)
         rel = html_path.as_posix()
 
+        # Normalize whitespace so phrase matching works
+        # (the HTML text extractor can produce runs of whitespace)
+        cleaned = re.sub(r"\s+", " ", text)
+
         # Remove accepted phrases before word extraction
-        cleaned = text
         for phrase in custom_phrases:
             cleaned = re.sub(re.escape(phrase), " ", cleaned, flags=re.IGNORECASE)
 

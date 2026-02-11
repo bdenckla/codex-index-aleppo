@@ -7,9 +7,9 @@ RECORD_2212 = {
     "qr-lc-loc": {"page": "403B", "column": 1, "line": 12},
     "qr-bhq-comment": [
         "The transcription differs from the consensus in way opposite to most such reports here:",
-        " here we see a דחי vs טרחא difference, with $BHQ having דחי,",
+        " here we see a דחי versus טרחא difference, with $BHQ having דחי,",
         " whereas most such reports involving these two accents",
-        " involve a טרחא vs דחי difference, with $BHQ having טרחא.",
+        " involve a טרחא versus דחי difference, with $BHQ having טרחא.",
     ],
     "qr-noted-by": "tBHQ-zmiscWLC",
 }
