@@ -1690,7 +1690,7 @@
               "לִ֖י"
             ]
           },
-          " (the next word) to form a compound word whose the מקף is, somewhat inexplicably, left implicit. If the מקף were made explicit, the compound would be written as ",
+          " (the next word) to form a compound word whose מקף is, somewhat inexplicably, left implicit. If the מקף were made explicit, the compound would be written as ",
           {
             "_htel_tag": "bdi",
             "attr": {
@@ -2285,7 +2285,7 @@
       "line": 2
     },
     "qr-bhq-comment": [
-      "$BHQ notes this possibility, whereas this is not noted in the other editions under consideration. It could be the editors of those other editions did not catch this, or it could be that they caught it but considered to be too slight a possibility to note it."
+      "$BHQ notes this possibility, whereas this is not noted in the other editions under consideration. It could be the editors of those other editions did not catch this, or it could be that they caught it but considered it to be too slight a possibility to note it."
     ],
     "qr-noted-by": "nBHQ",
     "qr-uxlc-needs-fix": true,
@@ -3084,7 +3084,7 @@
       "line": 4
     },
     "qr-bhq-comment": [
-      "$BHQ notes this possibility, whereas this is not noted in the other editions under consideration. It could be the editors of those other editions did not catch this, or it could be that they caught it but considered to be too slight a possibility to note it."
+      "$BHQ notes this possibility, whereas this is not noted in the other editions under consideration. It could be the editors of those other editions did not catch this, or it could be that they caught it but considered it to be too slight a possibility to note it."
     ],
     "qr-noted-by": "nBHQ",
     "qr-uxlc-needs-fix": true,
@@ -3351,7 +3351,7 @@
               "BHQ"
             ]
           },
-          ", has דגש. This רפה is important, to highlight the weirdness of the situation. In other words, by showing the רפה on the proposed reading, I sort of charitably transcribing ",
+          ", has דגש. This רפה is important, to highlight the weirdness of the situation. In other words, by showing the רפה on the proposed reading, I am sort of charitably transcribing ",
           {
             "_htel_tag": "abbr",
             "attr": {
@@ -3378,7 +3378,7 @@
       "line": -12
     },
     "qr-bhq-comment": [
-      "$BHQ notes this possibility, whereas this is not noted in the other editions under consideration. It could be the editors of those other editions did not catch this, or it could be that they caught it but considered to be too slight a possibility to note it."
+      "$BHQ notes this possibility, whereas this is not noted in the other editions under consideration. It could be the editors of those other editions did not catch this, or it could be that they caught it but considered it to be too slight a possibility to note it."
     ],
     "qr-noted-by": "nBHQ",
     "qr-uxlc-needs-fix": true,
@@ -3556,7 +3556,7 @@
     "qr-what-is-weird": "מקף is absent",
     "qr-consensus": "חַי־",
     "qr-generic-comment": [
-      "Perhaps there was a מקף that was ignored during re-inking, leaving only is some very faint evidence of this מקף. By the way, the evidence for the דחי on the א of the next word is very faint."
+      "Perhaps there was a מקף that was ignored during re-inking, leaving only some very faint evidence of this מקף. By the way, the evidence for the דחי on the א of the next word is very faint."
     ],
     "qr-highlight-consensus": 3,
     "qr-lc-loc": {
@@ -5389,7 +5389,7 @@
       {
         "_htel_tag": "p",
         "contents": [
-          "The consensus is that this is one of those כתיב/קרי cases where the word boundary shifts from being after a ה to before that ה. I.e. ידעתה שחר becomes ידעת השחר. I.e. the ה that is at the end of the first word in the כתיב moves to the start of the second word in the קרי. Similar cases include 2 Samuel 5:2 (the כתיב is הייתה מוציא) and Ezekiel 42:9 (the כתיב is ומתחתה לשכות). In contrast to the consensus, in going from כתיב to קרי, μL can be though of as having ",
+          "The consensus is that this is one of those כתיב/קרי cases where the word boundary shifts from being after a ה to before that ה. I.e. ידעתה שחר becomes ידעת השחר. I.e. the ה that is at the end of the first word in the כתיב moves to the start of the second word in the קרי. Similar cases include 2 Samuel 5:2 (the כתיב is הייתה מוציא) and Ezekiel 42:9 (the כתיב is ומתחתה לשכות). In contrast to the consensus, in going from כתיב to קרי, μL can be thought of as having ",
           {
             "_htel_tag": "b",
             "contents": [

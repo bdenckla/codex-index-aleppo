@@ -12,7 +12,7 @@ _GENCOM_1 = [
     " 2 Samuel 5:2 (the כתיב is הייתה מוציא) and",
     " Ezekiel 42:9 (the כתיב is ומתחתה לשכות).",
     " In contrast to the consensus, in going from כתיב to קרי,",
-    [" μL can be though of as having ", my_html.bold("copied")],
+    [" μL can be thought of as having ", my_html.bold("copied")],
     " the ה to the second word rather than moving it.",
 ]
 _GENCOM_2 = [

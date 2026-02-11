@@ -20,7 +20,7 @@ _COMMENT_1413_PARA2 = [
     " if one considers it",
     [" and ", author.hbo("לִ֖י"), " (the next word)"],
     " to form a compound word"
-    " whose the מקף is, somewhat inexplicably, left implicit.",
+    " whose מקף is, somewhat inexplicably, left implicit.",
     " If the מקף were made explicit, the compound would be written as",
     [" ", author.hbo("תָּ֤שִֽׁית־לִ֖י")],
     " and indeed that is the way that word is written (albeit with the מקף colored gray)",

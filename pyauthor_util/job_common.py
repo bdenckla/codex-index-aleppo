@@ -71,7 +71,7 @@ BHQ_COMMENT_XELSEWHERE_DUBIOUS = [
     " whereas this is not noted in the other editions under consideration.",
     " It could be the editors of those other editions did not catch this,",
     " or it could be that they caught it",
-    " but considered to be too slight a possibility to note it.",
+    " but considered it to be too slight a possibility to note it.",
 ]
 BHQ_COMMENT_CMN_0409_AND_SIMILAR = [
     "This is one of seven similar cases in Job in μL.",

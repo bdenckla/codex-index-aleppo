@@ -13,7 +13,7 @@ _COM2 = [
     " This רפה is important, to highlight the weirdness of the situation.",
     #
     " In other words, by showing the רפה on the proposed reading,",
-    " I sort of charitably transcribing $BHQ.",
+    " I am sort of charitably transcribing $BHQ.",
 ]
 _COM3 = [
     "A דגש on a letter with רפה doesn’t make sense.",
