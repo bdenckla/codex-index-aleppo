@@ -15,7 +15,7 @@ RECORD_2221_2of2ftv = {
     **RECORD_2221_CMN_AB,
     "qr-n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
     "qr-lc-proposed": "וּשְׁלם",
-    "qr-what-is-weird": "ל lacks קמץ־אתנח",
+    "qr-what-is-weird": "ל lacks קמץ-אתנח",
     "qr-consensus": "וּשְׁלָ֑ם",
     "qr-generic-comment": _COMMENT_2221_B,
     "qr-highlight": 3,
