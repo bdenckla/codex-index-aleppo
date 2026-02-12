@@ -304,12 +304,18 @@ _AFTER_CONTRIBUTIONS = [
 ]
 
 
-def _cpara18_part1(the_len):
+def reiterates_base(intro, the_len):
     return [
-        ["It is also good news that the Job fascicle of $BHQ notes ", str(the_len)],
-        [" quirks in μL that ", my_html.bold("are"), " noted"],
-        [" in one or more of the other three editions."],
+        f"{intro} Job fascicle of $BHQ notes " + str(the_len),
+        " quirks in μL that are noted",
+        " in one or more of the other three editions.",
+        " These are cases where $BHQ reiterates something available",
+        " in one or more of the other three editions.",
     ]
+
+
+def _reiterates_part1(the_len):
+    return reiterates_base("It is also good news that the", the_len)
 
 
 _COUNT_OF_RNTQ = 3  # RNTQ: reiterations new to BHQ
@@ -317,10 +323,7 @@ _DESCRIPTION_OF_RNTQ = ["three that are new are the ones in 6:21, 18:4, and 19:1
 _WORDS_FOR_NUMBERS = {1: "one", 2: "two", 3: "three", 4: "four"}
 
 
-_CPARA_REITERATES = [
-    " These are cases where $BHQ reiterates something available",
-    " in one or more of the other three editions.",
-    #
+_REITERATES_PART_2 = [
     " While a reiteration is not as valuable as a new contribution,",
     " it is still valuable.",
     #
@@ -347,7 +350,7 @@ _CPARA_RNTQ = [
 
 def _reiterations(the_len):
     return [
-        author.para(_cpara18_part1(the_len) + _CPARA_REITERATES),
+        author.para(_reiterates_part1(the_len) + _REITERATES_PART_2),
         author.para(_CPARA_RNTQ),
     ]
 
