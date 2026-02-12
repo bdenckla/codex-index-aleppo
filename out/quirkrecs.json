@@ -452,7 +452,17 @@
               "vav"
             ]
           },
-          " of ותהי was changed from מרכא to געיה in going from ",
+          " of ",
+          {
+            "_htel_tag": "span",
+            "attr": {
+              "class": "unpointed-tanakh"
+            },
+            "contents": [
+              "ותהי"
+            ]
+          },
+          " was changed from מרכא to געיה in going from ",
           {
             "_htel_tag": "abbr",
             "attr": {
@@ -472,7 +482,17 @@
               "BHQ"
             ]
           },
-          ". This was a regression, in my opinion, since it leaves ותהי with no accent, only געיה. This is an uncharitable transcription."
+          ". This was a regression, in my opinion, since it leaves ",
+          {
+            "_htel_tag": "span",
+            "attr": {
+              "class": "unpointed-tanakh"
+            },
+            "contents": [
+              "ותהי"
+            ]
+          },
+          " with no accent, only געיה. This is an uncharitable transcription."
         ]
       }
     ],
@@ -616,7 +636,7 @@
     "qr-cv": "6:27",
     "qr-consensus": "עַֽל־רֵיעֲכֶֽם׃",
     "qr-lc-proposed": "עַל־רֵֽיעֲכֶֽם׃",
-    "qr-what-is-weird": "געיה on רי not על",
+    "qr-what-is-weird": "געיה on %רי not %על",
     "qr-highlight-lc-proposed": 4,
     "qr-highlight-consensus": 1,
     "qr-lc-loc": {
@@ -1521,10 +1541,10 @@
     "qr-what-is-weird": "ת has געיה",
     "qr-consensus": "וְתוּשִׁיָּ֑ה",
     "qr-generic-comment": [
-      "There is a blob of ink below the ת. Most likely, this mark is a malformed masorah circle on the word מוליך on the line below."
+      "There is a blob of ink below the ת. Most likely, this mark is a malformed masorah circle on the word %מוליך on the line below."
     ],
     "qr-bhq-comment": [
-      "$BHQ seems to transcribe the blob of ink as both a געיה on ת and a masorah circle on מוליך. $BHS did not have this געיה; I wish $BHQ had left well enough alone."
+      "$BHQ seems to transcribe the blob of ink as both a געיה on ת and a masorah circle on %מוליך. $BHS did not have this געיה; I wish $BHQ had left well enough alone."
     ],
     "qr-highlight": 2,
     "qr-lc-loc": {
@@ -1961,7 +1981,7 @@
     "qr-cv": "16:6",
     "qr-consensus": "מַה־מִּנִּ֥י",
     "qr-lc-proposed": "מַה־מִנִּ֥י",
-    "qr-what-is-weird": "מ after מח lacks דגש",
+    "qr-what-is-weird": "מ after %מח lacks דגש",
     "qr-highlight": 4,
     "qr-lc-loc": {
       "page": "401B",
@@ -1969,7 +1989,7 @@
       "line": 7
     },
     "qr-generic-comment": [
-      "As $DM footnote 25 mentions, the omission of דגש after מה־ is common in μL. See 21:15, 34:33, and 35:7."
+      "As $DM footnote 25 mentions, the omission of דגש after %מה־ is common in μL. See 21:15, 34:33, and 35:7."
     ],
     "qr-lc-img": "1606.png",
     "nbd": {
@@ -2121,7 +2141,22 @@
           " consider, but ultimately decide against, the faint possible דגש? Or did they simply ignore μL entirely, supplying the consensus pointing, which has no דגש?"
         ]
       },
-      " See my entry on נכר in 34:19 for further discussion."
+      {
+        "_htel_tag": "p",
+        "contents": [
+          "See my entry on ",
+          {
+            "_htel_tag": "span",
+            "attr": {
+              "class": "unpointed-tanakh"
+            },
+            "contents": [
+              "נכר"
+            ]
+          },
+          " in 34:19 for further discussion."
+        ]
+      }
     ],
     "qr-noted-by": "nWLC",
     "qr-uxlc-needs-fix": [
@@ -2711,7 +2746,7 @@
     "qr-lc-proposed": "מַה־שַׁדַּ֥י",
     "qr-what-is-weird": "ש lacks דגש",
     "qr-generic-comment": [
-      "As $DM footnote 25 mentions, the omission of דגש after מה־ is common in μL. See 16:6, 34:33, and 35:7."
+      "As $DM footnote 25 mentions, the omission of דגש after %מה־ is common in μL. See 16:6, 34:33, and 35:7."
     ],
     "qr-highlight": 4,
     "qr-lc-loc": {
@@ -2893,11 +2928,11 @@
     "qr-what-is-weird": "אתנח not מונח",
     "qr-consensus": "עִמּ֣וֹ",
     "qr-generic-comment": [
-      "A dot under the מ of עמו is fairly clear. It is (charitably) not transcribed by $BHL_A, presumably based on the consensus expectation that it is absent."
+      "A dot under the מ of %עמו is fairly clear. It is (charitably) not transcribed by $BHL_A, presumably based on the consensus expectation that it is absent."
     ],
     "qr-highlight": 2,
     "qr-bhq-comment": [
-      "$BHQ fails to note that the אתנח it transcribes on עמו disagrees with μA and μY."
+      "$BHQ fails to note that the אתנח it transcribes on %עמו disagrees with μA and μY."
     ],
     "qr-noted-by": "tBHQ-nBHL-nWLC",
     "qr-aleppo-page-url": "https://www.mgketer.org/mikra/29/22/1/mg/106",
@@ -2905,7 +2940,7 @@
     "qr-cam1753-img-intro": [
       "note that instead of a masorah circle, μY uses a pair of above-dots",
       " as a “callout” for a Masorah parva note;",
-      " hence the pair of above-dots above ל in ושלם."
+      " hence the pair of above-dots above ל in %ושלם."
     ],
     "qr-lc-img": "2221-1of2ftv.png",
     "qr-aleppo-img": "Aleppo-2221-1of2ftv.png",
@@ -2942,7 +2977,7 @@
     ],
     "qr-highlight": 3,
     "qr-bhq-comment": [
-      "$BHQ (charitably) transcribes the top dot of the שווא using, as one often has to, faint evidence bolstered by consensus expectations. $BHQ notes (as does $BHS) that whereas the ל of ושלם is unpointed in μL, that ל has קמץ and אתנח in μA and μY."
+      "$BHQ (charitably) transcribes the top dot of the שווא using, as one often has to, faint evidence bolstered by consensus expectations. $BHQ notes (as does $BHS) that whereas the ל of %ושלם is unpointed in μL, that ל has קמץ and אתנח in μA and μY."
     ],
     "qr-noted-by": "nBHQ-nWLC",
     "qr-lc-img": "2221-2of2ftv.png",
@@ -3518,40 +3553,72 @@
           {
             "_htel_tag": "span",
             "attr": {
-              "dir": "rtl"
+              "class": "unpointed-tanakh"
             },
             "contents": [
-              "– רתו"
+              {
+                "_htel_tag": "span",
+                "attr": {
+                  "dir": "rtl"
+                },
+                "contents": [
+                  "– רתו"
+                ]
+              }
             ]
           },
           " in the כתיב merely expands to ",
           {
             "_htel_tag": "span",
             "attr": {
-              "dir": "rtl"
+              "class": "unpointed-tanakh"
             },
             "contents": [
-              "– רתיו"
+              {
+                "_htel_tag": "span",
+                "attr": {
+                  "dir": "rtl"
+                },
+                "contents": [
+                  "– רתיו"
+                ]
+              }
             ]
           },
           " in the קרי. In contrast to the consensus, in μL, ",
           {
             "_htel_tag": "span",
             "attr": {
-              "dir": "rtl"
+              "class": "unpointed-tanakh"
             },
             "contents": [
-              "– רתו"
+              {
+                "_htel_tag": "span",
+                "attr": {
+                  "dir": "rtl"
+                },
+                "contents": [
+                  "– רתו"
+                ]
+              }
             ]
           },
           " in the כתיב expands all the way to ",
           {
             "_htel_tag": "span",
             "attr": {
-              "dir": "rtl"
+              "class": "unpointed-tanakh"
             },
             "contents": [
-              "– רותיב"
+              {
+                "_htel_tag": "span",
+                "attr": {
+                  "dir": "rtl"
+                },
+                "contents": [
+                  "– רותיב"
+                ]
+              }
             ]
           },
           " in the קרי. The marginal קרי note in μL is a little hard to parse until you realize that it is “invaded” from above by the descender of a big dotted ק."
@@ -4921,7 +4988,7 @@
       "line": 18
     },
     "qr-generic-comment": [
-      "As $DM footnote 25 mentions, the omission of דגש after מה־ is common in μL. See 16:6, 21:15, and 35:7."
+      "As $DM footnote 25 mentions, the omission of דגש after %מה־ is common in μL. See 16:6, 21:15, and 35:7."
     ],
     "qr-lc-img": "3433-4of4ftv.png",
     "nbd": {
@@ -4971,7 +5038,7 @@
     "qr-cv": "35:7",
     "qr-consensus": "מַה־מִּיָּדְךָ֥",
     "qr-lc-proposed": "מַה־מִיָּדְךָ֥",
-    "qr-what-is-weird": "מ after מח lacks דגש",
+    "qr-what-is-weird": "מ after %מח lacks דגש",
     "qr-highlight": 4,
     "qr-lc-loc": {
       "page": "407A",
@@ -4979,7 +5046,7 @@
       "line": 4
     },
     "qr-generic-comment": [
-      "As $DM footnote 25 mentions, the omission of דגש after מה־ is common in μL. See 16:6, 21:15, and 34:33."
+      "As $DM footnote 25 mentions, the omission of דגש after %מה־ is common in μL. See 16:6, 21:15, and 34:33."
     ],
     "qr-lc-img": "3507.png",
     "nbd": {
@@ -5266,7 +5333,22 @@
           " consider, but ultimately decide against, the faint possible large געיה? Or did they simply ignore μL entirely, supplying the consensus pointing, which has no געיה?"
         ]
       },
-      " See my entry on נכר in 34:19 for further discussion."
+      {
+        "_htel_tag": "p",
+        "contents": [
+          "See my entry on ",
+          {
+            "_htel_tag": "span",
+            "attr": {
+              "class": "unpointed-tanakh"
+            },
+            "contents": [
+              "נכר"
+            ]
+          },
+          " in 34:19 for further discussion."
+        ]
+      }
     ],
     "qr-noted-by": "nBHL",
     "qr-lc-img": "3629.png",

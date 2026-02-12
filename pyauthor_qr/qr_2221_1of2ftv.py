@@ -1,18 +1,18 @@
 from pyauthor_util.job_common import RECORD_2221_CMN_AB, CAM1753_PAGE_URL_BASE
 
 _COMMENT_2221_A = [
-    "A dot under the מ of עמו is fairly clear.",
+    "A dot under the מ of %עמו is fairly clear.",
     " It is (charitably) not transcribed by $BHL_A,",
     " presumably based on the consensus expectation that it is absent.",
 ]
 _BHQ_COMMENT_2221_A = [
-    "$BHQ fails to note that the אתנח it transcribes on עמו",
+    "$BHQ fails to note that the אתנח it transcribes on %עמו",
     " disagrees with μA and μY.",
 ]
 _CAM1753_IMG_INTRO_2221 = [
     "note that instead of a masorah circle, μY uses a pair of above-dots",
     " as a “callout” for a Masorah parva note;",
-    " hence the pair of above-dots above ל in ושלם.",
+    " hence the pair of above-dots above ל in %ושלם.",
 ]
 RECORD_2221_1of2ftv = {
     **RECORD_2221_CMN_AB,

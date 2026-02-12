@@ -7,11 +7,11 @@ RECORD_1216 = {
     "qr-generic-comment": [
         "There is a blob of ink below the ת.",
         " Most likely, this mark is a malformed masorah circle",
-        " on the word מוליך on the line below.",
+        " on the word %מוליך on the line below.",
     ],
     "qr-bhq-comment": [
         "$BHQ seems to transcribe the blob of ink as both",
-        " a געיה on ת and a masorah circle on מוליך.",
+        " a געיה on ת and a masorah circle on %מוליך.",
         " $BHS did not have this געיה;",
         " I wish $BHQ had left well enough alone.",
     ],

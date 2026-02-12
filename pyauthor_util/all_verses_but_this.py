@@ -31,7 +31,7 @@ def ptx_is_not_xtf(cv: str) -> list[str]:
 
 def no_dag_after_mah(cv: str) -> list[str]:
     return [
-        "As $DM footnote 25 mentions, the omission of דגש after מה־",
+        "As $DM footnote 25 mentions, the omission of דגש after %מה־",
         *[" is common in μL. See ", _all_ndam_but_this(cv), "."],
     ]
 

@@ -42,7 +42,15 @@ def _corr_ig_cmn(what, adjective):
     return author.para(contents)
 
 
-_SEE_3419 = [" See my entry on נכר in 34:19 for further discussion."]
+_SEE_3419 = [
+    author.para(
+        [
+            "See my entry on ",
+            author.span_unpointed_tanakh("נכר"),
+            " in 34:19 for further discussion.",
+        ]
+    )
+]
 _MORE_BROADLY = [
     "More broadly, $BHQ Job never notes",
     " any uncertainty in its transcription of μL.",

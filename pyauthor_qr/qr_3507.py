@@ -5,7 +5,7 @@ RECORD_3507 = {
     "qr-cv": "35:7",
     "qr-consensus": "מַה־מִּיָּדְךָ֥",
     "qr-lc-proposed": "מַה־מִיָּדְךָ֥",
-    "qr-what-is-weird": "מ after מח lacks דגש",
+    "qr-what-is-weird": "מ after %מח lacks דגש",
     "qr-highlight": 4,
     "qr-lc-loc": {"page": "407A", "column": 2, "line": 4},
     "qr-generic-comment": no_dag_after_mah("35:7"),

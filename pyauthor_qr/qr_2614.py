@@ -15,11 +15,11 @@ _BHQ_COMMENT_2614 = [
 
 _GENCOM_PART1 = [
     "The consensus is that חולם stays חסר in the קרי, i.e. ",
-    [suffix("רתו"), " in the כתיב merely expands to "],
-    [suffix("רתיו"), " in the קרי."],
+    [author.span_unpointed_tanakh(suffix("רתו")), " in the כתיב merely expands to "],
+    [author.span_unpointed_tanakh(suffix("רתיו")), " in the קרי."],
     " In contrast to the consensus, in μL, ",
-    [suffix("רתו"), " in the כתיב expands all the way to "],
-    [suffix("רותיב"), " in the קרי."],
+    [author.span_unpointed_tanakh(suffix("רתו")), " in the כתיב expands all the way to "],
+    [author.span_unpointed_tanakh(suffix("רותיב")), " in the קרי."],
     " The marginal קרי note in μL is a little hard to parse until you realize",
     " that it is “invaded” from above by the descender of a big dotted ק.",
 ]

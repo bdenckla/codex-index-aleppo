@@ -33,9 +33,9 @@ _COMMENT_PARA3 = [
     [" the ", _COS_HEB_ANC, " in its modern Hebrew.)"],
 ]
 _COMMENT_PARA4 = [
-    "The mark under the $vav of ותהי was changed",
+    "The mark under the $vav of %ותהי was changed",
     " from מרכא to געיה in going from $BHS to $BHQ.",
-    " This was a regression, in my opinion, since it leaves ותהי with no accent, only געיה.",
+    " This was a regression, in my opinion, since it leaves %ותהי with no accent, only געיה.",
     " This is an uncharitable transcription.",
 ]
 RECORD_0610 = {

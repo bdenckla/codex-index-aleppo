@@ -8,7 +8,7 @@ _COMMENT_2221_B = [
 _BHQ_COMMENT_2221_B = [
     "$BHQ (charitably) transcribes the top dot of the שווא",
     " using, as one often has to, faint evidence bolstered by consensus expectations.",
-    " $BHQ notes (as does $BHS) that whereas the ל of ושלם is unpointed in μL,",
+    " $BHQ notes (as does $BHS) that whereas the ל of %ושלם is unpointed in μL,",
     " that ל has קמץ and אתנח in μA and μY.",
 ]
 RECORD_2221_2of2ftv = {
