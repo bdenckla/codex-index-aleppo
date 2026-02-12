@@ -65,7 +65,11 @@ def extract_hebrew_words(text: str) -> list[str]:
 
 
 class _TextExtractor(HTMLParser):
-    """Extract visible text from HTML, skipping <style>, <script>, and lang="hbo" elements."""
+    """Extract visible text from HTML, skipping <style>, <script>, and lang="hbo" elements.
+
+    Text inside <span class="unpointed-tanakh"> is collected separately
+    rather than included in the main text.
+    """
 
     _SKIP_TAGS = {"style", "script"}
 
@@ -73,41 +77,58 @@ class _TextExtractor(HTMLParser):
         super().__init__()
         self._pieces: list[str] = []
         self._skip_depth = 0
-        self._tag_stack: list[tuple[str, bool]] = []
+        self._tag_stack: list[tuple[str, bool, bool]] = []
         self._hbo_depth = 0
+        self._unpointed_tanakh_depth = 0
+        self._unpointed_tanakh_pieces: list[str] = []
 
     def handle_starttag(self, tag, attrs):
         if tag in self._SKIP_TAGS:
             self._skip_depth += 1
-        is_hbo = dict(attrs).get("lang") == "hbo"
-        self._tag_stack.append((tag, is_hbo))
+        attrs_dict = dict(attrs)
+        is_hbo = attrs_dict.get("lang") == "hbo"
+        is_upt = (
+            tag == "span" and attrs_dict.get("class") == "unpointed-tanakh"
+        )
+        self._tag_stack.append((tag, is_hbo, is_upt))
         if is_hbo:
             self._hbo_depth += 1
+        if is_upt:
+            self._unpointed_tanakh_depth += 1
 
     def handle_endtag(self, tag):
         if tag in self._SKIP_TAGS and self._skip_depth > 0:
             self._skip_depth -= 1
         while self._tag_stack:
-            popped_tag, was_hbo = self._tag_stack.pop()
+            popped_tag, was_hbo, was_upt = self._tag_stack.pop()
             if was_hbo and self._hbo_depth > 0:
                 self._hbo_depth -= 1
+            if was_upt and self._unpointed_tanakh_depth > 0:
+                self._unpointed_tanakh_depth -= 1
             if popped_tag == tag:
                 break
 
     def handle_data(self, data):
-        if self._skip_depth == 0 and self._hbo_depth == 0:
+        if self._skip_depth > 0 or self._hbo_depth > 0:
+            return
+        if self._unpointed_tanakh_depth > 0:
+            self._unpointed_tanakh_pieces.append(data)
+        else:
             self._pieces.append(data)
 
     def get_text(self) -> str:
         return " ".join(self._pieces)
 
+    def get_unpointed_tanakh_text(self) -> str:
+        return " ".join(self._unpointed_tanakh_pieces)
 
-def _extract_text_from_html(html_path: Path) -> str:
-    """Parse an HTML file and return its visible text content."""
+
+def _extract_text_from_html(html_path: Path) -> tuple[str, str]:
+    """Parse an HTML file and return (visible_text, unpointed_tanakh_text)."""
     html = html_path.read_text(encoding="utf-8")
     extractor = _TextExtractor()
     extractor.feed(html)
-    return extractor.get_text()
+    return extractor.get_text(), extractor.get_unpointed_tanakh_text()
 
 
 def _collect_html_files(docs_dir: Path) -> list[Path]:
@@ -119,7 +140,7 @@ def check_straight_apostrophes(html_files: list[Path]):
     """Check for straight apostrophes (U+0027) in HTML text; curly (\u2019) should be used."""
     issues = []
     for html_path in html_files:
-        text = _extract_text_from_html(html_path)
+        text, _ = _extract_text_from_html(html_path)
         rel = html_path.as_posix()
         for match in re.finditer(r"'", text):
             context = text[max(0, match.start() - 10) : match.end() + 10]
@@ -131,7 +152,7 @@ def check_period_uppercase(html_files: list[Path]):
     """Check for period immediately followed by an uppercase letter (missing space)."""
     issues = []
     for html_path in html_files:
-        text = _extract_text_from_html(html_path)
+        text, _ = _extract_text_from_html(html_path)
         rel = html_path.as_posix()
         for match in re.finditer(r"\.[A-Z]", text):
             context = text[max(0, match.start() - 10) : match.end() + 10]
@@ -143,8 +164,9 @@ def check_spelling(html_files: list[Path], custom_dict_path: Path):
     """Check spelling of English words in HTML files.
 
     Returns (issues, word_ci_freq, word_exact_freq, phrase_freq,
-    phrase_heb_freq, word_heb_freq) where the freq dicts map each
-    custom-dictionary entry to the number of times it was matched.
+    phrase_heb_freq, word_heb_freq, upt_freq) where the freq dicts map each
+    custom-dictionary entry to the number of times it was matched,
+    and upt_freq maps unpointed-tanakh words to their frequencies.
     """
     spell = SpellChecker()
     words_ci, words_exact, custom_phrases, custom_phrases_heb, words_hebrew = (
@@ -157,11 +179,16 @@ def check_spelling(html_files: list[Path], custom_dict_path: Path):
     phrase_freq: dict[str, int] = {p: 0 for p in custom_phrases}
     phrase_heb_freq: dict[str, int] = {p: 0 for p in custom_phrases_heb}
     word_heb_freq: dict[str, int] = {w: 0 for w in words_hebrew}
+    upt_freq: dict[str, int] = {}
 
     issues = []
 
     for html_path in html_files:
-        text = _extract_text_from_html(html_path)
+        text, upt_text = _extract_text_from_html(html_path)
+
+        # Count unpointed-tanakh Hebrew words
+        for heb_word in extract_hebrew_words(upt_text):
+            upt_freq[heb_word] = upt_freq.get(heb_word, 0) + 1
 
         # Normalize whitespace so phrase matching works
         # (the HTML text extractor can produce runs of whitespace)
@@ -221,6 +248,7 @@ def check_spelling(html_files: list[Path], custom_dict_path: Path):
         phrase_freq,
         phrase_heb_freq,
         word_heb_freq,
+        upt_freq,
     )
 
 
@@ -265,6 +293,7 @@ def main():
         phrase_freq,
         phrase_heb_freq,
         word_heb_freq,
+        upt_freq,
     ) = check_spelling(html_files, custom_dict_path)
 
     # Write custom dictionary frequency reports
@@ -278,6 +307,7 @@ def main():
             "phrases": {k: v for k, v in sorter(phrase_freq.items())},
             "phrases_hebrew": {k: v for k, v in sorter(phrase_heb_freq.items())},
             "words_hebrew": {k: v for k, v in sorter(word_heb_freq.items())},
+            "words_unpointed_tanakh": {k: v for k, v in sorter(upt_freq.items())},
         }
 
     # Alphabetical order
