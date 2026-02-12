@@ -39,10 +39,12 @@ _GENCOM_2 = [
     " In its body text, the Jerusalem Crown edition puts the פתח on no letter:",
     " instead, it floats before the ש of %שחר.",
     #
-    [" A vowel mark floating like this before a כתיב word has ", d5_anchor(), "."],
+    " A vowel mark floating like this before a כתיב word has manuscript precedent.",
     #
     " I.e. although the Jerusalem Crown edition is diverging from the manuscript here,",
     " it is not diverging from manuscript tradition in general by using this notation.",
+    #
+    [" For more on orphan pointing, see my ", d5_anchor(), "."],
 ]
 _BHQ_COMMENT_3812_B = [
     "$BHS does not catch this quirk in μL: it reflects the consensus rather than μL.",

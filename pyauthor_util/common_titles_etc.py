@@ -19,7 +19,7 @@ D5_FNAME = "job5_orphan_qere_points.html"
 
 
 def d5_anchor(jobn_dir="."):
-    anc = my_html.anchor_h("manuscript precedent", f"{jobn_dir}/{D5_FNAME}")
+    anc = my_html.anchor_h("document", f"{jobn_dir}/{D5_FNAME}")
     return author.std_anchor(anc, D5_H1_CONTENTS)
 
 

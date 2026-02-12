@@ -488,12 +488,8 @@ _DOLLAR_SUB_DISPATCH = {
 }
 
 
-_HEBREW_TO_OUR_CODE_FROM = (
-    "אבגדה" + "וזחטי" + "כלמנס" + "עפצקר" + "שת" + "ךםןףץ" + "־ "
-)
-_HEBREW_TO_OUR_CODE_TO = (
-    "ABGDH" + "VZXEY" + "KLMNO" + "3PCQR" + "JF" + "56789" + "0_"
-)
+_HEBREW_TO_OUR_CODE_FROM = "אבגדה" + "וזחטי" + "כלמנס" + "עפצקר" + "שת" + "ךםןףץ" + "־ "
+_HEBREW_TO_OUR_CODE_TO = "ABGDH" + "VZXEY" + "KLMNO" + "3PCQR" + "JF" + "56789" + "0_"
 _HEBREW_TO_OUR_CODE = str.maketrans(
     _HEBREW_TO_OUR_CODE_FROM,
     _HEBREW_TO_OUR_CODE_TO,

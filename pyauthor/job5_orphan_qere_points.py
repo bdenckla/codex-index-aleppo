@@ -48,7 +48,7 @@ _SAMUEL_INTRO = [
 _SAMUEL_QUOTE = [
     [
         "אין רווח לתיבת ",
-        author.hbo("\N{LEFT-TO-RIGHT MARK}\"כֵּ֥ן\""),
+        author.hbo('\N{LEFT-TO-RIGHT MARK}"כֵּ֥ן"'),
         " הנקראת ולא נכתבת, אבל נכתבו הניקוד והטעם בין התיבות למטה",
     ],
 ]
@@ -70,7 +70,7 @@ _KINGS_INTRO = [
     " The note in the Breuer edition of the Aleppo Codex says:",
 ]
 _KINGS_QUOTE = [
-    "נקודות הקובוץ עוד לפני האות בי\"ת מימין למטה, ואין שווא במקביל לקרי",
+    'נקודות הקובוץ עוד לפני האות בי"ת מימין למטה, ואין שווא במקביל לקרי',
 ]
 _KINGS_DISCUSSION = [
     "I.e. the $qamats dots (of the קבוץ) are placed even before the letter בית,",
@@ -90,7 +90,7 @@ _LAMENTATIONS_INTRO = [
     " The note in the Breuer edition of the Aleppo Codex says:",
 ]
 _LAMENTATIONS_QUOTE = [
-    "חסרות שלושת הנקודות של שורוק לפני האות זי\"ן",
+    'חסרות שלושת הנקודות של שורוק לפני האות זי"ן',
 ]
 _LAMENTATIONS_DISCUSSION = [
     "I.e. the three dots of the $shuruq are missing before the letter זין.",

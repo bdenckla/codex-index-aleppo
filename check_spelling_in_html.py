@@ -47,7 +47,14 @@ def load_custom_dictionary(
             words_hebrew.add(word)
         for word in data.get("names_of_hebrew_letters", []):
             names_of_hebrew_letters.add(word)
-    return words_ci, words_exact, phrases, phrases_hebrew, words_hebrew, names_of_hebrew_letters
+    return (
+        words_ci,
+        words_exact,
+        phrases,
+        phrases_hebrew,
+        words_hebrew,
+        names_of_hebrew_letters,
+    )
 
 
 def extract_english_words(text: str) -> list[str]:
@@ -92,9 +99,7 @@ class _TextExtractor(HTMLParser):
             self._skip_depth += 1
         attrs_dict = dict(attrs)
         is_hbo = attrs_dict.get("lang") in ("hbo", "he")
-        is_upt = (
-            tag == "span" and attrs_dict.get("class") == "unpointed-tanakh"
-        )
+        is_upt = tag == "span" and attrs_dict.get("class") == "unpointed-tanakh"
         self._tag_stack.append((tag, is_hbo, is_upt))
         if is_hbo:
             self._hbo_depth += 1
@@ -161,9 +166,14 @@ def check_spelling(html_files: list[Path], custom_dict_path: Path):
     and upt_freq maps unpointed-tanakh words to their frequencies.
     """
     spell = SpellChecker()
-    words_ci, words_exact, custom_phrases, custom_phrases_heb, words_hebrew, names_of_heb_letters = (
-        load_custom_dictionary(custom_dict_path)
-    )
+    (
+        words_ci,
+        words_exact,
+        custom_phrases,
+        custom_phrases_heb,
+        words_hebrew,
+        names_of_heb_letters,
+    ) = load_custom_dictionary(custom_dict_path)
 
     # Track how many times each custom entry is matched
     word_ci_freq: dict[str, int] = {w: 0 for w in words_ci}
@@ -304,7 +314,9 @@ def main():
             "phrases": {k: v for k, v in sorter(phrase_freq.items())},
             "phrases_hebrew": {k: v for k, v in sorter(phrase_heb_freq.items())},
             "words_hebrew": {k: v for k, v in sorter(word_heb_freq.items())},
-            "names_of_hebrew_letters": {k: v for k, v in sorter(letter_name_freq.items())},
+            "names_of_hebrew_letters": {
+                k: v for k, v in sorter(letter_name_freq.items())
+            },
             "words_unpointed_tanakh": {k: v for k, v in sorter(upt_freq.items())},
         }
 

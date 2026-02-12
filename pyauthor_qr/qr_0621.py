@@ -3,8 +3,10 @@ from pyauthor_util import author
 _GENCOM_PARA1 = [
     "Consensus has no כתיב/קרי here, or, if you like,",
     " %לא are the letters of both the כתיב and קרי.",
-    [" So, we could say that the consensus כתיב/קרי is ", author.span_unpointed_tanakh("לא/לא"), " and"],
-    [" the proposed כתיב/קרי for μL is ", author.span_unpointed_tanakh("לא/לו"), "."],
+    " So, we could say that the consensus כתיב/קרי is",
+    [" ", author.span_unpointed_tanakh("לא/לא"), " and"],
+    " the proposed כתיב/קרי for μL is",
+    [" ", author.span_unpointed_tanakh("לא/לו"), "."],
 ]
 _GENCOM_PARA2 = [
     ["Aside: don’t be confused by what might look like an L (ell)"],
