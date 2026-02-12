@@ -32,6 +32,10 @@ def span_gray(contents):
     return my_html.span_c(dollar_sub(contents), "gray")
 
 
+def span_unpointed_tanakh(contents):
+    return my_html.span_c(contents, "unpointed-tanakh")
+
+
 def emphasis(contents):
     return my_html.emphasis(dollar_sub(contents))
 

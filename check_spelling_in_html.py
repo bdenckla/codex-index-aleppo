@@ -195,9 +195,7 @@ def check_spelling(html_files: list[Path], custom_dict_path: Path):
                     {
                         "file": rel,
                         "word": word,
-                        "suggestions": list(
-                            spell.candidates(word.lower()) or []
-                        )[:5],
+                        "suggestions": list(spell.candidates(word.lower()) or [])[:5],
                     }
                 )
 
@@ -216,15 +214,20 @@ def check_spelling(html_files: list[Path], custom_dict_path: Path):
                     }
                 )
 
-    return issues, word_ci_freq, word_exact_freq, phrase_freq, phrase_heb_freq, word_heb_freq
+    return (
+        issues,
+        word_ci_freq,
+        word_exact_freq,
+        phrase_freq,
+        phrase_heb_freq,
+        word_heb_freq,
+    )
 
 
 def main():
     project_root = Path(__file__).parent
     docs_dir = project_root / "docs"
-    custom_dict_path = (
-        Path(__file__).parent / "check_spelling_in_html.custom-dict.json"
-    )
+    custom_dict_path = Path(__file__).parent / "check_spelling_in_html.custom-dict.json"
 
     if not docs_dir.exists():
         print(f"Error: {docs_dir} not found")
@@ -255,9 +258,14 @@ def main():
         for issue in period_issues:
             print(f"  [{issue['file']}]: ...{issue['context']}...")
 
-    issues, word_ci_freq, word_exact_freq, phrase_freq, phrase_heb_freq, word_heb_freq = (
-        check_spelling(html_files, custom_dict_path)
-    )
+    (
+        issues,
+        word_ci_freq,
+        word_exact_freq,
+        phrase_freq,
+        phrase_heb_freq,
+        word_heb_freq,
+    ) = check_spelling(html_files, custom_dict_path)
 
     # Write custom dictionary frequency reports
     out_dir = project_root / "out"
@@ -275,10 +283,7 @@ def main():
     # Alphabetical order
     alpha_path = out_dir / "custom-dict-freqs-ordered-by-entry.json"
     alpha_path.write_text(
-        json.dumps(
-            _make_freq_report(sorted), indent=4, ensure_ascii=False
-        )
-        + "\n",
+        json.dumps(_make_freq_report(sorted), indent=4, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
 
@@ -286,10 +291,7 @@ def main():
     by_count = lambda items: sorted(items, key=lambda x: (-x[1], x[0]))
     count_path = out_dir / "custom-dict-freqs-ordered-by-count.json"
     count_path.write_text(
-        json.dumps(
-            _make_freq_report(by_count), indent=4, ensure_ascii=False
-        )
-        + "\n",
+        json.dumps(_make_freq_report(by_count), indent=4, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
 
