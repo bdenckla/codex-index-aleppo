@@ -1,12 +1,9 @@
 import os
-from pyauthor_util.noted_by import x_uclc
 from pyauthor_util.short_id_etc import short_id
 
 
 def lc_img(quirkrec):
-    use_png = x_uclc(quirkrec)
-    ext = ".png" if use_png else ".jpg"
-    return quirkrec.get("qr-lc-img") or f"{short_id(quirkrec)}{ext}"
+    return quirkrec.get("qr-lc-img") or f"{short_id(quirkrec)}.png"
 
 
 _INFO_ABOUT_OPTIONAL_IMAGES = [

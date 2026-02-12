@@ -49,7 +49,7 @@ def _make_cbody():
         author.heading_level_2("2 Samuel 18:20"),
         author.para(_SAMUEL_INTRO),
         author.para(_SAMUEL_DISCUSSION_1),
-        _img("2-Samuel-c18v20.jpg"),
+        _img("2-Samuel-c18v20.png"),
         author.para(_SAMUEL_DISCUSSION_2),
     ]
 
