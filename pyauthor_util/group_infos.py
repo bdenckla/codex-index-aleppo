@@ -1,5 +1,6 @@
 """Human-friendly group info dicts for groups that previously used bare string keys."""
 from pyauthor.mcontributions_base import contributions_base
+from pyauthor.mreiterates_base import reiterates_base
 from pyauthor_util import author
 
 
@@ -17,7 +18,7 @@ def reiterations_group_info(the_len):
         "gi:group_key": "g:nbhq_and_n3",
         "gi:group_heading": "$BHQ reiterations",
         "gi:group_title": "BHQ reiterations",
-        "gi:group_intro": [],
+        "gi:group_intro": [author.para(reiterates_base("The", the_len))],
     }
 
 

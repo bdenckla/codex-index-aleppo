@@ -2,6 +2,7 @@
 
 from py import my_html
 from pyauthor.mcontributions_base import contributions_base
+from pyauthor.mreiterates_base import reiterates_base
 from pyauthor_util.job2_bad_news_2 import (
     bad_news_2,
     wlc_dexi,
@@ -302,16 +303,6 @@ _AFTER_CONTRIBUTIONS = [
     " Nonetheless, I consider even those ones to be valuable contributions",
     " to the documentation of μL.",
 ]
-
-
-def reiterates_base(intro, the_len):
-    return [
-        f"{intro} Job fascicle of $BHQ notes " + str(the_len),
-        " quirks in μL that are noted",
-        " in one or more of the other three editions.",
-        " These are cases where $BHQ reiterates something available",
-        " in one or more of the other three editions.",
-    ]
 
 
 def _reiterates_part1(the_len):
