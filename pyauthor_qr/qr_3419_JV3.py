@@ -1,6 +1,6 @@
-RECORD_3419_2of2ftv = {
+RECORD_3419_JV3 = {
     "qr-cv": "34:19",
-    "qr-n_of_m_for_this_verse": (2, 2),
+    "qr-word-id": "JV3",
     "qr-lc-proposed": "שׁ֖וֹעַ",
     "qr-what-is-weird": "טרחא not דחי",
     "qr-consensus": "שׁ֭וֹעַ",

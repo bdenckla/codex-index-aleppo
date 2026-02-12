@@ -1,9 +1,9 @@
 from pyauthor_util.all_verses_but_this import leg_missing_before_g3yh_rby3
 
-RECORD_3433_3of4ftv = {
+RECORD_3433_YJLMNH_2 = {
     "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "34:33",
-    "qr-n_of_m_for_this_verse": (3, 4),
+    "qr-word-id": "YJLMNH_2",
     "qr-consensus": "יְשַׁלְּמֶ֨נָּה׀",
     "qr-lc-proposed": "יְשַׁלְּמֶ֨נָּה",
     "qr-what-is-weird": "לגרמיה is absent",

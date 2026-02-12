@@ -1,8 +1,8 @@
 from pyauthor_util.job_common import BHQ_COMMENT_XELSEWHERE_DUBIOUS
 
-RECORD_2230_2of2ftv = {
+RECORD_2230_VNMLE = {
     "qr-cv": "22:30",
-    "qr-n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
+    "qr-word-id": "VNMLE",
     "qr-lc-proposed": "וְ֝נִּמְלַ֗ט",
     "qr-lc-q": "(?)",
     "qr-what-is-weird": "נ has דגש",

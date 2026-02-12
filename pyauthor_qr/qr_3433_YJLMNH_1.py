@@ -1,7 +1,7 @@
-RECORD_3433_2of4ftv = {
+RECORD_3433_YJLMNH_1 = {
     "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "34:33",
-    "qr-n_of_m_for_this_verse": (2, 4),
+    "qr-word-id": "YJLMNH_1",
     "qr-consensus": "יְשַׁלְּמֶ֨נָּה׀",
     "qr-lc-proposed": "יְשַׁלְמֶ֨נָּה׀",
     "qr-what-is-weird": "ל lacks דגש",

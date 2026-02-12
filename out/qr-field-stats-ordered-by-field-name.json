@@ -147,10 +147,6 @@
       "count": 19
     },
     {
-      "field": "qr-n_of_m_for_this_verse",
-      "count": 22
-    },
-    {
       "field": "qr-n_of_m_for_this_word",
       "count": 2
     },
@@ -181,6 +177,10 @@
     {
       "field": "qr-what-is-weird",
       "count": 160
+    },
+    {
+      "field": "qr-word-id",
+      "count": 22
     }
   ]
 }

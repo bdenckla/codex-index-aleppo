@@ -1,6 +1,6 @@
-RECORD_3812_1of2ftv = {
+RECORD_3812_HMYMY5 = {
     "qr-cv": "38:12",
-    "qr-n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
+    "qr-word-id": "HMYMY5",
     "qr-lc-proposed": "הְֽ֭מִיָּמֶיךָ",
     "qr-what-is-weird": "simple שווא not חטף פתח",
     "qr-consensus": "הֲֽ֭מִיָּמֶיךָ",

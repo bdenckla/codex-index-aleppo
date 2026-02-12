@@ -1,6 +1,6 @@
-RECORD_0816_1of2ftv = {
+RECORD_0816_HVA = {
     "qr-cv": "8:16",
-    "qr-n_of_m_for_this_verse": (1, 2),
+    "qr-word-id": "HVA",
     "qr-lc-proposed": "ה֖וּא",
     "qr-what-is-weird": "טרחא not דחי",
     "qr-consensus": "ה֭וּא",

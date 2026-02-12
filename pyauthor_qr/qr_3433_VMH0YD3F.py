@@ -1,9 +1,9 @@
 from pyauthor_util.all_verses_but_this import no_dag_after_mah
 
-RECORD_3433_4of4ftv = {
+RECORD_3433_VMH0YD3F = {
     "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "34:33",
-    "qr-n_of_m_for_this_verse": (4, 4),
+    "qr-word-id": "VMH0YD3F",
     "qr-consensus": "וּֽמַה־יָּדַ֥עְתָּ",
     "qr-lc-proposed": "וּֽמַה־יָדַ֥עְתָּ",
     "qr-what-is-weird": "$yod lacks דגש",

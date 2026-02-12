@@ -6,9 +6,9 @@ _BHQ_COMMENT_2230_A = [
     " געיה with שווא would be expected (or at least an expected option).",
 ]
 
-RECORD_2230_1of2ftv = {
+RECORD_2230_YMLE = {
     "qr-cv": "22:30",
-    "qr-n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
+    "qr-word-id": "YMLE",
     "qr-lc-proposed": "יֽ͏ְמַלֵּ֥ט",
     "qr-lc-q": "(?)",
     "qr-what-is-weird": "$yod has געיה",

@@ -7,10 +7,10 @@ _BHQ_COMMENT_1804_A = [
     " $BHQ supplies only the (full) פתח that is the consensus expectation here.",
     " $BHQ does so silently, i.e. with no note about the pointing of ה.",
 ]
-RECORD_1804_1of2ftv = {
+RECORD_1804_HLM3N5_1 = {
     **RECORD_1804_CMN_AB,
     "qr-intermediate": "הַֽ֭לְמַּעַנְךָ",
-    "qr-n_of_m_for_this_verse": (1, 2),  # this is record 1 of 2 for this verse
+    "qr-word-id": "HLM3N5_1",
     "qr-n_of_m_for_this_word": (1, 2),  # this is record 1 of 2 for this word
     "qr-what-is-weird": "פתח on ה is חטף",
     "qr-generic-comment": [

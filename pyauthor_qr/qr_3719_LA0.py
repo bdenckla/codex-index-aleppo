@@ -1,8 +1,8 @@
 from pyauthor_util.uxlc_change import uxlc_change
 
-RECORD_3719_2of2ftv = {
+RECORD_3719_LA0 = {
     "qr-cv": "37:19",
-    "qr-n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
+    "qr-word-id": "LA0",
     "qr-lc-proposed": "לֹ֥א־",
     "qr-what-is-weird": "מרכא not געיה",
     "qr-consensus": "לֹֽא־",

@@ -915,10 +915,7 @@
   },
   {
     "qr-cv": "8:16",
-    "qr-n_of_m_for_this_verse": [
-      1,
-      2
-    ],
+    "qr-word-id": "HVA",
     "qr-lc-proposed": "ה֖וּא",
     "qr-what-is-weird": "טרחא not דחי",
     "qr-consensus": "ה֭וּא",
@@ -929,7 +926,7 @@
       "line": 23
     },
     "qr-noted-by": "tBHQ-zdexiWLC",
-    "qr-lc-img": "0816-1of2ftv.png",
+    "qr-lc-img": "0816-HVA.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -945,10 +942,7 @@
   },
   {
     "qr-cv": "8:16",
-    "qr-n_of_m_for_this_verse": [
-      2,
-      2
-    ],
+    "qr-word-id": "YNQFV",
     "qr-lc-proposed": "יֹ֭נַקְתּ֥וֹ",
     "qr-what-is-weird": "דחי not געיה",
     "qr-consensus": "יֹֽנַקְתּ֥וֹ",
@@ -962,7 +956,7 @@
       "line": -4
     },
     "qr-noted-by": "tBHQ-zmiscWLC",
-    "qr-lc-img": "0816-2of2ftv.png",
+    "qr-lc-img": "0816-YNQFV.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -2247,10 +2241,7 @@
       "line": -4
     },
     "qr-intermediate": "הַֽ֭לְמַּעַנְךָ",
-    "qr-n_of_m_for_this_verse": [
-      1,
-      2
-    ],
+    "qr-word-id": "HLM3N5_1",
     "qr-n_of_m_for_this_word": [
       1,
       2
@@ -2265,7 +2256,7 @@
       "$BHQ silently ignores the possible שווא part of the possible חטף פתח. It also silently ignores the possible interpretation of that ink as a געיה. I.e. other than the prepositive דחי accent, $BHQ supplies only the (full) פתח that is the consensus expectation here. $BHQ does so silently, i.e. with no note about the pointing of ה."
     ],
     "qr-noted-by": "nBHL-nDM",
-    "qr-lc-img": "1804-1of2ftv.png",
+    "qr-lc-img": "1804-HLM3N5_1.png",
     "nbd": {
       "e:BHQ": "xBHQ",
       "e:BHL": "nBHL",
@@ -2290,10 +2281,7 @@
       "line": -4
     },
     "qr-intermediate": "הֲ֭לְמַעַנְךָ",
-    "qr-n_of_m_for_this_verse": [
-      2,
-      2
-    ],
+    "qr-word-id": "HLM3N5_2",
     "qr-n_of_m_for_this_word": [
       2,
       2
@@ -2309,8 +2297,8 @@
     ],
     "qr-aleppo-page-url": "https://www.mgketer.org/mikra/29/18/1/mg/106",
     "qr-noted-by": "nBHQ-nBHL-nDM",
-    "qr-lc-img": "1804-2of2ftv.png",
-    "qr-aleppo-img": "Aleppo-1804-2of2ftv.png",
+    "qr-lc-img": "1804-HLM3N5_2.png",
+    "qr-aleppo-img": "Aleppo-1804-HLM3N5_2.png",
     "nbd": {
       "e:BHQ": "nBHQ",
       "e:BHL": "nBHL",
@@ -2551,46 +2539,10 @@
     ]
   },
   {
-    "qr-cv": "19:16",
-    "qr-n_of_m_for_this_verse": [
-      1,
-      2
-    ],
-    "qr-lc-q": "(?)",
-    "qr-lc-proposed": "קָּ֭רָאתִי",
-    "qr-what-is-weird": "ק has דגש",
-    "qr-consensus": "קָ֭רָאתִי",
-    "qr-generic-comment": "The dot is suspiciously brown rather than black.",
-    "qr-highlight": 1,
-    "qr-lc-loc": {
-      "page": "402B",
-      "column": 1,
-      "line": 8
-    },
-    "qr-bhq-comment": "$BHQ notes that the דגש on the ק in μL disagrees with μA and μY.",
-    "qr-noted-by": "nBHQ-nBHL",
-    "qr-lc-img": "1916-1of2ftv.png",
-    "nbd": {
-      "e:BHQ": "nBHQ",
-      "e:BHL": "nBHL",
-      "e:DM": "xDM",
-      "e:WLC": "xWLC",
-      "e:UXLC": "xUXLC"
-    },
-    "pgroup": "g:nbhq_and_n3",
-    "qr-auto-diff": [
-      "add dagesh/mapiq/shuruq-dot to qof",
-      "add non-varika"
-    ]
-  },
-  {
     "qr-noted-by-mam": true,
     "qr-noted-by": "aDM",
     "qr-cv": "19:16",
-    "qr-n_of_m_for_this_verse": [
-      2,
-      2
-    ],
+    "qr-word-id": "BMV0PY",
     "qr-ac-proposed": "בְּ֝מוֹ־פִ֗י",
     "qr-consensus": "בְּמוֹ־פִ֝֗י",
     "qr-highlight-ac-proposed": [
@@ -2618,8 +2570,8 @@
         ]
       }
     ],
-    "qr-lc-img": "1916-2of2ftv.png",
-    "qr-aleppo-img": "Aleppo-1916-2of2ftv.png",
+    "qr-lc-img": "1916-BMV0PY.png",
+    "qr-aleppo-img": "Aleppo-1916-BMV0PY.png",
     "nbd": {
       "e:BHQ": "xBHQ",
       "e:BHL": "xBHL",
@@ -2631,6 +2583,36 @@
     "qr-auto-diff": [
       "move geresh-muqdam back from pe to bet",
       "move"
+    ]
+  },
+  {
+    "qr-cv": "19:16",
+    "qr-word-id": "QRAFY",
+    "qr-lc-q": "(?)",
+    "qr-lc-proposed": "קָּ֭רָאתִי",
+    "qr-what-is-weird": "ק has דגש",
+    "qr-consensus": "קָ֭רָאתִי",
+    "qr-generic-comment": "The dot is suspiciously brown rather than black.",
+    "qr-highlight": 1,
+    "qr-lc-loc": {
+      "page": "402B",
+      "column": 1,
+      "line": 8
+    },
+    "qr-bhq-comment": "$BHQ notes that the דגש on the ק in μL disagrees with μA and μY.",
+    "qr-noted-by": "nBHQ-nBHL",
+    "qr-lc-img": "1916-QRAFY.png",
+    "nbd": {
+      "e:BHQ": "nBHQ",
+      "e:BHL": "nBHL",
+      "e:DM": "xDM",
+      "e:WLC": "xWLC",
+      "e:UXLC": "xUXLC"
+    },
+    "pgroup": "g:nbhq_and_n3",
+    "qr-auto-diff": [
+      "add dagesh/mapiq/shuruq-dot to qof",
+      "add non-varika"
     ]
   },
   {
@@ -2919,10 +2901,7 @@
       "column": 1,
       "line": -6
     },
-    "qr-n_of_m_for_this_verse": [
-      1,
-      2
-    ],
+    "qr-word-id": "3MV",
     "qr-lc-q": "(?)",
     "qr-lc-proposed": "עִמּ֑וֹ",
     "qr-what-is-weird": "אתנח not מונח",
@@ -2942,9 +2921,9 @@
       " as a “callout” for a Masorah parva note;",
       " hence the pair of above-dots above ל in %ושלם."
     ],
-    "qr-lc-img": "2221-1of2ftv.png",
-    "qr-aleppo-img": "Aleppo-2221-1of2ftv.png",
-    "qr-cam1753-img": "Cam1753-2221-1of2ftv.png",
+    "qr-lc-img": "2221-3MV.png",
+    "qr-aleppo-img": "Aleppo-2221-3MV.png",
+    "qr-cam1753-img": "Cam1753-2221-3MV.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "nBHL",
@@ -2965,10 +2944,7 @@
       "column": 1,
       "line": -6
     },
-    "qr-n_of_m_for_this_verse": [
-      2,
-      2
-    ],
+    "qr-word-id": "VJL6",
     "qr-lc-proposed": "וּשְׁלם",
     "qr-what-is-weird": "ל lacks קמץ-אתנח",
     "qr-consensus": "וּשְׁלָ֑ם",
@@ -2980,7 +2956,7 @@
       "$BHQ (charitably) transcribes the top dot of the שווא using, as one often has to, faint evidence bolstered by consensus expectations. $BHQ notes (as does $BHS) that whereas the ל of %ושלם is unpointed in μL, that ל has קמץ and אתנח in μA and μY."
     ],
     "qr-noted-by": "nBHQ-nWLC",
-    "qr-lc-img": "2221-2of2ftv.png",
+    "qr-lc-img": "2221-VJL6.png",
     "nbd": {
       "e:BHQ": "nBHQ",
       "e:BHL": "xBHL",
@@ -3115,10 +3091,40 @@
   },
   {
     "qr-cv": "22:30",
-    "qr-n_of_m_for_this_verse": [
-      1,
-      2
+    "qr-word-id": "VNMLE",
+    "qr-lc-proposed": "וְ֝נִּמְלַ֗ט",
+    "qr-lc-q": "(?)",
+    "qr-what-is-weird": "נ has דגש",
+    "qr-consensus": "וְ֝נִמְלַ֗ט",
+    "qr-generic-comment": "The dot in question is suspiciously smaller than nearby ones.",
+    "qr-highlight": 2,
+    "qr-lc-loc": {
+      "page": "403B",
+      "column": 2,
+      "line": 4
+    },
+    "qr-bhq-comment": [
+      "$BHQ notes this possibility, whereas this is not noted in the other editions under consideration. It could be the editors of those other editions did not catch this, or it could be that they caught it but considered it to be too slight a possibility to note it."
     ],
+    "qr-noted-by": "nBHQ",
+    "qr-uxlc-needs-fix": true,
+    "qr-lc-img": "2230-VNMLE.png",
+    "nbd": {
+      "e:BHQ": "nBHQ",
+      "e:BHL": "xBHL",
+      "e:DM": "xDM",
+      "e:WLC": "xWLC",
+      "e:UXLC": "xUXLC"
+    },
+    "pgroup": "g:nbhq_and_x3",
+    "qr-auto-diff": [
+      "add dagesh/mapiq/shuruq-dot to nun",
+      "add non-varika"
+    ]
+  },
+  {
+    "qr-cv": "22:30",
+    "qr-word-id": "YMLE",
     "qr-lc-proposed": "יֽ͏ְמַלֵּ֥ט",
     "qr-lc-q": "(?)",
     "qr-what-is-weird": "$yod has געיה",
@@ -3137,7 +3143,7 @@
     ],
     "qr-noted-by": "tBHQ-nWLC",
     "qr-uxlc-needs-fix": "add t-note (transcription uncertain)",
-    "qr-lc-img": "2230-1of2ftv.png",
+    "qr-lc-img": "2230-YMLE.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -3148,42 +3154,6 @@
     "pgroup": "g:tbhq_and_n3",
     "qr-auto-diff": [
       "add meteg/silluq to yod",
-      "add non-varika"
-    ]
-  },
-  {
-    "qr-cv": "22:30",
-    "qr-n_of_m_for_this_verse": [
-      2,
-      2
-    ],
-    "qr-lc-proposed": "וְ֝נִּמְלַ֗ט",
-    "qr-lc-q": "(?)",
-    "qr-what-is-weird": "נ has דגש",
-    "qr-consensus": "וְ֝נִמְלַ֗ט",
-    "qr-generic-comment": "The dot in question is suspiciously smaller than nearby ones.",
-    "qr-highlight": 2,
-    "qr-lc-loc": {
-      "page": "403B",
-      "column": 2,
-      "line": 4
-    },
-    "qr-bhq-comment": [
-      "$BHQ notes this possibility, whereas this is not noted in the other editions under consideration. It could be the editors of those other editions did not catch this, or it could be that they caught it but considered it to be too slight a possibility to note it."
-    ],
-    "qr-noted-by": "nBHQ",
-    "qr-uxlc-needs-fix": true,
-    "qr-lc-img": "2230-2of2ftv.png",
-    "nbd": {
-      "e:BHQ": "nBHQ",
-      "e:BHL": "xBHL",
-      "e:DM": "xDM",
-      "e:WLC": "xWLC",
-      "e:UXLC": "xUXLC"
-    },
-    "pgroup": "g:nbhq_and_x3",
-    "qr-auto-diff": [
-      "add dagesh/mapiq/shuruq-dot to nun",
       "add non-varika"
     ]
   },
@@ -4671,10 +4641,34 @@
   },
   {
     "qr-cv": "34:19",
-    "qr-n_of_m_for_this_verse": [
-      1,
-      2
-    ],
+    "qr-word-id": "JV3",
+    "qr-lc-proposed": "שׁ֖וֹעַ",
+    "qr-what-is-weird": "טרחא not דחי",
+    "qr-consensus": "שׁ֭וֹעַ",
+    "qr-highlight": 1,
+    "qr-lc-loc": {
+      "page": "406B",
+      "column": 2,
+      "line": 26
+    },
+    "qr-noted-by": "tBHQ-zdexiWLC",
+    "qr-lc-img": "3419-JV3.png",
+    "nbd": {
+      "e:BHQ": "tBHQ",
+      "e:BHL": "xBHL",
+      "e:DM": "xDM",
+      "e:WLC": "zdexiWLC",
+      "e:UXLC": "xUXLC"
+    },
+    "pgroup": "g:tbhq_and_zdw",
+    "qr-auto-diff": [
+      "on shin, replace dexi with tipexa/tarxa",
+      "replace"
+    ]
+  },
+  {
+    "qr-cv": "34:19",
+    "qr-word-id": "NKR0",
     "qr-lc-proposed": "נִּכַּר־",
     "qr-what-is-weird": "נ has דגש",
     "qr-consensus": "נִכַּר־",
@@ -4777,7 +4771,7 @@
       }
     ],
     "qr-noted-by": "nBHL-nDM",
-    "qr-lc-img": "3419-1of2ftv.png",
+    "qr-lc-img": "3419-NKR0.png",
     "nbd": {
       "e:BHQ": "xBHQ",
       "e:BHL": "nBHL",
@@ -4789,36 +4783,6 @@
     "qr-auto-diff": [
       "add dagesh/mapiq/shuruq-dot to nun",
       "add non-varika"
-    ]
-  },
-  {
-    "qr-cv": "34:19",
-    "qr-n_of_m_for_this_verse": [
-      2,
-      2
-    ],
-    "qr-lc-proposed": "שׁ֖וֹעַ",
-    "qr-what-is-weird": "טרחא not דחי",
-    "qr-consensus": "שׁ֭וֹעַ",
-    "qr-highlight": 1,
-    "qr-lc-loc": {
-      "page": "406B",
-      "column": 2,
-      "line": 26
-    },
-    "qr-noted-by": "tBHQ-zdexiWLC",
-    "qr-lc-img": "3419-2of2ftv.png",
-    "nbd": {
-      "e:BHQ": "tBHQ",
-      "e:BHL": "xBHL",
-      "e:DM": "xDM",
-      "e:WLC": "zdexiWLC",
-      "e:UXLC": "xUXLC"
-    },
-    "pgroup": "g:tbhq_and_zdw",
-    "qr-auto-diff": [
-      "on shin, replace dexi with tipexa/tarxa",
-      "replace"
     ]
   },
   {
@@ -4850,10 +4814,7 @@
   {
     "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "34:33",
-    "qr-n_of_m_for_this_verse": [
-      1,
-      4
-    ],
+    "qr-word-id": "HM3M5",
     "qr-consensus": "הֲֽמֵעִמְּךָ֬",
     "qr-lc-proposed": "הַֽמֵעִמְּךָ֬",
     "qr-what-is-weird": "פתח on ה is not חטף",
@@ -4866,7 +4827,7 @@
     "qr-generic-comment": [
       "As $DM footnote 20 mentions, this is one of three such cases, the other two being 9:35 and 27:9. In all three cases, the consensus has געיה on an initial vocal שווא notated as a חטף פתח. In μL, the געיה is on an initial פתח, a full (albeit short) syllable rather than a שווא."
     ],
-    "qr-lc-img": "3433-1of4ftv.png",
+    "qr-lc-img": "3433-HM3M5.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -4883,10 +4844,37 @@
   {
     "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "34:33",
-    "qr-n_of_m_for_this_verse": [
-      2,
-      4
+    "qr-word-id": "VMH0YD3F",
+    "qr-consensus": "וּֽמַה־יָּדַ֥עְתָּ",
+    "qr-lc-proposed": "וּֽמַה־יָדַ֥עְתָּ",
+    "qr-what-is-weird": "$yod lacks דגש",
+    "qr-highlight": 5,
+    "qr-lc-loc": {
+      "page": "407A",
+      "column": 1,
+      "line": 18
+    },
+    "qr-generic-comment": [
+      "As $DM footnote 25 mentions, the omission of דגש after %מה־ is common in μL. See 16:6, 21:15, and 35:7."
     ],
+    "qr-lc-img": "3433-VMH0YD3F.png",
+    "nbd": {
+      "e:BHQ": "tBHQ",
+      "e:BHL": "xBHL",
+      "e:DM": "nDM",
+      "e:WLC": "xWLC",
+      "e:UXLC": "xUXLC"
+    },
+    "pgroup": "g:tbhq_and_n3",
+    "qr-auto-diff": [
+      "remove dagesh/mapiq/shuruq-dot from yod",
+      "remove"
+    ]
+  },
+  {
+    "qr-noted-by": "tBHQ-nDM",
+    "qr-cv": "34:33",
+    "qr-word-id": "YJLMNH_1",
     "qr-consensus": "יְשַׁלְּמֶ֨נָּה׀",
     "qr-lc-proposed": "יְשַׁלְמֶ֨נָּה׀",
     "qr-what-is-weird": "ל lacks דגש",
@@ -4896,7 +4884,7 @@
       "column": 1,
       "line": 16
     },
-    "qr-lc-img": "3433-2of4ftv.png",
+    "qr-lc-img": "3433-YJLMNH_1.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -4913,10 +4901,7 @@
   {
     "qr-noted-by": "tBHQ-nDM",
     "qr-cv": "34:33",
-    "qr-n_of_m_for_this_verse": [
-      3,
-      4
-    ],
+    "qr-word-id": "YJLMNH_2",
     "qr-consensus": "יְשַׁלְּמֶ֨נָּה׀",
     "qr-lc-proposed": "יְשַׁלְּמֶ֨נָּה",
     "qr-what-is-weird": "לגרמיה is absent",
@@ -4929,7 +4914,7 @@
     "qr-generic-comment": [
       "As $DM footnote 32 mentions, in two cases in Job, μL omits the לגרמיה stroke before a word with געיה and רביע. The other such case is 32:11. In both cases, it looks like there may have been an erasure in between the words, where one would expect a לגרמיה to have been, if one was originally present in μL. In this case here in 34:33, there is an additional mark after the possible erasure. This mark is hard to interpret."
     ],
-    "qr-lc-img": "3433-3of4ftv.png",
+    "qr-lc-img": "3433-YJLMNH_2.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -4940,39 +4925,6 @@
     "pgroup": "g:tbhq_and_n3",
     "qr-auto-diff": [
       "remove paseq/legarmeih from he",
-      "remove"
-    ]
-  },
-  {
-    "qr-noted-by": "tBHQ-nDM",
-    "qr-cv": "34:33",
-    "qr-n_of_m_for_this_verse": [
-      4,
-      4
-    ],
-    "qr-consensus": "וּֽמַה־יָּדַ֥עְתָּ",
-    "qr-lc-proposed": "וּֽמַה־יָדַ֥עְתָּ",
-    "qr-what-is-weird": "$yod lacks דגש",
-    "qr-highlight": 5,
-    "qr-lc-loc": {
-      "page": "407A",
-      "column": 1,
-      "line": 18
-    },
-    "qr-generic-comment": [
-      "As $DM footnote 25 mentions, the omission of דגש after %מה־ is common in μL. See 16:6, 21:15, and 35:7."
-    ],
-    "qr-lc-img": "3433-4of4ftv.png",
-    "nbd": {
-      "e:BHQ": "tBHQ",
-      "e:BHL": "xBHL",
-      "e:DM": "nDM",
-      "e:WLC": "xWLC",
-      "e:UXLC": "xUXLC"
-    },
-    "pgroup": "g:tbhq_and_n3",
-    "qr-auto-diff": [
-      "remove dagesh/mapiq/shuruq-dot from yod",
       "remove"
     ]
   },
@@ -5365,10 +5317,7 @@
   },
   {
     "qr-cv": "37:19",
-    "qr-n_of_m_for_this_verse": [
-      1,
-      2
-    ],
+    "qr-word-id": "HVDY3NV",
     "qr-lc-proposed": "ה֖וֹדִיעֵנוּ",
     "qr-what-is-weird": "טרחא not דחי",
     "qr-consensus": "ה֭וֹדִיעֵנוּ",
@@ -5382,7 +5331,7 @@
     "qr-generic-comment": [
       "The pointing of this word must, by necessity, be transcribed with much charity. Nonetheless, the mark in question here is fairly clearly positioned as a דחי not a טרחא, though it is, unfortunately, attached to the right leg of the ה. (At least, it is attached to the right leg of the re-inked ה.)"
     ],
-    "qr-lc-img": "3719-1of2ftv.png",
+    "qr-lc-img": "3719-HVDY3NV.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -5398,10 +5347,7 @@
   },
   {
     "qr-cv": "37:19",
-    "qr-n_of_m_for_this_verse": [
-      2,
-      2
-    ],
+    "qr-word-id": "LA0",
     "qr-lc-proposed": "לֹ֥א־",
     "qr-what-is-weird": "מרכא not געיה",
     "qr-consensus": "לֹֽא־",
@@ -5416,7 +5362,7 @@
     },
     "qr-noted-by": "tBHQ-zUXLC",
     "qr-uxlc-change-url": "https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-43",
-    "qr-lc-img": "3719-2of2ftv.jpg",
+    "qr-lc-img": "3719-LA0.jpg",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -5458,10 +5404,7 @@
   },
   {
     "qr-cv": "38:12",
-    "qr-n_of_m_for_this_verse": [
-      1,
-      2
-    ],
+    "qr-word-id": "HMYMY5",
     "qr-lc-proposed": "הְֽ֭מִיָּמֶיךָ",
     "qr-what-is-weird": "simple שווא not חטף פתח",
     "qr-consensus": "הֲֽ֭מִיָּמֶיךָ",
@@ -5476,7 +5419,7 @@
       "$BHQ notes that here μL disagrees with μA and μY, which have the consensus pointing."
     ],
     "qr-noted-by": "nBHQ-nBHL-nDM-nWLC",
-    "qr-lc-img": "3812-1of2ftv.png",
+    "qr-lc-img": "3812-HMYMY5.png",
     "nbd": {
       "e:BHQ": "nBHQ",
       "e:BHL": "nBHL",
@@ -5492,10 +5435,7 @@
   },
   {
     "qr-cv": "38:12",
-    "qr-n_of_m_for_this_verse": [
-      2,
-      2
-    ],
+    "qr-word-id": "YD3F_HJXR",
     "qr-lc-proposed": "יִדַּ֖עְתָּה הַשַּׁ֣חַר",
     "qr-what-is-weird": "ה copied not moved in קרי",
     "qr-consensus": "יִדַּ֖עְתָּ הַשַּׁ֣חַר",
@@ -5635,9 +5575,9 @@
       }
     ],
     "qr-noted-by": "nWLC",
-    "qr-lc-img": "3812-2of2ftv.png",
-    "qr-aleppo-img": "Aleppo-3812-2of2ftv.png",
-    "qr-jc-img": "Jerusalem-Crown-3812-2of2ftv.png",
+    "qr-lc-img": "3812-YD3F_HJXR.png",
+    "qr-aleppo-img": "Aleppo-3812-YD3F_HJXR.png",
+    "qr-jc-img": "Jerusalem-Crown-3812-YD3F_HJXR.png",
     "nbd": {
       "e:BHQ": "xBHQ",
       "e:BHL": "xBHL",
@@ -6096,42 +6036,9 @@
     ]
   },
   {
-    "qr-cv": "40:19",
-    "qr-n_of_m_for_this_verse": [
-      1,
-      2
-    ],
-    "qr-lc-proposed": "ה֖וּא",
-    "qr-what-is-weird": "טרחא not דחי",
-    "qr-consensus": "ה֭וּא",
-    "qr-highlight": 1,
-    "qr-lc-loc": {
-      "page": "408B",
-      "column": 2,
-      "line": 27
-    },
-    "qr-noted-by": "tBHQ-zdexiWLC",
-    "qr-lc-img": "4019-1of2ftv.png",
-    "nbd": {
-      "e:BHQ": "tBHQ",
-      "e:BHL": "xBHL",
-      "e:DM": "xDM",
-      "e:WLC": "zdexiWLC",
-      "e:UXLC": "xUXLC"
-    },
-    "pgroup": "g:tbhq_and_zdw",
-    "qr-auto-diff": [
-      "on he, replace dexi with tipexa/tarxa",
-      "replace"
-    ]
-  },
-  {
     "qr-noted-by": "nDM",
     "qr-cv": "40:19",
-    "qr-n_of_m_for_this_verse": [
-      2,
-      2
-    ],
+    "qr-word-id": "H3JV",
     "qr-consensus": "הָ֝עֹשׂ֗וֹ",
     "qr-lc-proposed": "הָ֝עֹשׂוֹ",
     "qr-what-is-weird": "רביע of רביע מוגרש is absent",
@@ -6144,7 +6051,7 @@
     "qr-generic-comment": [
       "There is a confusing constellation of three dots surrounding the ש in μL, but only one of those dots, a $sin dot, belongs to the ש. Working backwards (to the right) from that $sin dot, the next dot is a “קמץ dot” belonging to the מ of %גרמיו on the line above. The next dot is a חולם חסר dot belonging to the ע. (Or, if you prefer an alternative interpretation of חולם חסר dots in general, the חולם חסר dot belongs to an implicit $vav between the ע and ש.) The issue at hand is there is no fourth dot that could be interpreted as a רביע above the ש."
     ],
-    "qr-lc-img": "4019-2of2ftv.png",
+    "qr-lc-img": "4019-H3JV.png",
     "nbd": {
       "e:BHQ": "xBHQ",
       "e:BHL": "xBHL",
@@ -6156,6 +6063,33 @@
     "qr-auto-diff": [
       "remove revia from shin",
       "remove"
+    ]
+  },
+  {
+    "qr-cv": "40:19",
+    "qr-word-id": "HVA",
+    "qr-lc-proposed": "ה֖וּא",
+    "qr-what-is-weird": "טרחא not דחי",
+    "qr-consensus": "ה֭וּא",
+    "qr-highlight": 1,
+    "qr-lc-loc": {
+      "page": "408B",
+      "column": 2,
+      "line": 27
+    },
+    "qr-noted-by": "tBHQ-zdexiWLC",
+    "qr-lc-img": "4019-HVA.png",
+    "nbd": {
+      "e:BHQ": "tBHQ",
+      "e:BHL": "xBHL",
+      "e:DM": "xDM",
+      "e:WLC": "zdexiWLC",
+      "e:UXLC": "xUXLC"
+    },
+    "pgroup": "g:tbhq_and_zdw",
+    "qr-auto-diff": [
+      "on he, replace dexi with tipexa/tarxa",
+      "replace"
     ]
   },
   {

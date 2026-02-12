@@ -482,6 +482,16 @@ _DOLLAR_SUB_DISPATCH = {
 }
 
 
+def _my_maketrans(frm, to):
+    frm, to = frm.replace(" ", ""), to.replace(" ", "")
+    return str.maketrans(frm, to)
+
+
+_HEBREW_TO_OUR_CODE = _my_maketrans(
+    "אבגדה וזחטי כלמנס עפצקר שת ךםןףץ",
+    "ABGDH VZXEY KLMNO 3PCQR JF 56789",
+)
+
 # אבגדה וזחטי כלמנס עפצקר שת
 # Our code plus a highlight of unintuitive choices:
 # ABGDH VZXEY KLMNO 3PCQR JF plus ISTUW unused

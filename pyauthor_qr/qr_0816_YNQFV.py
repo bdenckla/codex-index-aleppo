@@ -1,6 +1,6 @@
-RECORD_0816_2of2ftv = {
+RECORD_0816_YNQFV = {
     "qr-cv": "8:16",
-    "qr-n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
+    "qr-word-id": "YNQFV",
     "qr-lc-proposed": "יֹ֭נַקְתּ֥וֹ",
     "qr-what-is-weird": "דחי not געיה",
     "qr-consensus": "יֹֽנַקְתּ֥וֹ",

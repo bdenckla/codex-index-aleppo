@@ -1,6 +1,6 @@
-RECORD_3719_1of2ftv = {
+RECORD_3719_HVDY3NV = {
     "qr-cv": "37:19",
-    "qr-n_of_m_for_this_verse": (1, 2),
+    "qr-word-id": "HVDY3NV",
     "qr-lc-proposed": "ה֖וֹדִיעֵנוּ",
     "qr-what-is-weird": "טרחא not דחי",
     "qr-consensus": "ה֭וֹדִיעֵנוּ",

@@ -50,9 +50,9 @@ _BHQ_COMMENT_3812_B = [
     " but it does not correspondingly update its bottom-of-page critical apparatus note.",
     " This is similar to what happened with 26:14.",
 ]
-RECORD_3812_2of2ftv = {
+RECORD_3812_YD3F_HJXR = {
     "qr-cv": "38:12",
-    "qr-n_of_m_for_this_verse": (2, 2),  # this is record 2 of 2 for this verse
+    "qr-word-id": "YD3F_HJXR",
     "qr-lc-proposed": "יִדַּ֖עְתָּה הַשַּׁ֣חַר",
     "qr-what-is-weird": "ה copied not moved in קרי",
     "qr-consensus": "יִדַּ֖עְתָּ הַשַּׁ֣חַר",
