@@ -1550,7 +1550,7 @@
       {
         "_htel_tag": "p",
         "contents": [
-          "The possible דגש looks slightly different than the four nearby dots in the two ציריה vowels. This raises the possibility that it is not ink, e.g. a speck on the vellum."
+          "The possible דגש looks slightly different than the four nearby dots in the two צירה vowels. This raises the possibility that it is not ink, e.g. a speck on the vellum."
         ]
       },
       {
@@ -3234,7 +3234,7 @@
       {
         "_htel_tag": "p",
         "contents": [
-          "Aside: note that the final פתה is charitably transcribed as belonging to the ד rather than the ",
+          "Aside: note that the final פתח is charitably transcribed as belonging to the ד rather than the ",
           {
             "_htel_tag": "span",
             "attr": {
@@ -6062,7 +6062,7 @@
     "qr-what-is-weird": "דרגא belongs to $vav not $yod",
     "qr-consensus": "וַיֹּ֧סֶף",
     "qr-generic-comment": [
-      "In situations like this, it is hard to determine which letter an under-accent belongs to. By “situations like this” I mean two narrow letters (in this case $vav and $yod) where the first letter has an under-vowel and the second letter does not. In the face of this uncertainty, our default should be to transcribe charitably, i.e., all else equal, lean towards the consensus reading. Aside: note that the פתח marks are problematic in both μL and μA, for different reasons: μL’s is faint and μA’s is broken, looking a bit like a ציריה (!)."
+      "In situations like this, it is hard to determine which letter an under-accent belongs to. By “situations like this” I mean two narrow letters (in this case $vav and $yod) where the first letter has an under-vowel and the second letter does not. In the face of this uncertainty, our default should be to transcribe charitably, i.e., all else equal, lean towards the consensus reading. Aside: note that the פתח marks are problematic in both μL and μA, for different reasons: μL’s is faint and μA’s is broken, looking a bit like a צירה (!)."
     ],
     "qr-highlight-lc-proposed": 1,
     "qr-highlight-consensus": 2,

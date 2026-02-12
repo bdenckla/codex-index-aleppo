@@ -17,7 +17,7 @@ RECORD_4210 = {
         " Aside: note that the פתח marks are problematic in both μL and μA,",
         " for different reasons:",
         " μL’s is faint and",
-        " μA’s is broken, looking a bit like a ציריה (!).",
+        " μA’s is broken, looking a bit like a צירה (!).",
     ],
     "qr-highlight-lc-proposed": 1,
     "qr-highlight-consensus": 2,

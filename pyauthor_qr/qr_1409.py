@@ -3,7 +3,7 @@ from pyauthor_util.job_common import core_ignores
 
 _COM1 = [
     "The possible דגש looks slightly different",
-    " than the four nearby dots in the two ציריה vowels."
+    " than the four nearby dots in the two צירה vowels."
     #
     " This raises the possibility that it is not ink, e.g. a speck on the vellum.",
 ]

@@ -20,7 +20,7 @@ _COMMENT_PARA_2 = [
     [" 21:15 seems possibly analogous, but not mentioned in Golinets."],
 ]
 _COMMENT_PARA_3 = [
-    "Aside: note that the final פתה",
+    "Aside: note that the final פתח",
     " is charitably transcribed as belonging to the ד rather than the $yod.",
 ]
 
