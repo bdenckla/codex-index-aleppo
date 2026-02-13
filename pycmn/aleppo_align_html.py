@@ -156,7 +156,13 @@ h1 {{ text-align: center; padding: 12px; font-size: 18px; }}
 }}
 .word.maqaf-end {{
     margin-left: 0;
-    padding-left: 2px;
+    padding-left: 0;
+    margin-right: 0;
+    padding-right: 0;
+}}
+.word.after-maqaf {{
+    margin-right: 0;
+    padding-right: 0;
 }}
 .line-num {{
     display: inline-block;
@@ -257,6 +263,8 @@ verses.forEach(v => {{
         const segments = splitAtMaqaf(w);
         const isKetiv = v.ketivIndices && v.ketivIndices.includes(wi);
         segments.forEach((seg, si) => {{
+            const prevEntry = allWords.length > 0 ? allWords[allWords.length - 1] : null;
+            const afterMaqaf = prevEntry && prevEntry.endsWithMaqaf;
             allWords.push({{
                 word: seg,
                 cv: v.cv,
@@ -264,6 +272,7 @@ verses.forEach(v => {{
                 segIdx: si,
                 isFirstInVerse: wi === 0 && si === 0,
                 endsWithMaqaf: seg.endsWith(MAQAF),
+                afterMaqaf: afterMaqaf,
                 isKetiv: isKetiv,
                 isParashah: false,
                 leadInWords: (wi === 0 && si === 0 && v.leadIn) ? v.leadIn : null,
@@ -321,6 +330,7 @@ function render() {{
         const span = document.createElement('span');
         span.className = 'word';
         if (entry.endsWithMaqaf) span.classList.add('maqaf-end');
+        if (entry.afterMaqaf) span.classList.add('after-maqaf');
         if (entry.isKetiv) span.classList.add('ketiv');
         if (entry.isParashah) span.classList.add('parashah');
         span.textContent = entry.word;

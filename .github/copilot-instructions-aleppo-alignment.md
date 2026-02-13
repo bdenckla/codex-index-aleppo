@@ -8,7 +8,69 @@ Align ground truth text (extracted from mam-xml) to the physical manuscript line
 
 - **Page index:** `C:\Users\BenDe\GitRepos\codex-index\aleppo\index-flat.json` — maps each Aleppo Codex leaf to a `[start_cv, end_cv]` text range. Key `"body"` contains the list; each entry has `de_leaf` (e.g., `"280r"`), `de_text_range` (e.g., `[["Job",37,9],["Job",38,30]]`), and `de_url`.
 - **Ground truth text:** Extracted on the fly from MAM-XML via `pycmn/mam_xml_verses.py`.
-- **Page image:** Screenshot from `https://www.mgketer.org/mikra/29/{chnu}/1/mg/106` (Job = book 29), saved to `.novc/`
+- **Page image:** Screenshot from one of the sources below, saved to `.novc/`
+
+## Page Image Sources
+
+### Primary: archive.org (page-based, recommended)
+
+The full Aleppo Codex scan is at `https://archive.org/details/aleppo-codex` (CC0 license, 593 pages).
+Each page in the scan corresponds to one leaf side (recto or verso). The URL pattern is:
+
+```
+https://archive.org/details/aleppo-codex/page/n{N}/mode/1up
+```
+
+where `N` is the 0-based page index. The mapping from leaf to page index is computed from the codex-index position. For Job leaves (all past the extra leaf 241a), the formula is:
+
+```
+N = (leaf_number - 1) × 2 + 2 + (0 for recto, 1 for verso)
+```
+
+Pre-computed mapping for all Job leaves:
+
+```
+Leaf    n     Text Range
+270r    n540  Ps 149:1  – Job 1:16
+270v    n541  Job 1:16  – Job 3:6
+271r    n542  Job 3:6   – Job 5:10
+271v    n543  Job 5:10  – Job 6:30
+272r    n544  Job 7:1   – Job 9:5
+272v    n545  Job 9:5   – Job 10:20
+273r    n546  Job 10:20 – Job 13:2
+273v    n547  Job 13:2  – Job 14:21
+274r    n548  Job 14:22 – Job 16:12
+274v    n549  Job 16:13 – Job 19:6
+275r    n550  Job 19:7  – Job 20:26
+275v    n551  Job 20:27 – Job 22:13
+276r    n552  Job 22:13 – Job 24:14
+276v    n553  Job 24:15 – Job 27:16
+277r    n554  Job 27:16 – Job 29:14
+277v    n555  Job 29:14 – Job 31:6
+278r    n556  Job 31:7  – Job 32:7
+278v    n557  Job 32:8  – Job 33:33
+279r    n558  Job 34:1  – Job 35:10
+279v    n559  Job 35:10 – Job 37:9
+280r    n560  Job 37:9  – Job 38:30
+280v    n561  Job 38:31 – Job 40:5
+281r    n562  Job 40:6  – Job 41:22
+281v    n563  Job 41:23 – Prov 1:8
+```
+
+To open a leaf for the user:
+```powershell
+cmd /c start "" "https://archive.org/details/aleppo-codex/page/n560/mode/1up"
+```
+
+### Secondary: mgketer.org (chapter-based)
+
+Chapter-based viewer; useful for quick lookups but **not page-based** — inconvenient when a page spans multiple chapters.
+
+```
+https://www.mgketer.org/mikra/29/{chnu}/1/mg/106
+```
+
+(Job = book 29, `chnu` = chapter number.)
 
 ## Outputs
 
@@ -88,8 +150,38 @@ Each verse dict contains:
 
 ### 2. Get the page image
 
-Take a screenshot from mgketer.org and copy it to `.novc/`:
+Download a hi-res image from archive.org's direct image API, then crop to the relevant column using Pillow.
 
+**Direct image API URL:**
+```
+https://ia601801.us.archive.org/BookReader/BookReaderImages.php?zip=/7/items/aleppo-codex/Aleppo%20Codex_jp2.zip&file=Aleppo%20Codex_jp2/Aleppo%20Codex_{NNNN}.jp2&id=aleppo-codex&scale={S}&rotate=0
+```
+- `{NNNN}` = zero-padded page number from the leaf mapping table above (e.g., `0560` for 280r)
+- `{S}` = scale factor: `1` = hi-res (~2.5 MB), `2` = medium (~800 KB)
+
+**Download and crop script (Python):**
+```python
+import urllib.request
+from PIL import Image
+
+LEAF = '281r'
+N = 562  # from leaf mapping table
+url = f'https://ia601801.us.archive.org/BookReader/BookReaderImages.php?zip=/7/items/aleppo-codex/Aleppo%20Codex_jp2.zip&file=Aleppo%20Codex_jp2/Aleppo%20Codex_{N:04d}.jp2&id=aleppo-codex&scale=1&rotate=0'
+
+# Download full page
+page_path = f'.novc/aleppo_{LEAF}_page_hires.jpg'
+urllib.request.urlretrieve(url, page_path)
+
+# Crop to columns
+img = Image.open(page_path)
+w, h = img.size
+img.crop((int(w * 0.4), 0, w, h)).save(f'.novc/aleppo_{LEAF}_col1.jpg')   # col1 = right 60%
+img.crop((0, 0, int(w * 0.6), h)).save(f'.novc/aleppo_{LEAF}_col2.jpg')   # col2 = left 60%
+```
+
+Column 1 is the **right** column (crop right 60%), column 2 is the **left** column (crop left 60%).
+
+**Fallback: mgketer.org screenshot:**
 ```powershell
 Get-ChildItem "$env:USERPROFILE\OneDrive\Pictures\Screenshots" | Sort-Object LastWriteTime -Descending | Select-Object -First 3 Name, LastWriteTime
 Copy-Item "$env:USERPROFILE\OneDrive\Pictures\Screenshots\<latest>.png" ".novc/aleppo_{leaf}_col{N}_page.png"
@@ -137,6 +229,18 @@ Petuxah (`{פ}`) and setumah (`{ס}`) breaks from the MAM-XML appear inline as c
 
 When a column starts mid-verse, pass `lead_in_words` (the words already on the previous column) and `lead_in_skip` (how many words to skip from the first verse). The lead-in words render grayed out with a "(prev col)" label and are not clickable.
 
+#### Cross-page parashah breaks
+
+When the previous page ends with a parashah break (e.g., `{פ}` after 40:5 on 280v), the new page may start with a blank line. To handle this:
+1. Start `verse_range` at the verse with the trailing parashah (e.g., `(40, 5)`).
+2. Pass all of that verse's words as `lead_in_words` (grayed out, not clickable).
+3. Set `lead_in_skip` to the word count.
+4. The `{פ}` marker itself remains clickable — click it to mark the blank line.
+
+#### Tight maqaf display
+
+Maqaf-joined word parts display with zero gap between them but each part remains independently clickable. This is handled automatically by the CSS classes `maqaf-end` (on the part ending with maqaf) and `after-maqaf` (on the following part). No special configuration needed.
+
 ### 4. User aligns text to image
 
 The user opens the HTML in a browser, loads the image, and clicks the last word/segment of each manuscript line. When finished, clicks **Copy to Clipboard** and pastes the result.
@@ -154,7 +258,8 @@ Replace the `COLUMN_{N}_LINES` list in `py_uxlc_loc/aleppo_col_lines_{leaf}.py` 
 
 ## Naming Conventions
 
-- **Screenshot:** `.novc/aleppo_{leaf}_col{N}_page.png` (e.g., `aleppo_280r_col1_page.png`)
+- **Full page image:** `.novc/aleppo_{leaf}_page_hires.jpg` (e.g., `aleppo_281r_page_hires.jpg`)
+- **Cropped column image:** `.novc/aleppo_{leaf}_col{N}.jpg` (e.g., `aleppo_281r_col1.jpg`)
 - **Alignment HTML:** `.novc/aleppo_align_{leaf}_col{N}.html` (e.g., `aleppo_align_280r_col1.html`)
 - **Python output file:** `py_uxlc_loc/aleppo_col_lines_{leaf}.py` (e.g., `aleppo_col_lines_280r.py`) with `COLUMN_1_LINES` and `COLUMN_2_LINES`
 - Each Aleppo page has two columns: column 1 = right, column 2 = left.
@@ -171,3 +276,6 @@ Replace the `COLUMN_{N}_LINES` list in `py_uxlc_loc/aleppo_col_lines_{leaf}.py` 
 - **Leaf 280r** (Job 37:9–38:30): `py_uxlc_loc/aleppo_col_lines_280r.py`
   - Column 1: Job 37:9 (cont.)–38:6, 28 lines (line 21 = `"{פ}"` pe break)
   - Column 2: Job 38:7–38:30, 28 lines
+- **Leaf 280v** (Job 38:31–40:5): `py_uxlc_loc/aleppo_col_lines_280v.py`
+  - Column 1: Job 38:31–39:13, 28 lines
+  - Column 2: Job 39:14–40:5, 28 lines (line 7 = `"{פ}"`, line 23 = `"{פ}"` + 40:1, line 25 = `"{פ}"`)
