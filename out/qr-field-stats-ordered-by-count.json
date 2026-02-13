@@ -103,6 +103,10 @@
       "count": 17
     },
     {
+      "field": "qr-aleppo-img",
+      "count": 11
+    },
+    {
       "field": "qr-uxlc-change-url",
       "count": 11
     },
@@ -111,16 +115,8 @@
       "count": 10
     },
     {
-      "field": "qr-aleppo-img",
-      "count": 9
-    },
-    {
       "field": "qr-lc-loc.including-blank-lines",
       "count": 8
-    },
-    {
-      "field": "qr-aleppo-page-url",
-      "count": 6
     },
     {
       "field": "qr-noted-by-mam",

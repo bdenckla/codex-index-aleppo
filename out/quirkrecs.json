@@ -2294,7 +2294,6 @@
     "qr-bhq-comment": [
       "$BHQ notes that the דגש on the מ in μL disagrees with μA and μY. $BHQ misses the געיה in μA. This געיה is irrelevant to $BHQ’s point here, which is about the דגש. Still, it would have been nice if $BHQ had transcribed μA’s געיה."
     ],
-    "qr-aleppo-page-url": "https://www.mgketer.org/mikra/29/18/1/mg/106",
     "qr-noted-by": "nBHQ-nBHL-nDM",
     "qr-word-id": "HLM3N5_2_of_2_FTW",
     "qr-lc-img": "1804-HLM3N5_2_of_2_FTW.png",
@@ -2913,7 +2912,6 @@
       "$BHQ fails to note that the אתנח it transcribes on %עמו disagrees with μA and μY."
     ],
     "qr-noted-by": "tBHQ-nBHL-nWLC",
-    "qr-aleppo-page-url": "https://www.mgketer.org/mikra/29/22/1/mg/106",
     "qr-cam1753-page-url": "https://archive.org/details/ketuvim-cambridge-ms-add-1753-images/page/n83/mode/1up",
     "qr-cam1753-img-intro": [
       "note that instead of a masorah circle, μY uses a pair of above-dots",
@@ -3144,6 +3142,7 @@
     "qr-uxlc-needs-fix": "add t-note (transcription uncertain)",
     "qr-word-id": "YMLE",
     "qr-lc-img": "2230-YMLE.png",
+    "qr-aleppo-img": "Aleppo-2230-YMLE.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -3589,7 +3588,6 @@
       "column": 2,
       "line": -5
     },
-    "qr-aleppo-page-url": "https://www.mgketer.org/mikra/29/26/14/mg/106",
     "qr-bhq-comment": [
       "$BHS does not catch this quirk in μL: it reflects the consensus rather than μL. $BHQ half-fixes the error in $BHS: it updates its marginal קרי note to reflect μL rather than the consensus, but it does not correspondingly update its bottom-of-page critical apparatus note. This error is similar to $BHQ’s error regarding the μL קרי of ",
       {
@@ -4952,6 +4950,7 @@
       "Although my focus is pointing rather than spelling, I am interested in a spelling difference like this, since it is not just a מלא/חסר difference."
     ],
     "qr-lc-img": "3437.png",
+    "qr-aleppo-img": "Aleppo-3437.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -5157,7 +5156,6 @@
       }
     ],
     "qr-noted-by": "nBHQ-nDM-nWLC",
-    "qr-aleppo-page-url": "https://www.mgketer.org/mikra/29/36/1/mg/106",
     "qr-cam1753-page-url": "https://archive.org/details/ketuvim-cambridge-ms-add-1753-images/page/n87/mode/1up",
     "qr-uxlc-needs-fix": [
       "$UXLC has כ (as it should)",
@@ -5553,7 +5551,6 @@
       "column": 1,
       "line": -11
     },
-    "qr-aleppo-page-url": "https://www.mgketer.org/mikra/29/38/1/mg/106",
     "qr-bhq-comment": [
       {
         "_htel_tag": "p",
@@ -6210,7 +6207,6 @@
     },
     "qr-noted-by": "tBHQ-zUXLC",
     "qr-uxlc-change-url": "https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-48",
-    "qr-aleppo-page-url": "https://www.mgketer.org/mikra/29/42/1/mg/106",
     "qr-lc-img": "4210.png",
     "qr-aleppo-img": "Aleppo-4210.png",
     "nbd": {
