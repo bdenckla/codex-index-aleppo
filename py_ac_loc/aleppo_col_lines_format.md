@@ -24,7 +24,7 @@ machine-readable counterparts.
 | `page-id` | string | Page identifier, e.g. `"281v"` |
 | `page-ranges` | list of range objects | Overall text extent of the page in machine-readable form, split per book (see [Range Object](#range-object)) |
 | `page-ranges-friendly` | list of ranges-friendly objects | Human-readable version of `page-ranges` (see [Ranges-Friendly](#ranges-friendly-format)). **Redundant** — must match `page-ranges`. |
-| `page-MAM-XML-files` | list of strings | Repo-relative paths to source XML files, e.g. `"MAM-XML/out/xml-vtrad-mam/Job.xml"` |
+| `page-MAM-XML-files` | list of strings | Repo-relative paths to source XML files, e.g. `"py_ac_loc/MAM-XML/Job.xml"` |
 | `page-image` | string | URL to the page image on archive.org |
 | `page-col-positions-possible` | list of strings | All possible column positions for this page, e.g. `["right", "left"]`. Future pages may include `"middle"`. |
 | `page-column-symbol-recs` | list of column-symbol-rec objects | Maps symbolic column key names to their header and lines keys (see [Column Symbol Rec](#column-symbol-rec)) |

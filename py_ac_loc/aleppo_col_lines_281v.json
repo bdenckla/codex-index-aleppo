@@ -45,8 +45,8 @@
     }
   ],
   "page-MAM-XML-files": [
-    "MAM-XML/out/xml-vtrad-mam/Job.xml",
-    "MAM-XML/out/xml-vtrad-mam/Prov.xml"
+    "py_ac_loc/MAM-XML/Job.xml",
+    "py_ac_loc/MAM-XML/Prov.xml"
   ],
   "page-image": "https://archive.org/details/aleppo-codex/page/n563/mode/1up",
   "page-col-positions-possible": [
