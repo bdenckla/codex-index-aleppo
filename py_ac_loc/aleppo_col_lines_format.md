@@ -22,13 +22,14 @@ machine-readable counterparts.
 |-----|------|-------------|
 | `leaf` | string | Leaf identifier, e.g. `"281v"` |
 | `description` | list of strings | Generic description (same in every file) |
-| `overall range (all columns)` | ranges-friendly object | Human-readable start/end of the entire page (see [Ranges-Friendly](#ranges-friendly-format)) |
+| `ranges-covered-by-this-page` | list of range objects | Overall text extent of the page in machine-readable form, split per book (see [Range Object](#range-object)) |
+| `ranges-covered-by-this-page-friendly` | list of ranges-friendly objects | Human-readable version of `ranges-covered-by-this-page` (see [Ranges-Friendly](#ranges-friendly-format)). **Redundant** — must match `ranges-covered-by-this-page`. |
 | `MAM-XML source file(s)` | list of strings | Repo-relative paths to source XML files, e.g. `"MAM-XML/out/xml-vtrad-mam/Job.xml"` |
 | `page_image` | string | URL to the page image on archive.org |
 | `column_1` | object | Metadata for the right column (see [Column Object](#column-object)) |
 | `column_2` | object | Metadata for the left column (see [Column Object](#column-object)) |
-| `column_1_lines` | list of `[int, [string,string]\|null, string]` | Line data for column 1 (see [Line Data](#line-data)) |
-| `column_2_lines` | list of `[int, [string,string]\|null, string]` | Line data for column 2 (see [Line Data](#line-data)) |
+| `column_1_lines` | list of line objects | Line data for column 1 (see [Line Data](#line-data)) |
+| `column_2_lines` | list of line objects | Line data for column 2 (see [Line Data](#line-data)) |
 
 ## Column Object
 
@@ -37,8 +38,8 @@ Each column object (`column_1`, `column_2`) contains:
 | Key | Type | Required | Description |
 |-----|------|----------|-------------|
 | `side` | string | yes | `"right"` for column 1, `"left"` for column 2 |
-| `ranges` | list of range objects | yes | Machine-readable text ranges (see [Range Object](#range-object)) |
-| `ranges-friendly` | list of ranges-friendly objects | yes | Human-readable version of `ranges` (see [Ranges-Friendly](#ranges-friendly-format)). **Redundant** — must match `ranges`. |
+| `ranges-covered-by-this-column` | list of range objects | yes | Machine-readable text ranges (see [Range Object](#range-object)) |
+| `ranges-covered-by-this-column-friendly` | list of ranges-friendly objects | yes | Human-readable version of `ranges-covered-by-this-column` (see [Ranges-Friendly](#ranges-friendly-format)). **Redundant** — must match `ranges-covered-by-this-column`. |
 | `line_count` | integer | yes | Number of lines in the column (typically 28) |
 | `blank_lines` | list of integers | if any | Line numbers that are blank (empty string). Used at book boundaries. |
 | `pe_lines` | list of integers | if any | Line numbers containing only `{פ}` (parashah pe break). |
@@ -94,9 +95,10 @@ The suffix mapping is:
 | `"a-middle-word"` | `-mid` |
 | `"last-word"` | `-last` |
 
-The `"overall range (all columns)"` field at the top level uses the same
-format, spanning from the first range start in column 1 to the last range
-end in column 2.
+The top-level `"ranges-covered-by-this-page"` uses the machine-readable
+range-object format, and `"ranges-covered-by-this-page-friendly"` uses the
+ranges-friendly format. Both are lists of range objects (one per book),
+derived by merging all column ranges across both columns and grouping by book.
 
 ## Ketiv Object
 
@@ -121,18 +123,24 @@ The `fml` value here indicates where the ketiv word falls within its verse
 
 ## Line Data
 
-Each `column_N_lines` array contains `[line_number, range, text]` triples:
+Each `column_N_lines` array contains objects with the following fields:
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `line-num` | integer | 1-based line number, sequential |
+| `range` | `[string, string]` or `null` | Verse range on this line (see below), or `null` for blank/{פ} lines |
+| `MAM-XML-fragment` | string | The text content of the line |
 
 ```json
 [
-  [1, ["Job 41:23-first", "Job 41:23-last"], "יַרְתִּ֙יחַ כַּסִּ֙יר מְצוּלָ֑ה יָם׀ח יָשִׂ֥ים כַּמֶּרְקָחָֽה׃"],
-  [2, ["Job 41:24-first", "Job 41:24-last"], "אַ֭חֲרָיו יָאִ֙יר נָתִ֑יב יַחְשֹׁ֖ב תְּה֙וֹם לְשֵׂיבָֽה׃"],
-  [3, ["Job 41:25-mid", "Job 41:26-mid"], "אֵֽין־עַל־עָפָ֥ר ..."],
+  {"line-num": 1, "range": ["Job 41:23-first", "Job 41:23-last"], "MAM-XML-fragment": "יַרְתִּ֙יחַ כַּסִּ֙יר מְצוּלָ֑ה יָם׀ח יָשִׂ֥ים כַּמֶּרְקָחָֽה׃"},
+  {"line-num": 2, "range": ["Job 41:24-first", "Job 41:24-last"], "MAM-XML-fragment": "אַ֭חֲרָיו יָאִ֙יר נָתִ֑יב יַחְשֹׁ֖ב תְּה֙וֹם לְשֵׂיבָֽה׃"},
+  {"line-num": 3, "range": ["Job 41:25-mid", "Job 41:26-mid"], "MAM-XML-fragment": "אֵֽין־עַל־עָפָ֥ר ..."},
   ...
 ]
 ```
 
-The **range** (2nd element) is either `null` or a 2-element `[start, end]`
+The **range** field is either `null` or a 2-element `[start, end]`
 array indicating the verse range that appears on that line.
 
 Each endpoint is a string in the format `"Book ch:vs-qualifier"` where the
@@ -155,9 +163,9 @@ Examples:
 | `null` | Blank line or {פ}-only line |
 
 Special line types:
-- **Blank line:** `[17, null, ""]` — used at book boundaries
-- **Pe-only line:** `[5, null, "{פ}"]` — parashah pe break occupying an entire line
-- **Pe within text:** `[6, ["Job 1:5-mid", "Job 1:5-last"], "כָּכָה יַעֲשֶׂ֥ה אִיֹּ֖ב כָּל־הַיָּמִֽים׃ {פ}"]` — pe marker at end of a text line
+- **Blank line:** `{"line-num": 17, "range": null, "MAM-XML-fragment": ""}` — used at book boundaries
+- **Pe-only line:** `{"line-num": 5, "range": null, "MAM-XML-fragment": "{פ}"}` — parashah pe break occupying an entire line
+- **Pe within text:** `{"line-num": 6, "range": ["Job 1:5-mid", "Job 1:5-last"], "MAM-XML-fragment": "כָּכָה יַעֲשֶׂ֥ה אִיֹּ֖ב כָּל־הַיָּמִֽים׃ {פ}"}` — pe marker at end of a text line
 
 Line numbers are 1-based and sequential.
 ## Redundancy
@@ -166,8 +174,9 @@ Several fields are intentionally redundant to aid human readability:
 
 | Friendly field | Must match |
 |----------------|-----------|
-| `ranges-friendly` | `ranges` |
-| `overall range (all columns)` | First start in `column_1.ranges` / last end in `column_2.ranges` |
+| `ranges-covered-by-this-column-friendly` | `ranges-covered-by-this-column` |
+| `ranges-covered-by-this-page` | `ranges-covered-by-this-page-friendly` (machine ↔ friendly) |
+| `ranges-covered-by-this-page-friendly` | Merge of all column `ranges-covered-by-this-column-friendly` entries, grouped by book |
 | `bcv-fml-friendly` (in ketivs) | `bcv-fml` |
 | `blank_lines` | Lines in `column_N_lines` with empty text |
 | `pe_lines` | Lines in `column_N_lines` with text `"{פ}"` |
@@ -181,13 +190,13 @@ Run `python py_ac_loc/check_aleppo_col_lines.py` to verify all of these.
 ```json
 {
   "side": "right",
-  "ranges": [
+  "ranges-covered-by-this-column": [
     {
       "start": ["Job", 32, 8, "first-word"],
       "end": ["Job", 33, 11, "first-word"]
     }
   ],
-  "ranges-friendly": [
+  "ranges-covered-by-this-column-friendly": [
     {
       "start": "Job 32:8-first",
       "end": "Job 33:11-first"
@@ -202,13 +211,13 @@ Run `python py_ac_loc/check_aleppo_col_lines.py` to verify all of these.
 ```json
 {
   "side": "right",
-  "ranges": [
+  "ranges-covered-by-this-column": [
     {
       "start": ["Job", 41, 23, "first-word"],
       "end": ["Job", 42, 10, "first-word"]
     }
   ],
-  "ranges-friendly": [
+  "ranges-covered-by-this-column-friendly": [
     {
       "start": "Job 41:23-first",
       "end": "Job 42:10-first"

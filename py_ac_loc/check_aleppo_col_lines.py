@@ -2,14 +2,15 @@
 Validate consistency of redundant elements in aleppo_col_lines JSON files.
 
 Checks:
-1. ranges-friendly matches ranges (machine-readable -> friendly string)
+1. ranges-covered-by-this-column-friendly matches ranges-covered-by-this-column (machine-readable -> friendly string)
 2. blank_lines matches actual blank lines in column_N_lines
 3. pe_lines matches actual {פ}-only lines in column_N_lines
 4. ketiv bcv-fml-friendly matches bcv-fml (machine-readable -> friendly string)
 5. ketiv words actually appear in the corresponding line data
 6. line range annotations: null for blank/{פ} lines, non-null for text lines,
    and formatted as "Book ch:vs" or "Book ch:vs–ch:vs"
-7. overall range (all columns) matches col1 first start / col2 last end
+7. ranges-covered-by-this-page-friendly matches merged column friendly ranges,
+   and ranges-covered-by-this-page (machine) matches ranges-covered-by-this-page-friendly
 8. description is the generic (non-leaf-specific) form
 
 Usage:
@@ -46,27 +47,23 @@ for json_path in sorted(AC_DIR.glob("aleppo_col_lines_*.json")):
         col = data[col_key]
         lines = data[lines_key]
 
-        # --- Check 1: ranges-friendly matches ranges ---
-        ranges = col["ranges"]
-        rf = col["ranges-friendly"]
+        # --- Check 1: ranges-covered-by-this-column-friendly matches ranges-covered-by-this-column ---
+        ranges = col["ranges-covered-by-this-column"]
+        rf = col["ranges-covered-by-this-column-friendly"]
         if len(ranges) != len(rf):
-            err(leaf, col_key, f"ranges has {len(ranges)} entries but ranges-friendly has {len(rf)}")
+            err(leaf, col_key, f"ranges-covered-by-this-column has {len(ranges)} entries but ranges-covered-by-this-column-friendly has {len(rf)}")
         else:
             for i, (r, f) in enumerate(zip(ranges, rf)):
                 expected_start = endpoint_friendly(r["start"])
                 expected_end = endpoint_friendly(r["end"])
                 if f["start"] != expected_start:
-                    err(leaf, col_key, f"ranges-friendly[{i}].start = {f['start']!r}, expected {expected_start!r}")
+                    err(leaf, col_key, f"ranges-covered-by-this-column-friendly[{i}].start = {f['start']!r}, expected {expected_start!r}")
                 if f["end"] != expected_end:
-                    err(leaf, col_key, f"ranges-friendly[{i}].end = {f['end']!r}, expected {expected_end!r}")
+                    err(leaf, col_key, f"ranges-covered-by-this-column-friendly[{i}].end = {f['end']!r}, expected {expected_end!r}")
 
-        # Extract text from lines (handle both 2-element and 3-element format)
-        if lines and len(lines[0]) == 3:
-            line_texts = [(entry[0], entry[2]) for entry in lines]  # [ln, range, txt]
-            line_ranges = [(entry[0], entry[1]) for entry in lines]  # [ln, range]
-        else:
-            line_texts = [(entry[0], entry[1]) for entry in lines]  # [ln, txt]
-            line_ranges = None
+        # Extract text from lines
+        line_texts = [(entry["line-num"], entry["MAM-XML-fragment"]) for entry in lines]
+        line_ranges = [(entry["line-num"], entry["range"]) for entry in lines]
 
         # --- Check 2: blank_lines matches actual blank lines ---
         actual_blanks = sorted(ln for ln, txt in line_texts if txt == "")
@@ -114,27 +111,52 @@ for json_path in sorted(AC_DIR.glob("aleppo_col_lines_*.json")):
                 elif not is_blank and rng is None:
                     err(leaf, col_key, f"line {ln}: text line should have a range, got null")
                 elif rng is not None:
-                    if not isinstance(rng, list) or len(rng) != 2:
-                        err(leaf, col_key, f"line {ln}: range should be a 2-element [start, end] list, got {rng!r}")
+                    if not isinstance(rng, dict) or set(rng.keys()) != {"start", "end"}:
+                        err(leaf, col_key, f"line {ln}: range should be a dict with 'start' and 'end' keys, got {rng!r}")
                     else:
-                        for j, ep in enumerate(rng):
+                        for key in ("start", "end"):
+                            ep = rng[key]
                             if not isinstance(ep, str) or not endpoint_pat.match(ep):
-                                label = "start" if j == 0 else "end"
-                                err(leaf, col_key, f"line {ln}: range {label} {ep!r} does not match 'Book ch:vs-(first|mid|last)'")
+                                err(leaf, col_key, f"line {ln}: range {key} {ep!r} does not match 'Book ch:vs-(first|mid|last)'")
 
-    # --- Check 7: overall range (all columns) ---
-    overall = data.get("overall range (all columns)")
-    if overall is None:
-        err(leaf, "(top)", "missing 'overall range (all columns)' field")
+    # --- Check 7: ranges-covered-by-this-page-friendly matches merged column ranges ---
+    overall_friendly = data.get("ranges-covered-by-this-page-friendly")
+    if overall_friendly is None:
+        err(leaf, "(top)", "missing 'ranges-covered-by-this-page-friendly' field")
+    elif not isinstance(overall_friendly, list) or len(overall_friendly) == 0:
+        err(leaf, "(top)", f"ranges-covered-by-this-page-friendly should be a non-empty list, got {type(overall_friendly).__name__}")
     else:
-        col1_rf = data["column_1"]["ranges-friendly"]
-        col2_rf = data["column_2"]["ranges-friendly"]
-        expected_start = col1_rf[0]["start"]
-        expected_end = col2_rf[-1]["end"]
-        if overall.get("start") != expected_start:
-            err(leaf, "(top)", f"overall range start = {overall.get('start')!r}, expected {expected_start!r}")
-        if overall.get("end") != expected_end:
-            err(leaf, "(top)", f"overall range end = {overall.get('end')!r}, expected {expected_end!r}")
+        # Build expected list: merge all column ranges by book
+        from collections import OrderedDict
+        all_col_ranges = []
+        for ci in (1, 2):
+            all_col_ranges.extend(data[f"column_{ci}"]["ranges-covered-by-this-column-friendly"])
+        by_book = OrderedDict()
+        for rf in all_col_ranges:
+            book = rf["start"].rsplit(" ", 1)[0]
+            if book not in by_book:
+                by_book[book] = {"start": rf["start"], "end": rf["end"]}
+            else:
+                by_book[book]["end"] = rf["end"]
+        expected = list(by_book.values())
+        if overall_friendly != expected:
+            err(leaf, "(top)", f"ranges-covered-by-this-page-friendly = {overall_friendly!r}, expected {expected!r}")
+
+    # --- Check 7b: ranges-covered-by-this-page matches ranges-covered-by-this-page-friendly ---
+    overall_machine = data.get("ranges-covered-by-this-page")
+    if overall_machine is None:
+        err(leaf, "(top)", "missing 'ranges-covered-by-this-page' field")
+    elif not isinstance(overall_machine, list) or len(overall_machine) == 0:
+        err(leaf, "(top)", f"ranges-covered-by-this-page should be a non-empty list, got {type(overall_machine).__name__}")
+    elif overall_friendly is not None and isinstance(overall_friendly, list):
+        if len(overall_machine) != len(overall_friendly):
+            err(leaf, "(top)", f"ranges-covered-by-this-page has {len(overall_machine)} entries but friendly has {len(overall_friendly)}")
+        else:
+            for i, (m, f) in enumerate(zip(overall_machine, overall_friendly)):
+                for key in ("start", "end"):
+                    expected_friendly = endpoint_friendly(m[key])
+                    if expected_friendly != f[key]:
+                        err(leaf, "(top)", f"ranges-covered-by-this-page[{i}].{key}: machine {m[key]!r} -> {expected_friendly!r} but friendly says {f[key]!r}")
 
     # --- Check 8: generic description ---
     GENERIC_DESC = [
