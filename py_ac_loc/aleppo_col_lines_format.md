@@ -21,7 +21,7 @@ machine-readable counterparts.
 | Key | Type | Description |
 |-----|------|-------------|
 | `leaf` | string | Leaf identifier, e.g. `"281v"` |
-| `description` | list of strings | Generic description (same in every file, wrapped over two lines) |
+| `description` | list of strings | Generic description (same in every file) |
 | `overall range (all columns)` | ranges-friendly object | Human-readable start/end of the entire page (see [Ranges-Friendly](#ranges-friendly-format)) |
 | `MAM-XML source file(s)` | list of strings | Repo-relative paths to source XML files, e.g. `"MAM-XML/out/xml-vtrad-mam/Job.xml"` |
 | `page_image` | string | URL to the page image on archive.org |

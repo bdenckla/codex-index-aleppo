@@ -1,8 +1,8 @@
 {
   "leaf": "270r",
   "description": [
-    "Manual line-by-line alignment of an Aleppo Codex leaf",
-    "to the page image (two columns)."
+    "Line-by-line alignment of an Aleppo Codex",
+    " page image to the corresponding MAM-XML text."
   ],
   "overall range (all columns)": {
     "start": "Ps 149:1-first",

@@ -133,8 +133,8 @@ for json_path in sorted(AC_DIR.glob("aleppo_col_lines_*.json")):
 
     # --- Check 8: generic description ---
     GENERIC_DESC = [
-        "Manual line-by-line alignment of an Aleppo Codex leaf",
-        "to the page image (two columns)."
+        "Line-by-line alignment of an Aleppo Codex",
+        " page image to the corresponding MAM-XML text."
     ]
     desc = data.get("description")
     if desc != GENERIC_DESC:
