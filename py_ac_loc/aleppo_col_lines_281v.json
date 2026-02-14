@@ -8,22 +8,117 @@
   "page_image": "https://archive.org/details/aleppo-codex/page/n563/mode/1up",
   "column_1": {
     "side": "right",
-    "range": "Job 41:23–42:10",
+    "ranges": [
+      {
+        "start": [
+          "Job",
+          41,
+          23,
+          "first-word"
+        ],
+        "end": [
+          "Job",
+          42,
+          10,
+          "first-word"
+        ]
+      }
+    ],
+    "ranges-friendly": [
+      {
+        "start": "Job 41:23-first",
+        "end": "Job 42:10-first"
+      }
+    ],
     "line_count": 28,
-    "notes": [
-      "Line 5 = {פ} (pe break after 41:26)",
-      "Line 14 = {פ} (pe break after 42:6)",
-      "42:2 ketiv ידעת, 42:10 ketiv אֶת־שבית"
+    "pe_lines": [
+      5,
+      14
+    ],
+    "ketivs": [
+      {
+        "bcv-fml": [
+          "Job",
+          42,
+          2,
+          "first-word"
+        ],
+        "bcv-fml-friendly": "Job 42:2-first",
+        "word": "ידעת"
+      },
+      {
+        "bcv-fml": [
+          "Job",
+          42,
+          10,
+          "a-middle-word"
+        ],
+        "bcv-fml-friendly": "Job 42:10-mid",
+        "word": "אֶת־שבית"
+      }
     ]
   },
   "column_2": {
     "side": "left",
-    "range": "Job 42:11–42:17 + Prov 1:1–1:8",
+    "ranges": [
+      {
+        "start": [
+          "Job",
+          42,
+          11,
+          "first-word"
+        ],
+        "end": [
+          "Job",
+          42,
+          17,
+          "first-word"
+        ]
+      },
+      {
+        "start": [
+          "Prov",
+          1,
+          1,
+          "first-word"
+        ],
+        "end": [
+          "Prov",
+          1,
+          8,
+          "first-word"
+        ]
+      }
+    ],
+    "ranges-friendly": [
+      {
+        "start": "Job 42:11-first",
+        "end": "Job 42:17-first"
+      },
+      {
+        "start": "Prov 1:1-first",
+        "end": "Prov 1:8-first"
+      }
+    ],
     "line_count": 28,
-    "notes": [
-      "Lines 17–18 = blank (book boundary between Job and Proverbs)",
-      "42:16 ketiv וירא",
-      "Prov 1:7 parashah_after={פ} → line 25 = {פ}"
+    "blank_lines": [
+      17,
+      18
+    ],
+    "pe_lines": [
+      27
+    ],
+    "ketivs": [
+      {
+        "bcv-fml": [
+          "Job",
+          42,
+          16,
+          "a-middle-word"
+        ],
+        "bcv-fml-friendly": "Job 42:16-mid",
+        "word": "וירא"
+      }
     ]
   },
   "column_1_lines": [

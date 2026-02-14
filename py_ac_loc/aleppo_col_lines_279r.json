@@ -8,12 +8,54 @@
   "page_image": "https://www.mgketer.org/mikra/29/34/1/mg/106",
   "column_1": {
     "side": "right",
-    "range": "Job 34:1–23",
+    "ranges": [
+      {
+        "start": [
+          "Job",
+          34,
+          1,
+          "first-word"
+        ],
+        "end": [
+          "Job",
+          34,
+          23,
+          "first-word"
+        ]
+      }
+    ],
+    "ranges-friendly": [
+      {
+        "start": "Job 34:1-first",
+        "end": "Job 34:23-first"
+      }
+    ],
     "line_count": 28
   },
   "column_2": {
     "side": "left",
-    "range": "Job 34:24–35:9",
+    "ranges": [
+      {
+        "start": [
+          "Job",
+          34,
+          24,
+          "first-word"
+        ],
+        "end": [
+          "Job",
+          35,
+          9,
+          "first-word"
+        ]
+      }
+    ],
+    "ranges-friendly": [
+      {
+        "start": "Job 34:24-first",
+        "end": "Job 35:9-first"
+      }
+    ],
     "line_count": 28
   },
   "column_1_lines": [

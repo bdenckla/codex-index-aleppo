@@ -8,12 +8,54 @@
   "page_image": "https://archive.org/details/aleppo-codex/page/n557/mode/1up",
   "column_1": {
     "side": "right",
-    "range": "Job 32:8–33:11",
+    "ranges": [
+      {
+        "start": [
+          "Job",
+          32,
+          8,
+          "first-word"
+        ],
+        "end": [
+          "Job",
+          33,
+          11,
+          "first-word"
+        ]
+      }
+    ],
+    "ranges-friendly": [
+      {
+        "start": "Job 32:8-first",
+        "end": "Job 33:11-first"
+      }
+    ],
     "line_count": 28
   },
   "column_2": {
     "side": "left",
-    "range": "Job 33:12–33:33",
+    "ranges": [
+      {
+        "start": [
+          "Job",
+          33,
+          12,
+          "first-word"
+        ],
+        "end": [
+          "Job",
+          33,
+          33,
+          "first-word"
+        ]
+      }
+    ],
+    "ranges-friendly": [
+      {
+        "start": "Job 33:12-first",
+        "end": "Job 33:33-first"
+      }
+    ],
     "line_count": 28
   },
   "column_1_lines": [

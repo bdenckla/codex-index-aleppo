@@ -8,15 +8,76 @@
   "page_image": "https://archive.org/details/aleppo-codex/page/n540/mode/1up",
   "column_1": {
     "side": "right",
-    "range": "Ps 149:1–150:6 + Job 1:1–1:4 (partial)",
+    "ranges": [
+      {
+        "start": [
+          "Ps",
+          149,
+          1,
+          "first-word"
+        ],
+        "end": [
+          "Ps",
+          150,
+          6,
+          "first-word"
+        ]
+      },
+      {
+        "start": [
+          "Job",
+          1,
+          1,
+          "first-word"
+        ],
+        "end": [
+          "Job",
+          1,
+          4,
+          "last-word"
+        ]
+      }
+    ],
+    "ranges-friendly": [
+      {
+        "start": "Ps 149:1-first",
+        "end": "Ps 150:6-first"
+      },
+      {
+        "start": "Job 1:1-first",
+        "end": "Job 1:4-last"
+      }
+    ],
     "line_count": 28,
-    "notes": [
-      "Lines 19–20 blank (Psalms→Job book boundary)"
+    "blank_lines": [
+      19,
+      20
     ]
   },
   "column_2": {
     "side": "left",
-    "range": "Job 1:4 (cont.)–1:16 (partial)",
+    "ranges": [
+      {
+        "start": [
+          "Job",
+          1,
+          4,
+          "a-middle-word"
+        ],
+        "end": [
+          "Job",
+          1,
+          16,
+          "last-word"
+        ]
+      }
+    ],
+    "ranges-friendly": [
+      {
+        "start": "Job 1:4-mid",
+        "end": "Job 1:16-last"
+      }
+    ],
     "line_count": 28,
     "notes": [
       "Line 6 includes {פ} after Job 1:5"

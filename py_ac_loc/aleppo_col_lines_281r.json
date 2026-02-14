@@ -8,19 +8,84 @@
   "page_image": "https://archive.org/details/aleppo-codex/page/n562/mode/1up",
   "column_1": {
     "side": "right",
-    "range": "Job 40:6–40:30 (partial)",
+    "ranges": [
+      {
+        "start": [
+          "Job",
+          40,
+          6,
+          "first-word"
+        ],
+        "end": [
+          "Job",
+          40,
+          30,
+          "last-word"
+        ]
+      }
+    ],
+    "ranges-friendly": [
+      {
+        "start": "Job 40:6-first",
+        "end": "Job 40:30-last"
+      }
+    ],
     "line_count": 28,
+    "pe_lines": [
+      1
+    ],
+    "ketivs": [
+      {
+        "bcv-fml": [
+          "Job",
+          40,
+          6,
+          "a-middle-word"
+        ],
+        "bcv-fml-friendly": "Job 40:6-mid",
+        "word": "מנסערה"
+      }
+    ],
     "notes": [
-      "Line 1 = {פ} (pe break after 40:5 on previous leaf)",
-      "Line 2 starts with 40:6; 40:6 has ketiv מנסערה"
+      "Line 2 starts with 40:6"
     ]
   },
   "column_2": {
     "side": "left",
-    "range": "Job 40:30 (cont.)–41:22",
+    "ranges": [
+      {
+        "start": [
+          "Job",
+          40,
+          30,
+          "a-middle-word"
+        ],
+        "end": [
+          "Job",
+          41,
+          22,
+          "first-word"
+        ]
+      }
+    ],
+    "ranges-friendly": [
+      {
+        "start": "Job 40:30-mid",
+        "end": "Job 41:22-first"
+      }
+    ],
     "line_count": 28,
-    "notes": [
-      "41:4 has ketiv לא"
+    "ketivs": [
+      {
+        "bcv-fml": [
+          "Job",
+          41,
+          4,
+          "first-word"
+        ],
+        "bcv-fml-friendly": "Job 41:4-first",
+        "word": "לא"
+      }
     ]
   },
   "column_1_lines": [

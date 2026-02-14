@@ -8,15 +8,57 @@
   "page_image": "https://www.mgketer.org/mikra/29/37/1/mg/106",
   "column_1": {
     "side": "right",
-    "range": "Job 37:9 (cont.)–38:6",
+    "ranges": [
+      {
+        "start": [
+          "Job",
+          37,
+          9,
+          "a-middle-word"
+        ],
+        "end": [
+          "Job",
+          38,
+          6,
+          "first-word"
+        ]
+      }
+    ],
+    "ranges-friendly": [
+      {
+        "start": "Job 37:9-mid",
+        "end": "Job 38:6-first"
+      }
+    ],
     "line_count": 28,
-    "notes": [
-      "Line 21 is blank (parashah pe break between Job 37:24 and 38:1)."
+    "pe_lines": [
+      21
     ]
   },
   "column_2": {
     "side": "left",
-    "range": "Job 38:7–38:30",
+    "ranges": [
+      {
+        "start": [
+          "Job",
+          38,
+          7,
+          "first-word"
+        ],
+        "end": [
+          "Job",
+          38,
+          30,
+          "first-word"
+        ]
+      }
+    ],
+    "ranges-friendly": [
+      {
+        "start": "Job 38:7-first",
+        "end": "Job 38:30-first"
+      }
+    ],
     "line_count": 28
   },
   "column_1_lines": [
