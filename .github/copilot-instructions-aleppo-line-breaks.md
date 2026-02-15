@@ -169,7 +169,7 @@ work on column 2.
 | Page | Range | Status |
 |------|-------|--------|
 | 270r | Ps 149:1 – Job 1:16 | Done |
-| 270v | Job 1:16 – Job 3:6 | Col 1 done (27 lines) |
+| 270v | Job 1:16 – Job 3:6 | Col 1 done (28 lines) |
 | 278v | Job 32:8 – Job 33:33 | Done |
 | 279r | Job 34:1 – Job 35:10 | Done |
 | 279v | Job 35:10 – Job 37:9 | Done |
