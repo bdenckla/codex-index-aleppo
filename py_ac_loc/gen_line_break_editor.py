@@ -130,18 +130,12 @@ def generate_editor_html(page_id, col):
     # "Skinny mode" crops tighter: showing only 30% of the image
     # centered on the actual text column.
     # Think of the page as 10 equal strips each 10% wide.
-    #   col 1 normal: strips 5–10 (right 60%)   skinny: strips 6–8 (50%–80%)
-    #   col 2 normal: strips 1–6 (left 60%)    skinny: strips 3–5 (20%–50%)
-    if col == 1:
-        # Right 60%: image at 166% width, shifted left by 66%
-        img_css = "width: 166%; max-width: none; margin-left: -66%;"
-        # Skinny: show 50%-80% of image (strips 6-8)
-        img_css_skinny = "width: 333%; max-width: none; margin-left: -167%;"
-    else:
-        # Left 60%: image at 166% width, no offset (left portion shows)
-        img_css = "width: 166%; max-width: none; margin-left: 0;"
-        # Skinny: show 0%-30% of image (strips 1-3)
-        img_css_skinny = "width: 333%; max-width: none; margin-left: 0;"
+    #   col 1 wide: strips 5–10 (right 60%)   skinny: strips 6–8 (50%–80%)
+    #   col 2 wide: strips 1–6 (left 60%)     skinny: strips 1–3 (0%–30%)
+    col1_wide = "width: 166%; max-width: none; margin-left: -66%;"
+    col1_skinny = "width: 333%; max-width: none; margin-left: -167%;"
+    col2_wide = "width: 166%; max-width: none; margin-left: 0;"
+    col2_skinny = "width: 333%; max-width: none; margin-left: 0;"
 
     # Build JS data
     js_words = []
@@ -171,14 +165,20 @@ def generate_editor_html(page_id, col):
 
     col_label = '1 (right)' if col == 1 else ('2 (left)' if col == 2 else '3 (center/prose)')
 
+    # Initial CSS is skinny for the selected col
+    initial_img_css = col1_skinny if col == 1 else col2_skinny
+
     html = _HTML_TEMPLATE.format(
         page_id=page_id,
         image_url=image_url,
-        img_css=img_css_skinny,
-        img_css_normal=img_css,
-        img_css_skinny=img_css_skinny,
+        img_css=initial_img_css,
+        col1_wide=col1_wide,
+        col1_skinny=col1_skinny,
+        col2_wide=col2_wide,
+        col2_skinny=col2_skinny,
         col_label=col_label,
         col_num=col,
+        other_col=2 if col == 1 else 1,
         words_json=words_json,
         line_ends_json=line_ends_json,
         stream_json=stream_json,
@@ -305,8 +305,9 @@ h1 button:hover {{ background: #1177bb; }}
 </head>
 <body>
 
-<h1>Line Break Editor \u2014 {page_id} \u2014 Col {col_label}
+<h1>Line Break Editor \u2014 {page_id} \u2014 Col <span id="colLabel">{col_label}</span>
     <button onclick="exportJSON()">Export</button>
+    <button id="colBtn" onclick="toggleCol()">Go to col <span id="colBtnNum">{other_col}</span></button>
     <button id="skinnyBtn" onclick="toggleSkinnyMode()">Go wide</button>
     <span id="status"></span>
 </h1>
@@ -321,9 +322,11 @@ h1 button:hover {{ background: #1177bb; }}
 <script>
 const PAGE_ID = "{page_id}";
 const MAQAF = '\\u05BE';
-// Skinny / normal image crop modes
-const IMG_CSS_NORMAL = "{img_css_normal}";
-const IMG_CSS_SKINNY = "{img_css_skinny}";
+// Image crop CSS for each col × mode
+const IMG_CSS = {{
+    1: {{ wide: "{col1_wide}", skinny: "{col1_skinny}" }},
+    2: {{ wide: "{col2_wide}", skinny: "{col2_skinny}" }},
+}};
 let isSkinnyMode = true; // skinny is default
 const allWords = {words_json};
 const preExistingLineEnds = {line_ends_json};
@@ -342,9 +345,18 @@ preExistingLineEnds.forEach(le => {{
     lineEndMap.set(le.idx, {{col: le.col, lineNum: le.lineNum}});
 }});
 
-const CURRENT_COL = {col_num};
+let currentColNum = {col_num};
 function currentCol() {{
-    return CURRENT_COL;
+    return currentColNum;
+}}
+
+function toggleCol() {{
+    currentColNum = currentColNum === 1 ? 2 : 1;
+    applyImageCrop();
+    // Update header col label
+    const labels = {{1: '1 (right)', 2: '2 (left)'}};
+    document.getElementById('colLabel').textContent = labels[currentColNum];
+    document.getElementById('colBtnNum').textContent = currentColNum === 1 ? 2 : 1;
 }}
 
 function recalcLineNums() {{
@@ -539,11 +551,16 @@ function buildExportStream() {{
     return result;
 }}
 
+function applyImageCrop() {{
+    const img = document.querySelector('.col-image img');
+    const mode = isSkinnyMode ? 'skinny' : 'wide';
+    const css = IMG_CSS[currentColNum][mode];
+    img.style.cssText = css + ' cursor: crosshair;';
+}}
+
 function toggleSkinnyMode() {{
     isSkinnyMode = !isSkinnyMode;
-    const img = document.querySelector('.col-image img');
-    const css = isSkinnyMode ? IMG_CSS_SKINNY : IMG_CSS_NORMAL;
-    img.style.cssText = css + ' cursor: crosshair;';
+    applyImageCrop();
     document.getElementById('skinnyBtn').textContent =
         isSkinnyMode ? 'Go wide' : 'Go skinny';
 }}
@@ -568,7 +585,7 @@ render();
 
 // Auto-scroll: if editing col 2 and col 1 markers exist, scroll to
 // show the last col 1 line-end (so user is "ready for col 2").
-if (CURRENT_COL === 2) {{
+if (currentColNum === 2) {{
     const col1Ends = [...lineEndMap.entries()]
         .filter(([_, info]) => info.col === 1)
         .sort((a, b) => a[0] - b[0]);
