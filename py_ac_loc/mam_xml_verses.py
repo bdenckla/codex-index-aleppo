@@ -8,8 +8,8 @@ Handles all special MAM-XML elements:
   - <kq-trivial>: trivial ketiv/qere — use text attribute (pointed)
   - <slh-word>: suspended-letter word — use slhw-desc-0 (full pointed word)
   - <implicit-maqaf>: no visible text, skip
-  - <spi-pe2>: petuxah (open paragraph) break — emitted as {פ}
-  - <spi-samekh2>: setumah (closed paragraph) break — emitted as {ס}
+  - <spi-pe2>: petuxah (open paragraph) break — emitted as {"parashah": "spi-pe2"}
+  - <spi-samekh2>: setumah (closed paragraph) break — emitted as {"parashah": "spi-samekh2"}
 
 Usage:
     from py_ac_loc.mam_xml_verses import get_verses_in_range
@@ -19,7 +19,7 @@ Usage:
         'Job', (37, 9), (38, 20),
     )
     # Returns: [{'cv': '37:9', 'words': [...], 'ketiv_indices': [], 'parashah_after': None}, ...]
-    # parashah_after is None, '{פ}', or '{ס}'
+    # parashah_after is None, {"parashah": "spi-pe2"}, or {"parashah": "spi-samekh2"}
 """
 
 import xml.etree.ElementTree as ET
@@ -115,7 +115,7 @@ def get_verses_in_range(xml_path, book_osis_prefix, start_cv, end_cv):
             cv: str — e.g., '37:9'
             words: list of str — maqaf-joined words
             ketiv_indices: list of int — indices of ketiv (unpointed) words
-            parashah_after: None, '{פ}', or '{ס}' — break after this verse
+            parashah_after: None, {"parashah": "spi-pe2"}, or {"parashah": "spi-samekh2"} — break after this verse
     """
     tree = ET.parse(xml_path)
     book39 = tree.getroot()[0]
@@ -129,7 +129,7 @@ def get_verses_in_range(xml_path, book_osis_prefix, start_cv, end_cv):
             if osis.startswith(book_osis_prefix + '.'):
                 prev_chapter_num = int(osis.split('.')[-1])
         elif child.tag in ('spi-pe2', 'spi-samekh2') and prev_chapter_num is not None:
-            brk = '{פ}' if child.tag == 'spi-pe2' else '{ס}'
+            brk = {"parashah": child.tag}
             inter_chapter_breaks[prev_chapter_num] = brk
 
     verses = []
@@ -146,7 +146,7 @@ def get_verses_in_range(xml_path, book_osis_prefix, start_cv, end_cv):
         ch_children = list(child)
         for i, el in enumerate(ch_children):
             if el.tag in ('spi-pe2', 'spi-samekh2'):
-                brk = '{פ}' if el.tag == 'spi-pe2' else '{ס}'
+                brk = {"parashah": el.tag}
                 # Find the preceding verse
                 for j in range(i - 1, -1, -1):
                     if ch_children[j].tag == 'verse':
