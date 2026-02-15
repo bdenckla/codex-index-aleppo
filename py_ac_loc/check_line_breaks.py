@@ -34,6 +34,7 @@ def classify_item(item):
         for key in (
             "page-start", "page-end",
             "verse-start", "verse-end",
+            "verse-fragment-start", "verse-fragment-end",
             "line-start", "line-end",
             "parashah",
         ):
@@ -69,13 +70,38 @@ def check_file(path, verbose=True):
             f"line-end ({classes['line-end']})"
         )
 
-    # verse-start / verse-end
-    vs_diff = classes["verse-start"] - classes["verse-end"]
+    # verse-start / verse-end (full verses + fragments)
+    total_vs = classes["verse-start"] + classes["verse-fragment-start"]
+    total_ve = classes["verse-end"] + classes["verse-fragment-end"]
+    vs_diff = total_vs - total_ve
     if abs(vs_diff) > 1:
         issues.append(
-            f"verse-start ({classes['verse-start']}) and "
-            f"verse-end ({classes['verse-end']}) differ by {vs_diff}"
+            f"verse starts ({total_vs}) and "
+            f"verse ends ({total_ve}) differ by {vs_diff}"
         )
+
+    # No pre-content words (before first line-start)
+    first_ls = next(
+        (i for i, x in enumerate(stream) if classify_item(x) == "line-start"),
+        None,
+    )
+    if first_ls is not None:
+        pre_words = [i for i in range(first_ls) if classify_item(stream[i]) == "word"]
+        if pre_words:
+            issues.append(f"{len(pre_words)} word(s) before first line-start")
+
+    # No post-content words (after last line-end)
+    last_le = None
+    for i, x in enumerate(stream):
+        if classify_item(x) == "line-end":
+            last_le = i
+    if last_le is not None:
+        post_words = [
+            i for i in range(last_le + 1, len(stream))
+            if classify_item(stream[i]) == "word"
+        ]
+        if post_words:
+            issues.append(f"{len(post_words)} word(s) after last line-end")
 
     # Unknown types
     for key, count in classes.items():
@@ -161,13 +187,26 @@ def check_file(path, verbose=True):
         issues.append("No col 2 line markers")
 
     # --- Verse continuity check ---
-    # Verify verse-start values are well-formed "Book C:V"
+    # Verify verse-start and verse-fragment-start values are well-formed
     for item in stream:
-        if isinstance(item, dict) and "verse-start" in item:
-            vs = item["verse-start"]
-            parts = vs.rsplit(" ", 1)
-            if len(parts) != 2 or ":" not in parts[1]:
-                issues.append(f"Malformed verse-start: {vs!r}")
+        if isinstance(item, dict):
+            for key in ("verse-start", "verse-fragment-start",
+                        "verse-end", "verse-fragment-end"):
+                if key in item:
+                    vs = item[key]
+                    parts = vs.rsplit(" ", 1)
+                    if len(parts) != 2 or ":" not in parts[1]:
+                        issues.append(f"Malformed {key}: {vs!r}")
+
+    # Collect verse identifiers for cross-file checking
+    file_verse_starts = set()
+    file_verse_ends = set()
+    for item in stream:
+        if isinstance(item, dict):
+            if "verse-start" in item:
+                file_verse_starts.add(item["verse-start"])
+            if "verse-end" in item:
+                file_verse_ends.add(item["verse-end"])
 
     # --- Word count ---
     word_count = classes.get("word", 0)
@@ -179,8 +218,12 @@ def check_file(path, verbose=True):
         "col_lines": {col: len(nums) for col, nums in sorted(col_lines.items())},
         "verse_starts": classes.get("verse-start", 0),
         "verse_ends": classes.get("verse-end", 0),
+        "frag_starts": classes.get("verse-fragment-start", 0),
+        "frag_ends": classes.get("verse-fragment-end", 0),
         "parashahs": classes.get("parashah", 0),
         "empty_lines": empty_lines,
+        "file_verse_starts": file_verse_starts,
+        "file_verse_ends": file_verse_ends,
         "issues": issues,
     }
 
@@ -213,6 +256,34 @@ def main():
         all_stats.append(stats)
         total_issues += len(stats["issues"])
 
+    # --- Cross-file duplicate verse check ---
+    # Each full verse-start and each full verse-end should
+    # appear in exactly one file.
+    vs_to_files = {}  # verse -> list of filenames (from verse-start)
+    ve_to_files = {}  # verse -> list of filenames (from verse-end)
+    for s in all_stats:
+        for v in s["file_verse_starts"]:
+            vs_to_files.setdefault(v, []).append(s["name"])
+        for v in s["file_verse_ends"]:
+            ve_to_files.setdefault(v, []).append(s["name"])
+    for v in sorted(set(vs_to_files) | set(ve_to_files)):
+        vs_files = vs_to_files.get(v, [])
+        ve_files = ve_to_files.get(v, [])
+        if len(vs_files) > 1:
+            msg = f"verse-start {v} in multiple files: {vs_files}"
+            total_issues += 1
+            for s in all_stats:
+                if s["name"] == vs_files[0]:
+                    s["issues"].append(msg)
+                    break
+        if len(ve_files) > 1:
+            msg = f"verse-end {v} in multiple files: {ve_files}"
+            total_issues += 1
+            for s in all_stats:
+                if s["name"] == ve_files[0]:
+                    s["issues"].append(msg)
+                    break
+
     # --- Collect unique verse-start values ---
     all_verses = set()
     for path in paths:
@@ -233,6 +304,8 @@ def main():
     tc2 = sum(s["col_lines"].get(2, 0) for s in all_stats)
     tvs = sum(s["verse_starts"] for s in all_stats)
     tve = sum(s["verse_ends"] for s in all_stats)
+    tfs = sum(s["frag_starts"] for s in all_stats)
+    tfe = sum(s["frag_ends"] for s in all_stats)
     tp = sum(s["parashahs"] for s in all_stats)
     tem = sum(len(s["empty_lines"]) for s in all_stats)
 
@@ -258,6 +331,8 @@ def main():
             f"<td class='num'>{c2}</td>"
             f"<td class='num'>{s['verse_starts']}</td>"
             f"<td class='num'>{s['verse_ends']}</td>"
+            f"<td class='num'>{s['frag_starts']}</td>"
+            f"<td class='num'>{s['frag_ends']}</td>"
             f"<td class='num'>{s['parashahs']}</td>"
             f"<td class='num'>{em}</td>"
             f"<td{issue_class}>{issue_cell}</td>"
@@ -276,6 +351,19 @@ def main():
       <tr><th>Page</th><th>Col</th><th>Line</th></tr>
       {elines}
     </table>"""
+
+    COL_HEADERS = """
+      <th title="Codex page ID (e.g. 270r = leaf 270 recto)">Page</th>
+      <th title="Hebrew word count">Words</th>
+      <th title="Column 1 (right) line count">C1</th>
+      <th title="Column 2 (left) line count">C2</th>
+      <th title="Full verse-start markers">V-st</th>
+      <th title="Full verse-end markers">V-en</th>
+      <th title="Verse-fragment-start (verse continues from previous page)">Fg-st</th>
+      <th title="Verse-fragment-end (verse continues to next page)">Fg-en</th>
+      <th title="Parashah marker count">Par</th>
+      <th title="Empty lines (blank lines in the codex)">EmLn</th>
+      <th title="Consistency check issues">Issues</th>"""
 
     html = f"""\
 <!DOCTYPE html>
@@ -311,32 +399,14 @@ def main():
 
 <table>
   <thead>
-    <tr>
-      <th title="Codex page ID (e.g. 270r = leaf 270 recto)">Page</th>
-      <th title="Hebrew word count">Words</th>
-      <th title="Column 1 (right) line count">C1</th>
-      <th title="Column 2 (left) line count">C2</th>
-      <th title="Verse-start marker count">V-st</th>
-      <th title="Verse-end marker count">V-en</th>
-      <th title="Parashah marker count">Par</th>
-      <th title="Empty lines (blank lines in the codex)">EmLn</th>
-      <th title="Consistency check issues">Issues</th>
+    <tr>{COL_HEADERS}
     </tr>
   </thead>
   <tbody>
     {"".join(rows_html)}
   </tbody>
   <tfoot>
-    <tr>
-      <th title="Codex page ID (e.g. 270r = leaf 270 recto)">Page</th>
-      <th title="Hebrew word count">Words</th>
-      <th title="Column 1 (right) line count">C1</th>
-      <th title="Column 2 (left) line count">C2</th>
-      <th title="Verse-start marker count">V-st</th>
-      <th title="Verse-end marker count">V-en</th>
-      <th title="Parashah marker count">Par</th>
-      <th title="Empty lines (blank lines in the codex)">EmLn</th>
-      <th title="Consistency check issues">Issues</th>
+    <tr>{COL_HEADERS}
     </tr>
     <tr>
       <td>TOTAL</td>
@@ -345,6 +415,8 @@ def main():
       <td class="num">{tc2}</td>
       <td class="num">{tvs}</td>
       <td class="num">{tve}</td>
+      <td class="num">{tfs}</td>
+      <td class="num">{tfe}</td>
       <td class="num">{tp}</td>
       <td class="num">{tem}</td>
       <td>{total_issues} issue(s)</td>
@@ -360,10 +432,12 @@ def main():
   <li>No duplicate <code>line-start</code> or <code>line-end</code> markers</li>
   <li>{EXPECTED_LINES_PER_COL} lines per column, numbered sequentially 1\u2013{EXPECTED_LINES_PER_COL}</li>
   <li>Both columns (1 and 2) present in every file</li>
-  <li><code>verse-start</code> and <code>verse-end</code> counts differ by at most 1</li>
-  <li><code>verse-start</code> values are well-formed (<code>Book C:V</code>)</li>
+  <li>Total verse starts (full + fragment) and verse ends differ by at most 1</li>
+  <li>All verse identifiers are well-formed (<code>Book C:V</code>)</li>
   <li>No unknown dict types in the stream</li>
   <li>Reversed-order pairs (line-end before line-start) must be truly empty (no words between them)</li>
+  <li>No words before first <code>line-start</code> (pre-content) or after last <code>line-end</code> (post-content)</li>
+  <li>No full verse (<code>verse-start</code>/<code>verse-end</code>) appears in more than one file</li>
 </ol>
 </body>
 </html>

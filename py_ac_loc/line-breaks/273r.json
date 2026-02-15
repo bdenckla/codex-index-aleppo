@@ -3,11 +3,8 @@
     "page-start": "273r"
   },
   {
-    "verse-start": "Job 10:20"
+    "verse-fragment-start": "Job 10:20"
   },
-  "הֲלֹֽא־",
-  "מְעַ֣ט",
-  "יָמַ֣י",
   {
     "line-start": {
       "col": 1,
@@ -1343,15 +1340,8 @@
       "line-num": 28
     }
   },
-  "יָדַ֣עְתִּי",
-  "גַם־",
-  "אָ֑נִי",
-  "לֹֽא־",
-  "נֹפֵ֖ל",
-  "אָנֹכִ֣י",
-  "מִכֶּֽם׃",
   {
-    "verse-end": "Job 13:2"
+    "verse-fragment-end": "Job 13:2"
   },
   {
     "page-end": "273r"
