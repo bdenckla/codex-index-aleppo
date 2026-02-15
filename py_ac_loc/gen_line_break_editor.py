@@ -126,12 +126,22 @@ def generate_editor_html(page_id, col):
 
     # CSS crop: col 1 shows right 60%, col 2 shows left 60%
     # We set the image wider than its container and offset it.
+    #
+    # "Skinny mode" crops tighter: showing only 30% of the image
+    # centered on the actual text column.
+    # Think of the page as 10 equal strips each 10% wide.
+    #   col 1 normal: strips 5–10 (right 60%)   skinny: strips 6–8 (50%–80%)
+    #   col 2 normal: strips 1–6 (left 60%)    skinny: strips 3–5 (20%–50%)
     if col == 1:
         # Right 60%: image at 166% width, shifted left by 66%
         img_css = "width: 166%; max-width: none; margin-left: -66%;"
+        # Skinny: show 50%-80% of image (strips 6-8)
+        img_css_skinny = "width: 333%; max-width: none; margin-left: -167%;"
     else:
         # Left 60%: image at 166% width, no offset (left portion shows)
         img_css = "width: 166%; max-width: none; margin-left: 0;"
+        # Skinny: show 20%-50% of image (strips 3-5)
+        img_css_skinny = "width: 333%; max-width: none; margin-left: -67%;"
 
     # Build JS data
     js_words = []
@@ -165,7 +175,9 @@ def generate_editor_html(page_id, col):
     html = _HTML_TEMPLATE.format(
         page_id=page_id,
         image_url=image_url,
-        img_css=img_css,
+        img_css=img_css_skinny,
+        img_css_normal=img_css,
+        img_css_skinny=img_css_skinny,
         col1_sel=col1_sel,
         col2_sel=col2_sel,
         words_json=words_json,
@@ -210,7 +222,7 @@ h1 {{ text-align: center; padding: 10px; font-size: 17px; }}
     overflow-x: hidden; overflow-y: auto;
     padding: 8px; direction: ltr;
 }}
-.col-image img {{ {img_css} cursor: crosshair; }}
+.col-image img {{ {img_css} cursor: crosshair; transition: width 0.2s, margin-left 0.2s; }}
 .word {{
     display: inline-block;
     padding: 3px 5px;
@@ -317,13 +329,17 @@ h1 {{ text-align: center; padding: 10px; font-size: 17px; }}
         <option value="3">3 (center/prose)</option>
     </select></label>
     <button onclick="exportJSON()">Export JSON to Clipboard</button>
+    <button id="skinnyBtn" onclick="toggleSkinnyMode()">Normal Mode</button>
     <span id="status"></span>
 </div>
 
 <script>
 const PAGE_ID = "{page_id}";
 const MAQAF = '\\u05BE';
-
+// Skinny / normal image crop modes
+const IMG_CSS_NORMAL = "{img_css_normal}";
+const IMG_CSS_SKINNY = "{img_css_skinny}";
+let isSkinnyMode = true; // skinny is default
 const allWords = {words_json};
 const preExistingLineEnds = {line_ends_json};
 const baseStream = {stream_json};
@@ -535,6 +551,15 @@ function buildExportStream() {{
     }}
 
     return result;
+}}
+
+function toggleSkinnyMode() {{
+    isSkinnyMode = !isSkinnyMode;
+    const img = document.querySelector('.col-image img');
+    const css = isSkinnyMode ? IMG_CSS_SKINNY : IMG_CSS_NORMAL;
+    img.style.cssText = css + ' cursor: crosshair;';
+    document.getElementById('skinnyBtn').textContent =
+        isSkinnyMode ? 'Normal Mode' : 'Skinny Mode';
 }}
 
 function exportJSON() {{
