@@ -47,7 +47,7 @@ RECORD_1413 = {
     "qr-cv": "14:13",
     "qr-lc-proposed": "תָּ֤שִׁ֥ית",
     "qr-lc-q": "(?)",
-    "qr-what-is-weird": "maybe מרכא not געיה",
+    "qr-what-is-weird": "מרכא not געיה",
     "qr-consensus": "תָּ֤שִֽׁית",
     "qr-generic-comment": [
         author.para(_COMMENT_1413_PARA1),

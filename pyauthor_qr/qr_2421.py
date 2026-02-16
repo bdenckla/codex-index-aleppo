@@ -13,7 +13,7 @@ RECORD_2421 = {
     "qr-cv": "24:21",
     "qr-lc-q": "(?)",
     "qr-lc-proposed": "רֹעֵ֣ה",
-    "qr-what-is-weird": "maybe צירה not סגול",
+    "qr-what-is-weird": "צירה not סגול",
     "qr-consensus": "רֹעֶ֣ה",
     "qr-generic-comment": _COMMENT_2421,
     "qr-highlight": 2,
