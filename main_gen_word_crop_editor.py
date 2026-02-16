@@ -350,7 +350,7 @@ body {{
 <body>
 
 <div id="toolbar">
-  <button id="fine-btn" onclick="toggleFine()">Fine</button>
+  <button id="fine-btn" class="active" onclick="toggleFine()">Fine</button>
   <button onclick="resetActive()">Reset</button>
   <button onclick="exportJSON()">Export JSON</button>
   <span id="status">Click a handle to begin</span>
@@ -363,7 +363,7 @@ body {{
 const ITEMS = {items_json};
 const N = ITEMS.length;
 const FINE_SCALE = 0.2;
-let fineMode = false;
+let fineMode = true;
 
 // Current box state for each item (0\u20131 relative coords)
 const boxes = ITEMS.map(it => ({{
@@ -655,6 +655,8 @@ def main():
     pages = load_index()
 
     use_all = "--all" in sys.argv
+    # Collect any positional args (SIDs) from command line
+    cli_sids = {a for a in sys.argv[1:] if not a.startswith("-")}
 
     examples = []
     if use_all:
@@ -663,6 +665,12 @@ def main():
             sid = short_id(qr)
             img_path = ROOT / "docs" / "jobn" / "img" / f"Aleppo-{sid}.png"
             if not os.path.exists(img_path):
+                examples.append(qr)
+    elif cli_sids:
+        # Use SIDs from command line
+        for qr in QUIRKRECS:
+            sid = short_id(qr)
+            if sid in cli_sids:
                 examples.append(qr)
     else:
         target_sids = {
