@@ -452,9 +452,20 @@ function render() {{
 function toggleLineEnd(idx) {{
     if (lineEndMap.has(idx)) {{
         lineEndMap.delete(idx);
+        // If we just removed a line-end that had been auto-advanced
+        // to absorb a standalone sof pasuq, also clear that
+        if (idx + 1 < allWords.length && allWords[idx + 1].text === '\u05C3') {{
+            lineEndMap.delete(idx + 1);
+        }}
     }} else {{
+        // If the next word is a standalone sof pasuq, advance the
+        // line-end to include it (sof pasuq belongs with its verse)
+        let endIdx = idx;
+        if (idx + 1 < allWords.length && allWords[idx + 1].text === '\u05C3') {{
+            endIdx = idx + 1;
+        }}
         const col = currentCol();
-        lineEndMap.set(idx, {{col: col, lineNum: 0}});
+        lineEndMap.set(endIdx, {{col: col, lineNum: 0}});
     }}
     recalcLineNums();
     render();
