@@ -44,6 +44,7 @@
     ],
     "qr-noted-by": "nBHQ-nBHL-nDM-nWLC",
     "qr-lc-img": "0121.png",
+    "qr-aleppo-img": "Aleppo-0121.png",
     "nbd": {
       "e:BHQ": "nBHQ",
       "e:BHL": "nBHL",
@@ -97,6 +98,7 @@
       "line": 14
     },
     "qr-lc-img": "0304.png",
+    "qr-aleppo-img": "Aleppo-0304.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -129,6 +131,7 @@
     ],
     "qr-noted-by": "tBHQ-zmiscWLC",
     "qr-lc-img": "0316.png",
+    "qr-aleppo-img": "Aleppo-0316.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -155,6 +158,7 @@
     },
     "qr-noted-by": "tBHQ-zdexiWLC",
     "qr-lc-img": "0404.png",
+    "qr-aleppo-img": "Aleppo-0404.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -184,6 +188,7 @@
     ],
     "qr-noted-by": "nBHQ-nBHL-nDM",
     "qr-lc-img": "0409.png",
+    "qr-aleppo-img": "Aleppo-0409.png",
     "nbd": {
       "e:BHQ": "nBHQ",
       "e:BHL": "nBHL",
@@ -213,6 +218,7 @@
     ],
     "qr-noted-by": "tBHQ-nBHL-nDM",
     "qr-lc-img": "0417.png",
+    "qr-aleppo-img": "Aleppo-0417.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "nBHL",
@@ -278,6 +284,7 @@
     ],
     "qr-noted-by": "tBHQ-nDM",
     "qr-lc-img": "0505.png",
+    "qr-aleppo-img": "Aleppo-0505.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -304,6 +311,7 @@
       "line": 13
     },
     "qr-lc-img": "0520.png",
+    "qr-aleppo-img": "Aleppo-0520.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -334,6 +342,7 @@
       "line": 17
     },
     "qr-lc-img": "0523.png",
+    "qr-aleppo-img": "Aleppo-0523.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -363,6 +372,7 @@
       "line": 19
     },
     "qr-lc-img": "0524.png",
+    "qr-aleppo-img": "Aleppo-0524.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -499,6 +509,7 @@
       }
     ],
     "qr-lc-img": "0610.png",
+    "qr-aleppo-img": "Aleppo-0610.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -621,6 +632,7 @@
       "line": 20
     },
     "qr-lc-img": "0621.png",
+    "qr-aleppo-img": "Aleppo-0621.png",
     "nbd": {
       "e:BHQ": "nBHQ",
       "e:BHL": "xBHL",
@@ -648,6 +660,7 @@
       "line": 27
     },
     "qr-lc-img": "0627.png",
+    "qr-aleppo-img": "Aleppo-0627.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -731,6 +744,7 @@
     },
     "qr-noted-by": "tBHQ-nBHL",
     "qr-lc-img": "0709.png",
+    "qr-aleppo-img": "Aleppo-0709.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "nBHL",
