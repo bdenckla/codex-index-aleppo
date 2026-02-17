@@ -107,6 +107,62 @@ mgketer.org uses a JavaScript image viewer (iv-viewer) that loads tiles dynamica
 
 Save downloaded images to `C:\Users\BenDe\OneDrive\Pictures\Aleppo-from-mgketer\` with pattern `{bknu}_{chnu}.jpg` (e.g., `28_34.jpg` for Job chapter 34).
 
+## Baseline Segmentation / Line Detection
+
+### Purpose
+
+`py_ac_loc/kraken_seg_baselines.py` runs kraken's baseline segmentation
+on Aleppo Codex pages and matches detected baselines to the 28-line
+manual grid from `py_ac_loc/column-coordinates/`.  This produces
+per-line baseline polylines aligned to known grid positions — useful
+for locating individual text lines without full OCR.
+
+### How it works
+
+1. **Crop** each column from the page image using the manual bounding box
+   (with 5 px padding).  A crop is used instead of a mask because kraken
+   6.0.3 has a bug: `blla.segment(img, mask=np_array)` raises
+   `ValueError` due to `if mask:` on a numpy array.
+2. **Segment** the crop with `blla.segment(crop, text_direction="horizontal-rl")`.
+3. **Grid-match**: compute 28 evenly-spaced y-positions from the manual
+   column height, estimate a systematic y-offset (median of plausible
+   matches), then assign each grid slot to the nearest kraken baseline
+   within 60 % of a line-spacing.  Unmatched slots → empty (blank or
+   very short stichographic lines).
+
+### Running
+
+```bash
+# All 24 Job pages (270r – 281v):
+wsl -- ~/.local/share/kraken-env/bin/python py_ac_loc/kraken_seg_baselines.py
+
+# Specific pages:
+wsl -- ~/.local/share/kraken-env/bin/python py_ac_loc/kraken_seg_baselines.py 270r 275v
+```
+
+### Output (in `.novc/`)
+
+| File | Contents |
+|------|----------|
+| `kraken-seg-{page}.json` | 28-slot grid per column with matched baselines |
+| `kraken-seg-{page}.png`  | Visualization: green box = manual bounds, dim yellow = grid, red/cyan = matched baselines, yellow X = empty slot |
+| `aleppo-page-{page}.jpg` | Cached page image from archive.org |
+
+### Known issues
+
+- **Slot 27 (last line)** is occasionally empty — sometimes the last
+  text line sits very close to or below the manual bounding box bottom.
+- **Polygonizer `TopologyException` warnings** are harmless; segmentation
+  still completes.
+- **Mask parameter bug** (kraken 6.0.3): `blla.segment(img, mask=...)` fails.
+  The crop-based workaround avoids this entirely.
+
+### Image source
+
+Page images come from archive.org at scale=2.  The URL formula is in
+the script's `_image_url()` function.  Page number =
+`(leaf − 1) × 2 + 2 + (0 if recto else 1)`.
+
 ## Output Quality Notes
 
 - The BiblIA model was trained on medieval manuscripts, not the 10th-century Aleppo Codex, so OCR output is fragmentary
