@@ -3,7 +3,7 @@
 import glob
 import os
 from pyauthor_util import author
-from pyauthor_util.prep_quirkrecs import prep_quirkrecs
+from pyauthor_util.prep_quirkrecs import get_enriched_quirkrecs
 from py import two_col_css_styles as tcstyles
 from py import my_html
 from pyauthor import (
@@ -34,9 +34,9 @@ def main():
     #
     tdm_ch = jobn_rel_top, css_href
     #
-    qrs = prep_quirkrecs(jobn_rel_top, "./out")
-    ov_and_de = make_ov_and_de(qrs)
-    qr_groups = get_qr_groups(qrs)
+    eqrs = get_enriched_quirkrecs(jobn_rel_top, "./out")
+    ov_and_de = make_ov_and_de(eqrs)
+    qr_groups = get_qr_groups(eqrs)
     aq = AllQuirks(tdm_ch, ov_and_de, qr_groups)
     job1_full_list_details.gen_html_file(tdm_ch, ov_and_de)
     job2_main_article.gen_html_file(aq)

@@ -15,7 +15,7 @@ from pyauthor_util.qr_make_json_outputs import (
 from pycmn.my_utils import sl_map
 
 
-def prep_quirkrecs(jobn_rel_top, json_outdir):
+def get_enriched_quirkrecs(jobn_rel_top, json_outdir):
     eqrs = _enrich_quirkrecs(jobn_rel_top)
     write_qr_field_stats_json(
         eqrs,
