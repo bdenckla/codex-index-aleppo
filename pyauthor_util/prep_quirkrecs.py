@@ -27,9 +27,9 @@ def get_enriched_quirkrecs(jobn_rel_top, json_outdir):
 
 
 def _enrich_quirkrecs(jobn_rel_top):
+    _assert_cv_ordering(RAW_QUIRKRECS)
     qrs_4 = _add_word_ids(RAW_QUIRKRECS)
-    qrs_5 = sorted(qrs_4, key=_sort_key)
-    qrs_6 = sl_map((_prep_one_quirkrec, jobn_rel_top), qrs_5)
+    qrs_6 = sl_map((_prep_one_quirkrec, jobn_rel_top), qrs_4)
     return qrs_6
 
 
@@ -89,6 +89,22 @@ def _add_word_ids(quirkrecs):
                 wid = base_wid
             result.append({**qr, "qr-word-id": wid})
     return result
+
+
+def _cv_key(quirkrec):
+    ch, vr = (int(x) for x in quirkrec["qr-cv"].split(":"))
+    return (ch, vr)
+
+
+def _assert_cv_ordering(quirkrecs):
+    for i in range(1, len(quirkrecs)):
+        prev = _cv_key(quirkrecs[i - 1])
+        curr = _cv_key(quirkrecs[i])
+        assert prev <= curr, (
+            f"RAW_QUIRKRECS not in chapter-verse order: "
+            f"{quirkrecs[i-1]['qr-cv']} > {quirkrecs[i]['qr-cv']} "
+            f"at index {i}"
+        )
 
 
 def _sort_key(quirkrec):

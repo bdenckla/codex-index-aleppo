@@ -2592,6 +2592,36 @@
     ]
   },
   {
+    "qr-cv": "19:16",
+    "qr-lc-q": "(?)",
+    "qr-lc-proposed": "קָּ֭רָאתִי",
+    "qr-what-is-weird": "ק has דגש",
+    "qr-consensus": "קָ֭רָאתִי",
+    "qr-generic-comment": "The dot is suspiciously brown rather than black.",
+    "qr-highlight": 1,
+    "qr-lc-loc": {
+      "page": "402B",
+      "column": 1,
+      "line": 8
+    },
+    "qr-bhq-comment": "$BHQ notes that the דגש on the ק in μL disagrees with μA and μY.",
+    "qr-noted-by": "nBHQ-nBHL",
+    "qr-word-id": "QRAFY",
+    "qr-lc-img": "1916-QRAFY.png",
+    "nbd": {
+      "e:BHQ": "nBHQ",
+      "e:BHL": "nBHL",
+      "e:DM": "xDM",
+      "e:WLC": "xWLC",
+      "e:UXLC": "xUXLC"
+    },
+    "pgroup": "g:nbhq_and_n3",
+    "qr-auto-diff": [
+      "add dagesh/mapiq/shuruq-dot to qof",
+      "add non-varika"
+    ]
+  },
+  {
     "qr-noted-by-mam": true,
     "qr-noted-by": "aDM",
     "qr-cv": "19:16",
@@ -2636,36 +2666,6 @@
     "qr-auto-diff": [
       "move geresh-muqdam back from pe to bet",
       "move"
-    ]
-  },
-  {
-    "qr-cv": "19:16",
-    "qr-lc-q": "(?)",
-    "qr-lc-proposed": "קָּ֭רָאתִי",
-    "qr-what-is-weird": "ק has דגש",
-    "qr-consensus": "קָ֭רָאתִי",
-    "qr-generic-comment": "The dot is suspiciously brown rather than black.",
-    "qr-highlight": 1,
-    "qr-lc-loc": {
-      "page": "402B",
-      "column": 1,
-      "line": 8
-    },
-    "qr-bhq-comment": "$BHQ notes that the דגש on the ק in μL disagrees with μA and μY.",
-    "qr-noted-by": "nBHQ-nBHL",
-    "qr-word-id": "QRAFY",
-    "qr-lc-img": "1916-QRAFY.png",
-    "nbd": {
-      "e:BHQ": "nBHQ",
-      "e:BHL": "nBHL",
-      "e:DM": "xDM",
-      "e:WLC": "xWLC",
-      "e:UXLC": "xUXLC"
-    },
-    "pgroup": "g:nbhq_and_n3",
-    "qr-auto-diff": [
-      "add dagesh/mapiq/shuruq-dot to qof",
-      "add non-varika"
     ]
   },
   {
@@ -3144,39 +3144,6 @@
   },
   {
     "qr-cv": "22:30",
-    "qr-lc-proposed": "וְ֝נִּמְלַ֗ט",
-    "qr-lc-q": "(?)",
-    "qr-what-is-weird": "נ has דגש",
-    "qr-consensus": "וְ֝נִמְלַ֗ט",
-    "qr-generic-comment": "The dot in question is suspiciously smaller than nearby ones.",
-    "qr-highlight": 2,
-    "qr-lc-loc": {
-      "page": "403B",
-      "column": 2,
-      "line": 4
-    },
-    "qr-bhq-comment": [
-      "$BHQ notes this possibility, whereas this is not noted in the other editions under consideration. It could be the editors of those other editions did not catch this, or it could be that they caught it but considered it to be too slight a possibility to note it."
-    ],
-    "qr-noted-by": "nBHQ",
-    "qr-uxlc-needs-fix": true,
-    "qr-word-id": "VNMLE",
-    "qr-lc-img": "2230-VNMLE.png",
-    "nbd": {
-      "e:BHQ": "nBHQ",
-      "e:BHL": "xBHL",
-      "e:DM": "xDM",
-      "e:WLC": "xWLC",
-      "e:UXLC": "xUXLC"
-    },
-    "pgroup": "g:nbhq_and_x3",
-    "qr-auto-diff": [
-      "add dagesh/mapiq/shuruq-dot to nun",
-      "add non-varika"
-    ]
-  },
-  {
-    "qr-cv": "22:30",
     "qr-lc-proposed": "יֽ͏ְמַלֵּ֥ט",
     "qr-lc-q": "(?)",
     "qr-what-is-weird": "$yod has געיה",
@@ -3208,6 +3175,39 @@
     "pgroup": "g:tbhq_and_n3",
     "qr-auto-diff": [
       "add meteg/silluq to yod",
+      "add non-varika"
+    ]
+  },
+  {
+    "qr-cv": "22:30",
+    "qr-lc-proposed": "וְ֝נִּמְלַ֗ט",
+    "qr-lc-q": "(?)",
+    "qr-what-is-weird": "נ has דגש",
+    "qr-consensus": "וְ֝נִמְלַ֗ט",
+    "qr-generic-comment": "The dot in question is suspiciously smaller than nearby ones.",
+    "qr-highlight": 2,
+    "qr-lc-loc": {
+      "page": "403B",
+      "column": 2,
+      "line": 4
+    },
+    "qr-bhq-comment": [
+      "$BHQ notes this possibility, whereas this is not noted in the other editions under consideration. It could be the editors of those other editions did not catch this, or it could be that they caught it but considered it to be too slight a possibility to note it."
+    ],
+    "qr-noted-by": "nBHQ",
+    "qr-uxlc-needs-fix": true,
+    "qr-word-id": "VNMLE",
+    "qr-lc-img": "2230-VNMLE.png",
+    "nbd": {
+      "e:BHQ": "nBHQ",
+      "e:BHL": "xBHL",
+      "e:DM": "xDM",
+      "e:WLC": "xWLC",
+      "e:UXLC": "xUXLC"
+    },
+    "pgroup": "g:nbhq_and_x3",
+    "qr-auto-diff": [
+      "add dagesh/mapiq/shuruq-dot to nun",
       "add non-varika"
     ]
   },
@@ -4695,33 +4695,6 @@
   },
   {
     "qr-cv": "34:19",
-    "qr-lc-proposed": "שׁ֖וֹעַ",
-    "qr-what-is-weird": "טרחא not דחי",
-    "qr-consensus": "שׁ֭וֹעַ",
-    "qr-highlight": 1,
-    "qr-lc-loc": {
-      "page": "406B",
-      "column": 2,
-      "line": 26
-    },
-    "qr-noted-by": "tBHQ-zdexiWLC",
-    "qr-word-id": "JV3",
-    "qr-lc-img": "3419-JV3.png",
-    "nbd": {
-      "e:BHQ": "tBHQ",
-      "e:BHL": "xBHL",
-      "e:DM": "xDM",
-      "e:WLC": "zdexiWLC",
-      "e:UXLC": "xUXLC"
-    },
-    "pgroup": "g:tbhq_and_zdw",
-    "qr-auto-diff": [
-      "on shin, replace dexi with tipexa/tarxa",
-      "replace"
-    ]
-  },
-  {
-    "qr-cv": "34:19",
     "qr-lc-proposed": "נִּכַּר־",
     "qr-what-is-weird": "נ has דגש",
     "qr-consensus": "נִכַּר־",
@@ -4840,6 +4813,33 @@
     ]
   },
   {
+    "qr-cv": "34:19",
+    "qr-lc-proposed": "שׁ֖וֹעַ",
+    "qr-what-is-weird": "טרחא not דחי",
+    "qr-consensus": "שׁ֭וֹעַ",
+    "qr-highlight": 1,
+    "qr-lc-loc": {
+      "page": "406B",
+      "column": 2,
+      "line": 26
+    },
+    "qr-noted-by": "tBHQ-zdexiWLC",
+    "qr-word-id": "JV3",
+    "qr-lc-img": "3419-JV3.png",
+    "nbd": {
+      "e:BHQ": "tBHQ",
+      "e:BHL": "xBHL",
+      "e:DM": "xDM",
+      "e:WLC": "zdexiWLC",
+      "e:UXLC": "xUXLC"
+    },
+    "pgroup": "g:tbhq_and_zdw",
+    "qr-auto-diff": [
+      "on shin, replace dexi with tipexa/tarxa",
+      "replace"
+    ]
+  },
+  {
     "qr-cv": "34:22",
     "qr-lc-proposed": "חֹ֖שֶׁךְ",
     "qr-what-is-weird": "טרחא not דחי",
@@ -4893,36 +4893,6 @@
     "qr-auto-diff": [
       "on he, replace xataf-patax with patax",
       "replace"
-    ]
-  },
-  {
-    "qr-noted-by": "tBHQ-nDM",
-    "qr-cv": "34:33",
-    "qr-consensus": "וּֽמַה־יָּדַ֥עְתָּ",
-    "qr-lc-proposed": "וּֽמַה־יָדַ֥עְתָּ",
-    "qr-what-is-weird": "$yod lacks דגש",
-    "qr-highlight": 5,
-    "qr-lc-loc": {
-      "page": "407A",
-      "column": 1,
-      "line": 18
-    },
-    "qr-generic-comment": [
-      "As $DM footnote 25 mentions, the omission of דגש after %מה־ is common in μL. See 16:6, 21:15, and 35:7."
-    ],
-    "qr-word-id": "VMH0YD3F",
-    "qr-lc-img": "3433-VMH0YD3F.png",
-    "nbd": {
-      "e:BHQ": "tBHQ",
-      "e:BHL": "xBHL",
-      "e:DM": "nDM",
-      "e:WLC": "xWLC",
-      "e:UXLC": "xUXLC"
-    },
-    "pgroup": "g:tbhq_and_n3",
-    "qr-auto-diff": [
-      "remove dagesh/mapiq/shuruq-dot from yod",
-      "remove"
     ]
   },
   {
@@ -4987,6 +4957,36 @@
     "pgroup": "g:tbhq_and_n3",
     "qr-auto-diff": [
       "remove paseq/legarmeih from he",
+      "remove"
+    ]
+  },
+  {
+    "qr-noted-by": "tBHQ-nDM",
+    "qr-cv": "34:33",
+    "qr-consensus": "וּֽמַה־יָּדַ֥עְתָּ",
+    "qr-lc-proposed": "וּֽמַה־יָדַ֥עְתָּ",
+    "qr-what-is-weird": "$yod lacks דגש",
+    "qr-highlight": 5,
+    "qr-lc-loc": {
+      "page": "407A",
+      "column": 1,
+      "line": 18
+    },
+    "qr-generic-comment": [
+      "As $DM footnote 25 mentions, the omission of דגש after %מה־ is common in μL. See 16:6, 21:15, and 35:7."
+    ],
+    "qr-word-id": "VMH0YD3F",
+    "qr-lc-img": "3433-VMH0YD3F.png",
+    "nbd": {
+      "e:BHQ": "tBHQ",
+      "e:BHL": "xBHL",
+      "e:DM": "nDM",
+      "e:WLC": "xWLC",
+      "e:UXLC": "xUXLC"
+    },
+    "pgroup": "g:tbhq_and_n3",
+    "qr-auto-diff": [
+      "remove dagesh/mapiq/shuruq-dot from yod",
       "remove"
     ]
   },
@@ -6108,6 +6108,33 @@
     ]
   },
   {
+    "qr-cv": "40:19",
+    "qr-lc-proposed": "ה֖וּא",
+    "qr-what-is-weird": "טרחא not דחי",
+    "qr-consensus": "ה֭וּא",
+    "qr-highlight": 1,
+    "qr-lc-loc": {
+      "page": "408B",
+      "column": 2,
+      "line": 27
+    },
+    "qr-noted-by": "tBHQ-zdexiWLC",
+    "qr-word-id": "HVA",
+    "qr-lc-img": "4019-HVA.png",
+    "nbd": {
+      "e:BHQ": "tBHQ",
+      "e:BHL": "xBHL",
+      "e:DM": "xDM",
+      "e:WLC": "zdexiWLC",
+      "e:UXLC": "xUXLC"
+    },
+    "pgroup": "g:tbhq_and_zdw",
+    "qr-auto-diff": [
+      "on he, replace dexi with tipexa/tarxa",
+      "replace"
+    ]
+  },
+  {
     "qr-noted-by": "nDM",
     "qr-cv": "40:19",
     "qr-consensus": "הָ֝עֹשׂ֗וֹ",
@@ -6135,33 +6162,6 @@
     "qr-auto-diff": [
       "remove revia from shin",
       "remove"
-    ]
-  },
-  {
-    "qr-cv": "40:19",
-    "qr-lc-proposed": "ה֖וּא",
-    "qr-what-is-weird": "טרחא not דחי",
-    "qr-consensus": "ה֭וּא",
-    "qr-highlight": 1,
-    "qr-lc-loc": {
-      "page": "408B",
-      "column": 2,
-      "line": 27
-    },
-    "qr-noted-by": "tBHQ-zdexiWLC",
-    "qr-word-id": "HVA",
-    "qr-lc-img": "4019-HVA.png",
-    "nbd": {
-      "e:BHQ": "tBHQ",
-      "e:BHL": "xBHL",
-      "e:DM": "xDM",
-      "e:WLC": "zdexiWLC",
-      "e:UXLC": "xUXLC"
-    },
-    "pgroup": "g:tbhq_and_zdw",
-    "qr-auto-diff": [
-      "on he, replace dexi with tipexa/tarxa",
-      "replace"
     ]
   },
   {
