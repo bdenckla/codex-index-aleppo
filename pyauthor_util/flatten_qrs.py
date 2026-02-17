@@ -2,7 +2,7 @@ from pycmn.shrink import shrink
 from py import my_html
 
 
-def flatten_strings_in_one_qr(quirkrec):
+def _enrich_one_qr_by_flattening_strs(quirkrec):
     wiw = quirkrec["qr-what-is-weird"]
     gencom = quirkrec.get("qr-generic-comment")
     bhqcom = quirkrec.get("qr-bhq-comment")

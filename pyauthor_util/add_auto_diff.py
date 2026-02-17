@@ -4,7 +4,7 @@ from pydiff_mm.diff_mm_diffs_description import get1 as get_diff_description
 from pyauthor_util.proposed import proposed
 
 
-def add_auto_diff(quirkrec):
+def _enrich_one_qr_by_adding_auto_diff(quirkrec):
     pro = proposed(quirkrec).replace(_CGJ, "")
     con_key, con_or_int = _con_or_int(quirkrec)
     if _ignore_g3yh_diff(quirkrec, con_key):

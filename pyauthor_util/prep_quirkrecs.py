@@ -1,11 +1,11 @@
 import os
 from collections import Counter
-from pyauthor_util.add_auto_diff import add_auto_diff
+from pyauthor_util.add_auto_diff import _enrich_one_qr_by_adding_auto_diff
+from pyauthor_util.flatten_qrs import _enrich_one_qr_by_flattening_strs
 from pyauthor_util.author import consensus_to_ascii
 from pyauthor_util.img_util import _INFO_ABOUT_OPTIONAL_IMAGES, get_auto_imgs
 from pyauthor_util.short_id_etc import short_id
 from pyauthor_util.noted_by import nb_dict
-from pyauthor_util.flatten_qrs import flatten_strings_in_one_qr
 from pyauthor_util.get_qr_groups import get_pgroup
 from pyauthor_util.job_quirkrecs import RAW_QUIRKRECS
 from pyauthor_util.qr_make_json_outputs import (
@@ -28,30 +28,34 @@ def get_enriched_quirkrecs(jobn_rel_top, json_outdir):
 
 def _enrich_quirkrecs(jobn_rel_top):
     _assert_cv_ordering(RAW_QUIRKRECS)
-    qrs_4 = _add_word_ids(RAW_QUIRKRECS)
-    qrs_6 = sl_map((_prep_one_quirkrec, jobn_rel_top), qrs_4)
-    return qrs_6
+    result = _enrich_quirkrecs_by_adding_word_ids(RAW_QUIRKRECS)
+    # Adding word IDs is not pointwise: it requires the whole set
+    # of quirkrecs (to detect same-verse duplicates). It also must
+    # precede the pointwise pass, since auto-imgs use word IDs in
+    # their filenames.
+    result = sl_map((_do_pointwise_enrichments_of_one_qr, jobn_rel_top), result)
+    return result
 
 
-def _prep_one_quirkrec(jobn_rel_top, quirkrec):
-    qr_6 = _add_auto_imgs(jobn_rel_top, quirkrec)
-    qr_7 = _add_nbd(qr_6)
-    qr_8 = _add_pgroup(qr_7)
-    qr_8b = add_auto_diff(qr_8)
-    qr_9 = flatten_strings_in_one_qr(qr_8b)
-    _assert_lc_img_fields_filled(qr_9)
-    return qr_9
+def _do_pointwise_enrichments_of_one_qr(jobn_rel_top, quirkrec):
+    result = _enrich_one_qr_by_adding_auto_imgs(jobn_rel_top, quirkrec)
+    result = _enrich_one_qr_by_adding_nbd(result)
+    result = _enrich_one_qr_by_adding_pgroup(result)
+    result = _enrich_one_qr_by_adding_auto_diff(result)
+    result = _enrich_one_qr_by_flattening_strs(result)
+    _assert_lc_img_fields_filled(result)
+    return result
 
 
-def _add_nbd(quirkrec):
+def _enrich_one_qr_by_adding_nbd(quirkrec):
     return {**quirkrec, "nbd": nb_dict(quirkrec)}
 
 
-def _add_pgroup(quirkrec):
+def _enrich_one_qr_by_adding_pgroup(quirkrec):
     return {**quirkrec, "pgroup": get_pgroup(quirkrec)}
 
 
-def _add_auto_imgs(jobn_rel_top, quirkrec):
+def _enrich_one_qr_by_adding_auto_imgs(jobn_rel_top, quirkrec):
     out = {**quirkrec, **get_auto_imgs(jobn_rel_top, quirkrec)}
     #
     lc_img_name = out["qr-lc-img"]
@@ -70,7 +74,7 @@ def _assert_lc_img_fields_filled(qr):
     assert qr.get("qr-lc-img"), f"Missing qr-lc-img for {short_id(qr)}"
 
 
-def _add_word_ids(quirkrecs):
+def _enrich_quirkrecs_by_adding_word_ids(quirkrecs):
     by_cv = {}
     for qr in quirkrecs:
         by_cv.setdefault(qr["qr-cv"], []).append(qr)
@@ -105,7 +109,3 @@ def _assert_cv_ordering(quirkrecs):
             f"{quirkrecs[i-1]['qr-cv']} > {quirkrecs[i]['qr-cv']} "
             f"at index {i}"
         )
-
-
-def _sort_key(quirkrec):
-    return short_id(quirkrec)
