@@ -2416,6 +2416,7 @@
     "qr-noted-by": "nBHQ",
     "qr-uxlc-needs-fix": true,
     "qr-lc-img": "1809.png",
+    "qr-aleppo-img": "Aleppo-1809.png",
     "nbd": {
       "e:BHQ": "nBHQ",
       "e:BHL": "xBHL",
@@ -2446,6 +2447,7 @@
     "qr-noted-by": "tBHQ-zUXLC",
     "qr-uxlc-change-url": "https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-19",
     "qr-lc-img": "1902.png",
+    "qr-aleppo-img": "Aleppo-1902.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -2578,6 +2580,7 @@
     ],
     "qr-noted-by": "nBHL-nWLC",
     "qr-lc-img": "1905.png",
+    "qr-aleppo-img": "Aleppo-1905.png",
     "nbd": {
       "e:BHQ": "xBHQ",
       "e:BHL": "nBHL",
@@ -2608,6 +2611,7 @@
     "qr-noted-by": "nBHQ-nBHL",
     "qr-word-id": "QRAFY",
     "qr-lc-img": "1916-QRAFY.png",
+    "qr-aleppo-img": "Aleppo-1916-QRAFY.png",
     "nbd": {
       "e:BHQ": "nBHQ",
       "e:BHL": "nBHL",
@@ -2681,6 +2685,7 @@
     },
     "qr-noted-by": "tBHQ-zdexiWLC",
     "qr-lc-img": "1928.png",
+    "qr-aleppo-img": "Aleppo-1928.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -2735,6 +2740,7 @@
     },
     "qr-noted-by": "tBHQ-zdexiWLC",
     "qr-lc-img": "2023.png",
+    "qr-aleppo-img": "Aleppo-2023.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -2762,6 +2768,7 @@
       "including-blank-lines": 1
     },
     "qr-lc-img": "2107.png",
+    "qr-aleppo-img": "Aleppo-2107.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -2791,6 +2798,7 @@
       "line": 26
     },
     "qr-lc-img": "2115.png",
+    "qr-aleppo-img": "Aleppo-2115.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -2823,6 +2831,7 @@
     ],
     "qr-noted-by": "nBHL",
     "qr-lc-img": "2125.png",
+    "qr-aleppo-img": "Aleppo-2125.png",
     "nbd": {
       "e:BHQ": "xBHQ",
       "e:BHL": "nBHL",
@@ -2850,6 +2859,7 @@
     "qr-noted-by": "tBHQ-zUXLC",
     "qr-uxlc-change-url": "https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-24",
     "qr-lc-img": "2134.png",
+    "qr-aleppo-img": "Aleppo-2134.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -2880,6 +2890,7 @@
       "line": 10
     },
     "qr-lc-img": "2210.png",
+    "qr-aleppo-img": "Aleppo-2210.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -2909,6 +2920,7 @@
     ],
     "qr-noted-by": "tBHQ-zmiscWLC",
     "qr-lc-img": "2212.png",
+    "qr-aleppo-img": "Aleppo-2212.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -2935,6 +2947,7 @@
     },
     "qr-noted-by": "tBHQ-zdexiWLC",
     "qr-lc-img": "2214.png",
+    "qr-aleppo-img": "Aleppo-2214.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -3010,6 +3023,7 @@
     "qr-noted-by": "nBHQ-nWLC",
     "qr-word-id": "VJL6",
     "qr-lc-img": "2221-VJL6.png",
+    "qr-aleppo-img": "Aleppo-2221-VJL6.png",
     "nbd": {
       "e:BHQ": "nBHQ",
       "e:BHL": "xBHL",
@@ -3042,6 +3056,7 @@
       "Although my focus is pointing rather than spelling, I am interested in a spelling difference like this, since it is not just a מלא/חסר difference."
     ],
     "qr-lc-img": "2224.png",
+    "qr-aleppo-img": "Aleppo-2224.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -3129,6 +3144,7 @@
     ],
     "qr-noted-by": "tBHQ-nBHL",
     "qr-lc-img": "2228.png",
+    "qr-aleppo-img": "Aleppo-2228.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "nBHL",
@@ -3198,6 +3214,7 @@
     "qr-uxlc-needs-fix": true,
     "qr-word-id": "VNMLE",
     "qr-lc-img": "2230-VNMLE.png",
+    "qr-aleppo-img": "Aleppo-2230-VNMLE.png",
     "nbd": {
       "e:BHQ": "nBHQ",
       "e:BHL": "xBHL",
@@ -3289,6 +3306,7 @@
     },
     "qr-noted-by": "tBHQ-zdexiWLC",
     "qr-lc-img": "2306.png",
+    "qr-aleppo-img": "Aleppo-2306.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
@@ -3366,6 +3384,7 @@
     "qr-noted-by": "nUXLC",
     "qr-uxlc-change-url": "https://tanach.us/Changes/2022.04.01%20-%20Changes/2022.04.01%20-%20Changes.xml?2022.02.17-2",
     "qr-lc-img": "2401.png",
+    "qr-aleppo-img": "Aleppo-2401.png",
     "nbd": {
       "e:BHQ": "xBHQ",
       "e:BHL": "xBHL",
@@ -3393,6 +3412,7 @@
     "qr-noted-by": "tBHQ-zUXLC",
     "qr-uxlc-change-url": "https://tanach.us/Changes/2023.10.19%20-%20Changes/2023.10.19%20-%20Changes.xml?2023.06.10-31",
     "qr-lc-img": "2405.png",
+    "qr-aleppo-img": "Aleppo-2405.png",
     "nbd": {
       "e:BHQ": "tBHQ",
       "e:BHL": "xBHL",
