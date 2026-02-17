@@ -2,7 +2,8 @@ _COMMENT_2702 = [
     "Perhaps there was a מקף",
     " that was ignored during re-inking,",
     " leaving only some very faint evidence of this מקף.",
-    " By the way, the evidence for the דחי",
+    " In μA, as in μL, evidence of מקף is minimal.",
+    " By the way, in μL, the evidence for the דחי",
     " on the א of the next word is very faint.",
 ]
 _BHQ_COMMENT_2702 = [
