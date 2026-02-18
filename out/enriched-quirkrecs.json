@@ -2327,9 +2327,9 @@
   },
   {
     "qr-cv": "16:4",
-    "qr-lc-proposed": "ל֤וּ־",
+    "qr-lc-proposed": "ל֤וּ־יֵ֪שׁ",
     "qr-what-is-weird": "מקף is present",
-    "qr-consensus": "ל֤וּ",
+    "qr-consensus": "ל֤וּ יֵ֪שׁ",
     "qr-generic-comment": [
       "Though it is not relevant to the point at hand, which is the presence of a מקף, note that in μL, the shape we take to be מחפך is touching the bottom of the ל."
     ],
@@ -2361,7 +2361,7 @@
     },
     "pgroup": "g:tbhq_and_n3",
     "qr-auto-diff": [
-      "add trailing maqaf",
+      "replace 1 space(s) with maqaf",
       "maqaf/space"
     ]
   },

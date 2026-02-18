@@ -197,6 +197,12 @@ foreach ($s in $sids) { Start-Process "http://localhost:8471/jobn/job1_full_list
 
 The 500 ms delay prevents tabs from being dropped.
 
+**Browser caching:** When verifying updated images served via localhost, the browser may show stale cached versions. Use Edge in InPrivate mode to guarantee a fresh load:
+
+```powershell
+Start-Process "msedge" "--inprivate http://localhost:8471/jobn/job1_full_list_details.html#row-SID"
+```
+
 ## Authorship Marking
 
 When generating a new version-controlled file (Python script, Markdown doc, etc.), include an authorship comment as the **first line**:

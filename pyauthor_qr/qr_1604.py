@@ -9,9 +9,9 @@ _BHQ_COMMENT_1604 = [
 ]
 RECORD_1604 = {
     "qr-cv": "16:4",
-    "qr-lc-proposed": "ל֤וּ־",
+    "qr-lc-proposed": "ל֤וּ־יֵ֪שׁ",
     "qr-what-is-weird": "מקף is present",
-    "qr-consensus": "ל֤וּ",
+    "qr-consensus": "ל֤וּ יֵ֪שׁ",
     "qr-generic-comment": _COMMENT_1604,
     "qr-highlight-lc-proposed": 3,
     "qr-lc-loc": {"page": "401B", "column": 2, "line": 3},
