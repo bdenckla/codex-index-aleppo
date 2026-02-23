@@ -70,8 +70,13 @@ def find_page_for_verse(pages, ch, v):
     return None
 
 
-def get_line_bbox(page_id, col, line_num, buffer_lines=2):
-    """Get pixel bounding box for a line, with buffer lines above and below."""
+def get_line_bbox(page_id, col, line_num, buffer_lines=2, margin_factor=0.05):
+    """Get pixel bounding box for a line, with buffer lines above and below.
+
+    *margin_factor* controls horizontal padding as a fraction of column
+    width (default 0.05 = 5%).  Use a larger value (e.g. 0.40) to
+    capture masorah parva notes in the page margins.
+    """
     cc_path = CC_DIR / f"{page_id}.json"
     with open(cc_path, encoding="utf-8") as f:
         cc = json.load(f)
@@ -95,7 +100,7 @@ def get_line_bbox(page_id, col, line_num, buffer_lines=2):
     crop_bot = min(img_h, line_bot + buffer_lines * ls)
 
     # Expand horizontally a bit beyond the column
-    margin_x = int(w * 0.05)
+    margin_x = int(w * margin_factor)
     crop_left = max(0, x - margin_x)
     crop_right = min(img_w, x + w + margin_x)
 

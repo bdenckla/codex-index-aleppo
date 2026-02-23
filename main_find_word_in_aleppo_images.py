@@ -43,7 +43,7 @@ from py_ac_word_image_helper.hebrew_metrics import (
 from py_ac_word_image_helper.linebreak_search import find_word_in_linebreaks
 
 
-def find_and_preview(word, cv, pages, scale=2):
+def find_and_preview(word, cv, pages, scale=2, *, wide=False):
     """Find *word* in Job *cv* on the Aleppo Codex and generate a preview.
 
     Args:
@@ -51,6 +51,7 @@ def find_and_preview(word, cv, pages, scale=2):
         cv: Verse reference, e.g. "7:1".
         pages: Page index returned by load_index().
         scale: Image download scale factor.
+        wide: If True, extend margins to capture masorah parva (Mp) notes.
 
     Returns a dict of result metadata, or None on failure.
     """
@@ -72,8 +73,9 @@ def find_and_preview(word, cv, pages, scale=2):
     print(f"  Line: {' '.join(line_words)}")
 
     # Get crop coordinates (at full image size)
+    margin_factor = 0.40 if wide else 0.05
     crop_left, crop_top, crop_right, crop_bot, target_offset, ls = get_line_bbox(
-        page_id, col, line_num
+        page_id, col, line_num, margin_factor=margin_factor
     )
 
     # Download at the requested scale
@@ -215,6 +217,12 @@ def find_and_preview(word, cv, pages, scale=2):
     matched_word = line_words[word_idx] if word_idx < len(line_words) else word
     after = line_words[word_idx + 1 :] if word_idx + 1 < len(line_words) else []
     print(f"  Context: {' '.join(before)} [{matched_word}] {' '.join(after)}")
+
+    # Initial bounding box in relative (0–1) coords for the crop editor
+    half_ls_box = tgt_ls // 2
+    init_box_top = max(0, highlight_top - half_ls_box)
+    init_box_bot = min(h - 1, highlight_bot + half_ls_box)
+
     return {
         "label": label,
         "cv": cv,
@@ -226,20 +234,24 @@ def find_and_preview(word, cv, pages, scale=2):
         "before": before,
         "matched_word": matched_word,
         "after": after,
+        "crop_w": crop.width,
+        "crop_h": crop.height,
+        "box_left": round(highlight_left / crop.width, 4),
+        "box_right": round(highlight_right / crop.width, 4),
+        "box_top": round(init_box_top / crop.height, 4),
+        "box_bot": round(init_box_bot / crop.height, 4),
     }
 
 
 def generate_html(result):
-    """Build the preview HTML from a single result and open it."""
+    """Build the preview HTML with crop mode from a single result and open it."""
     r = result
     before_joined = join_maqaf(list(r["before"]))
     after_joined = join_maqaf(list(r["after"]))
     target_display = r["matched_word"]
     MAQAF = "\u05be"
-    # If last before-word ends with maqaf, glue it onto target
     if before_joined and before_joined[-1].endswith(MAQAF):
         target_display = before_joined.pop() + target_display
-    # If target ends with maqaf, glue next after-word onto it
     if target_display.endswith(MAQAF) and after_joined:
         target_display = target_display + after_joined.pop(0)
     before_html = " ".join(before_joined)
@@ -247,56 +259,521 @@ def generate_html(result):
 
     html_path = OUT_DIR / "preview_word_crops.html"
     label = r["label"]
+    verse_display = f"Job {r['cv']}"
+
+    item_json = json.dumps({
+        "label": r["label"],
+        "book": "Job",
+        "cv": r["cv"],
+        "word": r["word"],
+        "page": r["page"],
+        "col": r["col"],
+        "lineNum": r["line_num"],
+        "wordIdx": r["word_idx"],
+        "cropW": r["crop_w"],
+        "cropH": r["crop_h"],
+        "box": {
+            "left": r["box_left"],
+            "top": r["box_top"],
+            "right": r["box_right"],
+            "bottom": r["box_bot"],
+        },
+    }, ensure_ascii=False)
+
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(f"""<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>Preview \u2014 Job {r["cv"]}: {r["word"]}</title>
+<title>Preview \u2014 {verse_display}: {r["word"]}</title>
 <style>
 body {{ background: #222; color: #eee; font-family: sans-serif; padding: 20px; }}
-.preview img {{ border: 1px solid #555; display: block; }}
 .preview h2 {{ margin-bottom: 5px; }}
 .preview .meta {{ margin-top: 2px; color: #aaa; font-size: 14px; }}
 .crop-box {{ display: inline-block; }}
 .context {{ direction: rtl; unicode-bidi: embed; font-size: 22px; margin: 0; padding: 6px 0; text-align: center; border: 1px solid #555; border-bottom: none; background: #2a2a2a; }}
 .context .before, .context .after {{ color: #888; }}
 .context .target {{ color: #fff; background: #553; padding: 2px 4px; border-radius: 3px; }}
+
+/* Image + SVG overlay */
+.img-wrapper {{ position: relative; display: inline-block; line-height: 0; }}
+.img-wrapper img {{ display: block; border: 1px solid #555; }}
+.img-wrapper svg {{
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; pointer-events: none;
+}}
+.ctrl-point {{
+  pointer-events: all !important;
+  cursor: grab;
+}}
+.ctrl-point:hover {{ fill-opacity: 1; }}
+.ctrl-point.dragging {{ cursor: grabbing; }}
+
+/* Toolbar */
+#toolbar {{
+  position: sticky; top: 0; z-index: 100;
+  background: #333; padding: 8px 12px;
+  border-bottom: 1px solid #555;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}}
+#toolbar button {{
+  padding: 5px 12px; cursor: pointer; font-size: 13px;
+  border: 1px solid #888; border-radius: 4px;
+  background: #444; color: #eee;
+}}
+#toolbar button.active {{ background: #668; border-color: #aaf; }}
+#status {{ font-size: 13px; color: #aaa; margin-left: 8px; }}
 </style>
 </head>
 <body>
-<h1>Aleppo Codex Word Preview</h1>
-<p>Yellow fade marks surrounding lines; clear band = target line.</p>
-<p>
-<button id="toggle-yellow" onclick="toggleYellow()">Hide yellow fade</button>
-<button id="toggle-red" onclick="toggleRed()">Hide red position lines</button>
-</p>
+
+<div id="toolbar">
+  <button id="toggle-yellow" onclick="toggleYellow()">Hide yellow fade</button>
+  <button id="toggle-red" onclick="toggleRed()">Hide red position lines</button>
+  <button id="crop-btn" onclick="toggleCropMode()">Crop mode</button>
+  <button id="fine-btn" onclick="toggleFine()" style="display:none">Fine</button>
+  <button id="reset-btn" onclick="resetBox()" style="display:none">Reset box</button>
+  <button id="copy-url-btn" onclick="copyDataURL()" style="display:none">Copy crop as data URL</button>
+  <button id="download-btn" onclick="downloadCrop()" style="display:none">Download crop PNG</button>
+  <span id="status"></span>
+</div>
+
+<div class="preview">
+<h2>{verse_display} \u2014 {r["word"]}</h2>
+<p class="meta">Page {r["page"]}, col {r["col"]}, line {r["line_num"]}, word {r["word_idx"] + 1}</p>
+<div class="crop-box">
+<p class="context"><span class="before">{before_html}</span> <span class="target">{target_display}</span> <span class="after">{after_html}</span></p>
+<div class="img-wrapper" id="wrap-0">
+  <img id="main-img" class="crop-img"
+       src="preview_{label}_yr.png"
+       data-raw="preview_{label}_raw.png"
+       data-y="preview_{label}.png"
+       data-r="preview_{label}_red.png"
+       data-yr="preview_{label}_yr.png">
+  <svg id="svg-0" viewBox="0 0 1 1" preserveAspectRatio="none"></svg>
+</div>
+</div>
+</div>
+
 <script>
+// \u2500\u2500 Data \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+const ITEM = {item_json};
+
+// \u2500\u2500 Image toggle state \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 let showYellow = true;
 let showRed = true;
+
 function pickSrc(img) {{
   const key = (showYellow ? 'y' : '') + (showRed ? 'r' : '');
   img.src = img.dataset[key || 'raw'];
 }}
 function toggleYellow() {{
   showYellow = !showYellow;
-  document.getElementById('toggle-yellow').textContent = showYellow ? 'Hide yellow fade' : 'Show yellow fade';
+  document.getElementById('toggle-yellow').textContent =
+    showYellow ? 'Hide yellow fade' : 'Show yellow fade';
   document.querySelectorAll('.crop-img').forEach(pickSrc);
 }}
 function toggleRed() {{
   showRed = !showRed;
-  document.getElementById('toggle-red').textContent = showRed ? 'Hide red position lines' : 'Show red position lines';
+  document.getElementById('toggle-red').textContent =
+    showRed ? 'Hide red position lines' : 'Show red position lines';
   document.querySelectorAll('.crop-img').forEach(pickSrc);
 }}
+
+// \u2500\u2500 Crop mode state \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+let cropMode = false;
+let fineMode = true;
+const FINE_SCALE = 0.2;
+
+const box = {{
+  left:   ITEM.box.left,
+  top:    ITEM.box.top,
+  right:  ITEM.box.right,
+  bottom: ITEM.box.bottom,
+}};
+const initBox = JSON.parse(JSON.stringify(box));
+
+let lastSide = 'right';
+let dragSide = null;
+let dragTarget = null;
+let dragStartMouse = null;
+let dragStartBox = null;
+
+function toggleCropMode() {{
+  cropMode = !cropMode;
+  const btn = document.getElementById('crop-btn');
+  btn.classList.toggle('active', cropMode);
+  btn.textContent = cropMode ? 'Exit crop mode' : 'Crop mode';
+
+  const cropBtns = ['fine-btn', 'reset-btn', 'copy-url-btn', 'download-btn'];
+  cropBtns.forEach(id => {{
+    document.getElementById(id).style.display = cropMode ? '' : 'none';
+  }});
+
+  const previewBtns = ['toggle-yellow', 'toggle-red'];
+  previewBtns.forEach(id => {{
+    document.getElementById(id).style.display = cropMode ? 'none' : '';
+  }});
+
+  if (cropMode) {{
+    const img = document.getElementById('main-img');
+    img.src = img.dataset.raw;
+    fineMode = true;
+    document.getElementById('fine-btn').classList.add('active');
+    drawBox();
+    updateStatus();
+  }} else {{
+    clearBox();
+    pickSrc(document.getElementById('main-img'));
+    document.getElementById('status').textContent = '';
+  }}
+}}
+
+function toggleFine() {{
+  fineMode = !fineMode;
+  document.getElementById('fine-btn').classList.toggle('active', fineMode);
+  updateStatus();
+}}
+
+// \u2500\u2500 SVG box drawing \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+
+function drawBox() {{
+  const svg = document.getElementById('svg-0');
+  const bw = box.right - box.left;
+  const bh = box.bottom - box.top;
+  const color = '#ff4040';
+  const sw = 0.004;
+  const hr = 0.011;
+
+  let parts = [];
+
+  parts.push(
+    '<rect x="' + box.left + '" y="' + box.top + '" ' +
+    'width="' + bw + '" height="' + bh + '" ' +
+    'fill="none" stroke="' + color + '" stroke-width="' + sw + '" />'
+  );
+
+  const handles = [
+    {{ s: 'left',   cx: box.left,                    cy: (box.top + box.bottom) / 2, cur: 'ew-resize' }},
+    {{ s: 'right',  cx: box.right,                   cy: (box.top + box.bottom) / 2, cur: 'ew-resize' }},
+    {{ s: 'top',    cx: (box.left + box.right) / 2,  cy: box.top,                    cur: 'ns-resize' }},
+    {{ s: 'bottom', cx: (box.left + box.right) / 2,  cy: box.bottom,                 cur: 'ns-resize' }},
+    {{ s: 'move',   cx: (box.left + box.right) / 2,  cy: (box.top + box.bottom) / 2, cur: 'move' }},
+  ];
+
+  for (const hl of handles) {{
+    const r = (hl.s === 'move') ? hr * 1.3 : hr;
+    const fill = (hl.s === lastSide) ? '#ffff00'
+               : (hl.s === 'move')   ? '#40a0ff'
+               : color;
+    parts.push(
+      '<circle class="ctrl-point" ' +
+      'cx="' + hl.cx + '" cy="' + hl.cy + '" r="' + r + '" ' +
+      'fill="' + fill + '" fill-opacity="0.8" stroke="#fff" stroke-width="0.002" ' +
+      'data-side="' + hl.s + '" ' +
+      'style="cursor:' + hl.cur + '"/>'
+    );
+  }}
+
+  svg.innerHTML = parts.join('\\n');
+}}
+
+function clearBox() {{
+  document.getElementById('svg-0').innerHTML = '';
+}}
+
+// \u2500\u2500 Drag handlers \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+
+window.addEventListener('mousedown', (e) => {{
+  if (!cropMode) return;
+  const t = e.target;
+  if (!t.classList || !t.classList.contains('ctrl-point')) return;
+  dragSide = t.dataset.side;
+  dragTarget = t;
+  lastSide = dragSide;
+  t.classList.add('dragging');
+
+  const svg = document.getElementById('svg-0');
+  const sr = svg.getBoundingClientRect();
+  dragStartMouse = {{
+    x: (e.clientX - sr.left) / sr.width,
+    y: (e.clientY - sr.top)  / sr.height,
+  }};
+  dragStartBox = JSON.parse(JSON.stringify(box));
+  e.preventDefault();
+}});
+
+window.addEventListener('mousemove', (e) => {{
+  if (!dragSide) return;
+  const svg = document.getElementById('svg-0');
+  const sr = svg.getBoundingClientRect();
+  let mx = (e.clientX - sr.left) / sr.width;
+  let my = (e.clientY - sr.top)  / sr.height;
+
+  if (fineMode) {{
+    mx = dragStartMouse.x + (mx - dragStartMouse.x) * FINE_SCALE;
+    my = dragStartMouse.y + (my - dragStartMouse.y) * FINE_SCALE;
+  }}
+
+  const b0 = dragStartBox;
+  const MIN = 0.02;
+
+  if (dragSide === 'move') {{
+    const dx = mx - dragStartMouse.x;
+    const dy = my - dragStartMouse.y;
+    const bw = b0.right - b0.left;
+    const bh = b0.bottom - b0.top;
+    let nl = b0.left + dx;
+    let nt = b0.top + dy;
+    nl = Math.max(0, Math.min(1 - bw, nl));
+    nt = Math.max(0, Math.min(1 - bh, nt));
+    box.left = nl; box.right = nl + bw;
+    box.top = nt; box.bottom = nt + bh;
+  }} else if (dragSide === 'left') {{
+    box.left = Math.max(0, Math.min(b0.right - MIN, mx));
+  }} else if (dragSide === 'right') {{
+    box.right = Math.min(1, Math.max(b0.left + MIN, mx));
+  }} else if (dragSide === 'top') {{
+    box.top = Math.max(0, Math.min(b0.bottom - MIN, my));
+  }} else if (dragSide === 'bottom') {{
+    box.bottom = Math.min(1, Math.max(b0.top + MIN, my));
+  }}
+
+  drawBox();
+  updateStatus();
+}});
+
+window.addEventListener('mouseup', () => {{
+  if (dragSide) {{
+    if (dragTarget) dragTarget.classList.remove('dragging');
+    dragSide = null;
+    dragTarget = null;
+    drawBox();
+  }}
+}});
+
+// \u2500\u2500 Keyboard \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+
+const ARROW_STEP = 0.002;
+
+window.addEventListener('keydown', (e) => {{
+  if (!cropMode) return;
+
+  if (e.key === 'f' || e.key === 'F') {{ toggleFine(); return; }}
+
+  if ('12345'.includes(e.key)) {{
+    lastSide = ['left', 'right', 'top', 'bottom', 'move'][parseInt(e.key) - 1];
+    drawBox();
+    updateStatus();
+    return;
+  }}
+
+  if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+  e.preventDefault();
+
+  const step = fineMode ? ARROW_STEP * FINE_SCALE : ARROW_STEP;
+
+  if (lastSide === 'move') {{
+    const bw = box.right - box.left;
+    const bh = box.bottom - box.top;
+    if (e.key === 'ArrowLeft')  box.left  = Math.max(0, box.left - step);
+    if (e.key === 'ArrowRight') box.left  = Math.min(1 - bw, box.left + step);
+    if (e.key === 'ArrowUp')    box.top   = Math.max(0, box.top - step);
+    if (e.key === 'ArrowDown')  box.top   = Math.min(1 - bh, box.top + step);
+    box.right = box.left + bw;
+    box.bottom = box.top + bh;
+  }} else if (lastSide === 'left') {{
+    if (e.key === 'ArrowLeft')  box.left = Math.max(0, box.left - step);
+    if (e.key === 'ArrowRight') box.left = Math.min(box.right - 0.02, box.left + step);
+  }} else if (lastSide === 'right') {{
+    if (e.key === 'ArrowLeft')  box.right = Math.max(box.left + 0.02, box.right - step);
+    if (e.key === 'ArrowRight') box.right = Math.min(1, box.right + step);
+  }} else if (lastSide === 'top') {{
+    if (e.key === 'ArrowUp')   box.top = Math.max(0, box.top - step);
+    if (e.key === 'ArrowDown') box.top = Math.min(box.bottom - 0.02, box.top + step);
+  }} else if (lastSide === 'bottom') {{
+    if (e.key === 'ArrowUp')   box.bottom = Math.max(box.top + 0.02, box.bottom - step);
+    if (e.key === 'ArrowDown') box.bottom = Math.min(1, box.bottom + step);
+  }}
+
+  drawBox();
+  updateStatus();
+}});
+
+// \u2500\u2500 Status \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+
+function updateStatus() {{
+  if (!cropMode) return;
+  const fl = fineMode ? '  [FINE]' : '';
+  const pxL = Math.round(box.left * ITEM.cropW);
+  const pxT = Math.round(box.top * ITEM.cropH);
+  const pxR = Math.round(box.right * ITEM.cropW);
+  const pxB = Math.round(box.bottom * ITEM.cropH);
+  document.getElementById('status').textContent =
+    '(' + lastSide + ') ' +
+    pxL + ',' + pxT + ' \u2013 ' + pxR + ',' + pxB +
+    '  [' + (pxR - pxL) + '\u00d7' + (pxB - pxT) + 'px]' + fl;
+}}
+
+function resetBox() {{
+  Object.assign(box, JSON.parse(JSON.stringify(initBox)));
+  drawBox();
+  updateStatus();
+}}
+
+// \u2500\u2500 PNG metadata injection \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+
+const crcTable = new Uint32Array(256);
+for (let n = 0; n < 256; n++) {{
+  let c = n;
+  for (let k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+  crcTable[n] = c;
+}}
+function crc32(buf) {{
+  let c = 0xFFFFFFFF;
+  for (let i = 0; i < buf.length; i++) c = crcTable[(c ^ buf[i]) & 0xFF] ^ (c >>> 8);
+  return (c ^ 0xFFFFFFFF) >>> 0;
+}}
+
+function buildChunk(typeStr, dataBytes) {{
+  const enc = new TextEncoder();
+  const type = enc.encode(typeStr);
+  const len = dataBytes.length;
+  const chunk = new Uint8Array(12 + len);
+  const view = new DataView(chunk.buffer);
+  view.setUint32(0, len);
+  chunk.set(type, 4);
+  chunk.set(dataBytes, 8);
+  const crcBuf = new Uint8Array(4 + len);
+  crcBuf.set(type, 0);
+  crcBuf.set(dataBytes, 4);
+  view.setUint32(8 + len, crc32(crcBuf));
+  return chunk;
+}}
+
+function makeTEXtChunk(keyword, latin1Text) {{
+  const kwBytes = new Uint8Array([...keyword].map(c => c.charCodeAt(0)));
+  const txtBytes = new Uint8Array([...latin1Text].map(c => c.charCodeAt(0) & 0xFF));
+  const data = new Uint8Array(kwBytes.length + 1 + txtBytes.length);
+  data.set(kwBytes, 0);
+  data[kwBytes.length] = 0;
+  data.set(txtBytes, kwBytes.length + 1);
+  return buildChunk('tEXt', data);
+}}
+
+function makeITXtChunk(keyword, utf8Text) {{
+  const enc = new TextEncoder();
+  const kwBytes = enc.encode(keyword);
+  const txtBytes = enc.encode(utf8Text);
+  const data = new Uint8Array(kwBytes.length + 1 + 2 + 1 + 1 + txtBytes.length);
+  data.set(kwBytes, 0);
+  let pos = kwBytes.length;
+  data[pos++] = 0;
+  data[pos++] = 0;
+  data[pos++] = 0;
+  data[pos++] = 0;
+  data[pos++] = 0;
+  data.set(txtBytes, pos);
+  return buildChunk('iTXt', data);
+}}
+
+function injectPngMetadata(pngArrayBuffer, textMeta, itxtMeta) {{
+  const src = new Uint8Array(pngArrayBuffer);
+  const view = new DataView(pngArrayBuffer);
+  const ihdrLen = view.getUint32(8);
+  const afterIHDR = 8 + 12 + ihdrLen;
+  const chunks = [];
+  for (const [key, val] of Object.entries(textMeta)) {{
+    chunks.push(makeTEXtChunk(key, val));
+  }}
+  for (const [key, val] of Object.entries(itxtMeta)) {{
+    chunks.push(makeITXtChunk(key, val));
+  }}
+  const extraLen = chunks.reduce((s, c) => s + c.length, 0);
+  const out = new Uint8Array(src.length + extraLen);
+  out.set(src.subarray(0, afterIHDR), 0);
+  let offset = afterIHDR;
+  for (const chunk of chunks) {{
+    out.set(chunk, offset);
+    offset += chunk.length;
+  }}
+  out.set(src.subarray(afterIHDR), offset);
+  return out.buffer;
+}}
+
+// \u2500\u2500 Crop export helpers \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+
+function getCroppedBlob() {{
+  return new Promise((resolve) => {{
+    const rawImg = new Image();
+    rawImg.onload = () => {{
+      const pxL = Math.round(box.left * rawImg.naturalWidth);
+      const pxT = Math.round(box.top * rawImg.naturalHeight);
+      const pxR = Math.round(box.right * rawImg.naturalWidth);
+      const pxB = Math.round(box.bottom * rawImg.naturalHeight);
+      const cw = pxR - pxL;
+      const ch = pxB - pxT;
+      const canvas = document.createElement('canvas');
+      canvas.width = cw;
+      canvas.height = ch;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(rawImg, pxL, pxT, cw, ch, 0, 0, cw, ch);
+      canvas.toBlob((blob) => resolve({{ blob, cw, ch }}), 'image/png');
+    }};
+    rawImg.src = document.getElementById('main-img').dataset.raw;
+  }});
+}}
+
+function getCropMetadata() {{
+  const comment = 'Page ' + ITEM.page + ', col ' + ITEM.col +
+                  ', line ' + ITEM.lineNum + ', word ' + (ITEM.wordIdx + 1);
+  const source = 'Aleppo Codex, page ' + ITEM.page;
+  const textMeta = {{
+    'Title': ITEM.book + ' ' + ITEM.cv,
+    'Comment': comment,
+    'Source': source,
+  }};
+  const itxtMeta = {{
+    'Title': ITEM.book + ' ' + ITEM.cv + ' \u2014 ' + ITEM.word,
+    'Comment': comment,
+    'Source': source,
+  }};
+  return {{ textMeta, itxtMeta }};
+}}
+
+async function addMetadataToBlob(blob) {{
+  const buf = await blob.arrayBuffer();
+  const {{ textMeta, itxtMeta }} = getCropMetadata();
+  const newBuf = injectPngMetadata(buf, textMeta, itxtMeta);
+  return new Blob([newBuf], {{ type: 'image/png' }});
+}}
+
+async function copyDataURL() {{
+  const {{ blob, cw, ch }} = await getCroppedBlob();
+  const metaBlob = await addMetadataToBlob(blob);
+  const reader = new FileReader();
+  reader.onload = async () => {{
+    await navigator.clipboard.writeText(reader.result);
+    document.getElementById('status').textContent =
+      'Copied data URL to clipboard (' + cw + '\u00d7' + ch + ', with metadata)';
+    setTimeout(updateStatus, 2000);
+  }};
+  reader.readAsDataURL(metaBlob);
+}}
+
+async function downloadCrop() {{
+  const {{ blob, cw, ch }} = await getCroppedBlob();
+  const metaBlob = await addMetadataToBlob(blob);
+  const a = document.createElement('a');
+  a.download = 'crop_' + ITEM.label + '.png';
+  a.href = URL.createObjectURL(metaBlob);
+  a.click();
+  URL.revokeObjectURL(a.href);
+  document.getElementById('status').textContent =
+    'Downloaded crop_' + ITEM.label + '.png (' + cw + '\u00d7' + ch + ', with metadata)';
+  setTimeout(updateStatus, 2000);
+}}
 </script>
-<div class="preview">
-<h2>Job {r["cv"]} \u2014 {r["word"]}</h2>
-<p class="meta">Page {r["page"]}, col {r["col"]}, line {r["line_num"]}, word {r["word_idx"] + 1}</p>
-<div class="crop-box">
-<p class="context"><span class="before">{before_html}</span> <span class="target">{target_display}</span> <span class="after">{after_html}</span></p>
-<img class="crop-img" src="preview_{label}_yr.png" data-raw="preview_{label}_raw.png" data-y="preview_{label}.png" data-r="preview_{label}_red.png" data-yr="preview_{label}_yr.png">
-</div>
-</div>
 </body></html>
 """)
     print(f"\nHTML: {html_path}")
@@ -304,19 +781,27 @@ function toggleRed() {{
 
 
 def main():
-    if len(sys.argv) != 3:
-        print("Usage: python main_preview_word_crops.py <hebrew_word> <chapter:verse>")
-        print("Example: python main_preview_word_crops.py <word> 7:1")
+    # Parse optional --wide flag
+    args = sys.argv[1:]
+    wide = False
+    if "--wide" in args:
+        wide = True
+        args.remove("--wide")
+
+    if len(args) != 2:
+        print("Usage: python main_find_word_in_aleppo_images.py [--wide] <hebrew_word> <chapter:verse>")
+        print("Example: python main_find_word_in_aleppo_images.py <word> 7:1")
+        print("  --wide  Extend margins to capture masorah parva (Mp) notes")
         sys.exit(1)
 
-    word = sys.argv[1]
-    cv = sys.argv[2]
+    word = args[0]
+    cv = args[1]
     if ":" not in cv:
         print(f"ERROR: verse must be in c:v format (e.g. 7:1), got: {cv}")
         sys.exit(1)
 
     pages = load_index()
-    result = find_and_preview(word, cv, pages)
+    result = find_and_preview(word, cv, pages, wide=wide)
     if result:
         generate_html(result)
     else:
