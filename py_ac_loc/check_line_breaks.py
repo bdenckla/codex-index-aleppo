@@ -328,9 +328,13 @@ def check_file(path, verbose=True):
 
 
 def main():
+    # --no-open: suppress opening the HTML report in a browser
+    no_open = "--no-open" in sys.argv
+    args = [a for a in sys.argv[1:] if a != "--no-open"]
+
     # Determine which files to check
-    if len(sys.argv) > 1:
-        pages = sys.argv[1:]
+    if args:
+        pages = args
         paths = []
         for p in pages:
             path = LB_DIR / f"{p}.json"
@@ -634,7 +638,8 @@ def main():
     out_path = OUT_DIR / "check_line_breaks.html"
     out_path.write_text(html, encoding="utf-8")
     print(f"Report written to {out_path}")
-    webbrowser.open(out_path.as_uri())
+    if not no_open:
+        webbrowser.open(out_path.as_uri())
 
     sys.exit(0 if passed else 1)
 

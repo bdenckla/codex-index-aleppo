@@ -28,11 +28,15 @@ _SEPARATOR = "─" * 60
 
 def _run_line_breaks():
     """Wrapper for check_line_breaks.main() which calls sys.exit()."""
+    saved_argv = sys.argv
+    sys.argv = [sys.argv[0], "--no-open"]
     try:
         check_line_breaks.main()
-        return 0  # main() returned normally (shouldn’t happen, but handle it)
+        return 0  # main() returned normally (shouldn't happen, but handle it)
     except SystemExit as exc:
         return exc.code if exc.code is not None else 0
+    finally:
+        sys.argv = saved_argv
 
 
 def main():
