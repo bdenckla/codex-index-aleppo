@@ -15,9 +15,10 @@ from pathlib import Path
 import numpy as np
 import matplotlib.pyplot as plt
 
-COORD_DIR = Path(__file__).resolve().parent / "column-coordinates"
-OUT_DIR = Path(__file__).resolve().parent.parent / ".novc"
-PERSISTENT_DIR = Path(__file__).resolve().parent / "plot_col_coords-out"
+BASE = Path(__file__).resolve().parent.parent
+COORD_DIR = BASE / "column-coordinates"
+OUT_DIR = BASE / ".novc"
+PERSISTENT_DIR = BASE / "plot_col_coords-out"
 
 ANGLE_EXAGGERATION = 20
 ANGLE_BINS = 5

@@ -38,7 +38,7 @@ from kraken import blla
 
 WORKSPACE = Path(__file__).resolve().parent.parent
 OUT_DIR = WORKSPACE / ".novc"
-COORD_DIR = Path(__file__).resolve().parent / "column-coordinates"
+COORD_DIR = WORKSPACE / "column-coordinates"
 IMG_DIR = WORKSPACE / "aleppo-pages"
 
 ALL_PAGES = [f"{leaf}{side}" for leaf in range(270, 282) for side in ("r", "v")]

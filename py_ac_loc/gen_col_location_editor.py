@@ -17,7 +17,7 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
 OUT_DIR = BASE / ".novc"
-COORD_DIR = Path(__file__).resolve().parent / "column-coordinates"
+COORD_DIR = BASE / "column-coordinates"
 
 LINES_PER_COL = 28
 

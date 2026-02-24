@@ -2,7 +2,7 @@
 Generate an interactive HTML editor for adding/editing line-break
 markers in flat-stream JSON files.
 
-Reads a flat-stream JSON from py_ac_loc/line-breaks/<page>.json,
+Reads a flat-stream JSON from line-breaks/<page>.json,
 produces a self-contained HTML file with:
   - Left panel: clickable ground-truth words (RTL) with existing
     line-break markers shown
@@ -23,8 +23,7 @@ import sys
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
-AC_DIR = BASE / "py_ac_loc"
-LB_DIR = AC_DIR / "line-breaks"
+LB_DIR = BASE / "line-breaks"
 OUT_DIR = BASE / ".novc"
 
 

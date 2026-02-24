@@ -1,7 +1,7 @@
 """
 Stats reporter and consistency checker for line-break JSON files.
 
-Checks each file in py_ac_loc/line-breaks/*.json for structural
+Checks each file in line-breaks/*.json for structural
 consistency and reports summary statistics.
 
 Usage:
@@ -26,8 +26,8 @@ from py_ac_loc.gen_flat_stream import (
 from py_ac_loc.mam_xml_verses import get_verses_in_range
 
 PROJ_DIR = Path(__file__).resolve().parent.parent
-LB_DIR = PROJ_DIR / "py_ac_loc" / "line-breaks"
-OUT_DIR = PROJ_DIR / "py_ac_loc"
+LB_DIR = PROJ_DIR / "line-breaks"
+OUT_DIR = PROJ_DIR
 
 EXPECTED_LINES_PER_COL = 28
 

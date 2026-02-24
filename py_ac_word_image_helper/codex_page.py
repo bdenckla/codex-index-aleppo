@@ -9,8 +9,8 @@ from pathlib import Path
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
-LB_DIR = ROOT / "py_ac_loc" / "line-breaks"
-CC_DIR = ROOT / "py_ac_loc" / "column-coordinates"
+LB_DIR = ROOT / "line-breaks"
+CC_DIR = ROOT / "column-coordinates"
 IMG_DIR = ROOT / "aleppo-pages"
 
 _PAGE_RE = re.compile(r"^(\d+[rv])\.json$")

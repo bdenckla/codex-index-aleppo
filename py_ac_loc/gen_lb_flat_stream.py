@@ -1,6 +1,6 @@
 """
 Generate a flat-stream JSON file for a given page and write it
-to py_ac_loc/line-breaks/<page>.json (without line-break markers).
+to line-breaks/<page>.json (without line-break markers).
 This is the starting point for interactively adding line breaks.
 
 Usage:
@@ -28,7 +28,7 @@ from py_ac_loc.gen_flat_stream import (
 )
 
 BASE = Path(__file__).resolve().parent.parent
-OUT_DIR = BASE / "py_ac_loc" / "line-breaks"
+OUT_DIR = BASE / "line-breaks"
 
 
 def main():
