@@ -30,8 +30,10 @@ OUT_DIR = ROOT / ".novc"
 sys.path.insert(0, str(ROOT))
 from py_ac_word_image_helper.codex_page import (
     CC_DIR,
+    LB_DIR,
     download_page,
     find_page_for_verse,
+    find_pages_for_verse,
     get_line_bbox,
     load_index,
 )
@@ -59,17 +61,21 @@ def find_and_preview(word, cv, pages, scale=2, *, wide=False):
 
     print(f"\n=== Job {cv}: {word} ===")
 
-    page_id = find_page_for_verse(pages, ch, v)
-    if not page_id:
+    page_ids = find_pages_for_verse(pages, ch, v)
+    if not page_ids:
         print(f"  ERROR: Could not find page for Job {cv}")
         return None
+    page_id = page_ids[0]
     print(f"  Page: {page_id}")
 
-    col, line_num, word_idx, line_words = find_word_in_linebreaks(page_id, ch, v, word)
+    col, line_num, word_idx, line_words, match_method = find_word_in_linebreaks(
+        LB_DIR, page_ids, "Job", ch, v, word
+    )
     if col is None:
         print(f"  ERROR: Could not find word in line-break data")
         return None
     print(f"  Location: col {col}, line {line_num}, word {word_idx + 1}")
+    print(f"  Match method: {match_method}")
     print(f"  Line: {' '.join(line_words)}")
 
     # Get crop coordinates (at full image size)

@@ -57,17 +57,31 @@ def load_index():
 
 
 def find_page_for_verse(pages, ch, v):
-    """Find which page a verse is on."""
+    """Find which page a verse is on (returns the first matching page)."""
+    result = find_pages_for_verse(pages, ch, v)
+    return result[0] if result else None
+
+
+def find_pages_for_verse(pages, ch, v):
+    """Find *all* pages that contain a given verse.
+
+    Returns a list of page-id strings, ordered as they appear in the
+    codex index.  A verse that spans a page boundary will appear in
+    multiple pages.  Returns an empty list if the verse is not found.
+    """
+    result = []
     for leaf, ch_s, v_s, ch_e, v_e in pages:
+        # Strict containment: verse starts on or after page start
+        # and strictly before page end.
         start_ok = (ch, v) >= (ch_s, v_s)
         end_ok = (ch, v) < (ch_e, v_e)
         if start_ok and end_ok:
-            return leaf
-    # Could be the last word of a page (at the boundary)
-    for leaf, ch_s, v_s, ch_e, v_e in pages:
+            result.append(leaf)
+            continue
+        # Boundary case: verse is exactly at the page end.
         if (ch, v) >= (ch_s, v_s) and (ch, v) <= (ch_e, v_e):
-            return leaf
-    return None
+            result.append(leaf)
+    return result
 
 
 def get_line_bbox(page_id, col, line_num, buffer_lines=2, margin_factor=0.05):
