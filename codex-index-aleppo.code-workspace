@@ -13,14 +13,15 @@
 	"settings": {
 		"chat.tools.terminal.autoApprove": {
 			".venv\\Scripts\\python.exe": true,
-			"git remote": true,
+			"ConvertFrom-Json": true,
+			"Get-FileHash": true,
 			"git add": true,
 			"git commit": true,
+			"git mv": true,
 			"git push": true,
-			"Get-FileHash": true,
-			"Test-Path": true,
+			"git remote": true,
 			"git rm": true,
-			"git mv": true
+			"Test-Path": true
 		}
 	}
 }
