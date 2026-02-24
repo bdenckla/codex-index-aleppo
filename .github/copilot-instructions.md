@@ -36,8 +36,11 @@ relative order:
 
 In practice this means: **base letter → shin/sin dot → dagesh → rafeh → vowels / meteg / accents** (the remaining marks keep whatever mutual order they already had).
 
-The sibling repo `codex-index-cam1753` has a `pycmn/uni_denorm.py` module
-(`give_std_mark_order`) that implements this ordering.
+The authoritative implementation is `pycmn/uni_denorm.py` (`give_std_mark_order`),
+and the CI-style checker is `check_mark_order.py` (also wired into `check_all.py`).
+
+When in doubt, pass the text through `give_std_mark_order` rather than
+hand-ordering codepoints.
 
 ## Project Overview
 
@@ -136,7 +139,7 @@ See [copilot-instructions-mam-with-doc.md](.github/copilot-instructions-mam-with
 
 ## Opening HTML Files
 
-For the **interactive crop/preview editors** (`main_find_word_in_aleppo_images.py`), always serve over HTTP when the editor uses `navigator.clipboard`, `canvas.toBlob()`, or cross-origin image access — these require a secure context and fail under `file://`. Plain `http://127.0.0.1` is treated as a secure context by all major browsers, so TLS is not needed.
+For the **interactive crop/preview editors** (`main_find_word_in_aleppo_images.py`), always serve over HTTP when the editor uses `navigator.clipboard`, `canvas.toBlob()`, or cross-origin image access — these require a secure context and fail under `file://`. Plain `http://127.0.0.1` is treated as a secure context by all major browsers, so TLS is not needed. The sibling repo `codex-index-cam1753` already uses a built-in `serve_and_open()` helper for this; when this repo adopts the same pattern, prefer that helper over manual HTTP serving.
 
 For editors that only use JSON-to-clipboard export (no canvas/download), opening directly as a `file://` URL is acceptable.
 
