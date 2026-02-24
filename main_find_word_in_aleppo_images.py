@@ -28,6 +28,7 @@ from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parent
 OUT_DIR = ROOT / ".novc"
+SERVER_PORT = 8752  # assumed to be running: python -m http.server 8752 -d .novc
 
 MAQAF = "־"
 
@@ -152,6 +153,7 @@ def find_and_preview(word, book, cv, pages, *, wide=False):
 
     # Save 4 image variants (all combinations of yellow/red)
     label = f"{book}_{cv.replace(':', '_')}"
+    OUT_DIR.mkdir(exist_ok=True)
     # 1. Raw (no overlays)
     raw_path = OUT_DIR / f"preview_{label}_raw.png"
     crop.save(raw_path)
@@ -753,7 +755,9 @@ async function downloadCrop() {{
 </body></html>
 """)
     print(f"\nHTML: {html_path}")
-    webbrowser.open(str(html_path))
+    url = f"http://127.0.0.1:{SERVER_PORT}/{html_path.name}"
+    print(f"Opening {url}")
+    webbrowser.open(url)
 
 
 def main():

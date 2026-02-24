@@ -45,6 +45,11 @@ def find_word_in_linebreaks(lb_dir, page_id, book, ch, v, consensus):
         was made: ``"exact"``, ``"stripped"``, ``"maqaf-tail-stripped"``,
         ``"maqaf-joined-exact"``, or ``"maqaf-joined-stripped"``.
         All five are ``None``/empty on failure.
+
+    When *page_id* is a list, the returned ``col`` / ``line_num`` are
+    relative to whichever page contained the match.  The caller can
+    determine the winning page from the return of
+    :func:`find_pages_for_verse`.
     """
     if isinstance(page_id, (list, tuple)):
         return _find_word_multi_page(lb_dir, page_id, book, ch, v, consensus)
