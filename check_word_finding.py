@@ -11,8 +11,12 @@ import json
 import sys
 from pathlib import Path
 
-from py_ac_word_image_helper.codex_page import LB_DIR, load_index, find_pages_for_verse
-from py_ac_word_image_helper.linebreak_search import find_word_in_linebreaks
+from py_ac_word_image_helper import (
+    LB_DIR,
+    find_pages_for_verse,
+    find_word_in_linebreaks,
+    load_index,
+)
 
 ROOT = Path(__file__).resolve().parent
 TEST_DATA = ROOT / "test-data-from-book-of-job.json"

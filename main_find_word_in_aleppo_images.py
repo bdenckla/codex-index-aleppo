@@ -27,18 +27,19 @@ ROOT = Path(__file__).resolve().parent
 OUT_DIR = ROOT / ".novc"
 
 sys.path.insert(0, str(ROOT))
-from py_ac_word_image_helper.codex_page import (
+from py_ac_word_image_helper import (
     CC_DIR,
     LB_DIR,
+    compute_fade_overlay,
     download_page,
+    estimate_word_position,
     find_page_for_verse,
     find_pages_for_verse,
+    find_word_in_linebreaks,
     get_line_bbox,
+    join_maqaf,
     load_index,
 )
-from py_ac_word_image_helper.crop import compute_fade_overlay, estimate_word_position
-from py_ac_word_image_helper.hebrew_metrics import join_maqaf
-from py_ac_word_image_helper.linebreak_search import find_word_in_linebreaks
 
 
 def find_and_preview(word, cv, pages, scale=2, *, wide=False):
