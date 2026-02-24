@@ -19,11 +19,11 @@ Usage:
 
 import json
 import sys
-import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from py_ac_loc.mam_xml_verses import get_verses_in_range
+from pycmn.uni_denorm import has_std_mark_order
 
 BASE = Path(__file__).resolve().parent.parent
 AC_DIR = BASE / "py_ac_loc"
@@ -123,65 +123,28 @@ def get_page_verses(text_range):
         return all_verses
 
 
-def _mark_group(cp):
-    """Group number for Hebrew combining marks (project standard order).
-
-    Only inter-group ordering is enforced. Within the accent group,
-    MAM-XML’s order is accepted as-is.
-
-    Args:
-        cp: integer code point of a combining character.
-    """
-    if cp in (0x05C1, 0x05C2):  # shin/sin dot
-        return 0
-    if cp == 0x05BC:  # dagesh
-        return 1
-    if cp == 0x05BF:  # rafeh
-        return 2
-    if 0x05B0 <= cp <= 0x05BB or cp == 0x05C7:  # vowels
-        return 3
-    if cp == 0x05BD:  # meteg
-        return 4
-    return 5  # accents (cantillation marks)
+MAQAF = "\N{HEBREW PUNCTUATION MAQAF}"
 
 
 def _assert_standard_order(word, verse_label):
-    """Assert combining marks on each base letter follow standard group order.
+    """Assert combining marks on each base letter follow standard order.
 
-    Checks that no mark from a lower-numbered group appears after a mark
-    from a higher-numbered group. Does NOT enforce ordering within the
-    accent group (group 5).
+    Uses pycmn.uni_denorm.has_std_mark_order (SBL2 mark order) to check
+    that the word already has the project’s standard mark ordering.
 
     Args:
         word: a single Hebrew word string (base letters + combining marks).
         verse_label: human-readable verse label (e.g. "Job 38:1") for
             error messages.
     """
-    i = 0
-    while i < len(word):
-        ch = word[i]
-        if unicodedata.combining(ch) == 0:
-            marks = []
-            j = i + 1
-            while j < len(word) and unicodedata.combining(word[j]) != 0:
-                marks.append(word[j])
-                j += 1
-            # Check inter-group ordering
-            max_group_seen = -1
-            for m in marks:
-                g = _mark_group(ord(m))
-                if g < max_group_seen:
-                    marks_str = " ".join(f"U+{ord(x):04X}" for x in marks)
-                    raise AssertionError(
-                        f"Non-standard combining mark order in {verse_label}, "
-                        f"word '{word}': group {g} mark U+{ord(m):04X} "
-                        f"appears after group {max_group_seen}. "
-                        f"Marks: [{marks_str}]"
-                    )
-                max_group_seen = max(max_group_seen, g)
-            i = j
-        else:
-            i += 1
+    if not has_std_mark_order(word):
+        marks_str = " ".join(
+            f"U+{ord(c):04X}" for c in word if ord(c) > 0x0590 and ord(c) < 0x05F5
+        )
+        raise AssertionError(
+            f"Non-standard combining mark order in {verse_label}, "
+            f"word \u2018{word}\u2019. Marks: [{marks_str}]"
+        )
 
 
 def build_flat_stream(page_id, verses):
@@ -208,12 +171,12 @@ def build_flat_stream(page_id, verses):
         stream.append({"verse-start": label})
         for word in v["words"]:
             _assert_standard_order(word, label)
-            # Split at maqaf (U+05BE) keeping the maqaf attached
-            # to the preceding fragment: "אֽוֹ־מֹשְׁכ֖וֹת" → ["אֽוֹ־", "מֹשְׁכ֖וֹת"]
-            parts = word.split("\u05be")
+            # Split at maqaf keeping the maqaf attached
+            # to the preceding fragment: "אֽוֹ־מֹשְׁכִּזוֹת" → ["אֽוֹ־", "מֹשְׁכִּזוֹת"]
+            parts = word.split(MAQAF)
             for k, part in enumerate(parts):
                 if k < len(parts) - 1:
-                    stream.append(part + "\u05be")
+                    stream.append(part + MAQAF)
                 else:
                     stream.append(part)
         stream.append({"verse-end": label})

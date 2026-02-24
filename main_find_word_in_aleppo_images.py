@@ -249,7 +249,7 @@ def generate_html(result):
     before_joined = join_maqaf(list(r["before"]))
     after_joined = join_maqaf(list(r["after"]))
     target_display = r["matched_word"]
-    MAQAF = "\u05be"
+    MAQAF = "\N{HEBREW PUNCTUATION MAQAF}"
     if before_joined and before_joined[-1].endswith(MAQAF):
         target_display = before_joined.pop() + target_display
     if target_display.endswith(MAQAF) and after_joined:
@@ -261,24 +261,27 @@ def generate_html(result):
     label = r["label"]
     verse_display = f"Job {r['cv']}"
 
-    item_json = json.dumps({
-        "label": r["label"],
-        "book": "Job",
-        "cv": r["cv"],
-        "word": r["word"],
-        "page": r["page"],
-        "col": r["col"],
-        "lineNum": r["line_num"],
-        "wordIdx": r["word_idx"],
-        "cropW": r["crop_w"],
-        "cropH": r["crop_h"],
-        "box": {
-            "left": r["box_left"],
-            "top": r["box_top"],
-            "right": r["box_right"],
-            "bottom": r["box_bot"],
+    item_json = json.dumps(
+        {
+            "label": r["label"],
+            "book": "Job",
+            "cv": r["cv"],
+            "word": r["word"],
+            "page": r["page"],
+            "col": r["col"],
+            "lineNum": r["line_num"],
+            "wordIdx": r["word_idx"],
+            "cropW": r["crop_w"],
+            "cropH": r["crop_h"],
+            "box": {
+                "left": r["box_left"],
+                "top": r["box_top"],
+                "right": r["box_right"],
+                "bottom": r["box_bot"],
+            },
         },
-    }, ensure_ascii=False)
+        ensure_ascii=False,
+    )
 
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(f"""<!DOCTYPE html>
@@ -789,7 +792,9 @@ def main():
         args.remove("--wide")
 
     if len(args) != 2:
-        print("Usage: python main_find_word_in_aleppo_images.py [--wide] <hebrew_word> <chapter:verse>")
+        print(
+            "Usage: python main_find_word_in_aleppo_images.py [--wide] <hebrew_word> <chapter:verse>"
+        )
         print("Example: python main_find_word_in_aleppo_images.py <word> 7:1")
         print("  --wide  Extend margins to capture masorah parva (Mp) notes")
         sys.exit(1)

@@ -24,8 +24,8 @@ Usage:
 
 import xml.etree.ElementTree as ET
 
-PASEQ = "\u05c0"
-MAQAF = "\u05be"
+PASEQ = "\N{HEBREW PUNCTUATION PASEQ}"
+MAQAF = "\N{HEBREW PUNCTUATION MAQAF}"
 
 
 def get_verse_words(verse_el):
@@ -109,7 +109,7 @@ def get_verse_words(verse_el):
     # Attach standalone sof pasuq (׃) to the preceding word.
     # This happens when a <kq> element is followed by <text text="׃" />
     # in the MAM-XML — the sof pasuq ends up as its own token.
-    SOF_PASUQ = "\u05c3"
+    SOF_PASUQ = "\N{HEBREW PUNCTUATION SOF PASUQ}"
     merged = []
     merged_ketiv = []
     for w, is_k in zip(joined, joined_ketiv):

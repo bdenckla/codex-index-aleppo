@@ -20,7 +20,7 @@ def join_maqaf(words):
     """Join maqaf-ending words with the following word. Returns new list."""
     result = []
     for w in words:
-        if result and result[-1].endswith("\u05be"):
+        if result and result[-1].endswith("\N{HEBREW PUNCTUATION MAQAF}"):
             result[-1] = result[-1] + w
         else:
             result.append(w)
@@ -32,41 +32,41 @@ def join_maqaf(words):
 # Values are relative to an "average" letter width of 1.0.
 HEB_WIDTHS = {
     # Very narrow
-    "\u05d9": 0.4,  # yod
-    "\u05d5": 0.5,  # vav
-    "\u05df": 0.5,  # nun sofit
+    "\N{HEBREW LETTER YOD}": 0.4,
+    "\N{HEBREW LETTER VAV}": 0.5,
+    "\N{HEBREW LETTER FINAL NUN}": 0.5,
     # Narrow
-    "\u05d6": 0.6,  # zayin
-    "\u05d2": 0.7,  # gimel
-    "\u05e8": 0.7,  # resh
-    "\u05da": 0.7,  # kaf sofit
-    "\u05e3": 0.7,  # pe sofit
+    "\N{HEBREW LETTER ZAYIN}": 0.6,
+    "\N{HEBREW LETTER GIMEL}": 0.7,
+    "\N{HEBREW LETTER RESH}": 0.7,
+    "\N{HEBREW LETTER FINAL KAF}": 0.7,
+    "\N{HEBREW LETTER FINAL PE}": 0.7,
     # Medium
-    "\u05d1": 0.85,  # bet
-    "\u05d3": 0.85,  # dalet
-    "\u05d4": 0.9,  # he
-    "\u05db": 0.85,  # kaf
-    "\u05dc": 0.7,  # lamed
-    "\u05e0": 0.7,  # nun
-    "\u05e2": 0.9,  # ayin
-    "\u05e4": 0.9,  # pe
-    "\u05e5": 0.8,  # tsade sofit
-    "\u05e6": 0.8,  # tsade
-    "\u05e7": 0.9,  # qof
-    "\u05ea": 0.9,  # tav
+    "\N{HEBREW LETTER BET}": 0.85,
+    "\N{HEBREW LETTER DALET}": 0.85,
+    "\N{HEBREW LETTER HE}": 0.9,
+    "\N{HEBREW LETTER KAF}": 0.85,
+    "\N{HEBREW LETTER LAMED}": 0.7,
+    "\N{HEBREW LETTER NUN}": 0.7,
+    "\N{HEBREW LETTER AYIN}": 0.9,
+    "\N{HEBREW LETTER PE}": 0.9,
+    "\N{HEBREW LETTER FINAL TSADI}": 0.8,
+    "\N{HEBREW LETTER TSADI}": 0.8,
+    "\N{HEBREW LETTER QOF}": 0.9,
+    "\N{HEBREW LETTER TAV}": 0.9,
     # Wide
-    "\u05d0": 1.0,  # alef
-    "\u05d7": 1.0,  # chet
-    "\u05d8": 1.0,  # tet
-    "\u05de": 1.0,  # mem
-    "\u05e1": 1.0,  # samekh
-    "\u05e9": 1.1,  # shin
+    "\N{HEBREW LETTER ALEF}": 1.0,
+    "\N{HEBREW LETTER HET}": 1.0,
+    "\N{HEBREW LETTER TET}": 1.0,
+    "\N{HEBREW LETTER MEM}": 1.0,
+    "\N{HEBREW LETTER SAMEKH}": 1.0,
+    "\N{HEBREW LETTER SHIN}": 1.1,
     # Very wide
-    "\u05dd": 1.1,  # mem sofit
+    "\N{HEBREW LETTER FINAL MEM}": 1.1,
     # Punctuation
-    "\u05be": 0.6,  # maqaf
-    "\u05c0": 0.3,  # paseq
-    "\u05c3": 0.3,  # sof pasuq
+    "\N{HEBREW PUNCTUATION MAQAF}": 0.6,
+    "\N{HEBREW PUNCTUATION PASEQ}": 0.3,
+    "\N{HEBREW PUNCTUATION SOF PASUQ}": 0.3,
     "\u003a": 0.3,  # colon (sometimes used for sof pasuq in data)
 }
 
