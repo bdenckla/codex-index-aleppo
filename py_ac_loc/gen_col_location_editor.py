@@ -97,7 +97,7 @@ def generate_editor(page_id):
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Column Location Editor \u2014 {{page_id}}</title>
+<title>Column Location Editor — {{page_id}}</title>
 <style>
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
   body {{
@@ -187,11 +187,11 @@ def generate_editor(page_id):
 <body>
 
 <div id="toolbar">
-  <span><b>Col Location</b> \u2014 {page_id}</span>
+  <span><b>Col Location</b> — {page_id}</span>
   <button id="fine-btn" onclick="toggleFine()" style="background:#070">Fine: ON</button>
   <button id="skew-btn" onclick="cycleSkew()">Skew: C1 Top</button>
-  <button onclick="rotate(-1)">Rotate \u21b6</button>
-  <button onclick="rotate(+1)">Rotate \u21b7</button>
+  <button onclick="rotate(-1)">Rotate ↶</button>
+  <button onclick="rotate(+1)">Rotate ↷</button>
   <button onclick="resetPositions()">Reset</button>
   <button onclick="exportJSON()">Export JSON</button>
   <span class="info" id="status">Drag handles to resize; buttons to skew</span>
@@ -606,8 +606,8 @@ function updateStatus() {{
   const c2t = cols.col2.topAngle.toFixed(2);
   const c2b = cols.col2.botAngle.toFixed(2);
   status.textContent =
-    `[${{target.label}}: ${{val}}\u00b0]  ` +
-    `C1: ${{c1t}}\u00b0/${{c1b}}\u00b0  C2: ${{c2t}}\u00b0/${{c2b}}\u00b0`;
+    `[${{target.label}}: ${{val}}°]  ` +
+    `C1: ${{c1t}}°/${{c1b}}°  C2: ${{c2t}}°/${{c2b}}°`;
 }}
 
 function f(pt) {{ return `${{(pt.x * 100).toFixed(1)}}%,${{(pt.y * 100).toFixed(1)}}%`; }}

@@ -118,7 +118,7 @@ def find_and_preview(word, cv, pages, scale=2, *, wide=False):
         # As fraction of total line width
         frac_start = width_before / total_width  # from right
         frac_end = (width_before + width_target) / total_width
-        # Add buffer around estimated word position (\u00b115% of line width)
+        # Add buffer around estimated word position (±15% of line width)
         buffer = 0.15
         frac_left = max(0, frac_start - buffer)
         frac_right = min(1, frac_end + buffer)
@@ -288,7 +288,7 @@ def generate_html(result):
 <html>
 <head>
 <meta charset="utf-8">
-<title>Preview \u2014 {verse_display}: {r["word"]}</title>
+<title>Preview — {verse_display}: {r["word"]}</title>
 <style>
 body {{ background: #222; color: #eee; font-family: sans-serif; padding: 20px; }}
 .preview h2 {{ margin-bottom: 5px; }}
@@ -342,7 +342,7 @@ body {{ background: #222; color: #eee; font-family: sans-serif; padding: 20px; }
 </div>
 
 <div class="preview">
-<h2>{verse_display} \u2014 {r["word"]}</h2>
+<h2>{verse_display} — {r["word"]}</h2>
 <p class="meta">Page {r["page"]}, col {r["col"]}, line {r["line_num"]}, word {r["word_idx"] + 1}</p>
 <div class="crop-box">
 <p class="context"><span class="before">{before_html}</span> <span class="target">{target_display}</span> <span class="after">{after_html}</span></p>
@@ -359,10 +359,10 @@ body {{ background: #222; color: #eee; font-family: sans-serif; padding: 20px; }
 </div>
 
 <script>
-// \u2500\u2500 Data \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+// ── Data ────────────────────────────────────────────────
 const ITEM = {item_json};
 
-// \u2500\u2500 Image toggle state \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+// ── Image toggle state ────────────────────────────────────────
 let showYellow = true;
 let showRed = true;
 
@@ -383,7 +383,7 @@ function toggleRed() {{
   document.querySelectorAll('.crop-img').forEach(pickSrc);
 }}
 
-// \u2500\u2500 Crop mode state \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+// ── Crop mode state ───────────────────────────────────────────
 let cropMode = false;
 let fineMode = true;
 const FINE_SCALE = 0.2;
@@ -438,7 +438,7 @@ function toggleFine() {{
   updateStatus();
 }}
 
-// \u2500\u2500 SVG box drawing \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+// ── SVG box drawing ───────────────────────────────────────────
 
 function drawBox() {{
   const svg = document.getElementById('svg-0');
@@ -485,7 +485,7 @@ function clearBox() {{
   document.getElementById('svg-0').innerHTML = '';
 }}
 
-// \u2500\u2500 Drag handlers \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+// ── Drag handlers ─────────────────────────────────────────────
 
 window.addEventListener('mousedown', (e) => {{
   if (!cropMode) return;
@@ -555,7 +555,7 @@ window.addEventListener('mouseup', () => {{
   }}
 }});
 
-// \u2500\u2500 Keyboard \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+// ── Keyboard ────────────────────────────────────────────────
 
 const ARROW_STEP = 0.002;
 
@@ -603,7 +603,7 @@ window.addEventListener('keydown', (e) => {{
   updateStatus();
 }});
 
-// \u2500\u2500 Status \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+// ── Status ──────────────────────────────────────────────────
 
 function updateStatus() {{
   if (!cropMode) return;
@@ -614,8 +614,8 @@ function updateStatus() {{
   const pxB = Math.round(box.bottom * ITEM.cropH);
   document.getElementById('status').textContent =
     '(' + lastSide + ') ' +
-    pxL + ',' + pxT + ' \u2013 ' + pxR + ',' + pxB +
-    '  [' + (pxR - pxL) + '\u00d7' + (pxB - pxT) + 'px]' + fl;
+    pxL + ',' + pxT + ' – ' + pxR + ',' + pxB +
+    '  [' + (pxR - pxL) + '×' + (pxB - pxT) + 'px]' + fl;
 }}
 
 function resetBox() {{
@@ -624,7 +624,7 @@ function resetBox() {{
   updateStatus();
 }}
 
-// \u2500\u2500 PNG metadata injection \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+// ── PNG metadata injection ────────────────────────────────────────
 
 const crcTable = new Uint32Array(256);
 for (let n = 0; n < 256; n++) {{
@@ -704,7 +704,7 @@ function injectPngMetadata(pngArrayBuffer, textMeta, itxtMeta) {{
   return out.buffer;
 }}
 
-// \u2500\u2500 Crop export helpers \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+// ── Crop export helpers ───────────────────────────────────────────
 
 function getCroppedBlob() {{
   return new Promise((resolve) => {{
@@ -737,7 +737,7 @@ function getCropMetadata() {{
     'Source': source,
   }};
   const itxtMeta = {{
-    'Title': ITEM.book + ' ' + ITEM.cv + ' \u2014 ' + ITEM.word,
+    'Title': ITEM.book + ' ' + ITEM.cv + ' — ' + ITEM.word,
     'Comment': comment,
     'Source': source,
   }};
@@ -758,7 +758,7 @@ async function copyDataURL() {{
   reader.onload = async () => {{
     await navigator.clipboard.writeText(reader.result);
     document.getElementById('status').textContent =
-      'Copied data URL to clipboard (' + cw + '\u00d7' + ch + ', with metadata)';
+      'Copied data URL to clipboard (' + cw + '×' + ch + ', with metadata)';
     setTimeout(updateStatus, 2000);
   }};
   reader.readAsDataURL(metaBlob);
@@ -773,7 +773,7 @@ async function downloadCrop() {{
   a.click();
   URL.revokeObjectURL(a.href);
   document.getElementById('status').textContent =
-    'Downloaded crop_' + ITEM.label + '.png (' + cw + '\u00d7' + ch + ', with metadata)';
+    'Downloaded crop_' + ITEM.label + '.png (' + cw + '×' + ch + ', with metadata)';
   setTimeout(updateStatus, 2000);
 }}
 </script>

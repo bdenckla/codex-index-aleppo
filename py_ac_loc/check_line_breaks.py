@@ -493,7 +493,7 @@ def main():
         em = len(s["empty_lines"])
         has_issues = bool(s["issues"])
         row_class = ' class="issue-row"' if has_issues else ""
-        issue_cell = "; ".join(s["issues"]) if has_issues else "\u2714"
+        issue_cell = "; ".join(s["issues"]) if has_issues else "✔"
         issue_class = ' class="fail"' if has_issues else ' class="pass"'
         rows_html.append(
             f"<tr{row_class}>"
@@ -610,7 +610,7 @@ def main():
 <ol start="4">
   <li>Every <code>line-start</code> has exactly one matching <code>line-end</code> (same col &amp; line number), and vice versa</li>
   <li>Reversed-order pairs (line-end before line-start) must be truly empty (no words between them)</li>
-  <li>{EXPECTED_LINES_PER_COL} lines per column, numbered sequentially 1\u2013{EXPECTED_LINES_PER_COL}</li>
+  <li>{EXPECTED_LINES_PER_COL} lines per column, numbered sequentially 1–{EXPECTED_LINES_PER_COL}</li>
   <li>No words before first <code>line-start</code> (pre-content) or after last <code>line-end</code> (post-content)</li>
 </ol>
 

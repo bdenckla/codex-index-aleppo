@@ -126,7 +126,7 @@ def plot_angle_fan(data):
 
     fig, ax = plt.subplots(figsize=(8, 8), subplot_kw={"projection": "polar"})
     ax.set_title(
-        f"Column Skew Angles ({ANGLE_EXAGGERATION}\u00d7 exaggerated)\n"
+        f"Column Skew Angles ({ANGLE_EXAGGERATION}× exaggerated)\n"
         f"{ANGLE_BINS} bins, bar length = count",
         fontsize=13,
         pad=20,
@@ -187,7 +187,7 @@ def plot_angle_fan(data):
     fig.text(
         0.02,
         0.02,
-        f"actual range: {min(all_angles):.2f}\u00b0 to {max(all_angles):.2f}\u00b0",
+        f"actual range: {min(all_angles):.2f}° to {max(all_angles):.2f}°",
         fontsize=9,
         color="gray",
     )

@@ -214,7 +214,7 @@ _HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>Line Break Editor \u2014 {page_id}</title>
+<title>Line Break Editor — {page_id}</title>
 <style>
 * {{ box-sizing: border-box; margin: 0; padding: 0; }}
 body {{ font-family: 'Segoe UI', sans-serif; background: #1e1e1e; color: #d4d4d4; }}
@@ -323,7 +323,7 @@ h1 button:hover {{ background: #1177bb; }}
 </head>
 <body>
 
-<h1>Line Break Editor \u2014 {page_id} \u2014 Col <span id="colLabel">{col_label}</span>
+<h1>Line Break Editor — {page_id} — Col <span id="colLabel">{col_label}</span>
     <button onclick="exportJSON()">Export</button>
     <button id="colBtn" onclick="toggleCol()">Go to col <span id="colBtnNum">{other_col}</span></button>
     <button id="skinnyBtn" onclick="toggleSkinnyMode()">Go wide</button>
@@ -339,7 +339,7 @@ h1 button:hover {{ background: #1177bb; }}
 
 <script>
 const PAGE_ID = "{page_id}";
-const MAQAF = '\\u05BE';
+const MAQAF = '\־';
 // Image crop CSS for each col × mode
 const IMG_CSS = {{
     1: {{ wide: "{col1_wide}", skinny: "{col1_skinny}" }},
@@ -445,7 +445,7 @@ function render() {{
         if (pageStartIdx === idx) {{
             const lbl = document.createElement('span');
             lbl.className = 'page-start-label';
-            lbl.textContent = '\u25c0 page start';
+            lbl.textContent = '◀ page start';
             panel.appendChild(lbl);
         }}
 
@@ -673,7 +673,7 @@ function exportJSON() {{
         ta.style.cssText = 'position:fixed;top:10%;left:10%;width:80%;height:80%;z-index:999;font-size:12px;';
         document.body.appendChild(ta);
         ta.select();
-        document.getElementById('status').textContent = 'Clipboard failed \\u2014 select all and copy manually';
+        document.getElementById('status').textContent = 'Clipboard failed \— select all and copy manually';
     }});
 }}
 

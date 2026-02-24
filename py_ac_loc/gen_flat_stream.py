@@ -143,7 +143,7 @@ def _assert_standard_order(word, verse_label):
         )
         raise AssertionError(
             f"Non-standard combining mark order in {verse_label}, "
-            f"word \u2018{word}\u2019. Marks: [{marks_str}]"
+            f"word ‘{word}’. Marks: [{marks_str}]"
         )
 
 
@@ -172,7 +172,7 @@ def build_flat_stream(page_id, verses):
         for word in v["words"]:
             _assert_standard_order(word, label)
             # Split at maqaf keeping the maqaf attached
-            # to the preceding fragment: "אֽוֹ־מֹשְׁכִּזוֹת" → ["אֽוֹ־", "מֹשְׁכִּזוֹת"]
+            # to the preceding fragment: "אֽוֹ־מֹשְׁכִּזוֹת" → ["אֽוֹ־", "מֹשְׁכִּזוֹת"]
             parts = word.split(MAQAF)
             for k, part in enumerate(parts):
                 if k < len(parts) - 1:
