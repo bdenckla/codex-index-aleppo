@@ -92,6 +92,14 @@ Black respects `.gitignore` by default, so this covers all tracked Python files 
 
 **Never install packages to the system Python.** Always install into the project venv using `.venv\Scripts\pip.exe install <package>` (or ensure the venv is activated first). Add new dependencies to `requirements.txt` at the top level.
 
+## Python Package `__init__.py` Style
+
+Keep `__init__.py` files **minimal** — they exist only as package markers so that explicit submodule imports work (e.g. `from py_ac_word_image_helper.codex_page import ...`). Do **not** add re-exports to `__init__.py`; always import directly from the submodule that defines the symbol.
+
+## Global Variables
+
+Avoid the `global` keyword and avoid mutating module-level variables. If a function needs shared state, pass it as a parameter or return it. Module-level constants (ALL_CAPS) are fine as long as they remain immutable after definition.
+
 ## Reading and Writing Python Files
 
 When reading or modifying Python source files in this project:

@@ -29,20 +29,21 @@ from PIL import Image, ImageDraw
 ROOT = Path(__file__).resolve().parent
 OUT_DIR = ROOT / ".novc"
 
+MAQAF = "־"
+
 sys.path.insert(0, str(ROOT))
-from py_ac_word_image_helper import (
+from py_ac_word_image_helper.codex_page import (
     CC_DIR,
     LB_DIR,
-    compute_fade_overlay,
     download_page,
-    estimate_word_position,
     find_page_for_verse,
     find_pages_for_verse,
-    find_word_in_linebreaks,
     get_line_bbox,
-    join_maqaf,
     load_index,
 )
+from py_ac_word_image_helper.crop import compute_fade_overlay, estimate_word_position
+from py_ac_word_image_helper.hebrew_metrics import join_maqaf
+from py_ac_word_image_helper.linebreak_search import find_word_in_linebreaks
 
 
 def find_and_preview(word, book, cv, pages, scale=2, *, wide=False):
@@ -208,7 +209,6 @@ def generate_html(result):
     before_joined = join_maqaf(list(r["before"]))
     after_joined = join_maqaf(list(r["after"]))
     target_display = r["matched_word"]
-    MAQAF = "\N{HEBREW PUNCTUATION MAQAF}"
     if before_joined and before_joined[-1].endswith(MAQAF):
         target_display = before_joined.pop() + target_display
     if target_display.endswith(MAQAF) and after_joined:
@@ -584,8 +584,7 @@ function resetBox() {{
 }}
 
 // ── PNG metadata injection ────────────────────────────────────────
-
-const crcTable = new Uint32Array(256);
+// CRC-32 table for PNG chunk checksumsconst crcTable = new Uint32Array(256);
 for (let n = 0; n < 256; n++) {{
   let c = n;
   for (let k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
@@ -614,6 +613,8 @@ function buildChunk(typeStr, dataBytes) {{
 }}
 
 function makeTEXtChunk(keyword, latin1Text) {{
+  // tEXt: keyword(Latin-1) + null + text(Latin-1)
+  // Caller must ensure text is ASCII/Latin-1 safe
   const kwBytes = new Uint8Array([...keyword].map(c => c.charCodeAt(0)));
   const txtBytes = new Uint8Array([...latin1Text].map(c => c.charCodeAt(0) & 0xFF));
   const data = new Uint8Array(kwBytes.length + 1 + txtBytes.length);
@@ -624,26 +625,35 @@ function makeTEXtChunk(keyword, latin1Text) {{
 }}
 
 function makeITXtChunk(keyword, utf8Text) {{
+  // iTXt: keyword + null + compression_flag(0) + compression_method(0)
+  //       + language_tag + null + translated_keyword + null + text(UTF-8)
   const enc = new TextEncoder();
   const kwBytes = enc.encode(keyword);
   const txtBytes = enc.encode(utf8Text);
+  // keyword\0 + 0 + 0 + \0 + \0 + text
   const data = new Uint8Array(kwBytes.length + 1 + 2 + 1 + 1 + txtBytes.length);
   data.set(kwBytes, 0);
   let pos = kwBytes.length;
-  data[pos++] = 0;
-  data[pos++] = 0;
-  data[pos++] = 0;
-  data[pos++] = 0;
-  data[pos++] = 0;
+  data[pos++] = 0;  // null after keyword
+  data[pos++] = 0;  // compression flag
+  data[pos++] = 0;  // compression method
+  data[pos++] = 0;  // null after language tag (empty)
+  data[pos++] = 0;  // null after translated keyword (empty)
   data.set(txtBytes, pos);
   return buildChunk('iTXt', data);
 }}
 
 function injectPngMetadata(pngArrayBuffer, textMeta, itxtMeta) {{
+  // Insert tEXt + iTXt chunks right after the IHDR chunk (first chunk after
+  // the 8-byte PNG signature). This avoids the "text after IDAT" warning.
   const src = new Uint8Array(pngArrayBuffer);
   const view = new DataView(pngArrayBuffer);
+
+  // IHDR starts at offset 8; its length is at bytes 8..11
   const ihdrLen = view.getUint32(8);
+  // IHDR chunk = 4 (length) + 4 (type) + ihdrLen (data) + 4 (CRC)
   const afterIHDR = 8 + 12 + ihdrLen;
+
   const chunks = [];
   for (const [key, val] of Object.entries(textMeta)) {{
     chunks.push(makeTEXtChunk(key, val));
@@ -653,12 +663,15 @@ function injectPngMetadata(pngArrayBuffer, textMeta, itxtMeta) {{
   }}
   const extraLen = chunks.reduce((s, c) => s + c.length, 0);
   const out = new Uint8Array(src.length + extraLen);
+  // Copy: signature + IHDR
   out.set(src.subarray(0, afterIHDR), 0);
+  // Insert metadata chunks
   let offset = afterIHDR;
   for (const chunk of chunks) {{
     out.set(chunk, offset);
     offset += chunk.length;
   }}
+  // Copy remaining chunks (IDAT..IEND)
   out.set(src.subarray(afterIHDR), offset);
   return out.buffer;
 }}
@@ -690,11 +703,13 @@ function getCropMetadata() {{
   const comment = 'Page ' + ITEM.page + ', col ' + ITEM.col +
                   ', line ' + ITEM.lineNum + ', word ' + (ITEM.wordIdx + 1);
   const source = 'Aleppo Codex, page ' + ITEM.page;
+  // tEXt: Latin-1 safe (no Hebrew, no em dash)
   const textMeta = {{
     'Title': ITEM.book + ' ' + ITEM.cv,
     'Comment': comment,
     'Source': source,
   }};
+  // iTXt: full UTF-8 (Hebrew word, em dash)
   const itxtMeta = {{
     'Title': ITEM.book + ' ' + ITEM.cv + ' — ' + ITEM.word,
     'Comment': comment,

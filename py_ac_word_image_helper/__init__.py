@@ -5,27 +5,10 @@ Aleppo Codex word-image utilities.
 Provides functions to locate Hebrew words in Aleppo Codex line-break data,
 compute bounding boxes from column-coordinate files, download page images
 from archive.org, and generate crop overlays for interactive editing.
-"""
 
-from .codex_page import (
-    CACHE_DIR,
-    CC_DIR,
-    LB_DIR,
-    ROOT,
-    download_page,
-    find_page_for_verse,
-    find_pages_for_verse,
-    get_line_bbox,
-    image_url,
-    load_index,
-)
-from .crop import compute_fade_overlay, estimate_word_position
-from .hebrew_metrics import (
-    HEB_WIDTHS,
-    SPACE_WIDTH,
-    join_maqaf,
-    line_widths,
-    strip_heb,
-    word_width,
-)
-from .linebreak_search import find_word_in_linebreaks
+Import from submodules directly:
+    from py_ac_word_image_helper.codex_page import ...
+    from py_ac_word_image_helper.crop import ...
+    from py_ac_word_image_helper.hebrew_metrics import ...
+    from py_ac_word_image_helper.linebreak_search import ...
+"""
