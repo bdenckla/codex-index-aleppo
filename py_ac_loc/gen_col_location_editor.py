@@ -41,8 +41,49 @@ _FALLBACK_DEFAULTS = {
 }
 
 
+def _average_saved_coords(is_recto):
+    """Average the rel coords of all saved column-coordinate files for the same page type.
+
+    Args:
+        is_recto: True for recto pages, False for verso pages.
+
+    Returns:
+        A dict with "col1" and "col2" keys (same format as _FALLBACK_DEFAULTS),
+        or None if no saved files match.
+    """
+    _FIELDS = ("cx", "cy", "hw", "hh", "topAngle", "botAngle")
+    matching = []
+    for f in COORD_DIR.glob("*.json"):
+        pid = f.stem
+        if (pid.endswith("r")) == is_recto:
+            data = json.loads(f.read_text(encoding="utf-8"))
+            cols = {}
+            for col_key in ("col1", "col2"):
+                rel = data["columns"][col_key]["rel"]
+                hw = rel["w"] / 2
+                hh = rel["h"] / 2
+                cols[col_key] = {
+                    "cx": rel["x"] + hw,
+                    "cy": rel["y"] + hh,
+                    "hw": hw,
+                    "hh": hh,
+                    "topAngle": rel["top_angle"],
+                    "botAngle": rel["bot_angle"],
+                }
+            matching.append(cols)
+    if not matching:
+        return None
+    avg = {}
+    for col_key in ("col1", "col2"):
+        avg[col_key] = {}
+        for field in _FIELDS:
+            vals = [m[col_key][field] for m in matching]
+            avg[col_key][field] = round(sum(vals) / len(vals), 4)
+    return avg
+
+
 def _load_defaults(page_id):
-    """Load saved column coordinates if they exist, else use fallback."""
+    """Load saved column coordinates if they exist, else use averaged or fallback defaults."""
     coord_file = COORD_DIR / f"{page_id}.json"
     if coord_file.exists():
         data = json.loads(coord_file.read_text(encoding="utf-8"))
@@ -59,8 +100,14 @@ def _load_defaults(page_id):
                 "topAngle": rel["top_angle"],
                 "botAngle": rel["bot_angle"],
             }
-        return result, True
-    return _FALLBACK_DEFAULTS, False
+        return result, "saved"
+
+    is_recto = page_id.endswith("r")
+    avg = _average_saved_coords(is_recto)
+    if avg:
+        return avg, "averaged"
+
+    return _FALLBACK_DEFAULTS, "fallback"
 
 
 def _leaf_to_page_n(page_id):
@@ -85,12 +132,15 @@ def generate_editor(page_id):
     """Generate the HTML column-location editor for a page."""
 
     img_url = _image_url(page_id)
-    defaults, from_file = _load_defaults(page_id)
+    defaults, source = _load_defaults(page_id)
     c1 = defaults["col1"]
     c2 = defaults["col2"]
-    source_note = (
-        f"column-coordinates/{page_id}.json" if from_file else "fallback defaults"
-    )
+    source_labels = {
+        "saved": f"column-coordinates/{page_id}.json",
+        "averaged": "averaged from saved pages",
+        "fallback": "fallback defaults",
+    }
+    source_note = source_labels[source]
 
     html = f"""\
 <!DOCTYPE html>

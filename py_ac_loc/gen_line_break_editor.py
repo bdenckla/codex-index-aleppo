@@ -96,7 +96,11 @@ def _extract_words_and_markers(stream):
         elif isinstance(item, dict):
             if "verse-start" in item:
                 current_verse = item["verse-start"]
+            elif "verse-fragment-start" in item:
+                current_verse = item["verse-fragment-start"]
             elif "verse-end" in item:
+                pass
+            elif "verse-fragment-end" in item:
                 pass
             elif "parashah" in item:
                 words.append(

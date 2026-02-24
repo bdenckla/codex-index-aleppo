@@ -32,6 +32,11 @@ OUT_DIR = BASE / "py_ac_loc" / "line-breaks"
 
 
 def main():
+    # Check for --force flag anywhere in args
+    force = "--force" in sys.argv
+    if force:
+        sys.argv = [a for a in sys.argv if a != "--force"]
+
     # --chain mode
     if len(sys.argv) >= 4 and sys.argv[2] == "--chain":
         page_id = sys.argv[1]
@@ -104,8 +109,8 @@ def main():
     OUT_DIR.mkdir(exist_ok=True)
     out_path = OUT_DIR / f"{page_id}.json"
 
-    if out_path.exists():
-        print(f"ERROR: {out_path} already exists.")
+    if out_path.exists() and not force:
+        print(f"ERROR: {out_path} already exists. Use --force to overwrite.")
         sys.exit(1)
 
     out_path.write_text(

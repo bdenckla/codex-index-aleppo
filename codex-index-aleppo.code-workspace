@@ -17,6 +17,7 @@
 			"git add": true,
 			"git commit": true,
 			"git push": true,
+			"Get-FileHash": true,
 			"Test-Path": true
 		}
 	}

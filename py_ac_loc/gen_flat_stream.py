@@ -380,6 +380,20 @@ def main():
     word_count = sum(1 for x in stream if isinstance(x, str))
     verse_count = sum(1 for x in stream if isinstance(x, dict) and "verse-start" in x)
 
+    # Sanity check: a full Aleppo Codex page needs at least ~300 words.
+    # Require 300 as a floor to catch too-short verse ranges.
+    MIN_WORDS = 300
+    if word_count < MIN_WORDS:
+        print(
+            f"  WARNING: only {word_count} words generated (minimum {MIN_WORDS}).\n"
+            f"  The end-point verse is probably too close to the start.\n"
+            f"  Try a later end verse (e.g. +3 chapters)."
+        )
+        if out_path.exists():
+            out_path.unlink()
+            print(f"  Removed {out_path} — re-run with a later end verse.")
+        sys.exit(1)
+
     out_path.write_text(
         json.dumps(stream, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
