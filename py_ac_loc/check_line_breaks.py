@@ -17,7 +17,6 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from py_ac_loc.gen_flat_stream import (
-    load_index,
     build_flat_stream,
     BOOK_XML,
     BOOK_END_SENTINEL,
@@ -81,6 +80,42 @@ def _get_mega_verses(start_ref, end_ref):
 
 def load_stream(path):
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _parse_verse_label(label):
+    """Parse 'Job 38:31' into ['Job', 38, 31]."""
+    parts = label.split(" ", 1)
+    book = parts[0]
+    cv = parts[1].split(":")
+    return [book, int(cv[0]), int(cv[1])]
+
+
+def _first_verse_ref(path):
+    """Extract the first verse reference from a line-break file.
+
+    Returns [book, ch, vs] or None.
+    """
+    stream = load_stream(path)
+    for item in stream:
+        if isinstance(item, dict):
+            for key in ("verse-start", "verse-fragment-start"):
+                if key in item:
+                    return _parse_verse_label(item[key])
+    return None
+
+
+def _last_verse_ref(path):
+    """Extract the last verse reference from a line-break file.
+
+    Returns [book, ch, vs] or None.
+    """
+    stream = load_stream(path)
+    for item in reversed(stream):
+        if isinstance(item, dict):
+            for key in ("verse-end", "verse-fragment-end"):
+                if key in item:
+                    return _parse_verse_label(item[key])
+    return None
 
 
 def classify_item(item):
@@ -389,76 +424,77 @@ def main():
     # Build the expected word sequence from MAM-XML for the full page range,
     # then verify that the concatenated JSON words match a contiguous slice.
     if len(paths) > 1:
-        index = load_index()
-        first_page = all_stats[0]["name"]
-        last_page = all_stats[-1]["name"]
-        first_range = index[first_page]
-        last_range = index[last_page]
-        # Get all verses from MAM-XML spanning the full range
-        mega_verses = _get_mega_verses(first_range[0], last_range[1])
-        mega_stream = build_flat_stream("_mega_", mega_verses)
-        mam_words = [x for x in mega_stream if isinstance(x, str)]
+        # Derive verse range from the line-break files themselves
+        first_ref = _first_verse_ref(paths[0])
+        last_ref = _last_verse_ref(paths[-1])
+        if first_ref and last_ref:
+            mega_verses = _get_mega_verses(first_ref, last_ref)
+        else:
+            mega_verses = None
+        if mega_verses is not None:
+            mega_stream = build_flat_stream("_mega_", mega_verses)
+            mam_words = [x for x in mega_stream if isinstance(x, str)]
 
-        # Concatenate JSON words from all files in order
-        json_words = []
-        for path in paths:
-            stream = load_stream(path)
-            json_words.extend(x for x in stream if isinstance(x, str))
+            # Concatenate JSON words from all files in order
+            json_words = []
+            for path in paths:
+                stream = load_stream(path)
+                json_words.extend(x for x in stream if isinstance(x, str))
 
-        # JSON words should appear as a contiguous subsequence of MAM words
-        # (MAM may have extra words at start/end due to whole-verse extraction)
-        if json_words:
-            # Find where json_words[0] first appears in mam_words
-            match_start = None
-            for i in range(len(mam_words) - len(json_words) + 1):
-                if mam_words[i] == json_words[0]:
-                    match_start = i
-                    break
-            if match_start is None:
-                msg = (
-                    f"Cross-file word check: first JSON word "
-                    f"{json_words[0]!r} not found in MAM-XML stream"
-                )
-                total_issues += 1
-                all_stats[0]["issues"].append(msg)
-            else:
-                mam_slice = mam_words[match_start : match_start + len(json_words)]
-                if len(mam_slice) < len(json_words):
+            # JSON words should appear as a contiguous subsequence of MAM words
+            # (MAM may have extra words at start/end due to whole-verse extraction)
+            if json_words:
+                # Find where json_words[0] first appears in mam_words
+                match_start = None
+                for i in range(len(mam_words) - len(json_words) + 1):
+                    if mam_words[i] == json_words[0]:
+                        match_start = i
+                        break
+                if match_start is None:
                     msg = (
-                        f"Cross-file word check: JSON has {len(json_words)} words "
-                        f"but only {len(mam_words) - match_start} remain in MAM-XML "
-                        f"from match position"
+                        f"Cross-file word check: first JSON word "
+                        f"{json_words[0]!r} not found in MAM-XML stream"
                     )
                     total_issues += 1
-                    all_stats[-1]["issues"].append(msg)
+                    all_stats[0]["issues"].append(msg)
                 else:
-                    # Compare word by word
-                    mismatches = []
-                    for j, (jw, mw) in enumerate(zip(json_words, mam_slice)):
-                        if jw != mw:
-                            mismatches.append((j, jw, mw))
-                            if len(mismatches) >= 5:
-                                break
-                    if mismatches:
-                        # Find which page the first mismatch falls in
-                        words_so_far = 0
-                        mismatch_idx = mismatches[0][0]
-                        blame_stat = all_stats[0]
-                        for s in all_stats:
-                            if words_so_far + s["words"] > mismatch_idx:
-                                blame_stat = s
-                                break
-                            words_so_far += s["words"]
-                        detail = "; ".join(
-                            f"word {j}: JSON={jw!r} MAM={mw!r}"
-                            for j, jw, mw in mismatches
-                        )
+                    mam_slice = mam_words[match_start : match_start + len(json_words)]
+                    if len(mam_slice) < len(json_words):
                         msg = (
-                            f"Cross-file word check: {len(mismatches)} mismatch(es) "
-                            f"vs MAM-XML: {detail}"
+                            f"Cross-file word check: JSON has {len(json_words)} words "
+                            f"but only {len(mam_words) - match_start} remain in MAM-XML "
+                            f"from match position"
                         )
                         total_issues += 1
-                        blame_stat["issues"].append(msg)
+                        all_stats[-1]["issues"].append(msg)
+                    else:
+                        # Compare word by word
+                        mismatches = []
+                        for j, (jw, mw) in enumerate(zip(json_words, mam_slice)):
+                            if jw != mw:
+                                mismatches.append((j, jw, mw))
+                                if len(mismatches) >= 5:
+                                    break
+                        if mismatches:
+                            # Find which page the first mismatch falls in
+                            words_so_far = 0
+                            mismatch_idx = mismatches[0][0]
+                            blame_stat = all_stats[0]
+                            for s in all_stats:
+                                if words_so_far + s["words"] > mismatch_idx:
+                                    blame_stat = s
+                                    break
+                                words_so_far += s["words"]
+                            detail = "; ".join(
+                                f"word {j}: JSON={jw!r} MAM={mw!r}"
+                                for j, jw, mw in mismatches
+                            )
+                            msg = (
+                                f"Cross-file word check: {len(mismatches)} mismatch(es) "
+                                f"vs MAM-XML: {detail}"
+                            )
+                            total_issues += 1
+                            blame_stat["issues"].append(msg)
 
     # --- Collect unique verse-start values ---
     all_verses = set()

@@ -2,6 +2,7 @@
 """Aleppo Codex page utilities: index, download, bounding boxes."""
 
 import json
+import re
 from io import BytesIO
 from pathlib import Path
 from urllib.request import urlopen
@@ -11,8 +12,9 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 LB_DIR = ROOT / "py_ac_loc" / "line-breaks"
 CC_DIR = ROOT / "py_ac_loc" / "column-coordinates"
-INDEX_PATH = ROOT / "py_ac_loc" / "codex-index" / "index-flat.json"
 CACHE_DIR = ROOT / ".novc"
+
+_PAGE_RE = re.compile(r"^(\d+[rv])\.json$")
 
 
 def _leaf_to_page_n(page_id):
@@ -31,34 +33,74 @@ def image_url(page_id, scale=2):
     )
 
 
+def _parse_verse_label(label):
+    """Parse 'Job 38:31' into (book, chapter, verse)."""
+    parts = label.split(" ", 1)
+    cv = parts[1].split(":")
+    return parts[0], int(cv[0]), int(cv[1])
+
+
+def _page_verse_range(path):
+    """Extract (first_ref, last_ref) from a line-break JSON file.
+
+    Each ref is (book, chapter, verse).  Returns None if the file
+    has no verse markers.
+    """
+    data = json.loads(path.read_text("utf-8"))
+    first = None
+    last = None
+    for item in data:
+        if isinstance(item, dict):
+            for key in ("verse-start", "verse-fragment-start"):
+                if key in item:
+                    ref = _parse_verse_label(item[key])
+                    if first is None:
+                        first = ref
+                    last = ref
+    if first is None:
+        return None
+    # last ref from verse-end / verse-fragment-end (for the end boundary)
+    for item in reversed(data):
+        if isinstance(item, dict):
+            for key in ("verse-end", "verse-fragment-end"):
+                if key in item:
+                    last = _parse_verse_label(item[key])
+                    break
+            else:
+                continue
+            break
+    return first, last
+
+
 def load_index(book="Job"):
-    """Load page index for *book*.
+    """Load page index for *book* by scanning line-break files.
 
     Returns a list of ``(leaf, ch_start, v_start, ch_end, v_end)``
     tuples for every page that contains (even partially) the
     requested book.  Cross-book boundary pages are clamped so that
-    the chapter:verse range covers only the requested book’s
+    the chapter:verse range covers only the requested book's
     portion.
     """
-    with open(INDEX_PATH, encoding="utf-8") as f:
-        data = json.load(f)
     pages = []
-    for entry in data["body"]:
-        leaf = entry["de_leaf"]
-        tr = entry["de_text_range"]
-        # Skip entries that don’t mention our book at all
-        if tr[0][0] != book and tr[1][0] != book:
+    for path in sorted(LB_DIR.glob("*.json")):
+        m = _PAGE_RE.match(path.name)
+        if not m:
             continue
-        # Start: if page starts in our book, use its coords;
-        # otherwise the page starts before our book.
-        if tr[0][0] == book:
-            ch_s, v_s = tr[0][1], tr[0][2]
+        leaf = m.group(1)
+        result = _page_verse_range(path)
+        if result is None:
+            continue
+        first_ref, last_ref = result
+        # Skip pages that don't mention our book at all
+        if first_ref[0] != book and last_ref[0] != book:
+            continue
+        # Clamp to our book
+        if first_ref[0] == book:
+            ch_s, v_s = first_ref[1], first_ref[2]
         else:
             ch_s, v_s = 1, 1
-        # End: if page ends in our book, use its coords;
-        # otherwise the page extends past our book.
-        if tr[1][0] == book:
-            ch_e, v_e = tr[1][1], tr[1][2]
+        if last_ref[0] == book:
+            ch_e, v_e = last_ref[1], last_ref[2]
         else:
             ch_e, v_e = 99, 99
         pages.append((leaf, ch_s, v_s, ch_e, v_e))

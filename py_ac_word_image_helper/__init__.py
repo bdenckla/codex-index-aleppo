@@ -10,7 +10,6 @@ from archive.org, and generate crop overlays for interactive editing.
 from .codex_page import (
     CACHE_DIR,
     CC_DIR,
-    INDEX_PATH,
     LB_DIR,
     ROOT,
     download_page,

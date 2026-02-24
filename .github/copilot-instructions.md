@@ -48,12 +48,13 @@ arbitrary biblical books via the codex index.
 
 ### Pipeline stages:
 
-1. **Codex Index** — `py_ac_loc/codex-index/index-flat.json` maps every leaf to its text range
-2. **MAM-XML Parsing** — `py_ac_loc/mam_xml_verses.py` extracts word lists from `MAM-XML/`
-3. **Flat Stream** — `py_ac_loc/gen_flat_stream.py` combines index + MAM-XML into per-page word streams; data in `ds-flat-stream/`
-4. **Line-Break Annotation** — human-in-the-loop via `py_ac_loc/gen_line_break_editor.py`; data in `py_ac_loc/line-breaks/`
-5. **Column Coordinates** — `py_ac_loc/gen_col_location_editor.py`; data in `py_ac_loc/column-coordinates/`
-6. **Word Lookup** — `main_find_word_in_aleppo_images.py` ties it all together
+1. **MAM-XML Parsing** — `py_ac_loc/mam_xml_verses.py` extracts word lists from `MAM-XML/`
+2. **Flat Stream** — `py_ac_loc/gen_flat_stream.py` combines explicit verse-range args + MAM-XML into per-page word streams; data in `ds-flat-stream/`
+3. **Line-Break Annotation** — human-in-the-loop via `py_ac_loc/gen_line_break_editor.py`; data in `py_ac_loc/line-breaks/`
+4. **Column Coordinates** — `py_ac_loc/gen_col_location_editor.py`; data in `py_ac_loc/column-coordinates/`
+5. **Word Lookup** — `main_find_word_in_aleppo_images.py` ties it all together
+
+Note: `py_ac_loc/codex-index/index-flat.json` is a legacy reference file that is no longer read by any code. Verse ranges are now specified via CLI arguments (manual or `--chain` from a prior page's line-break file), matching the cam1753 approach.
 
 ### Naming conventions:
 

@@ -4,17 +4,20 @@ Generate flat-stream JSON files for Aleppo Codex pages.
 Each page gets a JSON file containing a flat array of:
   - structural markers: {"page-start": "280v"}, {"page-end": "280v"}
   - verse markers: {"verse-start": "Job 38:31"}, {"verse-end": "Job 38:31"}
+  - verse-fragment markers: {"verse-fragment-start": ...}, {"verse-fragment-end": ...}
   - parashah markers: {"parashah": "spi-pe2"}, {"parashah": "spi-samekh2"}
   - words: plain Hebrew strings
 
 Column and line markers are NOT pre-populated — the user adds them
 interactively via the HTML editor.
 
-Verse ranges come from codex-index/index-flat.json (full verses).
-
 Usage:
-    python .novc/gen_flat_stream.py              # all pages
-    python .novc/gen_flat_stream.py 280v         # one page
+    python py_ac_loc/gen_flat_stream.py <page> <start_book> <start_c:v> <end_book> <end_c:v>
+    python py_ac_loc/gen_flat_stream.py <page> --chain <prev_page> <end_book> <end_c:v>
+
+Examples:
+    python py_ac_loc/gen_flat_stream.py 270r Ps 149:1 Job 1:22
+    python py_ac_loc/gen_flat_stream.py 270v --chain 270r Job 4:21
 """
 
 import json
@@ -26,9 +29,8 @@ from py_ac_loc.mam_xml_verses import get_verses_in_range
 from pycmn.uni_denorm import has_std_mark_order
 
 BASE = Path(__file__).resolve().parent.parent
-AC_DIR = BASE / "py_ac_loc"
 MAM_XML_DIR = BASE / "MAM-XML"
-INDEX_PATH = AC_DIR / "codex-index" / "index-flat.json"
+LB_DIR = BASE / "py_ac_loc" / "line-breaks"
 OUT_DIR = BASE / "ds-flat-stream"
 
 BOOK_XML = {
@@ -37,17 +39,7 @@ BOOK_XML = {
     "Prov": "Prov.xml",
 }
 
-# Pages we care about
-OUR_PAGES = [
-    "270r",
-    "278v",
-    "279r",
-    "279v",
-    "280r",
-    "280v",
-    "281r",
-    "281v",
-]
+BOOK_ORDER = ["Ps", "Job", "Prov"]
 
 # For cross-book pages we need to know where each book ends
 # (last chapter, last verse). We'll use large sentinels and
@@ -56,71 +48,157 @@ BOOK_END_SENTINEL = (999, 999)
 BOOK_START = (1, 1)
 
 
-def load_index():
-    """Load the codex-index and return a dict: leaf -> de_text_range."""
-    data = json.loads(INDEX_PATH.read_text(encoding="utf-8"))
-    result = {}
-    for row in data["body"]:
-        result[row["de_leaf"]] = row["de_text_range"]
-    return result
+def parse_cv(s):
+    """Parse 'c:v' into (int, int)."""
+    parts = s.split(":")
+    return (int(parts[0]), int(parts[1]))
 
 
-def get_page_verses(text_range):
-    """Fetch all verses for a page from MAM-XML, handling cross-book pages.
+def get_page_verses(start_book, start_cv, end_book, end_cv):
+    """Fetch all verses for a page from MAM-XML, handling cross-book ranges.
 
     Args:
-        text_range: [[book, ch, vs], [book, ch, vs]] pair from
-            index-flat.json, giving the start and end of the page’s
-            text coverage.
+        start_book: e.g. "Ps"
+        start_cv: (chapter, verse) tuple, e.g. (149, 1)
+        end_book: e.g. "Job"
+        end_cv: (chapter, verse) tuple, e.g. (1, 22)
 
     Returns:
         List of verse dicts, each with keys: book, cv, words,
         ketiv_indices, parashah_after.
     """
-    start_book, start_ch, start_vs = text_range[0]
-    end_book, end_ch, end_vs = text_range[1]
-
     if start_book == end_book:
-        # Same book — simple case
         xml_path = str(MAM_XML_DIR / BOOK_XML[start_book])
-        verses = get_verses_in_range(
-            xml_path,
-            start_book,
-            (start_ch, start_vs),
-            (end_ch, end_vs),
-        )
+        verses = get_verses_in_range(xml_path, start_book, start_cv, end_cv)
         for v in verses:
             v["book"] = start_book
         return verses
+
+    # Cross-book range
+    all_verses = []
+    started = False
+    for book in BOOK_ORDER:
+        if book == start_book:
+            started = True
+            xml_path = str(MAM_XML_DIR / BOOK_XML[book])
+            vs = get_verses_in_range(xml_path, book, start_cv, BOOK_END_SENTINEL)
+            for v in vs:
+                v["book"] = book
+            all_verses.extend(vs)
+        elif started and book == end_book:
+            xml_path = str(MAM_XML_DIR / BOOK_XML[book])
+            vs = get_verses_in_range(xml_path, book, BOOK_START, end_cv)
+            for v in vs:
+                v["book"] = book
+            all_verses.extend(vs)
+            break
+        elif started:
+            # Entire intermediate book (unlikely but handles it)
+            xml_path = str(MAM_XML_DIR / BOOK_XML[book])
+            vs = get_verses_in_range(xml_path, book, BOOK_START, BOOK_END_SENTINEL)
+            for v in vs:
+                v["book"] = book
+            all_verses.extend(vs)
+
+    return all_verses
+
+
+def find_prev_page_endpoint(prev_page_path):
+    """Read a previous page's line-break JSON to find where it left off.
+
+    Returns (book, cv_tuple, skip_words, at_boundary) where skip_words
+    is the number of words into the verse already consumed.  If the page
+    ended exactly at a verse boundary, at_boundary is True and skip_words
+    is 0.
+    """
+    data = json.loads(Path(prev_page_path).read_text("utf-8"))
+
+    # Find the last line-end marker
+    last_line_end_idx = None
+    for i in range(len(data) - 1, -1, -1):
+        if isinstance(data[i], dict) and "line-end" in data[i]:
+            last_line_end_idx = i
+            break
+
+    if last_line_end_idx is None:
+        raise ValueError(f"No line-end markers found in {prev_page_path}")
+
+    # Walk backwards from the last line-end to find the last word
+    last_word_idx = None
+    for i in range(last_line_end_idx, -1, -1):
+        if isinstance(data[i], str):
+            last_word_idx = i
+            break
+    if last_word_idx is None:
+        raise ValueError(f"No words found before last line-end in {prev_page_path}")
+
+    # Find the verse this word belongs to
+    verse_label = None
+    for i in range(last_word_idx, -1, -1):
+        if isinstance(data[i], dict):
+            if "verse-start" in data[i]:
+                verse_label = data[i]["verse-start"]
+                break
+            if "verse-fragment-start" in data[i]:
+                verse_label = data[i]["verse-fragment-start"]
+                break
+
+    if verse_label is None:
+        raise ValueError(
+            f"Could not find verse context for last word in {prev_page_path}"
+        )
+
+    # Check if the page ended at a verse boundary
+    at_verse_end = False
+    for i in range(last_word_idx + 1, len(data)):
+        if isinstance(data[i], dict):
+            if "verse-end" in data[i] and data[i]["verse-end"] == verse_label:
+                at_verse_end = True
+                break
+            if "line-start" in data[i] or "line-end" in data[i]:
+                continue
+            if "verse-fragment-end" in data[i]:
+                break
+            break
+
+    # Parse: "Job 1:16" -> ("Job", (1, 16))
+    parts = verse_label.split(" ", 1)
+    book = parts[0]
+    cv = parse_cv(parts[1])
+
+    if at_verse_end:
+        return book, cv, 0, True
     else:
-        # Cross-book page (e.g., Ps→Job or Job→Prov)
-        all_verses = []
+        # Count how many words of this verse were consumed
+        word_count = 0
+        for i in range(last_word_idx, -1, -1):
+            if isinstance(data[i], str):
+                word_count += 1
+            elif isinstance(data[i], dict):
+                if "verse-start" in data[i] or "verse-fragment-start" in data[i]:
+                    break
+        return book, cv, word_count, False
 
-        # First book: from start_cv to end of book
-        xml_path = str(MAM_XML_DIR / BOOK_XML[start_book])
-        verses1 = get_verses_in_range(
-            xml_path,
-            start_book,
-            (start_ch, start_vs),
-            BOOK_END_SENTINEL,
-        )
-        for v in verses1:
-            v["book"] = start_book
-        all_verses.extend(verses1)
 
-        # Second book: from start of book to end_cv
-        xml_path = str(MAM_XML_DIR / BOOK_XML[end_book])
-        verses2 = get_verses_in_range(
-            xml_path,
-            end_book,
-            BOOK_START,
-            (end_ch, end_vs),
-        )
-        for v in verses2:
-            v["book"] = end_book
-        all_verses.extend(verses2)
-
-        return all_verses
+def next_verse(book, cv):
+    """Return the next verse reference.  Uses MAM-XML to find it."""
+    xml_path = str(MAM_XML_DIR / BOOK_XML[book])
+    c, v = cv
+    # Try next verse in same chapter
+    next_cv = (c, v + 1)
+    vs = get_verses_in_range(xml_path, book, next_cv, next_cv)
+    if vs:
+        return book, next_cv
+    # Try first verse of next chapter
+    next_cv = (c + 1, 1)
+    vs = get_verses_in_range(xml_path, book, next_cv, next_cv)
+    if vs:
+        return book, next_cv
+    # Next book
+    idx = BOOK_ORDER.index(book)
+    if idx + 1 < len(BOOK_ORDER):
+        return BOOK_ORDER[idx + 1], (1, 1)
+    raise ValueError(f"No next verse after {book} {c}:{v}")
 
 
 MAQAF = "\N{HEBREW PUNCTUATION MAQAF}"
@@ -130,7 +208,7 @@ def _assert_standard_order(word, verse_label):
     """Assert combining marks on each base letter follow standard order.
 
     Uses pycmn.uni_denorm.has_std_mark_order (SBL2 mark order) to check
-    that the word already has the project’s standard mark ordering.
+    that the word already has the project's standard mark ordering.
 
     Args:
         word: a single Hebrew word string (base letters + combining marks).
@@ -143,16 +221,21 @@ def _assert_standard_order(word, verse_label):
         )
         raise AssertionError(
             f"Non-standard combining mark order in {verse_label}, "
-            f"word ‘{word}’. Marks: [{marks_str}]"
+            f"word '{word}'. Marks: [{marks_str}]"
         )
 
 
-def build_flat_stream(page_id, verses):
+def build_flat_stream(page_id, verses, skip_first_n_words=0):
     """Build the flat stream array for a page.
+
+    If skip_first_n_words > 0, the first verse is treated as a fragment
+    and the first N words are omitted (they were on the previous page).
 
     Args:
         page_id: leaf identifier, e.g. "270r".
         verses: list of verse dicts as returned by get_page_verses.
+        skip_first_n_words: number of maqaf-split words to skip in the
+            first verse (for cross-page continuations).
 
     Returns:
         The flat stream list (strings and marker dicts).
@@ -160,7 +243,7 @@ def build_flat_stream(page_id, verses):
     stream = []
     stream.append({"page-start": page_id})
 
-    for v in verses:
+    for vi, v in enumerate(verses):
         book = v["book"]
         cv = v["cv"]
         label = f"{book} {cv}"
@@ -168,18 +251,29 @@ def build_flat_stream(page_id, verses):
         if v.get("parashah_before"):
             stream.append(v["parashah_before"])
 
-        stream.append({"verse-start": label})
+        # Expand words with maqaf splitting
+        all_words = []
         for word in v["words"]:
             _assert_standard_order(word, label)
-            # Split at maqaf keeping the maqaf attached
-            # to the preceding fragment: "אֽוֹ־מֹשְׁכִּזוֹת" → ["אֽוֹ־", "מֹשְׁכִּזוֹת"]
             parts = word.split(MAQAF)
             for k, part in enumerate(parts):
                 if k < len(parts) - 1:
-                    stream.append(part + MAQAF)
+                    all_words.append(part + MAQAF)
                 else:
-                    stream.append(part)
-        stream.append({"verse-end": label})
+                    all_words.append(part)
+
+        if vi == 0 and skip_first_n_words > 0:
+            # Fragment: skip words already on previous page
+            remaining = all_words[skip_first_n_words:]
+            if remaining:
+                stream.append({"verse-fragment-start": label})
+                stream.extend(remaining)
+                stream.append({"verse-fragment-end": label})
+            # If no remaining words, skip this verse entirely
+        else:
+            stream.append({"verse-start": label})
+            stream.extend(all_words)
+            stream.append({"verse-end": label})
 
     stream.append({"page-end": page_id})
     return stream
@@ -202,31 +296,95 @@ def write_stream(page_id, stream):
 
 
 def main():
-    index = load_index()
+    # Check for --force flag anywhere in args
+    force = "--force" in sys.argv
+    if force:
+        sys.argv = [a for a in sys.argv if a != "--force"]
 
-    if len(sys.argv) > 1:
-        pages_set = set(sys.argv[1:])
-    else:
-        pages_set = set(OUR_PAGES)
+    # --chain mode: read previous page's line-break file, auto-determine start
+    if len(sys.argv) >= 4 and sys.argv[2] == "--chain":
+        page_id = sys.argv[1]
+        prev_page_id = sys.argv[3]
+        end_book = sys.argv[4]
+        end_cv = parse_cv(sys.argv[5])
 
-    for page_id in OUR_PAGES:
-        if page_id not in index:
-            print(f"WARNING: {page_id} not found in index-flat.json")
-            continue
-        text_range = index[page_id]
-        print(f"{page_id}: {text_range[0]} .. {text_range[1]}")
-        verses = get_page_verses(text_range)
+        prev_path = LB_DIR / f"{prev_page_id}.json"
+        if not prev_path.exists():
+            print(f"ERROR: previous page file not found: {prev_path}")
+            sys.exit(1)
+
+        book, cv, skip_words, at_boundary = find_prev_page_endpoint(prev_path)
+
+        if at_boundary:
+            start_book, start_cv = next_verse(book, cv)
+            skip_words = 0
+            print(
+                f"{page_id}: chained from {prev_page_id}"
+                f" (ended at {book} {cv[0]}:{cv[1]} boundary)"
+            )
+            print(f"  starting at {start_book} {start_cv[0]}:{start_cv[1]}")
+        else:
+            start_book = book
+            start_cv = cv
+            print(
+                f"{page_id}: chained from {prev_page_id}"
+                f" (ended mid {book} {cv[0]}:{cv[1]}, skip {skip_words} words)"
+            )
+
+        verses = get_page_verses(start_book, start_cv, end_book, end_cv)
+        stream = build_flat_stream(page_id, verses, skip_first_n_words=skip_words)
+
+    elif len(sys.argv) == 6:
+        page_id = sys.argv[1]
+        start_book = sys.argv[2]
+        start_cv = parse_cv(sys.argv[3])
+        end_book = sys.argv[4]
+        end_cv = parse_cv(sys.argv[5])
+
+        if start_book not in BOOK_XML:
+            print(f"ERROR: unknown book '{start_book}' (known: {list(BOOK_XML)})")
+            sys.exit(1)
+        if end_book not in BOOK_XML:
+            print(f"ERROR: unknown book '{end_book}' (known: {list(BOOK_XML)})")
+            sys.exit(1)
+
+        print(
+            f"{page_id}: {start_book} {start_cv[0]}:{start_cv[1]}"
+            f" .. {end_book} {end_cv[0]}:{end_cv[1]}"
+        )
+
+        verses = get_page_verses(start_book, start_cv, end_book, end_cv)
         stream = build_flat_stream(page_id, verses)
 
-        if page_id in pages_set:
-            word_count = sum(1 for x in stream if isinstance(x, str))
-            verse_count = sum(
-                1 for x in stream if isinstance(x, dict) and "verse-start" in x
-            )
-            out_path = write_stream(page_id, stream)
-            print(f"  -> {out_path.name}: {verse_count} verses, {word_count} words")
-        else:
-            print(f"  (skipped, not in requested pages)")
+    else:
+        print(
+            "Usage:\n"
+            "  Manual:  ... <page_id> <start_book> <start_c:v>"
+            " <end_book> <end_c:v>\n"
+            "  Chained: ... <page_id> --chain <prev_page_id>"
+            " <end_book> <end_c:v>\n"
+            "\n"
+            "Examples:\n"
+            "  ... 270r Ps 149:1 Job 1:22\n"
+            "  ... 270v --chain 270r Job 4:21"
+        )
+        sys.exit(1)
+
+    OUT_DIR.mkdir(exist_ok=True)
+    out_path = OUT_DIR / f"{page_id}.json"
+
+    if out_path.exists() and not force:
+        print(f"ERROR: {out_path} already exists. Use --force to overwrite.")
+        sys.exit(1)
+
+    word_count = sum(1 for x in stream if isinstance(x, str))
+    verse_count = sum(1 for x in stream if isinstance(x, dict) and "verse-start" in x)
+
+    out_path.write_text(
+        json.dumps(stream, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    print(f"  -> {out_path.name}: {verse_count} verses, {word_count} words")
 
 
 if __name__ == "__main__":
