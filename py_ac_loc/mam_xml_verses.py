@@ -65,10 +65,17 @@ def get_verse_words(verse_el):
                 kq_k = child.find("kq-k")
                 if kq_k is not None:
                     kt = kq_k.attrib.get("text", "").strip()
-                    if kt:
-                        ws = kt.split()
-                        raw_words.extend(ws)
-                        ketiv_flags.extend([True] * len(ws))
+                    if not kt:
+                        slh = kq_k.find("slh-word")
+                        if slh is not None:
+                            kt = slh.attrib.get("slhw-desc-0", "").strip()
+                    assert kt, (
+                        f"<kq-k> has no text= and no slh-word child "
+                        f"in {verse_el.attrib.get('osisID', '?')}"
+                    )
+                    ws = kt.split()
+                    raw_words.extend(ws)
+                    ketiv_flags.extend([True] * len(ws))
             elif tag == "kq-trivial":
                 # Trivial k/q — use pointed text attribute
                 text = child.attrib.get("text", "").strip()
