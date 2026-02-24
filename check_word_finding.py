@@ -24,7 +24,7 @@ TEST_DATA = ROOT / "test-data-from-book-of-job.json"
 
 def main():
     data = json.loads(TEST_DATA.read_text("utf-8"))
-    pages = load_index()
+    pages = load_index("Job")
 
     pass_count = 0
     fail_count = 0

@@ -44,9 +44,16 @@ def estimate_word_position(line_words, word_idx, crop_w, buffer=0.15):
     return highlight_left, highlight_right
 
 
-def compute_fade_overlay(crop_w, crop_h, highlight_left, highlight_right,
-                         highlight_top, highlight_bot,
-                         fade_color=(200, 180, 60), max_alpha=200):
+def compute_fade_overlay(
+    crop_w,
+    crop_h,
+    highlight_left,
+    highlight_right,
+    highlight_top,
+    highlight_bot,
+    fade_color=(200, 180, 60),
+    max_alpha=200,
+):
     """Create a 2-D fade overlay as a PIL RGBA Image.
 
     The overlay is transparent in the highlight region and fades to
@@ -85,9 +92,7 @@ def compute_fade_overlay(crop_w, crop_h, highlight_left, highlight_right,
         elif x > highlight_right:
             horiz_fade[x] = ((x - highlight_right) / max(w - highlight_right, 1)) ** 0.6
 
-    combined = np.maximum(
-        vert_fade[:, np.newaxis], horiz_fade[np.newaxis, :]
-    )
+    combined = np.maximum(vert_fade[:, np.newaxis], horiz_fade[np.newaxis, :])
     alpha_arr = (combined * max_alpha).clip(0, 255).astype(np.uint8)
 
     overlay_arr = np.zeros((h, w, 4), dtype=np.uint8)

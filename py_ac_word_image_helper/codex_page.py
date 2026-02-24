@@ -31,27 +31,36 @@ def image_url(page_id, scale=2):
     )
 
 
-def load_index():
-    """Load page index: returns list of (leaf, ch_start, v_start, ch_end, v_end)."""
+def load_index(book="Job"):
+    """Load page index for *book*.
+
+    Returns a list of ``(leaf, ch_start, v_start, ch_end, v_end)``
+    tuples for every page that contains (even partially) the
+    requested book.  Cross-book boundary pages are clamped so that
+    the chapter:verse range covers only the requested book’s
+    portion.
+    """
     with open(INDEX_PATH, encoding="utf-8") as f:
         data = json.load(f)
     pages = []
     for entry in data["body"]:
         leaf = entry["de_leaf"]
         tr = entry["de_text_range"]
-        # tr = [["Job", ch, v], ["Job", ch, v]]
-        if tr[0][0] != "Job" and tr[1][0] != "Job":
+        # Skip entries that don’t mention our book at all
+        if tr[0][0] != book and tr[1][0] != book:
             continue
-        # Start
-        if tr[0][0] == "Job":
+        # Start: if page starts in our book, use its coords;
+        # otherwise the page starts before our book.
+        if tr[0][0] == book:
             ch_s, v_s = tr[0][1], tr[0][2]
         else:
-            ch_s, v_s = 1, 1  # Page starts before Job
-        # End (exclusive)
-        if tr[1][0] == "Job":
+            ch_s, v_s = 1, 1
+        # End: if page ends in our book, use its coords;
+        # otherwise the page extends past our book.
+        if tr[1][0] == book:
             ch_e, v_e = tr[1][1], tr[1][2]
         else:
-            ch_e, v_e = 99, 99  # Page extends past Job
+            ch_e, v_e = 99, 99
         pages.append((leaf, ch_s, v_s, ch_e, v_e))
     return pages
 
