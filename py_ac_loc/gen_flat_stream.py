@@ -27,9 +27,9 @@ from pycmn.uni_denorm import has_std_mark_order
 
 BASE = Path(__file__).resolve().parent.parent
 AC_DIR = BASE / "py_ac_loc"
-MAM_XML_DIR = AC_DIR / "MAM-XML"
+MAM_XML_DIR = BASE / "MAM-XML"
 INDEX_PATH = AC_DIR / "codex-index" / "index-flat.json"
-OUT_DIR = AC_DIR / "ds-flat-stream"
+OUT_DIR = BASE / "ds-flat-stream"
 
 BOOK_XML = {
     "Job": "Job.xml",

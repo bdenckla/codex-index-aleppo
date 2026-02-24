@@ -1,4 +1,4 @@
-Provenance of py_ac_loc/MAM-XML/
+Provenance of MAM-XML/
 
 These XML files were copied from the MAM-XML repo at:
 
