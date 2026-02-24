@@ -21,7 +21,6 @@ import sys
 import webbrowser
 from pathlib import Path
 
-import numpy as np
 from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parent
@@ -37,11 +36,8 @@ from py_ac_word_image_helper.codex_page import (
     get_line_bbox,
     load_index,
 )
-from py_ac_word_image_helper.hebrew_metrics import (
-    SPACE_WIDTH,
-    join_maqaf,
-    line_widths,
-)
+from py_ac_word_image_helper.crop import compute_fade_overlay, estimate_word_position
+from py_ac_word_image_helper.hebrew_metrics import join_maqaf
 from py_ac_word_image_helper.linebreak_search import find_word_in_linebreaks
 
 
@@ -115,75 +111,23 @@ def find_and_preview(word, cv, pages, scale=2, *, wide=False):
     highlight_bot = tgt_y + tgt_ls
 
     # Estimate horizontal word position (RTL: word 0 is at right edge)
-    # Use proportional Hebrew character width metrics
-    word_ws, total_width = line_widths(line_words)
-    if total_width > 0:
-        # Width from right edge to the start of target word
-        width_before = sum(word_ws[:word_idx]) + SPACE_WIDTH * word_idx
-        width_target = word_ws[word_idx] if word_idx < len(word_ws) else 0
-        # As fraction of total line width
-        frac_start = width_before / total_width  # from right
-        frac_end = (width_before + width_target) / total_width
-        # Add buffer around estimated word position (±15% of line width)
-        buffer = 0.15
-        frac_left = max(0, frac_start - buffer)
-        frac_right = min(1, frac_end + buffer)
-        # Convert to pixel x coords (RTL: right side = high x values)
-        highlight_right = int(crop.width * (1 - frac_left))
-        highlight_left = int(crop.width * (1 - frac_right))
-    else:
-        highlight_left = 0
-        highlight_right = crop.width
+    highlight_left, highlight_right = estimate_word_position(
+        line_words, word_idx, crop.width
+    )
 
-    # Create 2D gradient overlay combining vertical and horizontal fades
-    h, w = crop.height, crop.width
-    fade_color = (200, 180, 60)  # warm yellow
-    max_alpha = 200  # strong opacity at the edges
-
-    # Vertical fade: 0 inside highlight band, increases toward top/bottom
-    vert_fade = np.zeros(h, dtype=np.float64)
-    for y in range(h):
-        if y < highlight_top:
-            dist = highlight_top - y
-            fade_range = max(highlight_top, 1)
-            vert_fade[y] = (dist / fade_range) ** 0.6
-        elif y > highlight_bot:
-            dist = y - highlight_bot
-            fade_range = max(h - highlight_bot, 1)
-            vert_fade[y] = (dist / fade_range) ** 0.6
-
-    # Horizontal fade: 0 inside highlight band, increases toward left/right
-    horiz_fade = np.zeros(w, dtype=np.float64)
-    for x in range(w):
-        if x < highlight_left:
-            dist = highlight_left - x
-            fade_range = max(highlight_left, 1)
-            horiz_fade[x] = (dist / fade_range) ** 0.6
-        elif x > highlight_right:
-            dist = x - highlight_right
-            fade_range = max(w - highlight_right, 1)
-            horiz_fade[x] = (dist / fade_range) ** 0.6
-
-    # Combine: take the max of vertical and horizontal fade at each pixel
-    vert_2d = vert_fade[:, np.newaxis]  # (h, 1)
-    horiz_2d = horiz_fade[np.newaxis, :]  # (1, w)
-    combined = np.maximum(vert_2d, horiz_2d)  # (h, w)
-    alpha_arr = (combined * max_alpha).clip(0, 255).astype(np.uint8)
-
-    # Build RGBA overlay
-    overlay_arr = np.zeros((h, w, 4), dtype=np.uint8)
-    overlay_arr[:, :, 0] = fade_color[0]
-    overlay_arr[:, :, 1] = fade_color[1]
-    overlay_arr[:, :, 2] = fade_color[2]
-    overlay_arr[:, :, 3] = alpha_arr
-    yellow_overlay = Image.fromarray(overlay_arr, "RGBA")
+    # Create 2D gradient fade overlay
+    yellow_overlay = compute_fade_overlay(
+        crop.width, crop.height,
+        highlight_left, highlight_right,
+        highlight_top, highlight_bot,
+    )
 
     # Build red-lines overlay: fading top/bottom lines with center tick marks
     red_overlay = Image.new("RGBA", crop.size, (0, 0, 0, 0))
     draw = ImageDraw.Draw(red_overlay)
     half_ls = tgt_ls // 2
     box_top = max(0, highlight_top - half_ls)
-    box_bot = min(h - 1, highlight_bot + half_ls)
+    box_bot = min(crop.height - 1, highlight_bot + half_ls)
     cx = (highlight_left + highlight_right) // 2
     half_w = max(cx - highlight_left, highlight_right - cx, 1)
     for x_pos in range(highlight_left, highlight_right + 1):
@@ -227,7 +171,7 @@ def find_and_preview(word, cv, pages, scale=2, *, wide=False):
     # Initial bounding box in relative (0–1) coords for the crop editor
     half_ls_box = tgt_ls // 2
     init_box_top = max(0, highlight_top - half_ls_box)
-    init_box_bot = min(h - 1, highlight_bot + half_ls_box)
+    init_box_bot = min(crop.height - 1, highlight_bot + half_ls_box)
 
     return {
         "label": label,
