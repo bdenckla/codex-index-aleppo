@@ -666,7 +666,8 @@
       "page": "275r",
       "column": 2,
       "line": 23,
-      "word": 5
+      "word": 5,
+      "word2": 4
     },
     "qr-cv": "20:23"
   },
@@ -816,7 +817,8 @@
       "page": "276r",
       "column": 1,
       "line": 26,
-      "word": 2
+      "word": 2,
+      "word2": 1
     },
     "qr-cv": "23:6"
   },
@@ -1007,7 +1009,8 @@
       "page": "277v",
       "column": 2,
       "line": 11,
-      "word": 6
+      "word": 6,
+      "word2": 5
     },
     "qr-cv": "30:22"
   },
