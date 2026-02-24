@@ -31,7 +31,6 @@ Usage (runs in WSL via the kraken venv):
 
 import json
 import sys
-import urllib.request
 from pathlib import Path
 
 from PIL import Image, ImageDraw
@@ -40,6 +39,7 @@ from kraken import blla
 WORKSPACE = Path(__file__).resolve().parent.parent
 OUT_DIR = WORKSPACE / ".novc"
 COORD_DIR = Path(__file__).resolve().parent / "column-coordinates"
+IMG_DIR = WORKSPACE / "aleppo-pages"
 
 ALL_PAGES = [f"{leaf}{side}" for leaf in range(270, 282) for side in ("r", "v")]
 
@@ -49,32 +49,13 @@ PAD = 5  # pixels of padding around column crop
 # ── image helpers ──────────────────────────────────────────────
 
 
-def _leaf_to_page_n(page_id):
-    num = int(page_id[:-1])
-    side = page_id[-1]
-    return (num - 1) * 2 + 2 + (0 if side == "r" else 1)
-
-
-def _image_url(page_id):
-    n = _leaf_to_page_n(page_id)
-    return (
-        "https://ia601801.us.archive.org/BookReader/BookReaderImages.php"
-        f"?zip=/7/items/aleppo-codex/Aleppo%20Codex_jp2.zip"
-        f"&file=Aleppo%20Codex_jp2/Aleppo%20Codex_{n:04d}.jp2"
-        f"&id=aleppo-codex&scale=2&rotate=0"
-    )
-
-
-def download_image(page_id):
-    cache = OUT_DIR / f"aleppo-page-{page_id}.jpg"
-    if cache.exists():
-        return Image.open(cache)
-    url = _image_url(page_id)
-    print(f"  Downloading image...")
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    data = urllib.request.urlopen(req, timeout=60).read()
-    cache.write_bytes(data)
-    return Image.open(cache)
+def load_image(page_id):
+    path = IMG_DIR / f"{page_id}.jpg"
+    if not path.exists():
+        print(f"  ERROR: image not found: {path}")
+        print("  Run download_aleppo_pages.py to fetch the images.")
+        sys.exit(1)
+    return Image.open(path)
 
 
 # ── column geometry ────────────────────────────────────────────
@@ -228,7 +209,7 @@ def segment_page(page_id):
     print(f"Processing {page_id}")
     print(f"{'='*50}")
 
-    img = download_image(page_id)
+    img = load_image(page_id)
     w, h = img.size
     page_data = load_page_data(page_id)
     lines_per_col = page_data["lines_per_col"]

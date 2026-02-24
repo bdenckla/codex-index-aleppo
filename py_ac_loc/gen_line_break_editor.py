@@ -6,7 +6,7 @@ Reads a flat-stream JSON from py_ac_loc/line-breaks/<page>.json,
 produces a self-contained HTML file with:
   - Left panel: clickable ground-truth words (RTL) with existing
     line-break markers shown
-  - Right panel: Aleppo Codex page image (from archive.org)
+  - Right panel: Aleppo Codex page image (from aleppo-pages/)
 
 Click the last word of each line to toggle line-end markers.
 "Export JSON" copies the updated flat-stream (with line-start/line-end
@@ -28,24 +28,9 @@ LB_DIR = AC_DIR / "line-breaks"
 OUT_DIR = BASE / ".novc"
 
 
-def _leaf_to_page_n(page_id):
-    """Convert a leaf ID like '270r' to the archive.org 0-based page index."""
-    num = int(page_id[:-1])
-    side = page_id[-1]
-    # For Job leaves (past the extra leaf 241a):
-    # N = (leaf_number - 1) * 2 + 2 + (0 for recto, 1 for verso)
-    return (num - 1) * 2 + 2 + (0 if side == "r" else 1)
-
-
-def _image_url(page_id):
-    """Build archive.org direct image URL for an Aleppo Codex page."""
-    n = _leaf_to_page_n(page_id)
-    return (
-        "https://ia601801.us.archive.org/BookReader/BookReaderImages.php"
-        f"?zip=/7/items/aleppo-codex/Aleppo%20Codex_jp2.zip"
-        f"&file=Aleppo%20Codex_jp2/Aleppo%20Codex_{n:04d}.jp2"
-        f"&id=aleppo-codex&scale=2&rotate=0"
-    )
+def _image_relpath(page_id):
+    """Return relative path to the local page image (from .novc/)."""
+    return f"../aleppo-pages/{page_id}.jpg"
 
 
 def load_stream(page_id):
@@ -140,7 +125,7 @@ def generate_editor_html(page_id, col):
     """
     stream = load_stream(page_id)
     words, line_ends, page_start_idx = _extract_words_and_markers(stream)
-    image_url = _image_url(page_id)
+    image_url = _image_relpath(page_id)
 
     # CSS crop: col 1 shows right 60%, col 2 shows left 60%
     # We set the image wider than its container and offset it.

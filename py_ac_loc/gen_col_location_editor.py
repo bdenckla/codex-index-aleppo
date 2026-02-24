@@ -110,28 +110,15 @@ def _load_defaults(page_id):
     return _FALLBACK_DEFAULTS, "fallback"
 
 
-def _leaf_to_page_n(page_id):
-    """Convert a leaf ID like '270r' to the archive.org 0-based page index."""
-    num = int(page_id[:-1])
-    side = page_id[-1]
-    return (num - 1) * 2 + 2 + (0 if side == "r" else 1)
-
-
-def _image_url(page_id):
-    """Build archive.org direct image URL for an Aleppo Codex page."""
-    n = _leaf_to_page_n(page_id)
-    return (
-        "https://ia601801.us.archive.org/BookReader/BookReaderImages.php"
-        f"?zip=/7/items/aleppo-codex/Aleppo%20Codex_jp2.zip"
-        f"&file=Aleppo%20Codex_jp2/Aleppo%20Codex_{n:04d}.jp2"
-        f"&id=aleppo-codex&scale=2&rotate=0"
-    )
+def _image_relpath(page_id):
+    """Return relative path to the local page image (from .novc/)."""
+    return f"../aleppo-pages/{page_id}.jpg"
 
 
 def generate_editor(page_id):
     """Generate the HTML column-location editor for a page."""
 
-    img_url = _image_url(page_id)
+    img_url = _image_relpath(page_id)
     defaults, source = _load_defaults(page_id)
     c1 = defaults["col1"]
     c2 = defaults["col2"]

@@ -6,7 +6,7 @@ Given a book name, a verse reference (c:v), and a Hebrew word, this
 script:
 1. Looks up the word in line-break data (page, col, line-num)
 2. Gets pixel coordinates from column-coordinate data
-3. Downloads the page image from archive.org
+3. Loads the page image from aleppo-pages/
 4. Crops a generous region around the target line with a 2D fade overlay
 5. Generates an HTML preview page in .novc/ and opens it
 
@@ -35,18 +35,18 @@ sys.path.insert(0, str(ROOT))
 from py_ac_word_image_helper.codex_page import (
     CC_DIR,
     LB_DIR,
-    download_page,
     find_page_for_verse,
     find_pages_for_verse,
     get_line_bbox,
     load_index,
+    load_page_image,
 )
 from py_ac_word_image_helper.crop import compute_fade_overlay, estimate_word_position
 from py_ac_word_image_helper.hebrew_metrics import join_maqaf
 from py_ac_word_image_helper.linebreak_search import find_word_in_linebreaks
 
 
-def find_and_preview(word, book, cv, pages, scale=2, *, wide=False):
+def find_and_preview(word, book, cv, pages, *, wide=False):
     """Find *word* in *book* *cv* on the Aleppo Codex and generate a preview.
 
     Args:
@@ -54,7 +54,6 @@ def find_and_preview(word, book, cv, pages, scale=2, *, wide=False):
         book: Book name, e.g. "Job".
         cv: Verse reference, e.g. "7:1".
         pages: Page index returned by load_index().
-        scale: Image download scale factor.
         wide: If True, extend margins to capture masorah parva (Mp) notes.
 
     Returns a dict of result metadata, or None on failure.
@@ -86,8 +85,8 @@ def find_and_preview(word, book, cv, pages, scale=2, *, wide=False):
         page_id, col, line_num, margin_factor=margin_factor
     )
 
-    # Download at the requested scale
-    img = download_page(page_id, scale=scale)
+    # Load local page image
+    img = load_page_image(page_id)
     actual_w, actual_h = img.size
 
     # Scale factor: column-coordinates reference a specific image size

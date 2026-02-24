@@ -3,8 +3,8 @@
 Aleppo Codex word-image utilities.
 
 Provides functions to locate Hebrew words in Aleppo Codex line-break data,
-compute bounding boxes from column-coordinate files, download page images
-from archive.org, and generate crop overlays for interactive editing.
+compute bounding boxes from column-coordinate files, load page images
+from aleppo-pages/, and generate crop overlays for interactive editing.
 
 Import from submodules directly:
     from py_ac_word_image_helper.codex_page import ...
