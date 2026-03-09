@@ -17,12 +17,12 @@ require running the generation script or checking `docs/` for changes.
 py_ac_loc/
   line-breaks/          ← flat-stream JSON files, one per page (the data)
   codex-index/          ← page index mapping leaves to verse ranges
-  MAM-XML/              ← MAM-XML source files (Job.xml, Ps.xml, Prov.xml)
+  MAM-simple/           ← MAM-simple source files (Job.xml, Ps.xml, Prov.xml)
   gen_flat_stream.py    ← generates initial flat-stream JSON (no line markers)
   gen_lb_flat_stream.py ← wrapper: generates flat stream for a page
   gen_line_break_editor.py  ← generates interactive HTML editor
   merge_line_markers.py ← merges edited line markers back, handling NFC normalization
-  mam_xml_verses.py     ← low-level MAM-XML verse extraction (used by gen_flat_stream)
+  mam_xml_verses.py     ← low-level MAM-simple verse extraction (used by gen_flat_stream)
 ```
 
 ## Data format
