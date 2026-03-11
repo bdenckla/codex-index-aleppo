@@ -2,16 +2,172 @@
 
 ## Verse numbering
 
-**Always use MAM-standard verse numbering.** Never rely on your own notion of
-the Masoretic text or its verse numbering.
+**Always use MAM-standard verse numbering.** Never rely on your own notion of the Masoretic text or its verse numbering.
 
-If you suspect a verse-numbering discrepancy (e.g. between the docs and the
-index), look up the BHS verse numbering via:
+If you suspect a verse-numbering discrepancy, look up BHS verse numbering via `../MAM-simple/out/json-vtrad-bhs/<Book>.json`. Each entry has an `"osisID-of-MAM-src"` field mapping BHS osisID to MAM source verse. Example: BHS `Jer.31.35` → `"osisID-of-MAM-src": "Jer.31.34"`.
 
-    C:\Users\BenDe\GitRepos\MAM-simple\out\json-vtrad-bhs\<Book>.json
+## Python Environment — MANDATORY venv-qualified commands
 
-Each entry there has an `"osisID-of-MAM-src"` field that maps the BHS osisID
-to the MAM source verse.  Use this as the authoritative cross-reference.
+Always use `.venv/` for Python work. **Never run bare `python`, `python3`, `pip`, or `pip3`** — always use the explicit venv path:
 
-Example: BHS `Jer.31.35` has `"osisID-of-MAM-src": "Jer.31.34"`, meaning
-what MAM calls Jer 31:34 is what BHS calls Jer 31:35.
+- **Windows:** `.venv\Scripts\python.exe` / `.venv\Scripts\pip.exe`
+- **Linux/macOS:** `.venv/bin/python` / `.venv/bin/pip`
+
+This rule applies everywhere — terminal, chat examples, documentation, tool invocations. No exceptions.
+
+## No Multi-Line Shell Commands
+
+**Never write a Bash command that spans multiple lines.** This includes `python -c`. Claude Code's permission globs use `*` which does not match newlines — multi-line commands break glob matching and trigger approval prompts. When the payload is inherently multi-line, write it to a file and reference the file.
+
+Common instances:
+- **Git commit messages** — write to `.novc/commit_msg_<slug>.txt` with the Write tool, then `git commit -F .novc/commit_msg_<slug>.txt`
+- **GitHub issue/PR bodies** — write to `.novc/issue_body.md`, then `gh issue create --body-file .novc/issue_body.md`
+- **Python snippets** — write to `.novc/my_script.py`, run with `PYTHONUTF8=1 .venv/Scripts/python.exe .novc/my_script.py` (`PYTHONUTF8=1` is for `.novc/` throwaway scripts only — see UTF-8 section)
+
+## Prefer Built-in Tools over Bash Equivalents
+
+Default to Read, Write, Edit, Grep, Glob instead of Bash equivalents (`cat`, `echo >`, `sed`, `grep`, `find`). Every Bash command not pre-allowed triggers an approval prompt; built-in tools don't.
+
+## UTF-8 Everywhere
+
+On Windows, Python defaults to `cp1252`, not UTF-8 — this causes `charmap` errors with Hebrew text.
+
+1. Every `open()` call must include `encoding="utf-8"`.
+2. `json.dump()` / `json.dumps()` must pass `ensure_ascii=False`.
+3. `subprocess` output: pass `encoding="utf-8"`.
+4. Never rely on the system default encoding.
+5. `PYTHONUTF8=1` is **only** for `.novc/` throwaway scripts — do not set it for git-tracked scripts. (Shell is Git Bash: use `VAR=value cmd` syntax, not PowerShell `$env:VAR` syntax.)
+
+## No Unsolicited Git Operations
+
+Never run `git commit` or `git push` without explicit permission. Staging and status checks are fine.
+
+## Never Amend Commits
+
+Never use `git commit --amend` or `git rebase` unless explicitly asked. Always make new commits.
+
+## Git Commit Messages — Use `-F`, Not Heredocs
+
+Write commit messages to a **uniquely-named** file in `.novc/` with the Write tool, then commit with `-F`:
+
+```bash
+git commit -F .novc/commit_msg_<short_slug>.txt
+```
+
+Never reuse a fixed filename — a stale file silently produces the wrong message. Never write the file via Bash redirection; always use the Write tool. Never pre-check whether `.novc/` or the file exists — Write creates it unconditionally.
+
+## Don't Redundantly Re-assert the Repo Directory
+
+The working directory is already the project root. Run `git` directly without `cd` or `git -C <this-repo>`. For a sibling repo, use `git -C <path>`.
+
+## Don't Close Issues Prematurely
+
+Never close a GitHub issue until work is both committed **and** pushed. Closing before pushing leaves the issue marked resolved while the fix is only local.
+
+## Before Discarding Work
+
+Before any destructive git operation (`git reset`, `git checkout -- .`, `git stash drop`, etc.), run `git status` and `git diff --stat`. If there are uncommitted changes beyond the current experiment, alert the user first.
+
+## Fail Fast — No Silent Error Smoothing
+
+Do not write defensive code that swallows errors or returns `None` on unexpected conditions. Only catch exceptions when there is a concrete recovery strategy — never catch broad `Exception` or `KeyError` just to return `None`. These are batch pipelines; a crash with a clear traceback is the correct response to unexpected input.
+
+## Dict Access Style
+
+Be intentional about dict access:
+- `d[key]` — when the key is **required** (a `KeyError` on a missing required key is a bug you want to hear about immediately)
+- `d.get(key)` — when the key is **genuinely optional** and `None` is meaningful
+- `d.get(key, default)` — when the key is optional and there is a natural default
+
+## JSON Lists: Prepend, Don't Append
+
+When adding to a semantically unordered JSON array, **prepend** rather than append. Appending requires a two-line diff (add comma to old last element + add new element); prepending is a clean one-line diff.
+
+## Format Python with Black
+
+After writing or editing any Python file, run black before committing:
+
+```bash
+.venv/Scripts/python.exe -m black <file_or_directory>
+```
+
+Format only files you changed. This is mandatory — not optional.
+
+## Editing Python with Concrete Syntax Trees
+
+For complex or numerous edits to Python files, consider [libcst](https://libcst.readthedocs.io/) to programmatically transform code rather than fragile text replacements. Especially useful for refactors that rename symbols or restructure imports.
+
+## Global Variables
+
+Avoid the `global` keyword and mutating module-level variables. Pass shared state as parameters or return it. Module-level constants (ALL_CAPS) are fine if immutable after definition.
+
+## Python Package `__init__.py` Style
+
+Keep `__init__.py` files minimal — package markers only. Do not add re-exports; always import directly from the submodule that defines the symbol.
+
+## Script Promotion Policy
+
+When a `.novc/` script becomes part of an ongoing, repeatable workflow, promote it to a permanent location (e.g. `py_ac_loc/`) immediately. Suggest promotion as soon as the pattern becomes clear.
+
+## Opening HTML Files
+
+- **Interactive editors** using `navigator.clipboard`, `canvas.toBlob()`, or cross-origin image access — serve over HTTP (`http://127.0.0.1`). Use a `serve_and_open()` helper if available.
+- **JSON-to-clipboard export only** — opening as `file://` is acceptable.
+- **Static read-only HTML** — open directly: `Start-Process "path/to/file.html"`.
+
+## Authorship Marking
+
+First line of every new version-controlled file:
+- **Python:** `# Initially generated by Claude Code.`
+- **Markdown/HTML:** `<!-- Initially generated by Claude Code. -->`
+
+Does not apply to `.novc/` throwaway files.
+
+## Minimum Font Size for Pointed Hebrew
+
+Never use smaller than **20pt** for pointed Hebrew in generated HTML. All CSS rules for elements displaying pointed Hebrew must use `font-size: 20pt` or larger.
+
+## Unicode Character Preservation
+
+Never convert typographically correct Unicode to ASCII equivalents:
+- Curly apostrophe `'` (U+2019), not straight `'` (U+0027)
+- Curly quotes `"` (U+201C) and `"` (U+201D), not straight `"` (U+0022)
+- Hebrew characters, vowel points, cantillation marks — preserved exactly
+
+When editing, read the file first and copy exact characters from existing content rather than retyping.
+
+## Markdown Formatting
+
+Do not use bare tildes (`~`) as "approximately" — Markdown treats text between two `~` as strikethrough. Write "approx." or escape: `\~`.
+
+## Screenshots
+
+"Most recent screenshot" means the most recent file (by last-write time) in `C:\Users\BenDe\OneDrive\Pictures\Screenshots`.
+
+## GitHub Repository Owner
+
+The owner is **bdenckla**. Use this for GitHub MCP queries. Confirm via `git remote -v` if unsure.
+
+## Local Sibling Repositories
+
+Most repos are cloned as siblings at `../repo-name`. Use relative paths (e.g. `../MAM-simple/...`) — do not hard-code absolute paths.
+
+## Terminology: "Varika"
+
+**Varika** = **U+FB1E HEBREW POINT JUDEO-SPANISH VARIKA** (Alphabetic Presentation Forms block), not U+05BF HEBREW POINT RAFE (main Hebrew block).
+
+## Hebrew Unicode Mark Order — No NFC Normalization
+
+**Never apply Unicode normalization (NFC, NFD, etc.) to Hebrew text.** NFC reorders combining marks, destroying the project's intentional mark order. If strings that should be equal aren't matching, ensure both use the project's standard mark order — do not paper over with `unicodedata.normalize`. See `.github/copilot-instructions.md` for the mark order specification and implementation references.
+
+## Do Not Mention Private Repos in Public Repos
+
+Some sibling repos are private. Never reference a private repo by name in commits, code, docs, or issue/PR text destined for a public repo.
+
+## Detailed Reference Files
+
+- **`.github/copilot-instructions.md`** — project overview, pipeline stages, naming conventions, Hebrew mark order
+- **`.github/copilot-instructions-mam-simple.md`** — MAM-simple XML format, verse extraction, versification traditions
+- **`.github/copilot-instructions-mam-with-doc.md`** — MAM with Doc URLs and book codes
+- **`.github/copilot-instructions-aleppo-line-breaks.md`** — line-break workflow, page image sources, Job leaf table
+- **`.github/copilot-instructions-ocr.md`** — Kraken OCR setup and usage
