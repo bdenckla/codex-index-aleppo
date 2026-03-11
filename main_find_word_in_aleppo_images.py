@@ -36,6 +36,7 @@ sys.path.insert(0, str(ROOT))
 from py_ac_word_image_helper.codex_page import (
     CC_DIR,
     LB_DIR,
+    find_page_for_verse,
     find_pages_for_verse,
     get_line_bbox,
     load_index,

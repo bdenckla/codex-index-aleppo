@@ -51,8 +51,8 @@ arbitrary biblical books via the codex index.
 
 ### Pipeline stages:
 
-1. **MAM-simple Parsing** — `py_ac_loc/mam_xml_verses.py` extracts word lists from `MAM-simple/`
-2. **Flat Stream** — `py_ac_loc/gen_flat_stream.py` combines explicit verse-range args + MAM-simple into per-page word streams; data in `ds-flat-stream/`
+1. **MAM-XML Parsing** — `py_ac_loc/mam_xml_verses.py` extracts word lists from `MAM-XML/`
+2. **Flat Stream** — `py_ac_loc/gen_flat_stream.py` combines explicit verse-range args + MAM-XML into per-page word streams; data in `ds-flat-stream/`
 3. **Line-Break Annotation** — human-in-the-loop via `py_ac_loc/gen_line_break_editor.py`; data in `py_ac_loc/line-breaks/`
 4. **Column Coordinates** — `py_ac_loc/gen_col_location_editor.py`; data in `py_ac_loc/column-coordinates/`
 5. **Word Lookup** — `main_find_word_in_aleppo_images.py` ties it all together
