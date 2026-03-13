@@ -19,18 +19,49 @@ Examples:
     python main_find_word_in_aleppo_images.py "וְכִימֵ֖֗י" 7:1
 """
 
+import functools
+import http.server
+import io
 import json
+import socket
 import sys
+import threading
 import webbrowser
 from pathlib import Path
+
+# Ensure stdout handles Hebrew text on Windows (where default is cp1252).
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parent
 OUT_DIR = ROOT / ".novc"
-SERVER_PORT = 8752  # assumed to be running: python -m http.server 8752 -d .novc
 
 MAQAF = "־"
+
+
+def serve_and_open(directory, filename):
+    """Start an HTTP server in *directory*, open *filename* in the browser,
+    and block until Ctrl+C."""
+    handler = functools.partial(
+        http.server.SimpleHTTPRequestHandler, directory=str(directory)
+    )
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.bind(("127.0.0.1", 0))
+        port = s.getsockname()[1]
+    server = http.server.HTTPServer(("127.0.0.1", port), handler)
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    url = f"http://127.0.0.1:{port}/{filename}"
+    print(f"Serving at http://127.0.0.1:{port}/ — opening {url}")
+    print("Press Ctrl+C to stop.")
+    webbrowser.open(url)
+    try:
+        thread.join()
+    except KeyboardInterrupt:
+        print("\nShutting down server.")
+        server.shutdown()
+
 
 sys.path.insert(0, str(ROOT))
 from py_ac_word_image_helper.codex_page import (
@@ -585,7 +616,8 @@ function resetBox() {{
 }}
 
 // ── PNG metadata injection ────────────────────────────────────────
-// CRC-32 table for PNG chunk checksumsconst crcTable = new Uint32Array(256);
+// CRC-32 table for PNG chunk checksums
+const crcTable = new Uint32Array(256);
 for (let n = 0; n < 256; n++) {{
   let c = n;
   for (let k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
@@ -755,9 +787,7 @@ async function downloadCrop() {{
 </body></html>
 """)
     print(f"\nHTML: {html_path}")
-    url = f"http://127.0.0.1:{SERVER_PORT}/{html_path.name}"
-    print(f"Opening {url}")
-    webbrowser.open(url)
+    serve_and_open(OUT_DIR, html_path.name)
 
 
 def main():

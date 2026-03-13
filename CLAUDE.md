@@ -35,8 +35,9 @@ On Windows, Python defaults to `cp1252`, not UTF-8 — this causes `charmap` err
 1. Every `open()` call must include `encoding="utf-8"`.
 2. `json.dump()` / `json.dumps()` must pass `ensure_ascii=False`.
 3. `subprocess` output: pass `encoding="utf-8"`.
-4. Never rely on the system default encoding.
-5. `PYTHONUTF8=1` is **only** for `.novc/` throwaway scripts — do not set it for git-tracked scripts. (Shell is Git Bash: use `VAR=value cmd` syntax, not PowerShell `$env:VAR` syntax.)
+4. If a script prints Hebrew to stdout/stderr, reconfigure them at startup: `sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")` (and likewise for `sys.stderr`).
+5. Never rely on the system default encoding.
+6. `PYTHONUTF8=1` is **only** for `.novc/` throwaway scripts — do not set it for git-tracked scripts. (Shell is Git Bash: use `VAR=value cmd` syntax, not PowerShell `$env:VAR` syntax.)
 
 ## No Unsolicited Git Operations
 
@@ -163,6 +164,18 @@ Most repos are cloned as siblings at `../repo-name`. Use relative paths (e.g. `.
 ## Do Not Mention Private Repos in Public Repos
 
 Some sibling repos are private. Never reference a private repo by name in commits, code, docs, or issue/PR text destined for a public repo.
+
+## Viewing a Word in Aleppo Codex Images
+
+To show a zoomed-in Aleppo Codex image for a specific word, use `main_find_word_in_aleppo_images.py`:
+
+```bash
+.venv/Scripts/python.exe main_find_word_in_aleppo_images.py <book> <c:v> "<word>"
+```
+
+Example: `.venv/Scripts/python.exe main_find_word_in_aleppo_images.py Job 3:17 "יָ֝נ֗וּחוּ"`
+
+The script looks up the word in line-break data, crops the page image around it with a fade overlay, generates an HTML preview in `.novc/`, and opens it in the browser. Use `--wide` for a wider crop. Book defaults to Job if omitted.
 
 ## Detailed Reference Files
 
