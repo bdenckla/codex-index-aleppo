@@ -58,12 +58,16 @@ def _extract_words_and_markers(stream):
             line-end markers.
         page_start_idx: word index of the first word on the page (from
             line-start col 1 line-num 1), or None if not yet set.
+        blank_lines: dict mapping word_index to blank-line count for
+            pre-existing blank-line markers.
     """
     words = []
     line_ends = []
+    blank_lines = {}
     page_start_idx = None
     current_verse = None
     word_idx = 0
+    last_line_end_word_idx = None
 
     for item in stream:
         if isinstance(item, str):
@@ -111,16 +115,22 @@ def _extract_words_and_markers(stream):
                     page_start_idx = word_idx
             elif "line-end" in item:
                 if word_idx > 0:
+                    last_line_end_word_idx = word_idx - 1
                     line_ends.append(
                         (
-                            word_idx - 1,
+                            last_line_end_word_idx,
                             item["line-end"]["col"],
                             item["line-end"]["line-num"],
                         )
                     )
+            elif "blank-line" in item:
+                if last_line_end_word_idx is not None:
+                    blank_lines[last_line_end_word_idx] = (
+                        blank_lines.get(last_line_end_word_idx, 0) + 1
+                    )
             # page-start, page-end: skip
 
-    return words, line_ends, page_start_idx
+    return words, line_ends, page_start_idx, blank_lines
 
 
 def _parse_col_spec(col_spec):
@@ -187,7 +197,7 @@ def generate_editor_html(page_id, col_spec):
         col_spec: NofM column spec, e.g. "1of2" or "2of3".
     """
     stream = load_stream(page_id)
-    words, line_ends, page_start_idx = _extract_words_and_markers(stream)
+    words, line_ends, page_start_idx, blank_lines = _extract_words_and_markers(stream)
     image_url = _image_relpath(page_id)
 
     n, m = _parse_col_spec(col_spec)
@@ -216,15 +226,19 @@ def generate_editor_html(page_id, col_spec):
     for widx, col_val, lnum in line_ends:
         js_line_ends.append({"idx": widx, "col": col_val, "lineNum": lnum})
 
-    # Build the stream without line markers for export reconstruction
+    # Build the stream without line/blank-line markers for export reconstruction
     stream_no_lines = [
         item
         for item in stream
-        if not (isinstance(item, dict) and ("line-start" in item or "line-end" in item))
+        if not (
+            isinstance(item, dict)
+            and ("line-start" in item or "line-end" in item or "blank-line" in item)
+        )
     ]
 
     words_json = json.dumps(js_words, ensure_ascii=False, indent=None)
     line_ends_json = json.dumps(js_line_ends, ensure_ascii=False)
+    blank_lines_json = json.dumps(blank_lines, ensure_ascii=False)
     stream_json = json.dumps(stream_no_lines, ensure_ascii=False, indent=2)
     page_start_js = "null" if page_start_idx is None else str(page_start_idx)
 
@@ -249,6 +263,7 @@ def generate_editor_html(page_id, col_spec):
         ncols=m,
         words_json=words_json,
         line_ends_json=line_ends_json,
+        blank_lines_json=blank_lines_json,
         stream_json=stream_json,
         page_start_idx_js=page_start_js,
     )
@@ -368,6 +383,50 @@ h1 button:hover {{ background: #1177bb; }}
     margin-left: 2px;
     vertical-align: super;
 }}
+.line-num {{
+    cursor: pointer;
+}}
+.line-num:hover {{
+    color: #e0e040;
+    text-decoration: underline;
+}}
+.blank-line {{
+    display: block;
+    height: 20px;
+    border: 1px dashed #666;
+    border-radius: 3px;
+    margin: 2px 0;
+    background: #2a2a2a;
+    cursor: pointer;
+    text-align: center;
+    color: #666;
+    font-size: 11px;
+    font-family: monospace;
+    direction: ltr;
+    line-height: 20px;
+}}
+.blank-line:hover {{
+    border-color: #c44;
+    color: #c44;
+    background: #3a2020;
+}}
+#syncIndicator {{
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 12px;
+    font-family: monospace;
+    padding: 2px 8px;
+    border-radius: 3px;
+    vertical-align: middle;
+}}
+#syncIndicator.on {{
+    background: #264f2a;
+    color: #4ec94e;
+}}
+#syncIndicator.off {{
+    background: #3a2a2a;
+    color: #666;
+}}
 
 </style>
 </head>
@@ -377,6 +436,7 @@ h1 button:hover {{ background: #1177bb; }}
     <button onclick="exportJSON()">Export</button>
     <button id="colBtn" onclick="toggleCol()">Go to <span id="colBtnNum">{next_col}</span></button>
     <button id="skinnyBtn" onclick="toggleSkinnyMode()">Go wide</button>
+    <span id="syncIndicator" class="on">sync: ON [s]</span>
     <span id="status"></span>
 </h1>
 <div class="container" id="container">
@@ -394,12 +454,20 @@ const MAQAF = '\־';
 // Image crop CSS keyed by NofM col spec
 const IMG_CSS = {css_json};
 let isSkinnyMode = true; // skinny is default
+const LINES_PER_COL = 28;
 const allWords = {words_json};
 const preExistingLineEnds = {line_ends_json};
+const preExistingBlankLines = {blank_lines_json};
 const baseStream = {stream_json};
 
 // State: Map<wordIdx, {{col, lineNum}}> where col is a NofM string
 let lineEndMap = new Map();
+
+// Blank lines after a given line-end word index.
+// Map<wordIdx, count> — how many blank lines follow this line-end.
+let blankLinesAfter = new Map();
+
+let syncMode = true;
 
 // Page-start: index of the first word actually on this page.
 // Words before this are lead-in from the previous page.
@@ -410,6 +478,18 @@ let pageStartIdx = {page_start_idx_js};
 preExistingLineEnds.forEach(le => {{
     lineEndMap.set(le.idx, {{col: le.col, lineNum: le.lineNum}});
 }});
+
+// Initialize from pre-existing blank lines
+for (const [k, v] of Object.entries(preExistingBlankLines)) {{
+    blankLinesAfter.set(parseInt(k), v);
+}}
+
+const PARASHAH_DISPLAY = {{
+    'spi-pe2': '{{פפ}}',
+    'spi-pe1': '{{פ}}',
+    'spi-sm1': '{{ס}}',
+    'spi-samekh2': '{{סס}}',
+}};
 
 const COL_LABELS = {labels_json};
 const COL_CYCLE = {cycle_json};
@@ -424,21 +504,94 @@ function toggleCol() {{
     applyImageCrop();
     document.getElementById('colLabel').textContent = COL_LABELS[currentColSpec];
     document.getElementById('colBtnNum').textContent = COL_CYCLE[currentColSpec];
+    if (syncMode) {{
+        syncWordsPanel();
+    }}
+}}
+
+function toggleSyncMode() {{
+    syncMode = !syncMode;
+    const ind = document.getElementById('syncIndicator');
+    ind.className = syncMode ? 'on' : 'off';
+    ind.textContent = syncMode ? 'sync: ON [s]' : 'sync: off [s]';
+    if (syncMode) {{
+        syncWordsPanel();
+    }}
+}}
+
+function syncWordsPanel() {{
+    if (!syncMode) return;
+    const col = currentColSpec;
+    const sorted = [...lineEndMap.entries()]
+        .filter(([_, v]) => v.col === col)
+        .sort((a, b) => a[0] - b[0]);
+    let targetIdx;
+    if (sorted.length === 0) {{
+        const curN = parseInt(col.split('of')[0]);
+        if (curN > 1) {{
+            const prevEnds = [...lineEndMap.entries()]
+                .filter(([_, v]) => {{
+                    const vn = parseInt(v.col.split('of')[0]);
+                    return vn < curN;
+                }})
+                .sort((a, b) => a[0] - b[0]);
+            if (prevEnds.length > 0) {{
+                targetIdx = prevEnds[prevEnds.length - 1][0] + 1;
+            }} else {{
+                targetIdx = pageStartIdx !== null ? pageStartIdx : 0;
+            }}
+        }} else {{
+            targetIdx = pageStartIdx !== null ? pageStartIdx : 0;
+        }}
+    }} else {{
+        const lastEndIdx = sorted[sorted.length - 1][0];
+        targetIdx = lastEndIdx + 1;
+    }}
+    const el = document.querySelector(`.word[data-idx="${{targetIdx}}"]`);
+    if (!el) return;
+    const wp = document.getElementById('wordsPanel');
+    const elRect = el.getBoundingClientRect();
+    const wpRect = wp.getBoundingClientRect();
+    const elTopInWp = elRect.top - wpRect.top + wp.scrollTop;
+    wp.scrollTop = elTopInWp - wp.clientHeight / 2;
 }}
 
 function recalcLineNums() {{
-    // For each column, renumber lines sequentially
-    const byCols = {{}};
+    // Flat-order assignment: sort all line-ends by word index,
+    // assign first LINES_PER_COL to col 1, next to col 2, etc.
     const sorted = [...lineEndMap.entries()].sort((a, b) => a[0] - b[0]);
-    sorted.forEach(([idx, info]) => {{
-        if (!byCols[info.col]) byCols[info.col] = [];
-        byCols[info.col].push(idx);
+    let flatLine = 1;
+    sorted.forEach(([idx, _]) => {{
+        const colIdx = Math.min(Math.floor((flatLine - 1) / LINES_PER_COL), NCOLS - 1);
+        const colN = colIdx + 1;
+        const colSpec = colN + 'of' + NCOLS;
+        const lineNum = flatLine - colIdx * LINES_PER_COL;
+        const entry = lineEndMap.get(idx);
+        entry.col = colSpec;
+        entry.lineNum = lineNum;
+        flatLine++;
+        // Account for blank lines after this line-end
+        const blanks = blankLinesAfter.get(idx) || 0;
+        flatLine += blanks;
     }});
-    for (const col in byCols) {{
-        byCols[col].forEach((idx, i) => {{
-            lineEndMap.get(idx).lineNum = i + 1;
-        }});
+}}
+
+function addBlankLine(wordIdx) {{
+    const count = blankLinesAfter.get(wordIdx) || 0;
+    blankLinesAfter.set(wordIdx, count + 1);
+    recalcLineNums();
+    render();
+}}
+
+function removeBlankLine(wordIdx) {{
+    const count = blankLinesAfter.get(wordIdx) || 0;
+    if (count <= 1) {{
+        blankLinesAfter.delete(wordIdx);
+    }} else {{
+        blankLinesAfter.set(wordIdx, count - 1);
     }}
+    recalcLineNums();
+    render();
 }}
 
 function render() {{
@@ -450,7 +603,9 @@ function render() {{
     allWords.forEach((entry, idx) => {{
         const span = document.createElement('span');
         span.className = 'word';
-        span.textContent = entry.text;
+        span.textContent = entry.isParashah
+            ? (PARASHAH_DISPLAY[entry.text] || entry.text)
+            : entry.text;
         span.dataset.idx = idx;
 
         const endsMaqaf = entry.text.endsWith(MAQAF);
@@ -506,10 +661,25 @@ function render() {{
             const ln = document.createElement('span');
             ln.className = 'line-num';
             ln.textContent = leInfo.lineNum;
+            ln.title = 'Click to add blank line after this line';
+            ln.addEventListener('click', () => addBlankLine(idx));
 
             panel.appendChild(colLbl);
             panel.appendChild(ln);
             panel.appendChild(document.createElement('br'));
+
+            // Render blank-line placeholders after this line-end
+            const blanks = blankLinesAfter.get(idx) || 0;
+            for (let b = 0; b < blanks; b++) {{
+                const blankDiv = document.createElement('div');
+                blankDiv.className = 'blank-line';
+                const blankLineNum = leInfo.lineNum + 1 + b;
+                blankDiv.textContent = `— blank line ${{blankLineNum}} (${{leInfo.col}}) — click to remove`;
+                blankDiv.addEventListener('click', () => {{
+                    removeBlankLine(idx);
+                }});
+                panel.appendChild(blankDiv);
+            }}
         }}
     }});
 
@@ -518,13 +688,29 @@ function render() {{
 
 function toggleLineEnd(idx) {{
     if (lineEndMap.has(idx)) {{
+        blankLinesAfter.delete(idx);
         lineEndMap.delete(idx);
     }} else {{
-        const col = currentCol();
-        lineEndMap.set(idx, {{col: col, lineNum: 0}});
+        // Col and lineNum will be assigned by recalcLineNums
+        lineEndMap.set(idx, {{col: '', lineNum: 0}});
     }}
     recalcLineNums();
     render();
+
+    // Auto-switch when current column fills up
+    const curN = parseInt(currentColSpec.split('of')[0]);
+    if (curN < NCOLS) {{
+        const curColSpec = currentColSpec;
+        const colEnds = [...lineEndMap.values()].filter(v => v.col === curColSpec);
+        const colBlanks = [...lineEndMap.entries()]
+            .filter(([_, v]) => v.col === curColSpec)
+            .reduce((sum, [k, _]) => sum + (blankLinesAfter.get(k) || 0), 0);
+        if (colEnds.length + colBlanks >= LINES_PER_COL) {{
+            toggleCol();
+            return;
+        }}
+    }}
+    syncWordsPanel();
 }}
 
 function togglePageStart(idx) {{
@@ -549,9 +735,11 @@ function updateStatus() {{
     const parts = Object.entries(counts)
         .sort()
         .map(([c, n]) => `${{c}}: ${{n}} lines`);
+    const totalBlanks = [...blankLinesAfter.values()].reduce((a, b) => a + b, 0);
+    const blankInfo = totalBlanks > 0 ? ` | ${{totalBlanks}} blank` : '';
     const psInfo = pageStartIdx !== null ? `Page start: word ${{pageStartIdx}}` : 'No page start set';
     document.getElementById('status').textContent =
-        psInfo + (parts.length ? ' | ' + parts.join(' | ') : '');
+        psInfo + (parts.length ? ' | ' + parts.join(' | ') : '') + blankInfo;
 }}
 
 function buildExportStream() {{
@@ -608,6 +796,12 @@ function buildExportStream() {{
             if (endSet.has(wordIdx)) {{
                 const info = endSet.get(wordIdx);
                 result.push({{"line-end": {{"col": info.col, "line-num": info.lineNum}}}});
+                // Insert blank lines after this line-end
+                const blanks = blankLinesAfter.get(wordIdx) || 0;
+                for (let b = 0; b < blanks; b++) {{
+                    const blankNum = info.lineNum + 1 + b;
+                    result.push({{"blank-line": {{"col": info.col, "line-num": blankNum}}}});
+                }}
             }}
             wordIdx++;
         }} else {{
@@ -724,24 +918,16 @@ function exportJSON() {{
 }}
 
 render();
+syncWordsPanel();
 
-// Auto-scroll: if editing col N>1, scroll to the last marker of the
-// previous column so the user picks up where they left off.
-const curN = parseInt(currentColSpec.split('of')[0]);
-if (curN > 1) {{
-    const prevColSpec = (curN - 1) + 'of' + NCOLS;
-    const prevEnds = [...lineEndMap.entries()]
-        .filter(([_, info]) => info.col === prevColSpec)
-        .sort((a, b) => a[0] - b[0]);
-    if (prevEnds.length > 0) {{
-        const lastIdx = prevEnds[prevEnds.length - 1][0];
-        const el = document.querySelector(`.word[data-idx="${{lastIdx}}"]`);
-        if (el) {{
-            const panel = document.getElementById('wordsPanel');
-            panel.scrollTop = el.offsetTop - 40;
-        }}
+// Keyboard shortcut: 's' to toggle sync mode
+document.addEventListener('keydown', (e) => {{
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 's' || e.key === 'S') {{
+        e.preventDefault();
+        toggleSyncMode();
     }}
-}}
+}});
 
 // --- Resizable divider ---
 (function() {{
