@@ -22,7 +22,7 @@ This rule applies everywhere — terminal, chat examples, documentation, tool in
 Common instances:
 - **Git commit messages** — write to `.novc/commit_msg_<slug>.txt` with the Write tool, then `git commit -F .novc/commit_msg_<slug>.txt`
 - **GitHub issue/PR bodies** — write to `.novc/issue_body.md`, then `gh issue create --body-file .novc/issue_body.md`
-- **Python snippets** — write to `.novc/my_script.py`, run with `PYTHONUTF8=1 .venv/Scripts/python.exe .novc/my_script.py` (`PYTHONUTF8=1` is for `.novc/` throwaway scripts only — see UTF-8 section)
+- **Python snippets** — write to `.novc/my_script.py`, then run with the venv Python
 
 ## Prefer Built-in Tools over Bash Equivalents
 
@@ -30,14 +30,20 @@ Default to Read, Write, Edit, Grep, Glob instead of Bash equivalents (`cat`, `ec
 
 ## UTF-8 Everywhere
 
-On Windows, Python defaults to `cp1252`, not UTF-8 — this causes `charmap` errors with Hebrew text.
+On Windows, Python defaults to the system ANSI code page, not UTF-8 — this causes `charmap` errors with non-ASCII text. Fix this **in the code**, not with environment variable workarounds like `PYTHONUTF8=1` or `PYTHONIOENCODING=utf-8`.
 
 1. Every `open()` call must include `encoding="utf-8"`.
 2. `json.dump()` / `json.dumps()` must pass `ensure_ascii=False`.
 3. `subprocess` output: pass `encoding="utf-8"`.
-4. If a script prints Hebrew to stdout/stderr, reconfigure them at startup: `sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")` (and likewise for `sys.stderr`).
+4. **stdout/stderr** — if a script must print non-ASCII, reconfigure the streams at the top of the script:
+   ```python
+   import sys, io
+   sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+   sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8")
+   ```
+   Alternatively, write non-ASCII output to a file instead of stdout.
 5. Never rely on the system default encoding.
-6. `PYTHONUTF8=1` is **only** for `.novc/` throwaway scripts — do not set it for git-tracked scripts. (Shell is Git Bash: use `VAR=value cmd` syntax, not PowerShell `$env:VAR` syntax.)
+6. **Never use `PYTHONUTF8=1`, `PYTHONIOENCODING`, or any env-var prefix** as a substitute for writing correct code.
 
 ## No Unsolicited Git Operations
 
