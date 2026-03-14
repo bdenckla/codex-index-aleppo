@@ -6,7 +6,7 @@
   },
   "lines_per_col": 28,
   "columns": {
-    "col1": {
+    "col1of2": {
       "rel": {
         "x": 0.5669,
         "y": 0.0871,
@@ -26,7 +26,7 @@
         "line_spacing": 53
       }
     },
-    "col2": {
+    "col2of2": {
       "rel": {
         "x": 0.0979,
         "y": 0.0957,

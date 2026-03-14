@@ -7,7 +7,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 1
     }
   },
@@ -20,13 +20,13 @@
   "תְשׁוּרֵ֣נִי",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 1
     }
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 2
     }
   },
@@ -45,13 +45,13 @@
   "בָּ֫תִּ֥ים",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 2
     }
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 3
     }
   },
@@ -63,7 +63,7 @@
   "אֽוֹר׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 3
     }
   },
@@ -75,7 +75,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 4
     }
   },
@@ -90,7 +90,7 @@
   "צַלְמָֽוֶת׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 4
     }
   },
@@ -102,7 +102,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 5
     }
   },
@@ -115,13 +115,13 @@
   "חֶלְקָתָ֣ם",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 5
     }
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 6
     }
   },
@@ -132,7 +132,7 @@
   "כְּרָמִֽים׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 6
     }
   },
@@ -144,7 +144,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 7
     }
   },
@@ -157,13 +157,13 @@
   "שְׁא֣וֹל",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 7
     }
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 8
     }
   },
@@ -180,13 +180,13 @@
   "רִמָּ֗ה",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 8
     }
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 9
     }
   },
@@ -198,7 +198,7 @@
   "עַוְלָֽה׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 9
     }
   },
@@ -210,7 +210,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 10
     }
   },
@@ -223,7 +223,7 @@
   "יְיֵטִֽיב׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 10
     }
   },
@@ -235,7 +235,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 11
     }
   },
@@ -248,7 +248,7 @@
   "בַּחַיִּֽין׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 11
     }
   },
@@ -260,7 +260,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 12
     }
   },
@@ -273,7 +273,7 @@
   "דַּרְכֵיהֶֽם׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 12
     }
   },
@@ -285,7 +285,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 13
     }
   },
@@ -297,13 +297,13 @@
   "יִקָּפְצ֑וּן",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 13
     }
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 14
     }
   },
@@ -321,13 +321,13 @@
   "אֵ֭פוֹ",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 14
     }
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 15
     }
   },
@@ -338,7 +338,7 @@
   "מִלָּתִֽי׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 15
     }
   },
@@ -347,7 +347,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 16
     }
   },
@@ -363,7 +363,7 @@
   "וַיֹּאמַֽר׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 16
     }
   },
@@ -375,7 +375,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 17
     }
   },
@@ -387,7 +387,7 @@
   "בִּמְרוֹמָֽיו׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 17
     }
   },
@@ -399,7 +399,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 18
     }
   },
@@ -410,13 +410,13 @@
   "מִ֝֗י",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 18
     }
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 19
     }
   },
@@ -435,13 +435,13 @@
   "עִם־",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 19
     }
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 20
     }
   },
@@ -462,13 +462,13 @@
   "וְלֹ֣א",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 20
     }
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 21
     }
   },
@@ -479,7 +479,7 @@
   "בְעֵינָֽיו׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 21
     }
   },
@@ -491,7 +491,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 22
     }
   },
@@ -504,7 +504,7 @@
   "תּוֹלֵעָֽה׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 22
     }
   },
@@ -513,7 +513,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 23
     }
   },
@@ -528,7 +528,7 @@
   "וַיֹּאמַֽר׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 23
     }
   },
@@ -540,7 +540,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 24
     }
   },
@@ -554,7 +554,7 @@
   "עֹֽז׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 24
     }
   },
@@ -566,7 +566,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 25
     }
   },
@@ -579,7 +579,7 @@
   "הוֹדָֽעְתָּ׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 25
     }
   },
@@ -591,7 +591,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 26
     }
   },
@@ -605,7 +605,7 @@
   "מִמֶּֽךָּ׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 26
     }
   },
@@ -617,7 +617,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 27
     }
   },
@@ -628,7 +628,7 @@
   "וְשֹׁכְנֵיהֶֽם׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 27
     }
   },
@@ -640,7 +640,7 @@
   },
   {
     "line-start": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 28
     }
   },
@@ -652,7 +652,7 @@
   "לָאֲבַדּֽוֹן׃",
   {
     "line-end": {
-      "col": 1,
+      "col": "1of2",
       "line-num": 28
     }
   },
@@ -664,7 +664,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 1
     }
   },
@@ -679,7 +679,7 @@
   "מָֽה׃",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 1
     }
   },
@@ -691,7 +691,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 2
     }
   },
@@ -704,7 +704,7 @@
   "תַּחְתָּֽם׃",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 2
     }
   },
@@ -716,7 +716,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 3
     }
   },
@@ -728,7 +728,7 @@
   "עֲנָנֽוֹ׃",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 3
     }
   },
@@ -740,7 +740,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 4
     }
   },
@@ -756,7 +756,7 @@
   "חֹֽשֶׁךְ׃",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 4
     }
   },
@@ -768,7 +768,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 5
     }
   },
@@ -779,7 +779,7 @@
   "מִגַּעֲרָתֽוֹ׃",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 5
     }
   },
@@ -791,7 +791,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 6
     }
   },
@@ -803,7 +803,7 @@
   "רָֽהַב׃",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 6
     }
   },
@@ -815,7 +815,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 7
     }
   },
@@ -828,7 +828,7 @@
   "בָּרִֽחַ׃",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 7
     }
   },
@@ -840,7 +840,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 8
     }
   },
@@ -853,13 +853,13 @@
   "דָּ֭בָר",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 8
     }
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 9
     }
   },
@@ -871,7 +871,7 @@
   "יִתְבּוֹנָֽן׃",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 9
     }
   },
@@ -880,7 +880,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 10
     }
   },
@@ -897,7 +897,7 @@
   "וַיֹּאמַֽר׃",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 10
     }
   },
@@ -909,7 +909,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 11
     }
   },
@@ -922,7 +922,7 @@
   "נַפְשִֽׁי׃",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 11
     }
   },
@@ -934,7 +934,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 12
     }
   },
@@ -948,7 +948,7 @@
   "בְּאַפִּֽי׃",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 12
     }
   },
@@ -960,7 +960,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 13
     }
   },
@@ -971,13 +971,13 @@
   "וּ֝לְשׁוֹנִ֗י",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 13
     }
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 14
     }
   },
@@ -996,13 +996,13 @@
   "אַצְדִּ֢יק",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 14
     }
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 15
     }
   },
@@ -1015,7 +1015,7 @@
   "מִמֶּֽנִּי׃",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 15
     }
   },
@@ -1027,7 +1027,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 16
     }
   },
@@ -1037,13 +1037,13 @@
   "אַרְפֶּ֑הָ",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 16
     }
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 17
     }
   },
@@ -1062,13 +1062,13 @@
   "אֹ֣יְבִ֑י",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 17
     }
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 18
     }
   },
@@ -1086,13 +1086,13 @@
   "חָ֭נֵף",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 18
     }
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 19
     }
   },
@@ -1104,7 +1104,7 @@
   "נַפְשֽׁוֹ׃",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 19
     }
   },
@@ -1116,7 +1116,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 20
     }
   },
@@ -1129,7 +1129,7 @@
   "צָרָֽה׃",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 20
     }
   },
@@ -1141,7 +1141,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 21
     }
   },
@@ -1155,7 +1155,7 @@
   "עֵֽת׃",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 21
     }
   },
@@ -1167,7 +1167,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 22
     }
   },
@@ -1180,13 +1180,13 @@
   "שַׁ֝דַּ֗י",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 22
     }
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 23
     }
   },
@@ -1204,13 +1204,13 @@
   "חֲזִיתֶ֑ם",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 23
     }
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 24
     }
   },
@@ -1229,13 +1229,13 @@
   "אָדָ֖ם",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 24
     }
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 25
     }
   },
@@ -1248,7 +1248,7 @@
   "יִקָּֽחוּ׃",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 25
     }
   },
@@ -1260,7 +1260,7 @@
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 26
     }
   },
@@ -1272,13 +1272,13 @@
   "וְ֝צֶאֱצָאָ֗יו",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 26
     }
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 27
     }
   },
@@ -1296,13 +1296,13 @@
   "יִקָּבֵ֑רוּ",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 27
     }
   },
   {
     "line-start": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 28
     }
   },
@@ -1319,7 +1319,7 @@
   "יִצְבֹּ֣ר",
   {
     "line-end": {
-      "col": 2,
+      "col": "2of2",
       "line-num": 28
     }
   },

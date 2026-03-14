@@ -22,7 +22,7 @@ COORD_DIR = BASE / "column-coordinates"
 LINES_PER_COL = 28
 
 _FALLBACK_DEFAULTS = {
-    "col1": {
+    "col1of2": {
         "cx": 0.7242,
         "cy": 0.4535,
         "hw": 0.19,
@@ -30,7 +30,7 @@ _FALLBACK_DEFAULTS = {
         "topAngle": 0,
         "botAngle": 0,
     },
-    "col2": {
+    "col2of2": {
         "cx": 0.2604,
         "cy": 0.4541,
         "hw": 0.1934,
@@ -48,7 +48,7 @@ def _average_saved_coords(is_recto):
         is_recto: True for recto pages, False for verso pages.
 
     Returns:
-        A dict with "col1" and "col2" keys (same format as _FALLBACK_DEFAULTS),
+        A dict with "col1of2" and "col2of2" keys (same format as _FALLBACK_DEFAULTS),
         or None if no saved files match.
     """
     _FIELDS = ("cx", "cy", "hw", "hh", "topAngle", "botAngle")
@@ -58,7 +58,7 @@ def _average_saved_coords(is_recto):
         if (pid.endswith("r")) == is_recto:
             data = json.loads(f.read_text(encoding="utf-8"))
             cols = {}
-            for col_key in ("col1", "col2"):
+            for col_key in ("col1of2", "col2of2"):
                 rel = data["columns"][col_key]["rel"]
                 hw = rel["w"] / 2
                 hh = rel["h"] / 2
@@ -74,7 +74,7 @@ def _average_saved_coords(is_recto):
     if not matching:
         return None
     avg = {}
-    for col_key in ("col1", "col2"):
+    for col_key in ("col1of2", "col2of2"):
         avg[col_key] = {}
         for field in _FIELDS:
             vals = [m[col_key][field] for m in matching]
@@ -88,7 +88,7 @@ def _load_defaults(page_id):
     if coord_file.exists():
         data = json.loads(coord_file.read_text(encoding="utf-8"))
         result = {}
-        for col_key in ("col1", "col2"):
+        for col_key in ("col1of2", "col2of2"):
             rel = data["columns"][col_key]["rel"]
             hw = rel["w"] / 2
             hh = rel["h"] / 2
@@ -120,8 +120,8 @@ def generate_editor(page_id):
 
     img_url = _image_relpath(page_id)
     defaults, source = _load_defaults(page_id)
-    c1 = defaults["col1"]
-    c2 = defaults["col2"]
+    c1 = defaults["col1of2"]
+    c2 = defaults["col2of2"]
     source_labels = {
         "saved": f"column-coordinates/{page_id}.json",
         "averaged": "averaged from saved pages",
@@ -671,7 +671,7 @@ function exportJSON() {{
     const w = 2 * r.hw;
     const h = 2 * r.hh;
     const lineSpacing = LINES > 1 ? h / (LINES - 1) : h;
-    colData[`col${{colNum}}`] = {{
+    colData[`col${{colNum}}of2`] = {{
       rel: {{
         x: round4(c.tl.x), y: round4(c.tl.y),
         w: round4(w), h: round4(h),

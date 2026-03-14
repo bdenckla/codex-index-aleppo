@@ -34,12 +34,13 @@ LB_DIR = BASE / "line-breaks"
 OUT_DIR = BASE / "ds-flat-stream"
 
 BOOK_XML = {
+    "Deut": "Deut.xml",
     "Job": "Job.xml",
     "Ps": "Ps.xml",
     "Prov": "Prov.xml",
 }
 
-BOOK_ORDER = ["Ps", "Job", "Prov"]
+BOOK_ORDER = ["Deut", "Ps", "Job", "Prov"]
 
 # For cross-book pages we need to know where each book ends
 # (last chapter, last verse). We'll use large sentinels and

@@ -9,13 +9,17 @@ produces a self-contained HTML file with:
   - Right panel: Aleppo Codex page image (from aleppo-pages/)
 
 Click the last word of each line to toggle line-end markers.
-"Export JSON" copies the updated flat-stream (with line-start/line-end
-markers inserted) to the clipboard.
+"Export" downloads the updated flat-stream JSON (with line-start/line-end
+markers inserted) as <page_id>.json via the browser's download mechanism.
+Move the downloaded file into line-breaks/ to replace the original.
+
+Supports 2-column (poetic) and 3-column (prose) layouts. Use the
+col toggle button to cycle between columns (1 → 2 → 3 → 1).
 
 Usage:
     python py_ac_loc/gen_line_break_editor.py 270v 1   # column 1 (right)
     python py_ac_loc/gen_line_break_editor.py 270v 2   # column 2 (left)
-    python py_ac_loc/gen_line_break_editor.py 270r 1   # view/edit existing
+    python py_ac_loc/gen_line_break_editor.py 001r 1   # 3-col prose page
 """
 
 import json
@@ -99,7 +103,11 @@ def _extract_words_and_markers(stream):
                 word_idx += 1
             elif "line-start" in item:
                 ls = item["line-start"]
-                if ls["col"] == 1 and ls["line-num"] == 1:
+                col_val = ls["col"]
+                is_col1 = col_val == 1 or (
+                    isinstance(col_val, str) and col_val.startswith("1of")
+                )
+                if is_col1 and ls["line-num"] == 1:
                     page_start_idx = word_idx
             elif "line-end" in item:
                 if word_idx > 0:
@@ -115,29 +123,82 @@ def _extract_words_and_markers(stream):
     return words, line_ends, page_start_idx
 
 
-def generate_editor_html(page_id, col):
+def _parse_col_spec(col_spec):
+    """Parse a NofM column spec like '1of2' into (n, m) ints."""
+    parts = col_spec.split("of")
+    return int(parts[0]), int(parts[1])
+
+
+# CSS crop values keyed by NofM col spec.
+# Each entry: (wide_css, skinny_css).
+# "Skinny" shows approx 30% of the page centered on the column;
+# "wide" shows approx 60% including some neighboring area.
+#
+# TODO: Some pages have asymmetric 2-column layouts (one column approx
+# 2/3 width, the other 1/3). These may need additional col specs like
+# "1of2w" / "2of2w" to distinguish wide/narrow columns. See GitHub issue.
+_COL_CSS = {
+    # 2-column (poetic) layout
+    "1of2": (
+        "width: 166%; max-width: none; margin-left: -66%;",
+        "width: 333%; max-width: none; margin-left: -167%;",
+    ),
+    "2of2": (
+        "width: 166%; max-width: none; margin-left: 0;",
+        "width: 333%; max-width: none; margin-left: 0;",
+    ),
+    # 3-column (prose) layout
+    "1of3": (
+        "width: 166%; max-width: none; margin-left: -66%;",
+        "width: 333%; max-width: none; margin-left: -167%;",
+    ),
+    "2of3": (
+        "width: 142%; max-width: none; margin-left: -28%;",
+        "width: 250%; max-width: none; margin-left: -62%;",
+    ),
+    "3of3": (
+        "width: 166%; max-width: none; margin-left: 0;",
+        "width: 333%; max-width: none; margin-left: 0;",
+    ),
+}
+
+# Display labels for each col spec
+_COL_LABELS = {
+    "1of2": "1of2 (right)",
+    "2of2": "2of2 (left)",
+    "1of3": "1of3 (right)",
+    "2of3": "2of3 (center)",
+    "3of3": "3of3 (left)",
+}
+
+
+def _col_cycle(col_spec):
+    """Return the next col spec in the toggle cycle."""
+    n, m = _parse_col_spec(col_spec)
+    next_n = (n % m) + 1
+    return f"{next_n}of{m}"
+
+
+def generate_editor_html(page_id, col_spec):
     """Generate the HTML editor file for a page, cropped to a column.
 
     Args:
-        page_id: leaf identifier, e.g. "270r".
-        col: column number (1 = right column, 2 = left column).
+        page_id: leaf identifier, e.g. "270r" or "001r".
+        col_spec: NofM column spec, e.g. "1of2" or "2of3".
     """
     stream = load_stream(page_id)
     words, line_ends, page_start_idx = _extract_words_and_markers(stream)
     image_url = _image_relpath(page_id)
 
-    # CSS crop: col 1 shows right 60%, col 2 shows left 60%
-    # We set the image wider than its container and offset it.
-    #
-    # "Skinny mode" crops tighter: showing only 30% of the image
-    # centered on the actual text column.
-    # Think of the page as 10 equal strips each 10% wide.
-    #   col 1 wide: strips 5–10 (right 60%)   skinny: strips 6–8 (50%–80%)
-    #   col 2 wide: strips 1–6 (left 60%)     skinny: strips 1–3 (0%–30%)
-    col1_wide = "width: 166%; max-width: none; margin-left: -66%;"
-    col1_skinny = "width: 333%; max-width: none; margin-left: -167%;"
-    col2_wide = "width: 166%; max-width: none; margin-left: 0;"
-    col2_skinny = "width: 333%; max-width: none; margin-left: 0;"
+    n, m = _parse_col_spec(col_spec)
+
+    # Build CSS lookup for all columns in this layout
+    all_col_specs = [f"{i}of{m}" for i in range(1, m + 1)]
+    css_json_entries = []
+    for cs in all_col_specs:
+        wide, skinny = _COL_CSS[cs]
+        css_json_entries.append(f'    "{cs}": {{ wide: "{wide}", skinny: "{skinny}" }}')
+    css_json = "{\n" + ",\n".join(css_json_entries) + "\n  }"
 
     # Build JS data
     js_words = []
@@ -152,8 +213,8 @@ def generate_editor_html(page_id, col):
 
     # Pre-existing line-end word indices with col/line info
     js_line_ends = []
-    for widx, col_num, lnum in line_ends:
-        js_line_ends.append({"idx": widx, "col": col_num, "lineNum": lnum})
+    for widx, col_val, lnum in line_ends:
+        js_line_ends.append({"idx": widx, "col": col_val, "lineNum": lnum})
 
     # Build the stream without line markers for export reconstruction
     stream_no_lines = [
@@ -167,31 +228,32 @@ def generate_editor_html(page_id, col):
     stream_json = json.dumps(stream_no_lines, ensure_ascii=False, indent=2)
     page_start_js = "null" if page_start_idx is None else str(page_start_idx)
 
-    col_label = (
-        "1 (right)" if col == 1 else ("2 (left)" if col == 2 else "3 (center/prose)")
-    )
+    # Build JS labels and cycle maps for all cols in this layout
+    labels_json_entries = [f'"{cs}": "{_COL_LABELS[cs]}"' for cs in all_col_specs]
+    labels_json = "{" + ", ".join(labels_json_entries) + "}"
+    cycle_json_entries = [f'"{cs}": "{_col_cycle(cs)}"' for cs in all_col_specs]
+    cycle_json = "{" + ", ".join(cycle_json_entries) + "}"
 
-    # Initial CSS is skinny for the selected col
-    initial_img_css = col1_skinny if col == 1 else col2_skinny
+    _, skinny = _COL_CSS[col_spec]
 
     html = _HTML_TEMPLATE.format(
         page_id=page_id,
         image_url=image_url,
-        img_css=initial_img_css,
-        col1_wide=col1_wide,
-        col1_skinny=col1_skinny,
-        col2_wide=col2_wide,
-        col2_skinny=col2_skinny,
-        col_label=col_label,
-        col_num=col,
-        other_col=2 if col == 1 else 1,
+        img_css=skinny,
+        css_json=css_json,
+        col_label=_COL_LABELS[col_spec],
+        col_spec=col_spec,
+        next_col=_col_cycle(col_spec),
+        labels_json=labels_json,
+        cycle_json=cycle_json,
+        ncols=m,
         words_json=words_json,
         line_ends_json=line_ends_json,
         stream_json=stream_json,
         page_start_idx_js=page_start_js,
     )
 
-    out_path = OUT_DIR / f"lb_editor_{page_id}_col{col}.html"
+    out_path = OUT_DIR / f"lb_editor_{page_id}_{col_spec}.html"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(html, encoding="utf-8")
     print(f"Wrote {out_path}")
@@ -311,9 +373,9 @@ h1 button:hover {{ background: #1177bb; }}
 </head>
 <body>
 
-<h1>Line Break Editor — {page_id} — Col <span id="colLabel">{col_label}</span>
+<h1>Line Break Editor — {page_id} — <span id="colLabel">{col_label}</span>
     <button onclick="exportJSON()">Export</button>
-    <button id="colBtn" onclick="toggleCol()">Go to col <span id="colBtnNum">{other_col}</span></button>
+    <button id="colBtn" onclick="toggleCol()">Go to <span id="colBtnNum">{next_col}</span></button>
     <button id="skinnyBtn" onclick="toggleSkinnyMode()">Go wide</button>
     <span id="status"></span>
 </h1>
@@ -327,18 +389,16 @@ h1 button:hover {{ background: #1177bb; }}
 
 <script>
 const PAGE_ID = "{page_id}";
+const NCOLS = {ncols};
 const MAQAF = '\־';
-// Image crop CSS for each col × mode
-const IMG_CSS = {{
-    1: {{ wide: "{col1_wide}", skinny: "{col1_skinny}" }},
-    2: {{ wide: "{col2_wide}", skinny: "{col2_skinny}" }},
-}};
+// Image crop CSS keyed by NofM col spec
+const IMG_CSS = {css_json};
 let isSkinnyMode = true; // skinny is default
 const allWords = {words_json};
 const preExistingLineEnds = {line_ends_json};
 const baseStream = {stream_json};
 
-// State: Map<wordIdx, {{col, lineNum}}>
+// State: Map<wordIdx, {{col, lineNum}}> where col is a NofM string
 let lineEndMap = new Map();
 
 // Page-start: index of the first word actually on this page.
@@ -351,18 +411,19 @@ preExistingLineEnds.forEach(le => {{
     lineEndMap.set(le.idx, {{col: le.col, lineNum: le.lineNum}});
 }});
 
-let currentColNum = {col_num};
+const COL_LABELS = {labels_json};
+const COL_CYCLE = {cycle_json};
+
+let currentColSpec = "{col_spec}";
 function currentCol() {{
-    return currentColNum;
+    return currentColSpec;
 }}
 
 function toggleCol() {{
-    currentColNum = currentColNum === 1 ? 2 : 1;
+    currentColSpec = COL_CYCLE[currentColSpec];
     applyImageCrop();
-    // Update header col label
-    const labels = {{1: '1 (right)', 2: '2 (left)'}};
-    document.getElementById('colLabel').textContent = labels[currentColNum];
-    document.getElementById('colBtnNum').textContent = currentColNum === 1 ? 2 : 1;
+    document.getElementById('colLabel').textContent = COL_LABELS[currentColSpec];
+    document.getElementById('colBtnNum').textContent = COL_CYCLE[currentColSpec];
 }}
 
 function recalcLineNums() {{
@@ -440,7 +501,7 @@ function render() {{
         if (leInfo && !isLeadIn(idx)) {{
             const colLbl = document.createElement('span');
             colLbl.className = 'col-label';
-            colLbl.textContent = `c${{leInfo.col}}`;
+            colLbl.textContent = leInfo.col;
 
             const ln = document.createElement('span');
             ln.className = 'line-num';
@@ -486,8 +547,8 @@ function updateStatus() {{
         counts[info.col] = (counts[info.col] || 0) + 1;
     }});
     const parts = Object.entries(counts)
-        .sort((a, b) => a[0] - b[0])
-        .map(([c, n]) => `Col ${{c}}: ${{n}} lines`);
+        .sort()
+        .map(([c, n]) => `${{c}}: ${{n}} lines`);
     const psInfo = pageStartIdx !== null ? `Page start: word ${{pageStartIdx}}` : 'No page start set';
     document.getElementById('status').textContent =
         psInfo + (parts.length ? ' | ' + parts.join(' | ') : '');
@@ -513,7 +574,7 @@ function buildExportStream() {{
         for (let i = 0; i < ends.length; i++) {{
             let startIdx;
             if (i === 0) {{
-                if (parseInt(col) === 1 && pageStartIdx !== null) {{
+                if (col === '1of' + NCOLS && pageStartIdx !== null) {{
                     // Col 1 line 1 starts at the page-start word
                     startIdx = pageStartIdx;
                 }} else {{
@@ -530,7 +591,7 @@ function buildExportStream() {{
                 startIdx = ends[i - 1] + 1;
             }}
             const lineNum = lineEndMap.get(ends[i]).lineNum;
-            startSet.set(startIdx, {{col: parseInt(col), lineNum: lineNum}});
+            startSet.set(startIdx, {{col: col, lineNum: lineNum}});
         }}
     }}
 
@@ -638,7 +699,7 @@ function trimPageBoundaryContent(stream) {{
 function applyImageCrop() {{
     const img = document.querySelector('.col-image img');
     const mode = isSkinnyMode ? 'skinny' : 'wide';
-    const css = IMG_CSS[currentColNum][mode];
+    const css = IMG_CSS[currentColSpec][mode];
     img.style.cssText = css + ' cursor: crosshair;';
 }}
 
@@ -652,30 +713,29 @@ function toggleSkinnyMode() {{
 function exportJSON() {{
     const stream = buildExportStream();
     const jsonStr = JSON.stringify(stream, null, 2) + '\\n';
-    navigator.clipboard.writeText(jsonStr).then(() => {{
-        document.getElementById('status').textContent = 'Copied to clipboard!';
-        setTimeout(updateStatus, 2000);
-    }}).catch(err => {{
-        const ta = document.createElement('textarea');
-        ta.value = jsonStr;
-        ta.style.cssText = 'position:fixed;top:10%;left:10%;width:80%;height:80%;z-index:999;font-size:12px;';
-        document.body.appendChild(ta);
-        ta.select();
-        document.getElementById('status').textContent = 'Clipboard failed \— select all and copy manually';
-    }});
+    const blob = new Blob([jsonStr], {{type: 'application/json'}});
+    const a = document.createElement('a');
+    a.download = PAGE_ID + '.json';
+    a.href = URL.createObjectURL(blob);
+    a.click();
+    URL.revokeObjectURL(a.href);
+    document.getElementById('status').textContent = 'Downloaded ' + PAGE_ID + '.json';
+    setTimeout(updateStatus, 2000);
 }}
 
 render();
 
-// Auto-scroll: if editing col 2 and col 1 markers exist, scroll to
-// show the last col 1 line-end (so user is "ready for col 2").
-if (currentColNum === 2) {{
-    const col1Ends = [...lineEndMap.entries()]
-        .filter(([_, info]) => info.col === 1)
+// Auto-scroll: if editing col N>1, scroll to the last marker of the
+// previous column so the user picks up where they left off.
+const curN = parseInt(currentColSpec.split('of')[0]);
+if (curN > 1) {{
+    const prevColSpec = (curN - 1) + 'of' + NCOLS;
+    const prevEnds = [...lineEndMap.entries()]
+        .filter(([_, info]) => info.col === prevColSpec)
         .sort((a, b) => a[0] - b[0]);
-    if (col1Ends.length > 0) {{
-        const lastCol1Idx = col1Ends[col1Ends.length - 1][0];
-        const el = document.querySelector(`.word[data-idx="${{lastCol1Idx}}"]`);
+    if (prevEnds.length > 0) {{
+        const lastIdx = prevEnds[prevEnds.length - 1][0];
+        const el = document.querySelector(`.word[data-idx="${{lastIdx}}"]`);
         if (el) {{
             const panel = document.getElementById('wordsPanel');
             panel.scrollTop = el.offsetTop - 40;
@@ -723,13 +783,22 @@ if (currentColNum === 2) {{
 
 def main():
     if len(sys.argv) < 3:
-        print("Usage: python py_ac_loc/gen_line_break_editor.py <page_id> <col>")
-        print("  e.g. python py_ac_loc/gen_line_break_editor.py 270v 1")
-        print("  col 1 = right column, col 2 = left column")
+        print("Usage: python py_ac_loc/gen_line_break_editor.py <page_id> <col_spec>")
+        print("  e.g. python py_ac_loc/gen_line_break_editor.py 270v 1of2")
+        print("       python py_ac_loc/gen_line_break_editor.py 001r 1of3")
+        print("  NofM format: N=column number, M=total columns on page")
+        print("  2-col (poetic): 1of2=right, 2of2=left")
+        print("  3-col (prose):  1of3=right, 2of3=center, 3of3=left")
         sys.exit(1)
     page_id = sys.argv[1]
-    col = int(sys.argv[2])
-    out_path = generate_editor_html(page_id, col)
+    col_spec = sys.argv[2]
+    if "of" not in col_spec:
+        print(f"ERROR: col must be NofM format (e.g. 1of2, 2of3), got: {col_spec}")
+        sys.exit(1)
+    if col_spec not in _COL_CSS:
+        print(f"ERROR: unknown col spec '{col_spec}' (known: {list(_COL_CSS)})")
+        sys.exit(1)
+    out_path = generate_editor_html(page_id, col_spec)
     import webbrowser
 
     webbrowser.open(str(out_path))

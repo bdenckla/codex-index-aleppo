@@ -139,19 +139,14 @@ Editor features:
 
 ### 3. Export
 
-Click **Export**. This copies the updated flat-stream JSON (with
-line-start/line-end markers) to the clipboard.
+Click **Export**. This downloads the updated flat-stream JSON (with
+line-start/line-end markers) as `<page_id>.json` via the browser.
 
-**Paste directly** into `py_ac_loc/line-breaks/<page_id>.json`,
-replacing its entire contents.
+Move the downloaded file into `line-breaks/` to replace the original.
 
-**Do NOT** paste the exported JSON into the chat window — that causes
-Unicode NFC normalization of Hebrew text. Pasting directly into the
-file preserves the original byte sequences.
-
-If both columns were done in one session, a single export/paste covers
-both. If columns were done separately, paste after each column’s export
-(the second export will include both columns’ markers).
+If both columns were done in one session, a single export/download
+covers both. If columns were done separately, export after each
+column (the second export will include both columns’ markers).
 
 ## Line break heuristics
 
