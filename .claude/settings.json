@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(cd **/* && git *)",
+      "Bash(.venv/Scripts/pip.exe *)",
+      "Bash(.venv/Scripts/python.exe **/*)",
+      "Bash(cd **/* && .venv/Scripts/python.exe **/*)",
+      "Bash(**/.venv/Scripts/python.exe **/*)",
+      "Bash(gh issue view *)",
+      "Bash(gh issue comment *)",
+      "Read(//c/Users/BenDe/OneDrive/Documents/ScansOfBooks/Introduction to the Tiberian Masorah/**)"
+    ]
+  }
+}
