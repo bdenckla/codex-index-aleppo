@@ -15,9 +15,13 @@ Always use `.venv/` for Python work. **Never run bare `python`, `python3`, `pip`
 
 This rule applies everywhere — terminal, chat examples, documentation, tool invocations. No exceptions.
 
+## No `python -c` — Use `.novc/` Scripts Instead
+
+**Never use `python -c`** for any reason. Always write a temporary `.py` file in `./.novc/` (which is gitignored) and run it. Multi-line `-c` strings break Claude Code's permission glob matching and trigger approval prompts every time.
+
 ## No Multi-Line Shell Commands
 
-**Never write a Bash command that spans multiple lines.** This includes `python -c`. Claude Code's permission globs use `*` which does not match newlines — multi-line commands break glob matching and trigger approval prompts. When the payload is inherently multi-line, write it to a file and reference the file.
+**Never write a Bash command that spans multiple lines.** Claude Code's permission globs use `*` which does not match newlines — multi-line commands break glob matching and trigger approval prompts. When the payload is inherently multi-line, write it to a file and reference the file.
 
 Common instances:
 - **Git commit messages** — write to `.novc/commit_msg_<slug>.txt` with the Write tool, then `git commit -F .novc/commit_msg_<slug>.txt`
