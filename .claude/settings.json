@@ -9,6 +9,7 @@
       "Bash(**/.venv/Scripts/python.exe **/*)",
       "Bash(gh issue view *)",
       "Bash(gh issue comment *)",
+      "Bash(gh issue close * --comment \"$(cat .novc/*)\")",
       "Read(//c/Users/BenDe/OneDrive/Documents/ScansOfBooks/Introduction to the Tiberian Masorah/**)"
     ]
   }
