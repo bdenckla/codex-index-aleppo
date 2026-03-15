@@ -54,7 +54,7 @@ arbitrary biblical books via the codex index.
 1. **MAM-XML Parsing** — `py/py_ac_loc/mam_xml_verses.py` extracts word lists from `MAM-XML/`
 2. **Flat Stream** — `py/py_ac_loc/gen_flat_stream.py` combines explicit verse-range args + MAM-XML into per-page word streams; data in `ds-flat-stream/`
 3. **Line-Break Annotation** — human-in-the-loop via `py/py_ac_loc/gen_line_break_editor.py`; data in `line-breaks/`
-4. **Column Coordinates** — `py/py_ac_loc/gen_col_location_editor.py`; data in `column-coordinates/`
+4. **Column Coordinates** — `py/py_ac_loc/gen_col_quad_editor.py`; data in `column-coordinates/`
 5. **Word Lookup** — `py/main_find_word_in_aleppo_images.py` ties it all together
 
 Note: `py/py_ac_loc/codex-index/index-flat.json` is a legacy reference file that is no longer read by any code. Verse ranges are now specified via CLI arguments (manual or `--chain` from a prior page's line-break file), matching the cam1753 approach.
@@ -68,7 +68,7 @@ Note: `py/py_ac_loc/codex-index/index-flat.json` is a legacy reference file that
 ### Sibling repo:
 
 `codex-index-cam1753` covers the same biblical text in the Cambridge 1753 manuscript (μL).
-It uses quadrilateral column geometry instead of this repo's "harp" (fanout) geometry.
+Both repos use quadrilateral column geometry.
 
 ## Temporary Generated Files
 
