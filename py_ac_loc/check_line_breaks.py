@@ -18,64 +18,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from py_ac_loc.gen_flat_stream import (
     build_flat_stream,
-    BOOK_XML,
-    BOOK_END_SENTINEL,
-    BOOK_START,
-    MAM_XML_DIR,
+    get_page_verses,
 )
-from py_ac_loc.mam_xml_verses import get_verses_in_range
 
 PROJ_DIR = Path(__file__).resolve().parent.parent
 LB_DIR = PROJ_DIR / "line-breaks"
 OUT_DIR = PROJ_DIR
 
 EXPECTED_LINES_PER_COL = 28
-
-# Book ordering for the poetic books in the Aleppo Codex.
-# Note: book order varies across manuscripts and printed editions;
-# the order in MAM-XML does not necessarily match the Aleppo Codex.
-BOOK_ORDER = ["Ps", "Job", "Prov"]
-
-
-def _get_mega_verses(start_ref, end_ref):
-    """Get all verses from MAM-XML spanning a multi-book range.
-
-    Args:
-        start_ref: [book, ch, vs] triple, e.g. ["Ps", 149, 1].
-        end_ref: [book, ch, vs] triple, e.g. ["Prov", 1, 8].
-
-    Returns:
-        List of verse dicts, each with a ‘book’ key added.
-    """
-    start_book, start_ch, start_vs = start_ref
-    end_book, end_ch, end_vs = end_ref
-
-    si = BOOK_ORDER.index(start_book)
-    ei = BOOK_ORDER.index(end_book)
-    all_verses = []
-
-    for bi in range(si, ei + 1):
-        book = BOOK_ORDER[bi]
-        xml_path = str(MAM_XML_DIR / BOOK_XML[book])
-        if bi == si and bi == ei:
-            # Same book
-            s_cv = (start_ch, start_vs)
-            e_cv = (end_ch, end_vs)
-        elif bi == si:
-            s_cv = (start_ch, start_vs)
-            e_cv = BOOK_END_SENTINEL
-        elif bi == ei:
-            s_cv = BOOK_START
-            e_cv = (end_ch, end_vs)
-        else:
-            s_cv = BOOK_START
-            e_cv = BOOK_END_SENTINEL
-        verses = get_verses_in_range(xml_path, book, s_cv, e_cv)
-        for v in verses:
-            v["book"] = book
-        all_verses.extend(verses)
-
-    return all_verses
 
 
 def load_stream(path):
@@ -428,7 +378,12 @@ def main():
         first_ref = _first_verse_ref(paths[0])
         last_ref = _last_verse_ref(paths[-1])
         if first_ref and last_ref:
-            mega_verses = _get_mega_verses(first_ref, last_ref)
+            mega_verses = get_page_verses(
+                first_ref[0],
+                (first_ref[1], first_ref[2]),
+                last_ref[0],
+                (last_ref[1], last_ref[2]),
+            )
         else:
             mega_verses = None
         if mega_verses is not None:
