@@ -217,7 +217,7 @@ def generate_editor(page_id, ncols=2):
         img_w, img_h = im.size
 
     # Image URL relative to repo root (served via HTTP)
-    img_url = f"aleppo-pages/{page_id}.jpg"
+    img_url = f"/aleppo-pages/{page_id}.jpg"
 
     data, from_file = _load_defaults(page_id, ncols)
     col_keys = [f"col{i}" for i in range(1, ncols + 1)]
@@ -631,6 +631,10 @@ window.addEventListener('mousemove', (e) => {{
   let dy = my - dragInfo.startMouse[1];
   if (fineMode) {{ dx *= FINE_SCALE; dy *= FINE_SCALE; }}
 
+  // Constrain side handles to x-only, top/bottom handles to y-only
+  if (dragInfo.edge === 'left' || dragInfo.edge === 'right') dy = 0;
+  if (dragInfo.edge === 'top' || dragInfo.edge === 'bottom') dx = 0;
+
   for (const c of dragInfo.corners) {{
     cols[dragInfo.col][c] = [
       dragInfo.startPts[c][0] + dx,
@@ -745,12 +749,13 @@ function exportJSON() {{
     }};
   }}
 
-  const jsonStr = JSON.stringify(result, null, 2);
-  navigator.clipboard.writeText(jsonStr).then(() => {{
-    showToast('JSON copied to clipboard!');
-  }}).catch(() => {{
-    prompt('Copy this JSON:', jsonStr);
-  }});
+  const jsonStr = JSON.stringify(result, null, 2) + '\\n';
+  const blob = new Blob([jsonStr], {{type: 'application/json'}});
+  const a = document.createElement('a');
+  a.download = 'column-coordinates-' + PAGE + '.json';
+  a.href = URL.createObjectURL(blob);
+  a.click();
+  URL.revokeObjectURL(a.href);
 }}
 
 // Init

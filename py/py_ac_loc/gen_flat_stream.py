@@ -249,7 +249,9 @@ def build_flat_stream(page_id, verses, skip_first_n_words=0):
         cv = v["cv"]
         label = f"{book} {cv}"
 
-        if v.get("parashah_before"):
+        is_fragment = vi == 0 and skip_first_n_words > 0
+
+        if v.get("parashah_before") and not is_fragment:
             stream.append(v["parashah_before"])
 
         # Expand words with maqaf splitting
@@ -263,7 +265,7 @@ def build_flat_stream(page_id, verses, skip_first_n_words=0):
                 else:
                     all_words.append(part)
 
-        if vi == 0 and skip_first_n_words > 0:
+        if is_fragment:
             # Fragment: skip words already on previous page
             remaining = all_words[skip_first_n_words:]
             if remaining:

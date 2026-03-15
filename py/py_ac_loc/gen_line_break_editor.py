@@ -1055,11 +1055,11 @@ function exportJSON() {{
     const jsonStr = JSON.stringify(stream, null, 2) + '\\n';
     const blob = new Blob([jsonStr], {{type: 'application/json'}});
     const a = document.createElement('a');
-    a.download = PAGE_ID + '.json';
+    a.download = 'line-breaks-' + PAGE_ID + '.json';
     a.href = URL.createObjectURL(blob);
     a.click();
     URL.revokeObjectURL(a.href);
-    document.getElementById('status').textContent = 'Downloaded ' + PAGE_ID + '.json';
+    document.getElementById('status').textContent = 'Downloaded line-breaks-' + PAGE_ID + '.json';
     setTimeout(updateStatus, 2000);
 }}
 
