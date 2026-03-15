@@ -125,8 +125,10 @@ def find_and_preview(word, book, cv, pages, *, wide=False):
     cc_path = CC_DIR / f"{page_id}.json"
     with open(cc_path, encoding="utf-8") as f:
         cc = json.load(f)
-    ref_w = cc["image_size"]["width"]
-    ref_h = cc["image_size"]["height"]
+    sz = cc["image_size"]
+    ref_w, ref_h = (
+        (sz[0], sz[1]) if isinstance(sz, list) else (sz["width"], sz["height"])
+    )
     sx = actual_w / ref_w
     sy = actual_h / ref_h
     print(

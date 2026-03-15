@@ -28,6 +28,7 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
 LB_DIR = BASE / "line-breaks"
+CC_DIR = BASE / "column-coordinates"
 OUT_DIR = BASE / ".novc"
 
 
@@ -250,6 +251,13 @@ def generate_editor_html(page_id, col_spec):
 
     _, skinny = _COL_CSS[col_spec]
 
+    # Load quad data for image-side sync (gracefully missing)
+    cc_path = CC_DIR / f"{page_id}.json"
+    if cc_path.exists():
+        quad_json = cc_path.read_text(encoding="utf-8").strip()
+    else:
+        quad_json = "null"
+
     html = _HTML_TEMPLATE.format(
         page_id=page_id,
         image_url=image_url,
@@ -266,6 +274,7 @@ def generate_editor_html(page_id, col_spec):
         blank_lines_json=blank_lines_json,
         stream_json=stream_json,
         page_start_idx_js=page_start_js,
+        quad_json=quad_json,
     )
 
     out_path = OUT_DIR / f"lb_editor_{page_id}_{col_spec}.html"
@@ -427,6 +436,14 @@ h1 button:hover {{ background: #1177bb; }}
     background: #3a2a2a;
     color: #666;
 }}
+.sync-fade-top, .sync-fade-bottom {{
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    display: none;
+    left: 0;
+    right: 0;
+}}
 
 </style>
 </head>
@@ -442,7 +459,9 @@ h1 button:hover {{ background: #1177bb; }}
 <div class="container" id="container">
     <div class="col-words" id="wordsPanel"></div>
     <div class="divider" id="divider"></div>
-    <div class="col-image" id="imagePanel">
+    <div class="col-image" id="imagePanel" style="position:relative">
+        <div id="fadeTop" class="sync-fade-top"></div>
+        <div id="fadeBottom" class="sync-fade-bottom"></div>
         <img src="{image_url}" alt="Aleppo Codex {page_id}">
     </div>
 </div>
@@ -455,6 +474,7 @@ const MAQAF = '\־';
 const IMG_CSS = {css_json};
 let isSkinnyMode = true; // skinny is default
 const LINES_PER_COL = 28;
+const quadData = {quad_json};
 const allWords = {words_json};
 const preExistingLineEnds = {line_ends_json};
 const preExistingBlankLines = {blank_lines_json};
@@ -505,7 +525,7 @@ function toggleCol() {{
     document.getElementById('colLabel').textContent = COL_LABELS[currentColSpec];
     document.getElementById('colBtnNum').textContent = COL_CYCLE[currentColSpec];
     if (syncMode) {{
-        syncWordsPanel();
+        applySyncScroll();
     }}
 }}
 
@@ -515,8 +535,134 @@ function toggleSyncMode() {{
     ind.className = syncMode ? 'on' : 'off';
     ind.textContent = syncMode ? 'sync: ON [s]' : 'sync: off [s]';
     if (syncMode) {{
-        syncWordsPanel();
+        applySyncScroll();
+    }} else {{
+        // Hide fade overlays when sync is off
+        document.getElementById('fadeTop').style.display = 'none';
+        document.getElementById('fadeBottom').style.display = 'none';
     }}
+}}
+
+// --- Image-side sync (quad-based fade overlays) ---
+
+function getColQuad(colSpec) {{
+    if (!quadData) return null;
+    const colNum = colSpec.split('of')[0];
+    const colKey = 'col' + colNum;
+    const col = quadData.columns[colKey];
+    return col ? col.rel : null;
+}}
+
+function getLineYRange(colSpec, lineNum) {{
+    const q = getColQuad(colSpec);
+    if (!q) return null;
+    const topY = (q.tl[1] + q.tr[1]) / 2;
+    const botY = (q.bl[1] + q.br[1]) / 2;
+    // Weighted line heights: top=1.5x, bottom=1.25x, middle=1x
+    const TOP_W = 1.5, BOT_W = 1.25;
+    const MID = LINES_PER_COL - 2;
+    const total = TOP_W + MID + BOT_W;
+    // Compute cumulative t for dividers
+    const dividers = [0];
+    for (let i = 0; i < LINES_PER_COL; i++) {{
+        const w = i === 0 ? TOP_W : i === LINES_PER_COL - 1 ? BOT_W : 1;
+        dividers.push(dividers[i] + w / total);
+    }}
+    const t0 = dividers[lineNum - 1];
+    const t1 = dividers[lineNum];
+    const colH = botY - topY;
+    const y0 = topY + t0 * colH;
+    const y1 = topY + t1 * colH;
+    const lineH = y1 - y0;
+    return {{ y0, y1, topY, botY, lineH }};
+}}
+
+function getNextLineNum(col) {{
+    const colEnds = [...lineEndMap.values()].filter(v => v.col === col);
+    if (colEnds.length === 0) return 1;
+    const maxLine = Math.max(...colEnds.map(v => v.lineNum));
+    const lastEndIdx = [...lineEndMap.entries()]
+        .filter(([_, v]) => v.col === col && v.lineNum === maxLine)
+        .map(([k, _]) => k)[0];
+    const blanksAfterLast = blankLinesAfter.get(lastEndIdx) || 0;
+    return maxLine + blanksAfterLast + 1;
+}}
+
+function applySyncScroll() {{
+    if (!syncMode) return;
+    const col = currentColSpec;
+    const nextLine = getNextLineNum(col);
+    const fadeTop = document.getElementById('fadeTop');
+    const fadeBot = document.getElementById('fadeBottom');
+    const yr = getLineYRange(col, Math.min(nextLine, LINES_PER_COL));
+
+    // If no quad data or column done, hide fades but still sync words panel
+    if (!yr || nextLine > LINES_PER_COL) {{
+        fadeTop.style.display = 'none';
+        fadeBot.style.display = 'none';
+        syncWordsPanel();
+        return;
+    }}
+
+    const img = document.querySelector('#imagePanel img');
+    const panel = document.getElementById('imagePanel');
+
+    requestAnimationFrame(() => {{
+        const imgRect = img.getBoundingClientRect();
+        const panelRect = panel.getBoundingClientRect();
+        const imgNatH = img.naturalHeight || 1966;
+        const imgNatW = img.naturalWidth || 1654;
+        const imgAR = imgNatH / imgNatW;
+
+        const imgDispW = imgRect.width;
+        const imgDispH = imgDispW * imgAR;
+
+        // Clear zone: line +/- 0.25 line-height buffer
+        const buf = yr.lineH * 0.25;
+        const clearTop = (yr.y0 - buf) * imgDispH;
+        const clearBot = (yr.y1 + buf) * imgDispH;
+        const lineHpx = yr.lineH * imgDispH;
+
+        const imgTopInPanel = imgRect.top - panelRect.top + panel.scrollTop;
+
+        const dk = 'rgba(0,0,0,0.6)';
+        const makeGrad = (dir, totalH) => {{
+            if (totalH <= 0) return dk;
+            const s = Math.min(lineHpx, totalH);
+            const p = (frac) => {{
+                const alpha = Math.pow(frac, 0.6) * 0.6;
+                return `rgba(0,0,0,${{alpha.toFixed(3)}})`;
+            }};
+            const pcts = [
+                `${{dk}} 0px`,
+                `${{dk}} ${{Math.max(0, totalH - s).toFixed(1)}}px`,
+                `${{p(0.75)}} ${{(totalH - s * 0.25).toFixed(1)}}px`,
+                `${{p(0.5)}} ${{(totalH - s * 0.5).toFixed(1)}}px`,
+                `rgba(0,0,0,0) ${{totalH.toFixed(1)}}px`,
+            ];
+            return `linear-gradient(${{dir}}, ${{pcts.join(', ')}})`;
+        }};
+
+        const topH = Math.max(0, clearTop);
+        fadeTop.style.display = 'block';
+        fadeTop.style.top = imgTopInPanel + 'px';
+        fadeTop.style.height = topH + 'px';
+        fadeTop.style.background = makeGrad('to bottom', topH);
+
+        const botH = Math.max(0, imgDispH - clearBot);
+        fadeBot.style.display = 'block';
+        fadeBot.style.top = (imgTopInPanel + clearBot) + 'px';
+        fadeBot.style.height = botH + 'px';
+        fadeBot.style.background = makeGrad('to top', botH);
+
+        // Scroll panel to center the clear zone
+        const clearMid = imgTopInPanel + (clearTop + clearBot) / 2;
+        const panelH = panelRect.height;
+        const targetScroll = clearMid - panelH / 2;
+        panel.scrollTop = Math.max(0, targetScroll);
+
+        syncWordsPanel();
+    }});
 }}
 
 function syncWordsPanel() {{
@@ -710,7 +856,7 @@ function toggleLineEnd(idx) {{
             return;
         }}
     }}
-    syncWordsPanel();
+    applySyncScroll();
 }}
 
 function togglePageStart(idx) {{
@@ -918,7 +1064,7 @@ function exportJSON() {{
 }}
 
 render();
-syncWordsPanel();
+applySyncScroll();
 
 // Keyboard shortcut: 's' to toggle sync mode
 document.addEventListener('keydown', (e) => {{

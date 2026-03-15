@@ -13,6 +13,8 @@ LB_DIR = ROOT / "line-breaks"
 CC_DIR = ROOT / "column-coordinates"
 IMG_DIR = ROOT / "aleppo-pages"
 
+LINES_PER_COL = 28
+
 _PAGE_RE = re.compile(r"^(\d+[rv])\.json$")
 
 
@@ -134,8 +136,48 @@ def find_pages_for_verse(pages, ch, v):
     return result
 
 
+def _col_key_from_spec(col_spec):
+    """Convert a NofM col spec (e.g. '1of2') or plain int to a column key."""
+    if isinstance(col_spec, int):
+        return f"col{col_spec}"
+    if "of" in str(col_spec):
+        return f"col{str(col_spec).split('of')[0]}"
+    return f"col{col_spec}"
+
+
+def _image_size(cc):
+    """Extract (width, height) from a column-coordinates dict."""
+    sz = cc["image_size"]
+    if isinstance(sz, list):
+        return sz[0], sz[1]
+    return sz["width"], sz["height"]
+
+
+def _line_dividers(n_lines):
+    """Compute t values (0–1) for dividers between n_lines line boxes.
+
+    Uses weighted spacing: top line = 1.5x, bottom line = 1.25x,
+    middle lines = 1x.  This accounts for lamed ascenders at top and
+    descenders at bottom of the column.
+
+    Returns a list of n_lines+1 values: dividers[0]=0, dividers[n_lines]=1.
+    Line i (1-based) spans dividers[i-1] to dividers[i].
+    """
+    top_weight = 1.5
+    bot_weight = 1.25
+    mid_count = n_lines - 2
+    total = top_weight + mid_count + bot_weight
+    dividers = [0.0]
+    for i in range(n_lines):
+        w = top_weight if i == 0 else (bot_weight if i == n_lines - 1 else 1.0)
+        dividers.append(dividers[-1] + w / total)
+    return dividers
+
+
 def get_line_bbox(page_id, col, line_num, buffer_lines=2, margin_factor=0.05):
     """Get pixel bounding box for a line, with buffer lines above and below.
+
+    *col* may be a NofM string (e.g. ``'1of2'``) or an integer.
 
     *margin_factor* controls horizontal padding as a fraction of column
     width (default 0.05 = 5%).  Use a larger value (e.g. 0.40) to
@@ -145,28 +187,42 @@ def get_line_bbox(page_id, col, line_num, buffer_lines=2, margin_factor=0.05):
     with open(cc_path, encoding="utf-8") as f:
         cc = json.load(f)
 
-    col_key = f"col{col}"
-    col_data = cc["columns"][col_key]["px"]
-    img_w = cc["image_size"]["width"]
-    img_h = cc["image_size"]["height"]
+    col_key = _col_key_from_spec(col)
+    px = cc["columns"][col_key]["px"]
+    img_w, img_h = _image_size(cc)
 
-    x = col_data["x"]
-    y = col_data["y"]
-    w = col_data["w"]
-    ls = col_data["line_spacing"]
+    tl = px["tl"]
+    tr = px["tr"]
+    bl = px["bl"]
+    br = px["br"]
 
-    # Target line top and bottom
-    line_top = y + (line_num - 1) * ls
-    line_bot = line_top + ls
+    # Column bounding box
+    col_left = min(tl[0], bl[0])
+    col_right = max(tr[0], br[0])
+    col_top = min(tl[1], tr[1])
+    col_bot = max(bl[1], br[1])
+    col_w = col_right - col_left
+    col_h = col_bot - col_top
 
-    # Add buffer
-    crop_top = max(0, line_top - buffer_lines * ls)
-    crop_bot = min(img_h, line_bot + buffer_lines * ls)
+    # Weighted line dividers
+    dividers = _line_dividers(LINES_PER_COL)
 
-    # Expand horizontally a bit beyond the column
-    margin_x = int(w * margin_factor)
-    crop_left = max(0, x - margin_x)
-    crop_right = min(img_w, x + w + margin_x)
+    # Target line spans dividers[line_num-1] to dividers[line_num]
+    t_top = dividers[line_num - 1]
+    t_bot = dividers[line_num]
+    line_top = col_top + t_top * col_h
+    line_bot = col_top + t_bot * col_h
+    line_spacing = line_bot - line_top
+
+    # Buffer uses the average line height (col_h / LINES_PER_COL)
+    avg_ls = col_h / LINES_PER_COL
+    crop_top = max(0, line_top - buffer_lines * avg_ls)
+    crop_bot = min(img_h, line_bot + buffer_lines * avg_ls)
+
+    # Horizontal extent with margin
+    margin_x = int(col_w * margin_factor)
+    crop_left = max(0, col_left - margin_x)
+    crop_right = min(img_w, col_right + margin_x)
 
     return (
         int(crop_left),
@@ -174,7 +230,7 @@ def get_line_bbox(page_id, col, line_num, buffer_lines=2, margin_factor=0.05):
         int(crop_right),
         int(crop_bot),
         int(line_top - crop_top),  # target line offset from crop top
-        int(ls),  # line spacing in px
+        int(line_spacing),  # line spacing in px
     )
 
 

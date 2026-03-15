@@ -11,9 +11,11 @@ Usage:
 """
 
 import json
+import math
 from pathlib import Path
-import numpy as np
+
 import matplotlib.pyplot as plt
+import numpy as np
 
 BASE = Path(__file__).resolve().parent.parent
 COORD_DIR = BASE / "column-coordinates"
@@ -23,6 +25,7 @@ PERSISTENT_DIR = BASE / "plot_col_coords-out"
 ANGLE_EXAGGERATION = 20
 ANGLE_BINS = 5
 SPACING_BINS = 10
+LINES_PER_COL = 28
 
 
 def _load_pages():
@@ -50,14 +53,15 @@ def plot_corners(data):
         page_id = d["page"]
         side = "r" if page_id.endswith("r") else "v"
         for col_key in ("col1", "col2"):
+            if col_key not in d["columns"]:
+                continue
             rel = d["columns"][col_key]["rel"]
-            x, y, w, h = rel["x"], rel["y"], rel["w"], rel["h"]
             corners[side][col_key].extend(
                 [
-                    (x, y, "TL"),
-                    (x + w, y, "TR"),
-                    (x, y + h, "BL"),
-                    (x + w, y + h, "BR"),
+                    (rel["tl"][0], rel["tl"][1], "TL"),
+                    (rel["tr"][0], rel["tr"][1], "TR"),
+                    (rel["bl"][0], rel["bl"][1], "BL"),
+                    (rel["br"][0], rel["br"][1], "BR"),
                 ]
             )
 
@@ -105,29 +109,38 @@ def plot_corners(data):
 
 
 def plot_angle_fan(data):
-    """Polar histogram of column skew angles."""
+    """Polar histogram of column skew angles (derived from quad corners)."""
     angle_groups = {
-        ("col1", "top_angle"): [],
-        ("col1", "bot_angle"): [],
-        ("col2", "top_angle"): [],
-        ("col2", "bot_angle"): [],
+        ("col1", "top"): [],
+        ("col1", "bot"): [],
+        ("col2", "top"): [],
+        ("col2", "bot"): [],
     }
     for d in data:
         for col_key in ("col1", "col2"):
+            if col_key not in d["columns"]:
+                continue
             rel = d["columns"][col_key]["rel"]
-            for edge in ("top_angle", "bot_angle"):
-                angle_groups[(col_key, edge)].append(rel[edge])
+            # Compute edge angles from corner positions
+            top_angle = math.degrees(
+                math.atan2(rel["tr"][1] - rel["tl"][1], rel["tr"][0] - rel["tl"][0])
+            )
+            bot_angle = math.degrees(
+                math.atan2(rel["br"][1] - rel["bl"][1], rel["br"][0] - rel["bl"][0])
+            )
+            angle_groups[(col_key, "top")].append(top_angle)
+            angle_groups[(col_key, "bot")].append(bot_angle)
 
     colors = {
-        ("col1", "top_angle"): ("red", "C1 Top"),
-        ("col1", "bot_angle"): ("orangered", "C1 Bot"),
-        ("col2", "top_angle"): ("blue", "C2 Top"),
-        ("col2", "bot_angle"): ("cornflowerblue", "C2 Bot"),
+        ("col1", "top"): ("red", "C1 Top"),
+        ("col1", "bot"): ("orangered", "C1 Bot"),
+        ("col2", "top"): ("blue", "C2 Top"),
+        ("col2", "bot"): ("cornflowerblue", "C2 Bot"),
     }
 
     fig, ax = plt.subplots(figsize=(8, 8), subplot_kw={"projection": "polar"})
     ax.set_title(
-        f"Column Skew Angles ({ANGLE_EXAGGERATION}× exaggerated)\n"
+        f"Column Skew Angles ({ANGLE_EXAGGERATION}\u00d7 exaggerated)\n"
         f"{ANGLE_BINS} bins, bar length = count",
         fontsize=13,
         pad=20,
@@ -136,7 +149,7 @@ def plot_angle_fan(data):
     all_angles = [a for angles in angle_groups.values() for a in angles]
     exag_min = min(all_angles) * ANGLE_EXAGGERATION
     exag_max = max(all_angles) * ANGLE_EXAGGERATION
-    margin = (exag_max - exag_min) * 0.1
+    margin = max((exag_max - exag_min) * 0.1, 1.0)
     bin_edges_deg = np.linspace(exag_min - margin, exag_max + margin, ANGLE_BINS + 1)
     bin_edges_rad = np.radians(bin_edges_deg)
     bin_centers_rad = (bin_edges_rad[:-1] + bin_edges_rad[1:]) / 2
@@ -188,7 +201,7 @@ def plot_angle_fan(data):
     fig.text(
         0.02,
         0.02,
-        f"actual range: {min(all_angles):.2f}° to {max(all_angles):.2f}°",
+        f"actual range: {min(all_angles):.2f}\u00b0 to {max(all_angles):.2f}\u00b0",
         fontsize=9,
         color="gray",
     )
@@ -201,7 +214,14 @@ def plot_linespacing(data):
     spacings = []
     for d in data:
         for col_key in ("col1", "col2"):
-            spacings.append(d["columns"][col_key]["rel"]["line_spacing"] * 100)
+            if col_key not in d["columns"]:
+                continue
+            rel = d["columns"][col_key]["rel"]
+            # Column height from quad corners
+            col_h = (rel["bl"][1] + rel["br"][1]) / 2 - (
+                rel["tl"][1] + rel["tr"][1]
+            ) / 2
+            spacings.append(col_h / LINES_PER_COL * 100)
 
     lo, hi = min(spacings), max(spacings)
     margin = (hi - lo) * 0.1
