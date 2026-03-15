@@ -7,7 +7,9 @@ Handles all special MAM-XML elements:
   - <kq>: ketiv/qere — use ketiv (kq-k child, unpointed) for manuscript alignment
   - <kq-trivial>: trivial ketiv/qere — use text attribute (pointed)
   - <slh-word>: suspended-letter word — use slhw-desc-0 (full pointed word)
+  - <scrdfftar>: scribal difference target — extract word from <sdt-target> child
   - <implicit-maqaf>: no visible text, skip
+  - <shirah-space>: visual spacing in song layout, skip
   - <spi-pe2>: petuxah (open paragraph) break — emitted as {"parashah": "spi-pe2"}
   - <spi-samekh2>: setumah (closed paragraph) break — emitted as {"parashah": "spi-samekh2"}
 
@@ -90,9 +92,31 @@ def get_verse_words(verse_el):
                     ws = text.split()
                     raw_words.extend(ws)
                     ketiv_flags.extend([False] * len(ws))
+            elif tag == "scrdfftar":
+                # Scribal difference target — extract word from sdt-target child
+                sdt = child.find("sdt-target")
+                if sdt is not None:
+                    text = sdt.attrib.get("text", "").strip()
+                    if not text:
+                        # sdt-target may contain slh-word with the word
+                        slh = sdt.find("slh-word")
+                        if slh is not None:
+                            text = slh.attrib.get("slhw-desc-0", "").strip()
+                    if text:
+                        ws = text.split()
+                        raw_words.extend(ws)
+                        ketiv_flags.extend([False] * len(ws))
             elif tag == "implicit-maqaf":
                 pass  # No visible text
-            # Other unknown tags: silently skip
+            elif tag == "shirah-space":
+                pass  # Visual spacing in song layout, no text
+            elif tag in ("spi-pe2", "spi-samekh2", "spi-pe1", "spi-samekh1"):
+                pass  # Parashah markers handled at verse level
+            else:
+                raise ValueError(
+                    f"Unhandled tag <{tag}> in verse "
+                    f"{verse_el.attrib.get('osisID', '?')}"
+                )
 
     # Join maqaf-connected words
     joined = []
