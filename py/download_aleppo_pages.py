@@ -11,7 +11,7 @@ Usage:
 import os
 from urllib.request import Request, urlopen
 
-OUT_DIR = os.path.join(os.path.dirname(__file__), "aleppo-pages")
+OUT_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "aleppo-pages")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 

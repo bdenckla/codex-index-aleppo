@@ -26,7 +26,7 @@ import json
 import sys
 from pathlib import Path
 
-BASE = Path(__file__).resolve().parent.parent
+BASE = Path(__file__).resolve().parent.parent.parent
 LB_DIR = BASE / "line-breaks"
 CC_DIR = BASE / "column-coordinates"
 OUT_DIR = BASE / ".novc"

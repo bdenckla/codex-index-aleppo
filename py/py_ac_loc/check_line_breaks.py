@@ -21,7 +21,7 @@ from py_ac_loc.gen_flat_stream import (
     get_page_verses,
 )
 
-PROJ_DIR = Path(__file__).resolve().parent.parent
+PROJ_DIR = Path(__file__).resolve().parent.parent.parent
 LB_DIR = PROJ_DIR / "line-breaks"
 OUT_DIR = PROJ_DIR
 

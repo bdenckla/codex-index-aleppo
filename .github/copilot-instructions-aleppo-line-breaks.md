@@ -7,14 +7,14 @@ called "line-by-line alignment" of a text to a manuscript image.)
 
 ## Note on verification
 
-Files in `py_ac_loc/` are **not** consumed by
+Files in `py/py_ac_loc/` are **not** consumed by
 `main_gen_misc_authored_english_documents.py`. Changes here do **not**
 require running the generation script or checking `docs/` for changes.
 
 ## Folder layout
 
 ```
-py_ac_loc/
+py/py_ac_loc/
   line-breaks/          ← flat-stream JSON files, one per page (the data)
   codex-index/          ← page index mapping leaves to verse ranges
   MAM-simple/           ← MAM-simple source files (Job.xml, Ps.xml, Prov.xml)
@@ -27,7 +27,7 @@ py_ac_loc/
 
 ## Data format
 
-Line-break data lives in `py_ac_loc/line-breaks/<page>.json`. Each file
+Line-break data lives in `py/py_ac_loc/line-breaks/<page>.json`. Each file
 is a flat JSON array (a "flat stream") containing:
 
 - **Structural markers:** `{"page-start": "270v"}`, `{"page-end": "270v"}`
@@ -107,17 +107,17 @@ Two pages span book boundaries: 270r (Ps→Job) and 281v (Job→Prov).
 ### 1. Generate the flat stream (if not already present)
 
 ```
-python py_ac_loc/gen_lb_flat_stream.py 270v
+python py/py_ac_loc/gen_lb_flat_stream.py 270v
 ```
 
-This creates `py_ac_loc/line-breaks/270v.json` with all words and
+This creates `py/py_ac_loc/line-breaks/270v.json` with all words and
 structural markers but no line-break markers. The script calls
-`py_ac_loc/gen_flat_stream.py` internally.
+`py/py_ac_loc/gen_flat_stream.py` internally.
 
 ### 2. Open the interactive editor
 
 ```
-python py_ac_loc/gen_line_break_editor.py 270v 1
+python py/py_ac_loc/gen_line_break_editor.py 270v 1
 ```
 
 Arguments: `<page_id> <col>` where col 1 = right column, col 2 = left
@@ -160,12 +160,12 @@ column (the second export will include both columns’ markers).
 ## Pages with line breaks defined
 
 All 24 Job pages (270r–281v) have line breaks defined for both columns
-(28 lines per column). All data is in `py_ac_loc/line-breaks/*.json`.
+(28 lines per column). All data is in `py/py_ac_loc/line-breaks/*.json`.
 
 ## Script promotion policy
 
 When a script in `.novc/` turns out to be part of an ongoing,
 repeatable workflow (not a one-time experiment), promote it to a
-permanent location (e.g. `py_ac_loc/`) immediately. This avoids
+permanent location (e.g. `py/py_ac_loc/`) immediately. This avoids
 re-creating it later and keeps the workflow self-contained. Suggest
 promotion as soon as the pattern becomes clear.

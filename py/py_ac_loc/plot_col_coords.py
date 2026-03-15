@@ -17,7 +17,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
-BASE = Path(__file__).resolve().parent.parent
+BASE = Path(__file__).resolve().parent.parent.parent
 COORD_DIR = BASE / "column-coordinates"
 OUT_DIR = BASE / ".novc"
 PERSISTENT_DIR = BASE / "plot_col_coords-out"

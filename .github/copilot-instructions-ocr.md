@@ -95,7 +95,7 @@ for i, record in enumerate(pred):
 https://www.mgketer.org/mikra/{bknu}/{chnu}/1/mg/106
 ```
 
-- `bknu` = 1-based book number (Job = 29, from `pycmn.bib_locales`)
+- `bknu` = 1-based book number (Job = 29, from `py/pycmn/bib_locales`)
 - `chnu` = chapter number
 - The `1` is a fixed verse segment parameter
 
@@ -111,9 +111,9 @@ Save downloaded images to `C:\Users\BenDe\OneDrive\Pictures\Aleppo-from-mgketer\
 
 ### Purpose
 
-`py_ac_loc/kraken_seg_baselines.py` runs kraken's baseline segmentation
+`py/py_ac_loc/kraken_seg_baselines.py` runs kraken's baseline segmentation
 on Aleppo Codex pages and matches detected baselines to the 28-line
-manual grid from `py_ac_loc/column-coordinates/`.  This produces
+manual grid from `py/py_ac_loc/column-coordinates/`.  This produces
 per-line baseline polylines aligned to known grid positions — useful
 for locating individual text lines without full OCR.
 
@@ -134,10 +134,10 @@ for locating individual text lines without full OCR.
 
 ```bash
 # All 24 Job pages (270r – 281v):
-wsl -- ~/.local/share/kraken-env/bin/python py_ac_loc/kraken_seg_baselines.py
+wsl -- ~/.local/share/kraken-env/bin/python py/py_ac_loc/kraken_seg_baselines.py
 
 # Specific pages:
-wsl -- ~/.local/share/kraken-env/bin/python py_ac_loc/kraken_seg_baselines.py 270r 275v
+wsl -- ~/.local/share/kraken-env/bin/python py/py_ac_loc/kraken_seg_baselines.py 270r 275v
 ```
 
 ### Output (in `.novc/`)

@@ -27,7 +27,7 @@ from py_ac_loc.gen_flat_stream import (
     LB_DIR,
 )
 
-BASE = Path(__file__).resolve().parent.parent
+BASE = Path(__file__).resolve().parent.parent.parent
 OUT_DIR = BASE / "line-breaks"
 
 

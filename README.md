@@ -16,11 +16,11 @@ The [`docs/`](docs/) folder is served via GitHub Pages at <https://bdenckla.gith
 
 ## Pipeline
 
-1. **MAM-XML Parsing** — `py_ac_loc/mam_xml_verses.py` extracts word lists from `MAM-XML/`
-2. **Flat Stream** — `py_ac_loc/gen_flat_stream.py` combines explicit verse-range args + MAM-XML into per-page word streams; data in `ds-flat-stream/`
-3. **Line-Break Annotation** — human-in-the-loop via `py_ac_loc/gen_line_break_editor.py`; data in `line-breaks/`
-4. **Column Coordinates** — `py_ac_loc/gen_col_location_editor.py`; data in `column-coordinates/`
-5. **Word Lookup** — `main_find_word_in_aleppo_images.py` ties it all together
+1. **MAM-XML Parsing** — `py/py_ac_loc/mam_xml_verses.py` extracts word lists from `MAM-XML/`
+2. **Flat Stream** — `py/py_ac_loc/gen_flat_stream.py` combines explicit verse-range args + MAM-XML into per-page word streams; data in `ds-flat-stream/`
+3. **Line-Break Annotation** — human-in-the-loop via `py/py_ac_loc/gen_line_break_editor.py`; data in `line-breaks/`
+4. **Column Coordinates** — `py/py_ac_loc/gen_col_location_editor.py`; data in `column-coordinates/`
+5. **Word Lookup** — `py/main_find_word_in_aleppo_images.py` ties it all together
 
 ## Data
 

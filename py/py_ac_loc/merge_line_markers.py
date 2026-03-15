@@ -23,7 +23,7 @@ import sys
 import unicodedata
 from pathlib import Path
 
-BASE = Path(__file__).resolve().parent.parent
+BASE = Path(__file__).resolve().parent.parent.parent
 LB_DIR = BASE / "line-breaks"
 NOVC_DIR = BASE / ".novc"
 

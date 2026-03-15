@@ -39,7 +39,7 @@ import json
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_INPUT = ROOT.parent / "codex-index" / "aleppo" / "index-flat-corrected.json"
 DEFAULT_OUTPUT = ROOT / "index-flat-annotated.json"
 

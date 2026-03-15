@@ -36,7 +36,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 from kraken import blla
 
-WORKSPACE = Path(__file__).resolve().parent.parent
+WORKSPACE = Path(__file__).resolve().parent.parent.parent
 OUT_DIR = WORKSPACE / ".novc"
 COORD_DIR = WORKSPACE / "column-coordinates"
 IMG_DIR = WORKSPACE / "aleppo-pages"

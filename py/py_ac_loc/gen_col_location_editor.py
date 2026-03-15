@@ -15,7 +15,7 @@ import sys
 import webbrowser
 from pathlib import Path
 
-BASE = Path(__file__).resolve().parent.parent
+BASE = Path(__file__).resolve().parent.parent.parent
 OUT_DIR = BASE / ".novc"
 COORD_DIR = BASE / "column-coordinates"
 

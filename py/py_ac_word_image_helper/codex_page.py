@@ -8,7 +8,7 @@ from pathlib import Path
 
 from PIL import Image
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 LB_DIR = ROOT / "line-breaks"
 CC_DIR = ROOT / "column-coordinates"
 IMG_DIR = ROOT / "aleppo-pages"

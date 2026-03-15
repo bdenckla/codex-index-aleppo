@@ -28,7 +28,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from py_ac_loc.mam_xml_verses import get_verses_in_range
 from pycmn.uni_denorm import has_std_mark_order
 
-BASE = Path(__file__).resolve().parent.parent
+BASE = Path(__file__).resolve().parent.parent.parent
 MAM_XML_DIR = BASE / "MAM-XML"
 LB_DIR = BASE / "line-breaks"
 OUT_DIR = BASE / "ds-flat-stream"

@@ -36,8 +36,8 @@ relative order:
 
 In practice this means: **base letter → shin/sin dot → dagesh → rafeh → vowels / meteg / accents** (the remaining marks keep whatever mutual order they already had).
 
-The authoritative implementation is `pycmn/uni_denorm.py` (`give_std_mark_order`),
-and the CI-style checker is `check_mark_order.py` (also wired into `check_all.py`).
+The authoritative implementation is `py/pycmn/uni_denorm.py` (`give_std_mark_order`),
+and the CI-style checker is `py/check_mark_order.py` (also wired into `py/check_all.py`).
 
 When in doubt, pass the text through `give_std_mark_order` rather than
 hand-ordering codepoints.
@@ -51,13 +51,13 @@ arbitrary biblical books via the codex index.
 
 ### Pipeline stages:
 
-1. **MAM-XML Parsing** — `py_ac_loc/mam_xml_verses.py` extracts word lists from `MAM-XML/`
-2. **Flat Stream** — `py_ac_loc/gen_flat_stream.py` combines explicit verse-range args + MAM-XML into per-page word streams; data in `ds-flat-stream/`
-3. **Line-Break Annotation** — human-in-the-loop via `py_ac_loc/gen_line_break_editor.py`; data in `py_ac_loc/line-breaks/`
-4. **Column Coordinates** — `py_ac_loc/gen_col_location_editor.py`; data in `py_ac_loc/column-coordinates/`
-5. **Word Lookup** — `main_find_word_in_aleppo_images.py` ties it all together
+1. **MAM-XML Parsing** — `py/py_ac_loc/mam_xml_verses.py` extracts word lists from `MAM-XML/`
+2. **Flat Stream** — `py/py_ac_loc/gen_flat_stream.py` combines explicit verse-range args + MAM-XML into per-page word streams; data in `ds-flat-stream/`
+3. **Line-Break Annotation** — human-in-the-loop via `py/py_ac_loc/gen_line_break_editor.py`; data in `line-breaks/`
+4. **Column Coordinates** — `py/py_ac_loc/gen_col_location_editor.py`; data in `column-coordinates/`
+5. **Word Lookup** — `py/main_find_word_in_aleppo_images.py` ties it all together
 
-Note: `py_ac_loc/codex-index/index-flat.json` is a legacy reference file that is no longer read by any code. Verse ranges are now specified via CLI arguments (manual or `--chain` from a prior page's line-break file), matching the cam1753 approach.
+Note: `py/py_ac_loc/codex-index/index-flat.json` is a legacy reference file that is no longer read by any code. Verse ranges are now specified via CLI arguments (manual or `--chain` from a prior page's line-break file), matching the cam1753 approach.
 
 ### Naming conventions:
 
@@ -94,7 +94,7 @@ Black respects `.gitignore` by default, so this covers all tracked Python files 
 
 ## Python Package `__init__.py` Style
 
-Keep `__init__.py` files **minimal** — they exist only as package markers so that explicit submodule imports work (e.g. `from py_ac_word_image_helper.codex_page import ...`). Do **not** add re-exports to `__init__.py`; always import directly from the submodule that defines the symbol.
+Keep `__init__.py` files **minimal** — they exist only as package markers so that explicit submodule imports work (e.g. `from py_ac_word_image_helper.codex_page import ...` (run from `py/`)). Do **not** add re-exports to `__init__.py`; always import directly from the submodule that defines the symbol.
 
 ## Global Variables
 
@@ -147,7 +147,7 @@ See [copilot-instructions-mam-with-doc.md](.github/copilot-instructions-mam-with
 
 ## Opening HTML Files
 
-For the **interactive crop/preview editors** (`main_find_word_in_aleppo_images.py`), always serve over HTTP when the editor uses `navigator.clipboard`, `canvas.toBlob()`, or cross-origin image access — these require a secure context and fail under `file://`. Plain `http://127.0.0.1` is treated as a secure context by all major browsers, so TLS is not needed. The sibling repo `codex-index-cam1753` already uses a built-in `serve_and_open()` helper for this; when this repo adopts the same pattern, prefer that helper over manual HTTP serving.
+For the **interactive crop/preview editors** (`py/main_find_word_in_aleppo_images.py`), always serve over HTTP when the editor uses `navigator.clipboard`, `canvas.toBlob()`, or cross-origin image access — these require a secure context and fail under `file://`. Plain `http://127.0.0.1` is treated as a secure context by all major browsers, so TLS is not needed. The sibling repo `codex-index-cam1753` already uses a built-in `serve_and_open()` helper for this; when this repo adopts the same pattern, prefer that helper over manual HTTP serving.
 
 For editors that only use JSON-to-clipboard export (no canvas/download), opening directly as a `file://` URL is acceptable.
 

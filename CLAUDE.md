@@ -118,7 +118,7 @@ Keep `__init__.py` files minimal — package markers only. Do not add re-exports
 
 ## Script Promotion Policy
 
-When a `.novc/` script becomes part of an ongoing, repeatable workflow, promote it to a permanent location (e.g. `py_ac_loc/`) immediately. Suggest promotion as soon as the pattern becomes clear.
+When a `.novc/` script becomes part of an ongoing, repeatable workflow, promote it to a permanent location (e.g. `py/py_ac_loc/`) immediately. Suggest promotion as soon as the pattern becomes clear.
 
 ## Opening HTML Files
 
@@ -177,13 +177,13 @@ Some sibling repos are private. Never reference a private repo by name in commit
 
 ## Viewing a Word in Aleppo Codex Images
 
-To show a zoomed-in Aleppo Codex image for a specific word, use `main_find_word_in_aleppo_images.py`:
+To show a zoomed-in Aleppo Codex image for a specific word, use `py/main_find_word_in_aleppo_images.py`:
 
 ```bash
-.venv/Scripts/python.exe main_find_word_in_aleppo_images.py <book> <c:v> "<word>"
+.venv/Scripts/python.exe py/main_find_word_in_aleppo_images.py <book> <c:v> "<word>"
 ```
 
-Example: `.venv/Scripts/python.exe main_find_word_in_aleppo_images.py Job 3:17 "יָ֝נ֗וּחוּ"`
+Example: `.venv/Scripts/python.exe py/main_find_word_in_aleppo_images.py Job 3:17 "יָ֝נ֗וּחוּ"`
 
 The script looks up the word in line-break data, crops the page image around it with a fade overlay, generates an HTML preview in `.novc/`, and opens it in the browser. Use `--wide` for a wider crop. Book defaults to Job if omitted.
 
