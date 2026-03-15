@@ -128,7 +128,16 @@ def _load_defaults(page_id, ncols):
         return {"page": page_id, "columns": avg}, False
 
     # Hardcoded fallback — RTL reading order: col1 = rightmost column
-    if ncols == 2:
+    if ncols == 1:
+        defaults = {
+            "col1": {
+                "tl": [0.08, 0.09],
+                "tr": [0.92, 0.09],
+                "bl": [0.08, 0.82],
+                "br": [0.92, 0.82],
+            },
+        }
+    elif ncols == 2:
         if is_recto:
             defaults = {
                 "col1": {
@@ -242,17 +251,20 @@ def generate_editor(page_id, ncols=2):
     defaults_js = "{\n" + ",\n".join(defaults_entries) + ",\n}"
 
     # Colours for up to 3 columns
-    col_colours_js = (
-        '["rgba(255, 70, 70, 0.8)", "rgba(70, 140, 255, 0.8)"'
-        + (', "rgba(70, 200, 70, 0.8)"' if ncols == 3 else "")
-        + "]"
-    )
-    col_fills_js = (
-        '["rgba(255, 70, 70, 0.06)", "rgba(70, 140, 255, 0.06)"'
-        + (', "rgba(70, 200, 70, 0.06)"' if ncols == 3 else "")
-        + "]"
-    )
-    col_handle_fills_js = '["#f44", "#48f"' + (', "#4c4"' if ncols == 3 else "") + "]"
+    _all_colours = [
+        "rgba(255, 70, 70, 0.8)",
+        "rgba(70, 140, 255, 0.8)",
+        "rgba(70, 200, 70, 0.8)",
+    ]
+    _all_fills = [
+        "rgba(255, 70, 70, 0.06)",
+        "rgba(70, 140, 255, 0.06)",
+        "rgba(70, 200, 70, 0.06)",
+    ]
+    _all_handle_fills = ["#f44", "#48f", "#4c4"]
+    col_colours_js = json.dumps(_all_colours[:ncols])
+    col_fills_js = json.dumps(_all_fills[:ncols])
+    col_handle_fills_js = json.dumps(_all_handle_fills[:ncols])
 
     html = f"""\
 <!DOCTYPE html>
@@ -783,8 +795,8 @@ def main():
         sys.exit(1)
     page_id = sys.argv[1]
     ncols = int(sys.argv[2]) if len(sys.argv) > 2 else 2
-    if ncols not in (2, 3):
-        print(f"Error: ncols must be 2 or 3, got {ncols}")
+    if ncols not in (1, 2, 3):
+        print(f"Error: ncols must be 1, 2, or 3, got {ncols}")
         sys.exit(1)
     generate_editor(page_id, ncols)
 

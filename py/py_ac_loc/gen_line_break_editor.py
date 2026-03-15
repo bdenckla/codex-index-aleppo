@@ -149,6 +149,11 @@ def _parse_col_spec(col_spec):
 # 2/3 width, the other 1/3). These may need additional col specs like
 # "1of2w" / "2of2w" to distinguish wide/narrow columns. See GitHub issue.
 _COL_CSS = {
+    # 1-column layout
+    "1of1": (
+        "width: 100%; max-width: none; margin-left: 0;",
+        "width: 100%; max-width: none; margin-left: 0;",
+    ),
     # 2-column (poetic) layout
     "1of2": (
         "width: 166%; max-width: none; margin-left: -66%;",
@@ -175,6 +180,7 @@ _COL_CSS = {
 
 # Display labels for each col spec
 _COL_LABELS = {
+    "1of1": "1of1",
     "1of2": "1of2 (right)",
     "2of2": "2of2 (left)",
     "1of3": "1of3 (right)",
@@ -727,6 +733,7 @@ function addBlankLine(wordIdx) {{
     blankLinesAfter.set(wordIdx, count + 1);
     recalcLineNums();
     render();
+    applySyncScroll();
 }}
 
 function removeBlankLine(wordIdx) {{
@@ -738,6 +745,7 @@ function removeBlankLine(wordIdx) {{
     }}
     recalcLineNums();
     render();
+    applySyncScroll();
 }}
 
 function render() {{
