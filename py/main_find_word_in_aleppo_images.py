@@ -74,6 +74,7 @@ from py_ac_word_image_helper.codex_page import (
     load_page_image,
 )
 from py_ac_word_image_helper.crop import compute_fade_overlay, estimate_word_position
+from py_ac_word_image_helper.alef_bet_to_ascii import heb_alef_bet_to_ascii
 from py_ac_word_image_helper.hebrew_metrics import join_maqaf
 from py_ac_word_image_helper.linebreak_search import find_word_in_linebreaks
 
@@ -185,7 +186,8 @@ def find_and_preview(word, book, cv, pages, *, wide=False):
     draw.line([(cx, box_bot - tick), (cx, box_bot)], fill=(255, 0, 0, 255), width=2)
 
     # Save 4 image variants (all combinations of yellow/red)
-    label = f"{book}_{cv.replace(':', '_')}"
+    word_id = heb_alef_bet_to_ascii(word)
+    label = f"{book}_{cv.replace(':', '_')}_{word_id}"
     OUT_DIR.mkdir(exist_ok=True)
     # 1. Raw (no overlays)
     raw_path = OUT_DIR / f"preview_{label}_raw.png"
@@ -210,6 +212,12 @@ def find_and_preview(word, book, cv, pages, *, wide=False):
     matched_word = line_words[word_idx] if word_idx < len(line_words) else word
     after = line_words[word_idx + 1 :] if word_idx + 1 < len(line_words) else []
     print(f"  Context: {' '.join(before)} [{matched_word}] {' '.join(after)}")
+    print(f"  Word ID: {word_id}")
+    download_name = f"crop_{label}.png"
+    print(f"  Download filename: {download_name}")
+    print(
+        f"  Provenance: page {page_id}, col {col}, line {line_num}, word {word_idx + 1}"
+    )
 
     # Initial bounding box in relative (0–1) coords for the crop editor
     half_ls_box = tgt_ls // 2
@@ -221,6 +229,7 @@ def find_and_preview(word, book, cv, pages, *, wide=False):
         "book": book,
         "cv": cv,
         "word": word,
+        "word_id": word_id,
         "page": page_id,
         "col": col,
         "line_num": line_num,
