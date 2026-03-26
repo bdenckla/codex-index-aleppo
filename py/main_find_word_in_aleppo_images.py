@@ -10,13 +10,14 @@ script:
 4. Crops a generous region around the target line with a 2D fade overlay
 5. Generates an HTML preview page in .novc/ and opens it
 
+When line-break data is not available for the given book, falls back to
+index-flat-annotated.json and reports the page ID only.
+
 Usage:
     python main_find_word_in_aleppo_images.py [--wide] <book> <c:v> <word>
-    python main_find_word_in_aleppo_images.py [--wide] <word> <c:v>        (defaults to Job)
 
 Examples:
     python main_find_word_in_aleppo_images.py Job 7:1 "וְכִימֵ֖֗י"
-    python main_find_word_in_aleppo_images.py "וְכִימֵ֖֗י" 7:1
 """
 
 import functools
@@ -75,6 +76,7 @@ from py_ac_word_image_helper.codex_page import (
 )
 from py_ac_word_image_helper.crop import compute_fade_overlay, estimate_word_position
 from py_ac_word_image_helper.alef_bet_to_ascii import heb_alef_bet_to_ascii
+from py_ac_word_image_helper.flat_index import find_pages_in_flat_index
 from py_ac_word_image_helper.hebrew_metrics import join_maqaf
 from py_ac_word_image_helper.linebreak_search import find_word_in_linebreaks
 
@@ -810,23 +812,13 @@ def main():
         args.remove("--wide")
 
     if len(args) == 3:
-        # New style: <book> <c:v> <word>
         book = args[0]
         cv = args[1]
         word = args[2]
-    elif len(args) == 2:
-        # Legacy style: <word> <c:v> (defaults to Job)
-        book = "Job"
-        word = args[0]
-        cv = args[1]
     else:
         print(
             "Usage: python main_find_word_in_aleppo_images.py"
             " [--wide] <book> <c:v> <word>"
-        )
-        print(
-            "       python main_find_word_in_aleppo_images.py"
-            " [--wide] <word> <c:v>        (defaults to Job)"
         )
         print('Example: ... Job 7:1 "וְכִימֵי"')
         print("  --wide  Extend margins to capture masorah parva (Mp) notes")
@@ -837,11 +829,26 @@ def main():
         sys.exit(1)
 
     pages = load_index(book)
-    result = find_and_preview(word, book, cv, pages, wide=wide)
-    if result:
-        generate_html(result)
+    if pages:
+        result = find_and_preview(word, book, cv, pages, wide=wide)
+        if result:
+            generate_html(result)
+        else:
+            sys.exit(1)
     else:
-        sys.exit(1)
+        # Fallback: no line-break data for this book/region.
+        # Report page ID(s) from the flat index.
+        ch, v = (int(x) for x in cv.split(":"))
+        fallback_pages = find_pages_in_flat_index(book, ch, v)
+        if fallback_pages:
+            print(f"\n=== {book} {cv}: {word} ===")
+            print(f"  No line-break data available for {book}.")
+            print(f"  Flat-index page lookup: {fallback_pages[0]}")
+            if len(fallback_pages) > 1:
+                print(f"  (also on: {', '.join(fallback_pages[1:])})")
+        else:
+            print(f"ERROR: {book} {cv} not found in flat index.")
+            sys.exit(1)
 
 
 if __name__ == "__main__":
