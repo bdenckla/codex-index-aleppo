@@ -178,6 +178,7 @@ This does not apply to throwaway files in `.novc/`.
 - **Before a series of experiments** that might need to be thrown away: ask the user to commit the current clean state first, so there is a safe baseline to return to.
 - **Commit messages** — write to a uniquely-named `.novc/commit_msg_<slug>.txt` file and commit with `git commit -F .novc/commit_msg_<slug>.txt`. Never pass multi-line or Hebrew-containing messages as a `-m` string. Use a unique slug per commit (e.g. `commit_msg_add_job38.txt`) to avoid stale-file mistakes.
 - **Don't close issues prematurely.** Never close a GitHub issue until work is both committed **and** pushed. Closing before pushing leaves the issue marked resolved while the fix is only local.
+- **Don't re-assert the repo directory.** Run `git` directly without `cd` or `git -C <this-repo>`. For a sibling repo, use `git -C <path>`.
 
 ## Markdown formatting
 
@@ -248,4 +249,19 @@ Example:
 .venv\Scripts\python.exe py\main_find_word_in_aleppo_images.py Job 3:17 "יָ֝נ֗וּחוּ"
 ```
 
-The script looks up the word in line-break data, crops the page image with a fade overlay, generates an HTML preview in `.novc/`, and opens it in the browser. Use `--wide` for a wider crop. When line-break data is not available for the given book, falls back to `index-flat-annotated.json` and reports the page ID only.
+The script looks up the word in line-break data, crops the page image with a fade overlay, generates an HTML preview in `.novc/`, and opens it in the browser. Use `--wide` for a wider crop. When line-break data is not available for the given book, falls back to `index-flat-annotated.json` and reports the page ID only. 
+
+## Multi-Line Content — Write to `.novc/` Files
+
+When the payload is inherently multi-line (a commit message, a GitHub issue/PR body, etc.), write it to a file in `.novc/` and reference the file. Do not pass multi-line content as a command argument — the Windows shell mangles it.
+
+- **Git commit messages** — write to `.novc/commit_msg_<slug>.txt`, then `git commit -F .novc/commit_msg_<slug>.txt`
+- **GitHub issue/PR bodies** — write to `.novc/issue_body.md` (or similar), then `gh issue create --body-file .novc/issue_body.md`
+
+## GitHub Repository Owner
+
+The owner is **bdenckla**. Use this for GitHub MCP queries. Confirm via `git remote -v` if unsure.
+
+## Local Sibling Repositories
+
+Most repos are cloned as siblings at `../repo-name`. Use relative paths when referencing other repos — do not hard-code absolute paths.
