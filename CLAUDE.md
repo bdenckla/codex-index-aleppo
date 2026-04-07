@@ -39,15 +39,14 @@ On Windows, Python defaults to the system ANSI code page, not UTF-8 — this cau
 1. Every `open()` call must include `encoding="utf-8"`.
 2. `json.dump()` / `json.dumps()` must pass `ensure_ascii=False`.
 3. `subprocess` output: pass `encoding="utf-8"`.
-4. **stdout/stderr** — if a script must print non-ASCII, reconfigure the streams at the top of the script:
+4. **stdout/stderr** — prefer writing non-ASCII output to a file (rule 1) rather than printing to stdout/stderr. When a script genuinely must print non-ASCII, reconfigure the streams at the top of `main()`:
    ```python
-   import sys, io
-   sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
-   sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8")
+   import sys
+   sys.stdout.reconfigure(encoding="utf-8")
+   sys.stderr.reconfigure(encoding="utf-8")
    ```
-   Alternatively, write non-ASCII output to a file instead of stdout.
 5. Never rely on the system default encoding.
-6. **Never use `PYTHONUTF8=1`, `PYTHONIOENCODING`, or any env-var prefix** as a substitute for writing correct code.
+6. **`PYTHONUTF8=1` is only for `.novc/` throwaway scripts** where changing the code is not an option. Do **not** use it as a substitute for fixing a tracked script — a codec error in tracked code means the code needs to be fixed.
 
 ## No Unsolicited Git Operations
 
