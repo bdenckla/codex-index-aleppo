@@ -42,6 +42,8 @@ and the CI-style checker is `py/check_mark_order.py` (also wired into `py/check_
 When in doubt, pass the text through `give_std_mark_order` rather than
 hand-ordering codepoints.
 
+**Never apply Unicode normalization (NFC, NFD, etc.) to Hebrew text.** NFC reorders combining marks, destroying the project's intentional mark order. If strings that should be equal aren't matching, ensure both use the project's standard mark order — do not paper over with `unicodedata.normalize`.
+
 ## Project Overview
 
 This repo (`codex-index-aleppo`) is a digital scholarship tool for locating
@@ -86,7 +88,7 @@ import sys
 sys.stdout.reconfigure(encoding="utf-8")
 sys.stderr.reconfigure(encoding="utf-8")
 ```
-Use `$env:PYTHONIOENCODING="utf-8"` only for `.novc/` throwaway scripts where changing the code is not an option.
+Use `$env:PYTHONUTF8="1"` only for `.novc/` throwaway scripts where changing the code is not an option. (`PYTHONIOENCODING` is deprecated in favor of `PYTHONUTF8`.)
 
 **Running Black:** From the repo top directory, run:
 ```
@@ -174,6 +176,8 @@ This does not apply to throwaway files in `.novc/`.
 - **Always use fresh commits.** Never use `git commit --amend` unless the user explicitly requests it.
 - **Before discarding work** (`git reset`, `git checkout -- .`, `git stash drop`, etc.): always run `git status` and `git diff --stat` first. If there are uncommitted changes beyond the current experiment, alert the user and ask them to commit or stash before proceeding.
 - **Before a series of experiments** that might need to be thrown away: ask the user to commit the current clean state first, so there is a safe baseline to return to.
+- **Commit messages** — write to a uniquely-named `.novc/commit_msg_<slug>.txt` file and commit with `git commit -F .novc/commit_msg_<slug>.txt`. Never pass multi-line or Hebrew-containing messages as a `-m` string. Use a unique slug per commit (e.g. `commit_msg_add_job38.txt`) to avoid stale-file mistakes.
+- **Don't close issues prematurely.** Never close a GitHub issue until work is both committed **and** pushed. Closing before pushing leaves the issue marked resolved while the fix is only local.
 
 ## Markdown formatting
 
@@ -181,3 +185,67 @@ This does not apply to throwaway files in `.novc/`.
   abbreviation for "approximately." Markdown renderers interpret text
   between two `~` characters as strikethrough. Instead, write out
   "approx." or "approximately," or escape the tilde (`\~`).
+
+## Verse Numbering
+
+**Always use MAM-standard verse numbering.** Never rely on your own notion of the Masoretic text or its verse numbering.
+
+If you suspect a verse-numbering discrepancy, look up BHS verse numbering via `../MAM-simple/out/json-vtrad-bhs/<Book>.json`. Each entry has an `"osisID-of-MAM-src"` field mapping BHS osisID to MAM source verse. Example: BHS `Jer.31.35` → `"osisID-of-MAM-src": "Jer.31.34"`.
+
+## UTF-8 Everywhere
+
+This project processes Hebrew text. On Windows, Python defaults to the system ANSI code page, not UTF-8 — this causes `charmap` errors.
+
+1. Every `open()` call must include `encoding="utf-8"`.
+2. `json.dump()` / `json.dumps()` must pass `ensure_ascii=False`.
+3. `subprocess` output: pass `encoding="utf-8"`.
+4. Never rely on the system default encoding.
+5. Prefer writing non-ASCII output to a file rather than stdout/stderr. When a script genuinely must print non-ASCII, reconfigure at the top of `main()`:
+   ```python
+   import sys
+   sys.stdout.reconfigure(encoding="utf-8")
+   sys.stderr.reconfigure(encoding="utf-8")
+   ```
+
+## Fail Fast — No Silent Error Smoothing
+
+Do **not** write defensive code that swallows errors or returns `None` on unexpected conditions. Only catch exceptions when there is a concrete recovery strategy — never catch broad `Exception` or `KeyError` just to return `None`. These are batch pipelines; a crash with a clear traceback is the correct response to unexpected input.
+
+## Dict Access Style
+
+- `d[key]` — when the key is **required** (a `KeyError` is a bug you want to hear about immediately)
+- `d.get(key)` — when the key is **genuinely optional** and `None` is meaningful
+- `d.get(key, default)` — when the key is optional and there is a natural default
+
+## JSON Lists: Prepend, Don't Append
+
+When adding to a semantically unordered JSON array, **prepend** rather than append. Appending requires a two-line diff (comma on old last element + new element); prepending is a clean one-line diff.
+
+## Script Promotion Policy
+
+When a `.novc/` script becomes part of an ongoing, repeatable workflow, promote it to a permanent location (e.g. `py/py_ac_loc/`) immediately. Do not let useful scripts live permanently in `.novc/`.
+
+## Terminology: "Varika"
+
+When the user says **varika**, they mean **U+FB1E HEBREW POINT JUDEO-SPANISH VARIKA** (Alphabetic Presentation Forms block), **not** U+05BF HEBREW POINT RAFE (main Hebrew block). These are distinct — do not confuse them.
+
+**Important for code:** The MAM data actually uses U+05BF (RAFE) for the rafeh/varika mark on consonants. Do not assume the data contains U+FB1E — always check actual code points.
+
+## Do Not Mention Private Repos in Public Repos
+
+Some sibling repositories are private. Never reference a private repo by name in commits, code, documentation, or issue/PR text destined for a public repo. Describe the pattern itself without naming the private source.
+
+## Viewing a Word in Aleppo Codex Images
+
+To show a zoomed-in Aleppo Codex image for a specific word, use `py/main_find_word_in_aleppo_images.py`:
+
+```
+.venv\Scripts\python.exe py\main_find_word_in_aleppo_images.py <book> <c:v> "<word>"
+```
+
+Example:
+```
+.venv\Scripts\python.exe py\main_find_word_in_aleppo_images.py Job 3:17 "יָ֝נ֗וּחוּ"
+```
+
+The script looks up the word in line-break data, crops the page image with a fade overlay, generates an HTML preview in `.novc/`, and opens it in the browser. Use `--wide` for a wider crop. When line-break data is not available for the given book, falls back to `index-flat-annotated.json` and reports the page ID only.
