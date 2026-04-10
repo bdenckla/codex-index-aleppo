@@ -9,7 +9,7 @@ called "line-by-line alignment" of a text to a manuscript image.)
 
 Files in `py/py_ac_loc/` are **not** consumed by
 `main_gen_misc_authored_english_documents.py`. Changes here do **not**
-require running the generation script or checking `docs/` for changes.
+require running the generation script or checking `gh-pages/` for changes.
 
 ## Folder layout
 

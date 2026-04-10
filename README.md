@@ -9,7 +9,7 @@ A sibling repo, [`codex-index-cam1753`](https://github.com/bdenckla/codex-index-
 
 ## GitHub Pages
 
-The [`docs/`](docs/) folder is served via GitHub Pages at <https://bdenckla.github.io/codex-index-aleppo/>. It contains Hebrew/English side-by-side translations of selected scholarly texts about the Aleppo Codex:
+The [`gh-pages/`](gh-pages/) folder is served via GitHub Pages at <https://bdenckla.github.io/codex-index-aleppo/>. It contains Hebrew/English side-by-side translations of selected scholarly texts about the Aleppo Codex:
 
 - [Missing Sections in the Aleppo Codex — Prophets and Writings](https://bdenckla.github.io/codex-index-aleppo/missing_sections_nakh.html)
 - [Missing Sections in the Aleppo Codex — Torah](https://bdenckla.github.io/codex-index-aleppo/missing_sections_torah.html)

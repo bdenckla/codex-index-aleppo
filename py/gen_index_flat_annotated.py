@@ -22,7 +22,7 @@ For **non-gap boundaries** the wholeness is inferred from adjacent records:
     the same triple and no gap intervenes.  Otherwise it is whole.
 
 For **gap-boundary verses** (start verse after a "Before" gap, end verse
-before an "After" gap) the wholeness is resolved from the docs/ directory,
+before an "After" gap) the wholeness is resolved from the gh-pages/ directory,
 which records the exact Hebrew words at which each missing section begins and
 ends.  The resolved values are encoded in _GAP_WHOLENESS below.
 
@@ -49,8 +49,8 @@ DEFAULT_OUTPUT = ROOT / "index-flat-annotated.json"
 # Each entry maps (leaf, "start"|"end") to True (whole) or False (partial).
 #
 # Sources:
-#   * docs/missing_sections_torah.html  — Torah gaps
-#   * docs/missing_sections_nakh.html   — Nakh gaps (incl. mgketer footnote)
+#   * gh-pages/missing_sections_torah.html  — Torah gaps
+#   * gh-pages/missing_sections_nakh.html   — Nakh gaps (incl. mgketer footnote)
 # ---------------------------------------------------------------------------
 _GAP_WHOLENESS = {
     # Torah — the codex begins mid-Deut 28:17 ("וּמִשְׁאַרְתֶּֽךָ")
@@ -63,7 +63,7 @@ _GAP_WHOLENESS = {
     ("147v", "end"): False,
     # Jeremiah — the missing section ends mid-verse (opening words of the
     # "sun for light by day" verse, "...כֹּ֣ה ׀ אָמַ֣ר יְהֹוָ֗ה נֹתֵ֥ן",
-    # cited as 31:34 in docs); 148r begins with the remainder of that verse
+    # cited as 31:34 in gh-pages); 148r begins with the remainder of that verse
     ("148r", "start"): False,
     # Jeremiah — the missing section (per mgketer, 32:14–19) begins mid-verse
     ("148r", "end"): False,
