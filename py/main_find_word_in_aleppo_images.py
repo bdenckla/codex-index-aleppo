@@ -64,7 +64,6 @@ def serve_and_open(directory, filename):
         server.shutdown()
 
 
-sys.path.insert(0, str(ROOT))
 from py_ac_word_image_helper.codex_page import (
     CC_DIR,
     LB_DIR,

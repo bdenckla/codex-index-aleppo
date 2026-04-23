@@ -5,8 +5,8 @@ Checks each file in line-breaks/*.json for structural
 consistency and reports summary statistics.
 
 Usage:
-    python py_ac_loc/check_line_breaks.py          # check all files
-    python py_ac_loc/check_line_breaks.py 270v      # check one file
+    python main_check_line_breaks.py          # check all files
+    python main_check_line_breaks.py 270v      # check one file
 """
 
 import json
@@ -15,7 +15,6 @@ import webbrowser
 from collections import Counter
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from py_ac_loc.gen_flat_stream import (
     build_flat_stream,
     get_page_verses,

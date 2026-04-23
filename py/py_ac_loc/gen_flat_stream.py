@@ -12,19 +12,18 @@ Column and line markers are NOT pre-populated — the user adds them
 interactively via the HTML editor.
 
 Usage:
-    python py_ac_loc/gen_flat_stream.py <page> <start_book> <start_c:v> <end_book> <end_c:v>
-    python py_ac_loc/gen_flat_stream.py <page> --chain <prev_page> <end_book> <end_c:v>
+    python main_gen_flat_stream.py <page> <start_book> <start_c:v> <end_book> <end_c:v>
+    python main_gen_flat_stream.py <page> --chain <prev_page> <end_book> <end_c:v>
 
 Examples:
-    python py_ac_loc/gen_flat_stream.py 270r Ps 149:1 Job 1:22
-    python py_ac_loc/gen_flat_stream.py 270v --chain 270r Job 4:21
+    python main_gen_flat_stream.py 270r Ps 149:1 Job 1:22
+    python main_gen_flat_stream.py 270v --chain 270r Job 4:21
 """
 
 import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from py_ac_loc.mam_xml_verses import get_verses_in_range
 from pycmn.uni_denorm import has_std_mark_order
 
