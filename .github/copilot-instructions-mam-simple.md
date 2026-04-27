@@ -165,7 +165,7 @@ The `py-example/` in the MAM-simple repo demonstrates a more sophisticated recur
    - `ofc2`: output from each child individually (dict keyed by child element)
 5. If the element has a `text` attribute and no children, `ofc1` is `[text_attr]`
 
-See the MAM-simple repo's `py-example/pysefaria/mam4sef_handlers.py` ([on GitHub](https://github.com/bdenckla/MAM-simple/blob/main/py-example/pysefaria/mam4sef_handlers.py)) for the complete handler implementations — this is the canonical example of how to process every element type.
+See the MAM-simple repo's `py-example/mb_sefaria/mam4sef_handlers.py` ([on GitHub](https://github.com/bdenckla/MAM-simple/blob/main/py-example/mb_sefaria/mam4sef_handlers.py)) for the complete handler implementations — this is the canonical example of how to process every element type.
 
 ## Versification Traditions
 

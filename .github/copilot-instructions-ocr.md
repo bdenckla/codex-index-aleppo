@@ -95,7 +95,7 @@ for i, record in enumerate(pred):
 https://www.mgketer.org/mikra/{bknu}/{chnu}/1/mg/106
 ```
 
-- `bknu` = 1-based book number (Job = 29, from `py/pycmn/bib_locales`)
+- `bknu` = 1-based book number (Job = 29, from `py/mb_cmn/bib_locales`)
 - `chnu` = chapter number
 - The `1` is a fixed verse segment parameter
 

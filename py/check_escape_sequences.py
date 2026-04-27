@@ -16,7 +16,7 @@ Characters that SHOULD remain as escapes (visually ambiguous or invisible):
 Also exempt:
   - \\uXXXX inside raw strings (r"..." / r'...') — needed for regex patterns
   - \\uXXXX inside comments that document codepoints (e.g. "# U+05D9 yod")
-  - pycmn/ files — these are definition files copied from book-of-job
+  - mb_cmn/ files — these are definition files copied from book-of-job
   - The regex shown in docstrings (WORD_RE = r"[\\u0590-...")
 
 The “word” regex for this check:
@@ -111,11 +111,11 @@ def _is_docstring_regex_example(line):
 # ── file discovery ───────────────────────────────────────────────────────────────────
 
 _SKIP_DIRS = {".venv", "__pycache__", ".novc", ".git", "node_modules"}
-_SKIP_PREFIXES = {"pycmn"}  # definition files copied from book-of-job
+_SKIP_PREFIXES = {"mb_cmn"}  # definition files copied from book-of-job
 
 
 def _tracked_files(root):
-    """Yield .py paths under *root*, skipping non-tracked dirs and pycmn."""
+    """Yield .py paths under *root*, skipping non-tracked dirs and mb_cmn."""
     for p in sorted(root.rglob("*.py")):
         if any(part in _SKIP_DIRS for part in p.parts):
             continue

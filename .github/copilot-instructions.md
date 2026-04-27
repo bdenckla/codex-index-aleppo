@@ -36,7 +36,7 @@ relative order:
 
 In practice this means: **base letter → shin/sin dot → dagesh → rafeh → vowels / meteg / accents** (the remaining marks keep whatever mutual order they already had).
 
-The authoritative implementation is `py/pycmn/uni_denorm.py` (`give_std_mark_order`),
+The authoritative implementation is `py/mb_cmn/uni_denorm.py` (`give_std_mark_order`),
 and the CI-style checker is `py/check_mark_order.py` (also wired into `py/check_all.py`).
 
 When in doubt, pass the text through `give_std_mark_order` rather than

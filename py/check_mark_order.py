@@ -5,8 +5,8 @@ project’s standard combining-mark order (SBL2):
 
     base letter → shin/sin dot → dagesh → rafeh → (everything else unchanged)
 
-Uses ``give_std_mark_order`` from ``pycmn.uni_denorm`` (local copy
-of book-of-job/pycmn).
+Uses ``give_std_mark_order`` from ``mb_cmn.uni_denorm`` (local copy
+of book-of-job/mb_cmn).
 
 A “Hebrew word” is any maximal run matched by the regex:
 
@@ -25,7 +25,7 @@ import re
 import sys
 from pathlib import Path
 
-from pycmn.uni_denorm import give_std_mark_order
+from mb_cmn.uni_denorm import give_std_mark_order
 
 # ── regex definitions ──────────────────────────────────────────────────────────────────
 
