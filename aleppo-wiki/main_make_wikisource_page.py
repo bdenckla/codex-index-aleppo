@@ -1,4 +1,4 @@
-""" Exports main """
+"""Exports main"""
 
 from py.read_csv_file import read_csv_file
 from py.group_by_book import group_by_book

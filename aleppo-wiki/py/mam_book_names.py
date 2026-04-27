@@ -8,7 +8,6 @@ The 2nd part of a BS_.* pair is either None or a sub-book string.
 
 import py.hebrew_punctuation as hpu
 
-
 # BS: Hebrew book name (B) and Hebrew sub-book name (S).
 #
 # There are 24 books, for this definition of "book".
