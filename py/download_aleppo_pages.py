@@ -11,6 +11,8 @@ Usage:
 import os
 from urllib.request import Request, urlopen
 
+from mb_cmn.url_percent import pct_path_component
+
 OUT_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "aleppo-pages")
 os.makedirs(OUT_DIR, exist_ok=True)
 
@@ -22,12 +24,18 @@ def _leaf_to_page_n(page_id):
     return (num - 1) * 2 + 2 + (0 if side == "r" else 1)
 
 
-BASE_URL = (
-    "https://ia601801.us.archive.org/BookReader/BookReaderImages.php"
-    "?zip=/7/items/aleppo-codex/Aleppo%20Codex_jp2.zip"
-    "&file=Aleppo%20Codex_jp2/Aleppo%20Codex_{page:04d}.jp2"
-    "&id=aleppo-codex&scale=2&rotate=0"
-)
+_ZIP_MEMBER = "/7/items/aleppo-codex/Aleppo Codex_jp2.zip"
+
+
+def _archive_image_url(page):
+    zip_part = pct_path_component(_ZIP_MEMBER, safe="/")
+    file_member = f"Aleppo Codex_jp2/Aleppo Codex_{page:04d}.jp2"
+    file_part = pct_path_component(file_member, safe="/")
+    return (
+        "https://ia601801.us.archive.org/BookReader/BookReaderImages.php"
+        f"?zip={zip_part}&file={file_part}&id=aleppo-codex&scale=2&rotate=0"
+    )
+
 
 # Leaves 270–281, recto and verso
 PAGE_IDS = []
@@ -37,7 +45,7 @@ for leaf in range(270, 282):
 
 for page_id in PAGE_IDS:
     n = _leaf_to_page_n(page_id)
-    url = BASE_URL.format(page=n)
+    url = _archive_image_url(n)
     out_path = os.path.join(OUT_DIR, f"{page_id}.jpg")
     if os.path.exists(out_path):
         print(f"  Already exists: {out_path}")
