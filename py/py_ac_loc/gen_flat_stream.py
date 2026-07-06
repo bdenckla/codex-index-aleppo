@@ -293,6 +293,7 @@ def write_stream(page_id, stream):
     out_path.write_text(
         json.dumps(stream, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
+        newline="",
     )
     return out_path
 
@@ -399,6 +400,7 @@ def main():
     out_path.write_text(
         json.dumps(stream, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
+        newline="",
     )
     print(f"  -> {out_path.name}: {verse_count} verses, {word_count} words")
 

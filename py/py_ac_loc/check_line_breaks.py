@@ -626,7 +626,7 @@ def main():
 
     OUT_DIR.mkdir(exist_ok=True)
     out_path = OUT_DIR / "check_line_breaks.html"
-    out_path.write_text(html, encoding="utf-8")
+    out_path.write_text(html, encoding="utf-8", newline="")
     print(f"Report written to {out_path}")
     if not no_open:
         webbrowser.open(out_path.as_uri())

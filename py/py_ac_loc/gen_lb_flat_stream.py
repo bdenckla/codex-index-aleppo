@@ -115,6 +115,7 @@ def main():
     out_path.write_text(
         json.dumps(stream, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
+        newline="",
     )
     word_count = sum(1 for x in stream if isinstance(x, str))
     verse_count = sum(1 for x in stream if isinstance(x, dict) and "verse-start" in x)

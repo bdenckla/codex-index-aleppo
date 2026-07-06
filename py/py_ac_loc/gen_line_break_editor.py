@@ -285,7 +285,7 @@ def generate_editor_html(page_id, col_spec):
 
     out_path = OUT_DIR / f"lb_editor_{page_id}_{col_spec}.html"
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(html, encoding="utf-8")
+    out_path.write_text(html, encoding="utf-8", newline="")
     print(f"Wrote {out_path}")
     return out_path
 

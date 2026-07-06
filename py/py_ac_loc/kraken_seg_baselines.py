@@ -275,7 +275,7 @@ def segment_page(page_id):
         }
 
     json_path = OUT_DIR / f"kraken-seg-{page_id}.json"
-    json_path.write_text(json.dumps(output, indent=2))
+    json_path.write_text(json.dumps(output, indent=2), encoding="utf-8", newline="")
 
     # Visualization
     viz = img.copy().convert("RGB")

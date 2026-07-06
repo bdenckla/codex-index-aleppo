@@ -780,7 +780,7 @@ updateStatus();
 
     OUT_DIR.mkdir(exist_ok=True)
     out_path = OUT_DIR / f"quad-editor-{page_id}.html"
-    out_path.write_text(html, encoding="utf-8")
+    out_path.write_text(html, encoding="utf-8", newline="")
     print(f"Editor written to: {out_path}")
 
     # Serve from repo root so both .novc/ HTML and aleppo-pages/ are accessible

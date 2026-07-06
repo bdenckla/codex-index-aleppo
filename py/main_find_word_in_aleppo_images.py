@@ -286,7 +286,7 @@ def generate_html(result):
         ensure_ascii=False,
     )
 
-    with open(html_path, "w", encoding="utf-8") as f:
+    with open(html_path, "w", encoding="utf-8", newline="") as f:
         f.write(f"""<!DOCTYPE html>
 <html>
 <head>

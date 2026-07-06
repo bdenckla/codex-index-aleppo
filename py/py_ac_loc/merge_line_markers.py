@@ -212,6 +212,7 @@ def main():
     orig_path.write_text(
         json.dumps(merged, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
+        newline="",
     )
 
     # Stats
