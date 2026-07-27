@@ -154,11 +154,7 @@ def _find_decomposed_latin_clusters(text):
     n = len(text)
     while i < n:
         ch = text[i]
-        if (
-            _is_latin_base(ch)
-            and i + 1 < n
-            and unicodedata.combining(text[i + 1]) != 0
-        ):
+        if _is_latin_base(ch) and i + 1 < n and unicodedata.combining(text[i + 1]) != 0:
             j = i + 1
             while (
                 j < n
