@@ -4,8 +4,9 @@
 This script assumes that in Claude Code's permission system ``*`` does
 not match ``/`` (pathlib/gitignore-style).  This is NOT confirmed — it
 is equally possible that ``*`` matches ``/`` (fnmatch-style).  See
-``../yeivin-itm/.claude/test_globs.py`` which tests the same set of
-globs under both assumptions and shows where they diverge.
+``../masorah-books/.claude/test_globs.py`` which tests the same set of
+globs under both assumptions and shows where they diverge.  (That repo
+was ``yeivin-itm`` until it was renamed on 2026-07-31.)
 
 Under the "strict" assumption, this script identifies path-like
 segments in a command and replaces them with directory-preserving
