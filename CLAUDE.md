@@ -190,7 +190,7 @@ The script looks up the word in line-break data, crops the page image around it 
 
 These were `.github/copilot-instructions-*.md` until 2026-08-03, when GitHub Copilot stopped being used here.
 
-- **[`doc/reading-mam-simple.md`](doc/reading-mam-simple.md)** — MAM-simple XML format, verse extraction, versification traditions
+- **[`doc/reading-mam-simple.md`](doc/reading-mam-simple.md)** — the vendored `MAM-XML/` snapshot and the reader over it; points at MAM-simple for the format itself
 - **[`doc/mam-with-doc-urls.md`](doc/mam-with-doc-urls.md)** — MAM with Doc URLs and book codes
 - **[`doc/aleppo-line-breaks.md`](doc/aleppo-line-breaks.md)** — line-break workflow, page image sources, Job leaf table
 - **[`doc/ocr-with-kraken.md`](doc/ocr-with-kraken.md)** — Kraken OCR setup and usage
