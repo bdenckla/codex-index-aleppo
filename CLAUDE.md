@@ -168,7 +168,7 @@ Most repos are cloned as siblings at `../repo-name`. Use relative paths (e.g. `.
 
 ## Hebrew Unicode Mark Order — No NFC Normalization
 
-**Never apply Unicode normalization (NFC, NFD, etc.) to Hebrew text.** NFC reorders combining marks, destroying the project's intentional mark order. If strings that should be equal aren't matching, ensure both use the project's standard mark order — do not paper over with `unicodedata.normalize`. See `.github/copilot-instructions.md` for the mark order specification and implementation references.
+**Never apply Unicode normalization (NFC, NFD, etc.) to Hebrew text.** NFC reorders combining marks, destroying the project's intentional mark order. If strings that should be equal aren't matching, ensure both use the project's standard mark order — do not paper over with `unicodedata.normalize`. The standard order is specified in `give_std_mark_order`'s docstring in `py/mb_cmn/uni_denorm.py`, which is also its authoritative implementation; `py/check_mark_order.py` (wired into `py/check_all.py`) is the checker.
 
 ## Do Not Mention Private Repos in Public Repos
 
@@ -188,7 +188,6 @@ The script looks up the word in line-break data, crops the page image around it 
 
 ## Detailed Reference Files
 
-- **`.github/copilot-instructions.md`** — project overview, pipeline stages, naming conventions, Hebrew mark order
 - **`.github/copilot-instructions-mam-simple.md`** — MAM-simple XML format, verse extraction, versification traditions
 - **`.github/copilot-instructions-mam-with-doc.md`** — MAM with Doc URLs and book codes
 - **`.github/copilot-instructions-aleppo-line-breaks.md`** — line-break workflow, page image sources, Job leaf table

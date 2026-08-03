@@ -11,7 +11,7 @@ Scope note: this test deliberately does NOT assert whole-file NFC
 reorders unrelated Hebrew combining marks (shin dot, sin dot, dagesh, rafeh)
 according to Unicode canonical combining class, which conflicts with this
 project's own documented, deliberate non-Unicode-standard Hebrew mark order
-(see py/mb_cmn/uni_denorm.py and .github/copilot-instructions.md). So this
+(see py/mb_cmn/uni_denorm.py). So this
 test checks only the specific h-with-dot-below sequence, which has no such
 ambiguity: composing "h"/"H" + U+0323 to U+1E25/U+1E24 is a simple,
 unambiguous Latin-script composition.
