@@ -25,7 +25,7 @@ The [`gh-pages/`](gh-pages/) folder is served via GitHub Pages at <https://bdenc
 ## Data
 
 - **`aleppo-pages/`** — JPEG page images downloaded from the [Internet Archive `aleppo-codex` item](https://archive.org/details/aleppo-codex) via the BookReader API at scale=2; leaves 270r–281v (24 pages). See [`aleppo-pages-provenance.md`](aleppo-pages-provenance.md).
-- **`MAM-XML/`** — XML files copied from one of the XML output directories of the MAM-simple repo. See [`MAM-simple-provenance.md`](MAM-simple-provenance.md).
+- **`MAM-XML/`** — a copy of the **`xml-vtrad-mam`** output of the [MAM-simple](https://github.com/bdenckla/MAM-simple) repo: the mam vtrad, not `xml-vtrad-bhs` or `xml-vtrad-sef`. The directory name is that repo's *former* name, which it was renamed away from in its own `0c2ce6b`. See [`MAM-simple-provenance.md`](MAM-simple-provenance.md), which records the source path as `MAM-simple/out/xml-vtrad-mam` — also pre-rename, since MAM-simple's `16b63e3` moved the `xml-vtrad-*` directories to that repo's root.
 - **`ds-flat-stream/`** — Generated per-page word streams.
 - **`line-breaks/`** — Human-annotated line-break data.
 - **`column-coordinates/`** — Column coordinate data.
