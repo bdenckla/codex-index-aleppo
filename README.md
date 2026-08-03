@@ -5,7 +5,7 @@
 
 A digital scholarship tool for locating Hebrew words on photographed pages of the Aleppo Codex (כתר ארם צובה). The current focus is on the Book of Job (leaves 270r–281v), though the infrastructure supports arbitrary biblical books via the codex index.
 
-A sibling repo, [`codex-index-cam1753`](https://github.com/bdenckla/codex-index-cam1753), covers the same biblical text in the Cambridge 1753 manuscript (μL). Both repos use quadrilateral column geometry.
+A sibling repo, [`codex-index-cam1753`](https://github.com/bdenckla/codex-index-cam1753), covers the same biblical text in the Cambridge 1753 manuscript (μC — μL is the Leningrad Codex). Both repos use quadrilateral column geometry.
 
 ## GitHub Pages
 
