@@ -16,7 +16,6 @@ Characters that SHOULD remain as escapes (visually ambiguous or invisible):
 Also exempt:
   - \\uXXXX inside raw strings (r"..." / r'...') — needed for regex patterns
   - \\uXXXX inside comments that document codepoints (e.g. "# U+05D9 yod")
-  - mb_cmn/ files — these are definition files copied from book-of-job
   - The regex shown in docstrings (WORD_RE = r"[\\u0590-...")
 
 The “word” regex for this check:
@@ -32,13 +31,14 @@ Exit codes:
 
 import re
 import sys
+import unicodedata
 from pathlib import Path
 
-# ── the escape pattern ───────────────────────────────────────────────────────────────────
+# ── the escape pattern ─────────────────────────────────────────────────────────────────
 
 ESCAPE_RE = re.compile(r"\\u([0-9A-Fa-f]{4})")
 
-# ── characters that should STAY as escapes ───────────────────────────────────────────────────────
+# ── characters that should STAY as escapes ───────────────────────────────────────
 # Combining marks, zero-width chars, whitespace oddities.
 
 _KEEP_AS_ESCAPE = set()
@@ -70,14 +70,49 @@ _KEEP_AS_ESCAPE.add(0xFEFF)  # BOM / ZWNBSP
 
 # Whitespace that looks like a normal space
 _KEEP_AS_ESCAPE.add(0x00A0)  # NBSP
+_KEEP_AS_ESCAPE.add(0x2002)  # en space
+_KEEP_AS_ESCAPE.add(0x2003)  # em space
+_KEEP_AS_ESCAPE.add(0x2007)  # figure space
+_KEEP_AS_ESCAPE.add(0x2008)  # punctuation space
 _KEEP_AS_ESCAPE.add(0x2009)  # thin space
 _KEEP_AS_ESCAPE.add(0x200A)  # hair space
 _KEEP_AS_ESCAPE.add(0x202F)  # narrow no-break space
-_KEEP_AS_ESCAPE.add(0x2007)  # figure space
-_KEEP_AS_ESCAPE.add(0x2008)  # punctuation space
 
 # ASCII range — \\u00XX for control chars etc. are fine as escapes
 _KEEP_AS_ESCAPE.update(range(0x0000, 0x0080))
+
+
+def repo_root():
+    """Return the repo root: the nearest ancestor of this file holding .git.
+
+    This file sits at the repo root in some repos and under py/ in others,
+    so anchoring on its own directory would resolve differently in each.
+    """
+    here = Path(__file__).resolve()
+    for candidate in here.parents:
+        if (candidate / ".git").exists():
+            return candidate
+    raise SystemExit(f"{here} is not inside a git repository")
+
+
+def main():
+    root = repo_root()
+    all_violations = []
+
+    files = list(_tracked_files(root))
+    for path in files:
+        all_violations.extend(_check_file(path, root))
+
+    if all_violations:
+        print(f"FAIL: {len(all_violations)} unnecessary \\uXXXX escape(s) found:\n")
+        for rel, line_no, esc, cp in all_violations:
+            name = unicodedata.name(chr(cp), "?")
+            print(f"  {rel}:{line_no}:  {esc}  →  {chr(cp)}  ({name})")
+        print("\nRun fix_escape_sequences.py to replace these with literal characters.")
+        return 1
+
+    print(f"OK: no unnecessary \\uXXXX escapes in {len(files)} .py files.")
+    return 0
 
 
 def _should_be_literal(codepoint):
@@ -85,13 +120,12 @@ def _should_be_literal(codepoint):
     return codepoint not in _KEEP_AS_ESCAPE
 
 
-# ── raw-string detection ─────────────────────────────────────────────────────────────────
+# ── raw-string detection ─────────────────────────────────────────────────────────
 
 
 def _raw_string_spans(source_line):
     """Return list of (start, end) spans that are inside raw strings."""
     spans = []
-    # Simple approach: find r"..." and r'...' on each line
     for m in re.finditer(r"""r(\"\"\"|\'''|\"|')(.*?)\1""", source_line):
         spans.append((m.start(), m.end()))
     return spans
@@ -108,24 +142,40 @@ def _is_docstring_regex_example(line):
     return stripped.startswith("WORD_RE") and 'r"' in stripped
 
 
-# ── file discovery ───────────────────────────────────────────────────────────────────
+# Pattern for a \uXXXX-\uYYYY character-class range
+_RANGE_RE = re.compile(r"\\u[0-9A-Fa-f]{4}-\\u[0-9A-Fa-f]{4}")
+
+
+def _range_endpoint_positions(line):
+    """Return set of column positions that are range endpoints.
+
+    In a regex character-class range like U+0591 through U+05F4, both
+    endpoints should stay as escapes so the range reads consistently.
+    This exemption applies to the source-level pattern ``\\uXXXX-\\uYYYY``.
+    """
+    positions = set()
+    for m in _RANGE_RE.finditer(line):
+        # Each match is 13 chars: \uXXXX-\uYYYY
+        # First escape starts at m.start(), second at m.start()+7
+        positions.add(m.start())
+        positions.add(m.start() + 7)
+    return positions
+
+
+# ── file discovery ─────────────────────────────────────────────────────────────────────
 
 _SKIP_DIRS = {".venv", "__pycache__", ".novc", ".git", "node_modules"}
-_SKIP_PREFIXES = {"mb_cmn"}  # definition files copied from book-of-job
 
 
 def _tracked_files(root):
-    """Yield .py paths under *root*, skipping non-tracked dirs and mb_cmn."""
+    """Yield .py paths under *root*, skipping non-tracked dirs."""
     for p in sorted(root.rglob("*.py")):
         if any(part in _SKIP_DIRS for part in p.parts):
-            continue
-        rel = p.relative_to(root)
-        if any(str(rel).startswith(pfx) for pfx in _SKIP_PREFIXES):
             continue
         yield p
 
 
-# ── checking logic ───────────────────────────────────────────────────────────────────
+# ── checking logic ─────────────────────────────────────────────────────────────────────
 
 
 def _check_file(path, root):
@@ -143,40 +193,21 @@ def _check_file(path, root):
             continue
 
         raw_spans = _raw_string_spans(line)
+        range_positions = _range_endpoint_positions(line)
 
         for m in ESCAPE_RE.finditer(line):
             # Skip if inside a raw string
             if _in_raw_string(m.start(), raw_spans):
                 continue
 
+            # Skip if this is a range endpoint (e.g. \u0591-\u05f4)
+            if m.start() in range_positions:
+                continue
+
             cp = int(m.group(1), 16)
             if _should_be_literal(cp):
                 violations.append((str(path.relative_to(root)), line_no, m.group(), cp))
     return violations
-
-
-def main():
-    root = Path(__file__).resolve().parent
-    all_violations = []
-
-    files = list(_tracked_files(root))
-    for path in files:
-        all_violations.extend(_check_file(path, root))
-
-    if all_violations:
-        print(f"FAIL: {len(all_violations)} unnecessary \\uXXXX escape(s) found:\n")
-        for rel, line_no, esc, cp in all_violations:
-            import unicodedata
-
-            name = unicodedata.name(chr(cp), "?")
-            print(f"  {rel}:{line_no}:  {esc}  →  {chr(cp)}  ({name})")
-        print(
-            f"\nRun fix_escape_sequences.py to replace these with literal characters."
-        )
-        return 1
-
-    print(f"OK: no unnecessary \\uXXXX escapes in {len(files)} .py files.")
-    return 0
 
 
 if __name__ == "__main__":

@@ -5,8 +5,8 @@ project’s standard combining-mark order (SBL2):
 
     base letter → shin/sin dot → dagesh → rafeh → (everything else unchanged)
 
-Uses ``give_std_mark_order`` from ``mb_cmn.uni_denorm`` (local copy
-of book-of-job/mb_cmn).
+The canonical reordering function is ``give_std_mark_order`` from
+mb_cmn.uni_denorm.
 
 A “Hebrew word” is any maximal run matched by the regex:
 
@@ -27,7 +27,7 @@ from pathlib import Path
 
 from mb_cmn.uni_denorm import give_std_mark_order
 
-# ── regex definitions ──────────────────────────────────────────────────────────────────
+# ── regex definitions ────────────────────────────────────────────────────────────────────
 
 # A “Hebrew word”: maximal run of Hebrew-block chars + CGJ + Varika.
 WORD_RE = re.compile(r"[\u0590-\u05FF\u034F\uFB1E]+")
@@ -35,46 +35,26 @@ WORD_RE = re.compile(r"[\u0590-\u05FF\u034F\uFB1E]+")
 # At least one Hebrew letter (alef through tav).
 HAS_LETTER_RE = re.compile(r"[\u05D0-\u05EA]")
 
-
-# ── file discovery ──────────────────────────────────────────────────────────────────
+# ── file discovery ──────────────────────────────────────────────────────────────────────
 
 _SKIP_DIRS = {".venv", "__pycache__", ".novc", ".git", "node_modules"}
 
 
-def _tracked_files(root):
-    """Yield .py and .json paths under *root*, skipping non-tracked dirs."""
-    for p in sorted(root.rglob("*")):
-        if any(part in _SKIP_DIRS for part in p.parts):
-            continue
-        if p.is_file() and p.suffix in (".py", ".json"):
-            yield p
+def repo_root():
+    """Return the repo root: the nearest ancestor of this file holding .git.
 
-
-# ── checking logic ──────────────────────────────────────────────────────────────────
-
-
-def _check_file(path, root):
-    """Return list of (rel_path, line_no, original, reordered) tuples."""
-    violations = []
-    try:
-        text = path.read_text(encoding="utf-8")
-    except (UnicodeDecodeError, OSError) as exc:
-        print(f"  WARNING: could not read {path.relative_to(root)}: {exc}")
-        return violations
-
-    for line_no, line in enumerate(text.splitlines(), 1):
-        for m in WORD_RE.finditer(line):
-            word = m.group()
-            if not HAS_LETTER_RE.search(word):
-                continue
-            fixed = give_std_mark_order(word)
-            if fixed != word:
-                violations.append((str(path.relative_to(root)), line_no, word, fixed))
-    return violations
+    This file sits at the repo root in some repos and under py/ in others,
+    so anchoring on its own directory would resolve differently in each.
+    """
+    here = Path(__file__).resolve()
+    for candidate in here.parents:
+        if (candidate / ".git").exists():
+            return candidate
+    raise SystemExit(f"{here} is not inside a git repository")
 
 
 def main():
-    root = Path(__file__).resolve().parent
+    root = repo_root()
     all_violations = []
 
     files = list(_tracked_files(root))
@@ -95,6 +75,38 @@ def main():
 
     print(f"OK: all Hebrew words in {len(files)} files have standard mark order.")
     return 0
+
+
+def _tracked_files(root):
+    """Yield .py and .json paths under *root*, skipping non-tracked dirs."""
+    for p in sorted(root.rglob("*")):
+        if any(part in _SKIP_DIRS for part in p.parts):
+            continue
+        if p.is_file() and p.suffix in (".py", ".json"):
+            yield p
+
+
+# ── checking logic ──────────────────────────────────────────────────────────────────────
+
+
+def _check_file(path, root):
+    """Return list of (rel_path, line_no, original, reordered) tuples."""
+    violations = []
+    try:
+        text = path.read_text(encoding="utf-8")
+    except (UnicodeDecodeError, OSError) as exc:
+        print(f"  WARNING: could not read {path.relative_to(root)}: {exc}")
+        return violations
+
+    for line_no, line in enumerate(text.splitlines(), 1):
+        for m in WORD_RE.finditer(line):
+            word = m.group()
+            if not HAS_LETTER_RE.search(word):
+                continue
+            fixed = give_std_mark_order(word)
+            if fixed != word:
+                violations.append((str(path.relative_to(root)), line_no, word, fixed))
+    return violations
 
 
 if __name__ == "__main__":

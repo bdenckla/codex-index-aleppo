@@ -359,7 +359,7 @@ def generate_editor(page_id, ncols=2):
   <button id="fine-btn" onclick="toggleFine()" class="active">Fine: ON</button>
   <button onclick="resetPositions()">Reset</button>
   <button onclick="exportJSON()" style="background:#046;border-color:#08f">Export JSON</button>
-  <span class="info">Source: {source_note} | Image: {img_w}\u00d7{img_h}</span>
+  <span class="info">Source: {source_note} | Image: {img_w}×{img_h}</span>
   <span class="info" id="status" style="margin-left:auto"></span>
 </div>
 

@@ -16,11 +16,11 @@ Exit codes:
 """
 
 import sys
-from pathlib import Path
 
-# Import the checker’s definitions so the two scripts stay in sync.
+# Import the checker's definitions so the two scripts stay in sync.
 from check_escape_sequences import (
     ESCAPE_RE,
+    repo_root,
     _check_file,
     _tracked_files,
     _should_be_literal,
@@ -28,6 +28,35 @@ from check_escape_sequences import (
     _in_raw_string,
     _is_docstring_regex_example,
 )
+
+
+def main():
+    apply = "--apply" in sys.argv
+    root = repo_root()
+    files = list(_tracked_files(root))
+    total_fixes = 0
+
+    for path in files:
+        violations = _check_file(path, root)
+        if not violations:
+            continue
+        new_text, n = _fix_file(path)
+        rel = path.relative_to(root)
+        if apply:
+            path.write_text(new_text, encoding="utf-8", newline="")
+            print(f"  FIXED {rel}: {n} replacement(s)")
+        else:
+            print(f"  WOULD FIX {rel}: {n} replacement(s)")
+        total_fixes += n
+
+    if total_fixes == 0:
+        print("Nothing to fix.")
+        return 0
+    if apply:
+        print(f"\nApplied {total_fixes} fix(es).")
+        return 0
+    print(f"\nDry-run: {total_fixes} fix(es) needed.  Re-run with --apply.")
+    return 1
 
 
 def _fix_line(line):
@@ -64,35 +93,6 @@ def _fix_file(path):
         new_lines.append(new_line)
         total_fixes += n
     return "".join(new_lines), total_fixes
-
-
-def main():
-    apply = "--apply" in sys.argv
-    root = Path(__file__).resolve().parent
-    files = list(_tracked_files(root))
-    total_fixes = 0
-
-    for path in files:
-        violations = _check_file(path, root)
-        if not violations:
-            continue
-        new_text, n = _fix_file(path)
-        rel = path.relative_to(root)
-        if apply:
-            path.write_text(new_text, encoding="utf-8", newline="")
-            print(f"  FIXED {rel}: {n} replacement(s)")
-        else:
-            print(f"  WOULD FIX {rel}: {n} replacement(s)")
-        total_fixes += n
-
-    if total_fixes == 0:
-        print("Nothing to fix.")
-        return 0
-    if apply:
-        print(f"\nApplied {total_fixes} fix(es).")
-        return 0
-    print(f"\nDry-run: {total_fixes} fix(es) needed.  Re-run with --apply.")
-    return 1
 
 
 if __name__ == "__main__":

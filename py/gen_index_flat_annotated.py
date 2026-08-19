@@ -53,16 +53,16 @@ DEFAULT_OUTPUT = ROOT / "index-flat-annotated.json"
 #   * gh-pages/missing_sections_nakh.html   — Nakh gaps (incl. mgketer footnote)
 # ---------------------------------------------------------------------------
 _GAP_WHOLENESS = {
-    # Torah — the codex begins mid-Deut 28:17 ("וּמִשְׁאַרְתֶּֽךָ")
+    # Torah — the codex begins mid-Deut 28:17 ("וּמִשְׁאַרְתֶּֽךָ")
     ("1r", "start"): False,
     # Kings — gap begins mid-2 Kgs 14:21 ("אֶת־עֲזַרְיָ֔ה וְה֕וּא...")
     ("99v", "end"): False,
-    # Kings — gap ends mid-2 Kgs 18:13 ("...וּבְאַרְבַּע֩ עֶשְׂרֵ֨ה שָׁנָ֜ה")
+    # Kings — gap ends mid-2 Kgs 18:13 ("...וּבְאַרְבַּע֩ עֶשְׂרֵ֨ה שָׁנָ֜ה")
     ("100r", "start"): False,
     # Jeremiah — gap begins at end of Jer 29:9 ("יְהֹוָֽה׃...")
     ("147v", "end"): False,
     # Jeremiah — the missing section ends mid-verse (opening words of the
-    # "sun for light by day" verse, "...כֹּ֣ה ׀ אָמַ֣ר יְהֹוָ֗ה נֹתֵ֥ן",
+    # "sun for light by day" verse, "...כֹּ֣ה ׀ אָמַ֣ר יְהֹוָ֗ה נֹתֵ֥ן",
     # cited as 31:34 in gh-pages); 148r begins with the remainder of that verse
     ("148r", "start"): False,
     # Jeremiah — the missing section (per mgketer, 32:14–19) begins mid-verse
@@ -71,18 +71,18 @@ _GAP_WHOLENESS = {
     ("148v", "start"): False,
     # Amos — gap begins at Amos 8:13; Amos 8:12 is therefore whole on 197v
     ("197v", "end"): True,
-    # Micah — gap ends mid-Mic 5:1 ("...וּמוֹצָאֹתָ֥יו מִקֶּ֖דֶם")
+    # Micah — gap ends mid-Mic 5:1 ("...וּמוֹצָאֹתָ֥יו מִקֶּ֖דֶם")
     ("198r", "start"): False,
-    # Zephaniah — gap begins mid-Zeph 3:20 ("הָאָ֔רֶץ בְּשׁוּבִ֧י...")
+    # Zephaniah — gap begins mid-Zeph 3:20 ("הָאָ֔רֶץ בְּשׁוּבִ֧י...")
     ("201v", "end"): False,
-    # Zechariah — gap ends mid-Zech 9:17 ("...וּמַה־יׇּפְי֑וֹ דָּגָן֙")
+    # Zechariah — gap ends mid-Zech 9:17 ("...וּמַה־יׇּפְי֑וֹ דָּגָן֙")
     ("202r", "start"): False,
     # Psalms — gap begins at Ps 15:1; Ps 14:7 is therefore whole on 243v
     ("243v", "end"): True,
     # Psalms — gap ends at end of Ps 25:1; Ps 25:2 begins fresh and whole
     ("244r", "start"): True,
-    # Song of Songs — codex ends mid-Song 3:11 ("בְּנ֥וֹת צִיּ֖וֹן" survives;
-    # "בַּמֶּ֣לֶךְ שְׁלֹמֹ֑ה" onwards is missing)
+    # Song of Songs — codex ends mid-Song 3:11 ("בְּנ֥וֹת צִיּ֖וֹן" survives;
+    # "בַּמֶּ֣לֶךְ שְׁלֹמֹ֑ה" onwards is missing)
     ("294v", "end"): False,
 }
 
