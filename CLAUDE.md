@@ -42,6 +42,14 @@ wrong in both directions since long before the move: it omitted Pillow and numpy
 the code could not run, and named a pyspellchecker neither codex-index repo has ever imported.
 **What the moved code needs is declared in MAM-basics' own `requirements.txt` now.**
 
+**`codex-index-aleppo.code-workspace` went the same day and on the same decision.** Half of it
+was dead outright — a `chat.tools.terminal.autoApprove` block naming `.venv\Scripts\python.exe`.
+The other half was never about Python: the file declared a three-folder view opening this repo
+beside book-of-job and codex-index-cam1753. **book-of-job's workspace file declared that same
+cluster and was deleted on 2026-08-21, and codex-index-cam1753's went with its own Phase 4**, so
+nothing opens those three repos together any more. MAM-basics' `all-repos.code-workspace` still
+lists this repo, and is where a sweep of Ben's repos reaches it.
+
 ## What MAM-basics writes here, and what it reads
 
 Run any of these from anywhere; each addresses this repo by absolute path, through
@@ -93,10 +101,10 @@ tracked file sat CRLF.
 git cat-file blob HEAD:aleppo-wiki/index.wiki
 ```
 
-## Two checks fail here and have since before the move
+## What `check_ac_all.py` reports, and why two of its four fail
 
-Neither was caused by the evacuation, and MAM-basics reproduces both at exactly the same
-tallies, which is the evidence that the move changed no behaviour.
+Neither failure was caused by the evacuation, and MAM-basics reproduces the word-finding one at
+exactly its old tally, which is the evidence that the move changed no behaviour.
 
 - **`check_ac_word_finding.py` fails 160 of 160.** It compares a column identifier against an
   integer — `col: found=1of2 expected=1`. This repo's line-break JSON has moved to an N-of-M
@@ -104,8 +112,19 @@ tallies, which is the evidence that the move changed no behaviour.
   touched since. **Every one of the 160 failures is a `col:` clause and not one is a `line:` or
   a `word:` clause**, so the located positions are right in all 160 cases.
   codex-index-cam1753 keeps `"col": 1` and its structurally identical check passes.
-- **`check_line_breaks` raises `ValueError: Unhandled tag <spi-invnun> in verse Ps.107.23`**
-  before it writes anything, which is why `check_line_breaks.html` cannot be regenerated.
+- **`check_line_breaks` reports 93 issues over all 35 pages**, and until 2026-08-22 it did not
+  report at all: it raised `ValueError: Unhandled tag <spi-invnun> in verse Ps.107.23` before
+  writing anything, so `check_line_breaks.html` was a fossil of a run that had only ever seen
+  page 270r. MAM-basics' `b37bdb4` taught the MAM-XML reader to skip the inverted nun — the
+  seven of Psalm 107 — and `a50f40e` here is the first complete report.
+
+**70 of those 93 issues are one cause, and it is the cause of the 160 above.** "No col 1 line
+markers; No col 2 line markers" appears on 29 of the 35 pages because the check asks for `col 1`
+and `col 2` where the data now says `1of3` and `2of3`. **Fixing the N-of-M migration would close
+both failures at once.** The remaining six pages carry the genuinely new signal: columns short of
+28 lines with gaps in the numbering, an unhandled `blank-line` item type, one word after the last
+line-end, and on page 004r a five-word alignment mismatch against `MAM-XML/`, each offset by a
+single word.
 
 ## Viewing a word in Aleppo Codex images
 
@@ -150,7 +169,7 @@ code; the rule they enforce is unchanged.
 Deleting the code here did not end the checks that ran over this repo's data.
 
 - **`py/tests/test_h_dot_below_nfc.py` here was deleted**, but MAM-basics' own copy carries a
-  `codex-index-aleppo` scope that walks this repo's tracked files. **28 files are in scope after
+  `codex-index-aleppo` scope that walks this repo's tracked files. **27 files are in scope after
   the move**, measured 2026-08-22, the artifact trees and the two binary precursors being
   excluded.
 - **`check_mark_order.py` and `check_escape_sequences.py` in MAM-basics take a union of
