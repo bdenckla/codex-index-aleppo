@@ -8,7 +8,7 @@ BookReader API at scale=2.
 ## Source
 
 - **Internet Archive item:** `aleppo-codex`
-- **Download script:** `download_aleppo_pages.py`
+- **Download script:** `../MAM-basics/py/main_ac_download_pages.py` (this repo's `py/download_aleppo_pages.py` until 2026-08-22)
 - **API endpoint:** `https://ia601801.us.archive.org/BookReader/BookReaderImages.php`
 - **Source format:** JP2 (JPEG 2000) inside `Aleppo Codex_jp2.zip`
 - **Downloaded format:** JPEG (server-side conversion at scale=2)
