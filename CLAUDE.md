@@ -34,6 +34,14 @@ them against the same problem on a different manuscript. `py/py_ac_loc/` kept it
 shell command into a Claude Code permission glob and mentions no manuscript, no codex and no
 Hebrew. It landed as MAM-basics' `py/main_gen_permission_glob.py`, unprefixed.
 
+**`requirements.txt` went with the Python, on Ben's decision of 2026-08-22.** It named black,
+matplotlib and pyspellchecker, and nothing here imports any of them now.
+`.github/workflows/pages.yml` was checked rather than assumed and runs no Python at all, so the
+Pages deploy this repo keeps was never a reason to hold the file. The declaration had also been
+wrong in both directions since long before the move: it omitted Pillow and numpy, without which
+the code could not run, and named a pyspellchecker neither codex-index repo has ever imported.
+**What the moved code needs is declared in MAM-basics' own `requirements.txt` now.**
+
 ## What MAM-basics writes here, and what it reads
 
 Run any of these from anywhere; each addresses this repo by absolute path, through
@@ -142,8 +150,9 @@ code; the rule they enforce is unchanged.
 Deleting the code here did not end the checks that ran over this repo's data.
 
 - **`py/tests/test_h_dot_below_nfc.py` here was deleted**, but MAM-basics' own copy carries a
-  `codex-index-aleppo` scope that walks this repo's tracked files. **29 files are in scope after
-  the move**, the artifact trees and the two binary precursors being excluded.
+  `codex-index-aleppo` scope that walks this repo's tracked files. **28 files are in scope after
+  the move**, measured 2026-08-22, the artifact trees and the two binary precursors being
+  excluded.
 - **`check_mark_order.py` and `check_escape_sequences.py` in MAM-basics take a union of
   per-repo scope lists**, and `ac_paths.code_paths()` plus this repo's data root are two entries
   in it. So this repo's 78 hand-made line-break, column-coordinate and flat-stream JSON are
