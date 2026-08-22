@@ -18,7 +18,7 @@ vendored, not generated here: see [`MAM-simple-provenance.md`](../MAM-simple-pro
 for the commit and date it was copied from. Update it by re-copying, never by editing in
 place.
 
-`py/py_ac_loc/mam_xml_verses.py` reads it. Its entry point is
+`../MAM-basics/py/py_ac_loc/mam_xml_verses.py` reads it. Its entry point is
 `get_verses_in_range(xml_path, book_osis_prefix, start_cv, end_cv)`, which returns one
 dict per verse with `cv`, `words`, `ketiv_indices`, and `parashah_before`.
 

@@ -1,196 +1,206 @@
 # CLAUDE.md — Project notes for AI assistants
 
+What this repo is, what it publishes, and what each data directory holds are in
+[README.md](README.md).
+
+## There is no Python here — the code is `../MAM-basics/py/`
+
+Every `.py` this repo tracked left on 2026-08-22, under Phase 4 of
+`../MAM-basics/doc/PLAN-evacuate-python-from-codex-index-trio.md`. **Fifty files: do not put
+one back.** They emptied `py/`, `py/tests/`, `py/py_ac_loc/`, `py/py_ac_word_image_helper/`,
+`py/mb_cmn/` and `aleppo-wiki/py/` outright.
+
+**Twenty-one of the fifty did not move — they were deleted as duplicates**, MAM-basics already
+holding the same text:
+
+- `py/py_ac_word_image_helper/` (6) — one committed blob with MAM-basics' copy, which arrived
+  with book-of-job's own evacuation on 2026-08-19.
+- `py/mb_cmn/` (4) — vendored from MAM-basics, byte-identical.
+- Six of `aleppo-wiki/py/` — `hebrew_letters`, `hebrew_punctuation`, `hebrew_verse_numerals`
+  and `my_utils` under their own names, plus two renamed: `mam_book_names` is MAM-basics'
+  `mb_cmn/mam_bknas`, and `my_open` is its `mb_cmn/file_io`.
+- `py/check_mark_order.py`, `check_escape_sequences.py`, `fix_mark_order.py` and
+  `fix_escape_sequences.py` — MAM-basics holds all four. What they needed was this repo's data
+  brought into their scope, not a second copy of the script.
+- `py/tests/test_h_dot_below_nfc.py` — folded into MAM-basics' copy as a scope of its own.
+
+**The naming rule for the twenty-nine that did move is mechanical: `main_ac_` or `check_ac_`
+plus the module's own name.** It was applied to all fifteen top-level modules, not only the
+five whose names were already taken, because codex-index-cam1753 holds a counterpart of six of
+them against the same problem on a different manuscript. `py/py_ac_loc/` kept its name;
+`aleppo-wiki/py/` became `py/ac_wiki/`.
+
+**One file moved with this code without belonging to it.** `py/gen_permission_glob.py` turns a
+shell command into a Claude Code permission glob and mentions no manuscript, no codex and no
+Hebrew. It landed as MAM-basics' `py/main_gen_permission_glob.py`, unprefixed.
+
+## What MAM-basics writes here, and what it reads
+
+Run any of these from anywhere; each addresses this repo by absolute path, through
+`MAM-basics/py/ac_paths.py`.
+
+**The Wikisource index — three files under `aleppo-wiki/`.** `index-flat.json`,
+`index-grouped-by-book.json` and `index.wiki`, from the hand-made
+`aleppo-wiki/J David Stark Aleppo Codex Index.csv`:
+
+```powershell
+C:\Users\BenDe\GitRepos\MAM-basics\.venv\Scripts\python.exe C:\Users\BenDe\GitRepos\MAM-basics\py\main_ac_wikisource_page.py
+```
+
+That was `aleppo-wiki/main_make_wikisource_page.py` here until the move. The name changed
+because codex-index-leningrad has a file of that name too, and the two are different tools
+against different input formats.
+
+**The annotated flat index — `index-flat-annotated.json` at this repo's root**, from
+`aleppo-wiki/index-flat-corrected.json`:
+
+```powershell
+C:\Users\BenDe\GitRepos\MAM-basics\.venv\Scripts\python.exe C:\Users\BenDe\GitRepos\MAM-basics\py\main_ac_gen_index_flat_annotated.py
+```
+
+**Regenerating those four is how a change is verified**: all four come back byte-identical
+unless something real has changed, which is what MAM-basics' Phase 3 used as its oracle.
+Compare against `git cat-file blob HEAD:<path>`, **not** with `git status --porcelain` — see
+the warning below.
+
+**Four more entry points read this repo's data and write only into `.novc/` or the browser**:
+`main_ac_gen_flat_stream.py`, `main_ac_gen_line_break_editor.py`,
+`main_ac_gen_col_quad_editor.py` and `main_ac_merge_line_markers.py`. The line-break and
+column-coordinate workflows are human-in-the-loop: the editor produces a browser download that
+a human moves into `line-breaks/` or `column-coordinates/`. See
+[`doc/aleppo-line-breaks.md`](doc/aleppo-line-breaks.md).
+
+## `git status --porcelain` lies about this repo, in both directions
+
+**152 of this repo's 222 tracked files were CRLF on disk against an LF blob** when that was
+measured on 2026-08-22, `.gitattributes` declaring `* text=auto eol=lf` throughout. A
+regeneration that writes LF then changes the file's size, and git flags the size change before
+re-hashing settles it — so `git status` reported four freshly regenerated artifacts as modified
+while `git diff` was empty. It has also gone wrong the other way, calling a tree clean while a
+tracked file sat CRLF.
+
+**Compare bytes against the blob instead**, which is immune to it:
+
+```powershell
+git cat-file blob HEAD:aleppo-wiki/index.wiki
+```
+
+## Two checks fail here and have since before the move
+
+Neither was caused by the evacuation, and MAM-basics reproduces both at exactly the same
+tallies, which is the evidence that the move changed no behaviour.
+
+- **`check_ac_word_finding.py` fails 160 of 160.** It compares a column identifier against an
+  integer — `col: found=1of2 expected=1`. This repo's line-break JSON has moved to an N-of-M
+  column identifier (`"col": "1of3"`) since `eb4bcaf` on 2026-03-14, and the check has not been
+  touched since. **Every one of the 160 failures is a `col:` clause and not one is a `line:` or
+  a `word:` clause**, so the located positions are right in all 160 cases.
+  codex-index-cam1753 keeps `"col": 1` and its structurally identical check passes.
+- **`check_line_breaks` raises `ValueError: Unhandled tag <spi-invnun> in verse Ps.107.23`**
+  before it writes anything, which is why `check_line_breaks.html` cannot be regenerated.
+
+## Viewing a word in Aleppo Codex images
+
+```powershell
+C:\Users\BenDe\GitRepos\MAM-basics\.venv\Scripts\python.exe C:\Users\BenDe\GitRepos\MAM-basics\py\main_ac_find_word_in_images.py Job 3:17 "יָ֝נ֗וּחוּ"
+```
+
+Arguments are `<book> <c:v> "<word>"`. The script looks up the word in `line-breaks/`, crops the
+page image from `aleppo-pages/` around it with a fade overlay, generates an HTML preview in
+`.novc/` and opens it in the browser. Use `--wide` for a wider crop. Where line-break data is
+not available for the book, it falls back to `index-flat-annotated.json` and reports the page ID
+only.
+
+That was `py/main_find_word_in_aleppo_images.py` here. Besides being renamed, it was repaired on
+the way: it used to replace `sys.stdout` at import time, which discarded whatever the previous
+stream had buffered and so silently swallowed output a caller had already printed.
+
 ## Verse numbering
 
-**Always use MAM-standard verse numbering.** Never rely on your own notion of the Masoretic text or its verse numbering.
-
-If you suspect a verse-numbering discrepancy, look up BHS verse numbering via `../MAM-simple/out/json-vtrad-bhs/<Book>.json`. Each entry has an `"osisID-of-MAM-src"` field mapping BHS osisID to MAM source verse. Example: BHS `Jer.31.35` → `"osisID-of-MAM-src": "Jer.31.34"`.
-
-## Python Environment — MANDATORY venv-qualified commands
-
-Always use `.venv/` for Python work. **Never run bare `python`, `python3`, `pip`, or `pip3`** — always use the explicit venv path:
-
-- **Windows:** `.venv\Scripts\python.exe` / `.venv\Scripts\pip.exe`
-- **Linux/macOS:** `.venv/bin/python` / `.venv/bin/pip`
-
-This rule applies everywhere — terminal, chat examples, documentation, tool invocations. No exceptions.
-
-## No `python -c` — Use `.novc/` Scripts Instead
-
-**Never use `python -c`** for any reason. Always write a temporary `.py` file in `./.novc/` (which is gitignored) and run it. Multi-line `-c` strings break Claude Code's permission glob matching and trigger approval prompts every time.
-
-## No Multi-Line Shell Commands
-
-**Never write a Bash command that spans multiple lines.** Claude Code's permission globs use `*` which does not match newlines — multi-line commands break glob matching and trigger approval prompts. When the payload is inherently multi-line, write it to a file and reference the file.
-
-Common instances:
-- **Git commit messages** — write to `.novc/commit_msg_<slug>.txt` with the Write tool, then `git commit -F .novc/commit_msg_<slug>.txt`
-- **GitHub issue/PR bodies** — write to `.novc/issue_body.md`, then `gh issue create --body-file .novc/issue_body.md`
-- **Python snippets** — write to `.novc/my_script.py`, then run with the venv Python
-
-## Prefer Built-in Tools over Bash Equivalents
-
-Default to Read, Write, Edit, Grep, Glob instead of Bash equivalents (`cat`, `echo >`, `sed`, `grep`, `find`). Every Bash command not pre-allowed triggers an approval prompt; built-in tools don't.
-
-## UTF-8 Everywhere
-
-On Windows, Python defaults to the system ANSI code page, not UTF-8 — this causes `charmap` errors with non-ASCII text. Fix this **in the code**, not with environment variable workarounds like `PYTHONUTF8=1` or `PYTHONIOENCODING=utf-8`.
-
-1. Every `open()` call must include `encoding="utf-8"`.
-2. `json.dump()` / `json.dumps()` must pass `ensure_ascii=False`.
-3. `subprocess` output: pass `encoding="utf-8"`.
-4. **stdout/stderr** — prefer writing non-ASCII output to a file (rule 1) rather than printing to stdout/stderr. When a script genuinely must print non-ASCII, reconfigure the streams at the top of `main()`:
-   ```python
-   import sys
-   sys.stdout.reconfigure(encoding="utf-8")
-   sys.stderr.reconfigure(encoding="utf-8")
-   ```
-5. Never rely on the system default encoding.
-6. **`PYTHONUTF8=1` is only for `.novc/` throwaway scripts** where changing the code is not an option. Do **not** use it as a substitute for fixing a tracked script — a codec error in tracked code means the code needs to be fixed.
-
-## No Unsolicited Git Operations
-
-Never run `git commit` or `git push` without explicit permission. Staging and status checks are fine.
-
-## Never Amend Commits
-
-Never use `git commit --amend` or `git rebase` unless explicitly asked. Always make new commits.
-
-## Git Commit Messages — Use `-F`, Not Heredocs
-
-Write commit messages to a **uniquely-named** file in `.novc/` with the Write tool, then commit with `-F`:
-
-```bash
-git commit -F .novc/commit_msg_<short_slug>.txt
-```
-
-Never reuse a fixed filename — a stale file silently produces the wrong message. Never write the file via Bash redirection; always use the Write tool. Never pre-check whether `.novc/` or the file exists — Write creates it unconditionally.
-
-## Don't Redundantly Re-assert the Repo Directory
-
-The working directory is already the project root. Run `git` directly without `cd` or `git -C <this-repo>`. For a sibling repo, use `git -C <path>`.
-
-## Don't Close Issues Prematurely
-
-Never close a GitHub issue until work is both committed **and** pushed. Closing before pushing leaves the issue marked resolved while the fix is only local.
-
-## Before Discarding Work
-
-Before any destructive git operation (`git reset`, `git checkout -- .`, `git stash drop`, etc.), run `git status` and `git diff --stat`. If there are uncommitted changes beyond the current experiment, alert the user first.
-
-## Fail Fast — No Silent Error Smoothing
-
-Do not write defensive code that swallows errors or returns `None` on unexpected conditions. Only catch exceptions when there is a concrete recovery strategy — never catch broad `Exception` or `KeyError` just to return `None`. These are batch pipelines; a crash with a clear traceback is the correct response to unexpected input.
-
-## Dict Access Style
-
-Be intentional about dict access:
-- `d[key]` — when the key is **required** (a `KeyError` on a missing required key is a bug you want to hear about immediately)
-- `d.get(key)` — when the key is **genuinely optional** and `None` is meaningful
-- `d.get(key, default)` — when the key is optional and there is a natural default
-
-## JSON Lists: Prepend, Don't Append
-
-When adding to a semantically unordered JSON array, **prepend** rather than append. Appending requires a two-line diff (add comma to old last element + add new element); prepending is a clean one-line diff.
-
-## Format Python with Black
-
-After writing or editing any Python file, run black before committing:
-
-```bash
-.venv/Scripts/python.exe -m black <file_or_directory>
-```
-
-Format only files you changed. This is mandatory — not optional.
-
-## Editing Python with Concrete Syntax Trees
-
-For complex or numerous edits to Python files, consider [libcst](https://libcst.readthedocs.io/) to programmatically transform code rather than fragile text replacements. Especially useful for refactors that rename symbols or restructure imports.
-
-## Global Variables
-
-Avoid the `global` keyword and mutating module-level variables. Pass shared state as parameters or return it. Module-level constants (ALL_CAPS) are fine if immutable after definition.
-
-## Python Package `__init__.py` Style
-
-Keep `__init__.py` files minimal — package markers only. Do not add re-exports; always import directly from the submodule that defines the symbol.
-
-## Script Promotion Policy
-
-When a `.novc/` script becomes part of an ongoing, repeatable workflow, promote it to a permanent location (e.g. `py/py_ac_loc/`) immediately. Suggest promotion as soon as the pattern becomes clear.
-
-## Opening HTML Files
-
-- **Interactive editors** using `navigator.clipboard`, `canvas.toBlob()`, or cross-origin image access — serve over HTTP (`http://127.0.0.1`). Use a `serve_and_open()` helper if available.
-- **JSON-to-clipboard export only** — opening as `file://` is acceptable.
-- **Static read-only HTML** — open directly: `Start-Process "path/to/file.html"`.
-
-## Authorship Marking
-
-First line of every new version-controlled file:
-- **Python:** `# Initially generated by Claude Code.`
-- **Markdown/HTML:** `<!-- Initially generated by Claude Code. -->`
-
-Does not apply to `.novc/` throwaway files.
-
-## Minimum Font Size for Pointed Hebrew
-
-Never use smaller than **20pt** for pointed Hebrew in generated HTML. All CSS rules for elements displaying pointed Hebrew must use `font-size: 20pt` or larger.
-
-## Unicode Character Preservation
-
-Never convert typographically correct Unicode to ASCII equivalents:
-- Curly apostrophe `'` (U+2019), not straight `'` (U+0027)
-- Curly quotes `"` (U+201C) and `"` (U+201D), not straight `"` (U+0022)
-- Hebrew characters, vowel points, cantillation marks — preserved exactly
-
-When editing, read the file first and copy exact characters from existing content rather than retyping.
-
-## Markdown Formatting
-
-Do not use bare tildes (`~`) as "approximately" — Markdown treats text between two `~` as strikethrough. Write "approx." or escape: `\~`.
-
-## Screenshots
-
-"Most recent screenshot" means the most recent file (by last-write time) in `C:\Users\BenDe\OneDrive\Pictures\Screenshots`.
-
-## GitHub Repository Owner
-
-The owner is **bdenckla**. Use this for GitHub MCP queries. Confirm via `git remote -v` if unsure.
-
-## Local Sibling Repositories
-
-Most repos are cloned as siblings at `../repo-name`. Use relative paths (e.g. `../MAM-simple/...`) — do not hard-code absolute paths.
+**Always use MAM-standard verse numbering.** Never rely on your own notion of the Masoretic text
+or its verse numbering.
+
+If you suspect a verse-numbering discrepancy, look up BHS verse numbering via
+`../MAM-simple/out/json-vtrad-bhs/<Book>.json`. Each entry has an `"osisID-of-MAM-src"` field
+mapping BHS osisID to MAM source verse. Example: BHS `Jer.31.35` → `"osisID-of-MAM-src":
+"Jer.31.34"`.
+
+## Hebrew Unicode mark order — no NFC normalization
+
+**Never apply Unicode normalization (NFC, NFD, etc.) to Hebrew text here.** NFC reorders
+combining marks, destroying the mark order this data is written in. If strings that should be
+equal are not matching, put both through the project's standard mark order — do not paper over it
+with `unicodedata.normalize`.
+
+The order is specified and implemented in `../MAM-basics/py/mb_cmn/uni_denorm.py`
+(`give_std_mark_order` is the authority, `has_std_mark_order` the predicate), and
+`../MAM-basics/py/check_mark_order.py` is the checker. Both moved there with the rest of the
+code; the rule they enforce is unchanged.
+
+## MAM-basics still lints this repo, and still scans it for NFC
+
+Deleting the code here did not end the checks that ran over this repo's data.
+
+- **`py/tests/test_h_dot_below_nfc.py` here was deleted**, but MAM-basics' own copy carries a
+  `codex-index-aleppo` scope that walks this repo's tracked files. **29 files are in scope after
+  the move**, the artifact trees and the two binary precursors being excluded.
+- **`check_mark_order.py` and `check_escape_sequences.py` in MAM-basics take a union of
+  per-repo scope lists**, and `ac_paths.code_paths()` plus this repo's data root are two entries
+  in it. So this repo's 78 hand-made line-break, column-coordinate and flat-stream JSON are
+  still read for mark order.
+
+A decomposed h-with-dot-below or a stray `\uXXXX` escape authored here is therefore still
+caught — by a run of MAM-basics' suite and `py/check_all.py`, not by anything here.
+
+## What no program writes
+
+**154 of this repo's 162 tracked artifacts are written by no program**, and will not come back
+if they are lost. Only eight are generated: the three under `aleppo-wiki/`,
+`index-flat-annotated.json`, `check_line_breaks.html` and the three PNGs under
+`plot_col_coords-out/`.
+
+| Tree | Files | Where it comes from |
+|---|---|---|
+| `aleppo-pages/` | 37 | downloaded scans from archive.org |
+| `line-breaks/` | 35 | human-annotated, through the editor |
+| `column-coordinates/` | 35 | human-annotated, through the editor |
+| `MAM-XML/` | 24 | vendored snapshot of MAM-simple's `xml-vtrad-mam` |
+| `aleppo-wiki/` | 10 | the CSV index, its five precursors, `index-flat-corrected.json`, three Wikisource notes |
+| `ds-flat-stream/` | 8 | generated, but see below |
+| `gh-pages/` | 4 | hand-authored |
+| `test-data-from-book-of-job.json` | 1 | hand-made |
+
+**`ds-flat-stream/` is the one that looks regenerable and is not.** The generator takes explicit
+per-page verse ranges as arguments, and those arguments are recorded nowhere — so the eight files
+cannot be reproduced from anything tracked. Treat them as hand-made.
+
+`aleppo-wiki/LICENSE.txt` and `aleppo-wiki/provenance.md` are the tree's own paperwork rather
+than artifacts, which is why `aleppo-wiki/` counts 10 here against 15 tracked files.
+
+## Minimum font size for pointed Hebrew
+
+Never use smaller than **20pt** for pointed Hebrew in HTML. This applies to the hand-authored
+pages under `gh-pages/` and to anything MAM-basics generates into this repo.
 
 ## Terminology: "Varika"
 
-**Varika** = **U+FB1E HEBREW POINT JUDEO-SPANISH VARIKA** (Alphabetic Presentation Forms block), not U+05BF HEBREW POINT RAFE (main Hebrew block).
+**Varika** = **U+FB1E HEBREW POINT JUDEO-SPANISH VARIKA** (Alphabetic Presentation Forms block),
+not U+05BF HEBREW POINT RAFE (main Hebrew block).
 
-## Hebrew Unicode Mark Order — No NFC Normalization
+## Do not mention private repos in public repos
 
-**Never apply Unicode normalization (NFC, NFD, etc.) to Hebrew text.** NFC reorders combining marks, destroying the project's intentional mark order. If strings that should be equal aren't matching, ensure both use the project's standard mark order — do not paper over with `unicodedata.normalize`. The standard order is specified in `give_std_mark_order`'s docstring in `py/mb_cmn/uni_denorm.py`, which is also its authoritative implementation; `py/check_mark_order.py` (wired into `py/check_all.py`) is the checker.
+This repo is public. Some sibling repos are private. Never reference a private repo by name in
+commits, code, docs, or issue/PR text destined for a public repo.
 
-## Do Not Mention Private Repos in Public Repos
+## Detailed reference files
 
-Some sibling repos are private. Never reference a private repo by name in commits, code, docs, or issue/PR text destined for a public repo.
+These were `.github/copilot-instructions-*.md` until 2026-08-03, when GitHub Copilot stopped
+being used here. All four had every `py/…` path repointed on 2026-08-22 with the move.
 
-## Viewing a Word in Aleppo Codex Images
-
-To show a zoomed-in Aleppo Codex image for a specific word, use `py/main_find_word_in_aleppo_images.py`:
-
-```bash
-.venv/Scripts/python.exe py/main_find_word_in_aleppo_images.py <book> <c:v> "<word>"
-```
-
-Example: `.venv/Scripts/python.exe py/main_find_word_in_aleppo_images.py Job 3:17 "יָ֝נ֗וּחוּ"`
-
-The script looks up the word in line-break data, crops the page image around it with a fade overlay, generates an HTML preview in `.novc/`, and opens it in the browser. Use `--wide` for a wider crop. When line-break data is not available for the given book, falls back to `index-flat-annotated.json` and reports the page ID only.
-
-## Detailed Reference Files
-
-These were `.github/copilot-instructions-*.md` until 2026-08-03, when GitHub Copilot stopped being used here.
-
-- **[`doc/reading-mam-simple.md`](doc/reading-mam-simple.md)** — the vendored `MAM-XML/` snapshot and the reader over it; points at MAM-simple for the format itself
+- **[`doc/reading-mam-simple.md`](doc/reading-mam-simple.md)** — the vendored `MAM-XML/`
+  snapshot and the reader over it; points at MAM-simple for the format itself
 - **[`doc/mam-with-doc-urls.md`](doc/mam-with-doc-urls.md)** — MAM with Doc URLs and book codes
-- **[`doc/aleppo-line-breaks.md`](doc/aleppo-line-breaks.md)** — line-break workflow, page image sources, Job leaf table
-- **[`doc/ocr-with-kraken.md`](doc/ocr-with-kraken.md)** — Kraken OCR setup and usage
+- **[`doc/aleppo-line-breaks.md`](doc/aleppo-line-breaks.md)** — line-break workflow, page image
+  sources, Job leaf table
+- **[`doc/ocr-with-kraken.md`](doc/ocr-with-kraken.md)** — Kraken OCR setup and usage. **Its two
+  commands cannot be run on this machine**: kraken is in no venv here, and never was.

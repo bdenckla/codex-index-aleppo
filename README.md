@@ -5,7 +5,13 @@
 
 A digital scholarship tool for locating Hebrew words on photographed pages of the Aleppo Codex (כתר ארם צובה). The current focus is on the Book of Job (leaves 270r–281v), though the infrastructure supports arbitrary biblical books via the codex index.
 
-A sibling repo, [`codex-index-cam1753`](https://github.com/bdenckla/codex-index-cam1753), covers the same biblical text in the Cambridge 1753 manuscript (μC — μL is the Leningrad Codex). Both repos use quadrilateral column geometry.
+**This repo holds data and three published pages, and no code.** Its Python moved to the
+sibling repo MAM-basics on 2026-08-22, under Phases 3 and 4 of that repo's
+`doc/PLAN-evacuate-python-from-codex-index-trio.md`; the data stayed here and goes on being
+hosted here, and the `gh-pages/` deploy goes on running from here. Nothing about that is
+provisional. See [CLAUDE.md](CLAUDE.md) for which program in MAM-basics writes what here.
+
+A sibling repo, [`codex-index-cam1753`](https://github.com/bdenckla/codex-index-cam1753), covers the same biblical text in the Cambridge 1753 manuscript (μY — μL is the Leningrad Codex). Both repos use quadrilateral column geometry.
 
 ## GitHub Pages
 
@@ -14,13 +20,21 @@ The [`gh-pages/`](gh-pages/) folder is served via GitHub Pages at <https://bdenc
 - [Missing Sections in the Aleppo Codex — Prophets and Writings](https://bdenckla.github.io/codex-index-aleppo/missing_sections_nakh.html)
 - [Missing Sections in the Aleppo Codex — Torah](https://bdenckla.github.io/codex-index-aleppo/missing_sections_torah.html)
 
+Those four files are hand-authored — no program writes them — and
+`.github/workflows/pages.yml` uploads the folder as a static artifact. That workflow runs no
+Python and was untouched by the move.
+
 ## Pipeline
 
-1. **MAM-XML Parsing** — `py/py_ac_loc/mam_xml_verses.py` extracts word lists from `MAM-XML/`
-2. **Flat Stream** — `py/py_ac_loc/gen_flat_stream.py` combines explicit verse-range args + MAM-XML into per-page word streams; data in `ds-flat-stream/`
-3. **Line-Break Annotation** — human-in-the-loop via `py/py_ac_loc/gen_line_break_editor.py`; data in `line-breaks/`
-4. **Column Coordinates** — `py/py_ac_loc/gen_col_quad_editor.py`; data in `column-coordinates/`
-5. **Word Lookup** — `py/main_find_word_in_aleppo_images.py` ties it all together
+Every step runs from `C:\Users\BenDe\GitRepos\MAM-basics` now. The module names below are
+unchanged; what changed is which repo they live in, and that each is reached through a
+`main_ac_` wrapper at MAM-basics' `py/` top level rather than being run directly.
+
+1. **MAM-XML Parsing** — `../MAM-basics/py/py_ac_loc/mam_xml_verses.py` extracts word lists from `MAM-XML/`
+2. **Flat Stream** — `../MAM-basics/py/main_ac_gen_flat_stream.py` combines explicit verse-range args + MAM-XML into per-page word streams; data in `ds-flat-stream/`
+3. **Line-Break Annotation** — human-in-the-loop via `../MAM-basics/py/main_ac_gen_line_break_editor.py`; data in `line-breaks/`
+4. **Column Coordinates** — `../MAM-basics/py/main_ac_gen_col_quad_editor.py`; data in `column-coordinates/`
+5. **Word Lookup** — `../MAM-basics/py/main_ac_find_word_in_images.py` ties it all together
 
 ## Data
 
@@ -29,6 +43,7 @@ The [`gh-pages/`](gh-pages/) folder is served via GitHub Pages at <https://bdenc
 - **`ds-flat-stream/`** — Generated per-page word streams.
 - **`line-breaks/`** — Human-annotated line-break data.
 - **`column-coordinates/`** — Column coordinate data.
+- **`aleppo-wiki/`** — J David Stark's Aleppo Codex index, its five precursors, and the Wikisource page derived from it. See [`aleppo-wiki/provenance.md`](aleppo-wiki/provenance.md).
 
 ## Conventions
 

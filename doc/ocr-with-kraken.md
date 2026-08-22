@@ -95,7 +95,7 @@ for i, record in enumerate(pred):
 https://www.mgketer.org/mikra/{bknu}/{chnu}/1/mg/106
 ```
 
-- `bknu` = 1-based book number (Job = 29, from `py/mb_cmn/bib_locales`)
+- `bknu` = 1-based book number (Job = 29, from `../MAM-basics/py/mb_cmn/bib_locales.py`)
 - `chnu` = chapter number
 - The `1` is a fixed verse segment parameter
 
@@ -111,11 +111,17 @@ Save downloaded images to `C:\Users\BenDe\OneDrive\Pictures\Aleppo-from-mgketer\
 
 ### Purpose
 
-`py/py_ac_loc/kraken_seg_baselines.py` runs kraken's baseline segmentation
-on Aleppo Codex pages and matches detected baselines to the 28-line
-manual grid from `py/py_ac_loc/column-coordinates/`.  This produces
+`../MAM-basics/py/py_ac_loc/kraken_seg_baselines.py` runs kraken's baseline
+segmentation on Aleppo Codex pages and matches detected baselines to the 28-line
+manual grid from this repo's `column-coordinates/`.  This produces
 per-line baseline polylines aligned to known grid positions — useful
 for locating individual text lines without full OCR.
+
+**The code moved to MAM-basics on 2026-08-22 and the data stayed here**, per Phase 4
+of that repo's `doc/PLAN-evacuate-python-from-codex-index-trio.md`. The grid it reads
+is `column-coordinates/` at this repo's root, where it has always been — this section
+said `py/py_ac_loc/column-coordinates/` until that date, a directory neither repo has
+ever had.
 
 ### How it works
 
@@ -132,13 +138,25 @@ for locating individual text lines without full OCR.
 
 ### Running
 
+Run from `C:\Users\BenDe\GitRepos\MAM-basics`, which is where the code is now, and
+name the wrapper rather than the module: `py/py_ac_loc/kraken_seg_baselines.py`
+imports a sibling as `py_ac_loc.<name>`, so invoking it directly raises
+`ModuleNotFoundError`.
+
 ```bash
 # All 24 Job pages (270r – 281v):
-wsl -- ~/.local/share/kraken-env/bin/python py/py_ac_loc/kraken_seg_baselines.py
+wsl -- ~/.local/share/kraken-env/bin/python py/main_ac_kraken_seg_baselines.py
 
 # Specific pages:
-wsl -- ~/.local/share/kraken-env/bin/python py/py_ac_loc/kraken_seg_baselines.py 270r 275v
+wsl -- ~/.local/share/kraken-env/bin/python py/main_ac_kraken_seg_baselines.py 270r 275v
 ```
+
+**Neither command above has been run since the move, and neither can be run here.**
+kraken is in no venv on this machine — not this repo's, and not MAM-basics' — so
+`main_ac_kraken_seg_baselines.py` is the one entry point of the eleven that does not
+even import. The WSL interpreter named above is a separate environment that was never
+part of either repo. Treat the two commands as the shape to restore rather than as
+something known to work today.
 
 ### Output (in `.novc/`)
 
