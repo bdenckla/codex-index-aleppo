@@ -128,8 +128,12 @@ exactly its old tally, which is the evidence that the move changed no behaviour.
   seven of Psalm 107 — and `a50f40e` here is the first complete report.
 
 **70 of those 93 issues are one cause, and it is the cause of the 160 above.** "No col 1 line
-markers; No col 2 line markers" appears on 29 of the 35 pages because the check asks for `col 1`
-and `col 2` where the data now says `1of3` and `2of3`. **Fixing the N-of-M migration would close
+markers; No col 2 line markers" appears on all 35 pages — that is the 70 — because the check asks
+for `col 1` and `col 2` where the data now says `1of3` and `2of3`; on 29 of the 35 it is the only
+thing reported. (This read "appears on 29 of the 35 pages" from `2bdcfde`, copying `a50f40e`'s
+message, until the 2026-08-22 review's follow-up: 35 × 2 = 70 puts the pair on every page, and
+`grep -o '<td class="fail">[^<]*' check_line_breaks.html` shows 29 rows holding exactly the pair
+and 6 holding more.) **Fixing the N-of-M migration would close
 both failures at once.** The remaining six pages carry the genuinely new signal: columns short of
 28 lines with gaps in the numbering, an unhandled `blank-line` item type, one word after the last
 line-end, and on page 004r a five-word alignment mismatch against `MAM-XML/`, each offset by a
