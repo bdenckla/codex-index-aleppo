@@ -23,9 +23,10 @@ import sys
 import unicodedata
 from pathlib import Path
 
-BASE = Path(__file__).resolve().parent.parent.parent
-LB_DIR = BASE / "line-breaks"
-NOVC_DIR = BASE / ".novc"
+import ac_paths
+
+LB_DIR = ac_paths.line_breaks_dir()
+NOVC_DIR = ac_paths.novc_dir()
 
 
 def nfc(s):

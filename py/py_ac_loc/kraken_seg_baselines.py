@@ -31,15 +31,15 @@ Usage (runs in WSL via the kraken venv):
 
 import json
 import sys
-from pathlib import Path
 
 from PIL import Image, ImageDraw
 from kraken import blla
 
-WORKSPACE = Path(__file__).resolve().parent.parent.parent
-OUT_DIR = WORKSPACE / ".novc"
-COORD_DIR = WORKSPACE / "column-coordinates"
-IMG_DIR = WORKSPACE / "aleppo-pages"
+import ac_paths
+
+OUT_DIR = ac_paths.novc_dir()
+COORD_DIR = ac_paths.col_coords_dir()
+IMG_DIR = ac_paths.pages_dir()
 
 ALL_PAGES = [f"{leaf}{side}" for leaf in range(270, 282) for side in ("r", "v")]
 

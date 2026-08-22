@@ -9,13 +9,12 @@ fields needed for this test.
 
 import json
 import sys
-from pathlib import Path
 
+import ac_paths
 from py_ac_word_image_helper.codex_page import LB_DIR, find_pages_for_verse, load_index
 from py_ac_word_image_helper.linebreak_search import find_word_in_linebreaks
 
-ROOT = Path(__file__).resolve().parent.parent
-TEST_DATA = ROOT / "test-data-from-book-of-job.json"
+TEST_DATA = ac_paths.word_finding_test_data_path()
 
 
 def main():

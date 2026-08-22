@@ -14,8 +14,8 @@ Examples:
 
 import json
 import sys
-from pathlib import Path
 
+import ac_paths
 from py_ac_loc.gen_flat_stream import (
     parse_cv,
     get_page_verses,
@@ -26,8 +26,7 @@ from py_ac_loc.gen_flat_stream import (
     LB_DIR,
 )
 
-BASE = Path(__file__).resolve().parent.parent.parent
-OUT_DIR = BASE / "line-breaks"
+OUT_DIR = ac_paths.line_breaks_dir()
 
 
 def main():

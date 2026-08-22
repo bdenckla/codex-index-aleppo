@@ -28,15 +28,15 @@ import socket
 import sys
 import threading
 import webbrowser
-from pathlib import Path
 
 # Ensure stdout handles Hebrew text on Windows (where default is cp1252).
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 from PIL import Image, ImageDraw
 
-ROOT = Path(__file__).resolve().parent.parent
-OUT_DIR = ROOT / ".novc"
+import ac_paths
+
+OUT_DIR = ac_paths.novc_dir()
 
 MAQAF = "־"
 

@@ -24,13 +24,13 @@ import json
 import sys
 from pathlib import Path
 
+import ac_paths
 from py_ac_loc.mam_xml_verses import get_verses_in_range
 from mb_cmn.uni_denorm import has_std_mark_order
 
-BASE = Path(__file__).resolve().parent.parent.parent
-MAM_XML_DIR = BASE / "MAM-XML"
-LB_DIR = BASE / "line-breaks"
-OUT_DIR = BASE / "ds-flat-stream"
+MAM_XML_DIR = ac_paths.mam_xml_dir()
+LB_DIR = ac_paths.line_breaks_dir()
+OUT_DIR = ac_paths.ds_flat_stream_dir()
 
 BOOK_XML = {
     "Deut": "Deut.xml",

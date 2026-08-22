@@ -24,12 +24,12 @@ Usage:
 
 import json
 import sys
-from pathlib import Path
 
-BASE = Path(__file__).resolve().parent.parent.parent
-LB_DIR = BASE / "line-breaks"
-CC_DIR = BASE / "column-coordinates"
-OUT_DIR = BASE / ".novc"
+import ac_paths
+
+LB_DIR = ac_paths.line_breaks_dir()
+CC_DIR = ac_paths.col_coords_dir()
+OUT_DIR = ac_paths.novc_dir()
 
 
 def _image_relpath(page_id):

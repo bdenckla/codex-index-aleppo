@@ -13,16 +13,14 @@ import json
 import sys
 import webbrowser
 from collections import Counter
-from pathlib import Path
 
+import ac_paths
 from py_ac_loc.gen_flat_stream import (
     build_flat_stream,
     get_page_verses,
 )
 
-PROJ_DIR = Path(__file__).resolve().parent.parent.parent
-LB_DIR = PROJ_DIR / "line-breaks"
-OUT_DIR = PROJ_DIR
+LB_DIR = ac_paths.line_breaks_dir()
 
 EXPECTED_LINES_PER_COL = 28
 
@@ -624,8 +622,8 @@ def main():
 </html>
 """
 
-    OUT_DIR.mkdir(exist_ok=True)
-    out_path = OUT_DIR / "check_line_breaks.html"
+    out_path = ac_paths.check_line_breaks_html_path()
+    out_path.parent.mkdir(exist_ok=True)
     out_path.write_text(html, encoding="utf-8", newline="")
     print(f"Report written to {out_path}")
     if not no_open:

@@ -23,14 +23,14 @@ import socket
 import sys
 import threading
 import webbrowser
-from pathlib import Path
 
 from PIL import Image
 
-BASE = Path(__file__).resolve().parent.parent.parent
-OUT_DIR = BASE / ".novc"
-COORD_DIR = BASE / "column-coordinates"
-IMG_DIR = BASE / "aleppo-pages"
+import ac_paths
+
+OUT_DIR = ac_paths.novc_dir()
+COORD_DIR = ac_paths.col_coords_dir()
+IMG_DIR = ac_paths.pages_dir()
 
 LINES_PER_COL = 28
 
@@ -784,7 +784,7 @@ updateStatus();
     print(f"Editor written to: {out_path}")
 
     # Serve from repo root so both .novc/ HTML and aleppo-pages/ are accessible
-    serve_and_open(BASE, f".novc/quad-editor-{page_id}.html")
+    serve_and_open(ac_paths.ac_data_root(), f".novc/quad-editor-{page_id}.html")
 
 
 def main():

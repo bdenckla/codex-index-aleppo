@@ -11,9 +11,10 @@ Usage:
 import os
 from urllib.request import Request, urlopen
 
+import ac_paths
 from mb_cmn.url_percent import pct_path_component
 
-OUT_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "aleppo-pages")
+OUT_DIR = ac_paths.pages_dir()
 os.makedirs(OUT_DIR, exist_ok=True)
 
 

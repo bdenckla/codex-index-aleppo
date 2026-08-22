@@ -12,15 +12,15 @@ Usage:
 
 import json
 import math
-from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
 
-BASE = Path(__file__).resolve().parent.parent.parent
-COORD_DIR = BASE / "column-coordinates"
-OUT_DIR = BASE / ".novc"
-PERSISTENT_DIR = BASE / "plot_col_coords-out"
+import ac_paths
+
+COORD_DIR = ac_paths.col_coords_dir()
+OUT_DIR = ac_paths.novc_dir()
+PERSISTENT_DIR = ac_paths.plot_col_coords_out_dir()
 
 ANGLE_EXAGGERATION = 20
 ANGLE_BINS = 5

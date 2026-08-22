@@ -106,6 +106,19 @@ def mam_book_path(he_bn_sbn):
     he_bn_sbn: Hebrew book name and sub-book name (a pair)
     Given he_bn_sbn, return the path to the corresponding JSON-format file
     downloaded from Wikisource.
+
+    NOT CALLED, IN EITHER WIKI TREE, AND ``in/mam-ws/`` IS IN NEITHER REPO.  Measured
+    2026-08-22 by Phase 1 of
+    ``../MAM-basics/doc/PLAN-evacuate-python-from-codex-index-trio.md``, which the trio's
+    plan sends here as a known cwd-relative offender: ``git grep mam_book_path`` finds
+    this definition and this docstring and no call site, in codex-index-aleppo or in
+    codex-index-leningrad, and neither repo has an ``in/mam-ws/`` -- the directory is
+    MAM-basics'.  So the phase left the literal rather than inventing a data root for a
+    directory that is not here, and this note is what stops the next reader "fixing" it.
+    The function is a local addition to this vendored copy of MAM-basics'
+    ``mb_cmn/mam_bknas.py``; the counterpart there,
+    ``mb_cmn/mam_bknas_and_std_bknas.py``, takes the directory as a parameter.  Phase 3
+    deletes this module outright, the code importing MAM-basics' directly.
     """
     book_name, sub_book_name = he_bn_sbn
     basename = book_name

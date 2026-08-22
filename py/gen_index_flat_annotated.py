@@ -28,20 +28,29 @@ ends.  The resolved values are encoded in _GAP_WHOLENESS below.
 
 Usage
 -----
-    python gen_index_flat_annotated.py [INPUT [OUTPUT]]
+    .venv/Scripts/python.exe py/gen_index_flat_annotated.py [INPUT [OUTPUT]]
 
 Defaults:
-    INPUT  = ../codex-index/aleppo/index-flat-corrected.json
-    OUTPUT = ../codex-index/aleppo/index-flat-annotated.json
+    INPUT  = aleppo-wiki/index-flat-corrected.json
+    OUTPUT = index-flat-annotated.json
+
+Both defaults were wrong until 2026-08-22, and in two different ways.  The Usage
+block named ``../codex-index/aleppo/`` for each -- a sibling repo whose ``aleppo/``
+directory became this repo's ``aleppo-wiki/`` in ``9025037`` (2026-03-28).  Of the
+two, only DEFAULT_INPUT was really spelled that way in the code, so the input was as
+dead as the four literals in ``aleppo-wiki/main_make_wikisource_page.py``, dead the
+same way and since the same day.  DEFAULT_OUTPUT was already this repo's root, so
+there the Usage block was simply describing something the code did not do.
 """
 
 import json
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_INPUT = ROOT.parent / "codex-index" / "aleppo" / "index-flat-corrected.json"
-DEFAULT_OUTPUT = ROOT / "index-flat-annotated.json"
+import ac_paths
+
+DEFAULT_INPUT = ac_paths.flat_index_corrected_path()
+DEFAULT_OUTPUT = ac_paths.flat_index_annotated_path()
 
 # ---------------------------------------------------------------------------
 # Gap-boundary wholeness table

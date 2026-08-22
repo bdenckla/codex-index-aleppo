@@ -73,6 +73,15 @@ _BINARY_EXTENSIONS = {
 # Generated pipeline output + external imported snapshots. Their het / line
 # endings are the concern of their generators (already LF/NFC-fixed) or the
 # upstream source, not this hand-authored-source test.
+#
+# THESE ARE NOT PATHS AND NOTHING BUILDS ONE FROM THEM: each is a repo-relative
+# prefix matched with str.startswith against a path _iter_files has already
+# produced, and REPO_ROOT above comes from git rev-parse, so this module is
+# cwd-independent already. Phase 1 of
+# ../MAM-basics/doc/PLAN-evacuate-python-from-codex-index-trio.md is sent here
+# by a grep for '"gh-pages/' and leaves them alone; rewriting one as a
+# filesystem path would be a bug. The same seven read as offenders in
+# book-of-job's Phase 1 and were left for the same reason.
 _EXCLUDE_DIR_PREFIXES = (
     "gh-pages/",
     "MAM-XML/",
