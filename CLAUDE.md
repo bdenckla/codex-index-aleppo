@@ -50,6 +50,15 @@ cluster and was deleted on 2026-08-21, and codex-index-cam1753's went with its o
 nothing opens those three repos together any more. MAM-basics' `all-repos.code-workspace` still
 lists this repo, and is where a sweep of Ben's repos reaches it.
 
+**`.claude/settings.json` went too, and NOT because the move orphaned it.** Six of its ten
+permission globs were still live — `Bash(git *)`, three `gh issue` globs, a `Read()` over the
+Yeivin *Introduction to the Tiberian Masorah* scans, and one that still matched when a session
+sitting here reached sideways for MAM-basics' interpreter. **Ben's reason, 2026-08-22, is that
+the file predates Claude Code's "auto" permission mode**, and dates from a period of trying hard
+and with little success to get permission globs set up at all. So it is a fossil of an approach
+he has moved off rather than a casualty of the evacuation. **Do not write a new one**: this repo
+was the only one of the three that had a `.claude/` at all, and the directory is gone with it.
+
 ## What MAM-basics writes here, and what it reads
 
 Run any of these from anywhere; each addresses this repo by absolute path, through
@@ -169,7 +178,7 @@ code; the rule they enforce is unchanged.
 Deleting the code here did not end the checks that ran over this repo's data.
 
 - **`py/tests/test_h_dot_below_nfc.py` here was deleted**, but MAM-basics' own copy carries a
-  `codex-index-aleppo` scope that walks this repo's tracked files. **27 files are in scope after
+  `codex-index-aleppo` scope that walks this repo's tracked files. **26 files are in scope after
   the move**, measured 2026-08-22, the artifact trees and the two binary precursors being
   excluded.
 - **`check_mark_order.py` and `check_escape_sequences.py` in MAM-basics take a union of
