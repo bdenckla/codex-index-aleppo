@@ -30,9 +30,11 @@ five whose names were already taken, because codex-index-cam1753 holds a counter
 them against the same problem on a different manuscript. `py/py_ac_loc/` kept its name;
 `aleppo-wiki/py/` became `py/ac_wiki/`.
 
-**One file moved with this code without belonging to it.** `py/gen_permission_glob.py` turns a
-shell command into a Claude Code permission glob and mentions no manuscript, no codex and no
-Hebrew. It landed as MAM-basics' `py/main_gen_permission_glob.py`, unprefixed.
+**One file moved with this code without belonging to it, and no longer exists.**
+`py/gen_permission_glob.py` turned a shell command into a Claude Code permission glob and
+mentioned no manuscript, no codex and no Hebrew. It landed as MAM-basics'
+`py/main_gen_permission_glob.py`, unprefixed, and Ben deleted it there on 2026-08-24, once
+Claude's Auto mode had made the permission globs it wrote pointless.
 
 **`requirements.txt` went with the Python, on Ben's decision of 2026-08-22.** It named black,
 matplotlib and pyspellchecker, and nothing here imports any of them now.
