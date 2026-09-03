@@ -26,7 +26,7 @@ Python and was untouched by the move.
 
 ## Pipeline
 
-Every step runs from `C:\Users\BenDe\GitRepos\MAM-basics` now. The module names below are
+Every step runs from `C:/Users/BenDe/GitRepos/MAM-basics` now. The module names below are
 unchanged; what changed is which repo they live in, and that each is reached through a
 `main_ac_` wrapper at MAM-basics' `py/` top level rather than being run directly.
 

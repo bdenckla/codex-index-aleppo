@@ -45,7 +45,7 @@ the code could not run, and named a pyspellchecker neither codex-index repo has 
 **What the moved code needs is declared in MAM-basics' own `requirements.txt` now.**
 
 **`codex-index-aleppo.code-workspace` went the same day and on the same decision.** Half of it
-was dead outright — a `chat.tools.terminal.autoApprove` block naming `.venv\Scripts\python.exe`.
+was dead outright — a `chat.tools.terminal.autoApprove` block naming `.venv/Scripts/python.exe`.
 The other half was never about Python: the file declared a three-folder view opening this repo
 beside book-of-job and codex-index-cam1753. **book-of-job's workspace file declared that same
 cluster and was deleted on 2026-08-21, and codex-index-cam1753's went with its own Phase 4**, so
@@ -71,7 +71,7 @@ Run any of these from anywhere; each addresses this repo by absolute path, throu
 `aleppo-wiki/J David Stark Aleppo Codex Index.csv`:
 
 ```powershell
-C:\Users\BenDe\GitRepos\MAM-basics\.venv\Scripts\python.exe C:\Users\BenDe\GitRepos\MAM-basics\py\main_ac_wikisource_page.py
+C:/Users/BenDe/GitRepos/MAM-basics/.venv/Scripts/python.exe C:/Users/BenDe/GitRepos/MAM-basics/py/main_ac_wikisource_page.py
 ```
 
 That was `aleppo-wiki/main_make_wikisource_page.py` here until the move. The name changed
@@ -82,7 +82,7 @@ against different input formats.
 `aleppo-wiki/index-flat-corrected.json`:
 
 ```powershell
-C:\Users\BenDe\GitRepos\MAM-basics\.venv\Scripts\python.exe C:\Users\BenDe\GitRepos\MAM-basics\py\main_ac_gen_index_flat_annotated.py
+C:/Users/BenDe/GitRepos/MAM-basics/.venv/Scripts/python.exe C:/Users/BenDe/GitRepos/MAM-basics/py/main_ac_gen_index_flat_annotated.py
 ```
 
 **Regenerating those four is how a change is verified**: all four come back byte-identical
@@ -144,7 +144,7 @@ single word.
 ## Viewing a word in Aleppo Codex images
 
 ```powershell
-C:\Users\BenDe\GitRepos\MAM-basics\.venv\Scripts\python.exe C:\Users\BenDe\GitRepos\MAM-basics\py\main_ac_find_word_in_images.py Job 3:17 "יָ֝נ֗וּחוּ"
+C:/Users/BenDe/GitRepos/MAM-basics/.venv/Scripts/python.exe C:/Users/BenDe/GitRepos/MAM-basics/py/main_ac_find_word_in_images.py Job 3:17 "יָ֝נ֗וּחוּ"
 ```
 
 Arguments are `<book> <c:v> "<word>"`. The script looks up the word in `line-breaks/`, crops the
@@ -192,7 +192,7 @@ Deleting the code here did not end the checks that ran over this repo's data.
   in it. So this repo's 78 hand-made line-break, column-coordinate and flat-stream JSON are
   still read for mark order.
 
-A decomposed h-with-dot-below or a stray `\uXXXX` escape authored here is therefore still
+A decomposed h-with-dot-below or a stray `/uXXXX` escape authored here is therefore still
 caught — by a run of MAM-basics' suite and `py/check_all.py`, not by anything here.
 
 ## What no program writes

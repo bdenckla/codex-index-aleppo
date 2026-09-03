@@ -105,7 +105,7 @@ mgketer.org uses a JavaScript image viewer (iv-viewer) that loads tiles dynamica
 
 ### Image naming convention
 
-Save downloaded images to `C:\Users\BenDe\OneDrive\Pictures\Aleppo-from-mgketer\` with pattern `{bknu}_{chnu}.jpg` (e.g., `28_34.jpg` for Job chapter 34).
+Save downloaded images to `C:/Users/BenDe/OneDrive/Pictures/Aleppo-from-mgketer/` with pattern `{bknu}_{chnu}.jpg` (e.g., `28_34.jpg` for Job chapter 34).
 
 ## Baseline Segmentation / Line Detection
 
@@ -138,7 +138,7 @@ ever had.
 
 ### Running
 
-Run from `C:\Users\BenDe\GitRepos\MAM-basics`, which is where the code is now, and
+Run from `C:/Users/BenDe/GitRepos/MAM-basics`, which is where the code is now, and
 name the wrapper rather than the module: `py/py_ac_loc/kraken_seg_baselines.py`
 imports a sibling as `py_ac_loc.<name>`, so invoking it directly raises
 `ModuleNotFoundError`.

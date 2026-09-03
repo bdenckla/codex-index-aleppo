@@ -128,7 +128,7 @@ Two pages span book boundaries: 270r (Ps→Job) and 281v (Job→Prov).
 ### 1. Generate the flat stream (if not already present)
 
 ```powershell
-C:\Users\BenDe\GitRepos\MAM-basics\.venv\Scripts\python.exe C:\Users\BenDe\GitRepos\MAM-basics\py\main_ac_gen_lb_flat_stream.py 270v
+C:/Users/BenDe/GitRepos/MAM-basics/.venv/Scripts/python.exe C:/Users/BenDe/GitRepos/MAM-basics/py/main_ac_gen_lb_flat_stream.py 270v
 ```
 
 This creates `line-breaks/270v.json` with all words and
@@ -138,7 +138,7 @@ structural markers but no line-break markers. The script calls
 ### 2. Open the interactive editor
 
 ```powershell
-C:\Users\BenDe\GitRepos\MAM-basics\.venv\Scripts\python.exe C:\Users\BenDe\GitRepos\MAM-basics\py\main_ac_gen_line_break_editor.py 270v 1
+C:/Users/BenDe/GitRepos/MAM-basics/.venv/Scripts/python.exe C:/Users/BenDe/GitRepos/MAM-basics/py/main_ac_gen_line_break_editor.py 270v 1
 ```
 
 Arguments: `<page_id> <col>` where col 1 = right column, col 2 = left
